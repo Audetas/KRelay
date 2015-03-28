@@ -131,16 +131,6 @@ namespace Lib_K_Relay.Networking
                 _remoteBuffer.Buffer(), offset, amount, RemoteReceive, null);
         }
 
-        public void RemoteConnect(string host, int port)
-        {
-            if (!_remoteConnection.Connected) _remoteConnection.Close();
-
-            _remoteConnection = new TcpClient();
-            _remoteConnection.BeginConnect(
-                IPAddress.Parse(host),
-                port, RemoteConnected, null);
-        }
-
         public void SendToServer(Packet packet)
         {
             if (_remoteConnection == null) return;
