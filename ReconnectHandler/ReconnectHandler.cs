@@ -42,7 +42,7 @@ namespace ReconnectHandler
             {
                 // Next time the proxy gets a client connectiom,
                 // The remote connection it sets up will be to here:
-                _proxy.ListenAddress = reconnectPacket.Get<string>("Host");
+                _proxy.RemoteAddress = reconnectPacket.Get<string>("Host");
             }
 
             reconnectPacket["Host"] = "localhost";
