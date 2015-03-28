@@ -165,11 +165,14 @@ namespace Lib_K_Relay.Networking
 
         public void Close(string reason)
         {
-            Console.WriteLine("[Connection] Client is disconnecting because {0}.", reason);
-            if (!_localConnection.Connected) _localConnection.Close();
-            if (!_remoteConnection.Connected) _remoteConnection.Close();
+            if (_remoteConnection.Connected || _localConnection.Connected)
+            {
+                _proxy.FireClientDisconnected(this);
+                Console.WriteLine("[Connected] Client disconnected.");
+            }
 
-            _proxy.FireClientDisconnected(this);
+            if (_remoteConnection.Connected) _remoteConnection.Close();
+            if (_localConnection.Connected) _localConnection.Close();
         }
     }
 }
