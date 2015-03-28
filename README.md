@@ -7,4 +7,6 @@ Things left to do:
 - Core Reconnect plugin
 - Finish the plugins tab
 - Define all packets
+- Fetch server list from char/list (optional)
+- Overload packet member indexors 
 - More that I can't think of at the moment
