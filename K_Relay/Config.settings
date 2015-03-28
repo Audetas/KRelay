@@ -1,0 +1,12 @@
+﻿<?xml version='1.0' encoding='utf-8'?>
+<SettingsFile xmlns="http://schemas.microsoft.com/VisualStudio/2004/01/settings" CurrentProfile="(Default)" GeneratedClassNamespace="K_Relay" GeneratedClassName="Config">
+  <Profiles />
+  <Settings>
+    <Setting Name="PacketDirectory" Type="System.String" Scope="User">
+      <Value Profile="(Default)">%startuppath%\Packets\</Value>
+    </Setting>
+    <Setting Name="PluginDirectory" Type="System.String" Scope="User">
+      <Value Profile="(Default)">%startuppath%\Plugins\</Value>
+    </Setting>
+  </Settings>
+</SettingsFile>
