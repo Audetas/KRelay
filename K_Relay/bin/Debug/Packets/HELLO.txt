@@ -1,0 +1,20 @@
+name=HELLO
+id=84
+
+string BuildVersion
+int GameId
+string GUID
+int Random1
+string Password
+int Random2
+string Secret
+int KeyTime
+short KeyLength
+byte[] Key
+int Obf1Length
+byte[] Obf1
+string Obf2
+string Obf3
+string Obf4
+string Obf5
+string Obf6

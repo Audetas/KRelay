@@ -1,0 +1,11 @@
+name=RECONNECT
+id=59
+
+string Name
+string Host
+int Port
+int GameId
+int KeyTime
+bool IsFromArena
+short KeyLength
+byte[] Key

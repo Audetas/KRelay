@@ -1,0 +1,4 @@
+name=PLAYERTEXT
+id=6
+
+string Text
