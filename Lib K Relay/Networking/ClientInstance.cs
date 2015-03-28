@@ -31,13 +31,12 @@ namespace Lib_K_Relay.Networking
             _localConnection = client;
             _remoteConnection = new TcpClient();
 
-            // Try to connect to RotMG server.
             _remoteConnection.BeginConnect(
                 IPAddress.Parse(_proxy.RemoteAddress),
-                _proxy.Port, RemoteConnect, null);
+                _proxy.Port, RemoteConnected, null);
         }
 
-        private void RemoteConnect(IAsyncResult ar)
+        private void RemoteConnected(IAsyncResult ar)
         {
             _remoteConnection.EndConnect(ar);
             _proxy.FireClientConnected(this);
@@ -132,8 +131,20 @@ namespace Lib_K_Relay.Networking
                 _remoteBuffer.Buffer(), offset, amount, RemoteReceive, null);
         }
 
+        public void RemoteConnect(string host, int port)
+        {
+            if (!_remoteConnection.Connected) _remoteConnection.Close();
+
+            _remoteConnection = new TcpClient();
+            _remoteConnection.BeginConnect(
+                IPAddress.Parse(host),
+                port, RemoteConnected, null);
+        }
+
         public void SendToServer(Packet packet)
         {
+            if (_remoteConnection == null) return;
+
             byte[] data = packet.Data();
             PacketWriter.BlockCopyInt32(data, data.Length);
             ServerSendKey.Cipher(data);
@@ -159,13 +170,6 @@ namespace Lib_K_Relay.Networking
             if (!_remoteConnection.Connected) _remoteConnection.Close();
 
             _proxy.FireClientDisconnected(this);
-        }
-
-        public override string ToString()
-        {
-            return _localConnection.Client.RemoteEndPoint.ToString() 
-                + " <=> " 
-                + _remoteConnection.Client.RemoteEndPoint.ToString();
         }
     }
 }

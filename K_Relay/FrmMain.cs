@@ -80,19 +80,11 @@ namespace K_Relay
         private void ClientConnected(Proxy p, ClientInstance client)
         {
             _clients.Add(client);
-            Invoke(new MethodInvoker(() => 
-                treeClients.Nodes[0].Nodes.Add(new TreeNode(client.ToString()))));
         }
 
         private void ClientDisconnected(Proxy p, ClientInstance client)
         {
             _clients.Remove(client);
-            Invoke(new MethodInvoker(() =>
-            {
-                foreach (TreeNode n in treeClients.Nodes[0].Nodes)
-                    if (n.Text == client.ToString())
-                        treeClients.Nodes[0].Nodes.Remove(n);
-            }));
         }
         #endregion
     }
