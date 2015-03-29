@@ -12,6 +12,7 @@ namespace Lib_K_Relay.Networking.Packets
     public static class PacketSerializer
     {
         public static Dictionary<PacketType, PacketStructure> PacketStructures = new Dictionary<PacketType, PacketStructure>();
+        public static Dictionary<PacketType, byte> PacketTypeIdMap = new Dictionary<PacketType, byte>();
         private static Dictionary<byte, PacketType> PacketIdTypeMap = new Dictionary<byte, PacketType>();
 
         static PacketSerializer()
@@ -44,6 +45,7 @@ namespace Lib_K_Relay.Networking.Packets
                     }
                     PacketStructures.Add(parsedType, structure);
                     PacketIdTypeMap.Add(id, parsedType);
+                    PacketTypeIdMap.Add(parsedType, id);
                     Console.WriteLine("[Packet Serializer] Registered packet type {0} with id {1}", parsedType, id);
                 }
                 else

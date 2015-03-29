@@ -30,7 +30,7 @@
         {
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FrmMain));
-            System.Windows.Forms.TreeNode treeNode2 = new System.Windows.Forms.TreeNode("Connected Clients");
+            System.Windows.Forms.TreeNode treeNode3 = new System.Windows.Forms.TreeNode("Connected Clients");
             this.imglistTabs = new System.Windows.Forms.ImageList(this.components);
             this.tabMain = new System.Windows.Forms.TabControl();
             this.tabInfo = new System.Windows.Forms.TabPage();
@@ -117,10 +117,10 @@
             this.treeClients.Dock = System.Windows.Forms.DockStyle.Fill;
             this.treeClients.Location = new System.Drawing.Point(3, 43);
             this.treeClients.Name = "treeClients";
-            treeNode2.Name = "nodeConnectedClients";
-            treeNode2.Text = "Connected Clients";
+            treeNode3.Name = "nodeConnectedClients";
+            treeNode3.Text = "Connected Clients";
             this.treeClients.Nodes.AddRange(new System.Windows.Forms.TreeNode[] {
-            treeNode2});
+            treeNode3});
             this.treeClients.Size = new System.Drawing.Size(920, 644);
             this.treeClients.TabIndex = 1;
             // 

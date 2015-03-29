@@ -26,6 +26,8 @@ namespace K_Relay
                 else
                     treePackets.Nodes.Add(type.ToString());
             }
+
+            Packet p = new Packet(PacketType.HELLO, false);
         }
 
         private void treePackets_AfterSelect(object sender, TreeViewEventArgs e)

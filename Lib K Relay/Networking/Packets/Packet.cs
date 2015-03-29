@@ -45,6 +45,24 @@ namespace Lib_K_Relay.Networking.Packets
             }
         }
 
+        public Packet(PacketType type, bool isServerPacket)
+        {
+            Type = type;
+            _isServerPacket = isServerPacket;
+            Structure = PacketSerializer.GetStructure(type);
+
+            if (Structure.Type == PacketType.UNKNOWN)
+                throw new ArgumentOutOfRangeException(
+                    "Cannot manually create " + type.ToString() + " because it does not have a definition.");
+
+            _id = PacketSerializer.PacketTypeIdMap[type];
+
+            for (int i = 0; i < Structure.Elements(); i++)
+                _data.Add(Structure.ElementAt(i), null);
+
+            Console.WriteLine(ToString());
+        }
+
         public dynamic this[string element]
         {
             get { return _data[element]; }
@@ -92,7 +110,7 @@ namespace Lib_K_Relay.Networking.Packets
                 s.Append("\t");
                 s.Append(Structure.ElementAt(i));
                 s.Append("=");
-                s.Append(this[i]);
+                s.Append((this[i] != null ? this[i] : "<null>"));
                 s.Append("\n");
             }
             s.Append("}");
