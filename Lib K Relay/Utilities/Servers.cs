@@ -35,45 +35,48 @@ namespace Lib_K_Relay.Utilities
             {"USW3", "USWest3"}
         };
 
-        private static Dictionary<string, string> Hosts = new Dictionary<string,string>();
+        private static Dictionary<string, string> Hosts = new Dictionary<string, string>();
 
-        public static void parseServers()
+        public static void ParseServers()
         {
-            String CharList = "http://realmofthemadgodhrd.appspot.com/char/list";
-            XmlTextReader reader = new XmlTextReader(CharList);
-            while (reader.ReadToFollowing("Server"))
+            Console.WriteLine("[Server Parser] Prarsing char/list for server details.");
+
+            try
             {
-                reader.ReadToFollowing("Name");
-                reader.Read();
-                string name = reader.Value;
-                reader.ReadToFollowing("DNS");
-                reader.Read();
-                string dns = reader.Value;
-                Hosts.Add(name, dns);
+                string CharList = "http://realmofthemadgodhrd.appspot.com/char/list";
+                XmlTextReader reader = new XmlTextReader(CharList);
+                while (reader.ReadToFollowing("Server"))
+                {
+                    reader.ReadToFollowing("Name");
+                    reader.Read();
+                    string name = reader.Value;
+                    reader.ReadToFollowing("DNS");
+                    reader.Read();
+                    string dns = reader.Value;
+                    Hosts.Add(name, dns);
+                }
             }
+            catch { Console.WriteLine("[Server Parse] char/list could not be accessed - parsing failed.");  }
         }
 
-        public static string getServerByFullName(string name)
+        public static string GetServerByFullName(string name)
         {
-            if (Hosts.ContainsKey(name))
-            {
+            if (Hosts.Count == 0)
+                throw new InvalidOperationException("ParseServers() has not been called.");
+            else if (Hosts.ContainsKey(name))
                 return Hosts[name];
-            }
-            else {
+            else
                 return "";
-            }
         }
 
-        public static string getServerByShortName(string name)
+        public static string GetServerByShortName(string name)
         {
-            if (Names.ContainsKey(name))
-            {
-                return getServerByFullName(Names[name]);
-            }
+            if (Hosts.Count == 0)
+                throw new InvalidOperationException("ParseServers() has not been called.");
+            else if (Names.ContainsKey(name))
+                return GetServerByFullName(Names[name]);
             else
-            {
                 return "";
-            }
         }
     }
 }
