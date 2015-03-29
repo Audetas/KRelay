@@ -2,6 +2,7 @@
 using System;
 using System.Collections.Generic;
 using System.Diagnostics;
+using System.Drawing;
 using System.IO;
 using System.Linq;
 using System.Reflection;
@@ -13,7 +14,7 @@ namespace K_Relay
 {
     partial class FrmMain
     {
-        private Dictionary<string, string> _pluginDescriptionMap = new Dictionary<string, string>();
+        private Dictionary<string, IPlugin> _pluginNameMap = new Dictionary<string, IPlugin>();
 
         private void InitPlugins()
         {
@@ -42,16 +43,11 @@ namespace K_Relay
                             {
                                 IPlugin instance = (IPlugin)Activator.CreateInstance(pluginType);
                                 string name = instance.GetName();
-                                string author = instance.GetAuthor();
-                                string description = instance.GetDescription();
                                 instance.Initialize(_proxy);
 
-                                TreeNode pluginNode = new TreeNode(name);
-                                pluginNode.Nodes.Add("By: " + author);
-                                pluginNode.Nodes.Add("Plugin Classname: " + pluginType.ToString());
-                                treePlugins.Nodes.Add(pluginNode);
+                                treePlugins.Items.Add(name);
 
-                                _pluginDescriptionMap.Add(name + author, description);
+                                _pluginNameMap.Add(name, instance);
 
                                 Console.WriteLine("[Plugin Manager] Loaded and attached {0}", name);
                             }
@@ -72,13 +68,44 @@ namespace K_Relay
                 Config.Default.PluginDirectory.ToLower().Replace("%startuppath%", Application.StartupPath));
         }
 
-        private void treePlugins_AfterSelect(object sender, TreeViewEventArgs e)
+        protected void treePlugins_SelectedIndexChanged(object sender, EventArgs e)
         {
-            if (e.Node.Nodes.Count > 0) // Ensure its a parent node
-            {
-                string key = e.Node.Text + e.Node.Nodes[0].Text.Replace("By: ", "");
-                tbxPluginInfo.Text = _pluginDescriptionMap[key];
-            }
+            string key = (string)treePlugins.SelectedItem;
+            IPlugin selected = _pluginNameMap[key];
+            PluginDescriptionView(selected);
+        }
+
+        private void PluginDescriptionView(IPlugin plugin)
+        {
+            string name = plugin.GetName();
+            string author = plugin.GetAuthor();
+            string description = plugin.GetDescription();
+            string type = plugin.GetType().ToString();
+
+            tbxPluginInfo.Clear();
+
+            AppendText(tbxPluginInfo, "Plugin: ", Color.DodgerBlue, true);
+            AppendText(tbxPluginInfo, name, Color.Black, false);
+            AppendText(tbxPluginInfo, "\nAuthor: ", Color.DodgerBlue, true);
+            AppendText(tbxPluginInfo, author, Color.Black, false);
+            AppendText(tbxPluginInfo, "\nClassName: ", Color.DodgerBlue, true);
+            AppendText(tbxPluginInfo, type, Color.Black, false);
+            AppendText(tbxPluginInfo, "\n\nDescription:\n", Color.DodgerBlue, true);
+            AppendText(tbxPluginInfo, description, Color.Black, false);
+ 
+        }
+
+        public static void AppendText(RichTextBox box, string text, Color color, Boolean bold)
+        {
+            box.SelectionStart = box.TextLength;
+            box.SelectionLength = 0;
+            if (bold)
+                box.SelectionFont = new Font(box.Font, FontStyle.Bold);
+            else
+                box.SelectionFont = new Font(box.Font, FontStyle.Regular);
+            box.SelectionColor = color;
+            box.AppendText(text);
+            box.SelectionColor = box.ForeColor;
         }
     }
 }
