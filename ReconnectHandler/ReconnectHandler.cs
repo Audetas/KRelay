@@ -31,18 +31,18 @@ namespace ReconnectHandler
 
         private void OnReconnectPacket(ClientInstance client, Packet reconnectPacket)
         {
-            if (reconnectPacket.Get<int>("Port") != -1)
+            if (reconnectPacket["Port"] != -1)
             {
                 // Next time the proxy gets a client connectiom,
                 // The remote connection it sets up will be to here:
                 _proxy.Port = reconnectPacket.Get<int>("Port");
             }
 
-            if (reconnectPacket.Get<string>("Host") != "")
+            if (reconnectPacket["Host"] != "")
             {
                 // Next time the proxy gets a client connectiom,
                 // The remote connection it sets up will be to here:
-                _proxy.RemoteAddress = reconnectPacket.Get<string>("Host");
+                _proxy.RemoteAddress = reconnectPacket["Host"];
             }
 
             reconnectPacket["Host"] = "localhost";

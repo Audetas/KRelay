@@ -39,6 +39,7 @@ namespace Lib_K_Relay.Utilities
 
         public static void ParseServers()
         {
+            if (Hosts.Count > 0) return;
             Console.WriteLine("[Server Parser] Prarsing char/list for server details.");
 
             try
@@ -63,7 +64,7 @@ namespace Lib_K_Relay.Utilities
         {
             if (Hosts.Count == 0)
                 throw new InvalidOperationException("ParseServers() has not been called.");
-            else if (Hosts.ContainsKey(name))
+            else if (Hosts.ContainsKey(name.ToUpper()))
                 return Hosts[name];
             else
                 return "";
@@ -73,7 +74,7 @@ namespace Lib_K_Relay.Utilities
         {
             if (Hosts.Count == 0)
                 throw new InvalidOperationException("ParseServers() has not been called.");
-            else if (Names.ContainsKey(name))
+            else if (Names.ContainsKey(name.ToUpper()))
                 return GetServerByFullName(Names[name]);
             else
                 return "";

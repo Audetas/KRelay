@@ -33,7 +33,7 @@ namespace SpamFilter
         {
             if (!SpamFilterConfig.Default.Enabled) return;
 
-            string text = textPacket.Get<string>("Text");
+            string text = textPacket["Text"];
             foreach (string filter in SpamFilterConfig.Default.Blacklist)
             {
                 if (SpamFilterConfig.Default.CaseSensitive && text.Contains(filter))
@@ -45,7 +45,7 @@ namespace SpamFilter
 
         private void OnPlayerTextPacket(ClientInstance client, Packet playerTextPacket)
         {
-            string playerText = playerTextPacket.Get<string>("Text").ToLower();
+            string playerText = playerTextPacket["Text"].ToLower();
 
             if (playerText.StartsWith("/spamfilter"))
                 playerTextPacket.Send = false;

@@ -133,8 +133,6 @@ namespace Lib_K_Relay.Networking
 
         public void SendToServer(Packet packet)
         {
-            if (_remoteConnection == null) return;
-
             byte[] data = packet.Data();
             PacketWriter.BlockCopyInt32(data, data.Length);
             ServerSendKey.Cipher(data);

@@ -45,13 +45,13 @@ namespace Lib_K_Relay.Networking.Packets
             }
         }
 
-        public object this[string element]
+        public dynamic this[string element]
         {
             get { return _data[element]; }
             set { _data[element] = value; }
         }
 
-        public object this[int element]
+        public dynamic this[int element]
         {
             get { return _data[Structure.ElementAt(element)]; }
             set { _data[Structure.ElementAt(element)] = value; }
@@ -60,6 +60,11 @@ namespace Lib_K_Relay.Networking.Packets
         public T Get<T>(string element)
         {
             return (T)this[element];
+        }
+
+        public void Set(string element, object value)
+        {
+            this[element] = value;
         }
 
         public byte[] Data()
