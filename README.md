@@ -5,7 +5,7 @@ Please do not share this code. You're not allowed to re-release this.
 
 Things left to do:
 - [x] Core Reconnect plugin
-- [ ] Finish the plugins tab
+- [x] Finish the plugins tab
 - [ ] Define all packets
 - [x] Fetch server list from char/list
 - [x] Overload packet member indexers 
