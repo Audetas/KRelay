@@ -13,7 +13,7 @@ namespace Lib_K_Relay.Networking.Packets
     {
         public static Dictionary<PacketType, PacketStructure> PacketStructures = new Dictionary<PacketType, PacketStructure>();
         public static Dictionary<PacketType, byte> PacketTypeIdMap = new Dictionary<PacketType, byte>();
-        private static Dictionary<byte, PacketType> PacketIdTypeMap = new Dictionary<byte, PacketType>();
+        public static Dictionary<byte, PacketType> PacketIdTypeMap = new Dictionary<byte, PacketType>();
 
         static PacketSerializer()
         {
@@ -34,31 +34,37 @@ namespace Lib_K_Relay.Networking.Packets
                     PacketType parsedType;
                     PacketStructure structure;
 
-                    if (Enum.TryParse<PacketType>(ChildNode.FirstChild.InnerText, true, out parsedType))
+                    if (ChildNode.FirstChild != null)
                     {
-                        structure = new PacketStructure(parsedType);
-                        foreach (XmlNode GrandChildNode in ChildNode.ChildNodes)
+                        if (Enum.TryParse<PacketType>(ChildNode.FirstChild.InnerText, true, out parsedType))
                         {
-                            switch (GrandChildNode.Name.ToLower())
+                            structure = new PacketStructure(parsedType);
+                            foreach (XmlNode GrandChildNode in ChildNode.ChildNodes)
                             {
-                                case "packetname":
-                                    PacketName = GrandChildNode.InnerText;
-                                    break;
-                                case "packetelements":
-                                    foreach (XmlNode GrandGrandChildNode in GrandChildNode.ChildNodes)
-                                        if (GrandGrandChildNode.Name.ToLower() == "packetelement")
-                                            structure.DefineElement(GrandGrandChildNode.Attributes[1].InnerText, GrandGrandChildNode.Attributes[0].InnerText);
-                                    break;
-                                default:
-                                    break;
+                                switch (GrandChildNode.Name.ToLower())
+                                {
+                                    case "packetname":
+                                        PacketName = GrandChildNode.InnerText;
+                                        break;
+                                    case "packetelements":
+                                        foreach (XmlNode GrandGrandChildNode in GrandChildNode.ChildNodes)
+                                            if (GrandGrandChildNode.Name.ToLower() == "packetelement")
+                                                structure.DefineElement(GrandGrandChildNode.Attributes[1].InnerText, GrandGrandChildNode.Attributes[0].InnerText);
+                                        break;
+                                    default:
+                                        break;
+                                }
                             }
                         }
-                    }
-                    else
-                        structure = new PacketStructure(PacketType.FAILURE);
+                        else
+                            structure = new PacketStructure(PacketType.FAILURE);
 
-                    if (structure.Elements() != 0)
-                        PacketStructures.Add(parsedType, structure);
+                        if (structure.Elements() != 0)
+                        {
+                            PacketStructures.Add(parsedType, structure);
+                            Console.WriteLine("[Packet Serializer] Defined packet structure for type {0}.", parsedType);
+                        }
+                    }
                 }
             }
             else

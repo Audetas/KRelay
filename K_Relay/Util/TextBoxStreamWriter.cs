@@ -7,20 +7,29 @@ namespace K_Relay.Util
 {
     public class TextBoxStreamWriter : TextWriter
     {
-        RichTextBox _output = null;
+        private StringBuilder _buffer;
+        private RichTextBox _output = null;
 
         public TextBoxStreamWriter(RichTextBox output)
         {
+            _buffer = new StringBuilder();
             _output = output;
         }
 
-        public override void Write(char value) // TODO: Make more efficient
+        public override void Write(char value)
         {
             base.Write(value);
-            if (_output.IsHandleCreated)
-                _output.Invoke(new MethodInvoker(() => _output.AppendText(value.ToString())));
-            else if (!_output.InvokeRequired)
-                _output.AppendText(value.ToString());
+            _buffer.Append(value);
+
+            if (value == '\n' || value == '\r')
+            {
+                if (_output.IsHandleCreated)
+                    _output.Invoke(new MethodInvoker(() => _output.AppendText(_buffer.ToString())));
+                else if (!_output.InvokeRequired)
+                    _output.AppendText(_buffer.ToString());
+
+                _buffer = new StringBuilder();
+            }
         }
 
         public override Encoding Encoding
