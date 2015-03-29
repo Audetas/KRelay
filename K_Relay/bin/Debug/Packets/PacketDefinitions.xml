@@ -32,7 +32,6 @@
       <PacketElement type ="String" name ="Obf4"/>
       <PacketElement type ="String" name ="Obf5"/>
       <PacketElement type ="String" name ="Obf6"/>
-      <PacketElement type ="Int" name ="Obf7"/>
     </PacketElements>
   </Packet>
   <Packet>
@@ -68,14 +67,12 @@
     </PacketElements>
   </Packet>
   <Packet>
-    <PacketName>UPDATE</PacketName>
+    <PacketName>NEW_TICK</PacketName>
     <PacketElements>
-      <PacketElement type ="Short" name ="TilesLength"/>
-      <PacketElement type ="Tile[]" name ="Tiles"/>
-      <PacketElement type ="Short" name ="Length"/>
-      <PacketElement type ="Entity[]" name ="NewObjs"/>
-      <PacketElement type ="Short" name ="DropsLength"/>
-      <PacketElement type ="Int[]" name ="Drops"/>
+      <PacketElement type ="Int" name ="TickID"/>
+      <PacketElement type ="Int" name ="TickTime"/>
+      <PacketElement type ="Short" name ="StatusesLength"/>
+      <PacketElement type ="Status[]" name ="Statuses"/>
     </PacketElements>
   </Packet>
 </PacketDefinitions>

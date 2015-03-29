@@ -41,17 +41,7 @@ namespace K_Relay
                             Type typeInterface = pluginType.GetInterface("Lib_K_Relay.Interface.IPlugin");
 
                             if (typeInterface != null)
-                            {
-                                IPlugin instance = (IPlugin)Activator.CreateInstance(pluginType);
-                                string name = instance.GetName();
-                                instance.Initialize(_proxy);
-
-                                treePlugins.Items.Add(name);
-
-                                _pluginNameMap.Add(name, instance);
-
-                                Console.WriteLine("[Plugin Manager] Loaded and attached {0}", name);
-                            }
+                                AttachPlugin(pluginType);
                         }
                         catch (Exception e)
                         {
@@ -62,13 +52,11 @@ namespace K_Relay
                 }
             }
 
+            // DEBUG
+            AttachPlugin(typeof(PacketDebugger));
+
             if (Config.Default.UseInternalReconnectHandler)
-            {
-                ReconnectHandler rh = new ReconnectHandler();
-                rh.Initialize(_proxy);
-                treePlugins.Items.Add(rh.GetName());
-                _pluginNameMap.Add(rh.GetName(), rh);
-            }
+                AttachPlugin(typeof(ReconnectHandler));
         }
 
         private void btnOpenPluginFolder_Click(object sender, EventArgs e)
@@ -85,6 +73,19 @@ namespace K_Relay
                 IPlugin selected = _pluginNameMap[key];
                 PluginDescriptionView(selected);
             }
+        }
+
+        public void AttachPlugin(Type type)
+        {
+            IPlugin instance = (IPlugin)Activator.CreateInstance(type);
+            string name = instance.GetName();
+            instance.Initialize(_proxy);
+
+            treePlugins.Items.Add(name);
+
+            _pluginNameMap.Add(name, instance);
+
+            Console.WriteLine("[Plugin Manager] Loaded and attached {0}", name);
         }
 
         private void PluginDescriptionView(IPlugin plugin)

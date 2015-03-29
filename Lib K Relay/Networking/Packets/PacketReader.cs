@@ -79,13 +79,13 @@ namespace Lib_K_Relay.Networking.Packets
                 case "float[]": return a.Select((o, i) => a[i] = ReadSingle());
 
                 // DataObjects
-                case "bitmapdata[]": return a.Select((o, i) => a[i] = new BitmapData().Read(this));
-                case "entity[]": return a.Select((o, i) => a[i] = new Entity().Read(this));
-                case "item[]": return a.Select((o, i) => a[i] = new Item().Read(this));
-                case "slotobject[]": return a.Select((o, i) => a[i] = new SlotObject().Read(this));
-                case "statdata[]": return a.Select((o, i) => a[i] = new StatData().Read(this));
-                case "status[]": return a.Select((o, i) => a[i] = new Status().Read(this));
-                case "tile[]": return a.Select((o, i) => a[i] = new Tile().Read(this));
+                case "bitmapdata[]": return a.Select((o, i) => a[i] = new BitmapData().Read(this)).ToArray();
+                case "entity[]": return a.Select((o, i) => a[i] = new Entity().Read(this)).ToArray();
+                case "item[]": return a.Select((o, i) => a[i] = new Item().Read(this)).ToArray();
+                case "slotobject[]": return a.Select((o, i) => a[i] = new SlotObject().Read(this)).ToArray();
+                case "statdata[]": return a.Select((o, i) => a[i] = new StatData().Read(this)).ToArray();
+                case "status[]": return a.Select((o, i) => a[i] = new Status().Read(this)).ToArray();
+                case "tile[]": return a.Select((o, i) => a[i] = new Tile().Read(this)).ToArray();
 
                 // :(
                 default: throw new ArgumentException(type + " is not supportd by PacketReader.ReadArray()");

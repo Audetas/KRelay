@@ -1,4 +1,4 @@
-﻿<Packets>
+<Packets>
   <Packet>
     <PacketName>FAILURE</PacketName>
     <PacketID>0</PacketID>
@@ -258,5 +258,9 @@
   <Packet>
     <PacketName>ENTER_ARENA</PacketName>
     <PacketID>30</PacketID>
+  </Packet>
+  <Packet>
+    <PacketName>NEW_TICK</PacketName>
+    <PacketID>88</PacketID>
   </Packet>
 </Packets>
