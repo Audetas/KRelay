@@ -148,7 +148,7 @@ namespace Lib_K_Relay.Networking.Packets
         PIC,
         SETCONDITION,
         TELEPORT,
-        USEPORTA,
+        USEPORTAL,
         DEATH,
         BUY,
         BUYRESULT,

@@ -1,5 +1,0 @@
-name=CREATE_SUCCESS
-id=27
-
-int ObjectId
-int CharacterId

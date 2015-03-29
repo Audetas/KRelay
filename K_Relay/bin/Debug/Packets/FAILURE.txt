@@ -1,5 +1,0 @@
-name=FAILURE
-id=0
-
-int ErrorId
-string ErrorDescription

@@ -15,9 +15,14 @@ namespace K_Relay
         {
             Console.WriteLine("[Packet Serializer] Looking for packets in {0}", Config.Default.PacketDirectory);
 
-            PacketSerializer.SerializePackets(
-                Config.Default.PacketDirectory.ToLower().Replace(
-                    "%startuppath%", Application.StartupPath));
+            PacketSerializer.SerializePacketsFromXmls(
+                Config.Default.PacketDirectory.Replace("%startuppath%", Application.StartupPath) + @"\PacketDefinitions.xml",
+                Config.Default.PacketDirectory.Replace("%startuppath%", Application.StartupPath) + @"\PacketIDs.xml");
+
+
+            //PacketSerializer.SerializePackets(
+                //Config.Default.PacketDirectory.ToLower().Replace(
+                    //"%startuppath%", Application.StartupPath));
 
             foreach (PacketType type in Enum.GetValues(typeof(PacketType)).Cast<PacketType>())
             {

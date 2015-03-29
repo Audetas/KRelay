@@ -21,6 +21,91 @@ namespace Lib_K_Relay.Networking.Packets
             PacketStructures[PacketType.UNKNOWN].DefineElement("PACKET_DATA", "void");
         }
 
+        public static void SerializePacketsFromXmls(string PacketDefinitionsPath, string PacketIDsPath)
+        {
+            #region Packet Structures
+            if (File.Exists(PacketDefinitionsPath))
+            {
+                XmlDocument document = new XmlDocument();
+                document.Load(PacketDefinitionsPath);
+                foreach (XmlNode ChildNode in document.DocumentElement.ChildNodes)
+                {
+                    string PacketName = "";
+                    PacketType parsedType;
+                    PacketStructure structure;
+
+                    if (Enum.TryParse<PacketType>(ChildNode.FirstChild.InnerText, true, out parsedType))
+                    {
+                        structure = new PacketStructure(parsedType);
+                        foreach (XmlNode GrandChildNode in ChildNode.ChildNodes)
+                        {
+                            switch (GrandChildNode.Name.ToLower())
+                            {
+                                case "packetname":
+                                    PacketName = GrandChildNode.InnerText;
+                                    break;
+                                case "packetelements":
+                                    foreach (XmlNode GrandGrandChildNode in GrandChildNode.ChildNodes)
+                                        if (GrandGrandChildNode.Name.ToLower() == "packetelement")
+                                            structure.DefineElement(GrandGrandChildNode.Attributes[1].InnerText, GrandGrandChildNode.Attributes[0].InnerText);
+                                    break;
+                                default:
+                                    break;
+                            }
+                        }
+                    }
+                    else
+                        structure = new PacketStructure(PacketType.FAILURE);
+
+                    if (structure.Elements() != 0)
+                        PacketStructures.Add(parsedType, structure);
+                }
+            }
+            else
+                throw new FileNotFoundException();
+            #endregion
+            #region Map Packet IDs
+            if (File.Exists(PacketIDsPath))
+            {
+                XmlDocument document = new XmlDocument();
+                document.Load(PacketIDsPath);
+                foreach (XmlNode childNode in document.DocumentElement.ChildNodes)
+                {
+                    string PacketName = "";
+                    byte PacketID = 255;
+                    foreach (XmlNode grandChildNode in childNode.ChildNodes)
+                        //PacketName and ID here
+                        switch (grandChildNode.Name.ToLower())
+                        {
+                            case "packetname":
+                                PacketName = grandChildNode.InnerText;
+                                break;
+                            case "packetid":
+                                PacketID = byte.Parse(grandChildNode.InnerText);
+                                break;
+                            default:
+                                break;
+                        }
+
+                    //Hoping that those faggots dont use 255 for packetID
+                    if (PacketName != "" && PacketID != 255)
+                    {
+                        PacketType parsedType;
+                        if (Enum.TryParse<PacketType>(PacketName, true, out parsedType))
+                        {
+                            PacketIdTypeMap.Add(PacketID, parsedType);
+                            PacketTypeIdMap.Add(parsedType, PacketID);
+                        }
+                        Console.WriteLine("[Packet Serializer] Registered packet type {0} with id {1}", parsedType, PacketID);
+                    }
+                }
+            }
+            else
+                throw new FileNotFoundException();
+            #endregion
+        }
+
+        [Obsolete("This method will be removed soon, please use SerializePacketFromXml() instead")]
         public static void SerializePackets(string directory)
         {
             foreach (string file in Directory.GetFiles(
