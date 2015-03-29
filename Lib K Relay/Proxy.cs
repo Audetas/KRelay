@@ -101,7 +101,7 @@ namespace Lib_K_Relay
                 // Listen for new clients.
                 _localListener.BeginAcceptTcpClient(LocalConnect, null);
             }
-            catch (ObjectDisposedException e) { } // This happens when the proxy stops and the callback fires. We'll ignore it.
+            catch (ObjectDisposedException ignored) { } // This happens when the proxy stops and the callback fires. We'll ignore it.
             catch (Exception e) 
             {
                 Console.WriteLine("[Client Listner] ClientListen failed! Here's the exception report:\n{0}", e.Message);
