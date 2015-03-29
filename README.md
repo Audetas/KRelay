@@ -8,5 +8,10 @@ Things left to do:
 - [ ] Finish the plugins tab
 - [ ] Define all packets
 - [x] Fetch server list from char/list
-- [ ] Overload packet member indexors 
+- [x] Overload packet member indexers 
+- [ ] Redo Info tab
+- [ ] Fix PropertyGrid compatability with Settings StringCollection
+- [ ] Add advanced settings (for things like RC4 keys)
+- [ ] Create user Packet constructor
+- [ ] Add welcome to K Relay message
 - [ ] More that I can't think of at the moment
