@@ -27,9 +27,9 @@ namespace K_Relay
             foreach (PacketType type in Enum.GetValues(typeof(PacketType)).Cast<PacketType>())
             {
                 if (PacketSerializer.GetStructure(type).Type != PacketType.UNKNOWN)
-                    treePackets.Nodes.Insert(0, "[Known] " + type.ToString());
+                    treePackets.Nodes.Insert(0, type.ToString());
                 else
-                    treePackets.Nodes.Add(type.ToString());
+                    treePackets.Nodes.Add("[Unknown] " + type.ToString());
             }
         }
 
@@ -37,7 +37,7 @@ namespace K_Relay
         {
             tbxPacketInfo.Text = PacketSerializer.GetStructure(
                 (PacketType)Enum.Parse(typeof(PacketType),
-                e.Node.Text.Replace("[Known] ", ""))).ToString();
+                e.Node.Text.Replace("[Unknown] ", ""))).ToString();
         }
 
         private void btnOpenPacketsFolder_Click(object sender, EventArgs e)

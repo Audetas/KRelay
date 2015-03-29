@@ -70,9 +70,12 @@ namespace K_Relay
 
         protected void treePlugins_SelectedIndexChanged(object sender, EventArgs e)
         {
-            string key = (string)treePlugins.SelectedItem;
-            IPlugin selected = _pluginNameMap[key];
-            PluginDescriptionView(selected);
+            if (treePlugins.SelectedItem != null)
+            {
+                string key = (string)treePlugins.SelectedItem;
+                IPlugin selected = _pluginNameMap[key];
+                PluginDescriptionView(selected);
+            }
         }
 
         private void PluginDescriptionView(IPlugin plugin)

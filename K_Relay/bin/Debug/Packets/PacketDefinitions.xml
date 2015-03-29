@@ -508,7 +508,7 @@
     </PacketElements>
   </Packet>
   <Packet>
-    <PacketName>INVITEDTOGUILDPACKET</PacketName>
+    <PacketName>INVITEDTOGUILD</PacketName>
     <PacketElements>
       <PacketElement type ="String" name ="Name"/>
       <PacketElement type ="String" name ="GuildName"/>
@@ -521,7 +521,7 @@
     </PacketElements>
   </Packet>
   <Packet>
-    <PacketName></PacketName>
+    <PacketName>CHANGEGUILDRANK</PacketName>
     <PacketElements>
       <PacketElement type ="String" name ="Name"/>
       <PacketElement type ="Int" name ="GuildRank"/>
@@ -542,7 +542,7 @@
     </PacketElements>
   </Packet>
   <Packet>
-    <PacketName>RESKINPACKET</PacketName>
+    <PacketName>RESKIN</PacketName>
     <PacketElements>
       <PacketElement type ="Int" name ="SkinID"/>
     </PacketElements>
