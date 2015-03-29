@@ -19,11 +19,6 @@ namespace K_Relay
                 Config.Default.PacketDirectory.Replace("%startuppath%", Application.StartupPath) + @"\PacketDefinitions.xml",
                 Config.Default.PacketDirectory.Replace("%startuppath%", Application.StartupPath) + @"\PacketIDs.xml");
 
-
-            //PacketSerializer.SerializePackets(
-                //Config.Default.PacketDirectory.ToLower().Replace(
-                    //"%startuppath%", Application.StartupPath));
-
             foreach (PacketType type in Enum.GetValues(typeof(PacketType)).Cast<PacketType>())
             {
                 if (PacketSerializer.GetStructure(type).Type != PacketType.UNKNOWN)
@@ -31,6 +26,8 @@ namespace K_Relay
                 else
                     treePackets.Nodes.Add("[Unknown] " + type.ToString());
             }
+
+            treePackets.Sort();
         }
 
         private void treePackets_AfterSelect(object sender, TreeViewEventArgs e)
