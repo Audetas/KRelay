@@ -13,6 +13,8 @@ namespace ReconnectHandler
     public class ReconnectHandler : IPlugin
     {
         private Proxy _proxy;
+        private string _originalHost;
+        private int _originalPort;
 
         public string GetAuthor()
         { return "KrazyShank / Kronks"; }
@@ -27,6 +29,18 @@ namespace ReconnectHandler
         {
             _proxy = proxy;
             proxy.HookPacket(PacketType.RECONNECT, OnReconnectPacket);
+            proxy.HookPacket(PacketType.CREATE_SUCCESS, OnCreateSuccess);
+
+            // So we can restore them later
+            _originalHost = _proxy.RemoteAddress;
+            _originalPort = _proxy.Port;
+        }
+
+        private void OnCreateSuccess(ClientInstance client, Packet createSuccessPacket)
+        {
+            // Restore the original connection info so new clients can connect normally
+            _proxy.RemoteAddress = _originalHost;
+            _proxy.Port = _originalPort;
         }
 
         private void OnReconnectPacket(ClientInstance client, Packet reconnectPacket)
@@ -35,7 +49,7 @@ namespace ReconnectHandler
             {
                 // Next time the proxy gets a client connectiom,
                 // The remote connection it sets up will be to here:
-                _proxy.Port = reconnectPacket.Get<int>("Port");
+                _proxy.Port = reconnectPacket["Port"];
             }
 
             if (reconnectPacket["Host"] != "")
@@ -45,6 +59,7 @@ namespace ReconnectHandler
                 _proxy.RemoteAddress = reconnectPacket["Host"];
             }
 
+            // Tell the client to connect to the proxy
             reconnectPacket["Host"] = "localhost";
             reconnectPacket["Port"] = 2050;
         }

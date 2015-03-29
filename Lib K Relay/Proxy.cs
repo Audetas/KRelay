@@ -111,7 +111,13 @@ namespace Lib_K_Relay
 
         public void HookPacket(PacketType type, Action<ClientInstance, Packet> callback)
         {
-            _packetHooks.Add(new Tuple<PacketType, Action<ClientInstance, Packet>>(type, callback));
+            if (PacketSerializer.GetStructure(type).Type == PacketType.UNKNOWN)
+                throw new NotSupportedException(
+                    "[Plugin Error] A plugin tried to register callback " +
+                    callback.Method.ReflectedType.Name + "." + callback.Method.Name +
+                    " for packet " + type.ToString() + " which doesn't have a structure defined.");
+            else
+                _packetHooks.Add(new Tuple<PacketType, Action<ClientInstance, Packet>>(type, callback));
         }
 
         public void FireClientConnected(ClientInstance client)

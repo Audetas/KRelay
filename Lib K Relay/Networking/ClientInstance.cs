@@ -39,6 +39,8 @@ namespace Lib_K_Relay.Networking
         private void RemoteConnected(IAsyncResult ar)
         {
             _remoteConnection.EndConnect(ar);
+
+            Console.WriteLine("[Client Listener] Client connected.");
             _proxy.FireClientConnected(this);
 
             BeginRemoteRead(0, 4); // Read 4 bytes (packet size)

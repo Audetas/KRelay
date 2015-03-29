@@ -30,7 +30,7 @@
         {
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FrmMain));
-            System.Windows.Forms.TreeNode treeNode5 = new System.Windows.Forms.TreeNode("Connected Clients");
+            System.Windows.Forms.TreeNode treeNode2 = new System.Windows.Forms.TreeNode("Connected Clients");
             this.imglistTabs = new System.Windows.Forms.ImageList(this.components);
             this.tabMain = new System.Windows.Forms.TabControl();
             this.tabInfo = new System.Windows.Forms.TabPage();
@@ -40,7 +40,6 @@
             this.tabPlugins = new System.Windows.Forms.TabPage();
             this.splitPlugins = new System.Windows.Forms.SplitContainer();
             this.treePlugins = new System.Windows.Forms.TreeView();
-            this.gridPlugin = new System.Windows.Forms.DataGridView();
             this.menuPlugins = new System.Windows.Forms.MenuStrip();
             this.btnOpenPluginFolder = new System.Windows.Forms.ToolStripMenuItem();
             this.tabPackets = new System.Windows.Forms.TabPage();
@@ -59,6 +58,7 @@
             this.menuSettings = new System.Windows.Forms.MenuStrip();
             this.btnSaveSettings = new System.Windows.Forms.ToolStripMenuItem();
             this.lblStatus = new System.Windows.Forms.Label();
+            this.tbxPluginInfo = new System.Windows.Forms.RichTextBox();
             this.tabMain.SuspendLayout();
             this.tabInfo.SuspendLayout();
             this.menuInfo.SuspendLayout();
@@ -67,7 +67,6 @@
             this.splitPlugins.Panel1.SuspendLayout();
             this.splitPlugins.Panel2.SuspendLayout();
             this.splitPlugins.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.gridPlugin)).BeginInit();
             this.menuPlugins.SuspendLayout();
             this.tabPackets.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.splitPackets)).BeginInit();
@@ -118,10 +117,10 @@
             this.treeClients.Dock = System.Windows.Forms.DockStyle.Fill;
             this.treeClients.Location = new System.Drawing.Point(3, 43);
             this.treeClients.Name = "treeClients";
-            treeNode5.Name = "nodeConnectedClients";
-            treeNode5.Text = "Connected Clients";
+            treeNode2.Name = "nodeConnectedClients";
+            treeNode2.Text = "Connected Clients";
             this.treeClients.Nodes.AddRange(new System.Windows.Forms.TreeNode[] {
-            treeNode5});
+            treeNode2});
             this.treeClients.Size = new System.Drawing.Size(920, 644);
             this.treeClients.TabIndex = 1;
             // 
@@ -167,7 +166,7 @@
             // 
             // splitPlugins.Panel2
             // 
-            this.splitPlugins.Panel2.Controls.Add(this.gridPlugin);
+            this.splitPlugins.Panel2.Controls.Add(this.tbxPluginInfo);
             this.splitPlugins.Size = new System.Drawing.Size(920, 644);
             this.splitPlugins.SplitterDistance = 306;
             this.splitPlugins.TabIndex = 1;
@@ -179,16 +178,7 @@
             this.treePlugins.Name = "treePlugins";
             this.treePlugins.Size = new System.Drawing.Size(306, 644);
             this.treePlugins.TabIndex = 0;
-            // 
-            // gridPlugin
-            // 
-            this.gridPlugin.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.gridPlugin.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.gridPlugin.Location = new System.Drawing.Point(0, 0);
-            this.gridPlugin.Name = "gridPlugin";
-            this.gridPlugin.RowTemplate.Height = 33;
-            this.gridPlugin.Size = new System.Drawing.Size(610, 644);
-            this.gridPlugin.TabIndex = 0;
+            this.treePlugins.AfterSelect += new System.Windows.Forms.TreeViewEventHandler(this.treePlugins_AfterSelect);
             // 
             // menuPlugins
             // 
@@ -373,6 +363,18 @@
             this.lblStatus.TabIndex = 1;
             this.lblStatus.Text = "Not Running";
             // 
+            // tbxPluginInfo
+            // 
+            this.tbxPluginInfo.BackColor = System.Drawing.Color.Silver;
+            this.tbxPluginInfo.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.tbxPluginInfo.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.tbxPluginInfo.Location = new System.Drawing.Point(0, 0);
+            this.tbxPluginInfo.Name = "tbxPluginInfo";
+            this.tbxPluginInfo.ReadOnly = true;
+            this.tbxPluginInfo.Size = new System.Drawing.Size(610, 644);
+            this.tbxPluginInfo.TabIndex = 1;
+            this.tbxPluginInfo.Text = "Select a plugin to view its description.";
+            // 
             // FrmMain
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(12F, 25F);
@@ -395,7 +397,6 @@
             this.splitPlugins.Panel2.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.splitPlugins)).EndInit();
             this.splitPlugins.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.gridPlugin)).EndInit();
             this.menuPlugins.ResumeLayout(false);
             this.menuPlugins.PerformLayout();
             this.tabPackets.ResumeLayout(false);
@@ -435,7 +436,6 @@
         private System.Windows.Forms.ToolStripMenuItem btnOpenPluginFolder;
         private System.Windows.Forms.SplitContainer splitPlugins;
         private System.Windows.Forms.TreeView treePlugins;
-        private System.Windows.Forms.DataGridView gridPlugin;
         private System.Windows.Forms.MenuStrip menuSettings;
         public System.Windows.Forms.ToolStripMenuItem btnSaveSettings;
         public System.Windows.Forms.PropertyGrid gridSettings;
@@ -449,6 +449,7 @@
         private System.Windows.Forms.TreeView treePackets;
         private System.Windows.Forms.RichTextBox tbxPacketInfo;
         private System.Windows.Forms.Label lblStatus;
+        private System.Windows.Forms.RichTextBox tbxPluginInfo;
     }
 }
 

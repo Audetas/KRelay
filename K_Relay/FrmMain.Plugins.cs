@@ -13,6 +13,8 @@ namespace K_Relay
 {
     partial class FrmMain
     {
+        private Dictionary<string, string> _pluginDescriptionMap = new Dictionary<string, string>();
+
         private void InitPlugins()
         {
             Console.WriteLine("[Plugin Manager] Looking for plugins in {0}", Config.Default.PluginDirectory);
@@ -46,9 +48,10 @@ namespace K_Relay
 
                                 TreeNode pluginNode = new TreeNode(name);
                                 pluginNode.Nodes.Add("By: " + author);
-                                pluginNode.Nodes.Add(description);
                                 pluginNode.Nodes.Add("Plugin Classname: " + pluginType.ToString());
                                 treePlugins.Nodes.Add(pluginNode);
+
+                                _pluginDescriptionMap.Add(name + author, description);
 
                                 Console.WriteLine("[Plugin Manager] Loaded and attached {0}", name);
                             }
@@ -67,6 +70,15 @@ namespace K_Relay
         {
             Process.Start(
                 Config.Default.PluginDirectory.ToLower().Replace("%startuppath%", Application.StartupPath));
+        }
+
+        private void treePlugins_AfterSelect(object sender, TreeViewEventArgs e)
+        {
+            if (e.Node.Nodes.Count > 0) // Ensure its a parent node
+            {
+                string key = e.Node.Text + e.Node.Nodes[0].Text.Replace("By: ", "");
+                tbxPluginInfo.Text = _pluginDescriptionMap[key];
+            }
         }
     }
 }

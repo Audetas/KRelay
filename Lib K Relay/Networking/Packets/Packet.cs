@@ -37,9 +37,9 @@ namespace Lib_K_Relay.Networking.Packets
                     if (type == "void") 
                         _data.Add(element, data.Skip(5)); // Skip ID and Length
                     else if (type == "byte[]")
-                        _data.Add(element, r.ReadBytes(Convert.ToInt32(this[i-1]))); // Amount of bytes to read is assumed to be the previous element as an integral
+                        _data.Add(element, r.ReadBytes(this[i-1])); // Amount of bytes to read is assumed to be the previous element as an integral
                     else if (type.EndsWith("[]"))
-                        _data.Add(element, r.ReadArray(type, r.ReadInt16())); // Amount of DataObjects to be read is assumed to be an int16
+                        _data.Add(element, r.ReadArray(type, this[i-1])); // Amount of objects to read is assumed to be the previous element as an integral
                     else _data.Add(element, r.Read(type));
                 }
             }
