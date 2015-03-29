@@ -40,7 +40,7 @@ namespace Lib_K_Relay.Utilities
         public static void ParseServers()
         {
             if (Hosts.Count > 0) return;
-            Console.WriteLine("[Server Parser] Prarsing char/list for server details.");
+            Console.WriteLine("[Server Parser] Parsing char/list for server details.");
 
             try
             {
@@ -57,7 +57,7 @@ namespace Lib_K_Relay.Utilities
                     Hosts.Add(name, dns);
                 }
             }
-            catch { Console.WriteLine("[Server Parse] char/list could not be accessed - parsing failed.");  }
+            catch { Console.WriteLine("[Server Parser] char/list could not be accessed - parsing failed.");  }
         }
 
         public static string GetServerByFullName(string name)

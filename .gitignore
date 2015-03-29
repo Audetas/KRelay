@@ -16,6 +16,8 @@ build/
 bld/
 [Oo]bj/
 
+*.exe
+
 # Roslyn cache directories
 *.ide/
 
