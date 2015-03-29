@@ -1,4 +1,5 @@
-﻿using Lib_K_Relay.Interface;
+﻿using K_Relay.Util;
+using Lib_K_Relay.Interface;
 using System;
 using System.Collections.Generic;
 using System.Diagnostics;
@@ -59,6 +60,14 @@ namespace K_Relay
                         }
                     }
                 }
+            }
+
+            if (Config.Default.UseInternalReconnectHandler)
+            {
+                ReconnectHandler rh = new ReconnectHandler();
+                rh.Initialize(_proxy);
+                treePlugins.Items.Add(rh.GetName());
+                _pluginNameMap.Add(rh.GetName(), rh);
             }
         }
 

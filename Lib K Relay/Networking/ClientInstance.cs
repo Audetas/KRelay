@@ -158,7 +158,7 @@ namespace Lib_K_Relay.Networking
             if (_remoteConnection.Connected || _localConnection.Connected)
             {
                 _proxy.FireClientDisconnected(this);
-                Console.WriteLine("[Connected] Client disconnected.");
+                Console.WriteLine("[Connected] Client disconnected. {0}", reason);
             }
 
             if (_remoteConnection.Connected) _remoteConnection.Close();

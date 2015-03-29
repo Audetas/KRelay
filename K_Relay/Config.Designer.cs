@@ -46,5 +46,17 @@ namespace K_Relay {
                 this["PluginDirectory"] = value;
             }
         }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("True")]
+        public bool UseInternalReconnectHandler {
+            get {
+                return ((bool)(this["UseInternalReconnectHandler"]));
+            }
+            set {
+                this["UseInternalReconnectHandler"] = value;
+            }
+        }
     }
 }

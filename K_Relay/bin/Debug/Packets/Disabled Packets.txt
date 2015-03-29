@@ -1,0 +1,469 @@
+<Packet>
+    <PacketName>CREATE</PacketName>
+    <PacketElements>
+      <PacketElement type ="UShort" name ="ClassType"/>
+      <PacketElement type ="UShort" name ="SkinType"/>
+    </PacketElements>
+  </Packet>
+  <Packet>
+    <PacketName>PLAYERSHOOT</PacketName>
+    <PacketElements>
+      <PacketElement type ="Int" name ="Time"/>
+      <PacketElement type ="Byte" name ="BulletID"/>
+      <PacketElement type ="UShort" name ="ContainerType"/>
+      <PacketElement type ="Location" name ="StartingPos"/>
+      <PacketElement type ="Float" name ="Angle"/>
+    </PacketElements>
+  </Packet>
+  <Packet>
+    <PacketName>MOVE</PacketName>
+    <PacketElements>
+      <PacketElement type ="Int" name ="TickID"/>
+      <PacketElement type ="Int" name ="Time"/>
+      <PacketElement type ="Location" name ="NewPosition"/>
+      <PacketElement type ="Short" name ="RecordsLength"/>
+      <PacketElement type ="LocationRecord[]" name ="Records"/>
+    </PacketElements>
+  </Packet>
+  <Packet>
+    <PacketName>SHOOT2</PacketName>
+    <PacketElements>
+      <PacketElement type ="Byte" name ="BulletID"/>
+      <PacketElement type ="Int" name ="OwnerID"/>
+      <PacketElement type ="Int" name ="ContainerType"/>
+      <PacketElement type ="Location" name ="StartingPos"/>
+      <PacketElement type ="Float" name ="Angle"/>
+      <PacketElement type ="Short" name ="Damage"/>
+    </PacketElements>
+  </Packet>
+  <Packet>
+    <PacketName>DAMAGE</PacketName>
+    <PacketElements>
+      <PacketElement type ="Int" name ="TargetID"/>
+      <PacketElement type ="Byte" name ="EffectsLength"/>
+      <PacketElement type ="Byte[]" name ="Effects"/>
+      <PacketElement type ="UShort" name ="DamageAmount"/>
+      <PacketElement type ="Bool" name ="Kill"/>
+      <PacketElement type ="Byte" name ="BulletID"/>
+      <PacketElement type ="Int" name ="ObjectID"/>
+    </PacketElements>
+  </Packet>
+  <Packet>
+    <PacketName>NOTIFICATION</PacketName>
+    <PacketElements>
+      <PacketElement type ="Int" name ="ObjectID"/>
+      <PacketElement type ="String" name ="Message"/>
+      <PacketElement type ="Int" name ="Color"/>
+    </PacketElements>
+  </Packet>
+  <Packet>
+    <PacketName>NEW_TICK</PacketName>
+    <PacketElements>
+      <PacketElement type ="Int" name ="TickID"/>
+      <PacketElement type ="Int" name ="TickTime"/>
+      <PacketElement type ="Short" name ="StatusesLength"/>
+      <PacketElement type ="Status[]" name ="Statuses"/>
+    </PacketElements>
+  </Packet>
+  <Packet>
+    <PacketName>INVSWAP</PacketName>
+    <PacketElements>
+      <PacketElement type ="Int" name ="Time"/>
+      <PacketElement type ="Location" name ="Position"/>
+      <PacketElement type ="SlotObject" name ="SlotObject1"/>
+      <PacketElement type ="SlotObject" name ="SlotObject2"/>
+    </PacketElements>
+  </Packet>
+  <Packet>
+    <PacketName>USEITEM</PacketName>
+    <PacketElements>
+      <PacketElement type ="Int" name ="Time"/>
+      <PacketElement type ="SlotObject" name ="_SlotObject"/>
+      <PacketElement type ="Location" name ="ItemUsePos"/>
+      <PacketElement type ="Byte" name ="UseType"/>
+    </PacketElements>
+  </Packet>
+  <Packet>
+    <PacketName>SHOW_EFFECT</PacketName>
+    <PacketElements>
+      <PacketElement type ="Byte" name ="EffectType"/>
+      <PacketElement type ="Int" name ="TargetObjectID"/>
+      <PacketElement type ="Location" name ="Pos1"/>
+      <PacketElement type ="Location" name ="Pos2"/>
+      <PacketElement type ="Int" name ="Color"/>
+    </PacketElements>
+  </Packet>
+  <Packet>
+    <PacketName>GOTO</PacketName>
+    <PacketElements>
+      <PacketElement type ="Int" name ="ObjectID"/>
+      <PacketElement type ="Location" name ="Pos"/>
+    </PacketElements>
+  </Packet>
+  <Packet>
+    <PacketName>INVDROP</PacketName>
+    <PacketElements>
+      <PacketElement type ="SlotObject" name ="_SlotObject"/>
+    </PacketElements>
+  </Packet>
+  <Packet>
+    <PacketName>INVRESULT</PacketName>
+    <PacketElements>
+      <PacketElement type ="Int" name ="Result"/>
+    </PacketElements>
+  </Packet>
+  <Packet>
+    <PacketName>PING</PacketName>
+    <PacketElements>
+      <PacketElement type ="Int" name ="Serial"/>
+    </PacketElements>
+  </Packet>
+  <Packet>
+    <PacketName>PONG</PacketName>
+    <PacketElements>
+      <PacketElement type ="Int" name ="Serial"/>
+      <PacketElement type ="Int" name ="Time"/>
+    </PacketElements>
+  </Packet>
+  <Packet>
+    <PacketName>MAPINFO</PacketName>
+    <PacketElements>
+      <PacketElement type ="Int" name ="Width"/>
+      <PacketElement type ="Int" name ="Height"/>
+      <PacketElement type ="String" name ="Name"/>
+      <PacketElement type ="String" name ="Obf0"/>
+      <PacketElement type ="Int" name ="Fp"/>
+      <PacketElement type ="Int" name ="Background"/>
+      <PacketElement type ="Int" name ="Obf1"/>
+      <PacketElement type ="Bool" name= "AllowPlayerTeleport"/>
+      <PacketElement type ="Bool" name= "ShowDisplays"/>
+      <PacketElement type ="Short" name= "ClientXMLLength"/>
+      <PacketElement type ="String[]" name= "ClientXML"/>
+      <PacketElement type ="Short" name= "ExtraXMLLength"/>
+      <PacketElement type ="String[]" name= "ExtraXML"/>
+    </PacketElements>
+  </Packet>
+  <Packet>
+    <PacketName>LOAD</PacketName>
+    <PacketElements>
+      <PacketElement type ="Int" name ="CharID"/>
+      <PacketElement type ="Bool" name ="IsFromArena"/>
+    </PacketElements>
+  </Packet>
+  <Packet>
+    <PacketName>PIC</PacketName>
+    <PacketElements>
+      <PacketElement type ="BitmapData" name ="BitmapData"/>
+    </PacketElements>
+  </Packet>
+  <Packet>
+    <PacketName>SETCONDITION</PacketName>
+    <PacketElements>
+      <PacketElement type ="Byte" name ="ConditionEffect"/>
+      <PacketElement type ="Float" name ="ConditionDuration"/>
+    </PacketElements>
+  </Packet>
+  <Packet>
+    <PacketName>TELEPORT</PacketName>
+    <PacketElements>
+      <PacketElement type ="Int" name ="ObjectID"/>
+    </PacketElements>
+  </Packet>
+  <Packet>
+    <PacketName>USEPORTAL</PacketName>
+    <PacketElements>
+      <PacketElement type ="Int" name ="ObjectID"/>
+    </PacketElements>
+  </Packet>
+  <Packet>
+    <PacketName>DEATH</PacketName>
+    <PacketElements>
+      <PacketElement type ="String" name ="AccountID"/>
+      <PacketElement type ="Int" name ="CharID"/>
+      <PacketElement type ="String" name ="KilledBy"/>
+      <PacketElement type ="Int" name ="Obf0"/>
+      <PacketElement type ="Int" name ="Obf1"/>
+    </PacketElements>
+  </Packet>
+  <Packet>
+    <PacketName>BUY</PacketName>
+    <PacketElements>
+      <PacketElement type ="Int" name ="ObjectID"/>      
+    </PacketElements>
+  </Packet>
+  <Packet>
+    <PacketName>BUYRESULT</PacketName>
+    <PacketElements>
+      <PacketElement type ="Int" name ="Result"/>
+      <PacketElement type ="String" name ="ResultString"/>
+    </PacketElements>
+  </Packet>
+  <Packet>
+    <PacketName>AOE</PacketName>
+    <PacketElements>
+      <PacketElement type ="Location" name ="Pos"/>
+      <PacketElement type ="Float" name ="Radius"/>
+      <PacketElement type ="UShort" name ="Damage"/>
+      <PacketElement type ="Byte" name ="Effect"/>
+      <PacketElement type ="Float" name ="Duration"/>
+      <PacketElement type ="UShort" name ="OrigType"/>
+    </PacketElements>
+  </Packet>
+  <Packet>
+    <PacketName>GROUNDDAMAGE</PacketName>
+    <PacketElements>
+      <PacketElement type ="Int" name ="Time"/>
+      <PacketElement type ="Location" name ="Position"/>
+    </PacketElements>
+  </Packet>
+  <Packet>
+    <PacketName>PLAYERHIT</PacketName>
+    <PacketElements>
+      <PacketElement type ="Byte" name ="BulletID"/>
+      <PacketElement type ="Int" name ="ObjectID"/>
+    </PacketElements>
+  </Packet>
+  <Packet>
+    <PacketName>ENEMYHIT</PacketName>
+    <PacketElements>
+      <PacketElement type ="Int" name ="Time"/>
+      <PacketElement type ="Int" name ="BulletID"/>
+      <PacketElement type ="Int" name ="TargetID"/>
+      <PacketElement type ="Bool" name ="Kill"/>
+    </PacketElements>
+  </Packet>
+  <Packet>
+    <PacketName>AOEACK</PacketName>
+    <PacketElements>
+      <PacketElement type ="Int" name ="Time"/>
+      <PacketElement type ="Location" name ="Position"/>
+    </PacketElements>
+  </Packet>
+  <Packet>
+    <PacketName>SHOOTACK</PacketName>
+    <PacketElements>
+      <PacketElement type ="Int" name ="Time"/>
+    </PacketElements>
+  </Packet>
+  <Packet>
+    <PacketName>OTHERHIT</PacketName>
+    <PacketElements>
+      <PacketElement type ="Int" name ="Time"/>
+      <PacketElement type ="Byte" name ="BulletID"/>
+      <PacketElement type ="Int" name ="ObjectID"/>
+      <PacketElement type ="Int" name ="TargetID"/>
+    </PacketElements>
+  </Packet>
+  <Packet>
+    <PacketName>SQUAREHIT</PacketName>
+    <PacketElements>
+      <PacketElement type ="Int" name ="Time"/>
+      <PacketElement type ="Byte" name ="BulletID"/>
+      <PacketElement type ="Int" name ="ObjectID"/>      
+    </PacketElements>
+  </Packet>
+  <Packet>
+    <PacketName>GOTOACK</PacketName>
+    <PacketElements>
+      <PacketElement type ="Int" name ="Time"/>
+    </PacketElements>
+  </Packet>
+  <Packet>
+    <PacketName>EDITACCOUNTLIST</PacketName>
+    <PacketElements>
+      <PacketElement type ="Int" name ="AccountListID"/>
+      <PacketElement type ="Bool" name ="Add"/>
+      <PacketElement type ="Int" name ="ObjectID"/>
+    </PacketElements>
+  </Packet>
+  <Packet>
+    <PacketName>ACCOUNTLIST</PacketName>
+    <PacketElements>
+      <PacketElement type ="Int" name ="AccountListID"/>
+      <PacketElement type ="Short" name ="AccountIDLength"/>
+      <PacketElement type ="String[]" name ="AccountID"/>
+      <PacketElement type ="Int" name ="LockAction"/>
+    </PacketElements>
+  </Packet>
+  <Packet>
+    <PacketName>QUESTOBJID</PacketName>
+    <PacketElements>
+      <PacketElement type ="Int" name ="ObjectID"/>
+    </PacketElements>
+  </Packet>
+  <Packet>
+    <PacketName>CHOOSENAME</PacketName>
+    <PacketElements>
+      <PacketElement type ="String" name ="Name"/>
+    </PacketElements>
+  </Packet>
+  <Packet>
+    <PacketName>NAMERESULT</PacketName>
+    <PacketElements>
+      <PacketElement type ="Bool" name ="Success"/>
+      <PacketElement type ="String" name ="ErrorText"/>
+    </PacketElements>
+  </Packet>
+  <Packet>
+    <PacketName>CREATEGUILD</PacketName>
+    <PacketElements>
+      <PacketElement type ="String" name ="Name"/>
+    </PacketElements>
+  </Packet>
+  <Packet>
+    <PacketName>CREATEGUILDRESULT</PacketName>
+    <PacketElements>
+      <PacketElement type ="Bool" name ="Success"/>
+      <PacketElement type ="String" name ="ErrorText"/>
+    </PacketElements>
+  </Packet>
+  <Packet>
+    <PacketName>GUILDINVITE</PacketName>
+    <PacketElements>
+      <PacketElement type ="String" name ="Name"/>
+    </PacketElements>
+  </Packet>
+  <Packet>
+    <PacketName>GUILDREMOVE</PacketName>
+    <PacketElements>
+      <PacketElement type ="String" name ="Name"/>
+    </PacketElements>
+  </Packet>
+  <Packet>
+    <PacketName>ALLYSHOOT</PacketName>
+    <PacketElements>
+      <PacketElement type ="Byte" name ="BulletID"/>
+      <PacketElement type ="Int" name ="OwnerID"/>
+      <PacketElement type ="Short" name ="ContainerType"/>
+      <PacketElement type ="Float" name ="Angle"/>
+    </PacketElements>
+  </Packet>
+  <Packet>
+    <PacketName>SHOOT</PacketName>
+    <PacketElements>
+      <PacketElement type ="Byte" name ="BulletID"/>
+      <PacketElement type ="Int" name ="OwnerID"/>
+      <PacketElement type ="Byte" name ="BulletType"/>
+      <PacketElement type ="Location" name ="StartingPos"/>
+      <PacketElement type ="Float" name ="Angle"/>
+      <PacketElement type ="Short" name ="Damage"/>
+      <PacketElement type ="Int" name ="NumShots"/>
+      <PacketElement type ="Float" name ="AngleInc"/>
+    </PacketElements>
+  </Packet>
+  <Packet>
+    <PacketName>REQUESTTRADE</PacketName>
+    <PacketElements>
+      <PacketElement type ="String" name ="Name"/>
+    </PacketElements>
+  </Packet>
+  <Packet>
+    <PacketName>TRADEREQUESTED</PacketName>
+    <PacketElements>
+      <PacketElement type ="String" name ="Name"/>
+    </PacketElements>
+  </Packet>
+  <Packet>
+    <PacketName>TRADESTART</PacketName>
+    <PacketElements>
+      <PacketElement type ="Short" name ="MyItemsLength"/>
+      <PacketElement type ="Item[]" name ="MyItems"/>
+      <PacketElement type ="String" name ="YourName"/>
+      <PacketElement type ="Short" name ="YourItemsLength"/>
+      <PacketElement type ="Item[]" name ="YourItems"/>
+    </PacketElements>
+  </Packet>
+  <Packet>
+    <PacketName>CHANGETRADE</PacketName>
+    <PacketElements>
+      <PacketElement type ="Short" name ="OfferLength"/>
+      <PacketElement type ="Bool[]" name ="Offer"/>     
+    </PacketElements>
+  </Packet>
+  <Packet>
+    <PacketName>TRADECHANGED</PacketName>
+    <PacketElements>
+      <PacketElement type ="Short" name ="OfferLength"/>
+      <PacketElement type ="Bool[]" name ="Offer"/>
+    </PacketElements>
+  </Packet>
+  <Packet>
+    <PacketName>ACCEPTTRADE</PacketName>
+    <PacketElements>
+      <PacketElement type ="Short" name ="MyOfferLength"/>
+      <PacketElement type ="Short" name ="YourOfferLength"/>
+      <PacketElement type ="Bool[]" name ="MyOffer"/>
+      <PacketElement type ="Bool[]" name ="YourOffer"/>      
+    </PacketElements>
+  </Packet>
+  <Packet>
+    <PacketName>TRADEDONE</PacketName>
+    <PacketElements>
+      <PacketElement type ="Int" name ="Code"/>
+      <PacketElement type ="String" name ="Description"/>
+    </PacketElements>
+  </Packet>
+  <Packet>
+    <PacketName>TRADEACCEPTED</PacketName>
+    <PacketElements>
+      <PacketElement type ="Short" name ="MyOfferLength"/>
+      <PacketElement type ="Short" name ="YourOfferLength"/>
+      <PacketElement type ="Bool[]" name ="MyOffer"/>
+      <PacketElement type ="Bool[]" name ="YourOffer"/>
+    </PacketElements>
+  </Packet>
+  <Packet>
+    <PacketName>CLIENTSTAT</PacketName>
+    <PacketElements>
+      <PacketElement type ="String" name ="Name"/>
+      <PacketElement type ="Int" name ="Value"/>
+    </PacketElements>
+  </Packet>
+  <Packet>
+    <PacketName>FILE</PacketName>
+    <PacketElements>
+      <PacketElement type ="String" name ="Name"/>
+      <PacketElement type ="Int" name ="BytesLength"/>
+      <PacketElement type ="Byte[]" name ="Bytes"/>
+    </PacketElements>
+  </Packet>
+  <Packet>
+    <PacketName>INVITEDTOGUILD</PacketName>
+    <PacketElements>
+      <PacketElement type ="String" name ="Name"/>
+      <PacketElement type ="String" name ="GuildName"/>
+    </PacketElements>
+  </Packet>
+  <Packet>
+    <PacketName>JOINGUILD</PacketName>
+    <PacketElements>
+      <PacketElement type ="String" name ="GuildName"/>
+    </PacketElements>
+  </Packet>
+  <Packet>
+    <PacketName>CHANGEGUILDRANK</PacketName>
+    <PacketElements>
+      <PacketElement type ="String" name ="Name"/>
+      <PacketElement type ="Int" name ="GuildRank"/>
+    </PacketElements>
+  </Packet>
+  <Packet>
+    <PacketName>PLAYSOUND</PacketName>
+    <PacketElements>
+      <PacketElement type ="Int" name ="OwnerID"/>
+      <PacketElement type ="Int" name ="SoundID"/>
+    </PacketElements>
+  </Packet>
+  <Packet>
+    <PacketName>GLOBAL_NOTIFICATION</PacketName>
+    <PacketElements>
+      <PacketElement type ="Int" name ="Type"/>
+      <PacketElement type ="String" name ="Text"/>
+    </PacketElements>
+  </Packet>
+  <Packet>
+    <PacketName>RESKIN</PacketName>
+    <PacketElements>
+      <PacketElement type ="Int" name ="SkinID"/>
+    </PacketElements>
+  </Packet>
