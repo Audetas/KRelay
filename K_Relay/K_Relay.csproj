@@ -56,9 +56,6 @@
     <Compile Include="FrmMain.Designer.cs">
       <DependentUpon>FrmMain.cs</DependentUpon>
     </Compile>
-    <Compile Include="FrmMain.Logs.cs">
-      <SubType>Form</SubType>
-    </Compile>
     <Compile Include="FrmMain.Packets.cs">
       <SubType>Form</SubType>
     </Compile>

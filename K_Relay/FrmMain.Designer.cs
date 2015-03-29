@@ -30,16 +30,19 @@
         {
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FrmMain));
-            System.Windows.Forms.TreeNode treeNode3 = new System.Windows.Forms.TreeNode("Connected Clients");
             this.imglistTabs = new System.Windows.Forms.ImageList(this.components);
             this.tabMain = new System.Windows.Forms.TabControl();
             this.tabInfo = new System.Windows.Forms.TabPage();
-            this.treeClients = new System.Windows.Forms.TreeView();
+            this.lblConnectedClients = new System.Windows.Forms.Label();
+            this.tbxLog = new System.Windows.Forms.RichTextBox();
             this.menuInfo = new System.Windows.Forms.MenuStrip();
             this.btnToggleProxy = new System.Windows.Forms.ToolStripMenuItem();
+            this.btnSaveLog = new System.Windows.Forms.ToolStripMenuItem();
+            this.btnClearLog = new System.Windows.Forms.ToolStripMenuItem();
             this.tabPlugins = new System.Windows.Forms.TabPage();
             this.splitPlugins = new System.Windows.Forms.SplitContainer();
             this.treePlugins = new System.Windows.Forms.TreeView();
+            this.tbxPluginInfo = new System.Windows.Forms.RichTextBox();
             this.menuPlugins = new System.Windows.Forms.MenuStrip();
             this.btnOpenPluginFolder = new System.Windows.Forms.ToolStripMenuItem();
             this.tabPackets = new System.Windows.Forms.TabPage();
@@ -48,17 +51,11 @@
             this.tbxPacketInfo = new System.Windows.Forms.RichTextBox();
             this.menuPackets = new System.Windows.Forms.MenuStrip();
             this.btnOpenPacketsFolder = new System.Windows.Forms.ToolStripMenuItem();
-            this.tabLog = new System.Windows.Forms.TabPage();
-            this.tbxLog = new System.Windows.Forms.RichTextBox();
-            this.menuLog = new System.Windows.Forms.MenuStrip();
-            this.btnSaveLog = new System.Windows.Forms.ToolStripMenuItem();
-            this.btnClearLog = new System.Windows.Forms.ToolStripMenuItem();
             this.tabSettings = new System.Windows.Forms.TabPage();
             this.gridSettings = new System.Windows.Forms.PropertyGrid();
             this.menuSettings = new System.Windows.Forms.MenuStrip();
             this.btnSaveSettings = new System.Windows.Forms.ToolStripMenuItem();
             this.lblStatus = new System.Windows.Forms.Label();
-            this.tbxPluginInfo = new System.Windows.Forms.RichTextBox();
             this.tabMain.SuspendLayout();
             this.tabInfo.SuspendLayout();
             this.menuInfo.SuspendLayout();
@@ -74,8 +71,6 @@
             this.splitPackets.Panel2.SuspendLayout();
             this.splitPackets.SuspendLayout();
             this.menuPackets.SuspendLayout();
-            this.tabLog.SuspendLayout();
-            this.menuLog.SuspendLayout();
             this.tabSettings.SuspendLayout();
             this.menuSettings.SuspendLayout();
             this.SuspendLayout();
@@ -91,7 +86,6 @@
             this.tabMain.Controls.Add(this.tabInfo);
             this.tabMain.Controls.Add(this.tabPlugins);
             this.tabMain.Controls.Add(this.tabPackets);
-            this.tabMain.Controls.Add(this.tabLog);
             this.tabMain.Controls.Add(this.tabSettings);
             this.tabMain.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tabMain.Location = new System.Drawing.Point(0, 0);
@@ -102,7 +96,8 @@
             // 
             // tabInfo
             // 
-            this.tabInfo.Controls.Add(this.treeClients);
+            this.tabInfo.Controls.Add(this.lblConnectedClients);
+            this.tabInfo.Controls.Add(this.tbxLog);
             this.tabInfo.Controls.Add(this.menuInfo);
             this.tabInfo.Location = new System.Drawing.Point(4, 34);
             this.tabInfo.Name = "tabInfo";
@@ -112,23 +107,38 @@
             this.tabInfo.Text = "Info";
             this.tabInfo.UseVisualStyleBackColor = true;
             // 
-            // treeClients
+            // lblConnectedClients
             // 
-            this.treeClients.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.treeClients.Location = new System.Drawing.Point(3, 43);
-            this.treeClients.Name = "treeClients";
-            treeNode3.Name = "nodeConnectedClients";
-            treeNode3.Text = "Connected Clients";
-            this.treeClients.Nodes.AddRange(new System.Windows.Forms.TreeNode[] {
-            treeNode3});
-            this.treeClients.Size = new System.Drawing.Size(920, 644);
-            this.treeClients.TabIndex = 1;
+            this.lblConnectedClients.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.lblConnectedClients.AutoSize = true;
+            this.lblConnectedClients.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.875F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblConnectedClients.Location = new System.Drawing.Point(695, 10);
+            this.lblConnectedClients.Name = "lblConnectedClients";
+            this.lblConnectedClients.Size = new System.Drawing.Size(218, 25);
+            this.lblConnectedClients.TabIndex = 2;
+            this.lblConnectedClients.Text = "Connected Clients:  0";
+            // 
+            // tbxLog
+            // 
+            this.tbxLog.BackColor = System.Drawing.Color.LightGray;
+            this.tbxLog.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.tbxLog.Font = new System.Drawing.Font("Comic Sans MS", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.tbxLog.Location = new System.Drawing.Point(3, 43);
+            this.tbxLog.Name = "tbxLog";
+            this.tbxLog.ReadOnly = true;
+            this.tbxLog.Size = new System.Drawing.Size(920, 644);
+            this.tbxLog.TabIndex = 1;
+            this.tbxLog.Text = "";
+            this.tbxLog.WordWrap = false;
+            this.tbxLog.TextChanged += new System.EventHandler(this.tbxLog_TextChanged);
             // 
             // menuInfo
             // 
             this.menuInfo.ImageScalingSize = new System.Drawing.Size(32, 32);
             this.menuInfo.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.btnToggleProxy});
+            this.btnToggleProxy,
+            this.btnSaveLog,
+            this.btnClearLog});
             this.menuInfo.Location = new System.Drawing.Point(3, 3);
             this.menuInfo.Name = "menuInfo";
             this.menuInfo.Size = new System.Drawing.Size(920, 40);
@@ -141,6 +151,20 @@
             this.btnToggleProxy.Size = new System.Drawing.Size(141, 36);
             this.btnToggleProxy.Text = "Start Proxy";
             this.btnToggleProxy.Click += new System.EventHandler(this.btnToggleProxy_Click);
+            // 
+            // btnSaveLog
+            // 
+            this.btnSaveLog.Name = "btnSaveLog";
+            this.btnSaveLog.Size = new System.Drawing.Size(123, 36);
+            this.btnSaveLog.Text = "Save Log";
+            this.btnSaveLog.Click += new System.EventHandler(this.btnSaveLog_Click);
+            // 
+            // btnClearLog
+            // 
+            this.btnClearLog.Name = "btnClearLog";
+            this.btnClearLog.Size = new System.Drawing.Size(127, 36);
+            this.btnClearLog.Text = "Clear Log";
+            this.btnClearLog.Click += new System.EventHandler(this.btnClearLog_Click);
             // 
             // tabPlugins
             // 
@@ -179,6 +203,18 @@
             this.treePlugins.Size = new System.Drawing.Size(306, 644);
             this.treePlugins.TabIndex = 0;
             this.treePlugins.AfterSelect += new System.Windows.Forms.TreeViewEventHandler(this.treePlugins_AfterSelect);
+            // 
+            // tbxPluginInfo
+            // 
+            this.tbxPluginInfo.BackColor = System.Drawing.Color.Silver;
+            this.tbxPluginInfo.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.tbxPluginInfo.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.tbxPluginInfo.Location = new System.Drawing.Point(0, 0);
+            this.tbxPluginInfo.Name = "tbxPluginInfo";
+            this.tbxPluginInfo.ReadOnly = true;
+            this.tbxPluginInfo.Size = new System.Drawing.Size(610, 644);
+            this.tbxPluginInfo.TabIndex = 1;
+            this.tbxPluginInfo.Text = "Select a plugin to view its description.";
             // 
             // menuPlugins
             // 
@@ -266,55 +302,6 @@
             this.btnOpenPacketsFolder.Text = "Open Packet Folder";
             this.btnOpenPacketsFolder.Click += new System.EventHandler(this.btnOpenPacketsFolder_Click);
             // 
-            // tabLog
-            // 
-            this.tabLog.Controls.Add(this.tbxLog);
-            this.tabLog.Controls.Add(this.menuLog);
-            this.tabLog.Location = new System.Drawing.Point(4, 34);
-            this.tabLog.Name = "tabLog";
-            this.tabLog.Padding = new System.Windows.Forms.Padding(3);
-            this.tabLog.Size = new System.Drawing.Size(926, 690);
-            this.tabLog.TabIndex = 2;
-            this.tabLog.Text = "Log";
-            this.tabLog.UseVisualStyleBackColor = true;
-            // 
-            // tbxLog
-            // 
-            this.tbxLog.BackColor = System.Drawing.Color.Silver;
-            this.tbxLog.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.tbxLog.Location = new System.Drawing.Point(3, 43);
-            this.tbxLog.Name = "tbxLog";
-            this.tbxLog.ReadOnly = true;
-            this.tbxLog.Size = new System.Drawing.Size(920, 644);
-            this.tbxLog.TabIndex = 0;
-            this.tbxLog.Text = "";
-            this.tbxLog.WordWrap = false;
-            // 
-            // menuLog
-            // 
-            this.menuLog.ImageScalingSize = new System.Drawing.Size(32, 32);
-            this.menuLog.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.btnSaveLog,
-            this.btnClearLog});
-            this.menuLog.Location = new System.Drawing.Point(3, 3);
-            this.menuLog.Name = "menuLog";
-            this.menuLog.Size = new System.Drawing.Size(920, 40);
-            this.menuLog.TabIndex = 1;
-            this.menuLog.Text = "menuStrip1";
-            // 
-            // btnSaveLog
-            // 
-            this.btnSaveLog.Name = "btnSaveLog";
-            this.btnSaveLog.Size = new System.Drawing.Size(123, 36);
-            this.btnSaveLog.Text = "Save Log";
-            this.btnSaveLog.Click += new System.EventHandler(this.btnSaveLog_Click);
-            // 
-            // btnClearLog
-            // 
-            this.btnClearLog.Name = "btnClearLog";
-            this.btnClearLog.Size = new System.Drawing.Size(81, 36);
-            this.btnClearLog.Text = "Clear";
-            // 
             // tabSettings
             // 
             this.tabSettings.Controls.Add(this.gridSettings);
@@ -363,18 +350,6 @@
             this.lblStatus.TabIndex = 1;
             this.lblStatus.Text = "Not Running";
             // 
-            // tbxPluginInfo
-            // 
-            this.tbxPluginInfo.BackColor = System.Drawing.Color.Silver;
-            this.tbxPluginInfo.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.tbxPluginInfo.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.tbxPluginInfo.Location = new System.Drawing.Point(0, 0);
-            this.tbxPluginInfo.Name = "tbxPluginInfo";
-            this.tbxPluginInfo.ReadOnly = true;
-            this.tbxPluginInfo.Size = new System.Drawing.Size(610, 644);
-            this.tbxPluginInfo.TabIndex = 1;
-            this.tbxPluginInfo.Text = "Select a plugin to view its description.";
-            // 
             // FrmMain
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(12F, 25F);
@@ -382,7 +357,6 @@
             this.ClientSize = new System.Drawing.Size(934, 728);
             this.Controls.Add(this.lblStatus);
             this.Controls.Add(this.tabMain);
-            this.MainMenuStrip = this.menuLog;
             this.Name = "FrmMain";
             this.Text = "K Relay";
             this.Shown += new System.EventHandler(this.FrmMain_Shown);
@@ -407,10 +381,6 @@
             this.splitPackets.ResumeLayout(false);
             this.menuPackets.ResumeLayout(false);
             this.menuPackets.PerformLayout();
-            this.tabLog.ResumeLayout(false);
-            this.tabLog.PerformLayout();
-            this.menuLog.ResumeLayout(false);
-            this.menuLog.PerformLayout();
             this.tabSettings.ResumeLayout(false);
             this.tabSettings.PerformLayout();
             this.menuSettings.ResumeLayout(false);
@@ -426,12 +396,7 @@
         private System.Windows.Forms.TabControl tabMain;
         private System.Windows.Forms.TabPage tabInfo;
         private System.Windows.Forms.TabPage tabPlugins;
-        private System.Windows.Forms.TabPage tabLog;
         private System.Windows.Forms.TabPage tabSettings;
-        private System.Windows.Forms.RichTextBox tbxLog;
-        private System.Windows.Forms.MenuStrip menuLog;
-        private System.Windows.Forms.ToolStripMenuItem btnSaveLog;
-        private System.Windows.Forms.ToolStripMenuItem btnClearLog;
         private System.Windows.Forms.MenuStrip menuPlugins;
         private System.Windows.Forms.ToolStripMenuItem btnOpenPluginFolder;
         private System.Windows.Forms.SplitContainer splitPlugins;
@@ -441,7 +406,6 @@
         public System.Windows.Forms.PropertyGrid gridSettings;
         private System.Windows.Forms.MenuStrip menuInfo;
         private System.Windows.Forms.ToolStripMenuItem btnToggleProxy;
-        private System.Windows.Forms.TreeView treeClients;
         private System.Windows.Forms.TabPage tabPackets;
         private System.Windows.Forms.MenuStrip menuPackets;
         private System.Windows.Forms.ToolStripMenuItem btnOpenPacketsFolder;
@@ -450,6 +414,10 @@
         private System.Windows.Forms.RichTextBox tbxPacketInfo;
         private System.Windows.Forms.Label lblStatus;
         private System.Windows.Forms.RichTextBox tbxPluginInfo;
+        private System.Windows.Forms.RichTextBox tbxLog;
+        private System.Windows.Forms.ToolStripMenuItem btnSaveLog;
+        private System.Windows.Forms.ToolStripMenuItem btnClearLog;
+        private System.Windows.Forms.Label lblConnectedClients;
     }
 }
 

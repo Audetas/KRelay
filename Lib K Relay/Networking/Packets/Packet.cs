@@ -59,8 +59,6 @@ namespace Lib_K_Relay.Networking.Packets
 
             for (int i = 0; i < Structure.Elements(); i++)
                 _data.Add(Structure.ElementAt(i), null);
-
-            Console.WriteLine(ToString());
         }
 
         public dynamic this[string element]
