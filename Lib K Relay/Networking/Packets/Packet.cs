@@ -190,6 +190,7 @@ namespace Lib_K_Relay.Networking.Packets
         CHANGEGUILDRANK,
         PLAYSOUND,
         GLOBAL_NOTIFICATION,
-        RESKIN
+        RESKIN,
+        ENTER_ARENA
     }
 }
