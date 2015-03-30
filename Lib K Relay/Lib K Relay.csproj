@@ -45,6 +45,7 @@
     <Compile Include="Networking\ClientInstance.cs" />
     <Compile Include="Networking\PacketBuffer.cs" />
     <Compile Include="Networking\Packets\Client\HelloPacket.cs" />
+    <Compile Include="Networking\Packets\Server\NewTickPacket.cs" />
     <Compile Include="Networking\Packets\Server\TradeRequestedPacket.cs" />
     <Compile Include="Networking\Packets\Server\CreateSuccessPacket.cs" />
     <Compile Include="Networking\Packets\Server\NotificationPacket.cs" />
@@ -63,6 +64,7 @@
     <Compile Include="Networking\Packets\PacketReader.cs" />
     <Compile Include="Networking\Packets\PacketSerializer.cs" />
     <Compile Include="Networking\Packets\PacketWriter.cs" />
+    <Compile Include="Networking\Packets\Server\UpdatePacket.cs" />
     <Compile Include="Proxy.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Utilities\Servers.cs" />

@@ -10,7 +10,7 @@ namespace Lib_K_Relay.Networking.Packets.DataObjects
     {
         public int ObjectId;
         public Location Position = new Location();
-        public StatData[] Data = new StatData[0];
+        public StatData[] Data;
 
         public IDataObject Read(PacketReader r)
         {
@@ -21,7 +21,7 @@ namespace Lib_K_Relay.Networking.Packets.DataObjects
             for (int i = 0; i < Data.Length; i++)
             {
                 StatData statData = new StatData();
-                 statData.Read(r);
+                statData.Read(r);
                 Data[i] = statData;
             }
 

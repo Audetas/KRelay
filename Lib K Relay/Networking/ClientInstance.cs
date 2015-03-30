@@ -49,7 +49,7 @@ namespace Lib_K_Relay.Networking
 
         private void RemoteReceive(IAsyncResult ar)
         {
-            try
+            //try
             {
                 NetworkStream stream = _remoteConnection.GetStream();
                 _remoteBuffer.Advance(stream.EndRead(ar));
@@ -81,12 +81,12 @@ namespace Lib_K_Relay.Networking
                     _remoteBuffer.Flush();
                     BeginRemoteRead(0, 4);
                 }
-            } catch (Exception e) { Close(e.Message); }
+            } //catch (Exception e) { Close(e.Message); }
         }
 
         private void LocalReceive(IAsyncResult ar)
         {
-            try
+           // try
             {
                 NetworkStream stream = _localConnection.GetStream();
                 _localBuffer.Advance(stream.EndRead(ar));
@@ -118,7 +118,7 @@ namespace Lib_K_Relay.Networking
                     _localBuffer.Flush();
                     BeginLocalRead(0, 4);
                 }
-            } catch (Exception e) { Close(e.Message); }
+            } //catch (Exception e) { Close(e.Message); }
         }
 
         private void BeginLocalRead(int offset, int amount)

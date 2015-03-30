@@ -49,6 +49,7 @@ namespace Lib_K_Relay.Networking.Packets
                 Packet packet = (Packet)Activator.CreateInstance(type);
                 packet.Id = id;
                 packet.Read(r);
+                //Console.WriteLine(packetType.ToString());
                 return packet;
             }
         }

@@ -10,13 +10,13 @@ namespace Lib_K_Relay.Networking.Packets.DataObjects
     {
         public short X;
         public short Y;
-        public int Type;
+        public ushort Type;
 
         public IDataObject Read(PacketReader r)
         {
             X = r.ReadInt16();
             Y = r.ReadInt16();
-            Type = r.ReadInt32();
+            Type = r.ReadUInt16();
 
             return this;
         }

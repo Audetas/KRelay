@@ -8,7 +8,7 @@ namespace Lib_K_Relay.Networking.Packets.DataObjects
 {
     public class StatData : IDataObject
     {
-        public int Id;
+        public byte Id;
         public int IntValue;
         public string StringValue;
 
@@ -27,7 +27,7 @@ namespace Lib_K_Relay.Networking.Packets.DataObjects
 
         public IDataObject Read(PacketReader r)
         {
-            Id = r.ReadInt32();
+            Id = r.ReadByte();
             if (IsStringData()) StringValue = r.ReadString();
             else IntValue = r.ReadInt32();
 

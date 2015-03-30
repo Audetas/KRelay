@@ -19,6 +19,11 @@ namespace Lib_K_Relay.Networking.Packets
             base.Write(IPAddress.NetworkToHostOrder(value));
         }
 
+        public override void Write(ushort value)
+        {
+            base.Write((ushort)IPAddress.NetworkToHostOrder(value));
+        }
+
         public override void Write(int value)
         {
             base.Write(IPAddress.NetworkToHostOrder(value));

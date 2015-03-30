@@ -20,6 +20,11 @@ namespace Lib_K_Relay.Networking.Packets
             return IPAddress.NetworkToHostOrder(base.ReadInt16());
         }
 
+        public override ushort ReadUInt16()
+        {
+            return (ushort)IPAddress.NetworkToHostOrder((short)base.ReadUInt16());
+        }
+
         public override int ReadInt32()
         {
             return IPAddress.NetworkToHostOrder(base.ReadInt32());
