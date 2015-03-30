@@ -53,7 +53,7 @@ namespace K_Relay
             }
 
             // DEBUG
-            AttachPlugin(typeof(PacketDebugger));
+            //AttachPlugin(typeof(PacketDebugger));
 
             if (Config.Default.UseInternalReconnectHandler)
                 AttachPlugin(typeof(ReconnectHandler));

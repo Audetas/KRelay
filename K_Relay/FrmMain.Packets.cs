@@ -13,28 +13,21 @@ namespace K_Relay
     {
         private void InitPackets()
         {
-            Console.WriteLine("[Packet Serializer] Looking for packets in {0}", Config.Default.PacketDirectory);
-
-            PacketSerializer.SerializePacketsFromXmls(
-                Config.Default.PacketDirectory.Replace("%startuppath%", Application.StartupPath) + @"\PacketDefinitions.xml",
+            PacketSerializer.SerializePacketTypes();
+            PacketSerializer.SerializePacketsIds(
                 Config.Default.PacketDirectory.Replace("%startuppath%", Application.StartupPath) + @"\PacketIDs.xml");
 
             foreach (PacketType type in Enum.GetValues(typeof(PacketType)).Cast<PacketType>())
-            {
-                if (PacketSerializer.GetStructure(type).Type != PacketType.UNKNOWN)
-                    treePackets.Nodes.Insert(0, type.ToString());
-                else
-                    treePackets.Nodes.Add("[Unknown] " + type.ToString());
-            }
+                treePackets.Nodes.Insert(0, type.ToString());
 
             treePackets.Sort();
         }
 
         private void treePackets_AfterSelect(object sender, TreeViewEventArgs e)
         {
-            tbxPacketInfo.Text = PacketSerializer.GetStructure(
-                (PacketType)Enum.Parse(typeof(PacketType),
-                e.Node.Text.Replace("[Unknown] ", ""))).ToString();
+            Type type = PacketSerializer.GetPacketType(
+                (PacketType)Enum.Parse(typeof(PacketType), e.Node.Text));
+            tbxPacketInfo.Text = (Activator.CreateInstance(type) as Packet).ToStructure();
         }
 
         private void btnOpenPacketsFolder_Click(object sender, EventArgs e)

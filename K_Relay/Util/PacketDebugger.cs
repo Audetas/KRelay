@@ -19,7 +19,9 @@ namespace K_Relay.Util
 
         private List<PacketType> _printString = new List<PacketType>()
         {
-            PacketType.NEW_TICK
+            PacketType.NEW_TICK, PacketType.SHOOT,
+            PacketType.TRADEACCEPTED, PacketType.TRADECHANGED, PacketType.REQUESTTRADE, PacketType.TRADEDONE,
+            PacketType.TRADEREQUESTED, PacketType.TRADESTART
         };
 
         public string GetAuthor()

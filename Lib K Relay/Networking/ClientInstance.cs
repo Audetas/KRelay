@@ -49,7 +49,7 @@ namespace Lib_K_Relay.Networking
 
         private void RemoteReceive(IAsyncResult ar)
         {
-            //try
+            try
             {
                 NetworkStream stream = _remoteConnection.GetStream();
                 _remoteBuffer.Advance(stream.EndRead(ar));
@@ -69,7 +69,7 @@ namespace Lib_K_Relay.Networking
                 else
                 { // We have the full packet
                     ServerReceiveKey.Cipher(_remoteBuffer.Buffer());
-                    Packet packet = new Packet(_remoteBuffer.Buffer(), true);
+                    Packet packet = Packet.CreateInstance(_remoteBuffer.Buffer());
 
                     if (packet.Type != PacketType.UNKNOWN)
                         _proxy.FireServerPacket(this, packet);
@@ -81,12 +81,12 @@ namespace Lib_K_Relay.Networking
                     _remoteBuffer.Flush();
                     BeginRemoteRead(0, 4);
                 }
-            } //catch (Exception e) { Close(e.Message); }
+            } catch (Exception e) { Close(e.Message); }
         }
 
         private void LocalReceive(IAsyncResult ar)
         {
-            //try
+            try
             {
                 NetworkStream stream = _localConnection.GetStream();
                 _localBuffer.Advance(stream.EndRead(ar));
@@ -106,7 +106,7 @@ namespace Lib_K_Relay.Networking
                 else
                 { // We have the full packet
                     ClientReceiveKey.Cipher(_localBuffer.Buffer());
-                    Packet packet = new Packet(_localBuffer.Buffer(), false);
+                    Packet packet = Packet.CreateInstance(_localBuffer.Buffer());
 
                     if (packet.Type != PacketType.UNKNOWN)
                         _proxy.FireClientPacket(this, packet);
@@ -118,7 +118,7 @@ namespace Lib_K_Relay.Networking
                     _localBuffer.Flush();
                     BeginLocalRead(0, 4);
                 }
-            } //catch (Exception e) { Close(e.Message); }
+            } catch (Exception e) { Close(e.Message); }
         }
 
         private void BeginLocalRead(int offset, int amount)
@@ -135,7 +135,15 @@ namespace Lib_K_Relay.Networking
 
         public void SendToServer(Packet packet)
         {
-            byte[] data = packet.Data();
+            MemoryStream ms = new MemoryStream();
+            using (PacketWriter w = new PacketWriter(ms))
+            {
+                w.Write((int)0);
+                w.Write(packet.Id);
+                packet.Write(w);
+            }
+
+            byte[] data = ms.ToArray();
             PacketWriter.BlockCopyInt32(data, data.Length);
             ServerSendKey.Cipher(data);
 
@@ -145,7 +153,15 @@ namespace Lib_K_Relay.Networking
 
         public void SendToClient(Packet packet)
         {
-            byte[] data = packet.Data();
+            MemoryStream ms = new MemoryStream();
+            using (PacketWriter w = new PacketWriter(ms))
+            {
+                w.Write((int)0);
+                w.Write(packet.Id);
+                packet.Write(w);
+            }
+
+            byte[] data = ms.ToArray();
             PacketWriter.BlockCopyInt32(data, data.Length);
             ClientSendKey.Cipher(data);
 

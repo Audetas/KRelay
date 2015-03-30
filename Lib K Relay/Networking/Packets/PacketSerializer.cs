@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
+using System.Reflection;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
@@ -11,70 +12,16 @@ namespace Lib_K_Relay.Networking.Packets
 {
     public static class PacketSerializer
     {
-        public static Dictionary<PacketType, PacketStructure> PacketStructures = new Dictionary<PacketType, PacketStructure>();
-        public static Dictionary<PacketType, byte> PacketTypeIdMap = new Dictionary<PacketType, byte>();
-        public static Dictionary<byte, PacketType> PacketIdTypeMap = new Dictionary<byte, PacketType>();
+        private static Dictionary<PacketType, Type> PacketTypeTypeMap = new Dictionary<PacketType, Type>();
+        private static Dictionary<PacketType, byte> PacketTypeIdMap = new Dictionary<PacketType, byte>();
+        private static Dictionary<byte, PacketType> PacketIdTypeMap = new Dictionary<byte, PacketType>();
 
-        static PacketSerializer()
+        public static void SerializePacketsIds(string xmlPath)
         {
-            PacketStructures.Add(PacketType.UNKNOWN, new PacketStructure(PacketType.UNKNOWN));
-            PacketStructures[PacketType.UNKNOWN].DefineElement("PACKET_DATA", "void");
-        }
-
-        public static void SerializePacketsFromXmls(string PacketDefinitionsPath, string PacketIDsPath)
-        {
-            #region Packet Structures
-            if (File.Exists(PacketDefinitionsPath))
+            if (File.Exists(xmlPath))
             {
                 XmlDocument document = new XmlDocument();
-                document.Load(PacketDefinitionsPath);
-                foreach (XmlNode ChildNode in document.DocumentElement.ChildNodes)
-                {
-                    string PacketName = "";
-                    PacketType parsedType;
-                    PacketStructure structure;
-
-                    if (ChildNode.FirstChild != null)
-                    {
-                        if (Enum.TryParse<PacketType>(ChildNode.FirstChild.InnerText, true, out parsedType))
-                        {
-                            structure = new PacketStructure(parsedType);
-                            foreach (XmlNode GrandChildNode in ChildNode.ChildNodes)
-                            {
-                                switch (GrandChildNode.Name.ToLower())
-                                {
-                                    case "packetname":
-                                        PacketName = GrandChildNode.InnerText;
-                                        break;
-                                    case "packetelements":
-                                        foreach (XmlNode GrandGrandChildNode in GrandChildNode.ChildNodes)
-                                            if (GrandGrandChildNode.Name.ToLower() == "packetelement")
-                                                structure.DefineElement(GrandGrandChildNode.Attributes[1].InnerText, GrandGrandChildNode.Attributes[0].InnerText);
-                                        break;
-                                    default:
-                                        break;
-                                }
-                            }
-                        }
-                        else
-                            structure = new PacketStructure(PacketType.FAILURE);
-
-                        if (structure.Elements() != 0)
-                        {
-                            PacketStructures.Add(parsedType, structure);
-                            Console.WriteLine("[Packet Serializer] Defined packet structure for type {0}.", parsedType);
-                        }
-                    }
-                }
-            }
-            else
-                throw new FileNotFoundException();
-            #endregion
-            #region Map Packet IDs
-            if (File.Exists(PacketIDsPath))
-            {
-                XmlDocument document = new XmlDocument();
-                document.Load(PacketIDsPath);
+                document.Load(xmlPath);
                 foreach (XmlNode childNode in document.DocumentElement.ChildNodes)
                 {
                     string PacketName = "";
@@ -108,60 +55,116 @@ namespace Lib_K_Relay.Networking.Packets
             }
             else
                 throw new FileNotFoundException();
-            #endregion
         }
 
-        [Obsolete("This method will be removed soon, please use SerializePacketFromXml() instead")]
-        public static void SerializePackets(string directory)
+        public static void SerializePacketTypes()
         {
-            foreach (string file in Directory.GetFiles(
-                directory, "*.txt", SearchOption.AllDirectories))
+            // Reflect all inheriters of Packet and map them according to their Type member.
+            Type tPacket = typeof(Packet);
+            Type[] packetTypes = Assembly.GetAssembly(typeof(Proxy)).GetTypes()
+                .Where(t => tPacket.IsAssignableFrom(t)).ToArray();
+
+            foreach (Type packetType in packetTypes)
             {
-                string[] filelines = File.ReadAllText(file).Split(
-                    new char[] { '\n', '\r' }, StringSplitOptions.RemoveEmptyEntries);
-
-                string typeName = filelines[0].Split('=')[1];
-                byte id = byte.Parse(filelines[1].Split('=')[1]);
-
-                PacketType parsedType;
-                if (Enum.TryParse<PacketType>(typeName, true, out parsedType))
-                {
-                    PacketStructure structure = new PacketStructure(parsedType);
-                    foreach (string line in filelines.Skip(2))
-                    {
-                        string type = line.Split(' ')[0].ToLower();
-                        string element = line.Split(' ')[1];
-
-                        structure.DefineElement(element, type);
-                    }
-                    PacketStructures.Add(parsedType, structure);
-                    PacketIdTypeMap.Add(id, parsedType);
-                    PacketTypeIdMap.Add(parsedType, id);
-                    Console.WriteLine("[Packet Serializer] Registered packet type {0} with id {1}", parsedType, id);
-                }
-                else
-                    Console.WriteLine("[Packet Serializer] {0} is an unknown packet type. Packet definition for it has been skipped.", typeName);
+                PacketType t = (Activator.CreateInstance(packetType) as Packet).Type;
+                PacketTypeTypeMap.Add(t, packetType);
+                Console.WriteLine("[Packet Serializer] Mapped structure for {0}.", t);
             }
         }
 
-        public static PacketStructure GetStructure(PacketType type)
+        public static PacketType GetPacketPacketType(byte id)
         {
-            PacketStructure structure;
-
-            if (!PacketStructures.TryGetValue(type, out structure))
-                return PacketStructures[PacketType.UNKNOWN]; // Return the generic packet structure.
-            else
-                return structure;
+            if (PacketIdTypeMap.ContainsKey(id)) return PacketIdTypeMap[id];
+            else return PacketType.UNKNOWN;
         }
 
-        public static PacketStructure GetStructure(byte id)
+        public static byte GetPacketId(PacketType type)
         {
-            PacketType type;
-
-            if (!PacketIdTypeMap.TryGetValue(id, out type))
-                return GetStructure(PacketType.UNKNOWN);
-            else
-                return GetStructure(type);
+            if (PacketTypeIdMap.ContainsKey(type)) return PacketTypeIdMap[type];
+            else return 255;
         }
+
+        public static Type GetPacketType(PacketType type)
+        {
+            if (PacketTypeTypeMap.ContainsKey(type)) return PacketTypeTypeMap[type];
+            else return typeof(Packet);
+        }
+    }
+
+    public enum PacketType
+    {
+        UNKNOWN,
+        FAILURE,
+        CREATE_SUCCESS,
+        CREATE,
+        PLAYERSHOOT,
+        MOVE,
+        PLAYERTEXT,
+        TEXT,
+        SHOOT2,
+        DAMAGE,
+        UPDATE,
+        UPDATEACK,
+        NOTIFICATION,
+        NEW_TICK,
+        INVSWAP,
+        USEITEM,
+        SHOW_EFFECT,
+        HELLO,
+        GOTO,
+        INVDROP,
+        INVRESULT,
+        RECONNECT,
+        PING,
+        PONG,
+        MAPINFO,
+        LOAD,
+        PIC,
+        SETCONDITION,
+        TELEPORT,
+        USEPORTAL,
+        DEATH,
+        BUY,
+        BUYRESULT,
+        AOE,
+        GROUNDDAMAGE,
+        PLAYERHIT,
+        ENEMYHIT,
+        AOEACK,
+        SHOOTACK,
+        OTHERHIT,
+        SQUAREHIT,
+        GOTOACK,
+        EDITACCOUNTLIST,
+        ACCOUNTLIST,
+        QUESTOBJID,
+        CHOOSENAME,
+        NAMERESULT,
+        CREATEGUILD,
+        CREATEGUILDRESULT,
+        GUILDREMOVE,
+        GUILDINVITE,
+        ALLYSHOOT,
+        SHOOT,
+        REQUESTTRADE,
+        TRADEREQUESTED,
+        TRADESTART,
+        CHANGETRADE,
+        TRADECHANGED,
+        ACCEPTTRADE,
+        CANCELTRADE,
+        TRADEDONE,
+        TRADEACCEPTED,
+        CLIENTSTAT,
+        CHECKCREDITS,
+        ESCAPE,
+        FILE,
+        INVITEDTOGUILD,
+        JOINGUILD,
+        CHANGEGUILDRANK,
+        PLAYSOUND,
+        GLOBAL_NOTIFICATION,
+        RESKIN,
+        ENTER_ARENA
     }
 }

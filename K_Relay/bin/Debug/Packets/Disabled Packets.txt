@@ -1,4 +1,14 @@
     <Packet>
+    <PacketName>NEW_TICK</PacketName>
+    <PacketElements>
+      <PacketElement type ="Int" name ="TickID"/>
+      <PacketElement type ="Int" name ="TickTime"/>
+      <PacketElement type ="Short" name ="StatusesLength"/>
+      <PacketElement type ="Status[]" name ="Statuses"/>
+    </PacketElements>
+  </Packet>
+
+<Packet>
     <PacketName>UPDATE</PacketName>
     <PacketElements>
       <PacketElement type ="Short" name ="TilesLength"/>
@@ -9,7 +19,6 @@
       <PacketElement type ="Int[]" name ="Drops"/>
     </PacketElements>
   </Packet>
-
 <Packet>
     <PacketName>CREATE</PacketName>
     <PacketElements>
@@ -128,24 +137,7 @@
       <PacketElement type ="Int" name ="Time"/>
     </PacketElements>
   </Packet>
-  <Packet>
-    <PacketName>MAPINFO</PacketName>
-    <PacketElements>
-      <PacketElement type ="Int" name ="Width"/>
-      <PacketElement type ="Int" name ="Height"/>
-      <PacketElement type ="String" name ="Name"/>
-      <PacketElement type ="String" name ="Obf0"/>
-      <PacketElement type ="Int" name ="Fp"/>
-      <PacketElement type ="Int" name ="Background"/>
-      <PacketElement type ="Int" name ="Obf1"/>
-      <PacketElement type ="Bool" name= "AllowPlayerTeleport"/>
-      <PacketElement type ="Bool" name= "ShowDisplays"/>
-      <PacketElement type ="Short" name= "ClientXMLLength"/>
-      <PacketElement type ="String[]" name= "ClientXML"/>
-      <PacketElement type ="Short" name= "ExtraXMLLength"/>
-      <PacketElement type ="String[]" name= "ExtraXML"/>
-    </PacketElements>
-  </Packet>
+
   <Packet>
     <PacketName>LOAD</PacketName>
     <PacketElements>
@@ -330,89 +322,6 @@
     <PacketName>GUILDREMOVE</PacketName>
     <PacketElements>
       <PacketElement type ="String" name ="Name"/>
-    </PacketElements>
-  </Packet>
-  <Packet>
-    <PacketName>ALLYSHOOT</PacketName>
-    <PacketElements>
-      <PacketElement type ="Byte" name ="BulletID"/>
-      <PacketElement type ="Int" name ="OwnerID"/>
-      <PacketElement type ="Short" name ="ContainerType"/>
-      <PacketElement type ="Float" name ="Angle"/>
-    </PacketElements>
-  </Packet>
-  <Packet>
-    <PacketName>SHOOT</PacketName>
-    <PacketElements>
-      <PacketElement type ="Byte" name ="BulletID"/>
-      <PacketElement type ="Int" name ="OwnerID"/>
-      <PacketElement type ="Byte" name ="BulletType"/>
-      <PacketElement type ="Location" name ="StartingPos"/>
-      <PacketElement type ="Float" name ="Angle"/>
-      <PacketElement type ="Short" name ="Damage"/>
-      <PacketElement type ="Int" name ="NumShots"/>
-      <PacketElement type ="Float" name ="AngleInc"/>
-    </PacketElements>
-  </Packet>
-  <Packet>
-    <PacketName>REQUESTTRADE</PacketName>
-    <PacketElements>
-      <PacketElement type ="String" name ="Name"/>
-    </PacketElements>
-  </Packet>
-  <Packet>
-    <PacketName>TRADEREQUESTED</PacketName>
-    <PacketElements>
-      <PacketElement type ="String" name ="Name"/>
-    </PacketElements>
-  </Packet>
-  <Packet>
-    <PacketName>TRADESTART</PacketName>
-    <PacketElements>
-      <PacketElement type ="Short" name ="MyItemsLength"/>
-      <PacketElement type ="Item[]" name ="MyItems"/>
-      <PacketElement type ="String" name ="YourName"/>
-      <PacketElement type ="Short" name ="YourItemsLength"/>
-      <PacketElement type ="Item[]" name ="YourItems"/>
-    </PacketElements>
-  </Packet>
-  <Packet>
-    <PacketName>CHANGETRADE</PacketName>
-    <PacketElements>
-      <PacketElement type ="Short" name ="OfferLength"/>
-      <PacketElement type ="Bool[]" name ="Offer"/>     
-    </PacketElements>
-  </Packet>
-  <Packet>
-    <PacketName>TRADECHANGED</PacketName>
-    <PacketElements>
-      <PacketElement type ="Short" name ="OfferLength"/>
-      <PacketElement type ="Bool[]" name ="Offer"/>
-    </PacketElements>
-  </Packet>
-  <Packet>
-    <PacketName>ACCEPTTRADE</PacketName>
-    <PacketElements>
-      <PacketElement type ="Short" name ="MyOfferLength"/>
-      <PacketElement type ="Short" name ="YourOfferLength"/>
-      <PacketElement type ="Bool[]" name ="MyOffer"/>
-      <PacketElement type ="Bool[]" name ="YourOffer"/>      
-    </PacketElements>
-  </Packet>
-  <Packet>
-    <PacketName>TRADEDONE</PacketName>
-    <PacketElements>
-      <PacketElement type ="Int" name ="Code"/>
-      <PacketElement type ="String" name ="Description"/>
-    </PacketElements>
-  </Packet>
-  <Packet>
-    <PacketName>TRADEACCEPTED</PacketName>
-    <PacketElements>
-      <PacketElement type ="Short" name ="MyOfferLength"/>
-      <PacketElement type ="Short" name ="YourOfferLength"/>
-      <PacketElement type ="Bool[]" name ="MyOffer"/>
-      <PacketElement type ="Bool[]" name ="YourOffer"/>
     </PacketElements>
   </Packet>
   <Packet>

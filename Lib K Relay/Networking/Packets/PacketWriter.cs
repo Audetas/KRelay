@@ -38,33 +38,6 @@ namespace Lib_K_Relay.Networking.Packets
             base.Write(data);
         }
 
-        public void WriteT(object value)
-        {
-            if (value is IEnumerable<object> && (value as IEnumerable<object>).Count() == 0) return;
-
-            // Primitives
-            if (value is byte) base.Write((byte)value);
-            else if (value is bool) base.Write((bool)value);
-            else if (value is string) Write((string)value);
-            else if (value is short) Write((short)value);
-            else if (value is int) Write((int)value);
-            else if (value is float) Write((float)value);
-            //else if (value is byte[]) base.Write((byte[])value);
-            else if (value is IEnumerable<byte>) base.Write((value as IEnumerable<byte>).ToArray<byte>());
-            else if (value is IEnumerable<int>) foreach (int i in (value as IEnumerable<int>)) Write(i);
-            else if (value is IEnumerable<string>) foreach (string s in (value as IEnumerable<string>)) Write(s);
-
-            // DataObjects
-            else if (value is IDataObject) (value as IDataObject).Write(this);
-            else if (value is IDataObject[])
-                foreach (IDataObject i in (value as IDataObject[]))
-                    i.Write(this);
-
-            //else if (value is IEnumerable<object>) return;
-
-            else throw new ArgumentException("WriteT does not support writing " + value.GetType() + ".");
-        }
-
         public static void BlockCopyInt32(byte[] data, int int32)
         {
             byte[] lengthBytes = BitConverter.GetBytes(IPAddress.NetworkToHostOrder(int32));

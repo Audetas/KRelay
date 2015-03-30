@@ -2,6 +2,7 @@
 using Lib_K_Relay.Interface;
 using Lib_K_Relay.Networking;
 using Lib_K_Relay.Networking.Packets;
+using Lib_K_Relay.Networking.Packets.Server;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -24,8 +25,8 @@ namespace K_Relay.Util
 
         public string GetDescription()
         { return "Changes the host name to that of the entered portal.\n" +
-            "Required to be able to enter portals.\n" + 
-            "You can disable this in the settings if you wish to handle RECONNECT packets yourself."; }
+                 "Required to be able to enter portals.\n" + 
+                 "You can disable this in the settings if you wish to handle RECONNECT packets yourself."; }
 
         public void Initialize(Proxy proxy)
         {
@@ -45,25 +46,26 @@ namespace K_Relay.Util
             _proxy.Port = _originalPort;
         }
 
-        private void OnReconnectPacket(ClientInstance client, Packet reconnectPacket)
+        private void OnReconnectPacket(ClientInstance client, Packet packet)
         {
-            if (reconnectPacket["Port"] != -1)
+            ReconnectPacket reconnectPacket = packet as ReconnectPacket;
+            if (reconnectPacket.Port != -1)
             {
                 // Next time the proxy gets a client connectiom,
                 // The remote connection it sets up will be to here:
-                _proxy.Port = reconnectPacket["Port"];
+                _proxy.Port = reconnectPacket.Port;
             }
 
-            if (reconnectPacket["Host"] != "")
+            if (reconnectPacket.Host != "")
             {
                 // Next time the proxy gets a client connectiom,
                 // The remote connection it sets up will be to here:
-                _proxy.RemoteAddress = reconnectPacket["Host"];
+                _proxy.RemoteAddress = reconnectPacket.Host;
             }
 
             // Tell the client to connect to the proxy
-            reconnectPacket["Host"] = "localhost";
-            reconnectPacket["Port"] = 2050;
+            reconnectPacket.Host = "localhost";
+            reconnectPacket.Port = 2050;
         }
     }
 }

@@ -44,6 +44,8 @@
     <Compile Include="Interface\IPlugin.cs" />
     <Compile Include="Networking\ClientInstance.cs" />
     <Compile Include="Networking\PacketBuffer.cs" />
+    <Compile Include="Networking\Packets\Client\HelloPacket.cs" />
+    <Compile Include="Networking\Packets\Server\ReconnectPacket.cs" />
     <Compile Include="Networking\Packets\DataObjects\BitmapData.cs" />
     <Compile Include="Networking\Packets\DataObjects\Entity.cs" />
     <Compile Include="Networking\Packets\DataObjects\IDataObject.cs" />
@@ -57,12 +59,12 @@
     <Compile Include="Networking\Packets\Packet.cs" />
     <Compile Include="Networking\Packets\PacketReader.cs" />
     <Compile Include="Networking\Packets\PacketSerializer.cs" />
-    <Compile Include="Networking\Packets\PacketStructure.cs" />
     <Compile Include="Networking\Packets\PacketWriter.cs" />
     <Compile Include="Proxy.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Utilities\Servers.cs" />
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.
