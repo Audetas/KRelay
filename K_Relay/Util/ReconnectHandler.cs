@@ -41,9 +41,22 @@ namespace K_Relay.Util
 
         private void OnCreateSuccess(ClientInstance client, Packet createSuccessPacket)
         {
+            CreateSuccessPacket createSuccess = createSuccessPacket as CreateSuccessPacket;
             // Restore the original connection info so new clients can connect normally
             _proxy.RemoteAddress = _originalHost;
             _proxy.Port = _originalPort;
+
+            // Send welcome message to player
+            NotificationPacket notif = (NotificationPacket)Packet.CreateInstance(PacketType.NOTIFICATION);
+            notif.ObjectId = createSuccess.ObjectId;
+            notif.Message = "{\"key\":\"blank\",\"tokens\":{\"data\":\"Welcome to K Relay\"}}";
+            notif.Color = 0x00FFFF;
+
+            Task.Run(() =>
+            {
+                System.Threading.Thread.Sleep(1000);
+                client.SendToClient(notif);
+            });
         }
 
         private void OnReconnectPacket(ClientInstance client, Packet packet)

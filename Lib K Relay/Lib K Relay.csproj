@@ -45,6 +45,9 @@
     <Compile Include="Networking\ClientInstance.cs" />
     <Compile Include="Networking\PacketBuffer.cs" />
     <Compile Include="Networking\Packets\Client\HelloPacket.cs" />
+    <Compile Include="Networking\Packets\Server\TradeRequestedPacket.cs" />
+    <Compile Include="Networking\Packets\Server\CreateSuccessPacket.cs" />
+    <Compile Include="Networking\Packets\Server\NotificationPacket.cs" />
     <Compile Include="Networking\Packets\Server\ReconnectPacket.cs" />
     <Compile Include="Networking\Packets\DataObjects\BitmapData.cs" />
     <Compile Include="Networking\Packets\DataObjects\Entity.cs" />
