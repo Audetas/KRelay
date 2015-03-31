@@ -16,12 +16,17 @@ namespace Lib_K_Relay.Networking.Packets
         private static Dictionary<PacketType, byte> PacketTypeIdMap = new Dictionary<PacketType, byte>();
         private static Dictionary<byte, PacketType> PacketIdTypeMap = new Dictionary<byte, PacketType>();
 
-        public static void SerializePacketsIds(string xmlPath)
+        public static Dictionary<string, int> Tiles = new Dictionary<string, int>();
+        public static Dictionary<string, int> Items = new Dictionary<string, int>();
+        public static Dictionary<string, int> Objects = new Dictionary<string, int>();
+
+        public static void SerializePacketsIds()
         {
-            if (File.Exists(xmlPath))
+            string path = Application.StartupPath + @"\XML\packets.xml";
+            if (File.Exists(path))
             {
                 XmlDocument document = new XmlDocument();
-                document.Load(xmlPath);
+                document.Load(path);
                 foreach (XmlNode childNode in document.DocumentElement.ChildNodes)
                 {
                     string PacketName = "";
@@ -49,12 +54,11 @@ namespace Lib_K_Relay.Networking.Packets
                             PacketIdTypeMap.Add(PacketID, parsedType);
                             PacketTypeIdMap.Add(parsedType, PacketID);
                         }
-                        Console.WriteLine("[Packet Serializer] Registered packet type {0} with id {1}", parsedType, PacketID);
+                        Console.WriteLine("[Serializer] Registered packet type {0} with id {1}", parsedType, PacketID);
                     }
                 }
             }
-            else
-                throw new FileNotFoundException();
+            else throw new FileNotFoundException(path);
         }
 
         public static void SerializePacketTypes()
@@ -68,8 +72,71 @@ namespace Lib_K_Relay.Networking.Packets
             {
                 PacketType t = (Activator.CreateInstance(packetType) as Packet).Type;
                 PacketTypeTypeMap.Add(t, packetType);
-                Console.WriteLine("[Packet Serializer] Mapped structure for {0}.", t);
+                Console.WriteLine("[Serializer] Mapped structure for {0}.", t);
             }
+        }
+
+        public static void SerializeTiles()
+        {
+            string path = Application.StartupPath + @"\XML\tiles.xml";
+            if (File.Exists(path))
+            {
+                XmlDocument document = new XmlDocument();
+                document.Load(path);
+                foreach (XmlNode childNode in document.DocumentElement.ChildNodes)
+                {
+                    if (childNode.Name == "Ground")
+                    {
+                        string tileName = childNode.Attributes.GetNamedItem("id").Value;
+                        int tileId = Convert.ToInt32(childNode.Attributes.GetNamedItem("type").Value, 16);
+                        if (!Tiles.ContainsKey(tileName)) Tiles.Add(tileName, tileId);
+                    }
+                }
+                Console.WriteLine("[Serializer] Serialized {0} tiles successfully.", Tiles.Count);
+            }
+            else throw new FileNotFoundException(path);
+        }
+
+        public static void SerializeItems()
+        {
+            string path = Application.StartupPath + @"\XML\items.xml";
+            if (File.Exists(path))
+            {
+                XmlDocument document = new XmlDocument();
+                document.Load(path);
+                foreach (XmlNode childNode in document.DocumentElement.ChildNodes)
+                {
+                    if (childNode.Name == "Object")
+                    {
+                        string itemName = childNode.Attributes.GetNamedItem("id").Value;
+                        int itemId = Convert.ToInt32(childNode.Attributes.GetNamedItem("type").Value, 16);
+                        if (!Items.ContainsKey(itemName)) Items.Add(itemName, itemId);
+                    }
+                }
+                Console.WriteLine("[Serializer] Serialized {0} items successfully.", Items.Count);
+            }
+            else throw new FileNotFoundException(path);
+        }
+
+        public static void SerializeObjects()
+        {
+            string path = Application.StartupPath + @"\XML\objects.xml";
+            if (File.Exists(path))
+            {
+                XmlDocument document = new XmlDocument();
+                document.Load(path);
+                foreach (XmlNode childNode in document.DocumentElement.ChildNodes)
+                {
+                    if (childNode.Name == "Object")
+                    {
+                        string objectName = childNode.Attributes.GetNamedItem("id").Value;
+                        int objectId = Convert.ToInt32(childNode.Attributes.GetNamedItem("type").Value, 16);
+                        if (!Objects.ContainsKey(objectName)) Objects.Add(objectName, objectId);
+                    }
+                }
+                Console.WriteLine("[Serializer] Serialized {0} objects successfully.", Objects.Count);
+            }
+            else throw new FileNotFoundException(path);
         }
 
         public static PacketType GetPacketPacketType(byte id)

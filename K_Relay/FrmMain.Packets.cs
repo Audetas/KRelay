@@ -13,9 +13,11 @@ namespace K_Relay
     {
         private void InitPackets()
         {
+            PacketSerializer.SerializeTiles();
+            PacketSerializer.SerializeItems();
+            PacketSerializer.SerializeObjects();
             PacketSerializer.SerializePacketTypes();
-            PacketSerializer.SerializePacketsIds(
-                Config.Default.PacketDirectory.Replace("%startuppath%", Application.StartupPath) + @"\PacketIDs.xml");
+            PacketSerializer.SerializePacketsIds();
 
             foreach (PacketType type in Enum.GetValues(typeof(PacketType)).Cast<PacketType>())
                 treePackets.Nodes.Insert(0, type.ToString());
@@ -32,9 +34,7 @@ namespace K_Relay
 
         private void btnOpenPacketsFolder_Click(object sender, EventArgs e)
         {
-            Process.Start(
-                Config.Default.PacketDirectory.ToLower().Replace(
-                    "%startuppath%", Application.StartupPath));
+            Process.Start(Application.StartupPath + @"\XML\");
         }
     }
 }

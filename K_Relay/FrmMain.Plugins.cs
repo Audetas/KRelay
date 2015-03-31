@@ -19,12 +19,11 @@ namespace K_Relay
 
         private void InitPlugins()
         {
-            Console.WriteLine("[Plugin Manager] Looking for plugins in {0}", Config.Default.PluginDirectory);
-            string pluginDirectory = Config.Default.PluginDirectory.ToLower().Replace("%startuppath%", Application.StartupPath);
+            string pluginDirectory = Application.StartupPath + @"\Plugins\";
 
             if (!Directory.Exists(pluginDirectory))
             {
-                Console.WriteLine("[Plugin Manager] Plugin directory '{0}' does not exist! No plugins will be loaded.", Config.Default.PluginDirectory);
+                Console.WriteLine("[Plugin Manager] Plugin directory '{0}' does not exist! No plugins will be loaded.", pluginDirectory);
                 return;
             }
 
@@ -61,8 +60,7 @@ namespace K_Relay
 
         private void btnOpenPluginFolder_Click(object sender, EventArgs e)
         {
-            Process.Start(
-                Config.Default.PluginDirectory.ToLower().Replace("%startuppath%", Application.StartupPath));
+            Process.Start(Application.StartupPath + @"\Plugins\");
         }
 
         protected void treePlugins_SelectedIndexChanged(object sender, EventArgs e)

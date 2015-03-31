@@ -25,30 +25,6 @@ namespace K_Relay {
         
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("%startuppath%\\Packets\\")]
-        public string PacketDirectory {
-            get {
-                return ((string)(this["PacketDirectory"]));
-            }
-            set {
-                this["PacketDirectory"] = value;
-            }
-        }
-        
-        [global::System.Configuration.UserScopedSettingAttribute()]
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("%startuppath%\\Plugins\\")]
-        public string PluginDirectory {
-            get {
-                return ((string)(this["PluginDirectory"]));
-            }
-            set {
-                this["PluginDirectory"] = value;
-            }
-        }
-        
-        [global::System.Configuration.UserScopedSettingAttribute()]
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.DefaultSettingValueAttribute("True")]
         public bool UseInternalReconnectHandler {
             get {
