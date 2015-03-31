@@ -62,7 +62,7 @@
     <Compile Include="Networking\Packets\DataObjects\Tile.cs" />
     <Compile Include="Networking\Packets\Packet.cs" />
     <Compile Include="Networking\Packets\PacketReader.cs" />
-    <Compile Include="Networking\Packets\PacketSerializer.cs" />
+    <Compile Include="Utilities\Serializer.cs" />
     <Compile Include="Networking\Packets\PacketWriter.cs" />
     <Compile Include="Networking\Packets\Server\UpdatePacket.cs" />
     <Compile Include="Proxy.cs" />

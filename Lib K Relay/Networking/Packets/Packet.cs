@@ -1,3 +1,4 @@
+using Lib_K_Relay.Util;
 using System;
 using System.Collections.Generic;
 using System.IO;
@@ -32,8 +33,8 @@ namespace Lib_K_Relay.Networking.Packets
         public static Packet CreateInstance(PacketType type)
         {
             Packet packet = (Packet)Activator.CreateInstance(
-                PacketSerializer.GetPacketType(type));
-            packet.Id = PacketSerializer.GetPacketId(type);
+                Serializer.GetPacketType(type));
+            packet.Id = Serializer.GetPacketId(type);
             return packet;
         }
 
@@ -43,8 +44,8 @@ namespace Lib_K_Relay.Networking.Packets
             {
                 r.ReadInt32(); // Skip over int length
                 byte id = r.ReadByte();
-                PacketType packetType = PacketSerializer.GetPacketPacketType(id);
-                Type type = PacketSerializer.GetPacketType(packetType);
+                PacketType packetType = Serializer.GetPacketPacketType(id);
+                Type type = Serializer.GetPacketType(packetType);
                 // Reflect the type to a new instance and read its data from the PacketReader
                 Packet packet = (Packet)Activator.CreateInstance(type);
                 packet.Id = id;
@@ -82,5 +83,82 @@ namespace Lib_K_Relay.Networking.Packets
                 s.Append("\n\t" + f.Name + " => " + f.FieldType.Name);
             return s.ToString();
         }
+    }
+
+    public enum PacketType
+    {
+        UNKNOWN,
+        FAILURE,
+        CREATE_SUCCESS,
+        CREATE,
+        PLAYERSHOOT,
+        MOVE,
+        PLAYERTEXT,
+        TEXT,
+        SHOOT2,
+        DAMAGE,
+        UPDATE,
+        UPDATEACK,
+        NOTIFICATION,
+        NEW_TICK,
+        INVSWAP,
+        USEITEM,
+        SHOW_EFFECT,
+        HELLO,
+        GOTO,
+        INVDROP,
+        INVRESULT,
+        RECONNECT,
+        PING,
+        PONG,
+        MAPINFO,
+        LOAD,
+        PIC,
+        SETCONDITION,
+        TELEPORT,
+        USEPORTAL,
+        DEATH,
+        BUY,
+        BUYRESULT,
+        AOE,
+        GROUNDDAMAGE,
+        PLAYERHIT,
+        ENEMYHIT,
+        AOEACK,
+        SHOOTACK,
+        OTHERHIT,
+        SQUAREHIT,
+        GOTOACK,
+        EDITACCOUNTLIST,
+        ACCOUNTLIST,
+        QUESTOBJID,
+        CHOOSENAME,
+        NAMERESULT,
+        CREATEGUILD,
+        CREATEGUILDRESULT,
+        GUILDREMOVE,
+        GUILDINVITE,
+        ALLYSHOOT,
+        SHOOT,
+        REQUESTTRADE,
+        TRADEREQUESTED,
+        TRADESTART,
+        CHANGETRADE,
+        TRADECHANGED,
+        ACCEPTTRADE,
+        CANCELTRADE,
+        TRADEDONE,
+        TRADEACCEPTED,
+        CLIENTSTAT,
+        CHECKCREDITS,
+        ESCAPE,
+        FILE,
+        INVITEDTOGUILD,
+        JOINGUILD,
+        CHANGEGUILDRANK,
+        PLAYSOUND,
+        GLOBAL_NOTIFICATION,
+        RESKIN,
+        ENTER_ARENA
     }
 }

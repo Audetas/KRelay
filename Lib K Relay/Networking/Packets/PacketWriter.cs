@@ -21,7 +21,7 @@ namespace Lib_K_Relay.Networking.Packets
 
         public override void Write(ushort value)
         {
-            base.Write((ushort)IPAddress.NetworkToHostOrder(value));
+            base.Write((ushort)IPAddress.HostToNetworkOrder((short)value));
         }
 
         public override void Write(int value)

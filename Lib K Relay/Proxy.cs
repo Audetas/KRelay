@@ -1,5 +1,6 @@
 ﻿using Lib_K_Relay.Networking;
 using Lib_K_Relay.Networking.Packets;
+using Lib_K_Relay.Util;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -111,7 +112,7 @@ namespace Lib_K_Relay
 
         public void HookPacket(PacketType type, Action<ClientInstance, Packet> callback)
         {
-            if (PacketSerializer.GetPacketId(type) == 255)
+            if (Serializer.GetPacketId(type) == 255)
                 throw new InvalidOperationException("[Plugin Error] A plugin attempted to register callback " +
                                                     callback.GetMethodInfo().ReflectedType + "." + callback.Method.Name +
                                                     " for packet type " + type + " that doesn't have a structure defined.");

@@ -1,4 +1,5 @@
 ﻿using Lib_K_Relay.Networking.Packets;
+using Lib_K_Relay.Util;
 using System;
 using System.Collections.Generic;
 using System.Diagnostics;
@@ -13,11 +14,11 @@ namespace K_Relay
     {
         private void InitPackets()
         {
-            PacketSerializer.SerializeTiles();
-            PacketSerializer.SerializeItems();
-            PacketSerializer.SerializeObjects();
-            PacketSerializer.SerializePacketTypes();
-            PacketSerializer.SerializePacketsIds();
+            Serializer.SerializeTiles();
+            Serializer.SerializeItems();
+            Serializer.SerializeObjects();
+            Serializer.SerializePacketTypes();
+            Serializer.SerializePacketsIds();
 
             foreach (PacketType type in Enum.GetValues(typeof(PacketType)).Cast<PacketType>())
                 treePackets.Nodes.Insert(0, type.ToString());
@@ -27,7 +28,7 @@ namespace K_Relay
 
         private void treePackets_AfterSelect(object sender, TreeViewEventArgs e)
         {
-            Type type = PacketSerializer.GetPacketType(
+            Type type = Serializer.GetPacketType(
                 (PacketType)Enum.Parse(typeof(PacketType), e.Node.Text));
             tbxPacketInfo.Text = (Activator.CreateInstance(type) as Packet).ToStructure();
         }

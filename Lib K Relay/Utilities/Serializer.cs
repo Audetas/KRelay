@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Lib_K_Relay.Networking.Packets;
+using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
@@ -8,9 +9,9 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Xml;
 
-namespace Lib_K_Relay.Networking.Packets
+namespace Lib_K_Relay.Util
 {
-    public static class PacketSerializer
+    public static class Serializer
     {
         private static Dictionary<PacketType, Type> PacketTypeTypeMap = new Dictionary<PacketType, Type>();
         private static Dictionary<PacketType, byte> PacketTypeIdMap = new Dictionary<PacketType, byte>();
@@ -156,82 +157,5 @@ namespace Lib_K_Relay.Networking.Packets
             if (PacketTypeTypeMap.ContainsKey(type)) return PacketTypeTypeMap[type];
             else return typeof(Packet);
         }
-    }
-
-    public enum PacketType
-    {
-        UNKNOWN,
-        FAILURE,
-        CREATE_SUCCESS,
-        CREATE,
-        PLAYERSHOOT,
-        MOVE,
-        PLAYERTEXT,
-        TEXT,
-        SHOOT2,
-        DAMAGE,
-        UPDATE,
-        UPDATEACK,
-        NOTIFICATION,
-        NEW_TICK,
-        INVSWAP,
-        USEITEM,
-        SHOW_EFFECT,
-        HELLO,
-        GOTO,
-        INVDROP,
-        INVRESULT,
-        RECONNECT,
-        PING,
-        PONG,
-        MAPINFO,
-        LOAD,
-        PIC,
-        SETCONDITION,
-        TELEPORT,
-        USEPORTAL,
-        DEATH,
-        BUY,
-        BUYRESULT,
-        AOE,
-        GROUNDDAMAGE,
-        PLAYERHIT,
-        ENEMYHIT,
-        AOEACK,
-        SHOOTACK,
-        OTHERHIT,
-        SQUAREHIT,
-        GOTOACK,
-        EDITACCOUNTLIST,
-        ACCOUNTLIST,
-        QUESTOBJID,
-        CHOOSENAME,
-        NAMERESULT,
-        CREATEGUILD,
-        CREATEGUILDRESULT,
-        GUILDREMOVE,
-        GUILDINVITE,
-        ALLYSHOOT,
-        SHOOT,
-        REQUESTTRADE,
-        TRADEREQUESTED,
-        TRADESTART,
-        CHANGETRADE,
-        TRADECHANGED,
-        ACCEPTTRADE,
-        CANCELTRADE,
-        TRADEDONE,
-        TRADEACCEPTED,
-        CLIENTSTAT,
-        CHECKCREDITS,
-        ESCAPE,
-        FILE,
-        INVITEDTOGUILD,
-        JOINGUILD,
-        CHANGEGUILDRANK,
-        PLAYSOUND,
-        GLOBAL_NOTIFICATION,
-        RESKIN,
-        ENTER_ARENA
     }
 }
