@@ -18,7 +18,7 @@ namespace K_Relay
             Serializer.SerializeItems();
             Serializer.SerializeObjects();
             Serializer.SerializePacketTypes();
-            Serializer.SerializePacketsIds();
+            Serializer.SerializePacketIds();
 
             foreach (PacketType type in Enum.GetValues(typeof(PacketType)).Cast<PacketType>())
                 treePackets.Nodes.Insert(0, type.ToString());

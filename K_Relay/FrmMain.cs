@@ -102,13 +102,13 @@ namespace K_Relay
             }));
         }
 
-        private void ClientConnected(Proxy p, ClientInstance client)
+        private void ClientConnected(ClientInstance client)
         {
             _clients.Add(client);
             Invoke(new MethodInvoker(() => lblConnectedClients.Text = "Connected Clients: " + _clients.Count));
         }
 
-        private void ClientDisconnected(Proxy p, ClientInstance client)
+        private void ClientDisconnected(ClientInstance client)
         {
             _clients.Remove(client);
             Invoke(new MethodInvoker(() => lblConnectedClients.Text = "Connected Clients: " + _clients.Count));

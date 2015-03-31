@@ -17,11 +17,11 @@ namespace Lib_K_Relay.Util
         private static Dictionary<PacketType, byte> PacketTypeIdMap = new Dictionary<PacketType, byte>();
         private static Dictionary<byte, PacketType> PacketIdTypeMap = new Dictionary<byte, PacketType>();
 
-        public static Dictionary<string, int> Tiles = new Dictionary<string, int>();
-        public static Dictionary<string, int> Items = new Dictionary<string, int>();
-        public static Dictionary<string, int> Objects = new Dictionary<string, int>();
+        public static Dictionary<string, ushort> Tiles = new Dictionary<string, ushort>();
+        public static Dictionary<string, ushort> Items = new Dictionary<string, ushort>();
+        public static Dictionary<string, ushort> Objects = new Dictionary<string, ushort>();
 
-        public static void SerializePacketsIds()
+        public static void SerializePacketIds()
         {
             string path = Application.StartupPath + @"\XML\packets.xml";
             if (File.Exists(path))
@@ -55,9 +55,9 @@ namespace Lib_K_Relay.Util
                             PacketIdTypeMap.Add(PacketID, parsedType);
                             PacketTypeIdMap.Add(parsedType, PacketID);
                         }
-                        Console.WriteLine("[Serializer] Registered packet type {0} with id {1}", parsedType, PacketID);
                     }
                 }
+                Console.WriteLine("[Serializer] Serialized {0} packet ids successfully.", PacketTypeIdMap.Count);
             }
             else throw new FileNotFoundException(path);
         }
@@ -73,8 +73,9 @@ namespace Lib_K_Relay.Util
             {
                 PacketType t = (Activator.CreateInstance(packetType) as Packet).Type;
                 PacketTypeTypeMap.Add(t, packetType);
-                Console.WriteLine("[Serializer] Mapped structure for {0}.", t);
             }
+
+            Console.WriteLine("[Serializer] Mapped {0} packet structures successfully.", PacketTypeTypeMap.Count);
         }
 
         public static void SerializeTiles()
@@ -89,7 +90,7 @@ namespace Lib_K_Relay.Util
                     if (childNode.Name == "Ground")
                     {
                         string tileName = childNode.Attributes.GetNamedItem("id").Value;
-                        int tileId = Convert.ToInt32(childNode.Attributes.GetNamedItem("type").Value, 16);
+                        ushort tileId = Convert.ToUInt16(childNode.Attributes.GetNamedItem("type").Value, 16);
                         if (!Tiles.ContainsKey(tileName)) Tiles.Add(tileName, tileId);
                     }
                 }
@@ -110,7 +111,7 @@ namespace Lib_K_Relay.Util
                     if (childNode.Name == "Object")
                     {
                         string itemName = childNode.Attributes.GetNamedItem("id").Value;
-                        int itemId = Convert.ToInt32(childNode.Attributes.GetNamedItem("type").Value, 16);
+                        ushort itemId = Convert.ToUInt16(childNode.Attributes.GetNamedItem("type").Value, 16);
                         if (!Items.ContainsKey(itemName)) Items.Add(itemName, itemId);
                     }
                 }
@@ -131,7 +132,7 @@ namespace Lib_K_Relay.Util
                     if (childNode.Name == "Object")
                     {
                         string objectName = childNode.Attributes.GetNamedItem("id").Value;
-                        int objectId = Convert.ToInt32(childNode.Attributes.GetNamedItem("type").Value, 16);
+                        ushort objectId = Convert.ToUInt16(childNode.Attributes.GetNamedItem("type").Value, 16);
                         if (!Objects.ContainsKey(objectName)) Objects.Add(objectName, objectId);
                     }
                 }

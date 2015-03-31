@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace Lib_K_Relay.Networking.Packets.Server
 {
-    class NewTickPacket : Packet
+    public class NewTickPacket : Packet
     {
         public int TickId;
         public int TickTime;

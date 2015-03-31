@@ -20,10 +20,10 @@ namespace Lib_K_Relay
 
         public event Action<Proxy> ProxyListenStarted;
         public event Action<Proxy> ProxyListenStopped;
-        public event Action<Proxy, ClientInstance> ClientConnected;
-        public event Action<Proxy, ClientInstance> ClientDisconnected;
-        public event Action<Proxy, ClientInstance, Packet> ServerPacketRecieved;
-        public event Action<Proxy, ClientInstance, Packet> ClientPacketRecieved;
+        public event Action<ClientInstance> ClientConnected;
+        public event Action<ClientInstance> ClientDisconnected;
+        public event Action<ClientInstance, Packet> ServerPacketRecieved;
+        public event Action<ClientInstance, Packet> ClientPacketRecieved;
 
         private List<Tuple<PacketType, Action<ClientInstance, Packet>>> _packetHooks = 
             new List<Tuple<PacketType, Action<ClientInstance, Packet>>>();
@@ -125,7 +125,7 @@ namespace Lib_K_Relay
             //try
             {
                 if (ClientConnected != null)
-                    ClientConnected(this, client);
+                    ClientConnected(client);
             } //catch (Exception e) { PrintPluginCallbackException("ClientConnected", e); }
         }
 
@@ -134,7 +134,7 @@ namespace Lib_K_Relay
             //try
             {
                 if (ClientDisconnected != null)
-                    ClientDisconnected(this, client);
+                    ClientDisconnected(client);
             } //catch (Exception e) { PrintPluginCallbackException("ClientDisconnected", e); }
         }
 
@@ -153,7 +153,7 @@ namespace Lib_K_Relay
 
                 // Fire general server packet callbacks
                 if (ServerPacketRecieved != null)
-                    ServerPacketRecieved(this, client, packet);
+                    ServerPacketRecieved(client, packet);
             } //catch (Exception e) { PrintPluginCallbackException("ServerPacket", e); }
         }
 
@@ -172,7 +172,7 @@ namespace Lib_K_Relay
 
                 // Fire general client packet callbacks
                 if (ClientPacketRecieved != null)
-                    ClientPacketRecieved(this, client, packet);
+                    ClientPacketRecieved(client, packet);
             } //catch (Exception e) { PrintPluginCallbackException("ClientPacket", e); }
         }
 

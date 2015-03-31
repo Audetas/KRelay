@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace Lib_K_Relay.Networking.Packets.Server
 {
-    class UpdatePacket : Packet
+    public class UpdatePacket : Packet
     {
         public Tile[] Tiles;
         public Entity[] NewObjs;
