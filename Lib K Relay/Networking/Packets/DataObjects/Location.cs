@@ -24,5 +24,17 @@ namespace Lib_K_Relay.Networking.Packets.DataObjects
             w.Write(X);
             w.Write(Y);
         }
+
+        public float DistanceSquaredTo(Location location)
+        {
+            float dx = location.X - X;
+            float dy = location.Y - Y;
+            return dx * dx + dy * dy;
+        }
+
+        public float DistanceTo(Location location)
+        {
+            return (float)Math.Sqrt(DistanceSquaredTo(location));
+        }
     }
 }

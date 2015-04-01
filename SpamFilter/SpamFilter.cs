@@ -12,6 +12,7 @@ using System.Windows.Forms;
 
 namespace SpamFilter
 {
+    /*
     public class SpamFilter : IPlugin
     {
         public string GetAuthor()
@@ -31,6 +32,7 @@ namespace SpamFilter
 
         private void OnTextPacket(ClientInstance client, Packet textPacket)
         {
+            TextPacket
             if (!SpamFilterConfig.Default.Enabled) return;
 
             string text = textPacket["Text"];
@@ -53,5 +55,5 @@ namespace SpamFilter
             if (playerText == "/spamfilter gui") // PROPERTYGRID IS BUGGED WITH STRING COLLECTION :(
                 new Thread(() => new FrmSpamFilter().ShowDialog()).Start();
         }
-    }
+    }*/
 }

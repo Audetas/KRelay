@@ -4,11 +4,11 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{B1B5F3C3-C4FF-4C6E-8879-D2E4E99BEEF9}</ProjectGuid>
+    <ProjectGuid>{9BAE95D2-8FCF-45FC-A5F4-010E23E8B0D0}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>Lib_K_Relay</RootNamespace>
-    <AssemblyName>Lib K Relay</AssemblyName>
+    <RootNamespace>FameNotifier</RootNamespace>
+    <AssemblyName>FameNotifier</AssemblyName>
     <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
   </PropertyGroup>
@@ -32,7 +32,6 @@
   <ItemGroup>
     <Reference Include="System" />
     <Reference Include="System.Core" />
-    <Reference Include="System.Windows.Forms" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
@@ -40,39 +39,15 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Crypto\RC4.cs" />
-    <Compile Include="Interface\IPlugin.cs" />
-    <Compile Include="Networking\ClientInstance.cs" />
-    <Compile Include="Networking\PacketBuffer.cs" />
-    <Compile Include="Networking\Packets\Client\HelloPacket.cs" />
-    <Compile Include="Networking\Packets\Client\PlayerTextPacket.cs" />
-    <Compile Include="Networking\Packets\Client\TeleportPacket.cs" />
-    <Compile Include="Networking\Packets\Server\NewTickPacket.cs" />
-    <Compile Include="Networking\Packets\Server\QuestObjIdPacket.cs" />
-    <Compile Include="Networking\Packets\Server\TradeRequestedPacket.cs" />
-    <Compile Include="Networking\Packets\Server\CreateSuccessPacket.cs" />
-    <Compile Include="Networking\Packets\Server\NotificationPacket.cs" />
-    <Compile Include="Networking\Packets\Server\ReconnectPacket.cs" />
-    <Compile Include="Networking\Packets\DataObjects\BitmapData.cs" />
-    <Compile Include="Networking\Packets\DataObjects\Entity.cs" />
-    <Compile Include="Networking\Packets\DataObjects\IDataObject.cs" />
-    <Compile Include="Networking\Packets\DataObjects\Item.cs" />
-    <Compile Include="Networking\Packets\DataObjects\Location.cs" />
-    <Compile Include="Networking\Packets\DataObjects\LocationRecord.cs" />
-    <Compile Include="Networking\Packets\DataObjects\SlotObject.cs" />
-    <Compile Include="Networking\Packets\DataObjects\StatData.cs" />
-    <Compile Include="Networking\Packets\DataObjects\Status.cs" />
-    <Compile Include="Networking\Packets\DataObjects\Tile.cs" />
-    <Compile Include="Networking\Packets\Packet.cs" />
-    <Compile Include="Networking\Packets\PacketReader.cs" />
-    <Compile Include="Utilities\Serializer.cs" />
-    <Compile Include="Networking\Packets\PacketWriter.cs" />
-    <Compile Include="Networking\Packets\Server\UpdatePacket.cs" />
-    <Compile Include="Proxy.cs" />
+    <Compile Include="Class1.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Utilities\Servers.cs" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <ProjectReference Include="..\Lib K Relay\Lib K Relay.csproj">
+      <Project>{b1b5f3c3-c4ff-4c6e-8879-d2e4e99beef9}</Project>
+      <Name>Lib K Relay</Name>
+    </ProjectReference>
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.
