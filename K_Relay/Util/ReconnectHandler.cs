@@ -6,6 +6,7 @@ using Lib_K_Relay.Networking.Packets.Server;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Net;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -61,24 +62,25 @@ namespace K_Relay.Util
 
         private void OnReconnectPacket(ClientInstance client, Packet packet)
         {
-            ReconnectPacket reconnectPacket = packet as ReconnectPacket;
-            if (reconnectPacket.Port != -1)
+            ReconnectPacket reconnect = packet as ReconnectPacket;
+            if (reconnect.Port != -1)
             {
-                // Next time the proxy gets a client connectiom,
-                // The remote connection it sets up will be to here:
-                _proxy.Port = reconnectPacket.Port;
+                _proxy.Port = reconnect.Port;
+                Console.WriteLine("[Reconnect Handler] Changed remote port to {0}.", _proxy.Port);
             }
 
-            if (reconnectPacket.Host != "")
+            if (reconnect.Host != "")
             {
-                // Next time the proxy gets a client connectiom,
-                // The remote connection it sets up will be to here:
-                _proxy.RemoteAddress = reconnectPacket.Host;
+                if (reconnect.Host.Contains(".com"))
+                    _proxy.RemoteAddress = Dns.GetHostEntry(reconnect.Host).AddressList[0].ToString();
+                else
+                    _proxy.RemoteAddress = reconnect.Host;
+                Console.WriteLine("[Reconnect Handler] Changed remote address to {0}.", _proxy.RemoteAddress);
             }
 
             // Tell the client to connect to the proxy
-            reconnectPacket.Host = "localhost";
-            reconnectPacket.Port = 2050;
+            reconnect.Host = "localhost";
+            reconnect.Port = 2050;
         }
     }
 }

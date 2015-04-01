@@ -68,11 +68,11 @@ namespace Lib_K_Relay
             _localListener.Start();
             _localListener.BeginAcceptTcpClient(LocalConnect, null);
 
-            //try
+            try
             {
                 if (ProxyListenStarted != null)
                     ProxyListenStarted(this);
-            } //catch (Exception e) { PrintPluginCallbackException("ProxyListenStarted", e); }
+            } catch (Exception e) { PrintPluginCallbackException("ProxyListenStarted", e); }
         }
 
         public void Stop()
@@ -82,16 +82,16 @@ namespace Lib_K_Relay
             if (_localListener != null && !_localListener.Server.Connected)
                 _localListener.Stop();
 
-            //try
+            try
             {
                 if (ProxyListenStopped != null)
                     ProxyListenStopped(this);
-            } //catch (Exception e) { PrintPluginCallbackException("ProxyListenStopped", e); }
+            } catch (Exception e) { PrintPluginCallbackException("ProxyListenStopped", e); }
         }
 
         private void LocalConnect(IAsyncResult ar)
         {
-            try
+            //try
             {
                 // Finish the accept, and then instantiate a ClientInstance
                 // to begin handling IO on that socket and start its own 
@@ -102,12 +102,12 @@ namespace Lib_K_Relay
                 // Listen for new clients.
                 _localListener.BeginAcceptTcpClient(LocalConnect, null);
             }
-            catch (ObjectDisposedException ignored) { } // This happens when the proxy stops and the callback fires. We'll ignore it.
-            catch (Exception e) 
-            {
-                Console.WriteLine("[Client Listner] ClientListen failed! Here's the exception report:\n{0}", e.Message);
-                Stop();
-            }
+            //catch (ObjectDisposedException ignored) { } // This happens when the proxy stops and the callback fires. We'll ignore it.
+            //catch (Exception e) 
+            //{
+                //Console.WriteLine("[Client Listner] ClientListen failed! Here's the exception report:\n{0}", e.Message);
+                //Stop();
+            //}
         }
 
         public void HookPacket(PacketType type, Action<ClientInstance, Packet> callback)
@@ -122,25 +122,25 @@ namespace Lib_K_Relay
 
         public void FireClientConnected(ClientInstance client)
         {
-            //try
+            try
             {
                 if (ClientConnected != null)
                     ClientConnected(client);
-            } //catch (Exception e) { PrintPluginCallbackException("ClientConnected", e); }
+            } catch (Exception e) { PrintPluginCallbackException("ClientConnected", e); }
         }
 
         public void FireClientDisconnected(ClientInstance client)
         {
-            //try
+            try
             {
                 if (ClientDisconnected != null)
                     ClientDisconnected(client);
-            } //catch (Exception e) { PrintPluginCallbackException("ClientDisconnected", e); }
+            } catch (Exception e) { PrintPluginCallbackException("ClientDisconnected", e); }
         }
 
         public void FireServerPacket(ClientInstance client, Packet packet)
         {
-            //try
+            try
             {
                 // Fire specific hook callbacks if applicable
                 foreach (var hook in _packetHooks)
@@ -154,12 +154,12 @@ namespace Lib_K_Relay
                 // Fire general server packet callbacks
                 if (ServerPacketRecieved != null)
                     ServerPacketRecieved(client, packet);
-            } //catch (Exception e) { PrintPluginCallbackException("ServerPacket", e); }
+            } catch (Exception e) { PrintPluginCallbackException("ServerPacket", e); }
         }
 
         public void FireClientPacket(ClientInstance client, Packet packet)
         {
-            //try
+            try
             {
                 // Fire specific hook callbacks if applicable
                 foreach (var hook in _packetHooks)
@@ -173,7 +173,7 @@ namespace Lib_K_Relay
                 // Fire general client packet callbacks
                 if (ClientPacketRecieved != null)
                     ClientPacketRecieved(client, packet);
-            } //catch (Exception e) { PrintPluginCallbackException("ClientPacket", e); }
+            } catch (Exception e) { PrintPluginCallbackException("ClientPacket", e); }
         }
 
         private void PrintPluginCallbackException(string caller, Exception e)
