@@ -1,5 +1,9 @@
 ﻿using Lib_K_Relay;
 using Lib_K_Relay.Interface;
+using Lib_K_Relay.Networking;
+using Lib_K_Relay.Networking.Packets;
+using Lib_K_Relay.Networking.Packets.DataObjects;
+using Lib_K_Relay.Networking.Packets.Server;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -10,24 +14,67 @@ namespace MapCacher
 {
     public class MapCacher : IPlugin
     {
+        struct Map
+        {
+            public string name;
+            public int width;
+            public int height;
+
+            public Map(string n, int x, int y)
+            {
+                name = n;
+                width = x;
+                height = y;
+            }
+        }
+        ushort[,] mapdata;
+        Boolean initialized;
+        Map map;
+
         public string GetAuthor()
         {
-            throw new NotImplementedException();
+            return "Knorrex";
         }
 
         public string GetName()
         {
-            throw new NotImplementedException();
+            return "Map Cacher";
         }
 
         public string GetDescription()
         {
-            throw new NotImplementedException();
+            return "Cached map tiles while playing and will attempt to recognize previously visited maps.\n When a map is recognized it will be sent through UPDATE to the client, to display it.";
         }
 
         public void Initialize(Proxy proxy)
         {
-            throw new NotImplementedException();
+            proxy.HookPacket(PacketType.UPDATE, OnUpdate);
+            proxy.HookPacket(PacketType.MAPINFO, GetMapInfo);
+            proxy.HookPacket(PacketType.LOAD, OnEnterMap);
+            initialized = false;
+        }
+
+        public void OnUpdate(ClientInstance client, Packet packet)
+        {
+            UpdatePacket update = (UpdatePacket)packet;
+
+            foreach (Tile tile in update.Tiles)
+            {
+                mapdata[tile.Y, tile.X] = tile.Type;
+            }
+        }
+
+        public void GetMapInfo(ClientInstance client, Packet packet)
+        {
+            MapInfoPacket mapinfo = (MapInfoPacket)packet;
+            map = new Map(mapinfo.Name, mapinfo.Height, mapinfo.Width);
+            initialized = false;
+        }
+
+        public void OnEnterMap(ClientInstance client, Packet packet)
+        {
+            initialized = true;
+            mapdata = new ushort[map.height, map.width];
         }
     }
 }
