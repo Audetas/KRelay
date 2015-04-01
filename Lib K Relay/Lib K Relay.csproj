@@ -47,6 +47,7 @@
     <Compile Include="Networking\Packets\Client\HelloPacket.cs" />
     <Compile Include="Networking\Packets\Client\PlayerTextPacket.cs" />
     <Compile Include="Networking\Packets\Client\TeleportPacket.cs" />
+    <Compile Include="Networking\Packets\Client\UseItemPacket.cs" />
     <Compile Include="Networking\Packets\Server\NewTickPacket.cs" />
     <Compile Include="Networking\Packets\Server\QuestObjIdPacket.cs" />
     <Compile Include="Networking\Packets\Server\TradeRequestedPacket.cs" />
