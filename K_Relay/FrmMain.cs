@@ -1,6 +1,7 @@
 ﻿using K_Relay.Util;
 using Lib_K_Relay;
 using Lib_K_Relay.Networking;
+using Lib_K_Relay.Util;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -24,6 +25,16 @@ namespace K_Relay
         {
             InitializeComponent();
 
+            Config.Default.HookUIEvents(this);
+            Console.SetOut(new TextBoxStreamWriter(tbxLog));
+
+            Serializer.SerializeServers();
+            Serializer.SerializeTiles();
+            Serializer.SerializeItems();
+            Serializer.SerializeObjects();
+            Serializer.SerializePacketIds();
+            Serializer.SerializePacketTypes();
+
             _clients = new List<ClientInstance>();
             _proxy = new Proxy();
             _proxy.ProxyListenStarted += ProxyListenStarted;
@@ -31,9 +42,11 @@ namespace K_Relay
             _proxy.ClientConnected += ClientConnected;
             _proxy.ClientDisconnected += ClientDisconnected;
 
-            Config.Default.HookUIEvents(this);
-            Console.SetOut(new TextBoxStreamWriter(tbxLog));
-            Console.WriteLine("[Info] Welcome to K Relay.");
+            _proxy.Key0 = Config.Default.RC4Key0;
+            _proxy.Key1 = Config.Default.RC4Key1;
+
+            string settingsHost = Serializer.GetServerByShortName(Config.Default.DefaultServerName);
+            _proxy.RemoteAddress = settingsHost != "" ? settingsHost : "54.241.208.233";
         }
 
         private void FrmMain_Shown(object sender, EventArgs e)

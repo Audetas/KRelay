@@ -16,7 +16,9 @@ namespace Lib_K_Relay
     {
         public int Port = 2050;
         public string ListenAddress = "127.0.0.1";
-        public string RemoteAddress = Servers["USW"];
+        public string RemoteAddress = "54.241.208.233"; // USW
+        public string Key0 = "311f80691451c71d09a13a2a6e";
+        public string Key1 = "72c5583cafb6818995cdd74b80";
 
         public event Action<Proxy> ProxyListenStarted;
         public event Action<Proxy> ProxyListenStopped;
@@ -29,32 +31,6 @@ namespace Lib_K_Relay
             new List<Tuple<PacketType, Action<ClientInstance, Packet>>>();
 
         private TcpListener _localListener = null;
-
-        public static Dictionary<string, string> Servers = new Dictionary<string, string>() // TODO MOVE TO SETTINGS
-        {
-            {"USW", "54.241.208.233"},
-            {"EUW", "54.195.57.43"},
-            //{"USNW", "54.80.67.112"},
-            {"USE", "54.224.68.81"},
-            {"ASE", "54.225.15.39"},
-            {"USS", "23.22.180.212"},
-            {"USSW", "54.241.53.42"},
-            {"EUE", "46.137.30.179"},
-            {"EUN", "54.195.96.152"},
-            {"EUSW", "54.218.63.70"},
-            {"USE3", "54.226.214.216"},
-            {"USW2", "54.193.168.4"},
-            {"USMW2", "50.17.143.165"},
-            {"USE2", "54.204.50.57"},
-            {"USNW", "50.18.24.120"},
-            {"AE", "175.41.201.80"},
-            {"USS3", "54.80.250.47"},
-            {"EUN2", "54.216.200.98"},
-            {"EUW2", "54.216.27.65"},
-            {"EUS", "54.195.179.215"},
-            {"USS2", "50.19.7.133"},
-            {"USW3", "54.241.223.240"}
-        };
 
         public void Start()
         {
@@ -77,10 +53,11 @@ namespace Lib_K_Relay
 
         public void Stop()
         {
-            Console.WriteLine("[Client Listener] Stopping local listener...");
-
             if (_localListener != null && !_localListener.Server.Connected)
+            {
+                Console.WriteLine("[Client Listener] Stopping local listener...");
                 _localListener.Stop();
+            }
 
             try
             {
@@ -112,12 +89,11 @@ namespace Lib_K_Relay
 
         public void HookPacket(PacketType type, Action<ClientInstance, Packet> callback)
         {
-            /*
             if (Serializer.GetPacketId(type) == 255)
                 throw new InvalidOperationException("[Plugin Error] A plugin attempted to register callback " +
                                                     callback.GetMethodInfo().ReflectedType + "." + callback.Method.Name +
                                                     " for packet type " + type + " that doesn't have a structure defined.");
-            else*/
+            else
                 _packetHooks.Add(new Tuple<PacketType, Action<ClientInstance, Packet>>(type, callback));
         }
 
@@ -183,7 +159,7 @@ namespace Lib_K_Relay
             string methodName = site == null ? "<null method reference>" : site.Name;
             string className = site == null ? "" : site.ReflectedType.Name;
 
-            Console.WriteLine("[Plugin Error] An exception was thrown\n   within a {0} callback\n   at {1}\nHere's the exception report:\n{2}",
+            Console.WriteLine("[Plugin Error] An exception was thrown\nwithin a {0} callback\nat {1}\nHere's the exception report:\n{2}",
                 caller, className + "." + methodName, e.Message);
         }
     }

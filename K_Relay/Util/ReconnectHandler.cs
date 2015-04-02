@@ -34,10 +34,8 @@ namespace K_Relay.Util
             _proxy = proxy;
             proxy.HookPacket(PacketType.RECONNECT, OnReconnectPacket);
             proxy.HookPacket(PacketType.CREATE_SUCCESS, OnCreateSuccess);
-
-            // So we can restore them later
-            _originalHost = _proxy.RemoteAddress;
             _originalPort = _proxy.Port;
+            _originalHost = _proxy.RemoteAddress;
         }
 
         private void OnCreateSuccess(ClientInstance client, Packet createSuccessPacket)

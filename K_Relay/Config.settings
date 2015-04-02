@@ -5,5 +5,14 @@
     <Setting Name="UseInternalReconnectHandler" Type="System.Boolean" Scope="User">
       <Value Profile="(Default)">True</Value>
     </Setting>
+    <Setting Name="DefaultServerName" Type="System.String" Scope="User">
+      <Value Profile="(Default)">USW</Value>
+    </Setting>
+    <Setting Name="RC4Key0" Type="System.String" Scope="User">
+      <Value Profile="(Default)">311f80691451c71d09a13a2a6e</Value>
+    </Setting>
+    <Setting Name="RC4Key1" Type="System.String" Scope="User">
+      <Value Profile="(Default)">72c5583cafb6818995cdd74b80</Value>
+    </Setting>
   </Settings>
 </SettingsFile>

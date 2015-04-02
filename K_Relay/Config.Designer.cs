@@ -34,5 +34,41 @@ namespace K_Relay {
                 this["UseInternalReconnectHandler"] = value;
             }
         }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("USW")]
+        public string DefaultServerName {
+            get {
+                return ((string)(this["DefaultServerName"]));
+            }
+            set {
+                this["DefaultServerName"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("311f80691451c71d09a13a2a6e")]
+        public string RC4Key0 {
+            get {
+                return ((string)(this["RC4Key0"]));
+            }
+            set {
+                this["RC4Key0"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("72c5583cafb6818995cdd74b80")]
+        public string RC4Key1 {
+            get {
+                return ((string)(this["RC4Key1"]));
+            }
+            set {
+                this["RC4Key1"] = value;
+            }
+        }
     }
 }

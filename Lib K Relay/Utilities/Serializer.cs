@@ -21,6 +21,9 @@ namespace Lib_K_Relay.Util
         public static Dictionary<string, ushort> Items = new Dictionary<string, ushort>();
         public static Dictionary<string, ushort> Objects = new Dictionary<string, ushort>();
 
+        public static Dictionary<string, string> Servers = new Dictionary<string, string>();
+
+        #region Packet Serialization
         public static void SerializePacketIds()
         {
             string path = Application.StartupPath + @"\XML\packets.xml";
@@ -77,7 +80,9 @@ namespace Lib_K_Relay.Util
 
             Console.WriteLine("[Serializer] Mapped {0} packet structures successfully.", PacketTypeTypeMap.Count);
         }
+        #endregion
 
+        #region Object Serialization
         public static void SerializeTiles()
         {
             string path = Application.StartupPath + @"\XML\tiles.xml";
@@ -140,7 +145,59 @@ namespace Lib_K_Relay.Util
             }
             else throw new FileNotFoundException(path);
         }
+        #endregion
 
+        #region Server Serialization
+        private static Dictionary<string, string> Names = new Dictionary<string, string>()
+        {
+            {"USW", "USWest"},
+            {"EUW", "EUWest"},
+            {"USNW", "USNorthWest"},
+            {"USE", "USEast"},
+            {"ASE", "AsiaSouthEast"},
+            {"USS", "USSouth"},
+            {"USSW", "USSouthWest"},
+            {"EUE", "EUEast"},
+            {"EUN", "EUNorth"},
+            {"EUSW", "EUSouthWest"},
+            {"USE3", "USEast3"},
+            {"USW2", "USWest2"},
+            {"USMW2", "USMidWest2"},
+            {"USE2", "USEast2"},
+            {"AE", "AsiaEast"},
+            {"USS3", "USSouth3"},
+            {"EUN2", "EUNorth2"},
+            {"EUW2", "EUWest2"},
+            {"EUS", "EUSouth"},
+            {"USS2", "USSouth2"},
+            {"USW3", "USWest3"}
+        };
+
+        public static void SerializeServers()
+        {
+            if (Servers.Count > 0) return;
+
+            try
+            {
+                string CharList = "http://realmofthemadgodhrd.appspot.com/char/list";
+                XmlTextReader reader = new XmlTextReader(CharList);
+                while (reader.ReadToFollowing("Server"))
+                {
+                    reader.ReadToFollowing("Name");
+                    reader.Read();
+                    string name = reader.Value;
+                    reader.ReadToFollowing("DNS");
+                    reader.Read();
+                    string dns = reader.Value;
+                    Servers.Add(name, dns);
+                }
+                Console.WriteLine("[Serializer] Serialized {0} servers successfully.", Servers.Count);
+            }
+            catch { Console.WriteLine("[Serializer] char/list could not be accessed - parsing failed."); }
+        }
+        #endregion
+
+        #region Helpers
         public static PacketType GetPacketPacketType(byte id)
         {
             if (PacketIdTypeMap.ContainsKey(id)) return PacketIdTypeMap[id];
@@ -158,5 +215,26 @@ namespace Lib_K_Relay.Util
             if (PacketTypeTypeMap.ContainsKey(type)) return PacketTypeTypeMap[type];
             else return typeof(Packet);
         }
+
+        public static string GetServerByFullName(string name)
+        {
+            if (Servers.Count == 0)
+                throw new InvalidOperationException("ParseServers() has not been called.");
+            else if (Servers.ContainsKey(name.ToUpper()))
+                return Servers[name];
+            else
+                return "";
+        }
+
+        public static string GetServerByShortName(string name)
+        {
+            if (Servers.Count == 0)
+                throw new InvalidOperationException("ParseServers() has not been called.");
+            else if (Servers.ContainsKey(name.ToUpper()))
+                return GetServerByFullName(Servers[name]);
+            else
+                return "";
+        }
+        #endregion
     }
 }

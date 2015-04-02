@@ -73,7 +73,6 @@
     <Compile Include="Networking\Packets\Server\UpdatePacket.cs" />
     <Compile Include="Proxy.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Utilities\Servers.cs" />
   </ItemGroup>
   <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

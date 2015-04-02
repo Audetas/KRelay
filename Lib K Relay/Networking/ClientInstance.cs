@@ -13,10 +13,10 @@ namespace Lib_K_Relay.Networking
 {
     public class ClientInstance
     {
-        public RC4 ClientReceiveKey = new RC4("311f80691451c71d09a13a2a6e");
-        public RC4 ServerReceiveKey = new RC4("72c5583cafb6818995cdd74b80");
-        public RC4 ClientSendKey = new RC4("72c5583cafb6818995cdd74b80");
-        public RC4 ServerSendKey = new RC4("311f80691451c71d09a13a2a6e");
+        public RC4 ClientReceiveKey;
+        public RC4 ServerReceiveKey;
+        public RC4 ClientSendKey;
+        public RC4 ServerSendKey;
 
         private PacketBuffer _localBuffer = new PacketBuffer();
         private PacketBuffer _remoteBuffer = new PacketBuffer();
@@ -30,6 +30,11 @@ namespace Lib_K_Relay.Networking
             _proxy = proxy;
             _localConnection = client;
             _remoteConnection = new TcpClient();
+
+            ClientReceiveKey = new RC4(_proxy.Key0);
+            ServerReceiveKey = new RC4(_proxy.Key1);
+            ClientSendKey = new RC4(_proxy.Key1);
+            ServerSendKey = new RC4(_proxy.Key0);
 
             _remoteConnection.BeginConnect(
                 IPAddress.Parse(_proxy.RemoteAddress),
