@@ -15,6 +15,7 @@
 - [ ] Fix PropertyGrid compatability with Settings StringCollection
 - [ ] Add advanced settings (for things like RC4 keys)
 - [ ] More that I can't think of at the moment
+- [ ] Some intuitive way to easily get a packet casted to the desired type in callbacks
 - [x] World Editor plugin (Alec)
 - [ ] Map Cacher plugin (Tobi)
 - [x] Add welcome to K Relay message
