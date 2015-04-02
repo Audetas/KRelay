@@ -46,6 +46,12 @@ namespace MapCacher
             return "Cached map tiles while playing and will attempt to recognize previously visited maps.\n When a map is recognized it will be sent through UPDATE to the client, to display it.";
         }
 
+        public string[] GetCommands()
+        {
+            string[] commands = {};
+            return commands;
+        }
+
         public void Initialize(Proxy proxy)
         {
             proxy.HookPacket(PacketType.UPDATE, OnUpdate);

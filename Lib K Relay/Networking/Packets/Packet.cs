@@ -78,9 +78,10 @@ namespace Lib_K_Relay.Networking.Packets
                                               BindingFlags.Instance);
 
             StringBuilder s = new StringBuilder();
-            s.Append(Type + "(" + Id + ") Packet Structure");
+            s.Append(Type + " [" + Serializer.GetPacketId(Type) + "] \nPacket Structure:\n{");
             foreach (FieldInfo f in fields)
-                s.Append("\n\t" + f.Name + " => " + f.FieldType.Name);
+                s.Append("\n  " + f.Name + " => " + f.FieldType.Name);
+            s.Append("\n}");
             return s.ToString();
         }
     }

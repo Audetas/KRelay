@@ -31,6 +31,12 @@ namespace K_Relay.Util
         public string GetDescription()
         { return "Helps track what packets have been received."; }
 
+        public string[] GetCommands()
+        {
+            string[] commands = { };
+            return commands;
+        }
+
         public void Initialize(Proxy proxy)
         {
             proxy.ClientPacketRecieved += OnPacket;

@@ -34,6 +34,12 @@ namespace K_Relay.Util
                  "Use /connect ingame to change server.\n" +
                  "You can disable this in the settings if you wish to handle RECONNECT packets yourself."; }
 
+        public string[] GetCommands()
+        {
+            string[] commands = {"/connect"};
+            return commands;
+        }
+
         public void Initialize(Proxy proxy)
         {
             _proxy = proxy;

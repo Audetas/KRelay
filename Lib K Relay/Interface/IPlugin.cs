@@ -12,6 +12,7 @@ namespace Lib_K_Relay.Interface
         string GetAuthor();
         string GetName();
         string GetDescription();
+        string[] GetCommands();
 
         void Initialize(Proxy proxy);
     }

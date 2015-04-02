@@ -21,6 +21,12 @@ namespace K_Relay
         {
             string pluginDirectory = Application.StartupPath + @"\Plugins\";
 
+            if (Config.Default.UseInternalReconnectHandler)
+                AttachPlugin(typeof(ReconnectHandler));
+
+            // DEBUG
+            AttachPlugin(typeof(PacketDebugger));
+
             if (!Directory.Exists(pluginDirectory))
             {
                 Console.WriteLine("[Plugin Manager] Plugin directory '{0}' does not exist! No plugins will be loaded.", pluginDirectory);
@@ -51,11 +57,6 @@ namespace K_Relay
                 }
             }
 
-            // DEBUG
-            AttachPlugin(typeof(PacketDebugger));
-
-            if (Config.Default.UseInternalReconnectHandler)
-                AttachPlugin(typeof(ReconnectHandler));
         }
 
         private void btnOpenPluginFolder_Click(object sender, EventArgs e)
@@ -92,6 +93,7 @@ namespace K_Relay
             string author = plugin.GetAuthor();
             string description = plugin.GetDescription();
             string type = plugin.GetType().ToString();
+            string[] commands = plugin.GetCommands();
 
             tbxPluginInfo.Clear();
 
@@ -103,6 +105,15 @@ namespace K_Relay
             AppendText(tbxPluginInfo, type, Color.Black, false);
             AppendText(tbxPluginInfo, "\n\nDescription:\n", Color.DodgerBlue, true);
             AppendText(tbxPluginInfo, description, Color.Black, false);
+            if(commands.Count() > 0) 
+            {
+                AppendText(tbxPluginInfo, "\n\nCommands:", Color.DodgerBlue, true);
+                foreach (string command in commands)
+                {
+                    AppendText(tbxPluginInfo, "\n  " + command, Color.Black, false);
+                }
+            }
+
  
         }
 

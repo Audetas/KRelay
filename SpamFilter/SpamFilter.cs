@@ -23,6 +23,12 @@ namespace SpamFilter
 
         public string GetDescription()
         { return "Filters other players' messages based on a customizable blacklist. Use '/spamfilter gui' to customize."; }
+           
+        public string[] GetCommands()
+        {
+            string[] commands = {"/spamfilter gui"};
+            return commands;
+        }
 
         public void Initialize(Proxy proxy)
         {
