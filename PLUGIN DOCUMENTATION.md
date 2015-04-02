@@ -6,16 +6,21 @@
 Please ensure that you're using Visual Studio 2012 or newer otherwise this guide may be innaccurate for you.
 First steps:
 1) Create a new C# "Class Library" Project.
+
 2) Rightclick your project in the Solution Explorer and select "Add Reference".
+
 3) Go to the "Browse" tab and find and add "Lib K Relay.dll".
+
 4) Rename the default class that was created from "Class1" to something more meaningful and begin editing the class file.
+
 5) Add references the following namespaces in your class file:
--- using Lib_K_Relay;
--- using Lib_K_Relay.Interface;
--- using Lib_K_Relay.Networking;
--- using Lib_K_Relay.Networking.Packets;
--- using Lib_K_Relay.Networking.Packets.Client;
--- using Lib_K_Relay.Networking.Packets.Server;
+- using Lib_K_Relay;
+- using Lib_K_Relay.Interface;
+- using Lib_K_Relay.Networking;
+- using Lib_K_Relay.Networking.Packets;
+- using Lib_K_Relay.Networking.Packets.Client;
+- using Lib_K_Relay.Networking.Packets.Server;
+
 6) Make your class public and implement "IPlugin". eg "public class MyClass : IPlugin".
 
 ## The IPlugin Interface
@@ -39,12 +44,12 @@ The Proxy class represents an instance of a K Relay proxy.
 It contains many modifiable attributes like the remote address and port that you can modify in your plugin.
 An instance of Proxy is passed to your plugn's Initialize(Proxy) method.
 It also contains event handlers for the following events that you can attach to:
-- event Action<Proxy> ProxyListenStarted;
-- event Action<Proxy> ProxyListenStopped;
-- event Action<ClientInstance> ClientConnected;
-- event Action<ClientInstance> ClientDisconnected;
-- event Action<ClientInstance, Packet> ServerPacketRecieved;
-- event Action<ClientInstance, Packet> ClientPacketRecieved;
+- `event Action<Proxy> ProxyListenStarted;`
+- `event Action<Proxy> ProxyListenStopped;`
+- `event Action<ClientInstance> ClientConnected;`
+- `event Action<ClientInstance> ClientDisconnected;`
+- `event Action<ClientInstance, Packet> ServerPacketRecieved;`
+- `event Action<ClientInstance, Packet> ClientPacketRecieved;`
 
 You can also hook specific packets using the Proxy::HookPacket(PacketType, Action<ClientInstance, Packet>) method.
 
@@ -102,7 +107,9 @@ The Serializer class is static and contains many useful serializations:
 ----------------------------------------
 The PacketType enum is the reccomended way to determine what packet is what type instead of using the packet's Id.
 This way, plugins still work when IDs change.
+
 The enum consists of:
+
         UNKNOWN,
         FAILURE,
         CREATE_SUCCESS,
