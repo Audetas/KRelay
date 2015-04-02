@@ -20,6 +20,7 @@ namespace Lib_K_Relay.Util
         public static Dictionary<string, ushort> Tiles = new Dictionary<string, ushort>();
         public static Dictionary<string, ushort> Items = new Dictionary<string, ushort>();
         public static Dictionary<string, ushort> Objects = new Dictionary<string, ushort>();
+        public static Dictionary<string, ushort> Enemies = new Dictionary<string, ushort>();
 
         public static Dictionary<string, string> Servers = new Dictionary<string, string>();
 
@@ -142,6 +143,27 @@ namespace Lib_K_Relay.Util
                     }
                 }
                 Console.WriteLine("[Serializer] Serialized {0} objects successfully.", Objects.Count);
+            }
+            else throw new FileNotFoundException(path);
+        }
+
+        public static void SerializeEnemies()
+        {
+            string path = DEBUGGetSolutionRoot() + @"\XML\enemies.xml";
+            if (File.Exists(path))
+            {
+                XmlDocument document = new XmlDocument();
+                document.Load(path);
+                foreach (XmlNode childNode in document.DocumentElement.ChildNodes)
+                {
+                    if (childNode.Name == "Object")
+                    {
+                        string enemyName = childNode.Attributes.GetNamedItem("id").Value;
+                        ushort enemyId = Convert.ToUInt16(childNode.Attributes.GetNamedItem("type").Value, 16);
+                        if (!Enemies.ContainsKey(enemyName)) Enemies.Add(enemyName, enemyId);
+                    }
+                }
+                Console.WriteLine("[Serializer] Serialized {0} enemies successfully.", Enemies.Count);
             }
             else throw new FileNotFoundException(path);
         }

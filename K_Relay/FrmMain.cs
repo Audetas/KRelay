@@ -32,6 +32,7 @@ namespace K_Relay
             Serializer.SerializeTiles();
             Serializer.SerializeItems();
             Serializer.SerializeObjects();
+            Serializer.SerializeEnemies();
             Serializer.SerializePacketIds();
             Serializer.SerializePacketTypes();
 
