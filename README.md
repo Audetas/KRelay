@@ -27,3 +27,4 @@
 - [x] Fetch server list from char/list
 - [x] TQ Plugin
 - [x] Redo Info tab
+- [ ] FUCK YOU ALEC FIX THIS SHIT ![](https://farm8.staticflickr.com/7652/17006485141_0b7e130c84_o.png)

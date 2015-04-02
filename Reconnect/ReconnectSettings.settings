@@ -1,0 +1,18 @@
+﻿<?xml version='1.0' encoding='utf-8'?>
+<SettingsFile xmlns="http://schemas.microsoft.com/VisualStudio/2004/01/settings" CurrentProfile="(Default)" GeneratedClassNamespace="Reconnect" GeneratedClassName="ReconnectSettings">
+  <Profiles />
+  <Settings>
+    <Setting Name="LastRealmData" Type="System.String" Scope="User">
+      <Value Profile="(Default)" />
+    </Setting>
+    <Setting Name="LastDungeonData" Type="System.String" Scope="User">
+      <Value Profile="(Default)" />
+    </Setting>
+    <Setting Name="VaultData" Type="System.String" Scope="User">
+      <Value Profile="(Default)">-5;Vault</Value>
+    </Setting>
+    <Setting Name="GuildHallData" Type="System.String" Scope="User">
+      <Value Profile="(Default)" />
+    </Setting>
+  </Settings>
+</SettingsFile>

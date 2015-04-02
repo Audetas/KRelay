@@ -1,9 +1,12 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio 2013
-VisualStudioVersion = 12.0.31101.0
+# Visual Studio 14
+VisualStudioVersion = 14.0.22310.1
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "K_Relay", "K_Relay\K_Relay.csproj", "{BAE9E532-8ADB-4AEE-BCB9-DF928AEA0970}"
+	ProjectSection(ProjectDependencies) = postProject
+		{3D2710A4-8C19-40DB-93EE-716DB6A22889} = {3D2710A4-8C19-40DB-93EE-716DB6A22889}
+	EndProjectSection
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Lib K Relay", "Lib K Relay\Lib K Relay.csproj", "{B1B5F3C3-C4FF-4C6E-8879-D2E4E99BEEF9}"
 EndProject
@@ -16,6 +19,8 @@ EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WorldEdit", "WorldEdit\WorldEdit.csproj", "{B5280382-838F-4C28-BD6A-2527EADB0721}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MapCacher", "MapCacher\MapCacher.csproj", "{BD3F0DA6-A032-4F78-932B-492E801B1BA8}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Reconnect", "Reconnect\Reconnect.csproj", "{3D2710A4-8C19-40DB-93EE-716DB6A22889}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -47,6 +52,10 @@ Global
 		{BD3F0DA6-A032-4F78-932B-492E801B1BA8}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{BD3F0DA6-A032-4F78-932B-492E801B1BA8}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{BD3F0DA6-A032-4F78-932B-492E801B1BA8}.Release|Any CPU.Build.0 = Release|Any CPU
+		{3D2710A4-8C19-40DB-93EE-716DB6A22889}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{3D2710A4-8C19-40DB-93EE-716DB6A22889}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{3D2710A4-8C19-40DB-93EE-716DB6A22889}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{3D2710A4-8C19-40DB-93EE-716DB6A22889}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -56,5 +65,6 @@ Global
 		{0B0D0791-28D3-4292-8E7C-ECB262F9584D} = {03A97CEB-D1F4-4BD0-A708-8151EF71A8D7}
 		{B5280382-838F-4C28-BD6A-2527EADB0721} = {03A97CEB-D1F4-4BD0-A708-8151EF71A8D7}
 		{BD3F0DA6-A032-4F78-932B-492E801B1BA8} = {03A97CEB-D1F4-4BD0-A708-8151EF71A8D7}
+		{3D2710A4-8C19-40DB-93EE-716DB6A22889} = {03A97CEB-D1F4-4BD0-A708-8151EF71A8D7}
 	EndGlobalSection
 EndGlobal
