@@ -37,8 +37,8 @@ namespace WorldEdit
         public void Initialize(Proxy proxy)
         {
             proxy.HookPacket(PacketType.USEITEM, OnUseItem);
-            proxy.HookPacket(PacketType.PLAYERTEXT, OnPlayerText);
             proxy.HookPacket(PacketType.UPDATEACK, OnUpdateAck);
+            proxy.HookCommand("worldedit", OnWorldEditCommand);
         }
 
         private void OnUseItem(ClientInstance client, Packet packet)
@@ -64,14 +64,9 @@ namespace WorldEdit
             }
         }
 
-        private void OnPlayerText(ClientInstance client, Packet packet)
+        private void OnWorldEditCommand(ClientInstance client, string command, string[] args)
         {
-            PlayerTextPacket playerText = (PlayerTextPacket)packet;
-            if (playerText.Text.ToLower() == "/worldedit")
-            {
-                playerText.Send = false;
-                new Thread(() => new FrmWorldEdit(this).ShowDialog()).Start();
-            }
+            new Thread(() => new FrmWorldEdit(this).ShowDialog()).Start();
         }
 
         private void OnUpdateAck(ClientInstance client, Packet packet)

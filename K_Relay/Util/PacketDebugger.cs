@@ -10,6 +10,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows.Forms;
 
 namespace K_Relay.Util
 {
@@ -40,6 +41,7 @@ namespace K_Relay.Util
             proxy.ClientPacketRecieved += OnPacket;
             proxy.ServerPacketRecieved += OnPacket;
             proxy.HookPacket(PacketType.UPDATE, OnUpdatePacket);
+            proxy.HookCommand("test", OnTestCommand);
         }
 
         private void OnPacket(ClientInstance client, Packet packet)
@@ -56,6 +58,11 @@ namespace K_Relay.Util
             {
                 update.Tiles[i].Type = Serializer.Tiles["SpiderDirt"];
             }
+        }
+
+        private void OnTestCommand(ClientInstance client, string command, string[] args)
+        {
+            Console.WriteLine("Client {0} command {1} args {2}", client.ObjectId, command, args.Length);
         }
     }
 }

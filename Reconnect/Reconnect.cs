@@ -119,6 +119,12 @@ namespace Reconnect
             */
             #endregion
 
+            //
+            // ANTON
+            // Migrate your command handling to the new command hook system
+            // proxy.HookCommand(string command, callback void(ClientInstance client, string command, string[] args)
+            //
+
             //The first and third checks are so that commands starting with "/r" wouldnt be trigerred in this 
             if (text.Text.ToLower().StartsWith("/r ") || text.Text.ToLower().StartsWith("/reconnect") || text.Text.ToLower() == "/r")
             {//Cancel the packet sending

@@ -42,7 +42,7 @@ namespace K_Relay.Util
             _proxy = proxy;
             proxy.HookPacket(PacketType.RECONNECT, OnReconnectPacket);
             proxy.HookPacket(PacketType.CREATE_SUCCESS, OnCreateSuccess);
-            proxy.HookPacket(PacketType.PLAYERTEXT, OnPlayerText);
+            proxy.HookCommand("connect", OnConnectCommand);
             _originalPort = _proxy.Port;
             _originalHost = _proxy.RemoteAddress;
         }
@@ -90,15 +90,10 @@ namespace K_Relay.Util
             reconnect.Port = 2050;
         }
 
-        private void OnPlayerText(ClientInstance client, Packet packet)
+        private void OnConnectCommand(ClientInstance client, string command, string[] args)
         {
-            PlayerTextPacket playerText = (PlayerTextPacket)packet;
-            if (playerText.Text.ToLower() == "/connect")
-            {
-                playerText.Send = false;
-                _toConnect = client;
-                new Thread(() => new FrmServerReconnect(this).ShowDialog()).Start();
-            }
+            _toConnect = client;
+            new Thread(() => new FrmServerReconnect(this).ShowDialog()).Start();
         }
 
         public void ChangeServer(string address, string name)

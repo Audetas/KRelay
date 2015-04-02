@@ -15,7 +15,6 @@ namespace TQ
 {
     public class TQ : IPlugin
     {
-        private int _playerId = -1;
         private int _questId = -1;
         private Location _questLocation = null;
         private Dictionary<int, Location> _playerLocations;
@@ -41,15 +40,11 @@ namespace TQ
         public void Initialize(Proxy proxy)
         {
             _playerLocations = new Dictionary<int, Location>();
-            proxy.HookPacket(PacketType.CREATE_SUCCESS, OnCreateSuccess);
             proxy.HookPacket(PacketType.NEW_TICK, OnNewTick);
             proxy.HookPacket(PacketType.UPDATE, OnUpdate);
             proxy.HookPacket(PacketType.QUESTOBJID, OnQuestObjId);
-            proxy.HookPacket(PacketType.PLAYERTEXT, OnPlayerText);
+            proxy.HookCommand("tq", OnTQCommand);
         }
-
-        private void OnCreateSuccess(ClientInstance client, Packet packet)
-        { _playerId = (packet as CreateSuccessPacket).ObjectId; }
 
         private void OnQuestObjId(ClientInstance client, Packet packet)
         { _questId = (packet as QuestObjIdPacket).ObjectId; }
@@ -94,34 +89,28 @@ namespace TQ
             }
         }
 
-        private void OnPlayerText(ClientInstance client, Packet packet)
+        private void OnTQCommand(ClientInstance client, string command, string[] args)
         {
-            PlayerTextPacket text = (PlayerTextPacket)packet;
-            if (text.Text.ToLower() == "/tq")
+            if (_questId == -1 || _questLocation == null) return;
+
+            float minDist = _questLocation.DistanceSquaredTo(_playerLocations[client.ObjectId]);
+            int toTp = client.ObjectId;
+
+            foreach (var pair in _playerLocations)
             {
-                text.Send = false;
-
-                if (_questId == -1 || _questLocation == null) return;
-
-                float minDist = _questLocation.DistanceSquaredTo(_playerLocations[_playerId]);
-                int toTp = _playerId;
-
-                foreach (var pair in _playerLocations)
+                float distToQuest = _questLocation.DistanceSquaredTo(pair.Value);
+                if (distToQuest < minDist)
                 {
-                    float distToQuest = _questLocation.DistanceSquaredTo(pair.Value);
-                    if (distToQuest < minDist)
-                    {
-                        minDist = distToQuest;
-                        toTp = pair.Key;
-                    }
+                    minDist = distToQuest;
+                    toTp = pair.Key;
                 }
+            }
 
-                if (toTp != _playerId)
-                {
-                    TeleportPacket teleport = (TeleportPacket)Packet.CreateInstance(PacketType.TELEPORT);
-                    teleport.ObjectId = toTp;
-                    client.SendToServer(teleport);
-                }
+            if (toTp != client.ObjectId)
+            {
+                TeleportPacket teleport = (TeleportPacket)Packet.CreateInstance(PacketType.TELEPORT);
+                teleport.ObjectId = toTp;
+                client.SendToServer(teleport);
             }
         }
     }
