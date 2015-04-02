@@ -17,6 +17,7 @@
 - [ ] More that I can't think of at the moment
 - [ ] Some intuitive way to easily get a packet casted to the desired type in callbacks
 - [ ] Plugins utilites class with methods like SendNotification(ClientInstance, string)
+- [ ] FIGURE OUT WHY THE CLIENT KEEPS LOGGING OUT HOLY SHIT MAKE IT STOP
 - [x] World Editor plugin (Alec)
 - [ ] Map Cacher plugin (Tobi)
 - [x] Add welcome to K Relay message
