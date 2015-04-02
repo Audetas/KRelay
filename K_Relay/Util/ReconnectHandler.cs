@@ -35,10 +35,7 @@ namespace K_Relay.Util
                  "You can disable this in the settings if you wish to handle RECONNECT packets yourself."; }
 
         public string[] GetCommands()
-        {
-            string[] commands = {"/connect"};
-            return commands;
-        }
+        { return new string[] { "/connect" }; }
 
         public void Initialize(Proxy proxy)
         {

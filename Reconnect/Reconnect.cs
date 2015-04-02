@@ -28,16 +28,13 @@ namespace Reconnect
         { return "TheMrNobody"; }
 
         public string GetName()
-        { return "Reconnect"; }
+        { return "Map Reconnect"; }
 
         public string GetDescription()
         { return "placeholder"; }
 
         public string[] GetCommands()
-        {
-            string[] commands = { "/r d", "/r v", "/r g" };
-            return commands;
-        }
+        { return new string[] { "/r d", "/r v", "/r g" }; }
 
         public void Initialize(Proxy proxy)
         {

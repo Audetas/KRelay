@@ -1,5 +1,6 @@
 ﻿using K_Relay.Util;
 using Lib_K_Relay.Interface;
+using Lib_K_Relay.Util;
 using System;
 using System.Collections.Generic;
 using System.Diagnostics;
@@ -19,7 +20,7 @@ namespace K_Relay
 
         private void InitPlugins()
         {
-            string pluginDirectory = Application.StartupPath + @"\Plugins\";
+            string pluginDirectory = Serializer.DEBUGGetSolutionRoot() + @"\Plugins\";
 
             if (Config.Default.UseInternalReconnectHandler)
                 AttachPlugin(typeof(ReconnectHandler));

@@ -32,10 +32,7 @@ namespace WorldEdit
         { return "Allows you to edit the tiles of the map while in game.\nUse the /worldedit command to begin."; }
 
         public string[] GetCommands()
-        {
-            string[] commands = { "/worldedit" };
-            return commands;
-        }
+        { return new string[] { "/worldedit" }; }
 
         public void Initialize(Proxy proxy)
         {

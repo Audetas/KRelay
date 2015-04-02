@@ -48,8 +48,7 @@ namespace MapCacher
 
         public string[] GetCommands()
         {
-            string[] commands = {};
-            return commands;
+            return new string[] { };
         }
 
         public void Initialize(Proxy proxy)

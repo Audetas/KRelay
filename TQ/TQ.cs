@@ -36,10 +36,7 @@ namespace TQ
         { return "Teleport to the player closest to your current quest using /tq."; }
 
         public string[] GetCommands()
-        {
-            string[] commands = {"/tq"};
-            return commands;
-        }
+        { return new string[] { "/tq" }; }
 
         public void Initialize(Proxy proxy)
         {

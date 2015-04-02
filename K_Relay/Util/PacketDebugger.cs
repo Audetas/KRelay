@@ -33,10 +33,7 @@ namespace K_Relay.Util
         { return "Helps track what packets have been received."; }
 
         public string[] GetCommands()
-        {
-            string[] commands = { };
-            return commands;
-        }
+        { return new string[] { }; }
 
         public void Initialize(Proxy proxy)
         {

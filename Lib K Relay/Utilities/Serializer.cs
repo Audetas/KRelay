@@ -26,7 +26,7 @@ namespace Lib_K_Relay.Util
         #region Packet Serialization
         public static void SerializePacketIds()
         {
-            string path = Application.StartupPath + @"\XML\packets.xml";
+            string path = DEBUGGetSolutionRoot() + @"\XML\packets.xml";
             if (File.Exists(path))
             {
                 XmlDocument document = new XmlDocument();
@@ -85,7 +85,7 @@ namespace Lib_K_Relay.Util
         #region Object Serialization
         public static void SerializeTiles()
         {
-            string path = Application.StartupPath + @"\XML\tiles.xml";
+            string path = DEBUGGetSolutionRoot() + @"\XML\tiles.xml";
             if (File.Exists(path))
             {
                 XmlDocument document = new XmlDocument();
@@ -106,7 +106,7 @@ namespace Lib_K_Relay.Util
 
         public static void SerializeItems()
         {
-            string path = Application.StartupPath + @"\XML\items.xml";
+            string path = DEBUGGetSolutionRoot() + @"\XML\items.xml";
             if (File.Exists(path))
             {
                 XmlDocument document = new XmlDocument();
@@ -127,7 +127,7 @@ namespace Lib_K_Relay.Util
 
         public static void SerializeObjects()
         {
-            string path = Application.StartupPath + @"\XML\objects.xml";
+            string path = DEBUGGetSolutionRoot() + @"\XML\objects.xml";
             if (File.Exists(path))
             {
                 XmlDocument document = new XmlDocument();
@@ -236,5 +236,11 @@ namespace Lib_K_Relay.Util
                 return "";
         }
         #endregion
+
+        public static string DEBUGGetSolutionRoot()
+        {
+            // This is single handedly the worse piece of code i've ever written.
+            return Directory.GetParent(Directory.GetParent(Directory.GetParent(Application.StartupPath).ToString()).ToString()).ToString();
+        }
     }
 }

@@ -14,7 +14,6 @@ namespace K_Relay
         [STAThread]
         static void Main()
         {
-            Console.WriteLine("Starting up...");
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
             Application.Run(new FrmMain());
