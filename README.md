@@ -16,6 +16,7 @@
 - [ ] Add advanced settings (for things like RC4 keys)
 - [ ] More that I can't think of at the moment
 - [ ] Some intuitive way to easily get a packet casted to the desired type in callbacks
+- [ ] Plugins utilites class with methods like SendNotification(ClientInstance, string)
 - [x] World Editor plugin (Alec)
 - [ ] Map Cacher plugin (Tobi)
 - [x] Add welcome to K Relay message
