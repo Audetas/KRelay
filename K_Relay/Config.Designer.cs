@@ -70,5 +70,17 @@ namespace K_Relay {
                 this["RC4Key1"] = value;
             }
         }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("False")]
+        public bool StartProxyByDefault {
+            get {
+                return ((bool)(this["StartProxyByDefault"]));
+            }
+            set {
+                this["StartProxyByDefault"] = value;
+            }
+        }
     }
 }

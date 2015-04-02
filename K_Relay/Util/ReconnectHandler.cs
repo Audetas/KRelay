@@ -2,12 +2,15 @@
 using Lib_K_Relay.Interface;
 using Lib_K_Relay.Networking;
 using Lib_K_Relay.Networking.Packets;
+using Lib_K_Relay.Networking.Packets.Client;
 using Lib_K_Relay.Networking.Packets.Server;
+using Lib_K_Relay.Util;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Net;
 using System.Text;
+using System.Threading;
 using System.Threading.Tasks;
 
 namespace K_Relay.Util
@@ -17,6 +20,7 @@ namespace K_Relay.Util
         private Proxy _proxy;
         private string _originalHost;
         private int _originalPort;
+        private ClientInstance _toConnect;
 
         public string GetAuthor()
         { return "KrazyShank / Kronks"; }
@@ -27,6 +31,7 @@ namespace K_Relay.Util
         public string GetDescription()
         { return "Changes the host name to that of the entered portal.\n" +
                  "Required to be able to enter portals.\n" + 
+                 "Use /connect ingame to change server.\n" +
                  "You can disable this in the settings if you wish to handle RECONNECT packets yourself."; }
 
         public void Initialize(Proxy proxy)
@@ -34,6 +39,7 @@ namespace K_Relay.Util
             _proxy = proxy;
             proxy.HookPacket(PacketType.RECONNECT, OnReconnectPacket);
             proxy.HookPacket(PacketType.CREATE_SUCCESS, OnCreateSuccess);
+            proxy.HookPacket(PacketType.PLAYERTEXT, OnPlayerText);
             _originalPort = _proxy.Port;
             _originalHost = _proxy.RemoteAddress;
         }
@@ -79,6 +85,35 @@ namespace K_Relay.Util
             // Tell the client to connect to the proxy
             reconnect.Host = "localhost";
             reconnect.Port = 2050;
+        }
+
+        private void OnPlayerText(ClientInstance client, Packet packet)
+        {
+            PlayerTextPacket playerText = (PlayerTextPacket)packet;
+            if (playerText.Text.ToLower() == "/connect")
+            {
+                playerText.Send = false;
+                _toConnect = client;
+                new Thread(() => new FrmServerReconnect(this).ShowDialog()).Start();
+            }
+        }
+
+        public void ChangeServer(string address, string name)
+        {
+            Console.WriteLine("[Reconnect Handler] Changing to server {0}({1}).", name, address);
+            ReconnectPacket reconnect = (ReconnectPacket)Packet.CreateInstance(PacketType.RECONNECT);
+            _proxy.Port = 2050;
+            _proxy.RemoteAddress = address;
+
+            reconnect.Host = "localhost";
+            reconnect.Port = 2050;
+            reconnect.GameId = -2;
+            reconnect.Name = "Connecting to " + name;
+
+            reconnect.IsFromArena = false;
+            reconnect.Key = new byte[0];
+            reconnect.KeyTime = 0;
+            _toConnect.SendToClient(reconnect);
         }
     }
 }

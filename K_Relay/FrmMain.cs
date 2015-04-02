@@ -53,6 +53,9 @@ namespace K_Relay
         {
             InitPackets();
             InitPlugins();
+
+            if (Config.Default.StartProxyByDefault)
+                btnToggleProxy_Click(null, null);
         }
 
         private void btnToggleProxy_Click(object sender, EventArgs e)

@@ -220,7 +220,7 @@ namespace Lib_K_Relay.Util
         {
             if (Servers.Count == 0)
                 throw new InvalidOperationException("ParseServers() has not been called.");
-            else if (Servers.ContainsKey(name.ToUpper()))
+            else if (Servers.ContainsKey(name))
                 return Servers[name];
             else
                 return "";
@@ -230,8 +230,8 @@ namespace Lib_K_Relay.Util
         {
             if (Servers.Count == 0)
                 throw new InvalidOperationException("ParseServers() has not been called.");
-            else if (Servers.ContainsKey(name.ToUpper()))
-                return GetServerByFullName(Servers[name]);
+            else if (Servers.ContainsKey(name))
+                return GetServerByFullName(Servers[name.ToUpper()]);
             else
                 return "";
         }
