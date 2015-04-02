@@ -8,7 +8,7 @@
 -----------------------------------------------------------
 
 ##Plugin Documentation
-[Can be found here](../PLUGIN DOCUMENTATION.md)
+[Can be found here](../master/PLUGIN%20DOCUMENTATION.md)
 
 -----------------------------------------------------------
 
