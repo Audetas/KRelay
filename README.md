@@ -15,7 +15,7 @@
 - [ ] Fix PropertyGrid compatability with Settings StringCollection
 - [ ] Add advanced settings (for things like RC4 keys)
 - [ ] More that I can't think of at the moment
-- [ ] World Editor plugin (Alec)
+- [x] World Editor plugin (Alec)
 - [ ] Map Cacher plugin (Tobi)
 - [x] Add welcome to K Relay message
 - [x] Finish the plugins tab
