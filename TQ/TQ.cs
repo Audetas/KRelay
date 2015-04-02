@@ -115,7 +115,7 @@ namespace TQ
 
                 if (toTp != _playerId)
                 {
-                    TeleportPacket teleport = new TeleportPacket();
+                    TeleportPacket teleport = (TeleportPacket)Packet.CreateInstance(PacketType.TELEPORT);
                     teleport.ObjectId = toTp;
                     client.SendToServer(teleport);
                 }

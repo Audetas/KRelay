@@ -36,6 +36,10 @@
     <PacketID>23</PacketID>
   </Packet>
   <Packet>
+    <PacketName>UPDATEACK</PacketName>
+    <PacketID>92</PacketID>
+  </Packet>
+  <Packet>
     <PacketName>NOTIFICATION</PacketName>
     <PacketID>42</PacketID>
   </Packet>

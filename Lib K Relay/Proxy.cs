@@ -91,7 +91,7 @@ namespace Lib_K_Relay
 
         private void LocalConnect(IAsyncResult ar)
         {
-            //try
+            try
             {
                 // Finish the accept, and then instantiate a ClientInstance
                 // to begin handling IO on that socket and start its own 
@@ -102,21 +102,22 @@ namespace Lib_K_Relay
                 // Listen for new clients.
                 _localListener.BeginAcceptTcpClient(LocalConnect, null);
             }
-            //catch (ObjectDisposedException ignored) { } // This happens when the proxy stops and the callback fires. We'll ignore it.
-            //catch (Exception e) 
-            //{
-                //Console.WriteLine("[Client Listner] ClientListen failed! Here's the exception report:\n{0}", e.Message);
-                //Stop();
-            //}
+            catch (ObjectDisposedException ignored) { } // This happens when the proxy stops and the callback fires. We'll ignore it.
+            catch (Exception e) 
+            {
+                Console.WriteLine("[Client Listner] ClientListen failed! Here's the exception report:\n{0}", e.Message);
+                Stop();
+            }
         }
 
         public void HookPacket(PacketType type, Action<ClientInstance, Packet> callback)
         {
+            /*
             if (Serializer.GetPacketId(type) == 255)
                 throw new InvalidOperationException("[Plugin Error] A plugin attempted to register callback " +
                                                     callback.GetMethodInfo().ReflectedType + "." + callback.Method.Name +
                                                     " for packet type " + type + " that doesn't have a structure defined.");
-            else
+            else*/
                 _packetHooks.Add(new Tuple<PacketType, Action<ClientInstance, Packet>>(type, callback));
         }
 
