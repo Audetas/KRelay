@@ -84,86 +84,31 @@ namespace Lib_K_Relay.Util
         #endregion
 
         #region Object Serialization
-        public static void SerializeTiles()
+        public static void SerializeGameObjects()
         {
-            string path = DEBUGGetSolutionRoot() + @"\XML\tiles.xml";
-            if (File.Exists(path))
-            {
-                XmlDocument document = new XmlDocument();
-                document.Load(path);
-                foreach (XmlNode childNode in document.DocumentElement.ChildNodes)
-                {
-                    if (childNode.Name == "Ground")
-                    {
-                        string tileName = childNode.Attributes.GetNamedItem("id").Value;
-                        ushort tileId = Convert.ToUInt16(childNode.Attributes.GetNamedItem("type").Value, 16);
-                        if (!Tiles.ContainsKey(tileName)) Tiles.Add(tileName, tileId);
-                    }
-                }
-                Console.WriteLine("[Serializer] Serialized {0} tiles successfully.", Tiles.Count);
-            }
-            else throw new FileNotFoundException(path);
+            SerializeFromXML("tiles", "Ground", Tiles);
+            SerializeFromXML("items", "Object", Items);
+            SerializeFromXML("objects", "Object", Objects);
+            SerializeFromXML("enemies", "Object", Enemies);
         }
 
-        public static void SerializeItems()
+        private static void SerializeFromXML(string fileName, string nodeName, Dictionary<string, ushort> dict)
         {
-            string path = DEBUGGetSolutionRoot() + @"\XML\items.xml";
+            string path = DEBUGGetSolutionRoot() + @"\XML\" + fileName + ".xml";
             if (File.Exists(path))
             {
                 XmlDocument document = new XmlDocument();
                 document.Load(path);
                 foreach (XmlNode childNode in document.DocumentElement.ChildNodes)
                 {
-                    if (childNode.Name == "Object")
-                    {
-                        string itemName = childNode.Attributes.GetNamedItem("id").Value;
-                        ushort itemId = Convert.ToUInt16(childNode.Attributes.GetNamedItem("type").Value, 16);
-                        if (!Items.ContainsKey(itemName)) Items.Add(itemName, itemId);
-                    }
-                }
-                Console.WriteLine("[Serializer] Serialized {0} items successfully.", Items.Count);
-            }
-            else throw new FileNotFoundException(path);
-        }
-
-        public static void SerializeObjects()
-        {
-            string path = DEBUGGetSolutionRoot() + @"\XML\objects.xml";
-            if (File.Exists(path))
-            {
-                XmlDocument document = new XmlDocument();
-                document.Load(path);
-                foreach (XmlNode childNode in document.DocumentElement.ChildNodes)
-                {
-                    if (childNode.Name == "Object")
+                    if (childNode.Name == nodeName)
                     {
                         string objectName = childNode.Attributes.GetNamedItem("id").Value;
                         ushort objectId = Convert.ToUInt16(childNode.Attributes.GetNamedItem("type").Value, 16);
-                        if (!Objects.ContainsKey(objectName)) Objects.Add(objectName, objectId);
+                        if (!dict.ContainsKey(objectName)) dict.Add(objectName, objectId);
                     }
                 }
-                Console.WriteLine("[Serializer] Serialized {0} objects successfully.", Objects.Count);
-            }
-            else throw new FileNotFoundException(path);
-        }
-
-        public static void SerializeEnemies()
-        {
-            string path = DEBUGGetSolutionRoot() + @"\XML\enemies.xml";
-            if (File.Exists(path))
-            {
-                XmlDocument document = new XmlDocument();
-                document.Load(path);
-                foreach (XmlNode childNode in document.DocumentElement.ChildNodes)
-                {
-                    if (childNode.Name == "Object")
-                    {
-                        string enemyName = childNode.Attributes.GetNamedItem("id").Value;
-                        ushort enemyId = Convert.ToUInt16(childNode.Attributes.GetNamedItem("type").Value, 16);
-                        if (!Enemies.ContainsKey(enemyName)) Enemies.Add(enemyName, enemyId);
-                    }
-                }
-                Console.WriteLine("[Serializer] Serialized {0} enemies successfully.", Enemies.Count);
+                Console.WriteLine("[Serializer] Serialized {0} {1} successfully.", dict.Count, fileName);
             }
             else throw new FileNotFoundException(path);
         }
@@ -240,9 +185,7 @@ namespace Lib_K_Relay.Util
 
         public static string GetServerByFullName(string name)
         {
-            if (Servers.Count == 0)
-                throw new InvalidOperationException("ParseServers() has not been called.");
-            else if (Servers.ContainsKey(name))
+            if (Servers.ContainsKey(name))
                 return Servers[name];
             else
                 return "";
@@ -250,9 +193,7 @@ namespace Lib_K_Relay.Util
 
         public static string GetServerByShortName(string name)
         {
-            if (Servers.Count == 0)
-                throw new InvalidOperationException("ParseServers() has not been called.");
-            else if (Servers.ContainsKey(name))
+            if (Servers.ContainsKey(name))
                 return GetServerByFullName(Servers[name.ToUpper()]);
             else
                 return "";

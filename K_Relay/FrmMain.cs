@@ -29,10 +29,7 @@ namespace K_Relay
             Console.SetOut(new TextBoxStreamWriter(tbxLog));
 
             Serializer.SerializeServers();
-            Serializer.SerializeTiles();
-            Serializer.SerializeItems();
-            Serializer.SerializeObjects();
-            Serializer.SerializeEnemies();
+            Serializer.SerializeGameObjects();
             Serializer.SerializePacketIds();
             Serializer.SerializePacketTypes();
 
