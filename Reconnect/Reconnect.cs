@@ -33,6 +33,12 @@ namespace Reconnect
         public string GetDescription()
         { return "placeholder"; }
 
+        public string[] GetCommands()
+        {
+            string[] commands = { "/r d", "/r v", "/r g" };
+            return commands;
+        }
+
         public void Initialize(Proxy proxy)
         {
             this.proxy = proxy;
