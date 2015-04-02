@@ -1,12 +1,14 @@
 # K_Relay
 #### A modular Realm of the Mad God man-in-the-middle Proxy
 
-
-
-
 -----------------------------------------------------------
 
 ### Please do not share this code. You're not allowed to re-release this.
+
+-----------------------------------------------------------
+
+##Plugin Documentation
+[Can be found here](../PLUGIN DOCUMENTATION.md)
 
 -----------------------------------------------------------
 
