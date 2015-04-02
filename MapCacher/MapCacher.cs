@@ -56,7 +56,7 @@ namespace MapCacher
         {
             proxy.HookPacket(PacketType.UPDATE, OnUpdate);
             proxy.HookPacket(PacketType.MAPINFO, GetMapInfo);
-            proxy.HookPacket(PacketType.LOAD, OnEnterMap);
+            proxy.HookPacket(PacketType.CREATE_SUCCESS, OnEnterMap);
             initialized = false;
         }
 
@@ -66,7 +66,7 @@ namespace MapCacher
 
             foreach (Tile tile in update.Tiles)
             {
-                mapdata[tile.Y, tile.X] = tile.Type;
+                mapdata[tile.Y, tile.X] = (ushort)tile.Type;
             }
         }
 
