@@ -36,6 +36,7 @@ IPlugin constists of the following methods:
 - string GetAuthor(). This should return the name of the creator of the plugin.
 - string GetName(). This should return the name of the plugin.
 - string GetDescription(). This should return a description of what your plugin does and any other important info.
+- string[] GetCommands(). This should return a list of any commands that your plugin uses.
 - void Initialize(Proxy). This is called once by the plugin manager when your plugin is created and should be where you register proxy hooks and do other initialization logic.
 
 ## The Proxy Class
@@ -51,7 +52,8 @@ It also contains event handlers for the following events that you can attach to:
 - `event Action<ClientInstance, Packet> ServerPacketRecieved;`
 - `event Action<ClientInstance, Packet> ClientPacketRecieved;`
 
-You can also hook specific packets using the Proxy::HookPacket(PacketType, Action<ClientInstance, Packet>) method.
+You can hook specific packets using the Proxy::HookPacket(PacketType, Action<ClientInstance, Packet>) method.
+You can hoko specific commands using the Proxy::HookCommand(string command, Action<ClientInstance, string, string[]>) method.
 
 Here's an example of attaching to an event listener and hooking a packet:
 ```C#
@@ -59,6 +61,7 @@ void Initialize(Proxy proxy)
 {
 	proxy.ClientConnected += OnClientConnected; // Attach to an event listener
 	proxy.HookPacket(PacketType.PlayerText, OnPlayerText); // Hook a specific packet
+	proxy.HookCommand("connect", OnConnectCommand); // Hook a specific command
 }
 
 void OnClientConnected(ClientInstance client)
@@ -71,6 +74,14 @@ void OnPlayerText(ClientInstance client, Packet packet)
 	PlayerTextPacket playerText = (PlayerTextPacket)packet;
 	Console.WriteLine("You said: {0}", playerText.Text);
 }
+
+void OnConnectCommand(ClientInstance client, string command, string[] args)
+{
+	if (args.Length == 1)
+		Console.WriteLine("Player used /connect to connect to server {0}", args[0]);
+	else
+		Console.WriteLine("Player used /connect but didn't specify a server!");
+}
 ```
 
 ## The ClientInstance Class
@@ -81,6 +92,7 @@ For the most part, your main interactions with this class will include:
 - Creating a hash map (Dictionary) of ClientInstances to store variables on a per-client basis - since there is only one instance of your plugin.
 - The SendToClient(Packet) method, to send a specified packet to the client.
 - The SendToServer(Packet) method, to send a specified packet to the server from the client.
+- The ObjectId field, which is the object id that represents the client that was given by the CREATE_SUCCESS packet.
 
 ## The Packet Class
 ----------------------------------------
@@ -99,7 +111,8 @@ Important Packet Methods:
 The Serializer class is static and contains many useful serializations:
 - Dictionary Tiles [TileName => TileId]. All the different types of tiles in the game.
 - Dictionary Items [ItemName => ItemId]. All the different items in the game.
-- Dictionary Object [ObjectName => ObjectId]. All the different game objects in the game.
+- Dictionary Objects [ObjectName => ObjectId]. All the different game objects in the game.
+- Dictionart Enemies [EnemyName => EnemyId]. ALl the different enemies in the game.
 - Packets. Methods GetPacketPacketType(id), GetPacketId(type)
 - Servers. Methods GetServerByFullName(fullName), GetServerByShortName(shortName)
 
