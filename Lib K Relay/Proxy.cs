@@ -1,5 +1,6 @@
 ﻿using Lib_K_Relay.Networking;
 using Lib_K_Relay.Networking.Packets;
+using Lib_K_Relay.Networking.Packets.Client;
 using Lib_K_Relay.Util;
 using System;
 using System.Collections.Generic;
@@ -29,6 +30,8 @@ namespace Lib_K_Relay
 
         private List<Tuple<PacketType, Action<ClientInstance, Packet>>> _packetHooks = 
             new List<Tuple<PacketType, Action<ClientInstance, Packet>>>();
+        private List<Tuple<string, Action<ClientInstance, string, string[]>>> _commandHooks = // TODO: Fix this ugly shit
+            new List<Tuple<string, Action<ClientInstance, string, string[]>>>();
 
         private TcpListener _localListener = null;
 
@@ -89,12 +92,18 @@ namespace Lib_K_Relay
 
         public void HookPacket(PacketType type, Action<ClientInstance, Packet> callback)
         {
-            if (Serializer.GetPacketId(type) == 255)
+            if (Serializer.GetPacketId(type) == 255) // TODO: Remove when all structures are defined
                 throw new InvalidOperationException("[Plugin Error] A plugin attempted to register callback " +
                                                     callback.GetMethodInfo().ReflectedType + "." + callback.Method.Name +
                                                     " for packet type " + type + " that doesn't have a structure defined.");
             else
                 _packetHooks.Add(new Tuple<PacketType, Action<ClientInstance, Packet>>(type, callback));
+        }
+
+        public void HookCommand(string command, Action<ClientInstance, string, string[]> callback)
+        {
+            _commandHooks.Add(new Tuple<string, Action<ClientInstance, string, string[]>>(
+                command.ToLower().Replace("/", ""), callback));
         }
 
         public void FireClientConnected(ClientInstance client)
@@ -138,6 +147,28 @@ namespace Lib_K_Relay
         {
             try
             {
+                // Fire command callbacks
+                if (packet.Type == PacketType.PLAYERTEXT)
+                {
+                    PlayerTextPacket playerText = (PlayerTextPacket)packet;
+                    string text = playerText.Text.Replace("/", "").ToLower();
+                    string command = text.Contains(' ')
+                                     ? text.Split(' ')[0].ToLower()
+                                     : text;
+                    string[] args =  text.Contains(' ')
+                                     ? text.Split(' ').Skip(1).ToArray()
+                                     : new string[0];
+
+                    foreach (var h in _commandHooks)
+                    {
+                        if (h.Item1 == command)
+                        {
+                            playerText.Send = false;
+                            h.Item2(client, command, args);
+                        }
+                    }
+                }
+
                 // Fire specific hook callbacks if applicable
                 foreach (var hook in _packetHooks)
                 {

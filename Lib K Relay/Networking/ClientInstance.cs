@@ -1,5 +1,6 @@
 using Lib_K_Relay.Crypto;
 using Lib_K_Relay.Networking.Packets;
+using Lib_K_Relay.Networking.Packets.Server;
 using System;
 using System.Collections.Generic;
 using System.IO;
@@ -13,6 +14,7 @@ namespace Lib_K_Relay.Networking
 {
     public class ClientInstance
     {
+        public int ObjectId;
         public RC4 ClientReceiveKey;
         public RC4 ServerReceiveKey;
         public RC4 ClientSendKey;
@@ -77,7 +79,10 @@ namespace Lib_K_Relay.Networking
                     Packet packet = Packet.CreateInstance(_remoteBuffer.Buffer());
 
                     if (packet.Type != PacketType.UNKNOWN)
+                    {
+                        HandlePacketInternal(packet);
                         _proxy.FireServerPacket(this, packet);
+                    }
 
                     if (packet.Send)
                         SendToClient(packet);
@@ -114,7 +119,10 @@ namespace Lib_K_Relay.Networking
                     Packet packet = Packet.CreateInstance(_localBuffer.Buffer());
 
                     if (packet.Type != PacketType.UNKNOWN)
+                    {
+                        HandlePacketInternal(packet);
                         _proxy.FireClientPacket(this, packet);
+                    }
 
                     if (packet.Send)
                         SendToServer(packet);
@@ -184,6 +192,14 @@ namespace Lib_K_Relay.Networking
 
             if (_remoteConnection.Connected) _remoteConnection.Close();
             if (_localConnection.Connected) _localConnection.Close();
+        }
+
+        private void HandlePacketInternal(Packet packet) // TODO: Add more hooks
+        {
+            if (packet.Type == PacketType.CREATE_SUCCESS)
+            {
+                ObjectId = (packet as CreateSuccessPacket).ObjectId;
+            }
         }
     }
 }
