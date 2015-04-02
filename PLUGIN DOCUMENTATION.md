@@ -14,12 +14,12 @@ First steps:
 4) Rename the default class that was created from "Class1" to something more meaningful and begin editing the class file.
 
 5) Add references the following namespaces in your class file:
-- using Lib_K_Relay;
-- using Lib_K_Relay.Interface;
-- using Lib_K_Relay.Networking;
-- using Lib_K_Relay.Networking.Packets;
-- using Lib_K_Relay.Networking.Packets.Client;
-- using Lib_K_Relay.Networking.Packets.Server;
+- `using Lib_K_Relay;`
+- `using Lib_K_Relay.Interface;`
+- `using Lib_K_Relay.Networking;`
+- `using Lib_K_Relay.Networking.Packets;`
+- `using Lib_K_Relay.Networking.Packets.Client;`
+- `using Lib_K_Relay.Networking.Packets.Server;`
 
 6) Make your class public and implement "IPlugin". eg "public class MyClass : IPlugin".
 
@@ -33,11 +33,11 @@ Things to note are:
 - If you give your class a custom constructor, it most not have any arguments or the plugin will fail to load.
 
 IPlugin constists of the following methods:
-- string GetAuthor(). This should return the name of the creator of the plugin.
-- string GetName(). This should return the name of the plugin.
-- string GetDescription(). This should return a description of what your plugin does and any other important info.
-- string[] GetCommands(). This should return a list of any commands that your plugin uses.
-- void Initialize(Proxy). This is called once by the plugin manager when your plugin is created and should be where you register proxy hooks and do other initialization logic.
+- `string GetAuthor()`. This should return the name of the creator of the plugin.
+- `string GetName()`. This should return the name of the plugin.
+- `string GetDescription()`. This should return a description of what your plugin does and any other important info.
+- `string[] GetCommands()`. This should return a list of any commands that your plugin uses.
+- `void Initialize(Proxy)`. This is called once by the plugin manager when your plugin is created and should be where you register proxy hooks and do other initialization logic.
 
 ## The Proxy Class
 ----------------------------------------
@@ -52,8 +52,8 @@ It also contains event handlers for the following events that you can attach to:
 - `event Action<ClientInstance, Packet> ServerPacketRecieved;`
 - `event Action<ClientInstance, Packet> ClientPacketRecieved;`
 
-You can hook specific packets using the Proxy::HookPacket(PacketType, Action<ClientInstance, Packet>) method.
-You can hoko specific commands using the Proxy::HookCommand(string command, Action<ClientInstance, string, string[]>) method.
+You can hook specific packets using the `Proxy::HookPacket(PacketType, Action<ClientInstance, Packet>)` method.
+You can hook specific commands using the `Proxy::HookCommand(string command, Action<ClientInstance, string, string[]>)` method.
 
 Here's an example of attaching to an event listener and hooking a packet:
 ```C#
@@ -90,31 +90,31 @@ The ClientInstance class represents a connect client to the proxy.
 An instance of this class will be passed to your event handlers to determine what client is involved with the event.
 For the most part, your main interactions with this class will include:
 - Creating a hash map (Dictionary) of ClientInstances to store variables on a per-client basis - since there is only one instance of your plugin.
-- The SendToClient(Packet) method, to send a specified packet to the client.
-- The SendToServer(Packet) method, to send a specified packet to the server from the client.
-- The ObjectId field, which is the object id that represents the client that was given by the CREATE_SUCCESS packet.
+- The `SendToClient(Packet)` method, to send a specified packet to the client.
+- The `SendToServer(Packet)` method, to send a specified packet to the server from the client.
+- The `ObjectId` field, which is the object id that represents the client that was given by the CREATE_SUCCESS packet.
 
 ## The Packet Class
 ----------------------------------------
 The Packet class holds the data of an intercepted packet. Packet is the generic class that is extended by classes of specific types of packets like PlayerTextPacket.
 Important Packet fields:
-- byte Id. The id of the packet. Refrain from using this in your logic. 
-- PacketType Type. The type of the packet. Use this in your logic instead of Id!
-- bool Send. Determines if the packet is sent. Set it to false to cancel the packet.
+- `byte Id`. The id of the packet. Refrain from using this in your logic. 
+- `PacketType Type`. The type of the packet. Use this in your logic instead of Id!
+- `bool Send`. Determines if the packet is sent. Set it to false to cancel the packet.
 
 Important Packet Methods:
-- static Packet CreateInstance(PacketType). Used to create a new instance of a packet by type. Use this to create your own packets to send off. Do NOT use the packet constructor.
-- string ToString(). Returns the name of the packet, the id, and a table of its fields and values. This is useful for debugging!
+- `static Packet CreateInstance(PacketType)`. Used to create a new instance of a packet by type. Use this to create your own packets to send off. Do NOT use the packet constructor.
+- `string ToString()`. Returns the name of the packet, the id, and a table of its fields and values. This is useful for debugging!
 
 ## The Serializer Class
 ----------------------------------------
 The Serializer class is static and contains many useful serializations:
-- Dictionary Tiles [TileName => TileId]. All the different types of tiles in the game.
-- Dictionary Items [ItemName => ItemId]. All the different items in the game.
-- Dictionary Objects [ObjectName => ObjectId]. All the different game objects in the game.
-- Dictionart Enemies [EnemyName => EnemyId]. ALl the different enemies in the game.
-- Packets. Methods GetPacketPacketType(id), GetPacketId(type)
-- Servers. Methods GetServerByFullName(fullName), GetServerByShortName(shortName)
+- `Dictionary<string tile, ushort id> Tiles`. All the different types of tiles in the game.
+- `Dictionary<string item, ushort id> Items`. All the different items in the game.
+- `Dictionary<string object, ushort id> Objects`. All the different game objects in the game.
+- `Dictionary<string enemy, ushort id> Enemies`. All the different enemies in the game.
+- Packets. Methods `GetPacketPacketType(id)`, `GetPacketId(type)`
+- Servers. Methods `GetServerByFullName(fullName)`, `GetServerByShortName(shortName)`
 
 ## The PacketType Enumeration
 ----------------------------------------
