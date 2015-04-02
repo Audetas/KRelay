@@ -43,7 +43,7 @@ namespace MapCacher
 
         public string GetDescription()
         {
-            return "Cached map tiles while playing and will attempt to recognize previously visited maps.\nWhen a map is recognized it will be sent through UPDATE to the client, to display it.";
+            return "Caches map tiles while playing and will attempt to recognize previously visited maps.\nWhen a map is recognized it will be sent through UPDATE to the client, to display it.";
         }
 
         public string[] GetCommands()
