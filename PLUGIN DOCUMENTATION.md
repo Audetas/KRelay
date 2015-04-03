@@ -33,11 +33,18 @@ Things to note are:
 - If you give your class a custom constructor, it most not have any arguments or the plugin will fail to load.
 
 IPlugin constists of the following methods:
-- `string GetAuthor()`. This should return the name of the creator of the plugin.
-- `string GetName()`. This should return the name of the plugin.
-- `string GetDescription()`. This should return a description of what your plugin does and any other important info.
-- `string[] GetCommands()`. This should return a list of any commands that your plugin uses.
-- `void Initialize(Proxy)`. This is called once by the plugin manager when your plugin is created and should be where you register proxy hooks and do other initialization logic.
+- `string GetAuthor()` This should return the name of the creator of the plugin.
+- `string GetName()` This should return the name of the plugin.
+- `string GetDescription()` This should return a description of what your plugin does and any other important info.
+- `string[] GetCommands()` This should return a list of any commands that your plugin uses.
+- `void Initialize(Proxy)` This is called once by the plugin manager when your plugin is created and should be where you register proxy hooks and do other initialization logic.
+
+## The PluginUtils Class
+----------------------------------------
+The PluginUtils class incorperates a few handy static methods.
+- `void ShowGUI(Form f)` Starts a messageQueue thread for your form and shows it. Use this if to show your GUI for your plugins.
+- `void Delay(int ms, Action)` Delays an action by the specified amount of milliseconds, than executes it on a thread-pool thread. Usefull for delaying packets or scheduling events.
+- `NotificationPacket CreateNotification(int objectId, string message)` Creates and correctly defines the json for a notification over the specified object. Send it off and you're good to go.
 
 ## The Proxy Class
 ----------------------------------------
