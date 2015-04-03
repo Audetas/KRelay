@@ -61,13 +61,13 @@ namespace K_Relay
             if (btnToggleProxy.Text == "Start Proxy")
             {
                 btnToggleProxy.Text = "Stop Proxy";
-                lblStatus.Text = "Starting";
+                SetStatus("Starting", Color.Black);
                 _proxy.Start();
             }
             else
             {
                 btnToggleProxy.Text = "Start Proxy";
-                lblStatus.Text = "Stopping";
+                SetStatus("Stopping", Color.Black);
                 _proxy.Stop();
             }
         }
@@ -93,28 +93,33 @@ namespace K_Relay
 
         private void tbxLog_TextChanged(object sender, EventArgs e)
         {
+            // Remove double newlines
+            if (tbxLog.Text.Contains("\n\n")) 
+                tbxLog.Text = tbxLog.Text.Replace("\n\n", "\n");
             // Scroll to bottom
             tbxLog.SelectionStart = tbxLog.Text.Length;
             tbxLog.ScrollToCaret();
         }
 
-        #region Proxy Callbacks
-        private void ProxyListenStarted(Proxy p)
+        private void SetStatus(string status, Color color)
         {
             Invoke(new MethodInvoker(() =>
             {
-                lblStatus.ForeColor = Color.Green;
-                lblStatus.Text = "Running";
+                lblStatus.ForeColor = color;
+                lblStatus.Text = status;
+                lblStatus.Left = ClientRectangle.Width - lblStatus.Width;
             }));
+        }
+
+        #region Proxy Callbacks
+        private void ProxyListenStarted(Proxy p)
+        {
+            SetStatus("Running", Color.Green);
         }
 
         private void ProxyListenStopped(Proxy p)
         {
-            Invoke(new MethodInvoker(() =>
-            {
-                lblStatus.ForeColor = Color.Red;
-                lblStatus.Text = "Stopped";
-            }));
+            SetStatus("Stopped", Color.Red);
         }
 
         private void ClientConnected(Client client)

@@ -41,12 +41,6 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="FrmSpamFilter.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="FrmSpamFilter.Designer.cs">
-      <DependentUpon>FrmSpamFilter.cs</DependentUpon>
-    </Compile>
     <Compile Include="SpamFilter.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="SpamFilterConfig.Designer.cs">
@@ -60,11 +54,6 @@
       <Project>{b1b5f3c3-c4ff-4c6e-8879-d2e4e99beef9}</Project>
       <Name>Lib K Relay</Name>
     </ProjectReference>
-  </ItemGroup>
-  <ItemGroup>
-    <EmbeddedResource Include="FrmSpamFilter.resx">
-      <DependentUpon>FrmSpamFilter.cs</DependentUpon>
-    </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
     <None Include="app.config" />

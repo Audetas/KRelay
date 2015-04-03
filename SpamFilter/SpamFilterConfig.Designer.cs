@@ -36,29 +36,5 @@ namespace SpamFilter {
                 this["Blacklist"] = value;
             }
         }
-        
-        [global::System.Configuration.UserScopedSettingAttribute()]
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("True")]
-        public bool Enabled {
-            get {
-                return ((bool)(this["Enabled"]));
-            }
-            set {
-                this["Enabled"] = value;
-            }
-        }
-        
-        [global::System.Configuration.UserScopedSettingAttribute()]
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("False")]
-        public bool CaseSensitive {
-            get {
-                return ((bool)(this["CaseSensitive"]));
-            }
-            set {
-                this["CaseSensitive"] = value;
-            }
-        }
     }
 }
