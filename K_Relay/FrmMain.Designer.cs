@@ -42,13 +42,13 @@ namespace K_Relay
             this.btnClearLog = new System.Windows.Forms.ToolStripMenuItem();
             this.tabPlugins = new System.Windows.Forms.TabPage();
             this.splitPlugins = new System.Windows.Forms.SplitContainer();
-            this.treePlugins = new System.Windows.Forms.ListBox();
+            this.listPlugins = new System.Windows.Forms.ListBox();
             this.tbxPluginInfo = new System.Windows.Forms.RichTextBox();
             this.menuPlugins = new System.Windows.Forms.MenuStrip();
             this.btnOpenPluginFolder = new System.Windows.Forms.ToolStripMenuItem();
             this.tabPackets = new System.Windows.Forms.TabPage();
             this.splitPackets = new System.Windows.Forms.SplitContainer();
-            this.treePackets = new System.Windows.Forms.TreeView();
+            this.listPackets = new System.Windows.Forms.ListBox();
             this.tbxPacketInfo = new System.Windows.Forms.RichTextBox();
             this.menuPackets = new System.Windows.Forms.MenuStrip();
             this.btnOpenPacketsFolder = new System.Windows.Forms.ToolStripMenuItem();
@@ -184,7 +184,7 @@ namespace K_Relay
             this.tabPlugins.Margin = new System.Windows.Forms.Padding(2);
             this.tabPlugins.Name = "tabPlugins";
             this.tabPlugins.Padding = new System.Windows.Forms.Padding(2);
-            this.tabPlugins.Size = new System.Drawing.Size(459, 351);
+            this.tabPlugins.Size = new System.Drawing.Size(461, 352);
             this.tabPlugins.TabIndex = 1;
             this.tabPlugins.Text = "Plugins";
             this.tabPlugins.UseVisualStyleBackColor = true;
@@ -198,27 +198,27 @@ namespace K_Relay
             // 
             // splitPlugins.Panel1
             // 
-            this.splitPlugins.Panel1.Controls.Add(this.treePlugins);
+            this.splitPlugins.Panel1.Controls.Add(this.listPlugins);
             // 
             // splitPlugins.Panel2
             // 
             this.splitPlugins.Panel2.Controls.Add(this.tbxPluginInfo);
-            this.splitPlugins.Size = new System.Drawing.Size(455, 323);
-            this.splitPlugins.SplitterDistance = 89;
+            this.splitPlugins.Size = new System.Drawing.Size(457, 324);
+            this.splitPlugins.SplitterDistance = 144;
             this.splitPlugins.SplitterWidth = 2;
             this.splitPlugins.TabIndex = 1;
             // 
             // treePlugins
             // 
-            this.treePlugins.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.treePlugins.Font = new System.Drawing.Font("Comic Sans MS", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.treePlugins.ItemHeight = 15;
-            this.treePlugins.Location = new System.Drawing.Point(0, 0);
-            this.treePlugins.Margin = new System.Windows.Forms.Padding(2);
-            this.treePlugins.Name = "treePlugins";
-            this.treePlugins.Size = new System.Drawing.Size(89, 323);
-            this.treePlugins.TabIndex = 0;
-            this.treePlugins.SelectedIndexChanged += new System.EventHandler(this.treePlugins_SelectedIndexChanged);
+            this.listPlugins.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.listPlugins.Font = new System.Drawing.Font("Comic Sans MS", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.listPlugins.ItemHeight = 15;
+            this.listPlugins.Location = new System.Drawing.Point(0, 0);
+            this.listPlugins.Margin = new System.Windows.Forms.Padding(2);
+            this.listPlugins.Name = "treePlugins";
+            this.listPlugins.Size = new System.Drawing.Size(144, 324);
+            this.listPlugins.TabIndex = 0;
+            this.listPlugins.SelectedIndexChanged += new System.EventHandler(this.listPlugins_SelectedIndexChanged);
             // 
             // tbxPluginInfo
             // 
@@ -230,7 +230,7 @@ namespace K_Relay
             this.tbxPluginInfo.Margin = new System.Windows.Forms.Padding(2);
             this.tbxPluginInfo.Name = "tbxPluginInfo";
             this.tbxPluginInfo.ReadOnly = true;
-            this.tbxPluginInfo.Size = new System.Drawing.Size(364, 323);
+            this.tbxPluginInfo.Size = new System.Drawing.Size(311, 324);
             this.tbxPluginInfo.TabIndex = 1;
             this.tbxPluginInfo.Text = "Select a plugin to view its description.";
             // 
@@ -243,7 +243,7 @@ namespace K_Relay
             this.menuPlugins.Location = new System.Drawing.Point(2, 2);
             this.menuPlugins.Name = "menuPlugins";
             this.menuPlugins.Padding = new System.Windows.Forms.Padding(3, 1, 0, 1);
-            this.menuPlugins.Size = new System.Drawing.Size(455, 24);
+            this.menuPlugins.Size = new System.Drawing.Size(457, 24);
             this.menuPlugins.TabIndex = 0;
             this.menuPlugins.Text = "menuStrip1";
             // 
@@ -262,7 +262,7 @@ namespace K_Relay
             this.tabPackets.Margin = new System.Windows.Forms.Padding(2);
             this.tabPackets.Name = "tabPackets";
             this.tabPackets.Padding = new System.Windows.Forms.Padding(2);
-            this.tabPackets.Size = new System.Drawing.Size(459, 351);
+            this.tabPackets.Size = new System.Drawing.Size(461, 352);
             this.tabPackets.TabIndex = 4;
             this.tabPackets.Text = "Packets";
             this.tabPackets.UseVisualStyleBackColor = true;
@@ -276,26 +276,27 @@ namespace K_Relay
             // 
             // splitPackets.Panel1
             // 
-            this.splitPackets.Panel1.Controls.Add(this.treePackets);
+            this.splitPackets.Panel1.Controls.Add(this.listPackets);
             // 
             // splitPackets.Panel2
             // 
             this.splitPackets.Panel2.Controls.Add(this.tbxPacketInfo);
-            this.splitPackets.Size = new System.Drawing.Size(455, 323);
-            this.splitPackets.SplitterDistance = 114;
+            this.splitPackets.Size = new System.Drawing.Size(457, 324);
+            this.splitPackets.SplitterDistance = 144;
             this.splitPackets.SplitterWidth = 2;
             this.splitPackets.TabIndex = 2;
             // 
             // treePackets
             // 
-            this.treePackets.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.treePackets.Font = new System.Drawing.Font("Comic Sans MS", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.treePackets.Location = new System.Drawing.Point(0, 0);
-            this.treePackets.Margin = new System.Windows.Forms.Padding(2);
-            this.treePackets.Name = "treePackets";
-            this.treePackets.Size = new System.Drawing.Size(114, 323);
-            this.treePackets.TabIndex = 0;
-            this.treePackets.AfterSelect += new System.Windows.Forms.TreeViewEventHandler(this.treePackets_AfterSelect);
+            this.listPackets.Sorted = true;
+            this.listPackets.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.listPackets.Font = new System.Drawing.Font("Comic Sans MS", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.listPackets.Location = new System.Drawing.Point(0, 0);
+            this.listPackets.Margin = new System.Windows.Forms.Padding(2);
+            this.listPackets.Name = "treePackets";
+            this.listPackets.Size = new System.Drawing.Size(144, 324);
+            this.listPackets.TabIndex = 0;
+            this.listPackets.SelectedIndexChanged += new System.EventHandler(this.listPackets_SelectedIndexChanged);
             // 
             // tbxPacketInfo
             // 
@@ -307,7 +308,7 @@ namespace K_Relay
             this.tbxPacketInfo.Margin = new System.Windows.Forms.Padding(2);
             this.tbxPacketInfo.Name = "tbxPacketInfo";
             this.tbxPacketInfo.ReadOnly = true;
-            this.tbxPacketInfo.Size = new System.Drawing.Size(339, 323);
+            this.tbxPacketInfo.Size = new System.Drawing.Size(311, 324);
             this.tbxPacketInfo.TabIndex = 0;
             this.tbxPacketInfo.Text = "Select a packet type to view more info.";
             // 
@@ -320,7 +321,7 @@ namespace K_Relay
             this.menuPackets.Location = new System.Drawing.Point(2, 2);
             this.menuPackets.Name = "menuPackets";
             this.menuPackets.Padding = new System.Windows.Forms.Padding(3, 1, 0, 1);
-            this.menuPackets.Size = new System.Drawing.Size(455, 24);
+            this.menuPackets.Size = new System.Drawing.Size(457, 24);
             this.menuPackets.TabIndex = 1;
             this.menuPackets.Text = "menuStrip1";
             // 
@@ -339,7 +340,7 @@ namespace K_Relay
             this.tabSettings.Margin = new System.Windows.Forms.Padding(2);
             this.tabSettings.Name = "tabSettings";
             this.tabSettings.Padding = new System.Windows.Forms.Padding(2);
-            this.tabSettings.Size = new System.Drawing.Size(459, 351);
+            this.tabSettings.Size = new System.Drawing.Size(461, 352);
             this.tabSettings.TabIndex = 3;
             this.tabSettings.Text = "Settings";
             this.tabSettings.UseVisualStyleBackColor = true;
@@ -351,7 +352,7 @@ namespace K_Relay
             this.gridSettings.Location = new System.Drawing.Point(2, 26);
             this.gridSettings.Margin = new System.Windows.Forms.Padding(2);
             this.gridSettings.Name = "gridSettings";
-            this.gridSettings.Size = new System.Drawing.Size(455, 323);
+            this.gridSettings.Size = new System.Drawing.Size(457, 324);
             this.gridSettings.TabIndex = 1;
             // 
             // menuSettings
@@ -363,7 +364,7 @@ namespace K_Relay
             this.menuSettings.Location = new System.Drawing.Point(2, 2);
             this.menuSettings.Name = "menuSettings";
             this.menuSettings.Padding = new System.Windows.Forms.Padding(3, 1, 0, 1);
-            this.menuSettings.Size = new System.Drawing.Size(455, 24);
+            this.menuSettings.Size = new System.Drawing.Size(457, 24);
             this.menuSettings.TabIndex = 0;
             this.menuSettings.Text = "menuStrip2";
             // 
@@ -436,7 +437,7 @@ namespace K_Relay
         private System.Windows.Forms.MenuStrip menuPlugins;
         private System.Windows.Forms.ToolStripMenuItem btnOpenPluginFolder;
         private System.Windows.Forms.SplitContainer splitPlugins;
-        private System.Windows.Forms.ListBox treePlugins;
+        private System.Windows.Forms.ListBox listPlugins;
         private System.Windows.Forms.MenuStrip menuSettings;
         public System.Windows.Forms.ToolStripMenuItem btnSaveSettings;
         public System.Windows.Forms.PropertyGrid gridSettings;
@@ -446,7 +447,7 @@ namespace K_Relay
         private System.Windows.Forms.MenuStrip menuPackets;
         private System.Windows.Forms.ToolStripMenuItem btnOpenPacketsFolder;
         private System.Windows.Forms.SplitContainer splitPackets;
-        private System.Windows.Forms.TreeView treePackets;
+        private System.Windows.Forms.ListBox listPackets;
         private System.Windows.Forms.RichTextBox tbxPacketInfo;
         private System.Windows.Forms.Label lblStatus;
         private System.Windows.Forms.RichTextBox tbxPluginInfo;

@@ -65,11 +65,11 @@ namespace K_Relay
             Process.Start(Application.StartupPath + @"\Plugins\");
         }
 
-        protected void treePlugins_SelectedIndexChanged(object sender, EventArgs e)
+        protected void listPlugins_SelectedIndexChanged(object sender, EventArgs e)
         {
-            if (treePlugins.SelectedItem != null)
+            if (listPlugins.SelectedItem != null)
             {
-                string key = (string)treePlugins.SelectedItem;
+                string key = (string)listPlugins.SelectedItem;
                 IPlugin selected = _pluginNameMap[key];
                 PluginDescriptionView(selected);
             }
@@ -81,7 +81,7 @@ namespace K_Relay
             string name = instance.GetName();
             instance.Initialize(_proxy);
 
-            treePlugins.Items.Add(name);
+            listPlugins.Items.Add(name);
 
             _pluginNameMap.Add(name, instance);
 
