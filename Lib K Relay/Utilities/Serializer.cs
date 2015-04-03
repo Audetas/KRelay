@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Xml;
 
-namespace Lib_K_Relay.Util
+namespace Lib_K_Relay.Utilities
 {
     public static class Serializer
     {

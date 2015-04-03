@@ -4,7 +4,7 @@ using Lib_K_Relay.Networking;
 using Lib_K_Relay.Networking.Packets;
 using Lib_K_Relay.Networking.Packets.Client;
 using Lib_K_Relay.Networking.Packets.Server;
-using Lib_K_Relay.Util;
+using Lib_K_Relay.Utilities;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -55,16 +55,8 @@ namespace K_Relay.Util
             _proxy.Port = _originalPort;
 
             // Send welcome message to player
-            NotificationPacket notif = (NotificationPacket)Packet.CreateInstance(PacketType.NOTIFICATION);
-            notif.ObjectId = createSuccess.ObjectId;
-            notif.Message = "{\"key\":\"blank\",\"tokens\":{\"data\":\"Welcome to K Relay\"}}";
-            notif.Color = 0x00FFFF;
-
-            Task.Run(() =>
-            {
-                System.Threading.Thread.Sleep(1000);
-                client.SendToClient(notif);
-            });
+            PluginUtils.Delay(2000, () => client.SendToClient(
+                PluginUtils.CreateNotification(client.ObjectId, "Welcome to K Relay!")));
         }
 
         private void OnReconnectPacket(Client client, Packet packet)
@@ -93,7 +85,7 @@ namespace K_Relay.Util
         private void OnConnectCommand(Client client, string command, string[] args)
         {
             _toConnect = client;
-            new Thread(() => new FrmServerReconnect(this).ShowDialog()).Start();
+            PluginUtils.ShowGUI(new FrmServerReconnect(this));
         }
 
         public void ChangeServer(string address, string name)

@@ -5,7 +5,7 @@ using Lib_K_Relay.Networking.Packets;
 using Lib_K_Relay.Networking.Packets.Client;
 using Lib_K_Relay.Networking.Packets.DataObjects;
 using Lib_K_Relay.Networking.Packets.Server;
-using Lib_K_Relay.Util;
+using Lib_K_Relay.Utilities;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -66,7 +66,7 @@ namespace WorldEdit
 
         private void OnWorldEditCommand(Client client, string command, string[] args)
         {
-            new Thread(() => new FrmWorldEdit(this).ShowDialog()).Start();
+            PluginUtils.ShowGUI(new FrmWorldEdit(this));
         }
 
         private void OnUpdateAck(Client client, Packet packet)

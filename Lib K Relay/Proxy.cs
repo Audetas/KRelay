@@ -1,7 +1,7 @@
 ﻿using Lib_K_Relay.Networking;
 using Lib_K_Relay.Networking.Packets;
 using Lib_K_Relay.Networking.Packets.Client;
-using Lib_K_Relay.Util;
+using Lib_K_Relay.Utilities;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -50,7 +50,8 @@ namespace Lib_K_Relay
             try
             {
                 if (ProxyListenStarted != null) ProxyListenStarted(this);
-            } catch (Exception e) { PrintPluginCallbackException("ProxyListenStarted", e); }
+            }
+            catch (Exception e) { PluginUtils.LogPluginException(e, "ProxyListenStarted"); }
         }
 
         public void Stop()
@@ -64,7 +65,7 @@ namespace Lib_K_Relay
                 {
                     if (ProxyListenStopped != null) ProxyListenStopped(this);
                 }
-                catch (Exception e) { PrintPluginCallbackException("ProxyListenStopped", e); }
+                catch (Exception e) { PluginUtils.LogPluginException(e, "ProxyListenStopped"); }
             }
         }
 
@@ -109,7 +110,8 @@ namespace Lib_K_Relay
             try
             {
                 if (ClientConnected != null) ClientConnected(client);
-            } catch (Exception e) { PrintPluginCallbackException("ClientConnected", e); }
+            }
+            catch (Exception e) { PluginUtils.LogPluginException(e, "ClientConnected"); }
         }
 
         public void FireClientDisconnected(Client client)
@@ -117,7 +119,8 @@ namespace Lib_K_Relay
             try
             {
                 if (ClientDisconnected != null) ClientDisconnected(client);
-            } catch (Exception e) { PrintPluginCallbackException("ClientDisconnected", e); }
+            }
+            catch (Exception e) { PluginUtils.LogPluginException(e, "ClientDisconnected"); }
         }
 
         public void FireServerPacket(Client client, Packet packet)
@@ -130,7 +133,8 @@ namespace Lib_K_Relay
 
                 // Fire general server packet callbacks
                 if (ServerPacketRecieved != null) ServerPacketRecieved(client, packet);
-            } catch (Exception e) { PrintPluginCallbackException("ServerPacket", e); }
+            }
+            catch (Exception e) { PluginUtils.LogPluginException(e, "ServerPacket"); }
         }
 
         public void FireClientPacket(Client client, Packet packet)
@@ -165,18 +169,8 @@ namespace Lib_K_Relay
 
                 // Fire general client packet callbacks
                 if (ClientPacketRecieved != null) ClientPacketRecieved(client, packet);
-            } catch (Exception e) { PrintPluginCallbackException("ClientPacket", e); }
-        }
-
-        private void PrintPluginCallbackException(string caller, Exception e)
-        {
-            MethodBase site = e.TargetSite;
-            string methodName = site == null ? "<null method reference>" : site.Name;
-            string className = site == null ? "" : site.ReflectedType.Name;
-
-            Console.WriteLine(
-                "[Plugin Error] An exception was thrown\nwithin a {0} callback\nat {1}\nHere's the exception report:\n{2}",
-                caller, className + "." + methodName, e.Message);
+            } 
+            catch (Exception e) { PluginUtils.LogPluginException(e, "ClientPacket"); }
         }
     }
 }

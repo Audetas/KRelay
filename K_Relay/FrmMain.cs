@@ -1,7 +1,7 @@
 ﻿using K_Relay.Util;
 using Lib_K_Relay;
 using Lib_K_Relay.Networking;
-using Lib_K_Relay.Util;
+using Lib_K_Relay.Utilities;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
