@@ -30,7 +30,8 @@ namespace K_Relay
 
             if (!Directory.Exists(pluginDirectory))
             {
-                Console.WriteLine("[Plugin Manager] Plugin directory '{0}' does not exist! No plugins will be loaded.", pluginDirectory);
+                System.IO.Directory.CreateDirectory(pluginDirectory);
+                Console.WriteLine("[Plugin Manager] Plugin directory not found! Directory created at '{0}'.", pluginDirectory);
                 return;
             }
 
@@ -62,7 +63,8 @@ namespace K_Relay
 
         private void btnOpenPluginFolder_Click(object sender, EventArgs e)
         {
-            Process.Start(Serializer.DEBUGGetSolutionRoot() + @"\Plugins\");
+            try { Process.Start(Serializer.DEBUGGetSolutionRoot() + @"\Plugins\"); }
+            catch (FileNotFoundException) { Console.WriteLine("[Plugin Manager] Uh Oh, directory '{0}' not found.", Serializer.DEBUGGetSolutionRoot() + @"\Plugins\"); }
         }
 
         protected void listPlugins_SelectedIndexChanged(object sender, EventArgs e)

@@ -3,6 +3,7 @@ using Lib_K_Relay.Utilities;
 using System;
 using System.Collections.Generic;
 using System.Diagnostics;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -29,7 +30,8 @@ namespace K_Relay
 
         private void btnOpenPacketsFolder_Click(object sender, EventArgs e)
         {
-            Process.Start(Serializer.DEBUGGetSolutionRoot() + @"\XML\");
+            try { Process.Start(Serializer.DEBUGGetSolutionRoot() + @"\XML\"); }
+            catch (FileNotFoundException) { Console.WriteLine("[Packet Manager] Uh Oh, directory '{0}' not found.", Serializer.DEBUGGetSolutionRoot() + @"\XML\"); }
         }
 
         protected void listPackets_SelectedIndexChanged(object sender, EventArgs e)
