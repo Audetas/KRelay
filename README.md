@@ -8,14 +8,22 @@
 
 -----------------------------------------------------------
 
-##Checklist: (please add as you get ideas)
+##Core Checklist: (please add as you get ideas)
 - [ ] **Define all packets**
 - [ ] More that I can't think of at the moment
 - [ ] Some intuitive way to easily get a packet casted to the desired type in callbacks
-- [x] World Editor plugin (Alec)
-- [ ] Map Cacher plugin (Tobi)
 - [x] Add welcome to K Relay message
 - [x] Finish the plugins tab
 - [x] Fetch server list from char/list
-- [x] TQ Plugin
 - [x] Redo Info tab
+
+##Plugin Checklist:
+- [ ] ClientStat Projecter
+- [ ] AutoAbility
+- [ ] Fix TQ
+- [ ] Map Cacher
+- [ ] Chat Suite
+- [ ] Partial Godmode
+- [ ] Speedhack (maybee)
+- [ ] Loot notifications
+- [ ] Auto loot
