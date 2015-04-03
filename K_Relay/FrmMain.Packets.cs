@@ -17,8 +17,6 @@ namespace K_Relay
         {
             foreach (PacketType type in Enum.GetValues(typeof(PacketType)).Cast<PacketType>())
                 listPackets.Items.Insert(0, type.ToString());
-
-            //treePackets
         }
 
         private void treePackets_AfterSelect(object sender, TreeViewEventArgs e)
