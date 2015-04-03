@@ -52,5 +52,18 @@ namespace Lib_K_Relay.Utilities
             notif.Color = color;
             return notif;
         }
+
+        public static TextPacket CreateOryxNotification(string sender, string message)
+        {
+            TextPacket tpacket = (TextPacket)Packet.CreateInstance(PacketType.TEXT);
+            tpacket.BubbleTime = 0;
+            tpacket.CleanText = message;
+            tpacket.Name = "#" + sender;
+            tpacket.NumStars = -1;
+            tpacket.ObjectId = -1;
+            tpacket.Recipient = "";
+            tpacket.Text = message;
+            return tpacket;
+        }
     }
 }
