@@ -29,7 +29,7 @@ namespace K_Relay
 
         private void btnOpenPacketsFolder_Click(object sender, EventArgs e)
         {
-            Process.Start(Application.StartupPath + @"\XML\");
+            Process.Start(Serializer.DEBUGGetSolutionRoot() + @"\XML\");
         }
 
         protected void listPackets_SelectedIndexChanged(object sender, EventArgs e)

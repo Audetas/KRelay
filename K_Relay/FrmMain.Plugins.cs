@@ -62,7 +62,7 @@ namespace K_Relay
 
         private void btnOpenPluginFolder_Click(object sender, EventArgs e)
         {
-            Process.Start(Application.StartupPath + @"\Plugins\");
+            Process.Start(Serializer.DEBUGGetSolutionRoot() + @"\Plugins\");
         }
 
         protected void listPlugins_SelectedIndexChanged(object sender, EventArgs e)
