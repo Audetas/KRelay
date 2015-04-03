@@ -10,7 +10,6 @@
 
 ##Checklist: (please add as you get ideas)
 - [ ] **Define all packets**
-- [ ] Fix PropertyGrid compatability with Settings StringCollection
 - [ ] More that I can't think of at the moment
 - [ ] Some intuitive way to easily get a packet casted to the desired type in callbacks
 - [x] World Editor plugin (Alec)
