@@ -41,7 +41,7 @@ namespace WorldEdit
             proxy.HookCommand("worldedit", OnWorldEditCommand);
         }
 
-        private void OnUseItem(ClientInstance client, Packet packet)
+        private void OnUseItem(Client client, Packet packet)
         {
             if (Editing && !_cancel)
             {
@@ -64,12 +64,12 @@ namespace WorldEdit
             }
         }
 
-        private void OnWorldEditCommand(ClientInstance client, string command, string[] args)
+        private void OnWorldEditCommand(Client client, string command, string[] args)
         {
             new Thread(() => new FrmWorldEdit(this).ShowDialog()).Start();
         }
 
-        private void OnUpdateAck(ClientInstance client, Packet packet)
+        private void OnUpdateAck(Client client, Packet packet)
         {
             if (_cancel)
             {

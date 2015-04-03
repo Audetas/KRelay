@@ -42,7 +42,7 @@
   <ItemGroup>
     <Compile Include="Crypto\RC4.cs" />
     <Compile Include="Interface\IPlugin.cs" />
-    <Compile Include="Networking\ClientInstance.cs" />
+    <Compile Include="Networking\Client.cs" />
     <Compile Include="Networking\PacketBuffer.cs" />
     <Compile Include="Networking\Packets\Client\HelloPacket.cs" />
     <Compile Include="Networking\Packets\Client\PlayerTextPacket.cs" />

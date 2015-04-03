@@ -46,10 +46,10 @@ namespace TQ
             proxy.HookCommand("tq", OnTQCommand);
         }
 
-        private void OnQuestObjId(ClientInstance client, Packet packet)
+        private void OnQuestObjId(Client client, Packet packet)
         { _questId = (packet as QuestObjIdPacket).ObjectId; }
 
-        private void OnUpdate(ClientInstance client, Packet packet)
+        private void OnUpdate(Client client, Packet packet)
         {
             UpdatePacket update = (UpdatePacket)packet;
             // New Objects
@@ -78,7 +78,7 @@ namespace TQ
             }
         }
 
-        private void OnNewTick(ClientInstance client, Packet packet)
+        private void OnNewTick(Client client, Packet packet)
         {
             // Update player positions
             NewTickPacket newTick = (NewTickPacket)packet;
@@ -89,7 +89,7 @@ namespace TQ
             }
         }
 
-        private void OnTQCommand(ClientInstance client, string command, string[] args)
+        private void OnTQCommand(Client client, string command, string[] args)
         {
             if (_questId == -1 || _questLocation == null) return;
 

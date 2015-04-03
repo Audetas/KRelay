@@ -12,7 +12,7 @@ using System.Threading.Tasks;
 
 namespace Lib_K_Relay.Networking
 {
-    public class ClientInstance
+    public class Client
     {
         public int ObjectId;
         public RC4 ClientReceiveKey;
@@ -27,7 +27,7 @@ namespace Lib_K_Relay.Networking
         private TcpClient _remoteConnection;
         private Proxy _proxy;
 
-        public ClientInstance(Proxy proxy, TcpClient client)
+        public Client(Proxy proxy, TcpClient client)
         {
             _proxy = proxy;
             _localConnection = client;
@@ -56,7 +56,7 @@ namespace Lib_K_Relay.Networking
 
         private void RemoteReceive(IAsyncResult ar)
         {
-            try
+            //try
             {
                 NetworkStream stream = _remoteConnection.GetStream();
                 _remoteBuffer.Advance(stream.EndRead(ar));
@@ -91,7 +91,7 @@ namespace Lib_K_Relay.Networking
                     _remoteBuffer.Flush();
                     BeginRemoteRead(0, 4);
                 }
-            } catch (Exception e) { Close(e.Message); }
+            } //catch (Exception e) { Close(e.Message); }
         }
 
         private void LocalReceive(IAsyncResult ar)

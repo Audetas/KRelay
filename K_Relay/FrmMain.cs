@@ -19,7 +19,7 @@ namespace K_Relay
     public partial class FrmMain : Form
     {
         private Proxy _proxy;
-        private List<ClientInstance> _clients;
+        private List<Client> _clients;
 
         public FrmMain()
         {
@@ -33,7 +33,7 @@ namespace K_Relay
             Serializer.SerializePacketIds();
             Serializer.SerializePacketTypes();
 
-            _clients = new List<ClientInstance>();
+            _clients = new List<Client>();
             _proxy = new Proxy();
             _proxy.ProxyListenStarted += ProxyListenStarted;
             _proxy.ProxyListenStopped += ProxyListenStopped;
@@ -117,13 +117,13 @@ namespace K_Relay
             }));
         }
 
-        private void ClientConnected(ClientInstance client)
+        private void ClientConnected(Client client)
         {
             _clients.Add(client);
             Invoke(new MethodInvoker(() => lblConnectedClients.Text = "Connected Clients: " + _clients.Count));
         }
 
-        private void ClientDisconnected(ClientInstance client)
+        private void ClientDisconnected(Client client)
         {
             _clients.Remove(client);
             Invoke(new MethodInvoker(() => lblConnectedClients.Text = "Connected Clients: " + _clients.Count));

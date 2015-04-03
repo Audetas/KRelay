@@ -20,7 +20,7 @@ namespace K_Relay.Util
         private Proxy _proxy;
         private string _originalHost;
         private int _originalPort;
-        private ClientInstance _toConnect;
+        private Client _toConnect;
 
         public string GetAuthor()
         { return "KrazyShank / Kronks"; }
@@ -47,7 +47,7 @@ namespace K_Relay.Util
             _originalHost = _proxy.RemoteAddress;
         }
 
-        private void OnCreateSuccess(ClientInstance client, Packet createSuccessPacket)
+        private void OnCreateSuccess(Client client, Packet createSuccessPacket)
         {
             CreateSuccessPacket createSuccess = createSuccessPacket as CreateSuccessPacket;
             // Restore the original connection info so new clients can connect normally
@@ -67,7 +67,7 @@ namespace K_Relay.Util
             });
         }
 
-        private void OnReconnectPacket(ClientInstance client, Packet packet)
+        private void OnReconnectPacket(Client client, Packet packet)
         {
             ReconnectPacket reconnect = packet as ReconnectPacket;
             if (reconnect.Port != -1)
@@ -90,7 +90,7 @@ namespace K_Relay.Util
             reconnect.Port = 2050;
         }
 
-        private void OnConnectCommand(ClientInstance client, string command, string[] args)
+        private void OnConnectCommand(Client client, string command, string[] args)
         {
             _toConnect = client;
             new Thread(() => new FrmServerReconnect(this).ShowDialog()).Start();

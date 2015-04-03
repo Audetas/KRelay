@@ -106,7 +106,7 @@ namespace Reconnect
                 return false;
         }
 
-        private void OnPlayerText(ClientInstance client, Packet packet)
+        private void OnPlayerText(Client client, Packet packet)
         {
             PlayerTextPacket text = packet as PlayerTextPacket;
             ReconnectPacket reconnectPacket = defaultRecPacket;
@@ -184,12 +184,12 @@ namespace Reconnect
             }
         }
 
-        private void OnUsePortal(ClientInstance client, Packet packet)
+        private void OnUsePortal(Client client, Packet packet)
         {
 
         }
 
-        private void OnReconnect(ClientInstance client, Packet packet)
+        private void OnReconnect(Client client, Packet packet)
         {
             ReconnectPacket reconnect = packet as ReconnectPacket;
 

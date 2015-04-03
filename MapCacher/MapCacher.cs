@@ -59,7 +59,7 @@ namespace MapCacher
             initialized = false;
         }
 
-        public void OnUpdate(ClientInstance client, Packet packet)
+        public void OnUpdate(Client client, Packet packet)
         {
             UpdatePacket update = (UpdatePacket)packet;
 
@@ -69,14 +69,14 @@ namespace MapCacher
             }
         }
 
-        public void GetMapInfo(ClientInstance client, Packet packet)
+        public void GetMapInfo(Client client, Packet packet)
         {
             MapInfoPacket mapinfo = (MapInfoPacket)packet;
             map = new Map(mapinfo.Name, mapinfo.Height, mapinfo.Width);
             initialized = false;
         }
 
-        public void OnEnterMap(ClientInstance client, Packet packet)
+        public void OnEnterMap(Client client, Packet packet)
         {
             initialized = true;
             mapdata = new ushort[map.height, map.width];

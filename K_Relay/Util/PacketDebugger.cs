@@ -44,13 +44,13 @@ namespace K_Relay.Util
             proxy.HookCommand("test", OnTestCommand);
         }
 
-        private void OnPacket(ClientInstance client, Packet packet)
+        private void OnPacket(Client client, Packet packet)
         {
             if (_reportId.Contains(packet.Type)) Console.WriteLine("[Packet Debugger] Received {0} packet.", packet.Type);
             if (_printString.Contains(packet.Type)) Console.WriteLine("[Packet Debugger] {0}", packet);
         }
 
-        private void OnUpdatePacket(ClientInstance client, Packet packet)
+        private void OnUpdatePacket(Client client, Packet packet)
         {
             UpdatePacket update = (UpdatePacket)packet;
 
@@ -60,7 +60,7 @@ namespace K_Relay.Util
             }
         }
 
-        private void OnTestCommand(ClientInstance client, string command, string[] args)
+        private void OnTestCommand(Client client, string command, string[] args)
         {
             Console.WriteLine("Client {0} command {1} args {2}", client.ObjectId, command, args.Length);
         }
