@@ -45,6 +45,7 @@
     <Compile Include="Interface\IPlugin.cs" />
     <Compile Include="Networking\Client.cs" />
     <Compile Include="Networking\PacketBuffer.cs" />
+    <Compile Include="Networking\Packets\Client\CreatePacket.cs" />
     <Compile Include="Networking\Packets\Client\HelloPacket.cs" />
     <Compile Include="Networking\Packets\Client\PlayerTextPacket.cs" />
     <Compile Include="Networking\Packets\Client\TeleportPacket.cs" />
@@ -82,6 +83,7 @@
     <Compile Include="Utilities\FrmGenericSettings.Designer.cs">
       <DependentUpon>FrmGenericSettings.cs</DependentUpon>
     </Compile>
+    <Compile Include="Utilities\GameConstants.cs" />
     <Compile Include="Utilities\PluginUtils.cs" />
     <Compile Include="Utilities\Serializer.cs" />
     <Compile Include="Networking\Packets\PacketWriter.cs" />

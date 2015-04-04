@@ -214,6 +214,10 @@ namespace Lib_K_Relay.Networking
             {
                 PlayerData.Parse(packet as NewTickPacket);
             }
+            else if (packet.Type == PacketType.MAPINFO)
+            {
+                PlayerData.MapName = (packet as MapInfoPacket).Name;
+            }
         }
     }
 }

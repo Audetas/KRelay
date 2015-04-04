@@ -41,19 +41,12 @@ namespace K_Relay.Util
         {
             proxy.ClientPacketRecieved += OnPacket;
             proxy.ServerPacketRecieved += OnPacket;
-            proxy.HookPacket(PacketType.UPDATE, OnUpdate);
-            proxy.HookPacket(PacketType.NEW_TICK, OnUpdate);
         }
 
         private void OnPacket(Client client, Packet packet)
         {
             if (_reportId.Contains(packet.Type)) Console.WriteLine("[Packet Debugger] Received {0} packet.", packet.Type);
             if (_printString.Contains(packet.Type)) Console.WriteLine("[Packet Debugger] {0}", packet);
-        }
-
-        private void OnUpdate(Client client, Packet packet)
-        {
-            
         }
     }
 }
