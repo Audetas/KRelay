@@ -18,12 +18,14 @@
 - [x] Redo Info tab
 
 ##Plugin Checklist:
-- [ ] ClientStat Projecter
-- [ ] AutoAbility
+- [x] World Edit
+- [x] Fame Notifer
+- [x] ClientStat Projecter
+- [ ] Auto Ability
 - [ ] Fix TQ
 - [ ] Map Cacher
 - [ ] Chat Suite
 - [ ] Partial Godmode
 - [ ] Speedhack (maybee)
-- [ ] Loot notifications
+- [ ] Loot notifications / Loot bag quest
 - [ ] Auto loot
