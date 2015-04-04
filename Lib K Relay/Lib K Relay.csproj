@@ -50,6 +50,7 @@
     <Compile Include="Networking\Packets\Client\UpdateAckPacket.cs" />
     <Compile Include="Networking\Packets\Client\UseItemPacket.cs" />
     <Compile Include="Networking\Packets\Client\UsePortalPacket.cs" />
+    <Compile Include="Networking\Packets\DataObjects\PlayerData.cs" />
     <Compile Include="Networking\Packets\Server\MapInfoPacket.cs" />
     <Compile Include="Networking\Packets\Server\NewTickPacket.cs" />
     <Compile Include="Networking\Packets\Server\QuestObjIdPacket.cs" />

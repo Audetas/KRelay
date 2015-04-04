@@ -1,5 +1,6 @@
 using Lib_K_Relay.Crypto;
 using Lib_K_Relay.Networking.Packets;
+using Lib_K_Relay.Networking.Packets.DataObjects;
 using Lib_K_Relay.Networking.Packets.Server;
 using System;
 using System.Collections.Generic;
@@ -15,6 +16,8 @@ namespace Lib_K_Relay.Networking
     public class Client
     {
         public int ObjectId;
+        public PlayerData PlayerData;
+
         public RC4 ClientReceiveKey;
         public RC4 ServerReceiveKey;
         public RC4 ClientSendKey;
@@ -56,7 +59,7 @@ namespace Lib_K_Relay.Networking
 
         private void RemoteReceive(IAsyncResult ar)
         {
-            //try
+            try
             {
                 NetworkStream stream = _remoteConnection.GetStream();
                 _remoteBuffer.Advance(stream.EndRead(ar));
@@ -91,12 +94,12 @@ namespace Lib_K_Relay.Networking
                     _remoteBuffer.Flush();
                     BeginRemoteRead(0, 4);
                 }
-            } //catch (Exception e) { Close(e.Message); }
+            } catch (Exception e) { Close(e.Message); }
         }
 
         private void LocalReceive(IAsyncResult ar)
         {
-           try
+            try
             {
                 NetworkStream stream = _localConnection.GetStream();
                 _localBuffer.Advance(stream.EndRead(ar));
@@ -166,6 +169,8 @@ namespace Lib_K_Relay.Networking
 
         public void SendToClient(Packet packet)
         {
+            if (!_localConnection.Connected || !_remoteConnection.Connected) return;
+
             MemoryStream ms = new MemoryStream();
             using (PacketWriter w = new PacketWriter(ms))
             {
@@ -187,7 +192,7 @@ namespace Lib_K_Relay.Networking
             if (_remoteConnection.Connected || _localConnection.Connected)
             {
                 _proxy.FireClientDisconnected(this);
-                Console.WriteLine("[Connected] Client disconnected. {0}", reason);
+                Console.WriteLine("[Client Handler] Client disconnected. {0}", reason);
             }
 
             if (_remoteConnection.Connected) _remoteConnection.Close();
@@ -199,6 +204,15 @@ namespace Lib_K_Relay.Networking
             if (packet.Type == PacketType.CREATE_SUCCESS)
             {
                 ObjectId = (packet as CreateSuccessPacket).ObjectId;
+                PlayerData = new PlayerData(ObjectId);
+            }
+            else if (packet.Type == PacketType.UPDATE)
+            {
+                PlayerData.Parse(packet as UpdatePacket);
+            }
+            else if (packet.Type == PacketType.NEW_TICK)
+            {
+                PlayerData.Parse(packet as NewTickPacket);
             }
         }
     }
