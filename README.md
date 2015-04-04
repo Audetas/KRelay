@@ -25,7 +25,7 @@
 - [ ] Fix TQ
 - [ ] Map Cacher
 - [ ] Chat Suite
-- [ ] Partial Godmode
+- [x] Partial Godmode
 - [ ] Speedhack (maybee)
 - [ ] Loot notifications / Loot bag quest
 - [ ] Auto loot
