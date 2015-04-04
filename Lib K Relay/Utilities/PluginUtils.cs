@@ -26,8 +26,20 @@ namespace Lib_K_Relay.Utilities
 
         public static void ShowGUI(Form gui)
         {
+            gui.Shown += (s, e) =>
+                {
+                    gui.WindowState = FormWindowState.Minimized;
+                    gui.Show();
+                    gui.WindowState = FormWindowState.Normal;
+                };
+
             Thread messageLoop = new Thread(() => gui.ShowDialog());
             messageLoop.Start();
+        }
+
+        public static void ShowGenericSettingsGUI(dynamic settingsObject, string title)
+        {
+            ShowGUI(new FrmGenericSettings(settingsObject, title));
         }
 
         public static void Delay(int ms, Action callback)

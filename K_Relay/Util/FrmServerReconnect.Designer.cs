@@ -28,10 +28,8 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.components = new System.ComponentModel.Container();
             this.listServers = new System.Windows.Forms.ListBox();
             this.btnCancel = new System.Windows.Forms.Button();
-            this.tmrBringToFront = new System.Windows.Forms.Timer(this.components);
             this.SuspendLayout();
             // 
             // listServers
@@ -58,11 +56,6 @@
             this.btnCancel.Text = "Cancel";
             this.btnCancel.UseVisualStyleBackColor = true;
             // 
-            // tmrBringToFront
-            // 
-            this.tmrBringToFront.Enabled = true;
-            this.tmrBringToFront.Tick += new System.EventHandler(this.tmrBringToFront_Tick);
-            // 
             // FrmServerReconnect
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(12F, 25F);
@@ -84,6 +77,5 @@
 
         private System.Windows.Forms.ListBox listServers;
         private System.Windows.Forms.Button btnCancel;
-        private System.Windows.Forms.Timer tmrBringToFront;
     }
 }

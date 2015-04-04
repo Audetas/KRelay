@@ -32,6 +32,7 @@
   <ItemGroup>
     <Reference Include="System" />
     <Reference Include="System.Core" />
+    <Reference Include="System.Drawing" />
     <Reference Include="System.Windows.Forms" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
@@ -51,9 +52,13 @@
     <Compile Include="Networking\Packets\Client\UseItemPacket.cs" />
     <Compile Include="Networking\Packets\Client\UsePortalPacket.cs" />
     <Compile Include="Networking\Packets\DataObjects\PlayerData.cs" />
+    <Compile Include="Networking\Packets\Server\ClientStatPacket.cs" />
     <Compile Include="Networking\Packets\Server\MapInfoPacket.cs" />
     <Compile Include="Networking\Packets\Server\NewTickPacket.cs" />
+    <Compile Include="Networking\Packets\Server\OtherHitPacket.cs" />
+    <Compile Include="Networking\Packets\Server\PlayerHitPacket.cs" />
     <Compile Include="Networking\Packets\Server\QuestObjIdPacket.cs" />
+    <Compile Include="Networking\Packets\Server\SquareHitPacket.cs" />
     <Compile Include="Networking\Packets\Server\TextPacket.cs" />
     <Compile Include="Networking\Packets\Server\TradeRequestedPacket.cs" />
     <Compile Include="Networking\Packets\Server\CreateSuccessPacket.cs" />
@@ -71,6 +76,12 @@
     <Compile Include="Networking\Packets\DataObjects\Tile.cs" />
     <Compile Include="Networking\Packets\Packet.cs" />
     <Compile Include="Networking\Packets\PacketReader.cs" />
+    <Compile Include="Utilities\FrmGenericSettings.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Utilities\FrmGenericSettings.Designer.cs">
+      <DependentUpon>FrmGenericSettings.cs</DependentUpon>
+    </Compile>
     <Compile Include="Utilities\PluginUtils.cs" />
     <Compile Include="Utilities\Serializer.cs" />
     <Compile Include="Networking\Packets\PacketWriter.cs" />
@@ -78,7 +89,11 @@
     <Compile Include="Proxy.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <EmbeddedResource Include="Utilities\FrmGenericSettings.resx">
+      <DependentUpon>FrmGenericSettings.cs</DependentUpon>
+    </EmbeddedResource>
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

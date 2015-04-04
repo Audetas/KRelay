@@ -33,8 +33,8 @@ namespace Lib_K_Relay
         public event PacketHandler ServerPacketRecieved;
         public event PacketHandler ClientPacketRecieved;
 
-        private Dictionary<PacketHandler, PacketType> _packetHooks = new Dictionary<PacketHandler, PacketType>();
-        private Dictionary<CommandHandler, string> _commandHooks = new Dictionary<CommandHandler, string>();
+        private Dictionary<PacketHandler, List<PacketType>> _packetHooks = new Dictionary<PacketHandler, List<PacketType>>();
+        private Dictionary<CommandHandler, List<string>> _commandHooks = new Dictionary<CommandHandler, List<string>>();
 
         private TcpListener _localListener = null;
 
@@ -96,13 +96,18 @@ namespace Lib_K_Relay
                 throw new InvalidOperationException("[Plugin Error] A plugin attempted to register callback " +
                                                     callback.GetMethodInfo().ReflectedType + "." + callback.Method.Name +
                                                     " for packet type " + type + " that doesn't have a structure defined.");
+            else if (_packetHooks.ContainsKey(callback))
+                _packetHooks[callback].Add(type);
             else
-                _packetHooks.Add(callback, type);
+                _packetHooks.Add(callback, new List<PacketType>() { type });
         }
 
         public void HookCommand(string command, CommandHandler callback)
         {
-            _commandHooks.Add(callback, command.ToLower().Replace("/", ""));
+            if (_commandHooks.ContainsKey(callback))
+                _commandHooks[callback].Add(command);
+            else
+                _commandHooks.Add(callback, new List<string>() { command.ToLower().Replace("/", "") } );
         }
 
         public void FireClientConnected(Client client)
@@ -129,7 +134,7 @@ namespace Lib_K_Relay
             {
                 // Fire specific hook callbacks if applicable
                 foreach (var pair in _packetHooks)
-                    if (pair.Value == packet.Type) pair.Key(client, packet);
+                    if (pair.Value.Contains(packet.Type)) pair.Key(client, packet);
 
                 // Fire general server packet callbacks
                 if (ServerPacketRecieved != null) ServerPacketRecieved(client, packet);
@@ -155,7 +160,7 @@ namespace Lib_K_Relay
 
                     foreach (var pair in _commandHooks)
                     {
-                        if (pair.Value == command)
+                        if (pair.Value.Contains(command))
                         {
                             packet.Send = false;
                             pair.Key(client, command, args);
@@ -165,7 +170,7 @@ namespace Lib_K_Relay
 
                 // Fire specific hook callbacks if applicable
                 foreach (var pair in _packetHooks)
-                    if (pair.Value == packet.Type) pair.Key(client, packet);
+                    if (pair.Value.Contains(packet.Type)) pair.Key(client, packet);
 
                 // Fire general client packet callbacks
                 if (ClientPacketRecieved != null) ClientPacketRecieved(client, packet);

@@ -43,10 +43,5 @@ namespace K_Relay.Util
             this.Show();
             this.WindowState = FormWindowState.Normal;
         }
-
-        private void tmrBringToFront_Tick(object sender, EventArgs e)
-        {
-            //this.BringToFront();
-        }
     }
 }
