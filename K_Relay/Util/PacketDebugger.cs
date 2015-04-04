@@ -3,6 +3,7 @@ using Lib_K_Relay.Interface;
 using Lib_K_Relay.Networking;
 using Lib_K_Relay.Networking.Packets;
 using Lib_K_Relay.Networking.Packets.Client;
+using Lib_K_Relay.Networking.Packets.DataObjects;
 using Lib_K_Relay.Networking.Packets.Server;
 using Lib_K_Relay.Utilities;
 using System;
@@ -40,8 +41,8 @@ namespace K_Relay.Util
         {
             proxy.ClientPacketRecieved += OnPacket;
             proxy.ServerPacketRecieved += OnPacket;
-            proxy.HookPacket(PacketType.UPDATE, OnUpdatePacket);
-            proxy.HookCommand("test", OnTestCommand);
+            proxy.HookPacket(PacketType.UPDATE, OnUpdate);
+            proxy.HookPacket(PacketType.NEW_TICK, OnUpdate);
         }
 
         private void OnPacket(Client client, Packet packet)
@@ -50,19 +51,9 @@ namespace K_Relay.Util
             if (_printString.Contains(packet.Type)) Console.WriteLine("[Packet Debugger] {0}", packet);
         }
 
-        private void OnUpdatePacket(Client client, Packet packet)
+        private void OnUpdate(Client client, Packet packet)
         {
-            UpdatePacket update = (UpdatePacket)packet;
-
-            for (int i = 0; i < update.Tiles.Length; i++)
-            {
-                update.Tiles[i].Type = Serializer.Tiles["SpiderDirt"];
-            }
-        }
-
-        private void OnTestCommand(Client client, string command, string[] args)
-        {
-            Console.WriteLine("Client {0} command {1} args {2}", client.ObjectId, command, args.Length);
+            
         }
     }
 }

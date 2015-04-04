@@ -8,6 +8,43 @@ using System.Threading.Tasks;
 
 namespace Lib_K_Relay.Networking.Packets.DataObjects
 {
+    [Flags]
+    public enum ConditionEffects
+    {
+        Dead = 1 << 0,
+        Quiet = 1 << 1,
+        Weak = 1 << 2,
+        Slowed = 1 << 3,
+        Sick = 1 << 4,
+        Dazed = 1 << 5,
+        Stunned = 1 << 6,
+        Blind = 1 << 7,
+        Hallucinating = 1 << 8,
+        Drunk = 1 << 9,
+        Confused = 1 << 10,
+        StunImmume = 1 << 11,
+        Invisible = 1 << 12,
+        Paralyzed = 1 << 13,
+        Speedy = 1 << 14,
+        Bleeding = 1 << 15,
+        NotUsed = 1 << 16,
+        Healing = 1 << 17,
+        Damaging = 1 << 18,
+        Berserk = 1 << 19,
+        Paused = 1 << 20,
+        Stasis = 1 << 21,
+        StasisImmune = 1 << 22,
+        Invincible = 1 << 23,
+        Invulnerable = 1 << 24,
+        Armored = 1 << 25,
+        ArmorBroken = 1 << 26,
+        Hexed = 1 << 27,
+        AnotherSpeedy = 1 << 28,
+        Unstable = 1 << 29,
+        Darkness = 1 << 30,
+        Curse = 1 << 31
+    }
+
     public class PlayerData // TODO: Add the rest of the stats
     {
         public int OwnerObjectId;
@@ -23,10 +60,11 @@ namespace Lib_K_Relay.Networking.Packets.DataObjects
         public int[] BackPack = { -1, -1, -1, -1, -1, -1, -1, -1 };
         public int Attack;
         public int Defense;
-        public int Speed = 5;
-        public int Vitality = 5;
-        public int Wisdom = 5;
-        public int Dexterity = 10;
+        public int Speed;
+        public int Vitality;
+        public int Wisdom;
+        public int Dexterity;
+        public int Effects;
         public int Stars;
         public string Name;
         public int RealmGold;
@@ -50,10 +88,10 @@ namespace Lib_K_Relay.Networking.Packets.DataObjects
         public string Guild;
         public int GuildRank;
         public int Breath;
-        public int HealthpotCount = -1;
-        public int ManapotCount = -1;
-        public int BoolHasbackPack = -1;
-        public int PetSkinObjectType = -1;
+        public int HealthpotCount;
+        public int ManapotCount;
+        public int BoolHasbackPack;
+        public int PetSkinObjectType;
         public Location Pos = new Location();
         public string MapName;
         public bool HasInc;
@@ -85,15 +123,15 @@ namespace Lib_K_Relay.Networking.Packets.DataObjects
 
         public void Parse(int id, int intValue, string stringValue)
         {
-            if      (id == 0)  MaxHealth = intValue;
-            else if (id == 1)  Health = intValue;
-            else if (id == 3)  MaxMana = intValue;
-            else if (id == 4)  Mana = intValue;
-            else if (id == 5)  XpGoal = intValue;
-            else if (id == 6)  Xp = intValue;
-            else if (id == 7)  Level = intValue;
-            else if (id == 8)  Slot[0] = intValue;
-            else if (id == 9)  Slot[1] = intValue;
+            if (id == 0) MaxHealth = intValue;
+            else if (id == 1) Health = intValue;
+            else if (id == 3) MaxMana = intValue;
+            else if (id == 4) Mana = intValue;
+            else if (id == 5) XpGoal = intValue;
+            else if (id == 6) Xp = intValue;
+            else if (id == 7) Level = intValue;
+            else if (id == 8) Slot[0] = intValue;
+            else if (id == 9) Slot[1] = intValue;
             else if (id == 10) Slot[2] = intValue;
             else if (id == 11) Slot[3] = intValue;
             else if (id == 12) Slot[4] = intValue;
@@ -110,6 +148,7 @@ namespace Lib_K_Relay.Networking.Packets.DataObjects
             else if (id == 26) Vitality = intValue;
             else if (id == 27) Wisdom = intValue;
             else if (id == 28) Dexterity = intValue;
+            else if (id == 29) Effects = intValue;
             else if (id == 30) Stars = intValue;
             else if (id == 31) Name = stringValue;
             else if (id == 35) RealmGold = intValue;
@@ -145,6 +184,11 @@ namespace Lib_K_Relay.Networking.Packets.DataObjects
             else if (id == 86) BackPack[7] = intValue;
             else if (id == 79) BoolHasbackPack = intValue;
             else if (id == 80) PetSkinObjectType = intValue;
+        }
+
+        public bool HasConditionEffect(ConditionEffects effect)
+        {
+            return (Effects & (int)effect) != 0;
         }
 
         public override string ToString()
