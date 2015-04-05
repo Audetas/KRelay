@@ -47,6 +47,7 @@
     <Compile Include="Networking\PacketBuffer.cs" />
     <Compile Include="Networking\Packets\Client\CreatePacket.cs" />
     <Compile Include="Networking\Packets\Client\HelloPacket.cs" />
+    <Compile Include="Networking\Packets\Client\InvSwapPacket.cs" />
     <Compile Include="Networking\Packets\Client\MovePacket.cs" />
     <Compile Include="Networking\Packets\Client\PlayerTextPacket.cs" />
     <Compile Include="Networking\Packets\Client\PongPacket.cs" />
