@@ -12,6 +12,7 @@
 - [ ] **Define all packets**
 - [ ] More that I can't think of at the moment
 - [ ] Some intuitive way to easily get a packet casted to the desired type in callbacks
+- [ ] Don't parse packets that aren't hooked
 - [x] Add welcome to K Relay message
 - [x] Finish the plugins tab
 - [x] Fetch server list from char/list
@@ -24,6 +25,7 @@
 - [x] Auto Ability
 - [x] TQ
 - [x] TP
+- [ ] Reconnect UI
 - [ ] Chat Suite
 - [x] Partial Godmode
 - [x] Loot notifications / Loot bag quest
