@@ -29,3 +29,5 @@
 - [ ] Speedhack (maybee)
 - [x] Loot notifications / Loot bag quest
 - [x] Auto loot
+- [ ] Ally Shoot Blocker
+- [ ] Tile/Object Replacer
