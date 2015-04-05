@@ -21,10 +21,10 @@ namespace ChatAssist
         { return "Chat Assist"; }
 
         public string GetDescription()
-        { return "A collection of tools to help your reduce the spam and clutter of chat and make it easier to respond to people."; }
+        { return "A collection of tools to help your reduce the spam and clutter of chat and make it easier prevent future spam."; }
 
         public string[] GetCommands()
-        { return new string[] { "/chatassist settings", "/r <message>", "/t <partial name> <message>" }; }
+        { return new string[] { "/chatassist off", "/chatassist on", "/chatassist settings" }; }
 
         public void Initialize(Proxy proxy)
         {

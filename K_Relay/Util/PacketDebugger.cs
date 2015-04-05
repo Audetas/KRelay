@@ -18,7 +18,7 @@ namespace K_Relay.Util
     class PacketDebugger : IPlugin
     {
         private List<PacketType> _reportId = new List<PacketType>()
-        {PacketType.USEPORTAL, PacketType.RECONNECT
+        {
         };
 
         private List<PacketType> _printString = new List<PacketType>()
@@ -42,7 +42,6 @@ namespace K_Relay.Util
         {
             proxy.ClientPacketRecieved += OnPacket;
             proxy.ServerPacketRecieved += OnPacket;
-            //proxy.HookPacket(PacketType.USEITEM, OnUseItem);
         }
 
         private void OnPacket(Client client, Packet packet)
