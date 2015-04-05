@@ -1,0 +1,26 @@
+﻿<?xml version='1.0' encoding='utf-8'?>
+<SettingsFile xmlns="http://schemas.microsoft.com/VisualStudio/2004/01/settings" CurrentProfile="(Default)" GeneratedClassNamespace="MapFilter" GeneratedClassName="MapFilterConfig">
+  <Profiles />
+  <Settings>
+    <Setting Name="TileFilters" Type="System.Collections.Specialized.StringCollection" Scope="User">
+      <Value Profile="(Default)">&lt;?xml version="1.0" encoding="utf-16"?&gt;
+&lt;ArrayOfString xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema"&gt;
+  &lt;string&gt;Ice Slide=&amp;gt;Gold Tile&lt;/string&gt;
+&lt;/ArrayOfString&gt;</Value>
+    </Setting>
+    <Setting Name="ObjectFilters" Type="System.Collections.Specialized.StringCollection" Scope="User">
+      <Value Profile="(Default)">&lt;?xml version="1.0" encoding="utf-16"?&gt;
+&lt;ArrayOfString xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema"&gt;
+  &lt;string&gt;Blue Sprite Tree=&amp;gt;None&lt;/string&gt;
+  &lt;string&gt;White Sprite Tree=&amp;gt;None&lt;/string&gt;
+  &lt;string&gt;Green Sprite Tree=&amp;gt;None&lt;/string&gt;
+  &lt;string&gt;Red Sprite Tree=&amp;gt;None&lt;/string&gt;
+  &lt;string&gt;Purple Sprite Tree=&amp;gt;None&lt;/string&gt;
+  &lt;string&gt;Yellow Sprite Tree=&amp;gt;None&lt;/string&gt;
+&lt;/ArrayOfString&gt;</Value>
+    </Setting>
+    <Setting Name="Enabled" Type="System.Boolean" Scope="User">
+      <Value Profile="(Default)">True</Value>
+    </Setting>
+  </Settings>
+</SettingsFile>

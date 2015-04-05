@@ -1,4 +1,6 @@
 <?xml version="1.0" encoding="ISO-8859-1" standalone="no"?><Objects>
+   <Object id ="None" type="0x0">
+   </Object>
    <Object id="Tree A" type="0x0100">
       <Class>GameObject</Class>
       <Texture>

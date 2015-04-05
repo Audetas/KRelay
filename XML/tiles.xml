@@ -1,4 +1,6 @@
 <?xml version="1.0" encoding="ISO-8859-1" standalone="no"?><GroundTypes>
+   <Ground id ="None" type="0x0">
+   </Ground>
    <Ground id="Black Water" type="0x00">
       <Texture>
          <File>lofiEnvironment2</File>
