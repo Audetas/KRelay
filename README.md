@@ -31,3 +31,4 @@
 - [x] Auto loot
 - [ ] Ally Shoot Blocker
 - [ ] Tile/Object Replacer
+- [ ] Custom vault for the fun of it
