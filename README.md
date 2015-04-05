@@ -22,13 +22,14 @@
 - [x] Fame Notifer
 - [x] ClientStat Projecter
 - [x] Auto Ability
-- [ ] Fix TQ
-- [ ] Map Cacher
+- [x] TQ
+- [x] TP
 - [ ] Chat Suite
 - [x] Partial Godmode
-- [ ] Speedhack (maybee)
 - [x] Loot notifications / Loot bag quest
 - [x] Auto loot
 - [ ] Ally Shoot Blocker
 - [ ] Tile/Object Replacer
 - [ ] Custom vault for the fun of it
+- [ ] Map Cacher
+- [ ] Speedhack (maybee)
