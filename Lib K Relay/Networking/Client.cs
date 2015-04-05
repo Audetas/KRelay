@@ -3,6 +3,7 @@ using Lib_K_Relay.Networking.Packets;
 using Lib_K_Relay.Networking.Packets.Client;
 using Lib_K_Relay.Networking.Packets.DataObjects;
 using Lib_K_Relay.Networking.Packets.Server;
+using Lib_K_Relay.Utilities;
 using System;
 using System.Collections.Generic;
 using System.IO;
@@ -81,7 +82,7 @@ namespace Lib_K_Relay.Networking
                 else
                 { // We have the full packet
                     ServerReceiveKey.Cipher(_remoteBuffer.Buffer());
-                    Packet packet = Packet.CreateInstance(_remoteBuffer.Buffer());
+                    Packet packet = Packet.Create(_remoteBuffer.Buffer());
 
                     if (packet.Type != PacketType.UNKNOWN)
                     {
@@ -120,8 +121,19 @@ namespace Lib_K_Relay.Networking
                 }
                 else
                 { // We have the full packet
+                    /*
+                    if (_localBuffer.Buffer()[4] == Serializer.GetPacketId(PacketType.HELLO))
+                    {
+                        byte[] data = _localBuffer.Buffer();
+                        NetworkStream remote = _remoteConnection.GetStream();
+                        remote.BeginWrite(data, 0, data.Length, (arr) => remote.EndWrite(arr), null);
+                        // Reset our counters and recieve a new one
+                        _localBuffer.Flush();
+                        BeginLocalRead(0, 4);
+                        return;
+                    }*/
                     ClientReceiveKey.Cipher(_localBuffer.Buffer());
-                    Packet packet = Packet.CreateInstance(_localBuffer.Buffer());
+                    Packet packet = Packet.Create(_localBuffer.Buffer());
 
                     if (packet.Type != PacketType.UNKNOWN)
                     {

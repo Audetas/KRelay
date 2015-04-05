@@ -39,12 +39,13 @@ namespace Lib_K_Relay.Crypto
 
         private void ProcessBytes(byte[] input, int inOff, int length, byte[] output, int outOff)
         {
+            /*
             if ((inOff + length) > input.Length)
                 throw new ArgumentException("input buffer too short");
 
             if ((outOff + length) > output.Length)
                 throw new ArgumentException("output buffer too short");
-
+            */
             for (int i = 0; i < length; i++)
             {
                 x = (x + 1) & 0xff;

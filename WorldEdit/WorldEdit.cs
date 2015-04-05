@@ -48,7 +48,7 @@ namespace WorldEdit
                 UseItemPacket useItem = (UseItemPacket)packet;
                 useItem.Send = false;
 
-                UpdatePacket update = (UpdatePacket)Packet.CreateInstance(PacketType.UPDATE);
+                UpdatePacket update = (UpdatePacket)Packet.Create(PacketType.UPDATE);
                 update.Drops = new int[0];
                 update.NewObjs = new Entity[0];
                 update.Tiles = new Tile[1];

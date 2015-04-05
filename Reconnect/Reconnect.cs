@@ -44,7 +44,7 @@ namespace Reconnect
             proxy.HookPacket(PacketType.PLAYERTEXT, OnPlayerText);
 
             //Initialise the reconnectPackets
-            defaultRecPacket = Packet.CreateInstance(PacketType.RECONNECT) as ReconnectPacket;
+            defaultRecPacket = Packet.Create(PacketType.RECONNECT) as ReconnectPacket;
             defaultRecPacket.GameId = 0;
             defaultRecPacket.Host = "localhost";
             defaultRecPacket.IsFromArena = false;
@@ -165,7 +165,7 @@ namespace Reconnect
                     if(ex.GetType() == typeof(UnknownArgumentException))
                     {
                         //Send a message saying showing the usage
-                        NotificationPacket notificationPacket = Packet.CreateInstance(PacketType.NOTIFICATION) as NotificationPacket;
+                        NotificationPacket notificationPacket = Packet.Create(PacketType.NOTIFICATION) as NotificationPacket;
                         //Cannot Send a packet without the id of the player how do i get that?
                         notificationPacket.ObjectId = 23;
                         notificationPacket.Message = "{\"key\":\"blank\",\"tokens\":{\"data\":\"" + help + "\"}}";

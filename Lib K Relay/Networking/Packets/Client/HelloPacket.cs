@@ -24,6 +24,8 @@ namespace Lib_K_Relay.Networking.Packets.Client
         public string Obf5;
         public string Obf6;
 
+        public byte[] RAW;
+
         public override PacketType Type
         { get { return PacketType.HELLO; } }
 
@@ -48,6 +50,9 @@ namespace Lib_K_Relay.Networking.Packets.Client
 
         public override void Write(PacketWriter w)
         {
+            w.Write(RAW);
+            return;
+
             w.Write(BuildVersion);
             w.Write(GameId);
             w.Write(GUID);

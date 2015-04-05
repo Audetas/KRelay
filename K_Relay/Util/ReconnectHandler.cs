@@ -91,7 +91,7 @@ namespace K_Relay.Util
         public void ChangeServer(string address, string name)
         {
             Console.WriteLine("[Reconnect Handler] Changing to server {0}({1}).", name, address);
-            ReconnectPacket reconnect = (ReconnectPacket)Packet.CreateInstance(PacketType.RECONNECT);
+            ReconnectPacket reconnect = (ReconnectPacket)Packet.Create(PacketType.RECONNECT);
             _proxy.Port = 2050;
             _proxy.RemoteAddress = address;
 

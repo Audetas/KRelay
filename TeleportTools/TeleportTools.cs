@@ -125,7 +125,7 @@ namespace TeleportTools
 
                 if (target != client.ObjectId)
                 {
-                    TeleportPacket teleport = (TeleportPacket)Packet.CreateInstance(PacketType.TELEPORT);
+                    TeleportPacket teleport = (TeleportPacket)Packet.Create(PacketType.TELEPORT);
                     teleport.ObjectId = target;
                     client.SendToServer(teleport);
                     client.SendToClient(PluginUtils.CreateNotification(
@@ -147,7 +147,7 @@ namespace TeleportTools
             {
                 if (pair.Value.ToLower().Contains(args[0].ToLower()))
                 {
-                    TeleportPacket teleport = (TeleportPacket)Packet.CreateInstance(PacketType.TELEPORT);
+                    TeleportPacket teleport = (TeleportPacket)Packet.Create(PacketType.TELEPORT);
                     teleport.ObjectId = pair.Key;
                     client.SendToServer(teleport);
                     client.SendToClient(PluginUtils.CreateNotification(

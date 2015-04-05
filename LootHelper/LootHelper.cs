@@ -81,7 +81,7 @@ namespace LootHelper
                             if (client.PlayerData.Slot[i] == -1)
                             {
                                 Console.WriteLine("[Loot Helper] Swapping bagslot {0} with my slot {1}", bi, i - 4);
-                                InvSwapPacket invSwap = (InvSwapPacket)Packet.CreateInstance(PacketType.INVSWAP);
+                                InvSwapPacket invSwap = (InvSwapPacket)Packet.Create(PacketType.INVSWAP);
                                 invSwap.Time = client.Time;
                                 invSwap.Position = client.PlayerData.Pos;
 
@@ -117,7 +117,7 @@ namespace LootHelper
                 if (LootHelperConfig.Default.LootQuests && type >= 1286 && type <= 1296) // Light Blue or better
                 {
                     Console.WriteLine("[Loot Helper] Changing your quest to a loot bag!");
-                    QuestObjIdPacket questObjId = (QuestObjIdPacket)Packet.CreateInstance(PacketType.QUESTOBJID);
+                    QuestObjIdPacket questObjId = (QuestObjIdPacket)Packet.Create(PacketType.QUESTOBJID);
                     questObjId.ObjectId = entity.Status.ObjectId;
                     client.SendToClient(questObjId);
                 }
@@ -150,7 +150,7 @@ namespace LootHelper
             {
                 if (drop == _customQuest && _originalQuest != -1)
                 {
-                    QuestObjIdPacket questObjId = (QuestObjIdPacket)Packet.CreateInstance(PacketType.QUESTOBJID);
+                    QuestObjIdPacket questObjId = (QuestObjIdPacket)Packet.Create(PacketType.QUESTOBJID);
                     questObjId.ObjectId = _originalQuest;
                     client.SendToClient(questObjId);
 

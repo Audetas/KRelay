@@ -58,7 +58,7 @@ namespace Lib_K_Relay.Utilities
 
         public static NotificationPacket CreateNotification(int objectId, int color, string message)
         {
-            NotificationPacket notif = (NotificationPacket)Packet.CreateInstance(PacketType.NOTIFICATION);
+            NotificationPacket notif = (NotificationPacket)Packet.Create(PacketType.NOTIFICATION);
             notif.ObjectId = objectId;
             notif.Message = "{\"key\":\"blank\",\"tokens\":{\"data\":\"" + message + "\"}}";
             notif.Color = color;
@@ -67,7 +67,7 @@ namespace Lib_K_Relay.Utilities
 
         public static TextPacket CreateOryxNotification(string sender, string message)
         {
-            TextPacket tpacket = (TextPacket)Packet.CreateInstance(PacketType.TEXT);
+            TextPacket tpacket = (TextPacket)Packet.Create(PacketType.TEXT);
             tpacket.BubbleTime = 0;
             tpacket.CleanText = message;
             tpacket.Name = "#" + sender;

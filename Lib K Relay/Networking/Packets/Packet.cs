@@ -1,3 +1,4 @@
+using Lib_K_Relay.Networking.Packets.Client;
 using Lib_K_Relay.Utilities;
 using System;
 using System.Collections.Generic;
@@ -30,7 +31,7 @@ namespace Lib_K_Relay.Networking.Packets
             w.Write(_data); // All of the packet data
         }
 
-        public static Packet CreateInstance(PacketType type)
+        public static Packet Create(PacketType type)
         {
             Packet packet = (Packet)Activator.CreateInstance(
                 Serializer.GetPacketType(type));
@@ -38,7 +39,7 @@ namespace Lib_K_Relay.Networking.Packets
             return packet;
         }
 
-        public static Packet CreateInstance(byte[] data)
+        public static Packet Create(byte[] data)
         {
             using (PacketReader r = new PacketReader(new MemoryStream(data)))
             {
@@ -50,7 +51,10 @@ namespace Lib_K_Relay.Networking.Packets
                 Packet packet = (Packet)Activator.CreateInstance(type);
                 packet.Id = id;
                 packet.Read(r);
-                //Console.WriteLine(packetType.ToString());
+
+                if (packetType == PacketType.HELLO)
+                    (packet as HelloPacket).RAW = data.Skip(5).ToArray();
+
                 return packet;
             }
         }
