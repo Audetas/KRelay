@@ -21,7 +21,7 @@
 - [x] World Edit
 - [x] Fame Notifer
 - [x] ClientStat Projecter
-- [ ] Auto Ability
+- [x] Auto Ability
 - [ ] Fix TQ
 - [ ] Map Cacher
 - [ ] Chat Suite
