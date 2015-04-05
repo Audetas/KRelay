@@ -27,5 +27,5 @@
 - [ ] Chat Suite
 - [x] Partial Godmode
 - [ ] Speedhack (maybee)
-- [ ] Loot notifications / Loot bag quest
-- [ ] Auto loot
+- [x] Loot notifications / Loot bag quest
+- [x] Auto loot
