@@ -1,5 +1,6 @@
 using Lib_K_Relay.Crypto;
 using Lib_K_Relay.Networking.Packets;
+using Lib_K_Relay.Networking.Packets.Client;
 using Lib_K_Relay.Networking.Packets.DataObjects;
 using Lib_K_Relay.Networking.Packets.Server;
 using System;
@@ -15,6 +16,7 @@ namespace Lib_K_Relay.Networking
 {
     public class Client
     {
+        public int Time = 0;
         public int ObjectId;
         public PlayerData PlayerData;
 
@@ -214,10 +216,19 @@ namespace Lib_K_Relay.Networking
             {
                 PlayerData.Parse(packet as NewTickPacket);
             }
-            else if (packet.Type == PacketType.MAPINFO)
+            else if (packet.Type == PacketType.PONG)
             {
-                PlayerData.MapName = (packet as MapInfoPacket).Name;
+                Time = (packet as PongPacket).Time;
             }
+            else if (packet.Type == PacketType.MOVE)
+            {
+                Time = (packet as MovePacket).Time;
+                PlayerData.Pos = (packet as MovePacket).NewPosition;
+            }
+            //else if (packet.Type == PacketType.MAPINFO)
+            //{
+            //    PlayerData.MapName = (packet as MapInfoPacket).Name;
+            //}
         }
     }
 }

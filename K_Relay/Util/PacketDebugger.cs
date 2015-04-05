@@ -23,6 +23,7 @@ namespace K_Relay.Util
 
         private List<PacketType> _printString = new List<PacketType>()
         {
+            
         };
 
         public string GetAuthor()
@@ -41,6 +42,7 @@ namespace K_Relay.Util
         {
             proxy.ClientPacketRecieved += OnPacket;
             proxy.ServerPacketRecieved += OnPacket;
+            //proxy.HookPacket(PacketType.USEITEM, OnUseItem);
         }
 
         private void OnPacket(Client client, Packet packet)
