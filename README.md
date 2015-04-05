@@ -28,8 +28,7 @@
 - [x] Partial Godmode
 - [x] Loot notifications / Loot bag quest
 - [x] Auto loot
-- [ ] Ally Shoot Blocker
-- [ ] Tile/Object Replacer
+- [x] Tile/Object Replacer
 - [ ] Custom vault for the fun of it
 - [ ] Map Cacher
 - [ ] Speedhack (maybee)
