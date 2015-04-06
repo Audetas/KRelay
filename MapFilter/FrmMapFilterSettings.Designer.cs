@@ -30,18 +30,18 @@
         {
             this.tabMain = new System.Windows.Forms.TabControl();
             this.tabTiles = new System.Windows.Forms.TabPage();
-            this.tabObjects = new System.Windows.Forms.TabPage();
-            this.menuSettings = new System.Windows.Forms.MenuStrip();
-            this.btnDone = new System.Windows.Forms.ToolStripMenuItem();
-            this.btnReset = new System.Windows.Forms.ToolStripMenuItem();
-            this.listTileFilters = new System.Windows.Forms.ListBox();
-            this.label1 = new System.Windows.Forms.Label();
-            this.btnAddTile = new System.Windows.Forms.Button();
             this.btnRemoveTile = new System.Windows.Forms.Button();
+            this.btnAddTile = new System.Windows.Forms.Button();
+            this.label1 = new System.Windows.Forms.Label();
+            this.listTileFilters = new System.Windows.Forms.ListBox();
+            this.tabObjects = new System.Windows.Forms.TabPage();
             this.btnRemoveObject = new System.Windows.Forms.Button();
             this.btnAddObject = new System.Windows.Forms.Button();
             this.label2 = new System.Windows.Forms.Label();
             this.listObjectFilters = new System.Windows.Forms.ListBox();
+            this.menuSettings = new System.Windows.Forms.MenuStrip();
+            this.btnDone = new System.Windows.Forms.ToolStripMenuItem();
+            this.btnReset = new System.Windows.Forms.ToolStripMenuItem();
             this.chkEnabled = new System.Windows.Forms.CheckBox();
             this.tabMain.SuspendLayout();
             this.tabTiles.SuspendLayout();
@@ -74,45 +74,36 @@
             this.tabTiles.Text = "Tiles (Ground)";
             this.tabTiles.UseVisualStyleBackColor = true;
             // 
-            // tabObjects
+            // btnRemoveTile
             // 
-            this.tabObjects.Controls.Add(this.btnRemoveObject);
-            this.tabObjects.Controls.Add(this.btnAddObject);
-            this.tabObjects.Controls.Add(this.label2);
-            this.tabObjects.Controls.Add(this.listObjectFilters);
-            this.tabObjects.Location = new System.Drawing.Point(4, 34);
-            this.tabObjects.Name = "tabObjects";
-            this.tabObjects.Padding = new System.Windows.Forms.Padding(3);
-            this.tabObjects.Size = new System.Drawing.Size(552, 663);
-            this.tabObjects.TabIndex = 1;
-            this.tabObjects.Text = "Objects (Colliders)";
-            this.tabObjects.UseVisualStyleBackColor = true;
+            this.btnRemoveTile.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnRemoveTile.Location = new System.Drawing.Point(484, 595);
+            this.btnRemoveTile.Name = "btnRemoveTile";
+            this.btnRemoveTile.Size = new System.Drawing.Size(60, 60);
+            this.btnRemoveTile.TabIndex = 3;
+            this.btnRemoveTile.Text = "-";
+            this.btnRemoveTile.UseVisualStyleBackColor = true;
+            this.btnRemoveTile.Click += new System.EventHandler(this.btnRemoveTile_Click);
             // 
-            // menuSettings
+            // btnAddTile
             // 
-            this.menuSettings.ImageScalingSize = new System.Drawing.Size(32, 32);
-            this.menuSettings.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.btnDone,
-            this.btnReset});
-            this.menuSettings.Location = new System.Drawing.Point(0, 0);
-            this.menuSettings.Name = "menuSettings";
-            this.menuSettings.Size = new System.Drawing.Size(560, 40);
-            this.menuSettings.TabIndex = 1;
-            this.menuSettings.Text = "menuStrip1";
+            this.btnAddTile.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.btnAddTile.Location = new System.Drawing.Point(6, 595);
+            this.btnAddTile.Name = "btnAddTile";
+            this.btnAddTile.Size = new System.Drawing.Size(60, 60);
+            this.btnAddTile.TabIndex = 2;
+            this.btnAddTile.Text = "+";
+            this.btnAddTile.UseVisualStyleBackColor = true;
+            this.btnAddTile.Click += new System.EventHandler(this.btnAddTile_Click);
             // 
-            // btnDone
+            // label1
             // 
-            this.btnDone.Name = "btnDone";
-            this.btnDone.Size = new System.Drawing.Size(85, 38);
-            this.btnDone.Text = "Done";
-            this.btnDone.Click += new System.EventHandler(this.btnDone_Click);
-            // 
-            // btnReset
-            // 
-            this.btnReset.Name = "btnReset";
-            this.btnReset.Size = new System.Drawing.Size(209, 38);
-            this.btnReset.Text = "Reset to Defaults";
-            this.btnReset.Click += new System.EventHandler(this.btnReset_Click);
+            this.label1.AutoSize = true;
+            this.label1.Location = new System.Drawing.Point(8, 7);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(358, 25);
+            this.label1.TabIndex = 1;
+            this.label1.Text = "Tile Filters: (Original=>ReplaceWith)";
             // 
             // listTileFilters
             // 
@@ -126,36 +117,19 @@
             this.listTileFilters.Size = new System.Drawing.Size(540, 554);
             this.listTileFilters.TabIndex = 0;
             // 
-            // label1
+            // tabObjects
             // 
-            this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(8, 7);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(358, 25);
-            this.label1.TabIndex = 1;
-            this.label1.Text = "Tile Filters: (Original=>ReplaceWith)";
-            // 
-            // btnAddTile
-            // 
-            this.btnAddTile.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.btnAddTile.Location = new System.Drawing.Point(6, 595);
-            this.btnAddTile.Name = "btnAddTile";
-            this.btnAddTile.Size = new System.Drawing.Size(60, 60);
-            this.btnAddTile.TabIndex = 2;
-            this.btnAddTile.Text = "+";
-            this.btnAddTile.UseVisualStyleBackColor = true;
-            this.btnAddTile.Click += new System.EventHandler(this.btnAddTile_Click);
-            // 
-            // btnRemoveTile
-            // 
-            this.btnRemoveTile.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnRemoveTile.Location = new System.Drawing.Point(484, 595);
-            this.btnRemoveTile.Name = "btnRemoveTile";
-            this.btnRemoveTile.Size = new System.Drawing.Size(60, 60);
-            this.btnRemoveTile.TabIndex = 3;
-            this.btnRemoveTile.Text = "-";
-            this.btnRemoveTile.UseVisualStyleBackColor = true;
-            this.btnRemoveTile.Click += new System.EventHandler(this.btnRemoveTile_Click);
+            this.tabObjects.Controls.Add(this.btnRemoveObject);
+            this.tabObjects.Controls.Add(this.btnAddObject);
+            this.tabObjects.Controls.Add(this.label2);
+            this.tabObjects.Controls.Add(this.listObjectFilters);
+            this.tabObjects.Location = new System.Drawing.Point(4, 34);
+            this.tabObjects.Name = "tabObjects";
+            this.tabObjects.Padding = new System.Windows.Forms.Padding(3);
+            this.tabObjects.Size = new System.Drawing.Size(552, 663);
+            this.tabObjects.TabIndex = 1;
+            this.tabObjects.Text = "Objects (Colliders)";
+            this.tabObjects.UseVisualStyleBackColor = true;
             // 
             // btnRemoveObject
             // 
@@ -200,11 +174,34 @@
             this.listObjectFilters.Size = new System.Drawing.Size(540, 554);
             this.listObjectFilters.TabIndex = 4;
             // 
+            // menuSettings
+            // 
+            this.menuSettings.ImageScalingSize = new System.Drawing.Size(32, 32);
+            this.menuSettings.Location = new System.Drawing.Point(0, 0);
+            this.menuSettings.Name = "menuSettings";
+            this.menuSettings.Size = new System.Drawing.Size(560, 40);
+            this.menuSettings.TabIndex = 1;
+            this.menuSettings.Text = "menuStrip1";
+            // 
+            // btnDone
+            // 
+            this.btnDone.Name = "btnDone";
+            this.btnDone.Size = new System.Drawing.Size(85, 36);
+            this.btnDone.Text = "Done";
+            this.btnDone.Click += new System.EventHandler(this.btnDone_Click);
+            // 
+            // btnReset
+            // 
+            this.btnReset.Name = "btnReset";
+            this.btnReset.Size = new System.Drawing.Size(209, 36);
+            this.btnReset.Text = "Reset to Defaults";
+            this.btnReset.Click += new System.EventHandler(this.btnReset_Click);
+            // 
             // chkEnabled
             // 
             this.chkEnabled.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.chkEnabled.AutoSize = true;
-            this.chkEnabled.Location = new System.Drawing.Point(346, 44);
+            this.chkEnabled.Location = new System.Drawing.Point(346, 47);
             this.chkEnabled.Name = "chkEnabled";
             this.chkEnabled.Size = new System.Drawing.Size(207, 29);
             this.chkEnabled.TabIndex = 2;

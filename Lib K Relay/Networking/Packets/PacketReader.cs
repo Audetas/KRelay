@@ -41,6 +41,11 @@ namespace Lib_K_Relay.Networking.Packets
         {
             return Encoding.UTF8.GetString(ReadBytes(ReadInt16()));
         }
+
+        public string ReadUTF32()
+        {
+            return Encoding.UTF8.GetString(ReadBytes(ReadInt32()));
+        }
     }
 }
 ;

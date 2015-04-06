@@ -28,11 +28,11 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.menuStrip1 = new System.Windows.Forms.MenuStrip();
+            this.menuSettings = new System.Windows.Forms.MenuStrip();
             this.btnDone = new System.Windows.Forms.ToolStripMenuItem();
             this.btnReset = new System.Windows.Forms.ToolStripMenuItem();
             this.chkSpamFilter = new System.Windows.Forms.CheckBox();
-            this.richTextBox1 = new System.Windows.Forms.RichTextBox();
+            this.tbxBlacklist = new System.Windows.Forms.RichTextBox();
             this.lblInfo = new System.Windows.Forms.Label();
             this.groupOptions = new System.Windows.Forms.GroupBox();
             this.chkDisableAllMessages = new System.Windows.Forms.CheckBox();
@@ -40,33 +40,35 @@
             this.chkAutoIgnore = new System.Windows.Forms.CheckBox();
             this.chkAutoIgnorePMs = new System.Windows.Forms.CheckBox();
             this.label1 = new System.Windows.Forms.Label();
-            this.menuStrip1.SuspendLayout();
+            this.menuSettings.SuspendLayout();
             this.groupOptions.SuspendLayout();
             this.SuspendLayout();
             // 
-            // menuStrip1
+            // menuSettings
             // 
-            this.menuStrip1.ImageScalingSize = new System.Drawing.Size(32, 32);
-            this.menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.menuSettings.ImageScalingSize = new System.Drawing.Size(32, 32);
+            this.menuSettings.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.btnDone,
             this.btnReset});
-            this.menuStrip1.Location = new System.Drawing.Point(0, 0);
-            this.menuStrip1.Name = "menuStrip1";
-            this.menuStrip1.Size = new System.Drawing.Size(958, 40);
-            this.menuStrip1.TabIndex = 0;
-            this.menuStrip1.Text = "menuSettings";
+            this.menuSettings.Location = new System.Drawing.Point(0, 0);
+            this.menuSettings.Name = "menuSettings";
+            this.menuSettings.Size = new System.Drawing.Size(958, 40);
+            this.menuSettings.TabIndex = 0;
+            this.menuSettings.Text = "menuSettings";
             // 
             // btnDone
             // 
             this.btnDone.Name = "btnDone";
             this.btnDone.Size = new System.Drawing.Size(85, 36);
             this.btnDone.Text = "Done";
+            this.btnDone.Click += new System.EventHandler(this.btnDone_Click);
             // 
             // btnReset
             // 
             this.btnReset.Name = "btnReset";
             this.btnReset.Size = new System.Drawing.Size(209, 36);
             this.btnReset.Text = "Reset to Defaults";
+            this.btnReset.Click += new System.EventHandler(this.btnReset_Click);
             // 
             // chkSpamFilter
             // 
@@ -79,16 +81,16 @@
             this.chkSpamFilter.Text = "Enable Chat Filter";
             this.chkSpamFilter.UseVisualStyleBackColor = true;
             // 
-            // richTextBox1
+            // tbxBlacklist
             // 
-            this.richTextBox1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            this.tbxBlacklist.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.richTextBox1.Location = new System.Drawing.Point(12, 93);
-            this.richTextBox1.Name = "richTextBox1";
-            this.richTextBox1.Size = new System.Drawing.Size(472, 294);
-            this.richTextBox1.TabIndex = 3;
-            this.richTextBox1.Text = "";
+            this.tbxBlacklist.Location = new System.Drawing.Point(12, 93);
+            this.tbxBlacklist.Name = "tbxBlacklist";
+            this.tbxBlacklist.Size = new System.Drawing.Size(472, 294);
+            this.tbxBlacklist.TabIndex = 3;
+            this.tbxBlacklist.Text = "";
             // 
             // lblInfo
             // 
@@ -174,14 +176,15 @@
             this.Controls.Add(this.groupOptions);
             this.Controls.Add(this.lblInfo);
             this.Controls.Add(this.chkSpamFilter);
-            this.Controls.Add(this.richTextBox1);
-            this.Controls.Add(this.menuStrip1);
+            this.Controls.Add(this.tbxBlacklist);
+            this.Controls.Add(this.menuSettings);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.SizableToolWindow;
-            this.MainMenuStrip = this.menuStrip1;
+            this.MainMenuStrip = this.menuSettings;
             this.Name = "FrmChatAssistSettings";
             this.Text = "Chat Assist Settings";
-            this.menuStrip1.ResumeLayout(false);
-            this.menuStrip1.PerformLayout();
+            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.FrmChatAssistSettings_FormClosing);
+            this.menuSettings.ResumeLayout(false);
+            this.menuSettings.PerformLayout();
             this.groupOptions.ResumeLayout(false);
             this.groupOptions.PerformLayout();
             this.ResumeLayout(false);
@@ -191,11 +194,11 @@
 
         #endregion
 
-        private System.Windows.Forms.MenuStrip menuStrip1;
+        private System.Windows.Forms.MenuStrip menuSettings;
         private System.Windows.Forms.ToolStripMenuItem btnDone;
         private System.Windows.Forms.ToolStripMenuItem btnReset;
         private System.Windows.Forms.CheckBox chkSpamFilter;
-        private System.Windows.Forms.RichTextBox richTextBox1;
+        private System.Windows.Forms.RichTextBox tbxBlacklist;
         private System.Windows.Forms.Label lblInfo;
         private System.Windows.Forms.GroupBox groupOptions;
         private System.Windows.Forms.CheckBox chkDisableAllMessages;

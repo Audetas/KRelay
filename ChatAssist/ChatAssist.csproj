@@ -42,6 +42,11 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="ChatAssist.cs" />
+    <Compile Include="ChatAssistConfig.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+      <DependentUpon>ChatAssistConfig.settings</DependentUpon>
+    </Compile>
     <Compile Include="FrmChatAssistSettings.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -60,6 +65,13 @@
     <EmbeddedResource Include="FrmChatAssistSettings.resx">
       <DependentUpon>FrmChatAssistSettings.cs</DependentUpon>
     </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="app.config" />
+    <None Include="ChatAssistConfig.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>ChatAssistConfig.Designer.cs</LastGenOutput>
+    </None>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

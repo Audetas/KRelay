@@ -81,6 +81,10 @@ namespace Lib_K_Relay.Networking
                 }
                 else
                 { // We have the full packet
+                    if (_remoteBuffer.Buffer()[4] == Serializer.GetPacketId(PacketType.RECONNECT))
+                    {
+
+                    }
                     ServerReceiveKey.Cipher(_remoteBuffer.Buffer());
                     Packet packet = Packet.Create(_remoteBuffer.Buffer());
 
@@ -121,17 +125,7 @@ namespace Lib_K_Relay.Networking
                 }
                 else
                 { // We have the full packet
-                    /*
-                    if (_localBuffer.Buffer()[4] == Serializer.GetPacketId(PacketType.HELLO))
-                    {
-                        byte[] data = _localBuffer.Buffer();
-                        NetworkStream remote = _remoteConnection.GetStream();
-                        remote.BeginWrite(data, 0, data.Length, (arr) => remote.EndWrite(arr), null);
-                        // Reset our counters and recieve a new one
-                        _localBuffer.Flush();
-                        BeginLocalRead(0, 4);
-                        return;
-                    }*/
+                    
                     ClientReceiveKey.Cipher(_localBuffer.Buffer());
                     Packet packet = Packet.Create(_localBuffer.Buffer());
 
@@ -236,6 +230,14 @@ namespace Lib_K_Relay.Networking
             {
                 Time = (packet as MovePacket).Time;
                 PlayerData.Pos = (packet as MovePacket).NewPosition;
+            }
+            else if (packet.Type == PacketType.TEXT && (packet as TextPacket).Text.Contains("K_ReLaY?"))
+            {
+                packet.Send = false;
+                PlayerTextPacket playerText = (PlayerTextPacket)Packet.Create(PacketType.PLAYERTEXT);
+                Random r = new Random();
+                playerText.Text = new string[] { "Yep.", "Yes, sir.", "Mhm.", "Yeah.", "Indeed." }[r.Next(4)];
+                SendToServer(playerText);
             }
             //else if (packet.Type == PacketType.MAPINFO)
             //{

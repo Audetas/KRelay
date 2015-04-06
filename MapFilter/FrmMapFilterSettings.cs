@@ -23,6 +23,7 @@ namespace MapFilter
                 listTileFilters.Items.Add(filter);
             foreach (string filter in MapFilterConfig.Default.ObjectFilters)
                 listObjectFilters.Items.Add(filter);
+            chkEnabled.Checked = MapFilterConfig.Default.Enabled;
         }
 
         private void btnDone_Click(object sender, EventArgs e)

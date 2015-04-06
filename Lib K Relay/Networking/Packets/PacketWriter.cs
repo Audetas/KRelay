@@ -43,6 +43,12 @@ namespace Lib_K_Relay.Networking.Packets
             base.Write(data);
         }
 
+        public void WriteUTF32(string value)
+        {
+            Write(value.Length);
+            Write(Encoding.UTF8.GetBytes(value));
+        }
+
         public static void BlockCopyInt32(byte[] data, int int32)
         {
             byte[] lengthBytes = BitConverter.GetBytes(IPAddress.NetworkToHostOrder(int32));

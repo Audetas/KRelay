@@ -12,7 +12,7 @@ using System.Threading.Tasks;
 
 namespace ChatAssist
 {
-    public class ChatAssist
+    public class ChatAssist : IPlugin
     {
         public string GetAuthor()
         { return "KrazyShank / Kronks"; }
@@ -28,7 +28,63 @@ namespace ChatAssist
 
         public void Initialize(Proxy proxy)
         {
+            proxy.HookCommand("chatassist", OnChatAssistCommand);
+            proxy.HookPacket(PacketType.TEXT, OnText);
+        }
 
+        private void OnChatAssistCommand(Client client, string command, string[] args)
+        {
+            if (args.Length == 0) return;
+
+            if (args[0] == "settings")
+                PluginUtils.ShowGUI(new FrmChatAssistSettings());
+            else if (args[0] == "on")
+            {
+                ChatAssistConfig.Default.Enabled = true;
+                client.SendToClient(PluginUtils.CreateNotification(client.ObjectId, "Chat Assist Enabled!"));
+            }
+            else if (args[0] == "off")
+            {
+                ChatAssistConfig.Default.Enabled = false;
+                client.SendToClient(PluginUtils.CreateNotification(client.ObjectId, "Chat Assist Disabled!"));
+            }
+        }
+
+        private void OnText(Client client, Packet packet)
+        {
+            if (!ChatAssistConfig.Default.Enabled) return;
+            TextPacket text = (TextPacket)packet;
+
+            if (ChatAssistConfig.Default.DisableMessages && text.Recipient == "")
+            {
+                text.Send = false;
+                return;
+            }
+
+            foreach (string filter in ChatAssistConfig.Default.Blacklist)
+            {
+                if (text.Text.ToLower().Contains(filter.ToLower()))
+                {
+                    // Is spam
+                    if (ChatAssistConfig.Default.CensorSpamMessages)
+                    {
+                        text.Text = "Filtered";
+                        text.CleanText = "Filtered";
+                        return;
+                    }
+
+                    text.Send = false;
+
+                    if (ChatAssistConfig.Default.AutoIgnoreSpamMessage)
+                    {
+                        // Ignore
+                    }
+                    else if (ChatAssistConfig.Default.AutoIgnoreSpamPM && text.Recipient != "")
+                    {
+                        // Ingore
+                    }
+                }
+            }
         }
     }
 }

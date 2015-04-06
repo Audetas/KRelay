@@ -55,8 +55,8 @@ namespace K_Relay.Util
             _proxy.Port = _originalPort;
 
             // Send welcome message to player
-            //PluginUtils.Delay(2000, () => client.SendToClient(
-                //PluginUtils.CreateNotification(client.ObjectId, "Welcome to K Relay!")));
+            PluginUtils.Delay(1500, () => client.SendToClient(
+                PluginUtils.CreateNotification(client.ObjectId, "Welcome to K Relay!")));
         }
 
         private void OnReconnectPacket(Client client, Packet packet)
