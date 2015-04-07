@@ -5,6 +5,7 @@
 ----------------------------------------
 Please ensure that you're using Visual Studio 2012 or newer otherwise this guide may be innaccurate for you.
 First steps:
+
 1) Create a new C# "Class Library" Project.
 
 2) Rightclick your project in the Solution Explorer and select "Add Reference".
