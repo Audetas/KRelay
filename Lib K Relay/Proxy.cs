@@ -34,6 +34,7 @@ namespace Lib_K_Relay
         public event PacketHandler ServerPacketRecieved;
         public event PacketHandler ClientPacketRecieved;
 
+
         private Dictionary<PacketHandler, List<PacketType>> _packetHooks = new Dictionary<PacketHandler, List<PacketType>>();
         private Dictionary<CommandHandler, List<string>> _commandHooks = new Dictionary<CommandHandler, List<string>>();
 
@@ -144,12 +145,12 @@ namespace Lib_K_Relay
         {
             try
             {
+                // Fire general server packet callbacks
+                if (ServerPacketRecieved != null) ServerPacketRecieved(client, packet);
+
                 // Fire specific hook callbacks if applicable
                 foreach (var pair in _packetHooks)
                     if (pair.Value.Contains(packet.Type)) pair.Key(client, packet);
-
-                // Fire general server packet callbacks
-                if (ServerPacketRecieved != null) ServerPacketRecieved(client, packet);
             }
             catch (Exception e) { PluginUtils.LogPluginException(e, "ServerPacket"); }
         }
@@ -180,12 +181,12 @@ namespace Lib_K_Relay
                     }
                 }
 
+                // Fire general client packet callbacks
+                if (ClientPacketRecieved != null) ClientPacketRecieved(client, packet);
+
                 // Fire specific hook callbacks if applicable
                 foreach (var pair in _packetHooks)
                     if (pair.Value.Contains(packet.Type)) pair.Key(client, packet);
-
-                // Fire general client packet callbacks
-                if (ClientPacketRecieved != null) ClientPacketRecieved(client, packet);
             } 
             catch (Exception e) { PluginUtils.LogPluginException(e, "ClientPacket"); }
         }
