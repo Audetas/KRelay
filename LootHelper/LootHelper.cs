@@ -19,6 +19,8 @@ namespace LootHelper
         private Dictionary<int, int[]> _lootBagItems = new Dictionary<int, int[]>();
         private Dictionary<int, Location> _lootBagLocations = new Dictionary<int, Location>();
 
+
+        private short[] _desiredBags = { (short)Bags.Blue, (short)Bags.Cyan, (short)Bags.White };
         private int _originalQuest = -1;
         private int _customQuest = -1;
 
@@ -41,7 +43,7 @@ namespace LootHelper
         {
             proxy.HookPacket(PacketType.MOVE, OnMove);
             proxy.HookPacket(PacketType.UPDATE, OnUpdate);
-            proxy.HookPacket(PacketType.NEW_TICK, OnNewTick);
+            proxy.HookPacket(PacketType.NEWTICK, OnNewTick);
             proxy.HookPacket(PacketType.QUESTOBJID, OnQuestObjId);
             proxy.HookCommand("loothelper", OnLootHelperCommand);
         }
@@ -123,9 +125,9 @@ namespace LootHelper
             // New Objects
             foreach (Entity entity in update.NewObjs)
             {
-                int type = entity.ObjectType;
+                short type = entity.ObjectType;
 
-                if (LootHelperConfig.Default.LootQuests && type >= 1286 && type <= 1296) // Light Blue or better
+                if (LootHelperConfig.Default.LootQuests && _desiredBags.Contains(type)) // Light Blue or better
                 {
                     Console.WriteLine("[Loot Helper] Changing your quest to a loot bag!");
                     QuestObjIdPacket questObjId = (QuestObjIdPacket)Packet.Create(PacketType.QUESTOBJID);

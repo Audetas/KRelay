@@ -79,6 +79,21 @@ namespace Lib_K_Relay.Utilities
         Curse = 31
     }
 
+    public enum Bags : short
+    {
+        Normal = 0x500,
+        Purple = 0x503,
+        Pink = 0x506,
+        Cyan = 0x509,
+        Red = 0x510,
+        Blue = 0x050B,
+        Purple2 = 0x507,
+        Egg = 0x508,
+        White = 0x050C,
+        White2 = 0x050E,
+        White3 = 0x50F
+    }
+
     public enum Classes : short
     {
         Rogue = 0x0300,

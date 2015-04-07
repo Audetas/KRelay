@@ -41,7 +41,7 @@ namespace TeleportTools
             _classes = (short[])Enum.GetValues(typeof(Classes));
 
             proxy.ClientDisconnected += OnClientDisconnected;
-            proxy.HookPacket(PacketType.NEW_TICK, OnNewTick);
+            proxy.HookPacket(PacketType.NEWTICK, OnNewTick);
             proxy.HookPacket(PacketType.UPDATE, OnUpdate);
             proxy.HookPacket(PacketType.QUESTOBJID, OnQuestObjId);
             proxy.HookCommand("tq", OnTQCommand);

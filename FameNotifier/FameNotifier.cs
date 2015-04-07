@@ -31,7 +31,7 @@ namespace FameNotifier
         public void Initialize(Proxy proxy)
         {
             proxy.HookPacket(PacketType.UPDATE, OnUpdate);
-            proxy.HookPacket(PacketType.NEW_TICK, OnUpdate);
+            proxy.HookPacket(PacketType.NEWTICK, OnUpdate);
             proxy.ClientConnected += (client) => _fame.Add(client, -1);
             proxy.ClientDisconnected += (client) => _fame.Remove(client);
         }

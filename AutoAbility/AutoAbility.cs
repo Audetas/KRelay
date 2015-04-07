@@ -46,7 +46,7 @@ namespace AutoAbility
             proxy.HookPacket(PacketType.CREATESUCCESS, OnCreateSuccess);
             proxy.HookPacket(PacketType.USEITEM, OnUseItem);
             proxy.HookPacket(PacketType.UPDATE, OnUpdate);
-            proxy.HookPacket(PacketType.NEW_TICK, OnUpdate);
+            proxy.HookPacket(PacketType.NEWTICK, OnUpdate);
             proxy.HookCommand("aa", OnAACommand);
         }
 

@@ -238,10 +238,6 @@ namespace Lib_K_Relay.Networking
                 playerText.Text = new string[] { "Yep.", "Yes, sir.", "Mhm.", "Yeah.", "Indeed." }[r.Next(4)];
                 SendToServer(playerText);
             }
-            //else if (packet.Type == PacketType.MAPINFO)
-            //{
-            //    PlayerData.MapName = (packet as MapInfoPacket).Name;
-            //}
         }
     }
 }
