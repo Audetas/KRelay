@@ -26,7 +26,7 @@
 - [x] TQ
 - [x] TP
 - [ ] Reconnect UI
-- [ ] Chat Suite
+- [x] Chat Suite
 - [x] Partial Godmode
 - [x] Loot notifications / Loot bag quest
 - [x] Auto loot
