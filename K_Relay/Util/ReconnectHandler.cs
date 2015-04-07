@@ -43,7 +43,7 @@ namespace K_Relay.Util
             _proxy = proxy;
             proxy.ClientBeginConnect += OnClientBeginConnect;
             proxy.HookPacket(PacketType.RECONNECT, OnReconnect);
-            proxy.HookPacket(PacketType.CREATE_SUCCESS, OnCreateSuccess);
+            proxy.HookPacket(PacketType.CREATESUCCESS, OnCreateSuccess);
             proxy.HookCommand("connect", OnConnectCommand);
             _originalPort = _proxy.Port;
             _originalHost = _proxy.RemoteAddress;

@@ -4,26 +4,23 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Lib_K_Relay.Networking.Packets.Server
+namespace Lib_K_Relay.Networking.Packets.Client
 {
-    public class CreateSuccessPacket : Packet
+    public class BuyPacket : Packet
     {
         public int ObjectId;
-        public int CharId;
 
         public override PacketType Type
-        { get { return PacketType.CREATESUCCESS; } }
+        { get { return PacketType.BUY; } }
 
         public override void Read(PacketReader r)
         {
             ObjectId = r.ReadInt32();
-            CharId = r.ReadInt32();
         }
 
         public override void Write(PacketWriter w)
         {
             w.Write(ObjectId);
-            w.Write(CharId);
         }
     }
 }

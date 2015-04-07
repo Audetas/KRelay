@@ -9,7 +9,7 @@
 -----------------------------------------------------------
 
 ##Core Checklist: (please add as you get ideas)
-- [ ] **Define all packets**
+- [ ] **Define all server packets**
 - [ ] More that I can't think of at the moment
 - [ ] Some intuitive way to easily get a packet casted to the desired type in callbacks
 - [ ] Don't parse packets that aren't hooked
@@ -22,6 +22,7 @@
 - [ ] Remove loot bag quests to purple bags
 - [ ] Figure out why we can't create characters
 - [ ] /connect takes you to USWest only
+- [ ] Check for packets missing from Packets.xml
 
 ##Plugin Checklist:
 - [x] World Edit

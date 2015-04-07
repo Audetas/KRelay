@@ -55,7 +55,7 @@ namespace MapCacher
         {
             proxy.HookPacket(PacketType.UPDATE, OnUpdate);
             proxy.HookPacket(PacketType.MAPINFO, GetMapInfo);
-            proxy.HookPacket(PacketType.CREATE_SUCCESS, OnEnterMap);
+            proxy.HookPacket(PacketType.CREATESUCCESS, OnEnterMap);
             initialized = false;
         }
 

@@ -43,7 +43,7 @@ namespace AutoAbility
             proxy.ClientConnected += (c) => _useItemMap.Add(c, null);
             proxy.ClientDisconnected += (c) => _useItemMap.Remove(c);
 
-            proxy.HookPacket(PacketType.CREATE_SUCCESS, OnCreateSuccess);
+            proxy.HookPacket(PacketType.CREATESUCCESS, OnCreateSuccess);
             proxy.HookPacket(PacketType.USEITEM, OnUseItem);
             proxy.HookPacket(PacketType.UPDATE, OnUpdate);
             proxy.HookPacket(PacketType.NEW_TICK, OnUpdate);

@@ -91,7 +91,7 @@ namespace Lib_K_Relay.Networking.Packets
     {
         UNKNOWN,
         FAILURE,
-        CREATE_SUCCESS,
+        CREATESUCCESS,
         CREATE,
         PLAYERSHOOT,
         MOVE,
@@ -105,7 +105,7 @@ namespace Lib_K_Relay.Networking.Packets
         NEW_TICK,
         INVSWAP,
         USEITEM,
-        SHOW_EFFECT,
+        SHOWEFFECT,
         HELLO,
         GOTO,
         INVDROP,
@@ -159,8 +159,13 @@ namespace Lib_K_Relay.Networking.Packets
         JOINGUILD,
         CHANGEGUILDRANK,
         PLAYSOUND,
-        GLOBAL_NOTIFICATION,
+        GLOBALNOTIFICATION,
         RESKIN,
-        ENTER_ARENA
+        ENTERARENA,
+        LEAVEARENA,
+        PETCOMMAND,
+        PETYARDCOMMAND,
+        TINKERQUEST,
+        VIEWQUESTS
     }
 }

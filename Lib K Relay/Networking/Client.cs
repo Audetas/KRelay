@@ -208,7 +208,7 @@ namespace Lib_K_Relay.Networking
 
         private void HandlePacketInternal(Packet packet) // TODO: Add more hooks
         {
-            if (packet.Type == PacketType.CREATE_SUCCESS)
+            if (packet.Type == PacketType.CREATESUCCESS)
             {
                 ObjectId = (packet as CreateSuccessPacket).ObjectId;
                 PlayerData = new PlayerData(ObjectId);

@@ -4,7 +4,7 @@
     <PacketID>0</PacketID>
   </Packet>
   <Packet>
-    <PacketName>CREATE_SUCCESS</PacketName>
+    <PacketName>CREATESUCCESS</PacketName>
     <PacketID>27</PacketID>
   </Packet>
   <Packet>
@@ -252,7 +252,7 @@
     <PacketID>5</PacketID>
   </Packet>
   <Packet>
-    <PacketName>GLOBAL_NOTIFICATION</PacketName>
+    <PacketName>GLOBALNOTIFICATION</PacketName>
     <PacketID>68</PacketID>
   </Packet>
   <Packet>
@@ -260,11 +260,11 @@
     <PacketID>14</PacketID>
   </Packet>
   <Packet>
-    <PacketName>ENTER_ARENA</PacketName>
+    <PacketName>ENTERARENA</PacketName>
     <PacketID>30</PacketID>
   </Packet>
   <Packet>
-    <PacketName>NEW_TICK</PacketName>
+    <PacketName>NEWTICK</PacketName>
     <PacketID>88</PacketID>
   </Packet>
 </Packets>
