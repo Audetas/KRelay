@@ -13,7 +13,7 @@ namespace Reconnect {
     
     [global::System.Runtime.CompilerServices.CompilerGeneratedAttribute()]
     [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.VisualStudio.Editors.SettingsDesigner.SettingsSingleFileGenerator", "14.0.0.0")]
-    internal sealed partial class ReconnectSettings : global::System.Configuration.ApplicationSettingsBase {
+    public sealed partial class ReconnectSettings : global::System.Configuration.ApplicationSettingsBase {
         
         private static ReconnectSettings defaultInstance = ((ReconnectSettings)(global::System.Configuration.ApplicationSettingsBase.Synchronized(new ReconnectSettings())));
         
