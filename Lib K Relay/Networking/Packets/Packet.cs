@@ -168,6 +168,9 @@ namespace Lib_K_Relay.Networking.Packets
         TINKERQUEST,
         VIEWQUESTS,
         ARENADEATH,
-        ARENANEXTWAVE
+        ARENANEXTWAVE,
+        HATCHEGG,
+        NEWABILITYUNLOCKED,
+        PASSWORDPROMPT
     }
 }
