@@ -39,14 +39,14 @@
             this.btnAddObject = new System.Windows.Forms.Button();
             this.label2 = new System.Windows.Forms.Label();
             this.listObjectFilters = new System.Windows.Forms.ListBox();
-            this.menuSettings = new System.Windows.Forms.MenuStrip();
+            this.chkEnabled = new System.Windows.Forms.CheckBox();
+            this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.btnDone = new System.Windows.Forms.ToolStripMenuItem();
             this.btnReset = new System.Windows.Forms.ToolStripMenuItem();
-            this.chkEnabled = new System.Windows.Forms.CheckBox();
             this.tabMain.SuspendLayout();
             this.tabTiles.SuspendLayout();
             this.tabObjects.SuspendLayout();
-            this.menuSettings.SuspendLayout();
+            this.menuStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
             // tabMain
@@ -114,7 +114,7 @@
             this.listTileFilters.ItemHeight = 25;
             this.listTileFilters.Location = new System.Drawing.Point(6, 35);
             this.listTileFilters.Name = "listTileFilters";
-            this.listTileFilters.Size = new System.Drawing.Size(540, 554);
+            this.listTileFilters.Size = new System.Drawing.Size(540, 529);
             this.listTileFilters.TabIndex = 0;
             // 
             // tabObjects
@@ -174,40 +174,43 @@
             this.listObjectFilters.Size = new System.Drawing.Size(540, 554);
             this.listObjectFilters.TabIndex = 4;
             // 
-            // menuSettings
-            // 
-            this.menuSettings.ImageScalingSize = new System.Drawing.Size(32, 32);
-            this.menuSettings.Location = new System.Drawing.Point(0, 0);
-            this.menuSettings.Name = "menuSettings";
-            this.menuSettings.Size = new System.Drawing.Size(560, 40);
-            this.menuSettings.TabIndex = 1;
-            this.menuSettings.Text = "menuStrip1";
-            // 
-            // btnDone
-            // 
-            this.btnDone.Name = "btnDone";
-            this.btnDone.Size = new System.Drawing.Size(85, 36);
-            this.btnDone.Text = "Done";
-            this.btnDone.Click += new System.EventHandler(this.btnDone_Click);
-            // 
-            // btnReset
-            // 
-            this.btnReset.Name = "btnReset";
-            this.btnReset.Size = new System.Drawing.Size(209, 36);
-            this.btnReset.Text = "Reset to Defaults";
-            this.btnReset.Click += new System.EventHandler(this.btnReset_Click);
-            // 
             // chkEnabled
             // 
             this.chkEnabled.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.chkEnabled.AutoSize = true;
-            this.chkEnabled.Location = new System.Drawing.Point(346, 47);
+            this.chkEnabled.Location = new System.Drawing.Point(349, 5);
             this.chkEnabled.Name = "chkEnabled";
             this.chkEnabled.Size = new System.Drawing.Size(207, 29);
             this.chkEnabled.TabIndex = 2;
             this.chkEnabled.Text = "Enable MapFilter";
             this.chkEnabled.UseVisualStyleBackColor = true;
             this.chkEnabled.CheckedChanged += new System.EventHandler(this.chkEnabled_CheckedChanged);
+            // 
+            // menuStrip1
+            // 
+            this.menuStrip1.ImageScalingSize = new System.Drawing.Size(32, 32);
+            this.menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.btnDone,
+            this.btnReset});
+            this.menuStrip1.Location = new System.Drawing.Point(0, 0);
+            this.menuStrip1.Name = "menuStrip1";
+            this.menuStrip1.Size = new System.Drawing.Size(560, 40);
+            this.menuStrip1.TabIndex = 3;
+            this.menuStrip1.Text = "menuStrip1";
+            // 
+            // btnDone
+            // 
+            this.btnDone.Name = "btnDone";
+            this.btnDone.Size = new System.Drawing.Size(85, 38);
+            this.btnDone.Text = "Done";
+            this.btnDone.Click += new System.EventHandler(this.btnDone_Click);
+            // 
+            // btnReset
+            // 
+            this.btnReset.Name = "btnReset";
+            this.btnReset.Size = new System.Drawing.Size(209, 38);
+            this.btnReset.Text = "Reset to Defaults";
+            this.btnReset.Click += new System.EventHandler(this.btnReset_Click);
             // 
             // FrmMapFilterSettings
             // 
@@ -216,9 +219,8 @@
             this.ClientSize = new System.Drawing.Size(560, 741);
             this.Controls.Add(this.chkEnabled);
             this.Controls.Add(this.tabMain);
-            this.Controls.Add(this.menuSettings);
+            this.Controls.Add(this.menuStrip1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.SizableToolWindow;
-            this.MainMenuStrip = this.menuSettings;
             this.Name = "FrmMapFilterSettings";
             this.Text = "Map Filter Settings";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.FrmMapFilterSettings_FormClosing);
@@ -227,8 +229,8 @@
             this.tabTiles.PerformLayout();
             this.tabObjects.ResumeLayout(false);
             this.tabObjects.PerformLayout();
-            this.menuSettings.ResumeLayout(false);
-            this.menuSettings.PerformLayout();
+            this.menuStrip1.ResumeLayout(false);
+            this.menuStrip1.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -239,9 +241,6 @@
         private System.Windows.Forms.TabControl tabMain;
         private System.Windows.Forms.TabPage tabTiles;
         private System.Windows.Forms.TabPage tabObjects;
-        private System.Windows.Forms.MenuStrip menuSettings;
-        private System.Windows.Forms.ToolStripMenuItem btnDone;
-        private System.Windows.Forms.ToolStripMenuItem btnReset;
         private System.Windows.Forms.ListBox listTileFilters;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Button btnAddTile;
@@ -251,6 +250,9 @@
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.ListBox listObjectFilters;
         private System.Windows.Forms.CheckBox chkEnabled;
+        private System.Windows.Forms.MenuStrip menuStrip1;
+        private System.Windows.Forms.ToolStripMenuItem btnDone;
+        private System.Windows.Forms.ToolStripMenuItem btnReset;
 
     }
 }

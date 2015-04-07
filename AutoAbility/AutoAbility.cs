@@ -19,6 +19,7 @@ namespace AutoAbility
         private bool _enabled;
         private int _cooldown = 20;
         private Dictionary<Client, UseItemPacket> _useItemMap = new Dictionary<Client, UseItemPacket>();
+        private Classes[] _validClasses = { Classes.Rogue, Classes.Priest, Classes.Paladin, Classes.Warrior };
 
         public string GetAuthor()
         { return "KrazyShank / Kronks"; }
@@ -53,13 +54,13 @@ namespace AutoAbility
         {
             if (_enabled)
                 PluginUtils.Delay(2100, () =>
-                    client.SendToClient(PluginUtils.CreateNotification(
-                        client.ObjectId, "Use your ability to activate Auto Ability")));
+                    client.SendToClient(PluginUtils.CreateOryxNotification(
+                        "Auto Ability", "Use your ability to Activate Auto Ability")));
         }
 
         private void OnUseItem(Client client, Packet packet)
         {
-            if (_useItemMap[client] == null)
+            if (_useItemMap[client] == null && _validClasses.Contains(client.PlayerData.Class))
                 client.SendToClient(PluginUtils.CreateNotification(
                     client.ObjectId, "Auto Ability Activated!"));
             _useItemMap[client] = packet as UseItemPacket;

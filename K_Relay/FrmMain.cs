@@ -35,10 +35,10 @@ namespace K_Relay
 
             _clients = new List<Client>();
             _proxy = new Proxy();
-            _proxy.ProxyListenStarted += ProxyListenStarted;
-            _proxy.ProxyListenStopped += ProxyListenStopped;
-            _proxy.ClientConnected += ClientConnected;
-            _proxy.ClientDisconnected += ClientDisconnected;
+            _proxy.ProxyListenStarted += _ => SetStatus("Running", Color.Green);
+            _proxy.ProxyListenStopped += _ => SetStatus("Stopped", Color.Red);
+            _proxy.ClientConnected += (c) =>    _clients.Add(c);
+            _proxy.ClientDisconnected += (c) => _clients.Remove(c);
 
             _proxy.Key0 = Config.Default.RC4Key0;
             _proxy.Key1 = Config.Default.RC4Key1;
@@ -110,29 +110,5 @@ namespace K_Relay
                 lblStatus.Left = ClientRectangle.Width - lblStatus.Width;
             }));
         }
-
-        #region Proxy Callbacks
-        private void ProxyListenStarted(Proxy p)
-        {
-            SetStatus("Running", Color.Green);
-        }
-
-        private void ProxyListenStopped(Proxy p)
-        {
-            SetStatus("Stopped", Color.Red);
-        }
-
-        private void ClientConnected(Client client)
-        {
-            _clients.Add(client);
-            Invoke(new MethodInvoker(() => lblConnectedClients.Text = "Connected Clients: " + _clients.Count));
-        }
-
-        private void ClientDisconnected(Client client)
-        {
-            _clients.Remove(client);
-            Invoke(new MethodInvoker(() => lblConnectedClients.Text = "Connected Clients: " + _clients.Count));
-        }
-        #endregion
     }
 }

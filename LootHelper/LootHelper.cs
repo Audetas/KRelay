@@ -23,6 +23,7 @@ namespace LootHelper
         private int _customQuest = -1;
 
         private int _cooldown = 0;
+        private int _notifCooldown = 0;
 
         public string GetAuthor()
         { return "KrazyShank / Kronks"; }
@@ -55,17 +56,7 @@ namespace LootHelper
             foreach (int bagId in _lootBagItems.Keys)
             {
                 float distanceSquared = _lootBagLocations[bagId].DistanceSquaredTo(client.PlayerData.Pos);
-                if (LootHelperConfig.Default.LootNotifications && distanceSquared < 200)
-                {
-                    string message = "";
-
-                    foreach(int item in _lootBagItems[bagId])
-                        if (item != -1) message += ReverseLookup(item) + "\\n";
-
-                    client.SendToClient(PluginUtils.CreateNotification(
-                        bagId, LootHelperConfig.Default.NotificationColor.ToArgb(), message));
-                }
-                if (LootHelperConfig.Default.AutoLoot && _cooldown == 0 && distanceSquared <= 2)
+                if (LootHelperConfig.Default.AutoLoot && _cooldown == 0 && distanceSquared <= 2.5)
                 {
                     for (int bi = 0; bi < _lootBagItems[bagId].Length; bi++)
                     {
@@ -102,11 +93,31 @@ namespace LootHelper
                     }
                 }
             }
+
+            if (_cooldown != 0) return;
+            else _cooldown = 15; // So we dont spam notifs
+
+            foreach (int bagId in _lootBagItems.Keys)
+            {
+                float distanceSquared = _lootBagLocations[bagId].DistanceSquaredTo(client.PlayerData.Pos);
+                if (LootHelperConfig.Default.LootNotifications && distanceSquared < 200)
+                {
+                    string message = "";
+
+                    foreach (int item in _lootBagItems[bagId])
+                        if (item != -1) message += ReverseLookup(item) + "\\n";
+
+                    if (message.Length > 3)
+                        client.SendToClient(PluginUtils.CreateNotification(
+                            bagId, LootHelperConfig.Default.NotificationColor.ToArgb(), message));
+                }
+            }
         }
 
         private void OnUpdate(Client client, Packet packet)
         {
             if (_cooldown > 0) _cooldown--;
+            if (_notifCooldown > 0) _notifCooldown--;
 
             UpdatePacket update = (UpdatePacket)packet;
             // New Objects
