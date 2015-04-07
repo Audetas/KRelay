@@ -267,4 +267,45 @@
     <PacketName>NEWTICK</PacketName>
     <PacketID>88</PacketID>
   </Packet>
+  <Packet>
+    <PacketName>SHOOT2</PacketName>
+    <PacketID>76</PacketID>
+  </Packet>
+  <Packet>
+    <PacketName>SHOWEFFECT</PacketName>
+    <PacketID>53</PacketID>
+  </Packet>
+  <Packet>
+    <PacketName>CREATEGUILDRESULT</PacketName>
+    <PacketID>63</PacketID>
+  </Packet>
+  <Packet>
+    <PacketName>SHOOT</PacketName>
+    <PacketID>69</PacketID>
+  </Packet>
+  <Packet>
+    <PacketName>FILE</PacketName>
+    <PacketID>38</PacketID>
+  </Packet>
+  <Packet>
+    <PacketName>LEAVEARENA</PacketName>
+    <PacketID>94</PacketID>
+  </Packet>
+  <Packet>
+    <PacketName>PETCOMMAND</PacketName>
+    <PacketID>87</PacketID>
+  </Packet>
+  <Packet>
+    <PacketName>PETYARDCOMMAND</PacketName>
+    <PacketID>40</PacketID>
+  </Packet>
+  <Packet>
+    <PacketName>TINKERQUEST</PacketName>
+    <PacketID>62</PacketID>
+  </Packet>
+  <Packet>
+    <PacketName>VIEWQUESTS</PacketName>
+    <PacketID>93</PacketID>
+  </Packet>
+
 </Packets>

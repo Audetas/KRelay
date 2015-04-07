@@ -102,7 +102,7 @@ namespace Lib_K_Relay.Networking.Packets
         UPDATE,
         UPDATEACK,
         NOTIFICATION,
-        NEW_TICK,
+        NEWTICK,
         INVSWAP,
         USEITEM,
         SHOWEFFECT,

@@ -217,7 +217,7 @@ namespace Lib_K_Relay.Networking
             {
                 PlayerData.Parse(packet as UpdatePacket);
             }
-            else if (packet.Type == PacketType.NEW_TICK)
+            else if (packet.Type == PacketType.NEWTICK)
             {
                 PlayerData.Parse(packet as NewTickPacket);
             }

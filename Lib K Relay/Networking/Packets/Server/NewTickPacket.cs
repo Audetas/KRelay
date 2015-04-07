@@ -14,7 +14,7 @@ namespace Lib_K_Relay.Networking.Packets.Server
         public Status[] Statuses;
 
         public override PacketType Type
-        { get { return PacketType.NEW_TICK; } }
+        { get { return PacketType.NEWTICK; } }
 
         public override void Read(PacketReader r)
         {
