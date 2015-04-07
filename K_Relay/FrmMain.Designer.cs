@@ -56,6 +56,13 @@ namespace K_Relay
             this.menuSettings = new System.Windows.Forms.MenuStrip();
             this.btnSaveSettings = new System.Windows.Forms.ToolStripMenuItem();
             this.lblStatus = new System.Windows.Forms.Label();
+            this.tabAbout = new System.Windows.Forms.TabPage();
+            this.lblKRelay = new System.Windows.Forms.Label();
+            this.lblVersion = new System.Windows.Forms.Label();
+            this.lblKronks = new System.Windows.Forms.Label();
+            this.lblCredits = new System.Windows.Forms.Label();
+            this.label1 = new System.Windows.Forms.Label();
+            this.pbxGang = new System.Windows.Forms.PictureBox();
             this.tabMain.SuspendLayout();
             this.tabInfo.SuspendLayout();
             this.menuInfo.SuspendLayout();
@@ -73,6 +80,8 @@ namespace K_Relay
             this.menuPackets.SuspendLayout();
             this.tabSettings.SuspendLayout();
             this.menuSettings.SuspendLayout();
+            this.tabAbout.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pbxGang)).BeginInit();
             this.SuspendLayout();
             // 
             // imglistTabs
@@ -90,9 +99,10 @@ namespace K_Relay
             this.tabMain.Controls.Add(this.tabPlugins);
             this.tabMain.Controls.Add(this.tabPackets);
             this.tabMain.Controls.Add(this.tabSettings);
+            this.tabMain.Controls.Add(this.tabAbout);
             this.tabMain.Font = new System.Drawing.Font("Comic Sans MS", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.tabMain.Location = new System.Drawing.Point(0, 0);
-            this.tabMain.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.tabMain.Margin = new System.Windows.Forms.Padding(4);
             this.tabMain.Name = "tabMain";
             this.tabMain.SelectedIndex = 0;
             this.tabMain.Size = new System.Drawing.Size(938, 731);
@@ -103,9 +113,9 @@ namespace K_Relay
             this.tabInfo.Controls.Add(this.tbxLog);
             this.tabInfo.Controls.Add(this.menuInfo);
             this.tabInfo.Location = new System.Drawing.Point(4, 39);
-            this.tabInfo.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.tabInfo.Margin = new System.Windows.Forms.Padding(4);
             this.tabInfo.Name = "tabInfo";
-            this.tabInfo.Padding = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.tabInfo.Padding = new System.Windows.Forms.Padding(4);
             this.tabInfo.Size = new System.Drawing.Size(930, 688);
             this.tabInfo.TabIndex = 0;
             this.tabInfo.Text = "Info";
@@ -117,7 +127,7 @@ namespace K_Relay
             this.tbxLog.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tbxLog.Font = new System.Drawing.Font("Comic Sans MS", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.tbxLog.Location = new System.Drawing.Point(4, 45);
-            this.tbxLog.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.tbxLog.Margin = new System.Windows.Forms.Padding(4);
             this.tbxLog.Name = "tbxLog";
             this.tbxLog.ReadOnly = true;
             this.tbxLog.Size = new System.Drawing.Size(922, 639);
@@ -166,9 +176,9 @@ namespace K_Relay
             this.tabPlugins.Controls.Add(this.splitPlugins);
             this.tabPlugins.Controls.Add(this.menuPlugins);
             this.tabPlugins.Location = new System.Drawing.Point(4, 39);
-            this.tabPlugins.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.tabPlugins.Margin = new System.Windows.Forms.Padding(4);
             this.tabPlugins.Name = "tabPlugins";
-            this.tabPlugins.Padding = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.tabPlugins.Padding = new System.Windows.Forms.Padding(4);
             this.tabPlugins.Size = new System.Drawing.Size(930, 688);
             this.tabPlugins.TabIndex = 1;
             this.tabPlugins.Text = "Plugins";
@@ -178,7 +188,7 @@ namespace K_Relay
             // 
             this.splitPlugins.Dock = System.Windows.Forms.DockStyle.Fill;
             this.splitPlugins.Location = new System.Drawing.Point(4, 45);
-            this.splitPlugins.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.splitPlugins.Margin = new System.Windows.Forms.Padding(4);
             this.splitPlugins.Name = "splitPlugins";
             // 
             // splitPlugins.Panel1
@@ -198,7 +208,7 @@ namespace K_Relay
             this.listPlugins.Font = new System.Drawing.Font("Comic Sans MS", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.listPlugins.ItemHeight = 30;
             this.listPlugins.Location = new System.Drawing.Point(0, 0);
-            this.listPlugins.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.listPlugins.Margin = new System.Windows.Forms.Padding(4);
             this.listPlugins.Name = "listPlugins";
             this.listPlugins.Size = new System.Drawing.Size(290, 639);
             this.listPlugins.TabIndex = 0;
@@ -211,7 +221,7 @@ namespace K_Relay
             this.tbxPluginInfo.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tbxPluginInfo.Font = new System.Drawing.Font("Comic Sans MS", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.tbxPluginInfo.Location = new System.Drawing.Point(0, 0);
-            this.tbxPluginInfo.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.tbxPluginInfo.Margin = new System.Windows.Forms.Padding(4);
             this.tbxPluginInfo.Name = "tbxPluginInfo";
             this.tbxPluginInfo.ReadOnly = true;
             this.tbxPluginInfo.Size = new System.Drawing.Size(628, 639);
@@ -242,9 +252,9 @@ namespace K_Relay
             this.tabPackets.Controls.Add(this.splitPackets);
             this.tabPackets.Controls.Add(this.menuPackets);
             this.tabPackets.Location = new System.Drawing.Point(4, 39);
-            this.tabPackets.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.tabPackets.Margin = new System.Windows.Forms.Padding(4);
             this.tabPackets.Name = "tabPackets";
-            this.tabPackets.Padding = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.tabPackets.Padding = new System.Windows.Forms.Padding(4);
             this.tabPackets.Size = new System.Drawing.Size(930, 688);
             this.tabPackets.TabIndex = 4;
             this.tabPackets.Text = "Packets";
@@ -254,7 +264,7 @@ namespace K_Relay
             // 
             this.splitPackets.Dock = System.Windows.Forms.DockStyle.Fill;
             this.splitPackets.Location = new System.Drawing.Point(4, 45);
-            this.splitPackets.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.splitPackets.Margin = new System.Windows.Forms.Padding(4);
             this.splitPackets.Name = "splitPackets";
             // 
             // splitPackets.Panel1
@@ -274,7 +284,7 @@ namespace K_Relay
             this.listPackets.Font = new System.Drawing.Font("Comic Sans MS", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.listPackets.ItemHeight = 30;
             this.listPackets.Location = new System.Drawing.Point(0, 0);
-            this.listPackets.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.listPackets.Margin = new System.Windows.Forms.Padding(4);
             this.listPackets.Name = "listPackets";
             this.listPackets.Size = new System.Drawing.Size(290, 639);
             this.listPackets.Sorted = true;
@@ -288,7 +298,7 @@ namespace K_Relay
             this.tbxPacketInfo.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tbxPacketInfo.Font = new System.Drawing.Font("Comic Sans MS", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.tbxPacketInfo.Location = new System.Drawing.Point(0, 0);
-            this.tbxPacketInfo.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.tbxPacketInfo.Margin = new System.Windows.Forms.Padding(4);
             this.tbxPacketInfo.Name = "tbxPacketInfo";
             this.tbxPacketInfo.ReadOnly = true;
             this.tbxPacketInfo.Size = new System.Drawing.Size(628, 639);
@@ -319,9 +329,9 @@ namespace K_Relay
             this.tabSettings.Controls.Add(this.gridSettings);
             this.tabSettings.Controls.Add(this.menuSettings);
             this.tabSettings.Location = new System.Drawing.Point(4, 39);
-            this.tabSettings.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.tabSettings.Margin = new System.Windows.Forms.Padding(4);
             this.tabSettings.Name = "tabSettings";
-            this.tabSettings.Padding = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.tabSettings.Padding = new System.Windows.Forms.Padding(4);
             this.tabSettings.Size = new System.Drawing.Size(930, 688);
             this.tabSettings.TabIndex = 3;
             this.tabSettings.Text = "Settings";
@@ -332,7 +342,7 @@ namespace K_Relay
             this.gridSettings.Dock = System.Windows.Forms.DockStyle.Fill;
             this.gridSettings.Font = new System.Drawing.Font("Comic Sans MS", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.gridSettings.Location = new System.Drawing.Point(4, 45);
-            this.gridSettings.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.gridSettings.Margin = new System.Windows.Forms.Padding(4);
             this.gridSettings.Name = "gridSettings";
             this.gridSettings.Size = new System.Drawing.Size(922, 639);
             this.gridSettings.TabIndex = 1;
@@ -367,6 +377,86 @@ namespace K_Relay
             this.lblStatus.TabIndex = 1;
             this.lblStatus.Text = "Not Running";
             // 
+            // tabAbout
+            // 
+            this.tabAbout.Controls.Add(this.lblKRelay);
+            this.tabAbout.Controls.Add(this.pbxGang);
+            this.tabAbout.Controls.Add(this.label1);
+            this.tabAbout.Controls.Add(this.lblCredits);
+            this.tabAbout.Controls.Add(this.lblKronks);
+            this.tabAbout.Controls.Add(this.lblVersion);
+            this.tabAbout.Location = new System.Drawing.Point(4, 39);
+            this.tabAbout.Name = "tabAbout";
+            this.tabAbout.Padding = new System.Windows.Forms.Padding(3);
+            this.tabAbout.Size = new System.Drawing.Size(930, 688);
+            this.tabAbout.TabIndex = 5;
+            this.tabAbout.Text = "About";
+            this.tabAbout.UseVisualStyleBackColor = true;
+            // 
+            // lblKRelay
+            // 
+            this.lblKRelay.AutoSize = true;
+            this.lblKRelay.Font = new System.Drawing.Font("DINPro-Regular", 36F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblKRelay.Location = new System.Drawing.Point(3, 3);
+            this.lblKRelay.Name = "lblKRelay";
+            this.lblKRelay.Size = new System.Drawing.Size(374, 123);
+            this.lblKRelay.TabIndex = 0;
+            this.lblKRelay.Text = "K Relay";
+            // 
+            // lblVersion
+            // 
+            this.lblVersion.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.lblVersion.AutoSize = true;
+            this.lblVersion.Font = new System.Drawing.Font("DINPro-Regular", 36F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblVersion.Location = new System.Drawing.Point(630, 3);
+            this.lblVersion.Name = "lblVersion";
+            this.lblVersion.Size = new System.Drawing.Size(297, 123);
+            this.lblVersion.TabIndex = 1;
+            this.lblVersion.Text = "v0.1.0";
+            // 
+            // lblKronks
+            // 
+            this.lblKronks.AutoSize = true;
+            this.lblKronks.Font = new System.Drawing.Font("DINPro-Regular", 13.875F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblKronks.Location = new System.Drawing.Point(22, 118);
+            this.lblKronks.Name = "lblKronks";
+            this.lblKronks.Size = new System.Drawing.Size(416, 47);
+            this.lblKronks.TabIndex = 2;
+            this.lblKronks.Text = "By KrazyShank / Kronks";
+            // 
+            // lblCredits
+            // 
+            this.lblCredits.AutoSize = true;
+            this.lblCredits.Font = new System.Drawing.Font("DINPro-Regular", 10.875F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblCredits.Location = new System.Drawing.Point(23, 165);
+            this.lblCredits.Name = "lblCredits";
+            this.lblCredits.Size = new System.Drawing.Size(492, 37);
+            this.lblCredits.TabIndex = 3;
+            this.lblCredits.Text = "very special thanks to the people who";
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Font = new System.Drawing.Font("DINPro-Regular", 10.875F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label1.Location = new System.Drawing.Point(23, 202);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(595, 37);
+            this.label1.TabIndex = 4;
+            this.label1.Text = "helped me since day 1 and made this possible";
+            // 
+            // pbxGang
+            // 
+            this.pbxGang.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.pbxGang.Image = ((System.Drawing.Image)(resources.GetObject("pbxGang.Image")));
+            this.pbxGang.Location = new System.Drawing.Point(30, 246);
+            this.pbxGang.Name = "pbxGang";
+            this.pbxGang.Size = new System.Drawing.Size(862, 439);
+            this.pbxGang.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.pbxGang.TabIndex = 5;
+            this.pbxGang.TabStop = false;
+            // 
             // FrmMain
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(12F, 25F);
@@ -374,7 +464,7 @@ namespace K_Relay
             this.ClientSize = new System.Drawing.Size(934, 729);
             this.Controls.Add(this.lblStatus);
             this.Controls.Add(this.tabMain);
-            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.Margin = new System.Windows.Forms.Padding(4);
             this.Name = "FrmMain";
             this.Text = "K Relay";
             this.Shown += new System.EventHandler(this.FrmMain_Shown);
@@ -403,6 +493,9 @@ namespace K_Relay
             this.tabSettings.PerformLayout();
             this.menuSettings.ResumeLayout(false);
             this.menuSettings.PerformLayout();
+            this.tabAbout.ResumeLayout(false);
+            this.tabAbout.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pbxGang)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -435,6 +528,13 @@ namespace K_Relay
         private System.Windows.Forms.RichTextBox tbxLog;
         private System.Windows.Forms.ToolStripMenuItem btnSaveLog;
         private System.Windows.Forms.ToolStripMenuItem btnClearLog;
+        private System.Windows.Forms.TabPage tabAbout;
+        private System.Windows.Forms.Label lblKRelay;
+        private System.Windows.Forms.Label lblVersion;
+        private System.Windows.Forms.Label lblCredits;
+        private System.Windows.Forms.Label lblKronks;
+        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.PictureBox pbxGang;
     }
 }
 
