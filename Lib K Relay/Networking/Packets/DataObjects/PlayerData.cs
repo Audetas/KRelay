@@ -58,7 +58,6 @@ namespace Lib_K_Relay.Networking.Packets.DataObjects
         public int PetSkinObjectType;
         public Location Pos = new Location();
         // Custom
-        public string MapName;
         public Classes Class;
 
         public PlayerData(int ownerObjectId)

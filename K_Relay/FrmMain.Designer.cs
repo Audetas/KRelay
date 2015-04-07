@@ -55,14 +55,14 @@ namespace K_Relay
             this.gridSettings = new System.Windows.Forms.PropertyGrid();
             this.menuSettings = new System.Windows.Forms.MenuStrip();
             this.btnSaveSettings = new System.Windows.Forms.ToolStripMenuItem();
-            this.lblStatus = new System.Windows.Forms.Label();
             this.tabAbout = new System.Windows.Forms.TabPage();
             this.lblKRelay = new System.Windows.Forms.Label();
-            this.lblVersion = new System.Windows.Forms.Label();
-            this.lblKronks = new System.Windows.Forms.Label();
-            this.lblCredits = new System.Windows.Forms.Label();
-            this.label1 = new System.Windows.Forms.Label();
             this.pbxGang = new System.Windows.Forms.PictureBox();
+            this.label1 = new System.Windows.Forms.Label();
+            this.lblCredits = new System.Windows.Forms.Label();
+            this.lblKronks = new System.Windows.Forms.Label();
+            this.lblVersion = new System.Windows.Forms.Label();
+            this.lblStatus = new System.Windows.Forms.Label();
             this.tabMain.SuspendLayout();
             this.tabInfo.SuspendLayout();
             this.menuInfo.SuspendLayout();
@@ -365,18 +365,6 @@ namespace K_Relay
             this.btnSaveSettings.Size = new System.Drawing.Size(183, 37);
             this.btnSaveSettings.Text = "Save Settings";
             // 
-            // lblStatus
-            // 
-            this.lblStatus.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.lblStatus.AutoSize = true;
-            this.lblStatus.Font = new System.Drawing.Font("Comic Sans MS", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblStatus.Location = new System.Drawing.Point(762, 0);
-            this.lblStatus.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.lblStatus.Name = "lblStatus";
-            this.lblStatus.Size = new System.Drawing.Size(167, 36);
-            this.lblStatus.TabIndex = 1;
-            this.lblStatus.Text = "Not Running";
-            // 
             // tabAbout
             // 
             this.tabAbout.Controls.Add(this.lblKRelay);
@@ -403,47 +391,6 @@ namespace K_Relay
             this.lblKRelay.TabIndex = 0;
             this.lblKRelay.Text = "K Relay";
             // 
-            // lblVersion
-            // 
-            this.lblVersion.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.lblVersion.AutoSize = true;
-            this.lblVersion.Font = new System.Drawing.Font("DINPro-Regular", 36F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblVersion.Location = new System.Drawing.Point(630, 3);
-            this.lblVersion.Name = "lblVersion";
-            this.lblVersion.Size = new System.Drawing.Size(297, 123);
-            this.lblVersion.TabIndex = 1;
-            this.lblVersion.Text = "v0.1.0";
-            // 
-            // lblKronks
-            // 
-            this.lblKronks.AutoSize = true;
-            this.lblKronks.Font = new System.Drawing.Font("DINPro-Regular", 13.875F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblKronks.Location = new System.Drawing.Point(22, 118);
-            this.lblKronks.Name = "lblKronks";
-            this.lblKronks.Size = new System.Drawing.Size(416, 47);
-            this.lblKronks.TabIndex = 2;
-            this.lblKronks.Text = "By KrazyShank / Kronks";
-            // 
-            // lblCredits
-            // 
-            this.lblCredits.AutoSize = true;
-            this.lblCredits.Font = new System.Drawing.Font("DINPro-Regular", 10.875F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblCredits.Location = new System.Drawing.Point(23, 165);
-            this.lblCredits.Name = "lblCredits";
-            this.lblCredits.Size = new System.Drawing.Size(492, 37);
-            this.lblCredits.TabIndex = 3;
-            this.lblCredits.Text = "very special thanks to the people who";
-            // 
-            // label1
-            // 
-            this.label1.AutoSize = true;
-            this.label1.Font = new System.Drawing.Font("DINPro-Regular", 10.875F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(23, 202);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(595, 37);
-            this.label1.TabIndex = 4;
-            this.label1.Text = "helped me since day 1 and made this possible";
-            // 
             // pbxGang
             // 
             this.pbxGang.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
@@ -456,6 +403,59 @@ namespace K_Relay
             this.pbxGang.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.pbxGang.TabIndex = 5;
             this.pbxGang.TabStop = false;
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Font = new System.Drawing.Font("DINPro-Regular", 10.875F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label1.Location = new System.Drawing.Point(23, 202);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(595, 37);
+            this.label1.TabIndex = 4;
+            this.label1.Text = "helped me since day 1 and made this possible";
+            // 
+            // lblCredits
+            // 
+            this.lblCredits.AutoSize = true;
+            this.lblCredits.Font = new System.Drawing.Font("DINPro-Regular", 10.875F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblCredits.Location = new System.Drawing.Point(23, 165);
+            this.lblCredits.Name = "lblCredits";
+            this.lblCredits.Size = new System.Drawing.Size(492, 37);
+            this.lblCredits.TabIndex = 3;
+            this.lblCredits.Text = "very special thanks to the people who";
+            // 
+            // lblKronks
+            // 
+            this.lblKronks.AutoSize = true;
+            this.lblKronks.Font = new System.Drawing.Font("DINPro-Regular", 13.875F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblKronks.Location = new System.Drawing.Point(22, 118);
+            this.lblKronks.Name = "lblKronks";
+            this.lblKronks.Size = new System.Drawing.Size(416, 47);
+            this.lblKronks.TabIndex = 2;
+            this.lblKronks.Text = "By KrazyShank / Kronks";
+            // 
+            // lblVersion
+            // 
+            this.lblVersion.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.lblVersion.AutoSize = true;
+            this.lblVersion.Font = new System.Drawing.Font("DINPro-Regular", 36F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblVersion.Location = new System.Drawing.Point(630, 3);
+            this.lblVersion.Name = "lblVersion";
+            this.lblVersion.Size = new System.Drawing.Size(297, 123);
+            this.lblVersion.TabIndex = 1;
+            this.lblVersion.Text = "v0.1.0";
+            // 
+            // lblStatus
+            // 
+            this.lblStatus.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.lblStatus.AutoSize = true;
+            this.lblStatus.Font = new System.Drawing.Font("Comic Sans MS", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblStatus.Location = new System.Drawing.Point(762, 0);
+            this.lblStatus.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.lblStatus.Name = "lblStatus";
+            this.lblStatus.Size = new System.Drawing.Size(167, 36);
+            this.lblStatus.TabIndex = 1;
+            this.lblStatus.Text = "Not Running";
             // 
             // FrmMain
             // 

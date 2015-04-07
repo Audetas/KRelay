@@ -39,6 +39,9 @@ namespace Lib_K_Relay
 
         private TcpListener _localListener = null;
 
+        /// <summary>
+        /// Starts listening for clients on the defined port and host at 127.0.0.1:250
+        /// </summary>
         public void Start()
         {
             Console.WriteLine("[Client Listener] Starting local listener at {0} on port {1}...",ListenAddress, Port);
