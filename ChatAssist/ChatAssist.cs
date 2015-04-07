@@ -68,8 +68,8 @@ namespace ChatAssist
                     // Is spam
                     if (ChatAssistConfig.Default.CensorSpamMessages)
                     {
-                        text.Text = "Filtered";
-                        text.CleanText = "Filtered";
+                        text.Text = "...";
+                        text.CleanText = "...";
                         return;
                     }
 

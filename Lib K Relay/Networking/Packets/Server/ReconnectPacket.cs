@@ -14,7 +14,7 @@ namespace Lib_K_Relay.Networking.Packets.Server
         public int GameId;
         public int KeyTime;
         public bool IsFromArena;
-        public byte[] Key;
+        public byte[] Key;     
 
         public override PacketType Type
         { get { return PacketType.RECONNECT; } }

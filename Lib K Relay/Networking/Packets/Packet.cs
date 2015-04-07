@@ -52,9 +52,6 @@ namespace Lib_K_Relay.Networking.Packets
                 packet.Id = id;
                 packet.Read(r);
 
-                if (packetType == PacketType.HELLO)
-                    (packet as HelloPacket).RAW = data.Skip(5).ToArray();
-
                 return packet;
             }
         }

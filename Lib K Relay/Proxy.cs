@@ -28,6 +28,7 @@ namespace Lib_K_Relay
 
         public event ListenHandler ProxyListenStarted;
         public event ListenHandler ProxyListenStopped;
+        public event ConnectionHandler ClientBeginConnect;
         public event ConnectionHandler ClientConnected;
         public event ConnectionHandler ClientDisconnected;
         public event PacketHandler ServerPacketRecieved;
@@ -78,6 +79,14 @@ namespace Lib_K_Relay
                 // connection to the server.
                 TcpClient client = _localListener.EndAcceptTcpClient(ar);
                 Client ci = new Client(this, client);
+
+                try
+                {
+                    if (ClientBeginConnect != null) ClientBeginConnect(ci);
+                }
+                catch (Exception e) { PluginUtils.LogPluginException(e, "ClientBeginConnect"); }
+
+                ci.Connect();
 
                 // Listen for new clients.
                 _localListener.BeginAcceptTcpClient(LocalConnect, null);

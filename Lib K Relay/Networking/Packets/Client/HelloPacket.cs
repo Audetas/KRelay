@@ -16,8 +16,7 @@ namespace Lib_K_Relay.Networking.Packets.Client
         public int Random2;
         public string Secret;
         public int KeyTime;
-        public byte[] Key;
-        //public byte[] Obf1;
+        public sbyte[] Key;
         public string Obf1;
         public string Obf2;
         public string Obf3;
@@ -40,8 +39,7 @@ namespace Lib_K_Relay.Networking.Packets.Client
             Random2 = r.ReadInt32();
             Secret = r.ReadString();
             KeyTime = r.ReadInt32();
-            Key = r.ReadBytes(r.ReadInt16());
-            //Obf1 = r.ReadBytes(r.ReadInt32());
+            Key = (sbyte[])(Array)r.ReadBytes(r.ReadInt16());
             Obf1 = r.ReadUTF32();
             Obf2 = r.ReadString();
             Obf3 = r.ReadString();
@@ -52,9 +50,6 @@ namespace Lib_K_Relay.Networking.Packets.Client
 
         public override void Write(PacketWriter w)
         {
-            //w.Write(RAW);
-            //return;
-
             w.Write(BuildVersion);
             w.Write(GameId);
             w.Write(GUID);
@@ -64,8 +59,7 @@ namespace Lib_K_Relay.Networking.Packets.Client
             w.Write(Secret);
             w.Write(KeyTime);
             w.Write((short)Key.Length);
-            w.Write(Key);
-            //w.Write((int)Obf1.Length);
+            w.Write((byte[])(Array)Key);
             w.WriteUTF32(Obf1);
             w.Write(Obf2);
             w.Write(Obf3);

@@ -43,5 +43,10 @@ namespace K_Relay.Util
             this.Show();
             this.WindowState = FormWindowState.Normal;
         }
+
+        private void btnCancel_Click(object sender, EventArgs e)
+        {
+            this.Close();
+        }
     }
 }

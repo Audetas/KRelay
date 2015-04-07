@@ -1,4 +1,6 @@
 ﻿using Lib_K_Relay.Networking.Packets;
+using Lib_K_Relay.Networking.Packets.Client;
+using Lib_K_Relay.Networking.Packets.Server;
 using System;
 using System.Collections.Generic;
 using System.IO;
@@ -68,6 +70,7 @@ namespace Lib_K_Relay.Utilities
 
         public static void SerializePacketTypes()
         {
+            
             // Reflect all inheriters of Packet and map them according to their Type member.
             Type tPacket = typeof(Packet);
             Type[] packetTypes = Assembly.GetAssembly(typeof(Proxy)).GetTypes()

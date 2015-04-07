@@ -20,6 +20,7 @@ namespace K_Relay.Util
         private Proxy _proxy;
         private string _originalHost;
         private int _originalPort;
+        private bool _reconnected = true;
         private Client _toConnect;
 
         public string GetAuthor()
@@ -40,32 +41,41 @@ namespace K_Relay.Util
         public void Initialize(Proxy proxy)
         {
             _proxy = proxy;
-            proxy.HookPacket(PacketType.RECONNECT, OnReconnectPacket);
+            proxy.ClientBeginConnect += OnClientBeginConnect;
+            proxy.HookPacket(PacketType.RECONNECT, OnReconnect);
             proxy.HookPacket(PacketType.CREATE_SUCCESS, OnCreateSuccess);
             proxy.HookCommand("connect", OnConnectCommand);
             _originalPort = _proxy.Port;
             _originalHost = _proxy.RemoteAddress;
         }
 
-        private void OnCreateSuccess(Client client, Packet createSuccessPacket)
+        private void OnClientBeginConnect(Client client)
         {
-            CreateSuccessPacket createSuccess = createSuccessPacket as CreateSuccessPacket;
-            // Restore the original connection info so new clients can connect normally
-            _proxy.RemoteAddress = _originalHost;
-            _proxy.Port = _originalPort;
+            if (!_reconnected)
+            {
+                _reconnected = true;
+            }
+            else
+            {
+                // Restore the original connection info so new clients can connect normally
+                _proxy.RemoteAddress = _originalHost;
+                _proxy.Port = _originalPort;
+            }
+        }
 
+        private void OnCreateSuccess(Client client, Packet packet)
+        {
             // Send welcome message to player
             PluginUtils.Delay(1500, () => client.SendToClient(
                 PluginUtils.CreateNotification(client.ObjectId, "Welcome to K Relay!")));
         }
 
-        private void OnReconnectPacket(Client client, Packet packet)
+        private void OnReconnect(Client client, Packet packet)
         {
             ReconnectPacket reconnect = packet as ReconnectPacket;
             if (reconnect.Port != -1)
             {
                 _proxy.Port = reconnect.Port;
-                Console.WriteLine("[Reconnect Handler] Changed remote port to {0}.", _proxy.Port);
             }
 
             if (reconnect.Host != "")
@@ -74,12 +84,12 @@ namespace K_Relay.Util
                     _proxy.RemoteAddress = Dns.GetHostEntry(reconnect.Host).AddressList[0].ToString();
                 else
                     _proxy.RemoteAddress = reconnect.Host;
-                Console.WriteLine("[Reconnect Handler] Changed remote address to {0}.", _proxy.RemoteAddress);
             }
 
             // Tell the client to connect to the proxy
             reconnect.Host = "localhost";
             reconnect.Port = 2050;
+            _reconnected = false;
         }
 
         private void OnConnectCommand(Client client, string command, string[] args)
@@ -88,6 +98,7 @@ namespace K_Relay.Util
             PluginUtils.ShowGUI(new FrmServerReconnect(this));
         }
 
+        
         public void ChangeServer(string address, string name)
         {
             Console.WriteLine("[Reconnect Handler] Changing to server {0}({1}).", name, address);

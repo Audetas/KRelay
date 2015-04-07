@@ -43,7 +43,10 @@ namespace Lib_K_Relay.Networking
             ServerReceiveKey = new RC4(_proxy.Key1);
             ClientSendKey = new RC4(_proxy.Key1);
             ServerSendKey = new RC4(_proxy.Key0);
+        }
 
+        public void Connect()
+        {
             _remoteConnection.BeginConnect(
                 IPAddress.Parse(_proxy.RemoteAddress),
                 _proxy.Port, RemoteConnected, null);
@@ -81,10 +84,6 @@ namespace Lib_K_Relay.Networking
                 }
                 else
                 { // We have the full packet
-                    if (_remoteBuffer.Buffer()[4] == Serializer.GetPacketId(PacketType.RECONNECT))
-                    {
-
-                    }
                     ServerReceiveKey.Cipher(_remoteBuffer.Buffer());
                     Packet packet = Packet.Create(_remoteBuffer.Buffer());
 

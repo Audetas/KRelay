@@ -10,8 +10,10 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
+
 namespace Reconnect
 {
+    /*
     public class Reconnect : IPlugin
     {
 
@@ -112,11 +114,10 @@ namespace Reconnect
             ReconnectPacket reconnectPacket = defaultRecPacket;
 
             #region Syntax
-            /* /r d -- Reconnect to last dungeon
-            * /r v -- Reconnect to last vault
-            * /r g -- Reconnect to last ghall
-            * /r -- Reconnect to last realm
-            */
+            // /r d -- Reconnect to last dungeon
+            // /r v -- Reconnect to last vault
+            // /r g -- Reconnect to last ghall
+            // /r -- Reconnect to last realm
             #endregion
 
             //
@@ -236,5 +237,6 @@ namespace Reconnect
           System.Runtime.Serialization.SerializationInfo info,
           System.Runtime.Serialization.StreamingContext context) : base(info, context)
         { }
-    }
+    }*/
 }
+
