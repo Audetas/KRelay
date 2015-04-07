@@ -8,7 +8,7 @@ First steps:
 
 1) Create a new C# "Class Library" Project.
 
-2) Rightclick your project in the Solution Explorer and select "Add Reference".
+2) Right click your project in the Solution Explorer and select "Add Reference".
 
 3) Go to the "Browse" tab and find and add "Lib K Relay.dll".
 
@@ -22,6 +22,7 @@ First steps:
 - `using Lib_K_Relay.Networking.Packets;`
 - `using Lib_K_Relay.Networking.Packets.Client;`
 - `using Lib_K_Relay.Networking.Packets.Server;`
+- `using Lib_K_Relay.Networking.Packets.DataObjects;`
 
 6) Make your class public and implement "IPlugin". eg `public class MyClass : IPlugin`.
 
@@ -40,6 +41,67 @@ IPlugin constists of the following methods:
 - `string GetDescription()` This should return a description of what your plugin does and any other important info.
 - `string[] GetCommands()` This should return a list of any commands that your plugin uses.
 - `void Initialize(Proxy)` This is called once by the plugin manager when your plugin is created and should be where you register proxy hooks and do other initialization logic.
+
+Example:
+```C#
+using Lib_K_Relay;
+using Lib_K_Relay.Interface;
+using Lib_K_Relay.Networking;
+using Lib_K_Relay.Networking.Packets;
+using Lib_K_Relay.Networking.Packets.Client;
+using Lib_K_Relay.Networking.Packets.DataObjects;
+using Lib_K_Relay.Networking.Packets.Server;
+using Lib_K_Relay.Utilities;
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+using System.Windows.Forms;
+
+namespace MyPlugin
+{
+	public Class MyPlugin : IPlugin
+	{
+		private bool _enabled = true;
+		
+		public string GetAuthor() 
+		{ return "ME!"; }
+		
+		public string GetName() 
+		{ return "My Very Own Plugin"; }
+		
+		public string GetDescription() 
+		{ return "This plugin let's you know when you've said something in chat."; }
+		
+		public string[] GetCommands()
+		{ return new string[] { "/myplugin enable:disable" }; }
+		
+		public void Initialize(Proxy proxy)
+		{
+			proxy.HookCommand("myplugin", OnMyPluginCommand);
+			proxy.HookPacket(PacketType.PLAYERTEXT, OnPlayerText);
+		}
+		
+		private void OnMyPluginCommand(Client client, string command, string[] args)
+		{
+			if (args.Length == 0) return;
+			
+			if (args[0] == "enable")  _enabled = true;
+			if (args[0] == "disable") _enabled = false;
+		}
+		
+		priate void OnPlayerText(Client client, Packet packet)
+		{
+			if (!_enabled) return;
+			PlayerTextPacket playerText = (PlayerTextPacket)packet;
+			
+			client.SendToClient(PluginUtils.CreateOryxNotification(
+				"My Plugin", "You said: " + playerText.Text));
+		}
+	}
+}
+```
 
 ## The PluginUtils Class
 ----------------------------------------
