@@ -13,12 +13,15 @@
 - [ ] More that I can't think of at the moment
 - [ ] Some intuitive way to easily get a packet casted to the desired type in callbacks
 - [ ] Don't parse packets that aren't hooked
-- [ ] Remove loot bag quests to purple bags
-- [ ] Figure out why we can't create characters
 - [x] Add welcome to K Relay message
 - [x] Finish the plugins tab
 - [x] Fetch server list from char/list
 - [x] Redo Info tab
+
+##Bug Checklist:
+- [ ] Remove loot bag quests to purple bags
+- [ ] Figure out why we can't create characters
+- [ ] /connect takes you to USWest only
 
 ##Plugin Checklist:
 - [x] World Edit
