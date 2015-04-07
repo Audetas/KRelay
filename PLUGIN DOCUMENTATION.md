@@ -91,7 +91,7 @@ namespace MyPlugin
 			if (args[0] == "disable") _enabled = false;
 		}
 		
-		priate void OnPlayerText(Client client, Packet packet)
+		private void OnPlayerText(Client client, Packet packet)
 		{
 			if (!_enabled) return;
 			PlayerTextPacket playerText = (PlayerTextPacket)packet;
