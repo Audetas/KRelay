@@ -47,9 +47,6 @@
             // menuSettings
             // 
             this.menuSettings.ImageScalingSize = new System.Drawing.Size(32, 32);
-            this.menuSettings.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.btnDone,
-            this.btnReset});
             this.menuSettings.Location = new System.Drawing.Point(0, 0);
             this.menuSettings.Name = "menuSettings";
             this.menuSettings.Size = new System.Drawing.Size(958, 40);
@@ -131,9 +128,9 @@
             this.chkChangeMessageToFiltered.AutoSize = true;
             this.chkChangeMessageToFiltered.Location = new System.Drawing.Point(6, 88);
             this.chkChangeMessageToFiltered.Name = "chkChangeMessageToFiltered";
-            this.chkChangeMessageToFiltered.Size = new System.Drawing.Size(415, 29);
+            this.chkChangeMessageToFiltered.Size = new System.Drawing.Size(361, 29);
             this.chkChangeMessageToFiltered.TabIndex = 13;
-            this.chkChangeMessageToFiltered.Text = "Replace spam messages with \'Filtered\'";
+            this.chkChangeMessageToFiltered.Text = "Replace spam messages with \'...\'";
             this.chkChangeMessageToFiltered.UseVisualStyleBackColor = true;
             // 
             // chkAutoIgnore

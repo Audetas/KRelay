@@ -2,6 +2,7 @@
 using Lib_K_Relay.Interface;
 using Lib_K_Relay.Networking;
 using Lib_K_Relay.Networking.Packets;
+using Lib_K_Relay.Networking.Packets.Client;
 using Lib_K_Relay.Networking.Packets.Server;
 using Lib_K_Relay.Utilities;
 using System;
@@ -75,13 +76,14 @@ namespace ChatAssist
 
                     text.Send = false;
 
-                    if (ChatAssistConfig.Default.AutoIgnoreSpamMessage)
+                    if (ChatAssistConfig.Default.AutoIgnoreSpamMessage ||
+                       (ChatAssistConfig.Default.AutoIgnoreSpamPM && text.Recipient != ""))
                     {
                         // Ignore
-                    }
-                    else if (ChatAssistConfig.Default.AutoIgnoreSpamPM && text.Recipient != "")
-                    {
-                        // Ingore
+                        PlayerTextPacket playerText = new PlayerTextPacket();
+                        playerText.Text = "/ignore " + text.Name;
+                        client.SendToServer(playerText);
+                        return;
                     }
                 }
             }

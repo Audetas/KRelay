@@ -37,6 +37,7 @@ namespace K_Relay
 
             foreach (string pluginPath in Directory.GetFiles(pluginDirectory, "*.dll", SearchOption.AllDirectories))
             {
+                if (new FileInfo(pluginPath).Name.Contains("Lib K Relay")) continue;
                 Assembly pluginAssembly = Assembly.LoadFrom(pluginPath);
 
                 foreach (Type pluginType in pluginAssembly.GetTypes())
