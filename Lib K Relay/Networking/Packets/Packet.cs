@@ -166,6 +166,8 @@ namespace Lib_K_Relay.Networking.Packets
         PETCOMMAND,
         PETYARDCOMMAND,
         TINKERQUEST,
-        VIEWQUESTS
+        VIEWQUESTS,
+        ARENADEATH,
+        ARENANEXTWAVE
     }
 }
