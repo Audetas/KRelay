@@ -171,6 +171,13 @@ namespace Lib_K_Relay.Networking.Packets
         ARENANEXTWAVE,
         HATCHEGG,
         NEWABILITYUNLOCKED,
-        PASSWORDPROMPT
+        PASSWORDPROMPT,
+        EVOLVEPET,
+        QUESTFETCHRESPONSE,
+        REMOVEPET,
+        UPDATEPET,
+        UPGRADEPETYARDRESULT,
+        VERIFYEMAILDIALOG,
+        QUESTREDEEMRESPONSE
     }
 }

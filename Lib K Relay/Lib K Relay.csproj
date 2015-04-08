@@ -109,10 +109,23 @@
     <Compile Include="Networking\Packets\Server\NewTickPacket.cs" />
     <Compile Include="Networking\Packets\Client\OtherHitPacket.cs" />
     <Compile Include="Networking\Packets\Server\PasswordPromptPacket.cs" />
+    <Compile Include="Networking\Packets\Server\PetEvolveResultPacket.cs" />
+    <Compile Include="Networking\Packets\Server\PicPacket.cs" />
+    <Compile Include="Networking\Packets\Server\PingPacket.cs" />
     <Compile Include="Networking\Packets\Server\PlayerHitPacket.cs" />
+    <Compile Include="Networking\Packets\Server\PlaySoundPacket.cs" />
+    <Compile Include="Networking\Packets\Server\QuestFetchResponsePacket.cs" />
     <Compile Include="Networking\Packets\Server\QuestObjIdPacket.cs" />
     <Compile Include="Networking\Packets\Client\SquareHitPacket.cs" />
+    <Compile Include="Networking\Packets\Server\QuestRedeemResponsePacket.cs" />
+    <Compile Include="Networking\Packets\Server\RemovePetFromListPacket.cs" />
+    <Compile Include="Networking\Packets\Server\Shoot2Packet.cs" />
+    <Compile Include="Networking\Packets\Server\ShootPacket.cs" />
+    <Compile Include="Networking\Packets\Server\ShowEffectPacket.cs" />
     <Compile Include="Networking\Packets\Server\TextPacket.cs" />
+    <Compile Include="Networking\Packets\Server\TradeAcceptedPacket.cs" />
+    <Compile Include="Networking\Packets\Server\TradeChangedPacket.cs" />
+    <Compile Include="Networking\Packets\Server\TradeDonePacket.cs" />
     <Compile Include="Networking\Packets\Server\TradeRequestedPacket.cs" />
     <Compile Include="Networking\Packets\Server\CreateSuccessPacket.cs" />
     <Compile Include="Networking\Packets\Server\NotificationPacket.cs" />
@@ -129,6 +142,10 @@
     <Compile Include="Networking\Packets\DataObjects\Tile.cs" />
     <Compile Include="Networking\Packets\Packet.cs" />
     <Compile Include="Networking\Packets\PacketReader.cs" />
+    <Compile Include="Networking\Packets\Server\TradeStartPacket.cs" />
+    <Compile Include="Networking\Packets\Server\UpdatePetPacket.cs" />
+    <Compile Include="Networking\Packets\Server\UpdatePetYardResultPacket.cs" />
+    <Compile Include="Networking\Packets\Server\VerifyEmailDialogPacket.cs" />
     <Compile Include="Utilities\FrmGenericSettings.cs">
       <SubType>Form</SubType>
     </Compile>

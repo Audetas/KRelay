@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Lib_K_Relay.Networking.Packets;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -77,6 +78,71 @@ namespace Lib_K_Relay.Utilities
         Unstable = 29,
         Darkness = 30,
         Curse = 31
+    }
+
+    public enum EffectType
+    {
+        Potion = 1,
+        Teleport = 2,
+        Stream = 3,
+        Throw = 4,
+        AreaBlast = 5, //radius=pos1.x
+        Dead = 6,
+        Trail = 7,
+        Diffuse = 8, //radius=dist(pos1,pos2)
+        Flow = 9,
+        Trap = 10, //radius=pos1.x
+        Lightning = 11, //particleSize=pos2.x
+        Concentrate = 12, //radius=dist(pos1,pos2)
+        BlastWave = 13, //origin=pos1, radius = pos2.x
+        Earthquake = 14,
+        Flashing = 15, //period=pos1.x, numCycles=pos1.y
+        BeachBall = 16,
+        ElectricBolts = 17, //If a pet paralyzes a monster
+        ElectricFlashing = 18, //If a monster got paralyzed from a electric pet
+        SavageEffect = 19 //If a pet is standing still (this white particles)
+    }
+
+    public struct ARGB
+    {
+        public byte A;
+        public byte B;
+        public byte G;
+        public byte R;
+
+        public ARGB(uint argb)
+        {
+            A = (byte)((argb & 0xff000000) >> 24);
+            R = (byte)((argb & 0x00ff0000) >> 16);
+            G = (byte)((argb & 0x0000ff00) >> 8);
+            B = (byte)((argb & 0x000000ff) >> 0);
+        }
+
+        public ARGB(byte a, byte r, byte g, byte b)
+        {
+            A = a;
+            R = r;
+            G = g;
+            B = b;
+        }
+
+        public static ARGB Read(PacketReader r)
+        {
+            ARGB ret = new ARGB();
+            ret.A = r.ReadByte();
+            ret.R = r.ReadByte();
+            ret.G = r.ReadByte();
+            ret.B = r.ReadByte();
+            return ret;
+        }
+
+        public void Write(PacketWriter w)
+        {
+            w.Write(A);
+            w.Write(R);
+            w.Write(G);
+            w.Write(B);
+        }
     }
 
     public enum Bags : short

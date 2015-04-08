@@ -9,7 +9,7 @@
 -----------------------------------------------------------
 
 ##Core Checklist: (please add as you get ideas)
-- [ ] **Define all server packets**
+- [x] **Define all server packets**
 - [ ] More that I can't think of at the moment
 - [ ] Some intuitive way to easily get a packet casted to the desired type in callbacks
 - [ ] Don't parse packets that aren't hooked
