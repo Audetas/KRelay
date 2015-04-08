@@ -19,7 +19,7 @@
 - [x] Redo Info tab
 
 ##Bug Checklist:
-- [ ] Remove loot bag quests to purple bags
+- [x] Remove loot bag quests to purple bags
 - [ ] Figure out why we can't create characters
 - [ ] /connect takes you to USWest only
 - [ ] Check for packets missing from Packets.xml
