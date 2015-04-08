@@ -214,7 +214,11 @@ namespace Reconnect
                     throw new UnknownArgumentException("Too Many arguments");
 
 
-                Console.WriteLine(reconnectPacket.ToString());
+                //Console.WriteLine(reconnectPacket.ToString());
+                proxy.RemoteAddress = reconnectPacket.Host;
+                proxy.Port = reconnectPacket.Port;
+                reconnectPacket.Host = "localhost";
+                reconnectPacket.Port = 2050;
                 client.SendToClient(reconnectPacket);
 
             }
