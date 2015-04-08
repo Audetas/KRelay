@@ -307,5 +307,25 @@
     <PacketName>VIEWQUESTS</PacketName>
     <PacketID>93</PacketID>
   </Packet>
+  <Packet>
+    <PacketName>ARENADEATH</PacketName>
+    <PacketID>86</PacketID>
+  </Packet>
+  <Packet>
+    <PacketName>ARENANEXTWAVE</PacketName>
+    <PacketID>25</PacketID>
+  </Packet>
+  <Packet>
+    <PacketName>HATCHEGG</PacketName>
+    <PacketID>82</PacketID>
+  </Packet>
+  <Packet>
+    <PacketName>NEWABILITYUNLOCKED</PacketName>
+    <PacketID>46</PacketID>
+  </Packet>
+  <Packet>
+    <PacketName>PASSWORDPROMPT</PacketName>
+    <PacketID>21</PacketID>
+  </Packet>
 
 </Packets>
