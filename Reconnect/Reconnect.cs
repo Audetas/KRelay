@@ -8,6 +8,7 @@ using Lib_K_Relay.Utilities;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Net;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -38,10 +39,10 @@ namespace Reconnect
         {
             return "Reconnects you to the last realm/dungeon you went to.\n" +
                    "Usage: /<reconnect command> [option] \n" +
-                   "Reconnect commands: /r, /reconect \n" +
+                   "Reconnect command: /rcon\n" +
                    "Options: r, realm, d, dungeon, g, ghall, guild, v, vault.\n" +
                    "Without any options, you will connect to the last realm/dungeon you visited\n" +
-                   "Examples: /r g; /r dungeon; /reconnect";
+                   "Examples: /rcon g; /rcon dungeon; /rcon";
         }
 
         public string[] GetCommands()
@@ -82,7 +83,21 @@ namespace Reconnect
             if (packet.Type == PacketType.RECONNECT)
             {
                 ReconnectPacket reconnect = packet as ReconnectPacket;
-                Console.WriteLine(reconnect.ToString());
+
+                string host = "localhost";
+                int port = 2050;
+
+                if (reconnect.Host != "")
+                {
+                    if (reconnect.Host.Contains(".com"))
+                        host = Dns.GetHostEntry(reconnect.Host).AddressList[0].ToString();
+                    else
+                        host = reconnect.Host;
+                }
+
+                if (reconnect.Port != -1)
+                    port = reconnect.Port;
+
 
                 if (reconnect.Name.ToLower() == "guild hall")
                     //Connected to guild hall: save the guild hall
@@ -91,14 +106,14 @@ namespace Reconnect
                 else if (reconnect.Name.ToLower().Contains("nexusportal"))
                 //Connected to a realm: Save the realm 
                 {
-                    ReconnectSettings.Default.LastRealmData = reconnect.GameId + ";" + reconnect.Name + ";" + reconnect.Host + ";" + reconnect.Port;
+                    ReconnectSettings.Default.LastRealmData = reconnect.GameId + ";" + reconnect.Name + ";" + host + ";" + port;
                     lastRec = reconnect;
                 }
 
                 else if (reconnect.Name != "" && !reconnect.Name.Contains("vault"))
                 //Connected to a dungeon: Save the dungeon
                 {
-                    ReconnectSettings.Default.LastDungeonData = reconnect.GameId + ";" + reconnect.Name + ";" + reconnect.Host + ";" + reconnect.Port;
+                    ReconnectSettings.Default.LastDungeonData = reconnect.GameId + ";" + reconnect.Name + ";" + host + ";" + port;
                     lastRec = reconnect;
                 }
 
@@ -129,7 +144,6 @@ namespace Reconnect
         /// <returns>Success/Fail of the operation</returns>
         ReconnectPacket LoadPacketFromData(string data)
         {
-            Console.WriteLine(data);
             ReconnectPacket packet = null;
             packet = Packet.Create(PacketType.RECONNECT) as ReconnectPacket;
             packet.GameId = 0;
@@ -180,6 +194,8 @@ namespace Reconnect
             reconnectPacket.Key = new byte[0];
             reconnectPacket.KeyTime = 0;
 
+            LoadFromSettings();
+
             try
             {
                 if (args.Length == 1)
@@ -215,8 +231,10 @@ namespace Reconnect
 
 
                 //Console.WriteLine(reconnectPacket.ToString());
-                proxy.RemoteAddress = reconnectPacket.Host;
-                proxy.Port = reconnectPacket.Port;
+                if (reconnectPacket.Host != "localhost")
+                    proxy.RemoteAddress = reconnectPacket.Host;
+                if (reconnectPacket.Port != 2050)
+                    proxy.Port = reconnectPacket.Port;
                 reconnectPacket.Host = "localhost";
                 reconnectPacket.Port = 2050;
                 client.SendToClient(reconnectPacket);
