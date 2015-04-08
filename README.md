@@ -22,7 +22,7 @@
 - [x] Remove loot bag quests to purple bags
 - [ ] Figure out why we can't create characters
 - [ ] /connect takes you to USWest only
-- [ ] Check for packets missing from Packets.xml
+- [x] Check for packets missing from Packets.xml
 
 ##Plugin Checklist:
 - [x] World Edit
@@ -37,6 +37,7 @@
 - [x] Loot notifications / Loot bag quest
 - [x] Auto loot
 - [x] Tile/Object Replacer
+For later:
 - [ ] Custom vault for the fun of it
 - [ ] Map Cacher
 - [ ] Speedhack (maybee)
