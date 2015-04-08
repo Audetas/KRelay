@@ -20,7 +20,7 @@ namespace K_Relay.Util
         private Proxy _proxy;
         private string _originalHost;
         private int _originalPort;
-        private bool _reconnected = true;
+        private int _reconnected = 0;
         private Client _toConnect;
 
         public string GetAuthor()
@@ -51,12 +51,13 @@ namespace K_Relay.Util
 
         private void OnClientBeginConnect(Client client)
         {
-            if (!_reconnected)
+            if (_reconnected == 2)
             {
-                _reconnected = true;
+                _reconnected = 3;
             }
-            else
+            else if (_reconnected == 3)
             {
+                _reconnected = 0;
                 // Restore the original connection info so new clients can connect normally
                 _proxy.RemoteAddress = _originalHost;
                 _proxy.Port = _originalPort;
@@ -89,7 +90,7 @@ namespace K_Relay.Util
             // Tell the client to connect to the proxy
             reconnect.Host = "localhost";
             reconnect.Port = 2050;
-            _reconnected = false;
+            _reconnected = 2;
         }
 
         private void OnConnectCommand(Client client, string command, string[] args)
