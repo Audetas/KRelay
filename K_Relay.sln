@@ -38,6 +38,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MapFilter", "MapFilter\MapF
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Glow", "Glow\Glow.csproj", "{221B82C0-4D31-4EBE-A517-7F4AF8AC1AF3}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ClientConsoleTest1", "ClientConsoleTest1\ClientConsoleTest1.csproj", "{58626441-D2BC-447D-81F0-A3AC6095239F}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -104,6 +106,10 @@ Global
 		{221B82C0-4D31-4EBE-A517-7F4AF8AC1AF3}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{221B82C0-4D31-4EBE-A517-7F4AF8AC1AF3}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{221B82C0-4D31-4EBE-A517-7F4AF8AC1AF3}.Release|Any CPU.Build.0 = Release|Any CPU
+		{58626441-D2BC-447D-81F0-A3AC6095239F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{58626441-D2BC-447D-81F0-A3AC6095239F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{58626441-D2BC-447D-81F0-A3AC6095239F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{58626441-D2BC-447D-81F0-A3AC6095239F}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

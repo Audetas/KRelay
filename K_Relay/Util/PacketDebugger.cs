@@ -8,6 +8,7 @@ using Lib_K_Relay.Networking.Packets.Server;
 using Lib_K_Relay.Utilities;
 using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -17,6 +18,8 @@ namespace K_Relay.Util
 {
     class PacketDebugger : IPlugin
     {
+        StreamWriter logWriter;
+
         private List<PacketType> _reportId = new List<PacketType>()
         {
         };
@@ -40,14 +43,41 @@ namespace K_Relay.Util
 
         public void Initialize(Proxy proxy)
         {
-            proxy.ClientPacketRecieved += OnPacket;
-            proxy.ServerPacketRecieved += OnPacket;
+            proxy.ClientPacketRecieved += Proxy_ClientPacketRecieved; ;
+            proxy.ServerPacketRecieved += Proxy_ServerPacketRecieved; ;
+            proxy.ProxyListenStarted += Proxy_ProxyListenStarted;
+            proxy.ProxyListenStopped += Proxy_ProxyListenStopped;
         }
 
-        private void OnPacket(Client client, Packet packet)
+        private void Proxy_ServerPacketRecieved(Client client, Packet packet)
+        {
+            logWriter.WriteLine("Recieved packet from server \n" + packet.ToString());
+        }
+
+        private void Proxy_ClientPacketRecieved(Client client, Packet packet)
+        {
+            logWriter.WriteLine("Sent packet to server \n" + packet.ToString());
+        }
+
+        private void Proxy_ProxyListenStarted(Proxy proxy)
+        {
+            logWriter = new StreamWriter(@"Log" + new Random().Next() + ".txt");
+            logWriter.WriteLine("Started logging");
+        }
+
+        private void Proxy_ProxyListenStopped(Proxy proxy)
+        {
+            logWriter.WriteLine("Finished logging");
+            logWriter.Close();
+        }
+
+      /*  private void OnPacket(Client client, Packet packet)
         {
             if (_reportId.Contains(packet.Type)) Console.WriteLine("[Packet Debugger] Received {0} packet.", packet.Type);
             if (_printString.Contains(packet.Type)) Console.WriteLine("[Packet Debugger] {0}", packet);
-        }
+            
+            
+
+        }*/
     }
 }
