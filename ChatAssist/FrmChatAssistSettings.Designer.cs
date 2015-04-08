@@ -70,7 +70,7 @@
             // chkSpamFilter
             // 
             this.chkSpamFilter.AutoSize = true;
-            this.chkSpamFilter.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.875F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.chkSpamFilter.Font = new System.Drawing.Font("Segoe UI", 7.875F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.chkSpamFilter.Location = new System.Drawing.Point(12, 58);
             this.chkSpamFilter.Name = "chkSpamFilter";
             this.chkSpamFilter.Size = new System.Drawing.Size(234, 29);
@@ -157,7 +157,7 @@
             // 
             this.label1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.label1.AutoSize = true;
-            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.875F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label1.Font = new System.Drawing.Font("Segoe UI", 7.875F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label1.Location = new System.Drawing.Point(485, 62);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(165, 25);
