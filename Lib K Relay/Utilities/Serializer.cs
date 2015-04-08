@@ -82,22 +82,6 @@ namespace Lib_K_Relay.Utilities
                 PacketTypeTypeMap.Add(t, packetType);
             }
 
-            Console.Write("PacketTypes with no structure:");
-            foreach (PacketType type in Enum.GetValues(typeof(PacketType)).Cast<PacketType>())
-            {
-                if (!PacketTypeTypeMap.ContainsKey(type))
-                    Console.Write(" " + type.ToString() + ",");
-            }
-            Console.WriteLine();
-
-            Console.Write("PacketTypes with no id:");
-            foreach (PacketType type in Enum.GetValues(typeof(PacketType)).Cast<PacketType>())
-            {
-                if (!PacketTypeIdMap.ContainsKey(type))
-                    Console.Write(" " + type.ToString() + ",");
-            }
-            Console.WriteLine();
-
             Console.WriteLine("[Serializer] Mapped {0} packet structures successfully.", PacketTypeTypeMap.Count);
         }
         #endregion

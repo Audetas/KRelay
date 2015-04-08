@@ -26,7 +26,7 @@ namespace K_Relay
                 AttachPlugin(typeof(ReconnectHandler));
 
             // DEBUG
-            AttachPlugin(typeof(PacketDebugger));
+            //AttachPlugin(typeof(PacketDebugger));
 
             if (!Directory.Exists(pluginDirectory))
             {

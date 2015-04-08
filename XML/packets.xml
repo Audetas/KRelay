@@ -327,5 +327,33 @@
     <PacketName>PASSWORDPROMPT</PacketName>
     <PacketID>21</PacketID>
   </Packet>
+  <Packet>
+    <PacketName>EVOLVEPET</PacketName>
+    <PacketID>98</PacketID>
+  </Packet>
+  <Packet>
+    <PacketName>QUESTFETCHRESPONSE</PacketName>
+    <PacketID>90</PacketID>
+  </Packet>
+  <Packet>
+    <PacketName>REMOVEPET</PacketName>
+    <PacketID>83</PacketID>
+  </Packet>
+  <Packet>
+    <PacketName>UPDATEPET</PacketName>
+    <PacketID>8</PacketID>
+  </Packet>
+  <Packet>
+    <PacketName>UPGRADEPETYARDRESULT</PacketName>
+    <PacketID>36</PacketID>
+  </Packet>
+  <Packet>
+    <PacketName>VERIFYEMAILDIALOG</PacketName>
+    <PacketID>9</PacketID>
+  </Packet>
+  <Packet>
+    <PacketName>QUESTREDEEMRESPONSE</PacketName>
+    <PacketID>89</PacketID>
+  </Packet>
 
 </Packets>
