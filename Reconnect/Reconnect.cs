@@ -45,12 +45,11 @@ namespace Reconnect
         }
 
         public string[] GetCommands()
-        { return new string[] { "/r", "/r r", "/r d", "/r v", "/r g", "/reconnect", "/reconnect r", "/reconnect d", "/reconnect g", "/reconnect v", "/reconnect realm", "/reconnect dungeon", "/reconnect vault", "/reconnect guild", "/reconnect ghall" }; }
+        { return new string[] { "/rcon", "/rcon r", "/rcon d", "/rcon v", "/rcon g", "/rcon realm", "/rcon dungeon", "/rcon vault", "/rcon guild", "/rcon ghall" }; }
 
         public void Initialize(Proxy proxy)
         {
             this.proxy = proxy;
-            proxy.HookPacket(PacketType.RECONNECT, OnReconnect);
 
             #region Syntax
             // /r d -- Reconnect to last dungeon
@@ -58,7 +57,9 @@ namespace Reconnect
             // /r g -- Reconnect to last ghall
             // /r -- Reconnect to last realm
             #endregion
-            proxy.HookCommand("/rc", OnPlayerText);
+
+            proxy.ServerPacketRecieved += Proxy_ServerPacketRecieved;
+            proxy.HookCommand("/rcon", OnPlayerText);
             proxy.HookCommand("/reconnect", OnPlayerText);
 
             //Initialise the reconnectPackets
@@ -76,40 +77,47 @@ namespace Reconnect
             LoadFromSettings();
         }
 
+        private void Proxy_ServerPacketRecieved(Client client, Packet packet)
+        {
+            if (packet.Type == PacketType.RECONNECT)
+            {
+                ReconnectPacket reconnect = packet as ReconnectPacket;
+                Console.WriteLine(reconnect.ToString());
+
+                if (reconnect.Name.ToLower() == "guild hall")
+                    //Connected to guild hall: save the guild hall
+                    ReconnectSettings.Default.GuildHallData = reconnect.GameId + ";" + reconnect.Name;
+
+                else if (reconnect.Name.ToLower().Contains("nexusportal"))
+                //Connected to a realm: Save the realm 
+                {
+                    ReconnectSettings.Default.LastRealmData = reconnect.GameId + ";" + reconnect.Name + ";" + reconnect.Host + ";" + reconnect.Port;
+                    lastRec = reconnect;
+                }
+
+                else if (reconnect.Name != "" && !reconnect.Name.Contains("vault"))
+                //Connected to a dungeon: Save the dungeon
+                {
+                    ReconnectSettings.Default.LastDungeonData = reconnect.GameId + ";" + reconnect.Name + ";" + reconnect.Host + ";" + reconnect.Port;
+                    lastRec = reconnect;
+                }
+
+                ReconnectSettings.Default.Save();
+                LoadFromSettings();
+            }
+        }
+
         private void LoadFromSettings()
         {
-            bool initializedFine = true;
 
-            Tuple<bool, ReconnectPacket> tempTuple;
+            realmRec = LoadPacketFromData(ReconnectSettings.Default.LastRealmData);
 
-            tempTuple = LoadPacketFromData(ReconnectSettings.Default.LastRealmData);
-            if (!tempTuple.Item1)
-                initializedFine = false;
-            realmRec = tempTuple.Item2;
+            dungRec = LoadPacketFromData(ReconnectSettings.Default.LastDungeonData);
 
-            tempTuple = LoadPacketFromData(ReconnectSettings.Default.LastDungeonData);
-            if (!tempTuple.Item1)
-                initializedFine = false;
-            dungRec = tempTuple.Item2;
+            guildRec = LoadPacketFromData(ReconnectSettings.Default.GuildHallData);
 
-            tempTuple = LoadPacketFromData(ReconnectSettings.Default.GuildHallData);
-            if (!tempTuple.Item1)
-                initializedFine = false; realmRec = tempTuple.Item2;
-            guildRec = tempTuple.Item2;
+            vaultRec = LoadPacketFromData(ReconnectSettings.Default.VaultData);
 
-            tempTuple = LoadPacketFromData(ReconnectSettings.Default.VaultData);
-            if (!tempTuple.Item1)
-                initializedFine = false;
-            vaultRec = tempTuple.Item2;
-
-            Console.WriteLine(ReconnectSettings.Default.LastRealmData);
-            Console.WriteLine(ReconnectSettings.Default.LastDungeonData);
-            Console.WriteLine(ReconnectSettings.Default.GuildHallData);
-            Console.WriteLine(ReconnectSettings.Default.VaultData);
-
-
-            if (!initializedFine)
-                Console.WriteLine("[Reconnect] Reconnect could not load some of the settings");
         }
 
         /// <summary>
@@ -119,15 +127,23 @@ namespace Reconnect
         /// <param name="packet">packet to load into</param>
         /// <param name="data">Data to load into the packet</param>
         /// <returns>Success/Fail of the operation</returns>
-        Tuple<bool, ReconnectPacket> LoadPacketFromData(string data)
+        ReconnectPacket LoadPacketFromData(string data)
         {
+            Console.WriteLine(data);
             ReconnectPacket packet = null;
-            packet = defaultRecPacket;
+            packet = Packet.Create(PacketType.RECONNECT) as ReconnectPacket;
+            packet.GameId = 0;
+            packet.Host = "localhost";
+            packet.IsFromArena = false;
+            packet.Name = "";
+            packet.Port = 2050;
+            packet.Key = new byte[0];
+            packet.KeyTime = 0;
 
             string[] dataSplit = data.Split(';');
 
             if (dataSplit.Length != 2 && dataSplit.Length != 4)
-                return new Tuple<bool, ReconnectPacket>(false, packet);
+                return packet;
 
             int recId = 0;
             string realmName = "";
@@ -145,16 +161,24 @@ namespace Reconnect
                     packet.Port = int.Parse(dataSplit[3]);
                 }
 
-                return new Tuple<bool, ReconnectPacket>(true, packet);
+                return packet;
             }
 
             else
-                return new Tuple<bool, ReconnectPacket>(false, packet);
+                return packet;
         }
 
         private void OnPlayerText(Client client, string command, string[] args)
         {
-            ReconnectPacket reconnectPacket = defaultRecPacket;
+            ReconnectPacket reconnectPacket;
+            reconnectPacket = Packet.Create(PacketType.RECONNECT) as ReconnectPacket;
+            reconnectPacket.GameId = 0;
+            reconnectPacket.Host = "localhost";
+            reconnectPacket.IsFromArena = false;
+            reconnectPacket.Name = "";
+            reconnectPacket.Port = 2050;
+            reconnectPacket.Key = new byte[0];
+            reconnectPacket.KeyTime = 0;
 
             try
             {
@@ -209,33 +233,6 @@ namespace Reconnect
 
 
         }
-
-        private void OnReconnect(Client client, Packet packet)
-        {
-            ReconnectPacket reconnect = packet as ReconnectPacket;
-            Console.WriteLine(reconnect.ToString());
-
-            if (reconnect.Name.ToLower() == "guild hall")
-                //Connected to guild hall: save the guild hall
-                ReconnectSettings.Default.GuildHallData = reconnect.GameId + ";" + reconnect.Name;
-
-            else if (reconnect.Name.ToLower().Contains("nexusportal"))
-            //Connected to a realm: Save the realm 
-            {
-                ReconnectSettings.Default.LastRealmData = reconnect.GameId + ";" + reconnect.Name + ";" + reconnect.Host + ";" + reconnect.Port;
-                lastRec = reconnect;
-            }
-
-            else if (reconnect.Name != "" && !reconnect.Name.Contains("vault"))
-            //Connected to a dungeon: Save the dungeon
-            {
-                ReconnectSettings.Default.LastDungeonData = reconnect.GameId + ";" + reconnect.Name  + ";" + reconnect.Host + ";" + reconnect.Port;
-                lastRec = reconnect;
-            }
-
-            ReconnectSettings.Default.Save();
-            LoadFromSettings();
-        }
     }
 
     [Serializable]
@@ -262,4 +259,3 @@ namespace Reconnect
         { }
     }
 }
-

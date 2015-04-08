@@ -4,6 +4,9 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 VisualStudioVersion = 14.0.22310.1
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "K_Relay", "K_Relay\K_Relay.csproj", "{BAE9E532-8ADB-4AEE-BCB9-DF928AEA0970}"
+	ProjectSection(ProjectDependencies) = postProject
+		{3D2710A4-8C19-40DB-93EE-716DB6A22889} = {3D2710A4-8C19-40DB-93EE-716DB6A22889}
+	EndProjectSection
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Lib K Relay", "Lib K Relay\Lib K Relay.csproj", "{B1B5F3C3-C4FF-4C6E-8879-D2E4E99BEEF9}"
 EndProject
