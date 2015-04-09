@@ -23,6 +23,9 @@
 - [ ] Figure out why we can't create characters
 - [x] /connect takes you to USWest only
 - [x] Check for packets missing from Packets.xml
+- [ ] Fix reconnect handler to handle multiple clients at once
+- [ ] Fix \s in directory searching for *NIX
+- [ ] Fix default server setting
 
 ##Plugin Checklist:
 - [x] World Edit
@@ -41,3 +44,4 @@ For later:
 - [ ] Custom vault for the fun of it
 - [ ] Map Cacher
 - [ ] Speedhack (maybee)
+- [ ] Freeze Godmode
