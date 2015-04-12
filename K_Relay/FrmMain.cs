@@ -24,14 +24,23 @@ namespace K_Relay
         public FrmMain()
         {
             InitializeComponent();
-
-            Config.Default.HookUIEvents(this);
             Console.SetOut(new TextBoxStreamWriter(tbxLog));
 
-            Serializer.SerializeServers();
-            Serializer.SerializeGameObjects();
-            Serializer.SerializePacketIds();
-            Serializer.SerializePacketTypes();
+            try
+            {
+                Serializer.SerializeServers();
+                Serializer.SerializeGameObjects();
+                Serializer.SerializePacketIds();
+                Serializer.SerializePacketTypes();
+            }
+            catch (Exception e)
+            {
+                MessageBox.Show("Either a required file was not found or we weren't able to contact the RotMG account server.\n" +
+                                "Here's more detail: \n" +
+                                e.Message + "\n" +
+                                "Please ensure you extract all of the files to the same folder!\n" +
+                                "K Relay will now exit.", "K Relay", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
 
             _clients = new List<Client>();
             _proxy = new Proxy();
@@ -43,14 +52,17 @@ namespace K_Relay
             _proxy.Key0 = Config.Default.RC4Key0;
             _proxy.Key1 = Config.Default.RC4Key1;
 
-            string settingsHost = Serializer.GetServerByShortName(Config.Default.DefaultServerName);
-            _proxy.RemoteAddress = settingsHost != "" ? settingsHost : "54.241.208.233";
+            if (!Serializer.Servers.ContainsKey(Config.Default.DefaultServerName))
+                Config.Default.DefaultServerName = "USWest";
+            
+            _proxy.RemoteAddress = Serializer.Servers[Config.Default.DefaultServerName];
         }
 
         private void FrmMain_Shown(object sender, EventArgs e)
         {
             InitPackets();
             InitPlugins();
+            InitSettings();
 
             if (Config.Default.StartProxyByDefault)
                 btnToggleProxy_Click(null, null);

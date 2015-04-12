@@ -13,7 +13,7 @@
 - [ ] More that I can't think of at the moment
 - [ ] Some intuitive way to easily get a packet casted to the desired type in callbacks
 - [ ] Don't parse packets that aren't hooked
-- [ ] Better Run button placement
+- [x] Better Run button placement
 - [x] Add welcome to K Relay message
 - [x] Finish the plugins tab
 - [x] Fetch server list from char/list
@@ -26,8 +26,8 @@
 - [x] /connect takes you to USWest only
 - [x] Check for packets missing from Packets.xml
 - [ ] Fix reconnect handler to handle multiple clients at once
-- [ ] Fix \s in directory searching for *NIX
-- [ ] Fix default server setting
+- [x] Fix \s in directory searching for *NIX
+- [x] Fix default server setting
 
 ##Plugin Checklist:
 - [x] World Edit

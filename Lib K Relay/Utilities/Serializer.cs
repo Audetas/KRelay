@@ -29,7 +29,7 @@ namespace Lib_K_Relay.Utilities
         #region Packet Serialization
         public static void SerializePacketIds()
         {
-            string path = DEBUGGetSolutionRoot() + @"\XML\packets.xml";
+            string path = DEBUGGetSolutionRoot() + @"/XML/packets.xml";
             if (File.Exists(path))
             {
                 XmlDocument document = new XmlDocument();
@@ -65,7 +65,7 @@ namespace Lib_K_Relay.Utilities
                 }
                 Console.WriteLine("[Serializer] Serialized {0} packet ids successfully.", PacketTypeIdMap.Count);
             }
-            else throw new FileNotFoundException(path);
+            else throw new FileNotFoundException("Unable to find file.", path);
         }
 
         public static void SerializePacketTypes()
@@ -97,7 +97,7 @@ namespace Lib_K_Relay.Utilities
 
         private static void SerializeFromXML(string fileName, string nodeName, Dictionary<string, ushort> dict)
         {
-            string path = DEBUGGetSolutionRoot() + @"\XML\" + fileName + ".xml";
+            string path = DEBUGGetSolutionRoot() + @"/XML/" + fileName + ".xml";
             if (File.Exists(path))
             {
                 XmlDocument document = new XmlDocument();
@@ -113,7 +113,7 @@ namespace Lib_K_Relay.Utilities
                 }
                 Console.WriteLine("[Serializer] Serialized {0} {1} successfully.", dict.Count, fileName);
             }
-            else throw new FileNotFoundException(path);
+            else throw new FileNotFoundException("Unable to find file.", path);
         }
         #endregion
 
@@ -147,23 +147,19 @@ namespace Lib_K_Relay.Utilities
         {
             if (Servers.Count > 0) return;
 
-            try
+            string CharList = "http://realmofthemadgodhrd.appspot.com/char/list";
+            XmlTextReader reader = new XmlTextReader(CharList);
+            while (reader.ReadToFollowing("Server"))
             {
-                string CharList = "http://realmofthemadgodhrd.appspot.com/char/list";
-                XmlTextReader reader = new XmlTextReader(CharList);
-                while (reader.ReadToFollowing("Server"))
-                {
-                    reader.ReadToFollowing("Name");
-                    reader.Read();
-                    string name = reader.Value;
-                    reader.ReadToFollowing("DNS");
-                    reader.Read();
-                    string dns = reader.Value;
-                    Servers.Add(name, dns);
-                }
-                Console.WriteLine("[Serializer] Serialized {0} servers successfully.", Servers.Count);
+                reader.ReadToFollowing("Name");
+                reader.Read();
+                string name = reader.Value;
+                reader.ReadToFollowing("DNS");
+                reader.Read();
+                string dns = reader.Value;
+                Servers.Add(name, dns);
             }
-            catch { Console.WriteLine("[Serializer] char/list could not be accessed - parsing failed."); }
+            Console.WriteLine("[Serializer] Serialized {0} servers successfully.", Servers.Count);
         }
         #endregion
 

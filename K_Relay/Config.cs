@@ -24,11 +24,5 @@
         private void SettingsSavingEventHandler(object sender, System.ComponentModel.CancelEventArgs e) {
             // Add code to handle the SettingsSaving event here.
         }
-
-        public void HookUIEvents(FrmMain frm)
-        {
-            frm.btnSaveSettings.Click += (s, e) => this.Save();
-            frm.gridSettings.SelectedObject = this;
-        }
     }
 }
