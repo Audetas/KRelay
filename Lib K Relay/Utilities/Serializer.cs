@@ -23,6 +23,7 @@ namespace Lib_K_Relay.Utilities
         public static Dictionary<string, ushort> Items = new Dictionary<string, ushort>();
         public static Dictionary<string, ushort> Objects = new Dictionary<string, ushort>();
         public static Dictionary<string, ushort> Enemies = new Dictionary<string, ushort>();
+        public static Dictionary<string, ushort> CompleteGameData = new Dictionary<string, ushort>();
 
         public static Dictionary<string, string> Servers = new Dictionary<string, string>();
 
@@ -93,6 +94,7 @@ namespace Lib_K_Relay.Utilities
             SerializeFromXML("items", "Object", Items);
             SerializeFromXML("objects", "Object", Objects);
             SerializeFromXML("enemies", "Object", Enemies);
+            SerializeFromXML("complete gamedata", "Object", CompleteGameData);
         }
 
         private static void SerializeFromXML(string fileName, string nodeName, Dictionary<string, ushort> dict)
