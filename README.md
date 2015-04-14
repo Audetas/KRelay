@@ -42,6 +42,7 @@
 - [x] Loot notifications / Loot bag quest
 - [x] Auto loot
 - [x] Tile/Object Replacer
+- [ ] Skid Booter 9000
 For later:
 - [ ] Custom vault for the fun of it
 - [ ] Map Cacher
