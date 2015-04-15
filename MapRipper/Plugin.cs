@@ -29,6 +29,7 @@ using Lib_K_Relay;
 using Lib_K_Relay.Interface;
 using Lib_K_Relay.Networking;
 using Lib_K_Relay.Networking.Packets;
+using Lib_K_Relay.Networking.Packets.Client;
 using Lib_K_Relay.Networking.Packets.DataObjects;
 using Lib_K_Relay.Networking.Packets.Server;
 using System;
@@ -76,9 +77,9 @@ namespace MapRipper
 
         public void Initialize(Proxy proxy)
         {
-            proxy.HookPacket(PacketType.HELLO, (client, packet) => this.m_map = new JsonMap());
-            proxy.HookPacket(PacketType.MAPINFO, (client, packet) => this.m_map.Init((packet as MapInfoPacket).Width, (packet as MapInfoPacket).Height, (packet as MapInfoPacket).Name));
-            proxy.HookPacket(PacketType.UPDATE, OnUpdatePacket);
+            proxy.HookPacket<HelloPacket>((client, packet) => this.m_map = new JsonMap());
+            proxy.HookPacket<MapInfoPacket>((client, packet) => this.m_map.Init(packet.Width, packet.Height, packet.Name));
+            proxy.HookPacket<UpdatePacket>(OnUpdatePacket);
 
             proxy.HookCommand("saveMap", OnSaveMapCommand);
         }
@@ -98,7 +99,7 @@ namespace MapRipper
             return null;
         }
 
-        private void OnUpdatePacket(Client client, Packet packet)
+        private void OnUpdatePacket(Client client, UpdatePacket packet)
         {
             foreach (var t in (packet as UpdatePacket).Tiles)
                 this.m_map.Tiles[t.X][t.Y] = t.Type;
