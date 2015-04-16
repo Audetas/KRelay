@@ -159,7 +159,8 @@ namespace Lib_K_Relay.Networking.Packets.DataObjects
 
         public float TilesPerTick()
         {
-            return 4.0f + 5.6f * (Speed / 75.0f);
+            // Ticks per second = 5
+            return (4.0f + 5.6f * (Speed / 75.0f)) / 5.0f;
         }
 
         public override string ToString()
