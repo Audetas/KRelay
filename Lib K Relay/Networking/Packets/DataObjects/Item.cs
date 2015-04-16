@@ -30,5 +30,11 @@ namespace Lib_K_Relay.Networking.Packets.DataObjects
             w.Write(Tradable);
             w.Write(Included);
         }
+
+
+        public override string ToString()
+        {
+            return "{ ItemItem=" + ItemItem + ", SlotType=" + SlotType + ", Tradable=" + Tradable + ", Included=" + Included + " }";
+        }
     }
 }

@@ -157,6 +157,11 @@ namespace Lib_K_Relay.Networking.Packets.DataObjects
             return (Effects & (int)effect) != 0;
         }
 
+        public float TilesPerTick()
+        {
+            return 4.0f + 5.6f * (Speed / 75.0f);
+        }
+
         public override string ToString()
         {
             // Use reflection to get the the non-null fields and arrange them into a table.

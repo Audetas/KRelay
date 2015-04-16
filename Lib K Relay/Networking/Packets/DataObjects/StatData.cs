@@ -43,7 +43,7 @@ namespace Lib_K_Relay.Networking.Packets.DataObjects
 
         public override string ToString()
         {
-            return "{ " + " }";
+            return "{ Id=" + Id + "Value=" + (IsStringData() ? StringValue : IntValue.ToString()) + " }";
         }
     }
 }

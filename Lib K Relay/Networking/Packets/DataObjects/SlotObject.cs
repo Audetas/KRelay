@@ -27,5 +27,11 @@ namespace Lib_K_Relay.Networking.Packets.DataObjects
             w.Write(SlotId);
             w.Write(ObjectType);
         }
+
+
+        public override string ToString()
+        {
+            return "{ ObjectId=" + ObjectId + ", SlotId=" + SlotId + ", ObjectType=" + ObjectType + " }";
+        }
     }
 }

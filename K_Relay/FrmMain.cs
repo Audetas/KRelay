@@ -32,6 +32,17 @@ namespace K_Relay
                 Serializer.SerializeGameObjects();
                 Serializer.SerializePacketIds();
                 Serializer.SerializePacketTypes();
+
+                if (Serializer.Servers.Count == 0)
+                    throw new ConstraintException("Servers were unable to be parsed!");
+            }
+            catch (ConstraintException)
+            {
+                MessageBox.Show("The RotMG server list was unabled to be parsed.\n" +
+                                "This is either due to your internet connection or a temporary server problem.\n" +
+                                "Please try again later.\n" +
+                                "K Relay will now exit.", "K Relay", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
             }
             catch (Exception e)
             {
@@ -40,6 +51,7 @@ namespace K_Relay
                                 e.Message + "\n" +
                                 "Please ensure you extract all of the files to the same folder!\n" +
                                 "K Relay will now exit.", "K Relay", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
             }
 
             _clients = new List<Client>();
@@ -51,10 +63,7 @@ namespace K_Relay
 
             _proxy.Key0 = Config.Default.RC4Key0;
             _proxy.Key1 = Config.Default.RC4Key1;
-
-            if (!Serializer.Servers.ContainsKey(Config.Default.DefaultServerName))
-                Config.Default.DefaultServerName = "USWest";
-            
+                   
             _proxy.RemoteAddress = Serializer.Servers[Config.Default.DefaultServerName];
         }
 

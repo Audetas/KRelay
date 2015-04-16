@@ -28,5 +28,11 @@ namespace Lib_K_Relay.Networking.Packets.DataObjects
             w.Write(Height);
             w.Write(Bytes);
         }
+
+
+        public override string ToString()
+        {
+            return "{ Width=" + Width + ", Height=" + Height + " }";
+        }
     }
 }

@@ -35,39 +35,29 @@ namespace K_Relay
                 return;
             }
 
-            try
+            foreach (string pluginPath in Directory.GetFiles(pluginDirectory, "*.dll", SearchOption.AllDirectories))
             {
-                foreach (string pluginPath in Directory.GetFiles(pluginDirectory, "*.dll", SearchOption.AllDirectories))
+                if (new FileInfo(pluginPath).Name.Contains("Lib K Relay")) continue;
+                Assembly pluginAssembly = Assembly.LoadFrom(pluginPath);
+
+                foreach (Type pluginType in pluginAssembly.GetTypes())
                 {
-                    if (new FileInfo(pluginPath).Name.Contains("Lib K Relay")) continue;
-                    Assembly pluginAssembly = Assembly.LoadFrom(pluginPath);
-
-                    foreach (Type pluginType in pluginAssembly.GetTypes())
+                    if (pluginType.IsPublic && !pluginType.IsAbstract)
                     {
-                        if (pluginType.IsPublic && !pluginType.IsAbstract)
+                        try
                         {
-                            try
-                            {
-                                Type typeInterface = pluginType.GetInterface("Lib_K_Relay.Interface.IPlugin");
+                            Type typeInterface = pluginType.GetInterface("Lib_K_Relay.Interface.IPlugin");
 
-                                if (typeInterface != null)
-                                    AttachPlugin(pluginType);
-                            }
-                            catch (Exception e)
-                            {
-                                MessageBox.Show("Failed to load plugin " + pluginPath + "!\n" + e.Message,
-                                    "K Relay", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                            }
+                            if (typeInterface != null)
+                                AttachPlugin(pluginType);
+                        }
+                        catch (Exception e)
+                        {
+                            MessageBox.Show("Failed to load plugin " + pluginPath + "!\n" + e.Message,
+                                "K Relay", MessageBoxButtons.OK, MessageBoxIcon.Error);
                         }
                     }
                 }
-            }
-            catch (NotSupportedException e)
-            {
-                MessageBox.Show("Some plugins weren't able to be loaded.\n" +
-                                "Please right click all of your plugins, go to Properties, and click 'Unblock'.\n" +
-                                "After doing so, restart K Relay and this problem will be gone!", "K Relay",
-                                MessageBoxButtons.OK, MessageBoxIcon.Warning);
             }
         }
 
