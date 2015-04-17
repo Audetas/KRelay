@@ -28,6 +28,7 @@
 - [ ] Fix reconnect handler to handle multiple clients at once
 - [x] Fix \s in directory searching for *NIX
 - [x] Fix default server setting
+- [ ] Fix fame notifier .CurrentFame => .Fame
 
 ##Plugin Checklist:
 - [x] World Edit
