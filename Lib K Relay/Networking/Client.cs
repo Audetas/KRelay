@@ -230,14 +230,14 @@ namespace Lib_K_Relay.Networking
                 Time = (packet as MovePacket).Time;
                 PlayerData.Pos = (packet as MovePacket).NewPosition;
             }
-            else if (packet.Type == PacketType.TEXT && (packet as TextPacket).Text.Contains("K_ReLaY?"))
-            {
-                packet.Send = false;
-                PlayerTextPacket playerText = (PlayerTextPacket)Packet.Create(PacketType.PLAYERTEXT);
-                Random r = new Random();
-                playerText.Text = new string[] { "Yep.", "Yes, sir.", "Mhm.", "Yeah.", "Indeed." }[r.Next(4)];
-                SendToServer(playerText);
-            }
+            //else if (packet.Type == PacketType.TEXT && (packet as TextPacket).Text.Contains("K_ReLaY?"))
+            //{
+            //    packet.Send = false;
+            //    PlayerTextPacket playerText = (PlayerTextPacket)Packet.Create(PacketType.PLAYERTEXT);
+            //    Random r = new Random();
+            //    playerText.Text = new string[] { "Yep.", "Yes, sir.", "Mhm.", "Yeah.", "Indeed." }[r.Next(4)];
+            //    SendToServer(playerText);
+            //}
             //else if (packet.Type == PacketType.MAPINFO)
             //{
             //    PlayerData.MapName = (packet as MapInfoPacket).Name;
