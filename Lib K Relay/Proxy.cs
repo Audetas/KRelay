@@ -5,6 +5,7 @@ using Lib_K_Relay.Utilities;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Linq.Expressions;
 using System.Net;
 using System.Net.Sockets;
 using System.Reflection;
@@ -24,6 +25,7 @@ namespace Lib_K_Relay
         public delegate void ListenHandler(Proxy proxy);
         public delegate void ConnectionHandler(Client client);
         public delegate void PacketHandler(Client client, Packet packet);
+        public delegate void GenericPacketHandler<T>(Client client, T packet) where T : Packet;
         public delegate void CommandHandler(Client client, string command, string[] args);
 
         public event ListenHandler ProxyListenStarted;
@@ -34,7 +36,7 @@ namespace Lib_K_Relay
         public event PacketHandler ServerPacketRecieved;
         public event PacketHandler ClientPacketRecieved;
 
-
+        private Dictionary<object, Type> _genericPacketHooks = new Dictionary<object, Type>();
         private Dictionary<PacketHandler, List<PacketType>> _packetHooks = new Dictionary<PacketHandler, List<PacketType>>();
         private Dictionary<CommandHandler, List<string>> _commandHooks = new Dictionary<CommandHandler, List<string>>();
 
@@ -115,6 +117,14 @@ namespace Lib_K_Relay
                 _packetHooks.Add(callback, new List<PacketType>() { type });
         }
 
+        public void HookPacket<T>(GenericPacketHandler<T> callback) where T : Packet
+        {
+            if (!_genericPacketHooks.ContainsKey(callback))
+                _genericPacketHooks.Add(callback, typeof(T));
+            else
+                throw new InvalidOperationException("Callback already bound");
+        }
+
         public void HookCommand(string command, CommandHandler callback)
         {
             if (_commandHooks.ContainsKey(callback))
@@ -151,6 +161,10 @@ namespace Lib_K_Relay
                 // Fire specific hook callbacks if applicable
                 foreach (var pair in _packetHooks)
                     if (pair.Value.Contains(packet.Type)) pair.Key(client, packet);
+
+                foreach (var pair in _genericPacketHooks)
+                    if (pair.Value == packet.GetType())
+                        (pair.Key as Delegate).Method.Invoke((pair.Key as Delegate).Target, new object[2] { client, Convert.ChangeType(packet, pair.Value) });
             }
             catch (Exception e) { PluginUtils.LogPluginException(e, "ServerPacket"); }
         }
@@ -187,6 +201,9 @@ namespace Lib_K_Relay
                 // Fire specific hook callbacks if applicable
                 foreach (var pair in _packetHooks)
                     if (pair.Value.Contains(packet.Type)) pair.Key(client, packet);
+
+                foreach (var pair in _genericPacketHooks)
+                    if (pair.Value == packet.GetType()) (pair.Key as Delegate).Method.Invoke((pair.Key as Delegate).Target, new object[2] { client, Convert.ChangeType(packet, pair.Value) });
             } 
             catch (Exception e) { PluginUtils.LogPluginException(e, "ClientPacket"); }
         }

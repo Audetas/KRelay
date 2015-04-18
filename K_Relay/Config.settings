@@ -6,7 +6,7 @@
       <Value Profile="(Default)">True</Value>
     </Setting>
     <Setting Name="DefaultServerName" Type="System.String" Scope="User">
-      <Value Profile="(Default)">USW</Value>
+      <Value Profile="(Default)">USWest</Value>
     </Setting>
     <Setting Name="RC4Key0" Type="System.String" Scope="User">
       <Value Profile="(Default)">311f80691451c71d09a13a2a6e</Value>

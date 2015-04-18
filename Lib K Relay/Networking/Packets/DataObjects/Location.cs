@@ -36,5 +36,11 @@ namespace Lib_K_Relay.Networking.Packets.DataObjects
         {
             return (float)Math.Sqrt(DistanceSquaredTo(location));
         }
+
+
+        public override string ToString()
+        {
+            return "{ X=" + X + ", Y=" + Y + " }";
+        }
     }
 }

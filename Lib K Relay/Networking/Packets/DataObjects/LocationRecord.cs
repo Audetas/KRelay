@@ -23,5 +23,11 @@ namespace Lib_K_Relay.Networking.Packets.DataObjects
             w.Write(Time);
             base.Write(w);
         }
+
+
+        public override string ToString()
+        {
+            return "{ Time=" + Time + ", X=" + X + ", Y=" + Y + " }";
+        }
     }
 }

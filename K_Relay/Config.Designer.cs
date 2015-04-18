@@ -37,7 +37,7 @@ namespace K_Relay {
         
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("USW")]
+        [global::System.Configuration.DefaultSettingValueAttribute("USWest")]
         public string DefaultServerName {
             get {
                 return ((string)(this["DefaultServerName"]));

@@ -24,14 +24,35 @@ namespace K_Relay
         public FrmMain()
         {
             InitializeComponent();
-
-            Config.Default.HookUIEvents(this);
             Console.SetOut(new TextBoxStreamWriter(tbxLog));
 
-            Serializer.SerializeServers();
-            Serializer.SerializeGameObjects();
-            Serializer.SerializePacketIds();
-            Serializer.SerializePacketTypes();
+            try
+            {
+                Serializer.SerializeServers();
+                Serializer.SerializeGameObjects();
+                Serializer.SerializePacketIds();
+                Serializer.SerializePacketTypes();
+
+                if (Serializer.Servers.Count == 0)
+                    throw new ConstraintException("Servers were unable to be parsed!");
+            }
+            catch (ConstraintException)
+            {
+                MessageBox.Show("The RotMG server list was unabled to be parsed.\n" +
+                                "This is either due to your internet connection or a temporary server problem.\n" +
+                                "Please try again later.\n" +
+                                "K Relay will now exit.", "K Relay", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
+            catch (Exception e)
+            {
+                MessageBox.Show("Either a required file was not found or we weren't able to contact the RotMG account server.\n" +
+                                "Here's more detail: \n" +
+                                e.Message + "\n" +
+                                "Please ensure you extract all of the files to the same folder!\n" +
+                                "K Relay will now exit.", "K Relay", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
 
             _clients = new List<Client>();
             _proxy = new Proxy();
@@ -42,15 +63,15 @@ namespace K_Relay
 
             _proxy.Key0 = Config.Default.RC4Key0;
             _proxy.Key1 = Config.Default.RC4Key1;
-
-            string settingsHost = Serializer.GetServerByShortName(Config.Default.DefaultServerName);
-            _proxy.RemoteAddress = settingsHost != "" ? settingsHost : "54.241.208.233";
+                   
+            _proxy.RemoteAddress = Serializer.Servers[Config.Default.DefaultServerName];
         }
 
         private void FrmMain_Shown(object sender, EventArgs e)
         {
             InitPackets();
             InitPlugins();
+            InitSettings();
 
             if (Config.Default.StartProxyByDefault)
                 btnToggleProxy_Click(null, null);

@@ -59,7 +59,6 @@ namespace K_Relay
                     }
                 }
             }
-
         }
 
         private void btnOpenPluginFolder_Click(object sender, EventArgs e)
