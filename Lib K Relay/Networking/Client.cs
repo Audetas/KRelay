@@ -156,6 +156,9 @@ namespace Lib_K_Relay.Networking
                 _remoteBuffer.Buffer(), offset, amount, RemoteReceive, null);
         }
 
+		private object ServerLock = new object();
+		private object ClientLock = new object();
+
         public void SendToServer(Packet packet)
         {
             MemoryStream ms = new MemoryStream();
@@ -170,29 +173,35 @@ namespace Lib_K_Relay.Networking
             PacketWriter.BlockCopyInt32(data, data.Length);
             ServerSendKey.Cipher(data);
 
-            NetworkStream remote = _remoteConnection.GetStream();
-            remote.BeginWrite(data, 0, data.Length, (ar) => remote.EndWrite(ar), null);
-        }
+			lock (ServerLock)
+			{
+				NetworkStream remote = _remoteConnection.GetStream();
+				remote.BeginWrite(data, 0, data.Length, (ar) => remote.EndWrite(ar), null);
+			}
+		}
 
-        public void SendToClient(Packet packet)
-        {
-            if (!_localConnection.Connected || !_remoteConnection.Connected) return;
+		public void SendToClient(Packet packet)
+		{
+			if (!_localConnection.Connected || !_remoteConnection.Connected) return;
 
-            MemoryStream ms = new MemoryStream();
-            using (PacketWriter w = new PacketWriter(ms))
-            {
-                w.Write((int)0);
-                w.Write(packet.Id);
-                packet.Write(w);
-            }
+			MemoryStream ms = new MemoryStream();
+			using (PacketWriter w = new PacketWriter(ms))
+			{
+				w.Write((int)0);
+				w.Write(packet.Id);
+				packet.Write(w);
+			}
 
-            byte[] data = ms.ToArray();
-            PacketWriter.BlockCopyInt32(data, data.Length);
-            ClientSendKey.Cipher(data);
+			byte[] data = ms.ToArray();
+			PacketWriter.BlockCopyInt32(data, data.Length);
+			ClientSendKey.Cipher(data);
 
-            NetworkStream local = _localConnection.GetStream();
-            local.BeginWrite(data, 0, data.Length, (ar) => local.EndWrite(ar), null);
-        }
+			lock (ClientLock)
+			{
+				NetworkStream local = _localConnection.GetStream();
+				local.BeginWrite(data, 0, data.Length, (ar) => local.EndWrite(ar), null);
+			}
+		}
 
         public void Close(string reason)
         {
