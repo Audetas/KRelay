@@ -57,10 +57,7 @@ namespace IncFinder
 
                 foreach (StatData statData in entity.Status.Data)
                 {
-					if (!statData.IsStringData() && (statData.Id >= 8 && statData.Id <= 19) || (statData.Id >= 71 && statData.Id <= 78))
-					{
-						Console.WriteLine("Backpack slawtz: " + statData.Id);
-					}
+                    if (!statData.IsStringData() && (statData.Id >= 8 && statData.Id <= 19) || (statData.Id >= 71 && statData.Id <= 78))
                         if (statData.IntValue == INC_ID) inc = true;
 
                     if (inc && statData.Id == 31 && statData.StringValue != client.PlayerData.Name)

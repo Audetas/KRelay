@@ -20,7 +20,7 @@
 
 ##Bug Checklist:
 - [x] Remove loot bag quests to purple bags
-- [x] Figure out why we can't create characters
+- [ ] Figure out why we can't create characters
 - [x] /connect takes you to USWest only
 - [x] Check for packets missing from Packets.xml
 
