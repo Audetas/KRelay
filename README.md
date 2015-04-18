@@ -21,7 +21,7 @@
 
 ##Bug Checklist:
 - [x] Remove loot bag quests to purple bags
-- [ ] Figure out why we can't create characters
+- [x] Figure out why we can't create characters
 - [ ] Fix the following exception : "An element with the same key has already been added" when two char connected to the relay use the same item (AutoAbility must be in cause)
 - [x] /connect takes you to USWest only
 - [x] Check for packets missing from Packets.xml
