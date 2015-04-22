@@ -11,6 +11,18 @@ namespace Lib_K_Relay.Networking.Packets.DataObjects
         public float X;
         public float Y;
 
+        public static Location Empty
+        {
+            get
+            {
+                return new Location()
+                {
+                    X = 0,
+                    Y = 0
+                };
+            }
+        }
+
         public virtual IDataObject Read(PacketReader r)
         {
             X = r.ReadSingle();
