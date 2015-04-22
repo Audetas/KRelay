@@ -19,12 +19,12 @@ namespace Lib_K_Relay.Networking
     {
         public int Time = 0;
         public int ObjectId;
-        public PlayerData PlayerData;
+        public PlayerData PlayerData = null;
 
-        public RC4 ClientReceiveKey;
-        public RC4 ServerReceiveKey;
-        public RC4 ClientSendKey;
-        public RC4 ServerSendKey;
+        private RC4 ClientReceiveKey;
+        private RC4 ServerReceiveKey;
+        private RC4 ClientSendKey;
+        private RC4 ServerSendKey;
 
         private PacketBuffer _localBuffer = new PacketBuffer();
         private PacketBuffer _remoteBuffer = new PacketBuffer();
@@ -161,45 +161,53 @@ namespace Lib_K_Relay.Networking
 
         public void SendToServer(Packet packet)
         {
-            MemoryStream ms = new MemoryStream();
-            using (PacketWriter w = new PacketWriter(ms))
+            lock (ServerLock)
             {
-                w.Write((int)0);
-                w.Write(packet.Id);
-                packet.Write(w);
-            }
+                try
+                {
+                    MemoryStream ms = new MemoryStream();
+                    using (PacketWriter w = new PacketWriter(ms))
+                    {
+                        w.Write((int)0);
+                        w.Write(packet.Id);
+                        packet.Write(w);
+                    }
 
-            byte[] data = ms.ToArray();
-            PacketWriter.BlockCopyInt32(data, data.Length);
-            ServerSendKey.Cipher(data);
+                    byte[] data = ms.ToArray();
+                    PacketWriter.BlockCopyInt32(data, data.Length);
+                    ServerSendKey.Cipher(data);
 
-			lock (ServerLock)
-			{
-				NetworkStream remote = _remoteConnection.GetStream();
-				remote.BeginWrite(data, 0, data.Length, (ar) => remote.EndWrite(ar), null);
+                    NetworkStream remote = _remoteConnection.GetStream();
+                    //remote.BeginWrite(data, 0, data.Length, (ar) => remote.EndWrite(ar), null);
+                    remote.Write(data, 0, data.Length);
+                }
+                catch (Exception ex) { Close(ex.Message); } 
 			}
 		}
 
 		public void SendToClient(Packet packet)
 		{
-			if (!_localConnection.Connected || !_remoteConnection.Connected) return;
+            lock (ClientLock)
+            {
+                try
+                {
+                    MemoryStream ms = new MemoryStream();
+                    using (PacketWriter w = new PacketWriter(ms))
+                    {
+                        w.Write((int)0);
+                        w.Write(packet.Id);
+                        packet.Write(w);
+                    }
 
-			MemoryStream ms = new MemoryStream();
-			using (PacketWriter w = new PacketWriter(ms))
-			{
-				w.Write((int)0);
-				w.Write(packet.Id);
-				packet.Write(w);
-			}
+                    byte[] data = ms.ToArray();
+                    PacketWriter.BlockCopyInt32(data, data.Length);
+                    ClientSendKey.Cipher(data);
 
-			byte[] data = ms.ToArray();
-			PacketWriter.BlockCopyInt32(data, data.Length);
-			ClientSendKey.Cipher(data);
-
-			lock (ClientLock)
-			{
-				NetworkStream local = _localConnection.GetStream();
-				local.BeginWrite(data, 0, data.Length, (ar) => local.EndWrite(ar), null);
+                    NetworkStream local = _localConnection.GetStream();
+                    //local.BeginWrite(data, 0, data.Length, (ar) => local.EndWrite(ar), null);
+                    local.Write(data, 0, data.Length);
+                }
+                catch (Exception ex) { Close(ex.Message); } 
 			}
 		}
 
@@ -208,7 +216,7 @@ namespace Lib_K_Relay.Networking
             if (_remoteConnection.Connected || _localConnection.Connected)
             {
                 _proxy.FireClientDisconnected(this);
-                Console.WriteLine("[Client Handler] Client disconnected. {0}", reason);
+                Console.WriteLine("[Client Handler] {2} disconnected. (Time: {1}) {0}", reason, Time, PlayerData == null ? "Client" : PlayerData.Name);
             }
 
             if (_remoteConnection.Connected) _remoteConnection.Close();
@@ -239,18 +247,10 @@ namespace Lib_K_Relay.Networking
                 Time = (packet as MovePacket).Time;
                 PlayerData.Pos = (packet as MovePacket).NewPosition;
             }
-            else if (packet.Type == PacketType.TEXT && (packet as TextPacket).Text.Contains("K_ReLaY?"))
+            else if (packet.Type == PacketType.PLAYERSHOOT)
             {
-                packet.Send = false;
-                PlayerTextPacket playerText = (PlayerTextPacket)Packet.Create(PacketType.PLAYERTEXT);
-                Random r = new Random();
-                playerText.Text = new string[] { "Yep.", "Yes, sir.", "Mhm.", "Yeah.", "Indeed." }[r.Next(4)];
-                SendToServer(playerText);
+                PlayerData.Pos = (packet as PlayerShootPacket).Position;
             }
-            //else if (packet.Type == PacketType.MAPINFO)
-            //{
-            //    PlayerData.MapName = (packet as MapInfoPacket).Name;
-            //}
         }
     }
 }

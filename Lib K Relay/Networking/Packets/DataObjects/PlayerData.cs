@@ -30,7 +30,7 @@ namespace Lib_K_Relay.Networking.Packets.DataObjects
         public int Dexterity;
         public int Effects;
         public int Stars;
-        public string Name;
+        public string Name = "";
         public int RealmGold;
         public int Price;
         public bool CanEnterPortal;

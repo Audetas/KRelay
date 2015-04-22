@@ -204,7 +204,11 @@ namespace Lib_K_Relay.Utilities
         public static string DEBUGGetSolutionRoot()
         {
             // This is single handedly the worse piece of code i've ever written.
-            return Directory.GetParent(Directory.GetParent(Directory.GetParent(Application.StartupPath).ToString()).ToString()).ToString();
+            DirectoryInfo project = Directory.GetParent(Directory.GetParent(Directory.GetParent(Application.StartupPath).ToString()).ToString());
+            if (Directory.Exists(project.ToString() + "/XML/"))
+                return project.ToString();
+            else
+                return Application.StartupPath;
         }
     }
 }
