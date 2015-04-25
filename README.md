@@ -18,6 +18,7 @@
 - [x] Finish the plugins tab
 - [x] Fetch server list from char/list
 - [x] Redo Info tab
+- [ ] Keyboard hooking interface
 
 ##Bug Checklist:
 - [x] Remove loot bag quests to purple bags
