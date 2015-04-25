@@ -10,8 +10,8 @@
 
 ##Core Checklist: (please add as you get ideas)
 - [x] **Define all server packets**
-- [ ] More that I can't think of at the moment
-- [ ] Some intuitive way to easily get a packet casted to the desired type in callbacks
+- [x] More that I can't think of at the moment
+- [x] Some intuitive way to easily get a packet casted to the desired type in callbacks
 - [ ] Don't parse packets that aren't hooked
 - [x] Better Run button placement
 - [x] Add welcome to K Relay message
@@ -45,7 +45,7 @@
 - [x] Tile/Object Replacer
 - [ ] Skid Booter 9000
 For later:
-- [ ] Custom vault for the fun of it
+- [x] Custom vault for the fun of it
 - [ ] Map Cacher
 - [ ] Speedhack (maybee)
 - [ ] Freeze Godmode
