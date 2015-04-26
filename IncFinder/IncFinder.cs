@@ -60,7 +60,7 @@ namespace IncFinder
                     if (!statData.IsStringData() && (statData.Id >= 8 && statData.Id <= 19) || (statData.Id >= 71 && statData.Id <= 78))
                         if (statData.IntValue == INC_ID) inc = true;
 
-                    if (inc && statData.Id == 31 && statData.StringValue != client.PlayerData.Name)
+                    if (inc && statData.Id == StatsType.Name && statData.StringValue != client.PlayerData.Name)
                     {
                         if (!_incHolders.ContainsKey(entity.Status.ObjectId))
 					        _incHolders.Add(entity.Status.ObjectId, statData.StringValue);

@@ -24,5 +24,14 @@ namespace Lib_K_Relay.Networking.Packets.DataObjects
             w.Write(ObjectType);
             Status.Write(w);
         }
+
+        public object Clone()
+        {
+            return new Entity
+            {
+                ObjectType = this.ObjectType,
+                Status = (Status)this.Status.Clone()
+            };
+        }
     }
 }

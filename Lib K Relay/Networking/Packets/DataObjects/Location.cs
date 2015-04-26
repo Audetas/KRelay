@@ -49,6 +49,14 @@ namespace Lib_K_Relay.Networking.Packets.DataObjects
             return (float)Math.Sqrt(DistanceSquaredTo(location));
         }
 
+        public virtual object Clone()
+        {
+            return new Location
+            {
+                X = this.X,
+                Y = this.Y
+            };
+        }
 
         public override string ToString()
         {

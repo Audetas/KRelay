@@ -31,6 +31,16 @@ namespace Lib_K_Relay.Networking.Packets.DataObjects
             w.Write(Included);
         }
 
+        public object Clone()
+        {
+            return new Item
+            {
+                ItemItem = this.ItemItem,
+                SlotType = this.SlotType,
+                Tradable = this.Tradable,
+                Included = this.Included
+            };
+        }
 
         public override string ToString()
         {

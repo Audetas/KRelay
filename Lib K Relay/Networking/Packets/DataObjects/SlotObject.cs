@@ -28,6 +28,15 @@ namespace Lib_K_Relay.Networking.Packets.DataObjects
             w.Write(ObjectType);
         }
 
+        public object Clone()
+        {
+            return new SlotObject
+            {
+                ObjectId = this.ObjectId,
+                ObjectType = this.ObjectType,
+                SlotId = this.SlotId
+            };
+        }
 
         public override string ToString()
         {

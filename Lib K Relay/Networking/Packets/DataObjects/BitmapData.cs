@@ -29,6 +29,18 @@ namespace Lib_K_Relay.Networking.Packets.DataObjects
             w.Write(Bytes);
         }
 
+        public object Clone()
+        {
+            var data = new byte[Width * Height * 4];
+            Array.Copy(Bytes, data, Bytes.Length);
+
+            return new BitmapData
+            {
+                Width = this.Width,
+                Height = this.Height,
+                Bytes = data
+            };
+        }
 
         public override string ToString()
         {

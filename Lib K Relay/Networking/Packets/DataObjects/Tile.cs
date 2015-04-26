@@ -28,6 +28,17 @@ namespace Lib_K_Relay.Networking.Packets.DataObjects
             w.Write(Type);
         }
 
+        public object Clone()
+        {
+            return new Tile
+            {
+                X = this.X,
+                Y = this.Y,
+                Type = this.Type
+                
+            };
+        }
+
         public override string ToString()
         {
             return "{ X=" + X + ", Y=" + Y + ", Type=" + Type + " }";

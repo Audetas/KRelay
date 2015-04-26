@@ -24,6 +24,15 @@ namespace Lib_K_Relay.Networking.Packets.DataObjects
             base.Write(w);
         }
 
+        public override object Clone()
+        {
+            return new LocationRecord
+            {
+                Time = this.Time,
+                X = base.X,
+                Y = base.Y
+            };
+        }
 
         public override string ToString()
         {

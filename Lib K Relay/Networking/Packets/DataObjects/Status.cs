@@ -37,5 +37,15 @@ namespace Lib_K_Relay.Networking.Packets.DataObjects
             foreach (StatData statdata in Data)
                 statdata.Write(w);
         }
+
+        public object Clone()
+        {
+            return new Status
+            {
+                Data = (StatData[])this.Data.Clone(),
+                ObjectId = this.ObjectId,
+                Position = (Location)this.Position.Clone()
+            };
+        }
     }
 }

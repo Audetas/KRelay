@@ -20,11 +20,6 @@
 //OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 //SOFTWARE.
 
-/**
- * Known bugs:
- * - Every object is -0.5 moved because of refferences //Clone the class to fix :3
- **/
-
 using Lib_K_Relay;
 using Lib_K_Relay.Interface;
 using Lib_K_Relay.Networking;
@@ -106,7 +101,7 @@ namespace MapRipper
 
             foreach (var tileDef in (packet as UpdatePacket).NewObjs)
             {
-                var def = tileDef;
+                var def = (Entity)tileDef.Clone();
 
                 if (isMapObject(def.ObjectType))
                 {
