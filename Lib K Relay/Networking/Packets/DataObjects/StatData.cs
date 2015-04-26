@@ -155,10 +155,7 @@ namespace Lib_K_Relay.Networking.Packets.DataObjects
         public readonly static StatsType PetAbilityType0 = 93;
         public readonly static StatsType PetAbilityType1 = 94;
         public readonly static StatsType PetAbilityType2 = 95;
-        public readonly static StatsType _04I = 96;
-        //case StatData._-04I:
-        //   param1.condition_[ConditionEffect._-KL]=_loc8_;
-        //   break;
+        public readonly static StatsType Effects2 = 96; // Used for things like Curse, Petrify etc...
         public readonly static StatsType FortuneTokens = 97;
 
         private byte m_type;
