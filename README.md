@@ -54,3 +54,6 @@ For later:
 - [ ] /tl command for Teleport to the Last player you teleported to assuming they are in the same map as you.
 - [ ] Plugin to auto-teleport to someone once they are at at the Boss Portal in Deadwater Docks with toggle to enable auto-join. (Not sure if this is possible)
 - [ ] Plugin for a toggle to auto-enter Oryx's Castle and auto-enter Wine Cellar.
+
+##Up for discussion
+- Re-Design of the Forms - [View Screenshot!](http://i.imgur.com/otwutaP.png) [Add Kithio](skype:kithio.lost?add)
