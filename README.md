@@ -56,4 +56,4 @@ For later:
 - [ ] Plugin for a toggle to auto-enter Oryx's Castle and auto-enter Wine Cellar.
 
 ##Up for discussion
-- Re-Design of the Forms - [View Screenshot!](http://i.imgur.com/otwutaP.png) [Add Kithio](skype:kithio.lost?add)
+- Re-Design of the Forms - [View Screenshot!](http://i.imgur.com/otwutaP.png) Add kithio.lost on skype to discuss
