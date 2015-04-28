@@ -42,6 +42,7 @@ namespace VaultChestViewer
             proxy.HookPacket<HelloPacket>(OnHelloPacket);
             proxy.HookPacket<MapInfoPacket>(OnMapInfoPacket);
             proxy.HookPacket<UpdatePacket>(OnUpdatePacket);
+            proxy.HookPacket<NewTickPacket>(OnNewTickPacket);
         }
 
         private void OnHelloPacket(Client client, HelloPacket packet)
@@ -78,6 +79,14 @@ namespace VaultChestViewer
                     UpdateStats(ref packet.NewObjs[i].Status);
         }
 
+        private void OnNewTickPacket(Client client, NewTickPacket packet)
+        {
+            if (this.m_currentGameId != -5) return;
+            for (int i = 0; i < packet.Statuses.Length; i++)
+                if (this.m_chests.ContainsKey(packet.Statuses[i].ObjectId))
+                    UpdateStats(ref packet.Statuses[i]);
+        }
+
         private void UpdateStats(ref Status stats)
         {
             ParseChestData(stats);
@@ -111,7 +120,7 @@ namespace VaultChestViewer
                 if (stat.Id - StatsType.Inventory0 < 8 && stat.Id - StatsType.Inventory0 > -1)
                 {
                     if (!this.m_chests.ContainsKey(stats.ObjectId))
-                        this.m_chests[stats.ObjectId] = new int[8];
+                        this.m_chests.Add(stats.ObjectId, new int[8]);
 
                     this.m_chests[stats.ObjectId][stat.Id - StatsType.Inventory0] = stat.IntValue;
                 }

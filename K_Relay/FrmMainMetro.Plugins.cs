@@ -85,9 +85,9 @@ namespace K_Relay
 
         private void listPlugins_SelectedIndexChanged(object sender, EventArgs e)
         {
-            if (listPlugins.SelectedItem != null)
+            if (listPlugins.ListBox.SelectedItem != null)
             {
-                string key = (string)listPlugins.SelectedItem;
+                string key = (string)listPlugins.ListBox.SelectedItem;
                 IPlugin selected = _pluginNameMap[key];
                 PluginDescriptionView(selected);
             }
@@ -99,7 +99,7 @@ namespace K_Relay
             string name = instance.GetName();
             instance.Initialize(_proxy);
 
-            listPlugins.Items.Add(name);
+            listPlugins.ListBox.Items.Add(name);
 
             _pluginNameMap.Add(name, instance);
 

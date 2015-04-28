@@ -38,15 +38,16 @@
             this.btnClearLog = new System.Windows.Forms.ToolStripMenuItem();
             this.tabPlugins = new System.Windows.Forms.TabPage();
             this.tbxPluginInfo = new System.Windows.Forms.RichTextBox();
-            this.listPlugins = new System.Windows.Forms.ListBox();
             this.menuPlugins = new System.Windows.Forms.MenuStrip();
             this.openPluginFolderToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.listPlugins = new K_Relay.Controls.MetroListBox();
             this.tabPackets = new System.Windows.Forms.TabPage();
             this.tbxPacketInfo = new System.Windows.Forms.RichTextBox();
-            this.listPackets = new System.Windows.Forms.ListBox();
             this.menuPackets = new System.Windows.Forms.MenuStrip();
             this.openPacketFolderToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.listPackets = new K_Relay.Controls.MetroListBox();
             this.tabSettings = new System.Windows.Forms.TabPage();
+            this.metroPanel2 = new MetroFramework.Controls.MetroPanel();
             this.lblUseInternalReconnectHandler = new MetroFramework.Controls.MetroLabel();
             this.tglUseInternalReconnectHandler = new MetroFramework.Controls.MetroToggle();
             this.lblInternalReconnect = new MetroFramework.Controls.MetroLabel();
@@ -93,11 +94,11 @@
             this.tabMain.Controls.Add(this.tabAbout);
             this.tabMain.Location = new System.Drawing.Point(23, 63);
             this.tabMain.Name = "tabMain";
-            this.tabMain.SelectedIndex = 4;
+            this.tabMain.SelectedIndex = 0;
             this.tabMain.Size = new System.Drawing.Size(754, 458);
-            this.tabMain.Style = MetroFramework.MetroColorStyle.Pink;
             this.tabMain.TabIndex = 0;
             this.tabMain.UseSelectable = true;
+            this.tabMain.UseStyleColors = true;
             // 
             // tabInfo
             // 
@@ -124,6 +125,7 @@
             this.tbxLog.Size = new System.Drawing.Size(746, 383);
             this.tbxLog.TabIndex = 0;
             this.tbxLog.UseSelectable = true;
+            this.tbxLog.UseStyleColors = true;
             // 
             // menuInfo
             // 
@@ -165,8 +167,8 @@
             // tabPlugins
             // 
             this.tabPlugins.Controls.Add(this.tbxPluginInfo);
-            this.tabPlugins.Controls.Add(this.listPlugins);
             this.tabPlugins.Controls.Add(this.menuPlugins);
+            this.tabPlugins.Controls.Add(this.listPlugins);
             this.tabPlugins.Location = new System.Drawing.Point(4, 38);
             this.tabPlugins.Name = "tabPlugins";
             this.tabPlugins.Size = new System.Drawing.Size(746, 416);
@@ -185,29 +187,15 @@
             this.tbxPluginInfo.TabIndex = 0;
             this.tbxPluginInfo.Text = "Select a Plugin to view its description.";
             // 
-            // listPlugins
-            // 
-            this.listPlugins.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.listPlugins.Dock = System.Windows.Forms.DockStyle.Left;
-            this.listPlugins.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.listPlugins.FormattingEnabled = true;
-            this.listPlugins.IntegralHeight = false;
-            this.listPlugins.ItemHeight = 15;
-            this.listPlugins.Location = new System.Drawing.Point(0, 33);
-            this.listPlugins.Name = "listPlugins";
-            this.listPlugins.Size = new System.Drawing.Size(200, 383);
-            this.listPlugins.TabIndex = 0;
-            this.listPlugins.SelectedIndexChanged += new System.EventHandler(this.listPlugins_SelectedIndexChanged);
-            // 
             // menuPlugins
             // 
             this.menuPlugins.AutoSize = false;
             this.menuPlugins.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(231)))), ((int)(((byte)(113)))), ((int)(((byte)(189)))));
             this.menuPlugins.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.openPluginFolderToolStripMenuItem});
-            this.menuPlugins.Location = new System.Drawing.Point(0, 0);
+            this.menuPlugins.Location = new System.Drawing.Point(200, 0);
             this.menuPlugins.Name = "menuPlugins";
-            this.menuPlugins.Size = new System.Drawing.Size(746, 33);
+            this.menuPlugins.Size = new System.Drawing.Size(546, 33);
             this.menuPlugins.TabIndex = 0;
             this.menuPlugins.Text = "menuStrip1";
             // 
@@ -219,11 +207,28 @@
             this.openPluginFolderToolStripMenuItem.Text = "Open Plugin Folder";
             this.openPluginFolderToolStripMenuItem.Click += new System.EventHandler(this.btnOpenPluginFolder_Click);
             // 
+            // listPlugins
+            // 
+            this.listPlugins.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.listPlugins.Dock = System.Windows.Forms.DockStyle.Left;
+            this.listPlugins.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.listPlugins.FormattingEnabled = true;
+            this.listPlugins.IntegralHeight = false;
+            this.listPlugins.ItemHeight = 15;
+            this.listPlugins.Location = new System.Drawing.Point(0, 0);
+            this.listPlugins.Name = "listPlugins";
+            this.listPlugins.Size = new System.Drawing.Size(200, 416);
+            this.listPlugins.TabIndex = 0;
+            this.listPlugins.TabStop = false;
+            this.listPlugins.UseSelectable = true;
+            this.listPlugins.UseStyleColors = true;
+            this.listPlugins.SelectedIndexChanged += new System.EventHandler(this.listPlugins_SelectedIndexChanged);
+            // 
             // tabPackets
             // 
             this.tabPackets.Controls.Add(this.tbxPacketInfo);
-            this.tabPackets.Controls.Add(this.listPackets);
             this.tabPackets.Controls.Add(this.menuPackets);
+            this.tabPackets.Controls.Add(this.listPackets);
             this.tabPackets.Location = new System.Drawing.Point(4, 38);
             this.tabPackets.Name = "tabPackets";
             this.tabPackets.Size = new System.Drawing.Size(746, 416);
@@ -242,29 +247,15 @@
             this.tbxPacketInfo.TabIndex = 0;
             this.tbxPacketInfo.Text = "Select a Packet to view its description.";
             // 
-            // listPackets
-            // 
-            this.listPackets.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.listPackets.Dock = System.Windows.Forms.DockStyle.Left;
-            this.listPackets.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.listPackets.FormattingEnabled = true;
-            this.listPackets.IntegralHeight = false;
-            this.listPackets.ItemHeight = 15;
-            this.listPackets.Location = new System.Drawing.Point(0, 33);
-            this.listPackets.Name = "listPackets";
-            this.listPackets.Size = new System.Drawing.Size(200, 383);
-            this.listPackets.TabIndex = 0;
-            this.listPackets.SelectedIndexChanged += new System.EventHandler(this.listPackets_SelectedIndexChanged);
-            // 
             // menuPackets
             // 
             this.menuPackets.AutoSize = false;
             this.menuPackets.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(231)))), ((int)(((byte)(113)))), ((int)(((byte)(189)))));
             this.menuPackets.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.openPacketFolderToolStripMenuItem});
-            this.menuPackets.Location = new System.Drawing.Point(0, 0);
+            this.menuPackets.Location = new System.Drawing.Point(200, 0);
             this.menuPackets.Name = "menuPackets";
-            this.menuPackets.Size = new System.Drawing.Size(746, 33);
+            this.menuPackets.Size = new System.Drawing.Size(546, 33);
             this.menuPackets.TabIndex = 0;
             this.menuPackets.Text = "menuStrip1";
             // 
@@ -276,8 +267,26 @@
             this.openPacketFolderToolStripMenuItem.Text = "Open Packet Folder";
             this.openPacketFolderToolStripMenuItem.Click += new System.EventHandler(this.btnOpenPacketFolder_Click);
             // 
+            // listPackets
+            // 
+            this.listPackets.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.listPackets.Dock = System.Windows.Forms.DockStyle.Left;
+            this.listPackets.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.listPackets.FormattingEnabled = true;
+            this.listPackets.IntegralHeight = false;
+            this.listPackets.ItemHeight = 15;
+            this.listPackets.Location = new System.Drawing.Point(0, 0);
+            this.listPackets.Name = "listPackets";
+            this.listPackets.Size = new System.Drawing.Size(200, 416);
+            this.listPackets.TabIndex = 0;
+            this.listPackets.TabStop = false;
+            this.listPackets.UseSelectable = true;
+            this.listPackets.UseStyleColors = true;
+            this.listPackets.SelectedIndexChanged += new System.EventHandler(this.listPackets_SelectedIndexChanged);
+            // 
             // tabSettings
             // 
+            this.tabSettings.Controls.Add(this.metroPanel2);
             this.tabSettings.Controls.Add(this.lblUseInternalReconnectHandler);
             this.tabSettings.Controls.Add(this.tglUseInternalReconnectHandler);
             this.tabSettings.Controls.Add(this.lblInternalReconnect);
@@ -291,6 +300,19 @@
             this.tabSettings.Size = new System.Drawing.Size(746, 416);
             this.tabSettings.TabIndex = 0;
             this.tabSettings.Text = "Settings";
+            // 
+            // metroPanel2
+            // 
+            this.metroPanel2.HorizontalScrollbarBarColor = true;
+            this.metroPanel2.HorizontalScrollbarHighlightOnWheel = false;
+            this.metroPanel2.HorizontalScrollbarSize = 10;
+            this.metroPanel2.Location = new System.Drawing.Point(247, 33);
+            this.metroPanel2.Name = "metroPanel2";
+            this.metroPanel2.Size = new System.Drawing.Size(499, 383);
+            this.metroPanel2.TabIndex = 8;
+            this.metroPanel2.VerticalScrollbarBarColor = true;
+            this.metroPanel2.VerticalScrollbarHighlightOnWheel = false;
+            this.metroPanel2.VerticalScrollbarSize = 10;
             // 
             // lblUseInternalReconnectHandler
             // 
@@ -312,7 +334,7 @@
             this.tglUseInternalReconnectHandler.Name = "tglUseInternalReconnectHandler";
             this.tglUseInternalReconnectHandler.Size = new System.Drawing.Size(50, 17);
             this.tglUseInternalReconnectHandler.TabIndex = 5;
-            this.tglUseInternalReconnectHandler.Text = "Off";
+            this.tglUseInternalReconnectHandler.Text = "Aus";
             this.tglUseInternalReconnectHandler.UseCustomBackColor = true;
             this.tglUseInternalReconnectHandler.UseSelectable = true;
             this.tglUseInternalReconnectHandler.CheckedChanged += new System.EventHandler(this.tglUseInternalReconnectHandler_CheckedChanged);
@@ -347,7 +369,7 @@
             this.tglStartByDefault.Name = "tglStartByDefault";
             this.tglStartByDefault.Size = new System.Drawing.Size(50, 17);
             this.tglStartByDefault.TabIndex = 0;
-            this.tglStartByDefault.Text = "Off";
+            this.tglStartByDefault.Text = "Aus";
             this.tglStartByDefault.UseCustomBackColor = true;
             this.tglStartByDefault.UseSelectable = true;
             this.tglStartByDefault.CheckedChanged += new System.EventHandler(this.tglStartByDefault_CheckedChanged);
@@ -609,8 +631,8 @@
         private System.Windows.Forms.ToolStripMenuItem btnSaveLog;
         private System.Windows.Forms.ToolStripMenuItem btnClearLog;
         private MetroFramework.Controls.MetroLabel lblStatus;
-        private System.Windows.Forms.ListBox listPackets;
-        private System.Windows.Forms.ListBox listPlugins;
+        private K_Relay.Controls.MetroListBox listPackets;
+        private K_Relay.Controls.MetroListBox listPlugins;
         private System.Windows.Forms.MenuStrip menuPlugins;
         private System.Windows.Forms.MenuStrip menuPackets;
         private System.Windows.Forms.MenuStrip menuSettings;
@@ -638,5 +660,6 @@
         private MetroFramework.Controls.MetroLabel styleLabel;
         private MetroFramework.Controls.MetroComboBox themeCombobox;
         private MetroFramework.Controls.MetroLabel themeLabel;
+        private MetroFramework.Controls.MetroPanel metroPanel2;
     }
 }

@@ -19,7 +19,7 @@ namespace K_Relay
         private void InitPackets()
         {
             foreach (PacketType type in Enum.GetValues(typeof (PacketType)).Cast<PacketType>())
-                listPackets.Items.Insert(0, type.ToString());
+                listPackets.ListBox.Items.Insert(0, type.ToString());
         }
 
         private void btnOpenPacketFolder_Click(object sender, EventArgs e)
@@ -44,10 +44,10 @@ namespace K_Relay
 
         private void listPackets_SelectedIndexChanged(object sender, EventArgs e)
         {
-            if (listPackets.SelectedItem != null)
+            if (listPackets.ListBox.SelectedItem != null)
             {
                 Type type = Serializer.GetPacketType(
-                    (PacketType)Enum.Parse(typeof(PacketType), (string)listPackets.SelectedItem));
+                    (PacketType)Enum.Parse(typeof(PacketType), (string)listPackets.ListBox.SelectedItem));
                 tbxPacketInfo.Text = (Activator.CreateInstance(type) as Packet).ToStructure();
             }
         }

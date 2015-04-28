@@ -63,6 +63,10 @@
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
       <DependentUpon>Config.settings</DependentUpon>
     </Compile>
+    <Compile Include="Controls\MetroDefaults.cs" />
+    <Compile Include="Controls\MetroListBox.cs">
+      <SubType>Component</SubType>
+    </Compile>
     <Compile Include="EmbbeddedAssembly.cs" />
     <Compile Include="FrmMainMetro.cs">
       <SubType>Form</SubType>
@@ -93,6 +97,9 @@
     <Compile Include="Util\PacketDebugger.cs" />
     <Compile Include="Util\ReconnectHandler.cs" />
     <Compile Include="Util\TextBoxStreamWriter.cs" />
+    <EmbeddedResource Include="Controls\MetroListBox.resx">
+      <DependentUpon>MetroListBox.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="FrmMainMetro.resx">
       <DependentUpon>FrmMainMetro.cs</DependentUpon>
     </EmbeddedResource>
@@ -137,6 +144,7 @@
     <EmbeddedResource Include="MetroFramework.dll" />
     <EmbeddedResource Include="MetroFramework.Fonts.dll" />
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.
