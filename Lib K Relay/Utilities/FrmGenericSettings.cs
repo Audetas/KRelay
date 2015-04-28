@@ -7,10 +7,12 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using MetroFramework;
+using MetroFramework.Forms;
 
 namespace Lib_K_Relay.Utilities
 {
-    public partial class FrmGenericSettings : Form
+    public partial class FrmGenericSettings : MetroForm
     {
         private dynamic _settings;
 
@@ -19,10 +21,11 @@ namespace Lib_K_Relay.Utilities
             InitializeComponent();
         }
 
-        public FrmGenericSettings(dynamic settingsObject, string title)
+        public FrmGenericSettings(dynamic settingsObject, string title, TitleColor style)
         {
             InitializeComponent();
             _settings = settingsObject;
+            this.Style = (MetroColorStyle) style;
             this.Text = title;
 
             gridSettings.SelectedObject = _settings;

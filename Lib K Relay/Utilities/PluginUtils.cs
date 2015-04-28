@@ -37,9 +37,9 @@ namespace Lib_K_Relay.Utilities
             messageLoop.Start();
         }
 
-        public static void ShowGenericSettingsGUI(dynamic settingsObject, string title)
+        public static void ShowGenericSettingsGUI(dynamic settingsObject, string title, TitleColor style = TitleColor.Pink)
         {
-            ShowGUI(new FrmGenericSettings(settingsObject, title));
+            ShowGUI(new FrmGenericSettings(settingsObject, title, style));
         }
 
         public static void Delay(int ms, Action callback)

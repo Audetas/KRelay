@@ -1,8 +1,7 @@
-﻿using K_Relay.Util;
-using Lib_K_Relay.Interface;
-using Lib_K_Relay.Utilities;
-using System;
+﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel;
+using System.Configuration;
 using System.Diagnostics;
 using System.Drawing;
 using System.IO;
@@ -11,50 +10,53 @@ using System.Reflection;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using K_Relay.Util;
+using Lib_K_Relay.Interface;
+using Lib_K_Relay.Utilities;
+using MetroFramework;
+using MetroFramework.Controls;
 
 namespace K_Relay
 {
-    partial class FrmMain
+    partial class FrmMainMetro
     {
         private Dictionary<string, IPlugin> _pluginNameMap = new Dictionary<string, IPlugin>();
 
         private void InitPlugins()
         {
-            string pluginDirectory = Serializer.DEBUGGetSolutionRoot() + @"\Plugins\";
+            string pDir = Serializer.DEBUGGetSolutionRoot() + @"\Plugins\";
 
             if (Config.Default.UseInternalReconnectHandler)
-                AttachPlugin(typeof(ReconnectHandler));
+                AttachPlugin(typeof (ReconnectHandler));
 
-            // DEBUG
-            //AttachPlugin(typeof(PacketDebugger));
-
-            if (!Directory.Exists(pluginDirectory))
+            if (!Directory.Exists(pDir))
             {
-                System.IO.Directory.CreateDirectory(pluginDirectory);
-                Console.WriteLine("[Plugin Manager] Plugin directory not found! Directory created at '{0}'.", pluginDirectory);
+                Directory.CreateDirectory(pDir);
+                MetroMessageBox.Show(this, string.Format("Plugin directory not found! Directory created at '{0}'.", pDir), "Directory Created", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                Console.WriteLine("[Plugin Manager] Plugin directory not found! Directory created at '{0}'.", pDir);
                 return;
             }
 
-            foreach (string pluginPath in Directory.GetFiles(pluginDirectory, "*.dll", SearchOption.AllDirectories))
+            foreach (string pPath in Directory.GetFiles(pDir, "*.dll", SearchOption.AllDirectories))
             {
-                if (new FileInfo(pluginPath).Name.Contains("Lib K Relay")) continue;
-                Assembly pluginAssembly = Assembly.LoadFrom(pluginPath);
+                if (new FileInfo(pPath).Name.Contains("Lib K Relay")) continue;
+                Assembly pAssembly = Assembly.LoadFrom(pPath);
 
-                foreach (Type pluginType in pluginAssembly.GetTypes())
+                foreach (Type pType in pAssembly.GetTypes())
                 {
-                    if (pluginType.IsPublic && !pluginType.IsAbstract)
+                    if (pType.IsPublic && !pType.IsAbstract)
                     {
                         try
                         {
-                            Type typeInterface = pluginType.GetInterface("Lib_K_Relay.Interface.IPlugin");
+                            Type tInterface = pType.GetInterface("Lib_K_Relay.Interface.IPlugin");
 
-                            if (typeInterface != null)
-                                AttachPlugin(pluginType);
+                            if (tInterface != null)
+                                AttachPlugin(pType);
                         }
                         catch (Exception e)
                         {
-                            MessageBox.Show("Failed to load plugin " + pluginPath + "!\n" + e.Message,
-                                "K Relay", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                            MetroMessageBox.Show(this, "Failed to load plugin " + pPath + "!\n" + e.Message, "K Relay",
+                                MessageBoxButtons.OK, MessageBoxIcon.Error);
                         }
                     }
                 }
@@ -63,11 +65,25 @@ namespace K_Relay
 
         private void btnOpenPluginFolder_Click(object sender, EventArgs e)
         {
-            try { Process.Start(Serializer.DEBUGGetSolutionRoot() + @"\Plugins\"); }
-            catch (FileNotFoundException) { Console.WriteLine("[Plugin Manager] Uh Oh, directory '{0}' not found.", Serializer.DEBUGGetSolutionRoot() + @"\Plugins\"); }
+            try
+            {
+                Process.Start(Serializer.DEBUGGetSolutionRoot() + @"\Plugins\");
+            }
+            catch (Exception ex)
+            {
+                if (ex is Win32Exception)
+                    MetroMessageBox.Show(this,
+                        string.Format(
+                            "File not found!\n\nThe directory '{0}' could not be found.\nPlease make sure it exists and Try Again.",
+                            Serializer.DEBUGGetSolutionRoot() + @"\Plugins\"), "Error!", MessageBoxButtons.OK,
+                        MessageBoxIcon.Error);
+                else
+                    MetroMessageBox.Show(this, ex.ToString(), "Error - " + ex.GetType().Name, MessageBoxButtons.OK,
+                        MessageBoxIcon.Error);
+            }
         }
 
-        protected void listPlugins_SelectedIndexChanged(object sender, EventArgs e)
+        private void listPlugins_SelectedIndexChanged(object sender, EventArgs e)
         {
             if (listPlugins.SelectedItem != null)
             {
@@ -108,7 +124,7 @@ namespace K_Relay
             AppendText(tbxPluginInfo, type, Color.Black, false);
             AppendText(tbxPluginInfo, "\n\nDescription:\n", Color.DodgerBlue, true);
             AppendText(tbxPluginInfo, description, Color.Black, false);
-            if(commands.Count() > 0) 
+            if (commands.Count() > 0)
             {
                 AppendText(tbxPluginInfo, "\n\nCommands:", Color.DodgerBlue, true);
                 foreach (string command in commands)
@@ -116,8 +132,6 @@ namespace K_Relay
                     AppendText(tbxPluginInfo, "\n  " + command, Color.Black, false);
                 }
             }
-
- 
         }
 
         public static void AppendText(RichTextBox box, string text, Color color, Boolean bold)

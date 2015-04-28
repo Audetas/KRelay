@@ -37,48 +37,57 @@
             // 
             // gridSettings
             // 
+            this.gridSettings.CategorySplitterColor = System.Drawing.Color.White;
+            this.gridSettings.CommandsBackColor = System.Drawing.Color.White;
             this.gridSettings.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.gridSettings.Location = new System.Drawing.Point(0, 40);
+            this.gridSettings.HelpBackColor = System.Drawing.Color.White;
+            this.gridSettings.HelpBorderColor = System.Drawing.Color.Transparent;
+            this.gridSettings.Location = new System.Drawing.Point(10, 84);
+            this.gridSettings.Margin = new System.Windows.Forms.Padding(2);
             this.gridSettings.Name = "gridSettings";
-            this.gridSettings.Size = new System.Drawing.Size(810, 623);
+            this.gridSettings.Size = new System.Drawing.Size(385, 251);
             this.gridSettings.TabIndex = 0;
             // 
             // menuSettings
             // 
+            this.menuSettings.BackColor = System.Drawing.Color.White;
             this.menuSettings.ImageScalingSize = new System.Drawing.Size(32, 32);
             this.menuSettings.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.btnDone,
             this.btnReset});
-            this.menuSettings.Location = new System.Drawing.Point(0, 0);
+            this.menuSettings.Location = new System.Drawing.Point(10, 60);
             this.menuSettings.Name = "menuSettings";
-            this.menuSettings.Size = new System.Drawing.Size(810, 40);
+            this.menuSettings.Padding = new System.Windows.Forms.Padding(3, 1, 0, 1);
+            this.menuSettings.Size = new System.Drawing.Size(385, 24);
             this.menuSettings.TabIndex = 1;
             // 
             // btnDone
             // 
             this.btnDone.Name = "btnDone";
-            this.btnDone.Size = new System.Drawing.Size(85, 38);
+            this.btnDone.Size = new System.Drawing.Size(47, 22);
             this.btnDone.Text = "Done";
             this.btnDone.Click += new System.EventHandler(this.btnDone_Click);
             // 
             // btnReset
             // 
             this.btnReset.Name = "btnReset";
-            this.btnReset.Size = new System.Drawing.Size(199, 38);
+            this.btnReset.Size = new System.Drawing.Size(102, 22);
             this.btnReset.Text = "Reset to Default";
             this.btnReset.Click += new System.EventHandler(this.btnReset_Click);
             // 
             // FrmGenericSettings
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(12F, 25F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(810, 663);
+            this.ClientSize = new System.Drawing.Size(405, 345);
             this.Controls.Add(this.gridSettings);
             this.Controls.Add(this.menuSettings);
-            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.SizableToolWindow;
             this.MainMenuStrip = this.menuSettings;
+            this.Margin = new System.Windows.Forms.Padding(2);
             this.MaximizeBox = false;
             this.Name = "FrmGenericSettings";
+            this.Padding = new System.Windows.Forms.Padding(10, 60, 10, 10);
+            this.Style = MetroFramework.MetroColorStyle.Pink;
             this.Text = "FrmGenericSettings";
             this.menuSettings.ResumeLayout(false);
             this.menuSettings.PerformLayout();
