@@ -54,6 +54,10 @@
             this.tglStartByDefault = new MetroFramework.Controls.MetroToggle();
             this.lblSBD = new MetroFramework.Controls.MetroLabel();
             this.metroPanel1 = new MetroFramework.Controls.MetroPanel();
+            this.styleCombobox = new MetroFramework.Controls.MetroComboBox();
+            this.styleLabel = new MetroFramework.Controls.MetroLabel();
+            this.themeCombobox = new MetroFramework.Controls.MetroComboBox();
+            this.themeLabel = new MetroFramework.Controls.MetroLabel();
             this.lstServers = new MetroFramework.Controls.MetroComboBox();
             this.lblDefaultServer = new MetroFramework.Controls.MetroLabel();
             this.menuSettings = new System.Windows.Forms.MenuStrip();
@@ -354,12 +358,16 @@
             this.lblSBD.BackColor = System.Drawing.SystemColors.Control;
             this.lblSBD.Location = new System.Drawing.Point(10, 43);
             this.lblSBD.Name = "lblSBD";
-            this.lblSBD.Size = new System.Drawing.Size(137, 19);
+            this.lblSBD.Size = new System.Drawing.Size(136, 19);
             this.lblSBD.TabIndex = 0;
             this.lblSBD.Text = "Start Proxy By Default";
             // 
             // metroPanel1
             // 
+            this.metroPanel1.Controls.Add(this.styleCombobox);
+            this.metroPanel1.Controls.Add(this.styleLabel);
+            this.metroPanel1.Controls.Add(this.themeCombobox);
+            this.metroPanel1.Controls.Add(this.themeLabel);
             this.metroPanel1.Controls.Add(this.lstServers);
             this.metroPanel1.Controls.Add(this.lblDefaultServer);
             this.metroPanel1.Dock = System.Windows.Forms.DockStyle.Left;
@@ -373,6 +381,46 @@
             this.metroPanel1.VerticalScrollbarBarColor = true;
             this.metroPanel1.VerticalScrollbarHighlightOnWheel = false;
             this.metroPanel1.VerticalScrollbarSize = 10;
+            // 
+            // styleCombobox
+            // 
+            this.styleCombobox.FormattingEnabled = true;
+            this.styleCombobox.ItemHeight = 23;
+            this.styleCombobox.Location = new System.Drawing.Point(65, 135);
+            this.styleCombobox.MaxDropDownItems = 32;
+            this.styleCombobox.Name = "styleCombobox";
+            this.styleCombobox.Size = new System.Drawing.Size(174, 29);
+            this.styleCombobox.TabIndex = 4;
+            this.styleCombobox.UseSelectable = true;
+            // 
+            // styleLabel
+            // 
+            this.styleLabel.AutoSize = true;
+            this.styleLabel.Location = new System.Drawing.Point(10, 140);
+            this.styleLabel.Name = "styleLabel";
+            this.styleLabel.Size = new System.Drawing.Size(36, 19);
+            this.styleLabel.TabIndex = 5;
+            this.styleLabel.Text = "Style";
+            // 
+            // themeCombobox
+            // 
+            this.themeCombobox.FormattingEnabled = true;
+            this.themeCombobox.ItemHeight = 23;
+            this.themeCombobox.Location = new System.Drawing.Point(65, 100);
+            this.themeCombobox.MaxDropDownItems = 32;
+            this.themeCombobox.Name = "themeCombobox";
+            this.themeCombobox.Size = new System.Drawing.Size(174, 29);
+            this.themeCombobox.TabIndex = 2;
+            this.themeCombobox.UseSelectable = true;
+            // 
+            // themeLabel
+            // 
+            this.themeLabel.AutoSize = true;
+            this.themeLabel.Location = new System.Drawing.Point(10, 105);
+            this.themeLabel.Name = "themeLabel";
+            this.themeLabel.Size = new System.Drawing.Size(49, 19);
+            this.themeLabel.TabIndex = 3;
+            this.themeLabel.Text = "Theme";
             // 
             // lstServers
             // 
@@ -390,7 +438,7 @@
             this.lblDefaultServer.AutoSize = true;
             this.lblDefaultServer.Location = new System.Drawing.Point(10, 70);
             this.lblDefaultServer.Name = "lblDefaultServer";
-            this.lblDefaultServer.Size = new System.Drawing.Size(92, 19);
+            this.lblDefaultServer.Size = new System.Drawing.Size(91, 19);
             this.lblDefaultServer.TabIndex = 0;
             this.lblDefaultServer.Text = "Default Server";
             // 
@@ -433,6 +481,7 @@
             // 
             this.tbxCredits.BackColor = System.Drawing.SystemColors.Window;
             this.tbxCredits.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.tbxCredits.Cursor = System.Windows.Forms.Cursors.Default;
             this.tbxCredits.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.tbxCredits.Location = new System.Drawing.Point(0, 149);
             this.tbxCredits.Name = "tbxCredits";
@@ -585,5 +634,9 @@
         private System.Windows.Forms.Label lblVersion;
         private System.Windows.Forms.Label lblCredits;
         private System.Windows.Forms.RichTextBox tbxCredits;
+        private MetroFramework.Controls.MetroComboBox styleCombobox;
+        private MetroFramework.Controls.MetroLabel styleLabel;
+        private MetroFramework.Controls.MetroComboBox themeCombobox;
+        private MetroFramework.Controls.MetroLabel themeLabel;
     }
 }
