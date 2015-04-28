@@ -30,6 +30,7 @@ using System.Reflection;
 using Lib_K_Relay.Networking.Packets.DataObjects;
 using Lib_K_Relay.Utilities;
 using Lib_K_Relay.Networking.Packets;
+using Lib_K_Relay.Networking.Packets.Server;
 
 namespace MapRipper
 {
@@ -40,6 +41,12 @@ namespace MapRipper
         public int Height { get; private set; }
         public int[][] Tiles { get; private set; }
         public Entity[][][] Entities { get; private set; }
+
+        private int currentTiles;
+
+        public delegate void TilesChangedDelegate(int currentTiles);
+
+        public event TilesChangedDelegate TilesAdded;
 
         public void Init(int w, int h, string name)
         {
@@ -80,6 +87,40 @@ namespace MapRipper
             public int width;
             public int height;
             public loc[] dict;
+        }
+
+        public void Update(UpdatePacket packet)
+        {
+            foreach (var t in (packet as UpdatePacket).Tiles)
+            {
+                this.Tiles[t.X][t.Y] = t.Type;
+                currentTiles++;
+                if (TilesAdded != null)
+                    TilesAdded(this.currentTiles);
+            }
+
+            foreach (var tileDef in (packet as UpdatePacket).NewObjs)
+            {
+                var def = (Entity)tileDef.Clone();
+
+                if (isMapObject(def.ObjectType))
+                {
+                    def.Status.Position.X -= 0.5F;
+                    def.Status.Position.Y -= 0.5F;
+
+                    int _x = (int)def.Status.Position.X;
+                    int _y = (int)def.Status.Position.Y;
+                    Array.Resize(ref this.Entities[_x][_y], this.Entities[_x][_y].Length + 1);
+                    Entity[] arr = this.Entities[_x][_y];
+
+                    arr[arr.Length - 1] = def;
+                }
+            }
+        }
+
+        private bool isMapObject(short objType)
+        {
+            return true;// Todo: check if player or pet or all that stuff you dont place on the map with the editor
         }
 
         public string ToJson()

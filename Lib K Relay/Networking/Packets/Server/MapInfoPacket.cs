@@ -37,11 +37,11 @@ namespace Lib_K_Relay.Networking.Packets.Server
 
             ClientXML = new string[r.ReadInt16()];
             for (int i = 0; i < ClientXML.Length; i++)
-                ClientXML[i] = r.ReadString();
+                ClientXML[i] = r.ReadUTF32();
 
             ExtraXML = new string[r.ReadInt16()];
             for (int i = 0; i < ExtraXML.Length; i++)
-                ExtraXML[i] = r.ReadString();
+                ExtraXML[i] = r.ReadUTF32();
         }
 
         public override void Write(PacketWriter w)
@@ -57,10 +57,10 @@ namespace Lib_K_Relay.Networking.Packets.Server
             w.Write(ShowDisplays);
             w.Write((ushort)ClientXML.Length);
             foreach (string i in ClientXML)
-                w.Write(i);
+                w.WriteUTF32(i);
             w.Write((ushort)ExtraXML.Length);
             foreach (string i in ExtraXML)
-                w.Write(i);
+                w.WriteUTF32(i);
         }
     }
 }

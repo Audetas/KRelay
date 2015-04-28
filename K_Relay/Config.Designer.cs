@@ -8,6 +8,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
+using MetroFramework;
 namespace K_Relay {
     
     
@@ -80,6 +81,36 @@ namespace K_Relay {
             }
             set {
                 this["StartProxyByDefault"] = value;
+            }
+        }
+
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("Default")]
+        public MetroThemeStyle Theme
+        {
+            get
+            {
+                return ((MetroThemeStyle)(this["Theme"]));
+            }
+            set
+            {
+                this["Theme"] = value;
+            }
+        }
+
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("Pink")]
+        public MetroColorStyle Style
+        {
+            get
+            {
+                return ((MetroColorStyle)(this["Style"]));
+            }
+            set
+            {
+                this["Style"] = value;
             }
         }
     }

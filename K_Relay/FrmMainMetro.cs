@@ -45,6 +45,7 @@ namespace K_Relay
                                 "This is either due to your internet connection or a temporary server problem.\n" +
                                 "Please try again later.\n" +
                                 "K Relay will now exit.", "K Relay", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                Environment.Exit(Environment.ExitCode);
                 return;
             }
             catch (Exception e)
@@ -54,6 +55,7 @@ namespace K_Relay
                                 e.Message + "\n" +
                                 "Please ensure you extract all of the files to the same folder!\n" +
                                 "K Relay will now exit.", "K Relay", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                Environment.Exit(Environment.ExitCode);
                 return;
             }
 

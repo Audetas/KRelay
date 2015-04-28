@@ -27,12 +27,15 @@ using Lib_K_Relay.Networking.Packets;
 using Lib_K_Relay.Networking.Packets.Client;
 using Lib_K_Relay.Networking.Packets.DataObjects;
 using Lib_K_Relay.Networking.Packets.Server;
+using Lib_K_Relay.Utilities;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Reflection;
 using System.Text;
+using System.Threading;
 using System.Threading.Tasks;
+using System.Windows.Forms;
 
 namespace MapRipper
 {
@@ -41,11 +44,16 @@ namespace MapRipper
         private JsonMap m_map;
         private Dictionary<string, Assembly> m_dependencies;
 
+        public JsonMap Map { get { return this.m_map; } }
+
         public Plugin()
         {
             this.m_dependencies = new Dictionary<string, Assembly>();
-            LoadAssembly("MapRipper.Ionic.ZLib.dll");
-            LoadAssembly("MapRipper.Newtonsoft.Json.dll");
+            LoadAssembly("MapRipper.Lib.Ionic.ZLib.dll");
+            LoadAssembly("MapRipper.Lib.Newtonsoft.Json.dll");
+            LoadAssembly("MapRipper.Lib.MetroFramework.dll");
+            LoadAssembly("MapRipper.Lib.MetroFramework.Design.dll");
+            LoadAssembly("MapRipper.Lib.MetroFramework.Fonts.dll");
 
             AppDomain.CurrentDomain.AssemblyResolve += CurrentDomain_AssemblyResolve;
         }
@@ -67,7 +75,7 @@ namespace MapRipper
 
         public string[] GetCommands()
         {
-            return new string[2] { "/saveMap", "/saveMap <MapName>" };
+            return new string[3] { "/saveMap", "/saveMap <MapName>", "/mapRipper" };
         }
 
         public void Initialize(Proxy proxy)
@@ -77,6 +85,14 @@ namespace MapRipper
             proxy.HookPacket<UpdatePacket>(OnUpdatePacket);
 
             proxy.HookCommand("saveMap", OnSaveMapCommand);
+            proxy.HookCommand("mapRipper", OnMapRipperCommand);
+
+            //new Thread(() => new HandleForm(this).ShowDialog()).Start();
+        }
+
+        private void OnMapRipperCommand(Client client, string command, string[] args)
+        {
+            new Thread(() => new HandleForm(this).ShowDialog()).Start();
         }
 
         private void OnSaveMapCommand(Client client, string command, string[] args)
@@ -96,31 +112,7 @@ namespace MapRipper
 
         private void OnUpdatePacket(Client client, UpdatePacket packet)
         {
-            foreach (var t in (packet as UpdatePacket).Tiles)
-                this.m_map.Tiles[t.X][t.Y] = t.Type;
-
-            foreach (var tileDef in (packet as UpdatePacket).NewObjs)
-            {
-                var def = (Entity)tileDef.Clone();
-
-                if (isMapObject(def.ObjectType))
-                {
-                    def.Status.Position.X -= 0.5F;
-                    def.Status.Position.Y -= 0.5F;
-
-                    int _x = (int)def.Status.Position.X;
-                    int _y = (int)def.Status.Position.Y;
-                    Array.Resize(ref this.m_map.Entities[_x][_y], this.m_map.Entities[_x][_y].Length + 1);
-                    Entity[] arr = this.m_map.Entities[_x][_y];
-
-                    arr[arr.Length - 1] = def;
-                }
-            }
-        }
-
-        private bool isMapObject(short objType)
-        {
-            return true;// Todo: check if player or pet or all that stuff you dont place on the map with the editor
+            this.m_map.Update(packet);
         }
 
         private void LoadAssembly(string path)
