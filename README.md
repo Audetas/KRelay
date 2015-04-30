@@ -19,6 +19,7 @@
 - [x] Fetch server list from char/list
 - [x] Redo Info tab
 - [ ] Keyboard hooking interface
+- [x] Re-Design of the Forms
 
 ##Bug Checklist:
 - [x] Remove loot bag quests to purple bags
@@ -44,7 +45,7 @@
 - [x] Loot notifications / Loot bag quest
 - [x] Auto loot
 - [x] Tile/Object Replacer
-- [ ] Skid Booter 9000
+- [x] Skid Booter 9000 - Not going to release publicly // Kithio (kithio.lost - Skype)
 For later:
 - [x] Custom vault for the fun of it
 - [ ] Map Cacher
@@ -54,6 +55,3 @@ For later:
 - [ ] /tl command for Teleport to the Last player you teleported to assuming they are in the same map as you.
 - [ ] Plugin to auto-teleport to someone once they are at at the Boss Portal in Deadwater Docks with toggle to enable auto-join. (Not sure if this is possible)
 - [ ] Plugin for a toggle to auto-enter Oryx's Castle and auto-enter Wine Cellar.
-
-##Up for discussion
-- Re-Design of the Forms - [View Screenshot!](http://i.imgur.com/otwutaP.png) Add kithio.lost on skype to discuss
