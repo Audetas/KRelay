@@ -78,11 +78,8 @@ namespace K_Relay
             InitPackets();
             InitPlugins();
             InitSettings();
-            InitAbout();
 
             m_themeManager.OnStyleChanged += m_themeManager_OnStyleChanged;
-            m_themeManager.OnThemeChanged += m_themeManager_OnThemeChanged;
-            m_themeManager_OnThemeChanged(null, null);
             m_themeManager_OnStyleChanged(null, null);
 
             if (Config.Default.StartProxyByDefault)
@@ -152,22 +149,6 @@ namespace K_Relay
                 lblStatus.ForeColor = color;
                 lblStatus.Text = status;
             }));
-        }
-
-        private void m_themeManager_OnThemeChanged(object sender, EventArgs e)
-        {
-            listPlugins_SelectedIndexChanged(null, null);
-            ReAppendTextBoxes();
-        }
-
-        private void ReAppendTextBoxes()
-        {
-            TextBoxAppender.ClearCurrentBoxes();
-            foreach (var i in TextBoxAppender.CurrentAppendings)
-            {
-                AppendText(i.TextBox, i.Text, i.Color, i.Bold);
-                i.TextBox.Invalidate();
-            }
         }
     }
 }

@@ -15,6 +15,8 @@ namespace K_Relay.Controls
 {
     public class MetroRichTextBox : Control, IMetroControl
     {
+        private List<Appending> appendings;
+
         #region Interface
 
         [Category(MetroDefaults.PropertyCategory.Appearance)]
@@ -281,7 +283,12 @@ namespace K_Relay.Controls
         public override string Text
         {
             get { return baseTextBox.Text; }
-            set { baseTextBox.Text = value; }
+            set
+            {
+                baseTextBox.Text = value;
+                appendings.Clear();
+                appendings.Add(Appending.Create(baseTextBox.Text, Color.Empty, false));
+            }
         }
         
         public string[] Lines
@@ -343,12 +350,12 @@ namespace K_Relay.Controls
         public MetroRichTextBox()
         {
             SetStyle(ControlStyles.DoubleBuffer | ControlStyles.OptimizedDoubleBuffer, true);
-
+            appendings = new List<Appending>();
             base.TabStop = false;
             base.GotFocus += MetroTextBox_GotFocus;
             CreateBaseTextBox();
             UpdateBaseTextBox();
-            AddEventHandler();       
+            AddEventHandler();
         }
 
         void MetroTextBox_GotFocus(object sender, EventArgs e)
@@ -439,12 +446,13 @@ namespace K_Relay.Controls
 
         public void Clear()
         {
+            appendings.Clear();
             baseTextBox.Clear();
         }
 
         public void AppendText(string text)
         {
-            baseTextBox.AppendText(text);
+            AppendText(text, Color.Empty, false);
         }
 
         #endregion
@@ -507,6 +515,8 @@ namespace K_Relay.Controls
             else
             {
                 baseTextBox.ForeColor = MetroPaint.ForeColor.Button.Normal(Theme);
+                baseTextBox.Clear();
+                ReAppendText();
             }
 
             Color borderColor = MetroPaint.BorderColor.Button.Normal(Theme);
@@ -715,9 +725,48 @@ namespace K_Relay.Controls
 
         #endregion
 
+        public void AppendText(string text, Color color, bool bold) //Empty for use theme color
+        {
+            if (appendings.Count(_ => _.Text == text && _.Color == color && _.Bold == bold) == 0)
+                appendings.Add(Appending.Create(text, color, bold));
+
+            baseTextBox.SelectionStart = baseTextBox.TextLength;
+            baseTextBox.SelectionLength = 0;
+            if (bold)
+                baseTextBox.SelectionFont = new Font(baseTextBox.Font, FontStyle.Bold);
+            else
+                baseTextBox.SelectionFont = new Font(baseTextBox.Font, FontStyle.Regular);
+            baseTextBox.SelectionColor = color == Color.Empty ? MetroPaint.ForeColor.Label.Normal(Theme) : color;
+            baseTextBox.AppendText(text);
+            baseTextBox.SelectionColor = baseTextBox.ForeColor;
+        }
+
+        public void ReAppendText()
+        {
+            foreach (var app in appendings)
+                AppendText(app.Text, app.Color, app.Bold);
+        }
+
         public RichTextBox ToWinFormRTB()
         {
             return baseTextBox;
+        }
+
+        public class Appending
+        {
+            public string Text { get; set; }
+            public Color Color { get; set; }
+            public bool Bold { get; set; }
+
+            internal static Appending Create(string text, Color color, bool bold)
+            {
+                return new Appending
+                {
+                    Text = text,
+                    Color = color,
+                    Bold = bold
+                };
+            }
         }
     }
 }

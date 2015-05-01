@@ -115,37 +115,21 @@ namespace K_Relay
             string type = plugin.GetType().ToString();
             string[] commands = plugin.GetCommands();
 
-            TextBoxAppender.ClearBoxCache(tbxPluginInfo.ToWinFormRTB());
-
-            TextBoxAppender.AppendText(tbxPluginInfo.ToWinFormRTB(), "Plugin: ", Color.DodgerBlue, true);
-            TextBoxAppender.AppendText(tbxPluginInfo.ToWinFormRTB(), name, Color.Empty, false);
-            TextBoxAppender.AppendText(tbxPluginInfo.ToWinFormRTB(), "\nAuthor: ", Color.DodgerBlue, true);
-            TextBoxAppender.AppendText(tbxPluginInfo.ToWinFormRTB(), author, Color.Empty, false);
-            TextBoxAppender.AppendText(tbxPluginInfo.ToWinFormRTB(), "\nClassName: ", Color.DodgerBlue, true);
-            TextBoxAppender.AppendText(tbxPluginInfo.ToWinFormRTB(), type, Color.Empty, false);
-            TextBoxAppender.AppendText(tbxPluginInfo.ToWinFormRTB(), "\n\nDescription:\n", Color.DodgerBlue, true);
-            TextBoxAppender.AppendText(tbxPluginInfo.ToWinFormRTB(), description, Color.Empty, false);
+            tbxPluginInfo.Clear();
+            tbxPluginInfo.AppendText("Plugin: ", Color.DodgerBlue, true);
+            tbxPluginInfo.AppendText(name, Color.Empty, false);
+            tbxPluginInfo.AppendText("\nAuthor: ", Color.DodgerBlue, true);
+            tbxPluginInfo.AppendText(author, Color.Empty, false);
+            tbxPluginInfo.AppendText("\nClassName: ", Color.DodgerBlue, true);
+            tbxPluginInfo.AppendText(type, Color.Empty, false);
+            tbxPluginInfo.AppendText("\n\nDescription:\n", Color.DodgerBlue, true);
+            tbxPluginInfo.AppendText(description, Color.Empty, false);
             if (commands.Count() > 0)
             {
-                TextBoxAppender.AppendText(tbxPluginInfo.ToWinFormRTB(), "\n\nCommands:", Color.DodgerBlue, true);
+                tbxPluginInfo.AppendText("\n\nCommands:", Color.DodgerBlue, true);
                 foreach (string command in commands)
-                    TextBoxAppender.AppendText(tbxPluginInfo.ToWinFormRTB(), "\n  " + command, Color.Empty, false);
+                    tbxPluginInfo.AppendText("\n  " + command, Color.Empty, false);
             }
-
-            ReAppendTextBoxes();
-        }
-
-        public void AppendText(RichTextBox box, string text, Color color, Boolean bold)
-        {
-            box.SelectionStart = box.TextLength;
-            box.SelectionLength = 0;
-            if (bold)
-                box.SelectionFont = new Font(box.Font, FontStyle.Bold);
-            else
-                box.SelectionFont = new Font(box.Font, FontStyle.Regular);
-            box.SelectionColor = color == Color.Empty ? MetroPaint.ForeColor.Label.Normal(m_themeManager.Theme) : color;
-            box.AppendText(text);
-            box.SelectionColor = box.ForeColor;
         }
     }
 }
