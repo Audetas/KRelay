@@ -274,11 +274,12 @@ namespace K_Relay.Controls
             if (baseListBox != null) return;
 
             scrollBar = new MetroScrollBar();
-            baseListBox = new ListBoxBase(scrollBar);
+            baseListBox = new ListBoxBase();
 
             baseListBox.BorderStyle = BorderStyle.None;
             baseListBox.Location = new Point(3, 3);
             baseListBox.Size = new Size(Width - 16, Height - 6);
+            scrollBar.Scroll += scrollBar_Scroll;
 
             Size = new Size(baseListBox.Width + 16, baseListBox.Height + 6);
 
@@ -417,15 +418,15 @@ namespace K_Relay.Controls
             set { baseListBox.ItemHeight = value; }
         }
 
+        private void scrollBar_Scroll(object sender, ScrollEventArgs e)
+        {
+            baseListBox.TopIndex = Math.Max(scrollBar.Value / (ItemHeight + 1), 0);
+            scrollBar.Refresh();
+            Application.DoEvents();
+        }
+
         public class ListBoxBase : ListBox
         {
-            private MetroScrollBar scrollBar;
-
-            public ListBoxBase(MetroScrollBar scrollBar)
-            {
-                this.scrollBar = scrollBar;
-            }
-
             protected override CreateParams CreateParams
             {
                 get
@@ -434,19 +435,6 @@ namespace K_Relay.Controls
                     cp.Style = cp.Style & ~0x200000;
                     return cp;
                 }
-            }
-
-            protected override void OnResize(EventArgs e)
-            {
-                base.OnResize(e);
-                scrollBar.Scroll += scrollBar_Scroll;
-            }
-
-            private void scrollBar_Scroll(object sender, ScrollEventArgs e)
-            {
-                TopIndex = Math.Max(scrollBar.Value / (ItemHeight + 1), 0);
-                scrollBar.Refresh();
-                Application.DoEvents();
             }
         }
     }

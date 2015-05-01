@@ -58,6 +58,9 @@ namespace K_Relay
 
         private class FixedStyleManager
         {
+            public event EventHandler OnThemeChanged;
+            public event EventHandler OnStyleChanged;
+
             private MetroStyleManager m_manager;
 
             private MetroColorStyle m_colorStyle;
@@ -77,6 +80,7 @@ namespace K_Relay
                 {
                     this.m_colorStyle = value;
                     Update();
+                    if (OnStyleChanged != null) OnStyleChanged(this, new EventArgs());
                 }
             }
 
@@ -87,6 +91,7 @@ namespace K_Relay
                 {
                     this.m_themeStyle = value;
                     Update();
+                    if (OnThemeChanged != null) OnThemeChanged(this, new EventArgs());
                 }
             }
 

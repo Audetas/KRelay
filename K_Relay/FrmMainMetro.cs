@@ -14,6 +14,7 @@ using Lib_K_Relay.Networking;
 using Lib_K_Relay.Networking.Packets;
 using Lib_K_Relay.Utilities;
 using MetroFramework.Forms;
+using MetroFramework.Drawing;
 
 namespace K_Relay
 {
@@ -65,7 +66,7 @@ namespace K_Relay
             _proxy.ProxyListenStarted += _ => SetStatus("Running", Color.Green);
             _proxy.ProxyListenStopped += _ => SetStatus("Stopped", Color.Red);
 
-            _proxy.ClientConnected    += c => _clients.Add(c);
+            _proxy.ClientConnected += c => _clients.Add(c);
             _proxy.ClientDisconnected += c => _clients.Remove(c);
 
             _proxy.Key0 = Config.Default.RC4Key0;
@@ -79,8 +80,18 @@ namespace K_Relay
             InitSettings();
             InitAbout();
 
+            m_themeManager.OnStyleChanged += m_themeManager_OnStyleChanged;
+            m_themeManager.OnThemeChanged += m_themeManager_OnThemeChanged;
+            m_themeManager_OnThemeChanged(null, null);
+            m_themeManager_OnStyleChanged(null, null);
+
             if (Config.Default.StartProxyByDefault)
                 btnToggleProxy_Click(null, null);
+        }
+
+        private void m_themeManager_OnStyleChanged(object sender, EventArgs e)
+        {
+            menuInfo.BackColor = menuPlugins.BackColor = menuPackets.BackColor = menuSettings.BackColor = MetroPaint.GetStyleColor(Style);
         }
 
         private void metroButton1_Click(object sender, EventArgs e)
@@ -141,6 +152,22 @@ namespace K_Relay
                 lblStatus.ForeColor = color;
                 lblStatus.Text = status;
             }));
+        }
+
+        private void m_themeManager_OnThemeChanged(object sender, EventArgs e)
+        {
+            listPlugins_SelectedIndexChanged(null, null);
+            ReAppendTextBoxes();
+        }
+
+        private void ReAppendTextBoxes()
+        {
+            TextBoxAppender.ClearCurrentBoxes();
+            foreach (var i in TextBoxAppender.CurrentAppendings)
+            {
+                AppendText(i.TextBox, i.Text, i.Color, i.Bold);
+                i.TextBox.Invalidate();
+            }
         }
     }
 }

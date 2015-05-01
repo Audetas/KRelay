@@ -30,23 +30,23 @@
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FrmMainMetro));
             this.tabMain = new MetroFramework.Controls.MetroTabControl();
-            this.tabInfo = new System.Windows.Forms.TabPage();
+            this.tabInfo = new MetroFramework.Controls.MetroTabPage();
             this.tbxLog = new MetroFramework.Controls.MetroTextBox();
             this.menuInfo = new System.Windows.Forms.MenuStrip();
             this.btnToggleProxy = new System.Windows.Forms.ToolStripMenuItem();
             this.btnSaveLog = new System.Windows.Forms.ToolStripMenuItem();
             this.btnClearLog = new System.Windows.Forms.ToolStripMenuItem();
-            this.tabPlugins = new System.Windows.Forms.TabPage();
-            this.tbxPluginInfo = new System.Windows.Forms.RichTextBox();
+            this.tabPlugins = new MetroFramework.Controls.MetroTabPage();
+            this.tbxPluginInfo = new K_Relay.Controls.MetroRichTextBox();
             this.menuPlugins = new System.Windows.Forms.MenuStrip();
             this.openPluginFolderToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.listPlugins = new K_Relay.Controls.MetroListBox();
-            this.tabPackets = new System.Windows.Forms.TabPage();
-            this.tbxPacketInfo = new System.Windows.Forms.RichTextBox();
+            this.tabPackets = new MetroFramework.Controls.MetroTabPage();
             this.menuPackets = new System.Windows.Forms.MenuStrip();
             this.openPacketFolderToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.tbxPacketInfo = new K_Relay.Controls.MetroRichTextBox();
             this.listPackets = new K_Relay.Controls.MetroListBox();
-            this.tabSettings = new System.Windows.Forms.TabPage();
+            this.tabSettings = new MetroFramework.Controls.MetroTabPage();
             this.metroPanel2 = new MetroFramework.Controls.MetroPanel();
             this.lblUseInternalReconnectHandler = new MetroFramework.Controls.MetroLabel();
             this.tglUseInternalReconnectHandler = new MetroFramework.Controls.MetroToggle();
@@ -63,12 +63,17 @@
             this.lblDefaultServer = new MetroFramework.Controls.MetroLabel();
             this.menuSettings = new System.Windows.Forms.MenuStrip();
             this.btnSaveSettings = new System.Windows.Forms.ToolStripMenuItem();
-            this.tabAbout = new System.Windows.Forms.TabPage();
-            this.tbxCredits = new System.Windows.Forms.RichTextBox();
-            this.lblCredits = new System.Windows.Forms.Label();
-            this.lblVersion = new System.Windows.Forms.Label();
-            this.lblKronks = new System.Windows.Forms.Label();
-            this.lblKRelay = new System.Windows.Forms.Label();
+            this.tabAbout = new MetroFramework.Controls.MetroTabPage();
+            this.label1 = new System.Windows.Forms.Label();
+            this.metroLabel7 = new MetroFramework.Controls.MetroLabel();
+            this.metroLabel6 = new MetroFramework.Controls.MetroLabel();
+            this.metroLabel5 = new MetroFramework.Controls.MetroLabel();
+            this.metroLabel4 = new MetroFramework.Controls.MetroLabel();
+            this.metroLabel3 = new MetroFramework.Controls.MetroLabel();
+            this.metroLabel2 = new MetroFramework.Controls.MetroLabel();
+            this.metroLabel1 = new MetroFramework.Controls.MetroLabel();
+            this.lblVersion = new MetroFramework.Controls.MetroLabel();
+            this.lblKronks = new MetroFramework.Controls.MetroLabel();
             this.pbxGang = new System.Windows.Forms.PictureBox();
             this.lblStatus = new MetroFramework.Controls.MetroLabel();
             this.tabMain.SuspendLayout();
@@ -94,7 +99,7 @@
             this.tabMain.Controls.Add(this.tabAbout);
             this.tabMain.Location = new System.Drawing.Point(23, 63);
             this.tabMain.Name = "tabMain";
-            this.tabMain.SelectedIndex = 0;
+            this.tabMain.SelectedIndex = 4;
             this.tabMain.Size = new System.Drawing.Size(754, 458);
             this.tabMain.TabIndex = 0;
             this.tabMain.UseSelectable = true;
@@ -104,11 +109,17 @@
             // 
             this.tabInfo.Controls.Add(this.tbxLog);
             this.tabInfo.Controls.Add(this.menuInfo);
+            this.tabInfo.HorizontalScrollbarBarColor = false;
+            this.tabInfo.HorizontalScrollbarHighlightOnWheel = false;
+            this.tabInfo.HorizontalScrollbarSize = 0;
             this.tabInfo.Location = new System.Drawing.Point(4, 38);
             this.tabInfo.Name = "tabInfo";
             this.tabInfo.Size = new System.Drawing.Size(746, 416);
             this.tabInfo.TabIndex = 0;
             this.tabInfo.Text = "Info";
+            this.tabInfo.VerticalScrollbarBarColor = false;
+            this.tabInfo.VerticalScrollbarHighlightOnWheel = false;
+            this.tabInfo.VerticalScrollbarSize = 0;
             // 
             // tbxLog
             // 
@@ -169,11 +180,17 @@
             this.tabPlugins.Controls.Add(this.tbxPluginInfo);
             this.tabPlugins.Controls.Add(this.menuPlugins);
             this.tabPlugins.Controls.Add(this.listPlugins);
+            this.tabPlugins.HorizontalScrollbarBarColor = false;
+            this.tabPlugins.HorizontalScrollbarHighlightOnWheel = false;
+            this.tabPlugins.HorizontalScrollbarSize = 0;
             this.tabPlugins.Location = new System.Drawing.Point(4, 38);
             this.tabPlugins.Name = "tabPlugins";
             this.tabPlugins.Size = new System.Drawing.Size(746, 416);
             this.tabPlugins.TabIndex = 0;
             this.tabPlugins.Text = "Plugins";
+            this.tabPlugins.VerticalScrollbarBarColor = false;
+            this.tabPlugins.VerticalScrollbarHighlightOnWheel = false;
+            this.tabPlugins.VerticalScrollbarSize = 0;
             // 
             // tbxPluginInfo
             // 
@@ -181,11 +198,19 @@
             this.tbxPluginInfo.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.tbxPluginInfo.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tbxPluginInfo.Font = new System.Drawing.Font("Segoe UI", 10F);
+            this.tbxPluginInfo.Lines = new string[] {
+        "Select a Plugin to view its description."};
             this.tbxPluginInfo.Location = new System.Drawing.Point(200, 33);
+            this.tbxPluginInfo.MaxLength = 2147483647;
+            this.tbxPluginInfo.Multiline = true;
             this.tbxPluginInfo.Name = "tbxPluginInfo";
+            this.tbxPluginInfo.ScrollBars = System.Windows.Forms.RichTextBoxScrollBars.Both;
+            this.tbxPluginInfo.SelectedText = "";
             this.tbxPluginInfo.Size = new System.Drawing.Size(546, 383);
             this.tbxPluginInfo.TabIndex = 0;
             this.tbxPluginInfo.Text = "Select a Plugin to view its description.";
+            this.tbxPluginInfo.UseSelectable = true;
+            this.tbxPluginInfo.UseStyleColors = true;
             // 
             // menuPlugins
             // 
@@ -226,26 +251,20 @@
             // 
             // tabPackets
             // 
-            this.tabPackets.Controls.Add(this.tbxPacketInfo);
             this.tabPackets.Controls.Add(this.menuPackets);
+            this.tabPackets.Controls.Add(this.tbxPacketInfo);
             this.tabPackets.Controls.Add(this.listPackets);
+            this.tabPackets.HorizontalScrollbarBarColor = false;
+            this.tabPackets.HorizontalScrollbarHighlightOnWheel = false;
+            this.tabPackets.HorizontalScrollbarSize = 0;
             this.tabPackets.Location = new System.Drawing.Point(4, 38);
             this.tabPackets.Name = "tabPackets";
             this.tabPackets.Size = new System.Drawing.Size(746, 416);
             this.tabPackets.TabIndex = 0;
             this.tabPackets.Text = "Packets";
-            // 
-            // tbxPacketInfo
-            // 
-            this.tbxPacketInfo.BackColor = System.Drawing.SystemColors.Control;
-            this.tbxPacketInfo.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.tbxPacketInfo.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.tbxPacketInfo.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.tbxPacketInfo.Location = new System.Drawing.Point(200, 33);
-            this.tbxPacketInfo.Name = "tbxPacketInfo";
-            this.tbxPacketInfo.Size = new System.Drawing.Size(546, 383);
-            this.tbxPacketInfo.TabIndex = 0;
-            this.tbxPacketInfo.Text = "Select a Packet to view its description.";
+            this.tabPackets.VerticalScrollbarBarColor = false;
+            this.tabPackets.VerticalScrollbarHighlightOnWheel = false;
+            this.tabPackets.VerticalScrollbarSize = 0;
             // 
             // menuPackets
             // 
@@ -266,6 +285,26 @@
             this.openPacketFolderToolStripMenuItem.Size = new System.Drawing.Size(128, 29);
             this.openPacketFolderToolStripMenuItem.Text = "Open Packet Folder";
             this.openPacketFolderToolStripMenuItem.Click += new System.EventHandler(this.btnOpenPacketFolder_Click);
+            // 
+            // tbxPacketInfo
+            // 
+            this.tbxPacketInfo.BackColor = System.Drawing.SystemColors.Control;
+            this.tbxPacketInfo.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.tbxPacketInfo.Dock = System.Windows.Forms.DockStyle.Bottom;
+            this.tbxPacketInfo.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.tbxPacketInfo.Lines = new string[] {
+        "Select a Packet to view its description."};
+            this.tbxPacketInfo.Location = new System.Drawing.Point(200, 33);
+            this.tbxPacketInfo.MaxLength = 2147483647;
+            this.tbxPacketInfo.Multiline = true;
+            this.tbxPacketInfo.Name = "tbxPacketInfo";
+            this.tbxPacketInfo.ScrollBars = System.Windows.Forms.RichTextBoxScrollBars.Both;
+            this.tbxPacketInfo.SelectedText = "";
+            this.tbxPacketInfo.Size = new System.Drawing.Size(546, 383);
+            this.tbxPacketInfo.TabIndex = 0;
+            this.tbxPacketInfo.Text = "Select a Packet to view its description.";
+            this.tbxPacketInfo.UseSelectable = true;
+            this.tbxPacketInfo.UseStyleColors = true;
             // 
             // listPackets
             // 
@@ -295,11 +334,17 @@
             this.tabSettings.Controls.Add(this.lblSBD);
             this.tabSettings.Controls.Add(this.metroPanel1);
             this.tabSettings.Controls.Add(this.menuSettings);
+            this.tabSettings.HorizontalScrollbarBarColor = false;
+            this.tabSettings.HorizontalScrollbarHighlightOnWheel = false;
+            this.tabSettings.HorizontalScrollbarSize = 0;
             this.tabSettings.Location = new System.Drawing.Point(4, 38);
             this.tabSettings.Name = "tabSettings";
             this.tabSettings.Size = new System.Drawing.Size(746, 416);
             this.tabSettings.TabIndex = 0;
             this.tabSettings.Text = "Settings";
+            this.tabSettings.VerticalScrollbarBarColor = false;
+            this.tabSettings.VerticalScrollbarHighlightOnWheel = false;
+            this.tabSettings.VerticalScrollbarSize = 0;
             // 
             // metroPanel2
             // 
@@ -486,74 +531,136 @@
             // 
             // tabAbout
             // 
-            this.tabAbout.Controls.Add(this.tbxCredits);
-            this.tabAbout.Controls.Add(this.lblCredits);
+            this.tabAbout.Controls.Add(this.label1);
+            this.tabAbout.Controls.Add(this.metroLabel7);
+            this.tabAbout.Controls.Add(this.metroLabel6);
+            this.tabAbout.Controls.Add(this.metroLabel5);
+            this.tabAbout.Controls.Add(this.metroLabel4);
+            this.tabAbout.Controls.Add(this.metroLabel3);
+            this.tabAbout.Controls.Add(this.metroLabel2);
+            this.tabAbout.Controls.Add(this.metroLabel1);
             this.tabAbout.Controls.Add(this.lblVersion);
             this.tabAbout.Controls.Add(this.lblKronks);
-            this.tabAbout.Controls.Add(this.lblKRelay);
             this.tabAbout.Controls.Add(this.pbxGang);
+            this.tabAbout.HorizontalScrollbarBarColor = true;
+            this.tabAbout.HorizontalScrollbarHighlightOnWheel = false;
+            this.tabAbout.HorizontalScrollbarSize = 10;
             this.tabAbout.Location = new System.Drawing.Point(4, 38);
             this.tabAbout.Name = "tabAbout";
             this.tabAbout.Size = new System.Drawing.Size(746, 416);
             this.tabAbout.TabIndex = 0;
             this.tabAbout.Text = "About";
             this.tabAbout.UseVisualStyleBackColor = true;
+            this.tabAbout.VerticalScrollbarBarColor = true;
+            this.tabAbout.VerticalScrollbarHighlightOnWheel = false;
+            this.tabAbout.VerticalScrollbarSize = 10;
             // 
-            // tbxCredits
+            // label1
             // 
-            this.tbxCredits.BackColor = System.Drawing.SystemColors.Window;
-            this.tbxCredits.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.tbxCredits.Cursor = System.Windows.Forms.Cursors.Default;
-            this.tbxCredits.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.tbxCredits.Location = new System.Drawing.Point(0, 149);
-            this.tbxCredits.Name = "tbxCredits";
-            this.tbxCredits.ReadOnly = true;
-            this.tbxCredits.Size = new System.Drawing.Size(461, 267);
-            this.tbxCredits.TabIndex = 0;
-            this.tbxCredits.Text = "";
+            this.label1.AutoSize = true;
+            this.label1.Font = new System.Drawing.Font("Segoe UI", 26.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label1.ForeColor = System.Drawing.Color.DodgerBlue;
+            this.label1.Location = new System.Drawing.Point(2, 14);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(143, 47);
+            this.label1.TabIndex = 14;
+            this.label1.Text = "K Relay";
             // 
-            // lblCredits
+            // metroLabel7
             // 
-            this.lblCredits.AutoSize = true;
-            this.lblCredits.Font = new System.Drawing.Font("Segoe UI Light", 15.75F, System.Drawing.FontStyle.Bold);
-            this.lblCredits.Location = new System.Drawing.Point(10, 111);
-            this.lblCredits.Name = "lblCredits";
-            this.lblCredits.Size = new System.Drawing.Size(81, 30);
-            this.lblCredits.TabIndex = 0;
-            this.lblCredits.Text = "Credits";
+            this.metroLabel7.AutoSize = true;
+            this.metroLabel7.Location = new System.Drawing.Point(10, 319);
+            this.metroLabel7.Name = "metroLabel7";
+            this.metroLabel7.Size = new System.Drawing.Size(72, 38);
+            this.metroLabel7.TabIndex = 13;
+            this.metroLabel7.Text = "- Kithio\r\n- ossimc82";
+            // 
+            // metroLabel6
+            // 
+            this.metroLabel6.AutoSize = true;
+            this.metroLabel6.FontWeight = MetroFramework.MetroLabelWeight.Bold;
+            this.metroLabel6.ForeColor = System.Drawing.Color.DodgerBlue;
+            this.metroLabel6.Location = new System.Drawing.Point(10, 300);
+            this.metroLabel6.Name = "metroLabel6";
+            this.metroLabel6.Size = new System.Drawing.Size(58, 19);
+            this.metroLabel6.TabIndex = 12;
+            this.metroLabel6.Text = "Design:";
+            this.metroLabel6.UseCustomForeColor = true;
+            // 
+            // metroLabel5
+            // 
+            this.metroLabel5.AutoSize = true;
+            this.metroLabel5.FontWeight = MetroFramework.MetroLabelWeight.Bold;
+            this.metroLabel5.ForeColor = System.Drawing.Color.DodgerBlue;
+            this.metroLabel5.Location = new System.Drawing.Point(10, 174);
+            this.metroLabel5.Name = "metroLabel5";
+            this.metroLabel5.Size = new System.Drawing.Size(97, 19);
+            this.metroLabel5.TabIndex = 11;
+            this.metroLabel5.Text = "Contributors:";
+            this.metroLabel5.UseCustomForeColor = true;
+            // 
+            // metroLabel4
+            // 
+            this.metroLabel4.AutoSize = true;
+            this.metroLabel4.Location = new System.Drawing.Point(10, 193);
+            this.metroLabel4.Name = "metroLabel4";
+            this.metroLabel4.Size = new System.Drawing.Size(84, 95);
+            this.metroLabel4.TabIndex = 10;
+            this.metroLabel4.Text = "- MrNobody\r\n- ossimc82\r\n- Knorrex\r\n- Alde\r\n- 059";
+            // 
+            // metroLabel3
+            // 
+            this.metroLabel3.AutoSize = true;
+            this.metroLabel3.FontSize = MetroFramework.MetroLabelSize.Tall;
+            this.metroLabel3.FontWeight = MetroFramework.MetroLabelWeight.Bold;
+            this.metroLabel3.Location = new System.Drawing.Point(8, 105);
+            this.metroLabel3.Name = "metroLabel3";
+            this.metroLabel3.Size = new System.Drawing.Size(76, 25);
+            this.metroLabel3.TabIndex = 9;
+            this.metroLabel3.Text = "Credits:";
+            this.metroLabel3.UseStyleColors = true;
+            // 
+            // metroLabel2
+            // 
+            this.metroLabel2.AutoSize = true;
+            this.metroLabel2.Location = new System.Drawing.Point(10, 149);
+            this.metroLabel2.Name = "metroLabel2";
+            this.metroLabel2.Size = new System.Drawing.Size(135, 19);
+            this.metroLabel2.TabIndex = 8;
+            this.metroLabel2.Text = "- KrazyShank / Kronks";
+            // 
+            // metroLabel1
+            // 
+            this.metroLabel1.AutoSize = true;
+            this.metroLabel1.FontWeight = MetroFramework.MetroLabelWeight.Bold;
+            this.metroLabel1.ForeColor = System.Drawing.Color.DodgerBlue;
+            this.metroLabel1.Location = new System.Drawing.Point(10, 130);
+            this.metroLabel1.Name = "metroLabel1";
+            this.metroLabel1.Size = new System.Drawing.Size(64, 19);
+            this.metroLabel1.TabIndex = 7;
+            this.metroLabel1.Text = "Creator:";
+            this.metroLabel1.UseCustomForeColor = true;
             // 
             // lblVersion
             // 
             this.lblVersion.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.lblVersion.AutoSize = true;
-            this.lblVersion.Font = new System.Drawing.Font("Segoe UI Light", 36F);
             this.lblVersion.Location = new System.Drawing.Point(589, 9);
             this.lblVersion.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.lblVersion.Name = "lblVersion";
-            this.lblVersion.Size = new System.Drawing.Size(147, 65);
+            this.lblVersion.Size = new System.Drawing.Size(42, 19);
             this.lblVersion.TabIndex = 0;
             this.lblVersion.Text = "v0.2.0";
             // 
             // lblKronks
             // 
             this.lblKronks.AutoSize = true;
-            this.lblKronks.Font = new System.Drawing.Font("Segoe UI Light", 13.875F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblKronks.Location = new System.Drawing.Point(10, 80);
+            this.lblKronks.Location = new System.Drawing.Point(10, 61);
             this.lblKronks.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.lblKronks.Name = "lblKronks";
-            this.lblKronks.Size = new System.Drawing.Size(194, 25);
+            this.lblKronks.Size = new System.Drawing.Size(143, 19);
             this.lblKronks.TabIndex = 0;
             this.lblKronks.Text = "By KrazyShank / Kronks";
-            // 
-            // lblKRelay
-            // 
-            this.lblKRelay.AutoSize = true;
-            this.lblKRelay.Font = new System.Drawing.Font("Segoe UI", 36F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblKRelay.Location = new System.Drawing.Point(10, 10);
-            this.lblKRelay.Name = "lblKRelay";
-            this.lblKRelay.Size = new System.Drawing.Size(182, 65);
-            this.lblKRelay.TabIndex = 0;
-            this.lblKRelay.Text = "K Relay";
             // 
             // pbxGang
             // 
@@ -620,11 +727,11 @@
         #endregion
 
         private MetroFramework.Controls.MetroTabControl tabMain;
-        private System.Windows.Forms.TabPage tabInfo;
-        private System.Windows.Forms.TabPage tabPlugins;
-        private System.Windows.Forms.TabPage tabPackets;
-        private System.Windows.Forms.TabPage tabSettings;
-        private System.Windows.Forms.TabPage tabAbout;
+        private MetroFramework.Controls.MetroTabPage tabInfo;
+        private MetroFramework.Controls.MetroTabPage tabPlugins;
+        private MetroFramework.Controls.MetroTabPage tabPackets;
+        private MetroFramework.Controls.MetroTabPage tabSettings;
+        private MetroFramework.Controls.MetroTabPage tabAbout;
         private MetroFramework.Controls.MetroTextBox tbxLog;
         private System.Windows.Forms.MenuStrip menuInfo;
         private System.Windows.Forms.ToolStripMenuItem btnToggleProxy;
@@ -638,8 +745,8 @@
         private System.Windows.Forms.MenuStrip menuSettings;
         private System.Windows.Forms.ToolStripMenuItem openPluginFolderToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem openPacketFolderToolStripMenuItem;
-        private System.Windows.Forms.RichTextBox tbxPluginInfo;
-        private System.Windows.Forms.RichTextBox tbxPacketInfo;
+        private K_Relay.Controls.MetroRichTextBox tbxPluginInfo;
+        private K_Relay.Controls.MetroRichTextBox tbxPacketInfo;
         private MetroFramework.Controls.MetroLabel lblSBD;
         private MetroFramework.Controls.MetroToggle tglStartByDefault;
         private System.Windows.Forms.ToolStripMenuItem btnSaveSettings;
@@ -650,16 +757,21 @@
         private MetroFramework.Controls.MetroPanel metroPanel1;
         private MetroFramework.Controls.MetroComboBox lstServers;
         private MetroFramework.Controls.MetroLabel lblDefaultServer;
-        private System.Windows.Forms.Label lblKRelay;
         private System.Windows.Forms.PictureBox pbxGang;
-        private System.Windows.Forms.Label lblKronks;
-        private System.Windows.Forms.Label lblVersion;
-        private System.Windows.Forms.Label lblCredits;
-        private System.Windows.Forms.RichTextBox tbxCredits;
+        private MetroFramework.Controls.MetroLabel lblKronks;
+        private MetroFramework.Controls.MetroLabel lblVersion;
         private MetroFramework.Controls.MetroComboBox styleCombobox;
         private MetroFramework.Controls.MetroLabel styleLabel;
         private MetroFramework.Controls.MetroComboBox themeCombobox;
         private MetroFramework.Controls.MetroLabel themeLabel;
         private MetroFramework.Controls.MetroPanel metroPanel2;
+        private MetroFramework.Controls.MetroLabel metroLabel1;
+        private MetroFramework.Controls.MetroLabel metroLabel2;
+        private MetroFramework.Controls.MetroLabel metroLabel7;
+        private MetroFramework.Controls.MetroLabel metroLabel6;
+        private MetroFramework.Controls.MetroLabel metroLabel5;
+        private MetroFramework.Controls.MetroLabel metroLabel4;
+        private MetroFramework.Controls.MetroLabel metroLabel3;
+        private System.Windows.Forms.Label label1;
     }
 }

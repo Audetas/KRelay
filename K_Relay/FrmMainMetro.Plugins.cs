@@ -15,6 +15,7 @@ using Lib_K_Relay.Interface;
 using Lib_K_Relay.Utilities;
 using MetroFramework;
 using MetroFramework.Controls;
+using MetroFramework.Drawing;
 
 namespace K_Relay
 {
@@ -114,27 +115,27 @@ namespace K_Relay
             string type = plugin.GetType().ToString();
             string[] commands = plugin.GetCommands();
 
-            tbxPluginInfo.Clear();
+            TextBoxAppender.ClearBoxCache(tbxPluginInfo.ToWinFormRTB());
 
-            AppendText(tbxPluginInfo, "Plugin: ", Color.DodgerBlue, true);
-            AppendText(tbxPluginInfo, name, Color.Black, false);
-            AppendText(tbxPluginInfo, "\nAuthor: ", Color.DodgerBlue, true);
-            AppendText(tbxPluginInfo, author, Color.Black, false);
-            AppendText(tbxPluginInfo, "\nClassName: ", Color.DodgerBlue, true);
-            AppendText(tbxPluginInfo, type, Color.Black, false);
-            AppendText(tbxPluginInfo, "\n\nDescription:\n", Color.DodgerBlue, true);
-            AppendText(tbxPluginInfo, description, Color.Black, false);
+            TextBoxAppender.AppendText(tbxPluginInfo.ToWinFormRTB(), "Plugin: ", Color.DodgerBlue, true);
+            TextBoxAppender.AppendText(tbxPluginInfo.ToWinFormRTB(), name, Color.Empty, false);
+            TextBoxAppender.AppendText(tbxPluginInfo.ToWinFormRTB(), "\nAuthor: ", Color.DodgerBlue, true);
+            TextBoxAppender.AppendText(tbxPluginInfo.ToWinFormRTB(), author, Color.Empty, false);
+            TextBoxAppender.AppendText(tbxPluginInfo.ToWinFormRTB(), "\nClassName: ", Color.DodgerBlue, true);
+            TextBoxAppender.AppendText(tbxPluginInfo.ToWinFormRTB(), type, Color.Empty, false);
+            TextBoxAppender.AppendText(tbxPluginInfo.ToWinFormRTB(), "\n\nDescription:\n", Color.DodgerBlue, true);
+            TextBoxAppender.AppendText(tbxPluginInfo.ToWinFormRTB(), description, Color.Empty, false);
             if (commands.Count() > 0)
             {
-                AppendText(tbxPluginInfo, "\n\nCommands:", Color.DodgerBlue, true);
+                TextBoxAppender.AppendText(tbxPluginInfo.ToWinFormRTB(), "\n\nCommands:", Color.DodgerBlue, true);
                 foreach (string command in commands)
-                {
-                    AppendText(tbxPluginInfo, "\n  " + command, Color.Black, false);
-                }
+                    TextBoxAppender.AppendText(tbxPluginInfo.ToWinFormRTB(), "\n  " + command, Color.Empty, false);
             }
+
+            ReAppendTextBoxes();
         }
 
-        public static void AppendText(RichTextBox box, string text, Color color, Boolean bold)
+        public void AppendText(RichTextBox box, string text, Color color, Boolean bold)
         {
             box.SelectionStart = box.TextLength;
             box.SelectionLength = 0;
@@ -142,7 +143,7 @@ namespace K_Relay
                 box.SelectionFont = new Font(box.Font, FontStyle.Bold);
             else
                 box.SelectionFont = new Font(box.Font, FontStyle.Regular);
-            box.SelectionColor = color;
+            box.SelectionColor = color == Color.Empty ? MetroPaint.ForeColor.Label.Normal(m_themeManager.Theme) : color;
             box.AppendText(text);
             box.SelectionColor = box.ForeColor;
         }

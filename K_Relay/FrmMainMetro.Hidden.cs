@@ -16,26 +16,26 @@ namespace K_Relay
         
         private void InitAbout()
         {
-            this.tbxCredits.GotFocus += tbxCredits_GotFocus;
-            this.tbxCredits.MouseDown += tbxCredits_GotFocus;
-
-            AppendText(tbxCredits, " Creator:\n", Color.DodgerBlue, true);
-            AppendText(tbxCredits, "  - KrazyShank / Kronks\n\n", Color.Black, false);
-            AppendText(tbxCredits, " Contributors:\n", Color.DodgerBlue, true);
-            AppendText(tbxCredits, "  - MrNobody\n", Color.Black, false);
-            AppendText(tbxCredits, "  - Ossimc82\n", Color.Black, false);
-            AppendText(tbxCredits, "  - Knorrex\n", Color.Black, false);
-            AppendText(tbxCredits, "  - Alde\n", Color.Black, false);
-            AppendText(tbxCredits, "  - 059\n\n", Color.Black, false);
-            AppendText(tbxCredits, " Design:\n", Color.DodgerBlue, true);
-            AppendText(tbxCredits, "  - Kithio", Color.Black, false);
+            //this.tbxCredits.GotFocus += tbxCredits_GotFocus;
+            //this.tbxCredits.MouseDown += tbxCredits_GotFocus;
+            //
+            //TextBoxAppender.AppendText(tbxCredits.ToWinFormRTB(), " Creator:\n", Color.DodgerBlue, true);
+            //TextBoxAppender.AppendText(tbxCredits.ToWinFormRTB(), "  - KrazyShank / Kronks\n\n", Color.Empty, false);
+            //TextBoxAppender.AppendText(tbxCredits.ToWinFormRTB(), " Contributors:\n", Color.DodgerBlue, true);
+            //TextBoxAppender.AppendText(tbxCredits.ToWinFormRTB(), "  - MrNobody\n", Color.Empty, false);
+            //TextBoxAppender.AppendText(tbxCredits.ToWinFormRTB(), "  - Ossimc82\n", Color.Empty, false);
+            //TextBoxAppender.AppendText(tbxCredits.ToWinFormRTB(), "  - Knorrex\n", Color.Empty, false);
+            //TextBoxAppender.AppendText(tbxCredits.ToWinFormRTB(), "  - Alde\n", Color.Empty, false);
+            //TextBoxAppender.AppendText(tbxCredits.ToWinFormRTB(), "  - 059\n\n", Color.Empty, false);
+            //TextBoxAppender.AppendText(tbxCredits.ToWinFormRTB(), " Design:\n", Color.DodgerBlue, true);
+            //TextBoxAppender.AppendText(tbxCredits.ToWinFormRTB(), "  - Kithio", Color.Empty, false);
         }
 
         private void tbxCredits_GotFocus(object sender, EventArgs e)
         {
             BeginInvoke((Action)delegate
             {
-                HideCaret(tbxCredits.Handle);
+                //HideCaret(tbxCredits.Handle);
             });
         }
 
