@@ -37,9 +37,9 @@
             this.btnSaveLog = new System.Windows.Forms.ToolStripMenuItem();
             this.btnClearLog = new System.Windows.Forms.ToolStripMenuItem();
             this.tabPlugins = new MetroFramework.Controls.MetroTabPage();
-            this.tbxPluginInfo = new K_Relay.Controls.MetroRichTextBox();
             this.menuPlugins = new System.Windows.Forms.MenuStrip();
             this.openPluginFolderToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.tbxPluginInfo = new K_Relay.Controls.MetroRichTextBox();
             this.listPlugins = new K_Relay.Controls.MetroListBox();
             this.tabPackets = new MetroFramework.Controls.MetroTabPage();
             this.menuPackets = new System.Windows.Forms.MenuStrip();
@@ -99,7 +99,7 @@
             this.tabMain.Controls.Add(this.tabAbout);
             this.tabMain.Location = new System.Drawing.Point(23, 63);
             this.tabMain.Name = "tabMain";
-            this.tabMain.SelectedIndex = 4;
+            this.tabMain.SelectedIndex = 0;
             this.tabMain.Size = new System.Drawing.Size(754, 458);
             this.tabMain.TabIndex = 0;
             this.tabMain.UseSelectable = true;
@@ -116,7 +116,7 @@
             this.tabInfo.Name = "tabInfo";
             this.tabInfo.Size = new System.Drawing.Size(746, 416);
             this.tabInfo.TabIndex = 0;
-            this.tabInfo.Text = "Info";
+            this.tabInfo.Text = "Information";
             this.tabInfo.VerticalScrollbarBarColor = false;
             this.tabInfo.VerticalScrollbarHighlightOnWheel = false;
             this.tabInfo.VerticalScrollbarSize = 0;
@@ -177,8 +177,8 @@
             // 
             // tabPlugins
             // 
-            this.tabPlugins.Controls.Add(this.tbxPluginInfo);
             this.tabPlugins.Controls.Add(this.menuPlugins);
+            this.tabPlugins.Controls.Add(this.tbxPluginInfo);
             this.tabPlugins.Controls.Add(this.listPlugins);
             this.tabPlugins.HorizontalScrollbarBarColor = false;
             this.tabPlugins.HorizontalScrollbarHighlightOnWheel = false;
@@ -191,26 +191,6 @@
             this.tabPlugins.VerticalScrollbarBarColor = false;
             this.tabPlugins.VerticalScrollbarHighlightOnWheel = false;
             this.tabPlugins.VerticalScrollbarSize = 0;
-            // 
-            // tbxPluginInfo
-            // 
-            this.tbxPluginInfo.BackColor = System.Drawing.SystemColors.Control;
-            this.tbxPluginInfo.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.tbxPluginInfo.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.tbxPluginInfo.Font = new System.Drawing.Font("Segoe UI", 10F);
-            this.tbxPluginInfo.Lines = new string[] {
-        "Select a Plugin to view its description."};
-            this.tbxPluginInfo.Location = new System.Drawing.Point(200, 33);
-            this.tbxPluginInfo.MaxLength = 2147483647;
-            this.tbxPluginInfo.Multiline = true;
-            this.tbxPluginInfo.Name = "tbxPluginInfo";
-            this.tbxPluginInfo.ScrollBars = System.Windows.Forms.RichTextBoxScrollBars.Both;
-            this.tbxPluginInfo.SelectedText = "";
-            this.tbxPluginInfo.Size = new System.Drawing.Size(546, 383);
-            this.tbxPluginInfo.TabIndex = 0;
-            this.tbxPluginInfo.Text = "Select a Plugin to view its description.";
-            this.tbxPluginInfo.UseSelectable = true;
-            this.tbxPluginInfo.UseStyleColors = true;
             // 
             // menuPlugins
             // 
@@ -231,6 +211,26 @@
             this.openPluginFolderToolStripMenuItem.Size = new System.Drawing.Size(124, 29);
             this.openPluginFolderToolStripMenuItem.Text = "Open Plugin Folder";
             this.openPluginFolderToolStripMenuItem.Click += new System.EventHandler(this.btnOpenPluginFolder_Click);
+            // 
+            // tbxPluginInfo
+            // 
+            this.tbxPluginInfo.BackColor = System.Drawing.SystemColors.Control;
+            this.tbxPluginInfo.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.tbxPluginInfo.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.tbxPluginInfo.Font = new System.Drawing.Font("Segoe UI", 10F);
+            this.tbxPluginInfo.Lines = new string[] {
+        "Select a Plugin to view its description."};
+            this.tbxPluginInfo.Location = new System.Drawing.Point(200, 0);
+            this.tbxPluginInfo.MaxLength = 2147483647;
+            this.tbxPluginInfo.Multiline = true;
+            this.tbxPluginInfo.Name = "tbxPluginInfo";
+            this.tbxPluginInfo.ScrollBars = System.Windows.Forms.RichTextBoxScrollBars.Both;
+            this.tbxPluginInfo.SelectedText = "";
+            this.tbxPluginInfo.Size = new System.Drawing.Size(546, 416);
+            this.tbxPluginInfo.TabIndex = 0;
+            this.tbxPluginInfo.Text = "Select a Plugin to view its description.";
+            this.tbxPluginInfo.UseSelectable = true;
+            this.tbxPluginInfo.UseStyleColors = true;
             // 
             // listPlugins
             // 
@@ -698,7 +698,7 @@
             this.MaximizeBox = false;
             this.Name = "FrmMainMetro";
             this.Resizable = false;
-            this.Style = MetroFramework.MetroColorStyle.Pink;
+            this.Style = MetroFramework.MetroColorStyle.Default;
             this.Text = "K Relay";
             this.Shown += new System.EventHandler(this.FrmMainMetro_Shown);
             this.tabMain.ResumeLayout(false);
