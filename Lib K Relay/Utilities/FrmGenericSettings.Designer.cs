@@ -87,7 +87,6 @@
             this.MaximizeBox = false;
             this.Name = "FrmGenericSettings";
             this.Padding = new System.Windows.Forms.Padding(10, 60, 10, 10);
-            this.Style = MetroFramework.MetroColorStyle.Pink;
             this.Text = "FrmGenericSettings";
             this.menuSettings.ResumeLayout(false);
             this.menuSettings.PerformLayout();

@@ -47,7 +47,6 @@ namespace K_Relay
                                 "Please try again later.\n" +
                                 "K Relay will now exit.", "K Relay", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 Environment.Exit(Environment.ExitCode);
-                return;
             }
             catch (Exception e)
             {
@@ -57,7 +56,6 @@ namespace K_Relay
                                 "Please ensure you extract all of the files to the same folder!\n" +
                                 "K Relay will now exit.", "K Relay", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 Environment.Exit(Environment.ExitCode);
-                return;
             }
 
             _clients = new List<Client>();

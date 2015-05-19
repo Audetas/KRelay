@@ -41,7 +41,7 @@ namespace K_Relay
                         MessageBoxIcon.Error);
             }
         }
-
+        
         private void listPackets_SelectedIndexChanged(object sender, EventArgs e)
         {
             if (listPackets.ListBox.SelectedItem != null)

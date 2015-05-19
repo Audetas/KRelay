@@ -259,6 +259,8 @@ namespace K_Relay.Controls
             scrollBar.Height = this.baseListBox.Height;
             scrollBar.Location = new Point(baseListBox.Width + 2, 3);
 
+            if (scrollBar.Height == 0) return;
+
             scrollBar.Maximum = this.ItemHeight * this.baseListBox.Items.Count;
             scrollBar.Minimum = 0;
 

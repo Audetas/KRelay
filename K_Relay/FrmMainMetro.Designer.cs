@@ -47,7 +47,6 @@
             this.tbxPacketInfo = new K_Relay.Controls.MetroRichTextBox();
             this.listPackets = new K_Relay.Controls.MetroListBox();
             this.tabSettings = new MetroFramework.Controls.MetroTabPage();
-            this.metroPanel2 = new MetroFramework.Controls.MetroPanel();
             this.lblUseInternalReconnectHandler = new MetroFramework.Controls.MetroLabel();
             this.tglUseInternalReconnectHandler = new MetroFramework.Controls.MetroToggle();
             this.lblInternalReconnect = new MetroFramework.Controls.MetroLabel();
@@ -64,17 +63,17 @@
             this.menuSettings = new System.Windows.Forms.MenuStrip();
             this.btnSaveSettings = new System.Windows.Forms.ToolStripMenuItem();
             this.tabAbout = new MetroFramework.Controls.MetroTabPage();
+            this.pnlSide = new System.Windows.Forms.Panel();
+            this.pbxGang = new System.Windows.Forms.PictureBox();
             this.label1 = new System.Windows.Forms.Label();
             this.metroLabel7 = new MetroFramework.Controls.MetroLabel();
             this.metroLabel6 = new MetroFramework.Controls.MetroLabel();
             this.metroLabel5 = new MetroFramework.Controls.MetroLabel();
             this.metroLabel4 = new MetroFramework.Controls.MetroLabel();
-            this.metroLabel3 = new MetroFramework.Controls.MetroLabel();
             this.metroLabel2 = new MetroFramework.Controls.MetroLabel();
             this.metroLabel1 = new MetroFramework.Controls.MetroLabel();
             this.lblVersion = new MetroFramework.Controls.MetroLabel();
             this.lblKronks = new MetroFramework.Controls.MetroLabel();
-            this.pbxGang = new System.Windows.Forms.PictureBox();
             this.lblStatus = new MetroFramework.Controls.MetroLabel();
             this.tabMain.SuspendLayout();
             this.tabInfo.SuspendLayout();
@@ -87,20 +86,24 @@
             this.metroPanel1.SuspendLayout();
             this.menuSettings.SuspendLayout();
             this.tabAbout.SuspendLayout();
+            this.pnlSide.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pbxGang)).BeginInit();
             this.SuspendLayout();
             // 
             // tabMain
             // 
+            this.tabMain.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.tabMain.Controls.Add(this.tabInfo);
             this.tabMain.Controls.Add(this.tabPlugins);
             this.tabMain.Controls.Add(this.tabPackets);
             this.tabMain.Controls.Add(this.tabSettings);
             this.tabMain.Controls.Add(this.tabAbout);
-            this.tabMain.Location = new System.Drawing.Point(23, 63);
+            this.tabMain.Location = new System.Drawing.Point(21, 53);
             this.tabMain.Name = "tabMain";
-            this.tabMain.SelectedIndex = 0;
-            this.tabMain.Size = new System.Drawing.Size(754, 458);
+            this.tabMain.SelectedIndex = 4;
+            this.tabMain.Size = new System.Drawing.Size(556, 306);
             this.tabMain.TabIndex = 0;
             this.tabMain.UseSelectable = true;
             this.tabMain.UseStyleColors = true;
@@ -114,7 +117,7 @@
             this.tabInfo.HorizontalScrollbarSize = 0;
             this.tabInfo.Location = new System.Drawing.Point(4, 38);
             this.tabInfo.Name = "tabInfo";
-            this.tabInfo.Size = new System.Drawing.Size(746, 416);
+            this.tabInfo.Size = new System.Drawing.Size(548, 264);
             this.tabInfo.TabIndex = 0;
             this.tabInfo.Text = "Information";
             this.tabInfo.VerticalScrollbarBarColor = false;
@@ -133,7 +136,7 @@
             this.tbxLog.ReadOnly = true;
             this.tbxLog.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
             this.tbxLog.SelectedText = "";
-            this.tbxLog.Size = new System.Drawing.Size(746, 383);
+            this.tbxLog.Size = new System.Drawing.Size(548, 231);
             this.tbxLog.TabIndex = 0;
             this.tbxLog.UseSelectable = true;
             this.tbxLog.UseStyleColors = true;
@@ -149,7 +152,7 @@
             this.menuInfo.LayoutStyle = System.Windows.Forms.ToolStripLayoutStyle.HorizontalStackWithOverflow;
             this.menuInfo.Location = new System.Drawing.Point(0, 0);
             this.menuInfo.Name = "menuInfo";
-            this.menuInfo.Size = new System.Drawing.Size(746, 33);
+            this.menuInfo.Size = new System.Drawing.Size(548, 33);
             this.menuInfo.TabIndex = 0;
             this.menuInfo.Text = "Info";
             // 
@@ -185,7 +188,7 @@
             this.tabPlugins.HorizontalScrollbarSize = 0;
             this.tabPlugins.Location = new System.Drawing.Point(4, 38);
             this.tabPlugins.Name = "tabPlugins";
-            this.tabPlugins.Size = new System.Drawing.Size(746, 416);
+            this.tabPlugins.Size = new System.Drawing.Size(548, 264);
             this.tabPlugins.TabIndex = 0;
             this.tabPlugins.Text = "Plugins";
             this.tabPlugins.VerticalScrollbarBarColor = false;
@@ -200,7 +203,7 @@
             this.openPluginFolderToolStripMenuItem});
             this.menuPlugins.Location = new System.Drawing.Point(200, 0);
             this.menuPlugins.Name = "menuPlugins";
-            this.menuPlugins.Size = new System.Drawing.Size(546, 33);
+            this.menuPlugins.Size = new System.Drawing.Size(348, 33);
             this.menuPlugins.TabIndex = 0;
             this.menuPlugins.Text = "menuStrip1";
             // 
@@ -216,17 +219,16 @@
             // 
             this.tbxPluginInfo.BackColor = System.Drawing.SystemColors.Control;
             this.tbxPluginInfo.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.tbxPluginInfo.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tbxPluginInfo.Font = new System.Drawing.Font("Segoe UI", 10F);
             this.tbxPluginInfo.Lines = new string[] {
         "Select a Plugin to view its description."};
-            this.tbxPluginInfo.Location = new System.Drawing.Point(200, 0);
+            this.tbxPluginInfo.Location = new System.Drawing.Point(199, 33);
             this.tbxPluginInfo.MaxLength = 2147483647;
             this.tbxPluginInfo.Multiline = true;
             this.tbxPluginInfo.Name = "tbxPluginInfo";
             this.tbxPluginInfo.ScrollBars = System.Windows.Forms.RichTextBoxScrollBars.Both;
             this.tbxPluginInfo.SelectedText = "";
-            this.tbxPluginInfo.Size = new System.Drawing.Size(546, 416);
+            this.tbxPluginInfo.Size = new System.Drawing.Size(349, 231);
             this.tbxPluginInfo.TabIndex = 0;
             this.tbxPluginInfo.Text = "Select a Plugin to view its description.";
             this.tbxPluginInfo.UseSelectable = true;
@@ -242,7 +244,7 @@
             this.listPlugins.ItemHeight = 15;
             this.listPlugins.Location = new System.Drawing.Point(0, 0);
             this.listPlugins.Name = "listPlugins";
-            this.listPlugins.Size = new System.Drawing.Size(200, 416);
+            this.listPlugins.Size = new System.Drawing.Size(200, 264);
             this.listPlugins.TabIndex = 0;
             this.listPlugins.TabStop = false;
             this.listPlugins.UseSelectable = true;
@@ -259,7 +261,7 @@
             this.tabPackets.HorizontalScrollbarSize = 0;
             this.tabPackets.Location = new System.Drawing.Point(4, 38);
             this.tabPackets.Name = "tabPackets";
-            this.tabPackets.Size = new System.Drawing.Size(746, 416);
+            this.tabPackets.Size = new System.Drawing.Size(548, 264);
             this.tabPackets.TabIndex = 0;
             this.tabPackets.Text = "Packets";
             this.tabPackets.VerticalScrollbarBarColor = false;
@@ -274,7 +276,7 @@
             this.openPacketFolderToolStripMenuItem});
             this.menuPackets.Location = new System.Drawing.Point(200, 0);
             this.menuPackets.Name = "menuPackets";
-            this.menuPackets.Size = new System.Drawing.Size(546, 33);
+            this.menuPackets.Size = new System.Drawing.Size(348, 33);
             this.menuPackets.TabIndex = 0;
             this.menuPackets.Text = "menuStrip1";
             // 
@@ -290,17 +292,16 @@
             // 
             this.tbxPacketInfo.BackColor = System.Drawing.SystemColors.Control;
             this.tbxPacketInfo.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.tbxPacketInfo.Dock = System.Windows.Forms.DockStyle.Bottom;
             this.tbxPacketInfo.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.tbxPacketInfo.Lines = new string[] {
         "Select a Packet to view its description."};
-            this.tbxPacketInfo.Location = new System.Drawing.Point(200, 33);
+            this.tbxPacketInfo.Location = new System.Drawing.Point(199, 33);
             this.tbxPacketInfo.MaxLength = 2147483647;
             this.tbxPacketInfo.Multiline = true;
             this.tbxPacketInfo.Name = "tbxPacketInfo";
             this.tbxPacketInfo.ScrollBars = System.Windows.Forms.RichTextBoxScrollBars.Both;
             this.tbxPacketInfo.SelectedText = "";
-            this.tbxPacketInfo.Size = new System.Drawing.Size(546, 383);
+            this.tbxPacketInfo.Size = new System.Drawing.Size(349, 231);
             this.tbxPacketInfo.TabIndex = 0;
             this.tbxPacketInfo.Text = "Select a Packet to view its description.";
             this.tbxPacketInfo.UseSelectable = true;
@@ -316,7 +317,7 @@
             this.listPackets.ItemHeight = 15;
             this.listPackets.Location = new System.Drawing.Point(0, 0);
             this.listPackets.Name = "listPackets";
-            this.listPackets.Size = new System.Drawing.Size(200, 416);
+            this.listPackets.Size = new System.Drawing.Size(200, 264);
             this.listPackets.TabIndex = 0;
             this.listPackets.TabStop = false;
             this.listPackets.UseSelectable = true;
@@ -325,7 +326,6 @@
             // 
             // tabSettings
             // 
-            this.tabSettings.Controls.Add(this.metroPanel2);
             this.tabSettings.Controls.Add(this.lblUseInternalReconnectHandler);
             this.tabSettings.Controls.Add(this.tglUseInternalReconnectHandler);
             this.tabSettings.Controls.Add(this.lblInternalReconnect);
@@ -339,25 +339,12 @@
             this.tabSettings.HorizontalScrollbarSize = 0;
             this.tabSettings.Location = new System.Drawing.Point(4, 38);
             this.tabSettings.Name = "tabSettings";
-            this.tabSettings.Size = new System.Drawing.Size(746, 416);
+            this.tabSettings.Size = new System.Drawing.Size(548, 264);
             this.tabSettings.TabIndex = 0;
             this.tabSettings.Text = "Settings";
             this.tabSettings.VerticalScrollbarBarColor = false;
             this.tabSettings.VerticalScrollbarHighlightOnWheel = false;
             this.tabSettings.VerticalScrollbarSize = 0;
-            // 
-            // metroPanel2
-            // 
-            this.metroPanel2.HorizontalScrollbarBarColor = true;
-            this.metroPanel2.HorizontalScrollbarHighlightOnWheel = false;
-            this.metroPanel2.HorizontalScrollbarSize = 10;
-            this.metroPanel2.Location = new System.Drawing.Point(247, 33);
-            this.metroPanel2.Name = "metroPanel2";
-            this.metroPanel2.Size = new System.Drawing.Size(499, 383);
-            this.metroPanel2.TabIndex = 8;
-            this.metroPanel2.VerticalScrollbarBarColor = true;
-            this.metroPanel2.VerticalScrollbarHighlightOnWheel = false;
-            this.metroPanel2.VerticalScrollbarSize = 10;
             // 
             // lblUseInternalReconnectHandler
             // 
@@ -379,7 +366,7 @@
             this.tglUseInternalReconnectHandler.Name = "tglUseInternalReconnectHandler";
             this.tglUseInternalReconnectHandler.Size = new System.Drawing.Size(50, 17);
             this.tglUseInternalReconnectHandler.TabIndex = 5;
-            this.tglUseInternalReconnectHandler.Text = "Aus";
+            this.tglUseInternalReconnectHandler.Text = "Off";
             this.tglUseInternalReconnectHandler.UseCustomBackColor = true;
             this.tglUseInternalReconnectHandler.UseSelectable = true;
             this.tglUseInternalReconnectHandler.CheckedChanged += new System.EventHandler(this.tglUseInternalReconnectHandler_CheckedChanged);
@@ -414,7 +401,7 @@
             this.tglStartByDefault.Name = "tglStartByDefault";
             this.tglStartByDefault.Size = new System.Drawing.Size(50, 17);
             this.tglStartByDefault.TabIndex = 0;
-            this.tglStartByDefault.Text = "Aus";
+            this.tglStartByDefault.Text = "Off";
             this.tglStartByDefault.UseCustomBackColor = true;
             this.tglStartByDefault.UseSelectable = true;
             this.tglStartByDefault.CheckedChanged += new System.EventHandler(this.tglStartByDefault_CheckedChanged);
@@ -425,25 +412,26 @@
             this.lblSBD.BackColor = System.Drawing.SystemColors.Control;
             this.lblSBD.Location = new System.Drawing.Point(10, 43);
             this.lblSBD.Name = "lblSBD";
-            this.lblSBD.Size = new System.Drawing.Size(136, 19);
+            this.lblSBD.Size = new System.Drawing.Size(137, 19);
             this.lblSBD.TabIndex = 0;
             this.lblSBD.Text = "Start Proxy By Default";
             // 
             // metroPanel1
             // 
+            this.metroPanel1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.metroPanel1.Controls.Add(this.styleCombobox);
             this.metroPanel1.Controls.Add(this.styleLabel);
             this.metroPanel1.Controls.Add(this.themeCombobox);
             this.metroPanel1.Controls.Add(this.themeLabel);
             this.metroPanel1.Controls.Add(this.lstServers);
             this.metroPanel1.Controls.Add(this.lblDefaultServer);
-            this.metroPanel1.Dock = System.Windows.Forms.DockStyle.Left;
+            this.metroPanel1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.metroPanel1.HorizontalScrollbarBarColor = true;
             this.metroPanel1.HorizontalScrollbarHighlightOnWheel = false;
             this.metroPanel1.HorizontalScrollbarSize = 10;
             this.metroPanel1.Location = new System.Drawing.Point(0, 33);
             this.metroPanel1.Name = "metroPanel1";
-            this.metroPanel1.Size = new System.Drawing.Size(250, 383);
+            this.metroPanel1.Size = new System.Drawing.Size(548, 231);
             this.metroPanel1.TabIndex = 0;
             this.metroPanel1.VerticalScrollbarBarColor = true;
             this.metroPanel1.VerticalScrollbarHighlightOnWheel = false;
@@ -505,7 +493,7 @@
             this.lblDefaultServer.AutoSize = true;
             this.lblDefaultServer.Location = new System.Drawing.Point(10, 70);
             this.lblDefaultServer.Name = "lblDefaultServer";
-            this.lblDefaultServer.Size = new System.Drawing.Size(91, 19);
+            this.lblDefaultServer.Size = new System.Drawing.Size(92, 19);
             this.lblDefaultServer.TabIndex = 0;
             this.lblDefaultServer.Text = "Default Server";
             // 
@@ -517,7 +505,7 @@
             this.btnSaveSettings});
             this.menuSettings.Location = new System.Drawing.Point(0, 0);
             this.menuSettings.Name = "menuSettings";
-            this.menuSettings.Size = new System.Drawing.Size(746, 33);
+            this.menuSettings.Size = new System.Drawing.Size(548, 33);
             this.menuSettings.TabIndex = 0;
             this.menuSettings.Text = "menuStrip1";
             // 
@@ -531,29 +519,52 @@
             // 
             // tabAbout
             // 
+            this.tabAbout.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.tabAbout.Controls.Add(this.pnlSide);
             this.tabAbout.Controls.Add(this.label1);
             this.tabAbout.Controls.Add(this.metroLabel7);
             this.tabAbout.Controls.Add(this.metroLabel6);
             this.tabAbout.Controls.Add(this.metroLabel5);
             this.tabAbout.Controls.Add(this.metroLabel4);
-            this.tabAbout.Controls.Add(this.metroLabel3);
             this.tabAbout.Controls.Add(this.metroLabel2);
             this.tabAbout.Controls.Add(this.metroLabel1);
             this.tabAbout.Controls.Add(this.lblVersion);
             this.tabAbout.Controls.Add(this.lblKronks);
-            this.tabAbout.Controls.Add(this.pbxGang);
             this.tabAbout.HorizontalScrollbarBarColor = true;
             this.tabAbout.HorizontalScrollbarHighlightOnWheel = false;
             this.tabAbout.HorizontalScrollbarSize = 10;
             this.tabAbout.Location = new System.Drawing.Point(4, 38);
             this.tabAbout.Name = "tabAbout";
-            this.tabAbout.Size = new System.Drawing.Size(746, 416);
+            this.tabAbout.Size = new System.Drawing.Size(548, 264);
             this.tabAbout.TabIndex = 0;
             this.tabAbout.Text = "About";
+            this.tabAbout.UseStyleColors = true;
             this.tabAbout.UseVisualStyleBackColor = true;
             this.tabAbout.VerticalScrollbarBarColor = true;
             this.tabAbout.VerticalScrollbarHighlightOnWheel = false;
             this.tabAbout.VerticalScrollbarSize = 10;
+            // 
+            // pnlSide
+            // 
+            this.pnlSide.BackColor = System.Drawing.Color.Transparent;
+            this.pnlSide.Controls.Add(this.pbxGang);
+            this.pnlSide.Dock = System.Windows.Forms.DockStyle.Right;
+            this.pnlSide.Location = new System.Drawing.Point(158, 0);
+            this.pnlSide.Name = "pnlSide";
+            this.pnlSide.Size = new System.Drawing.Size(388, 262);
+            this.pnlSide.TabIndex = 15;
+            // 
+            // pbxGang
+            // 
+            this.pbxGang.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.pbxGang.Image = ((System.Drawing.Image)(resources.GetObject("pbxGang.Image")));
+            this.pbxGang.Location = new System.Drawing.Point(-16, 31);
+            this.pbxGang.Margin = new System.Windows.Forms.Padding(2);
+            this.pbxGang.Name = "pbxGang";
+            this.pbxGang.Size = new System.Drawing.Size(423, 201);
+            this.pbxGang.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.pbxGang.TabIndex = 6;
+            this.pbxGang.TabStop = false;
             // 
             // label1
             // 
@@ -562,7 +573,7 @@
             this.label1.ForeColor = System.Drawing.Color.DodgerBlue;
             this.label1.Location = new System.Drawing.Point(2, 14);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(143, 47);
+            this.label1.Size = new System.Drawing.Size(142, 47);
             this.label1.TabIndex = 14;
             this.label1.Text = "K Relay";
             // 
@@ -592,7 +603,7 @@
             this.metroLabel5.AutoSize = true;
             this.metroLabel5.FontWeight = MetroFramework.MetroLabelWeight.Bold;
             this.metroLabel5.ForeColor = System.Drawing.Color.DodgerBlue;
-            this.metroLabel5.Location = new System.Drawing.Point(10, 174);
+            this.metroLabel5.Location = new System.Drawing.Point(10, 138);
             this.metroLabel5.Name = "metroLabel5";
             this.metroLabel5.Size = new System.Drawing.Size(97, 19);
             this.metroLabel5.TabIndex = 11;
@@ -602,28 +613,16 @@
             // metroLabel4
             // 
             this.metroLabel4.AutoSize = true;
-            this.metroLabel4.Location = new System.Drawing.Point(10, 193);
+            this.metroLabel4.Location = new System.Drawing.Point(10, 157);
             this.metroLabel4.Name = "metroLabel4";
             this.metroLabel4.Size = new System.Drawing.Size(84, 95);
             this.metroLabel4.TabIndex = 10;
             this.metroLabel4.Text = "- MrNobody\r\n- ossimc82\r\n- Knorrex\r\n- Alde\r\n- 059";
             // 
-            // metroLabel3
-            // 
-            this.metroLabel3.AutoSize = true;
-            this.metroLabel3.FontSize = MetroFramework.MetroLabelSize.Tall;
-            this.metroLabel3.FontWeight = MetroFramework.MetroLabelWeight.Bold;
-            this.metroLabel3.Location = new System.Drawing.Point(8, 105);
-            this.metroLabel3.Name = "metroLabel3";
-            this.metroLabel3.Size = new System.Drawing.Size(76, 25);
-            this.metroLabel3.TabIndex = 9;
-            this.metroLabel3.Text = "Credits:";
-            this.metroLabel3.UseStyleColors = true;
-            // 
             // metroLabel2
             // 
             this.metroLabel2.AutoSize = true;
-            this.metroLabel2.Location = new System.Drawing.Point(10, 149);
+            this.metroLabel2.Location = new System.Drawing.Point(10, 113);
             this.metroLabel2.Name = "metroLabel2";
             this.metroLabel2.Size = new System.Drawing.Size(135, 19);
             this.metroLabel2.TabIndex = 8;
@@ -634,9 +633,9 @@
             this.metroLabel1.AutoSize = true;
             this.metroLabel1.FontWeight = MetroFramework.MetroLabelWeight.Bold;
             this.metroLabel1.ForeColor = System.Drawing.Color.DodgerBlue;
-            this.metroLabel1.Location = new System.Drawing.Point(10, 130);
+            this.metroLabel1.Location = new System.Drawing.Point(10, 94);
             this.metroLabel1.Name = "metroLabel1";
-            this.metroLabel1.Size = new System.Drawing.Size(64, 19);
+            this.metroLabel1.Size = new System.Drawing.Size(65, 19);
             this.metroLabel1.TabIndex = 7;
             this.metroLabel1.Text = "Creator:";
             this.metroLabel1.UseCustomForeColor = true;
@@ -645,7 +644,7 @@
             // 
             this.lblVersion.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.lblVersion.AutoSize = true;
-            this.lblVersion.Location = new System.Drawing.Point(589, 9);
+            this.lblVersion.Location = new System.Drawing.Point(587, 9);
             this.lblVersion.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.lblVersion.Name = "lblVersion";
             this.lblVersion.Size = new System.Drawing.Size(42, 19);
@@ -662,25 +661,12 @@
             this.lblKronks.TabIndex = 0;
             this.lblKronks.Text = "By KrazyShank / Kronks";
             // 
-            // pbxGang
-            // 
-            this.pbxGang.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.pbxGang.Image = ((System.Drawing.Image)(resources.GetObject("pbxGang.Image")));
-            this.pbxGang.Location = new System.Drawing.Point(461, 149);
-            this.pbxGang.Margin = new System.Windows.Forms.Padding(2);
-            this.pbxGang.Name = "pbxGang";
-            this.pbxGang.Size = new System.Drawing.Size(285, 267);
-            this.pbxGang.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.pbxGang.TabIndex = 6;
-            this.pbxGang.TabStop = false;
-            // 
             // lblStatus
             // 
+            this.lblStatus.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.lblStatus.FontSize = MetroFramework.MetroLabelSize.Tall;
             this.lblStatus.FontWeight = MetroFramework.MetroLabelWeight.Bold;
-            this.lblStatus.Location = new System.Drawing.Point(27, 524);
+            this.lblStatus.Location = new System.Drawing.Point(25, 340);
             this.lblStatus.Name = "lblStatus";
             this.lblStatus.Size = new System.Drawing.Size(284, 56);
             this.lblStatus.TabIndex = 0;
@@ -691,9 +677,9 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(800, 600);
-            this.Controls.Add(this.lblStatus);
+            this.ClientSize = new System.Drawing.Size(600, 400);
             this.Controls.Add(this.tabMain);
+            this.Controls.Add(this.lblStatus);
             this.MainMenuStrip = this.menuInfo;
             this.MaximizeBox = false;
             this.Name = "FrmMainMetro";
@@ -719,6 +705,7 @@
             this.menuSettings.PerformLayout();
             this.tabAbout.ResumeLayout(false);
             this.tabAbout.PerformLayout();
+            this.pnlSide.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.pbxGang)).EndInit();
             this.ResumeLayout(false);
 
@@ -764,14 +751,13 @@
         private MetroFramework.Controls.MetroLabel styleLabel;
         private MetroFramework.Controls.MetroComboBox themeCombobox;
         private MetroFramework.Controls.MetroLabel themeLabel;
-        private MetroFramework.Controls.MetroPanel metroPanel2;
         private MetroFramework.Controls.MetroLabel metroLabel1;
         private MetroFramework.Controls.MetroLabel metroLabel2;
         private MetroFramework.Controls.MetroLabel metroLabel7;
         private MetroFramework.Controls.MetroLabel metroLabel6;
         private MetroFramework.Controls.MetroLabel metroLabel5;
         private MetroFramework.Controls.MetroLabel metroLabel4;
-        private MetroFramework.Controls.MetroLabel metroLabel3;
         private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Panel pnlSide;
     }
 }

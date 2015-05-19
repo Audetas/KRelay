@@ -83,7 +83,7 @@ namespace K_Relay
                         MessageBoxIcon.Error);
             }
         }
-
+        
         private void listPlugins_SelectedIndexChanged(object sender, EventArgs e)
         {
             if (listPlugins.ListBox.SelectedItem != null)

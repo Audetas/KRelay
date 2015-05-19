@@ -23,6 +23,9 @@ namespace K_Relay.Util
         private int _reconnected = 0;
         private Client _toConnect;
 
+        private ReconnectPacket _recon = (ReconnectPacket)Packet.Create(PacketType.RECONNECT);
+        private ReconnectPacket _drecon = (ReconnectPacket)Packet.Create(PacketType.RECONNECT);
+
         public string GetAuthor()
         { return "KrazyShank / Kronks"; }
 
@@ -31,12 +34,13 @@ namespace K_Relay.Util
 
         public string GetDescription()
         { return "Changes the host name to that of the entered portal.\n" +
-                 "Required to be able to enter portals.\n" + 
-                 "Use /connect ingame to change server.\n" +
-                 "You can disable this in the settings if you wish to handle RECONNECT packets yourself."; }
+                   "Required to be able to enter portals.\n" +
+                   "Use /connect ingame to change server.\n" +
+                   "Use /recon to reconnect to your last realm.\n" +
+                   "Use /drecon to reconnect to your last dungeon.\n"; }
 
         public string[] GetCommands()
-        { return new string[] { "/connect" }; }
+        { return new string[] { "/connect", "/recon", "/drecon" }; }
 
         public void Initialize(Proxy proxy)
         {
@@ -45,6 +49,8 @@ namespace K_Relay.Util
             proxy.HookPacket(PacketType.RECONNECT, OnReconnect);
             proxy.HookPacket(PacketType.CREATESUCCESS, OnCreateSuccess);
             proxy.HookCommand("connect", OnConnectCommand);
+            proxy.HookCommand("recon", OnReconnectCommand);
+            proxy.HookCommand("drecon", OnDReconnectCommand);
             _originalPort = _proxy.Port;
             _originalHost = _proxy.RemoteAddress;
         }
@@ -74,18 +80,36 @@ namespace K_Relay.Util
         private void OnReconnect(Client client, Packet packet)
         {
             ReconnectPacket reconnect = packet as ReconnectPacket;
-            if (reconnect.Port != -1)
+
+            if (reconnect.Host.Contains(".com"))
+                reconnect.Host = Dns.GetHostEntry(reconnect.Host).AddressList[0].ToString();
+
+            if (reconnect.Name.ToLower().Contains("nexusportal"))
             {
-                _proxy.Port = reconnect.Port;
+                _recon.IsFromArena = false;
+                _recon.GameId = reconnect.GameId;
+                _recon.Host = (reconnect.Host == "" ? _proxy.RemoteAddress : reconnect.Host);
+                _recon.Port = (reconnect.Port == -1 ? _proxy.Port : reconnect.Port);
+                _recon.Key = reconnect.Key;
+                _recon.KeyTime = reconnect.KeyTime;
+                _recon.Name = reconnect.Name;
+            }
+            else if (reconnect.Name != "" && !reconnect.Name.Contains("vault") && reconnect.GameId != -2)
+            {
+                _drecon.IsFromArena = false;
+                _drecon.GameId = reconnect.GameId;
+                _drecon.Host = (reconnect.Host == "" ? _proxy.RemoteAddress : reconnect.Host);
+                _drecon.Port = (reconnect.Port == -1 ? _proxy.Port : reconnect.Port);
+                _drecon.Key = reconnect.Key;
+                _drecon.KeyTime = reconnect.KeyTime;
+                _drecon.Name = reconnect.Name;
             }
 
+            if (reconnect.Port != -1)
+                _proxy.Port = reconnect.Port;
+
             if (reconnect.Host != "")
-            {
-                if (reconnect.Host.Contains(".com"))
-                    _proxy.RemoteAddress = Dns.GetHostEntry(reconnect.Host).AddressList[0].ToString();
-                else
-                    _proxy.RemoteAddress = reconnect.Host;
-            }
+                _proxy.RemoteAddress = reconnect.Host;
 
             // Tell the client to connect to the proxy
             reconnect.Host = "localhost";
@@ -99,15 +123,23 @@ namespace K_Relay.Util
             PluginUtils.ShowGUI(new FrmServerReconnect(this));
         }
 
-        
+        private void OnReconnectCommand(Client client, string command, string[] args)
+        {
+            _reconnected = 0;
+            SendReconnect(_recon, client);
+        }
+
+        private void OnDReconnectCommand(Client client, string command, string[] args)
+        {
+            _reconnected = 0;
+            SendReconnect(_drecon, client);
+        }
+
         public void ChangeServer(string address, string name)
         {
             Console.WriteLine("[Reconnect Handler] Changing to server {0}({1}).", name, address);
             ReconnectPacket reconnect = (ReconnectPacket)Packet.Create(PacketType.RECONNECT);
-            _proxy.Port = 2050;
-            _proxy.RemoteAddress = address;
-
-            reconnect.Host = "localhost";
+            reconnect.Host = address;
             reconnect.Port = 2050;
             reconnect.GameId = -2;
             reconnect.Name = "Connecting to " + name;
@@ -115,7 +147,22 @@ namespace K_Relay.Util
             reconnect.IsFromArena = false;
             reconnect.Key = new byte[0];
             reconnect.KeyTime = 0;
-            _toConnect.SendToClient(reconnect);
+            SendReconnect(reconnect, _toConnect);
+        }
+
+        private void SendReconnect(ReconnectPacket reconnect, Client client)
+        {
+            string host = reconnect.Host;
+            int port = reconnect.Port;
+            _proxy.RemoteAddress = host;
+            _proxy.Port = port;
+            reconnect.Host = "localhost";
+            reconnect.Port = 2050;
+
+            client.SendToClient(reconnect);
+
+            reconnect.Host = host;
+            reconnect.Port = port;
         }
     }
 }
