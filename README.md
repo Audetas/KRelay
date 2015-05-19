@@ -1,6 +1,6 @@
 # K_Relay
 ### A modular Realm of the Mad God man-in-the-middle Proxy
-##### This code holds an implicity copyright by the creators. Redistribution of this code without written consent is a violation of said copyright.
+##### This code holds an implicit copyright by the creators. Redistribution of this code without written consent is a violation of said copyright.
 -----------------------------------------------------------
 
 ##Plugin Documentation
