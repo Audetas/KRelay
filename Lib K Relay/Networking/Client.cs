@@ -100,7 +100,7 @@ namespace Lib_K_Relay.Networking
                     _remoteBuffer.Flush();
                     BeginRemoteRead(0, 4);
                 }
-            } catch (Exception e) { Close(e.Message); }
+            } catch (Exception e) { Close(e.ToString()); }
         }
 
         private void LocalReceive(IAsyncResult ar)
@@ -141,7 +141,7 @@ namespace Lib_K_Relay.Networking
                     _localBuffer.Flush();
                     BeginLocalRead(0, 4);
                 }
-            } catch (Exception e) { Close(e.Message); }
+            } catch (Exception e) { Close(e.ToString()); }
         }
 
         private void BeginLocalRead(int offset, int amount)
@@ -181,7 +181,7 @@ namespace Lib_K_Relay.Networking
                     //remote.BeginWrite(data, 0, data.Length, (ar) => remote.EndWrite(ar), null);
                     remote.Write(data, 0, data.Length);
                 }
-                catch (Exception ex) { Close(ex.Message); } 
+                catch (Exception ex) { Close(ex.ToString()); } 
 			}
 		}
 
@@ -207,7 +207,7 @@ namespace Lib_K_Relay.Networking
                     //local.BeginWrite(data, 0, data.Length, (ar) => local.EndWrite(ar), null);
                     local.Write(data, 0, data.Length);
                 }
-                catch (Exception ex) { Close(ex.Message); } 
+                catch (Exception ex) { Close(ex.ToString()); } 
 			}
 		}
 
@@ -216,7 +216,7 @@ namespace Lib_K_Relay.Networking
             if (_remoteConnection.Connected || _localConnection.Connected)
             {
                 _proxy.FireClientDisconnected(this);
-                Console.WriteLine("[Client Handler] {2} disconnected. (Time: {1}) {0}", reason, Time, PlayerData == null ? "Client" : PlayerData.Name);
+                Console.WriteLine("[Client Handler] {2} disconnected. (Time: {1}) \n{0}", reason, Time, PlayerData == null ? "Client" : PlayerData.Name);
             }
 
             if (_remoteConnection.Connected) _remoteConnection.Close();

@@ -21,7 +21,7 @@ namespace Lib_K_Relay.Utilities
 
             Console.WriteLine(
                 "[Plugin Error] An exception was thrown\nwithin a {0} callback\nat {1}\nHere's the exception report:\n{2}",
-                caller, className + "." + methodName, e.Message);
+                caller, className + "." + methodName, e);
         }
 
         public static void ShowGUI(Form gui)
