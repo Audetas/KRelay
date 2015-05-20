@@ -130,7 +130,9 @@ namespace Lib_K_Relay
             if (_commandHooks.ContainsKey(callback))
                 _commandHooks[callback].Add(command);
             else
-                _commandHooks.Add(callback, new List<string>() { command.ToLower().Replace("/", "") } );
+                _commandHooks.Add(callback, new List<string>() { command[0] == '/' 
+                    ? new string(command.Skip(1).ToArray()).ToLower() 
+                    : command.ToLower() } );
         }
 
         public void FireClientConnected(Client client)
