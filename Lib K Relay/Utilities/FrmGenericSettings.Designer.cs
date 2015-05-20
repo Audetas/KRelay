@@ -39,26 +39,28 @@
             // 
             this.gridSettings.CategorySplitterColor = System.Drawing.Color.White;
             this.gridSettings.CommandsBackColor = System.Drawing.Color.White;
-            this.gridSettings.Dock = System.Windows.Forms.DockStyle.Fill;
             this.gridSettings.HelpBackColor = System.Drawing.Color.White;
             this.gridSettings.HelpBorderColor = System.Drawing.Color.Transparent;
-            this.gridSettings.Location = new System.Drawing.Point(10, 84);
+            this.gridSettings.HelpVisible = false;
+            this.gridSettings.Location = new System.Drawing.Point(0, 22);
             this.gridSettings.Margin = new System.Windows.Forms.Padding(2);
             this.gridSettings.Name = "gridSettings";
-            this.gridSettings.Size = new System.Drawing.Size(385, 251);
+            this.gridSettings.Size = new System.Drawing.Size(358, 189);
             this.gridSettings.TabIndex = 0;
+            this.gridSettings.ToolbarVisible = false;
             // 
             // menuSettings
             // 
             this.menuSettings.BackColor = System.Drawing.Color.White;
+            this.menuSettings.Dock = System.Windows.Forms.DockStyle.None;
             this.menuSettings.ImageScalingSize = new System.Drawing.Size(32, 32);
             this.menuSettings.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.btnDone,
             this.btnReset});
-            this.menuSettings.Location = new System.Drawing.Point(10, 60);
+            this.menuSettings.Location = new System.Drawing.Point(0, 0);
             this.menuSettings.Name = "menuSettings";
             this.menuSettings.Padding = new System.Windows.Forms.Padding(3, 1, 0, 1);
-            this.menuSettings.Size = new System.Drawing.Size(385, 24);
+            this.menuSettings.Size = new System.Drawing.Size(154, 24);
             this.menuSettings.TabIndex = 1;
             // 
             // btnDone
@@ -79,15 +81,17 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(405, 345);
+            this.ClientSize = new System.Drawing.Size(358, 211);
             this.Controls.Add(this.gridSettings);
             this.Controls.Add(this.menuSettings);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedToolWindow;
             this.MainMenuStrip = this.menuSettings;
             this.Margin = new System.Windows.Forms.Padding(2);
             this.MaximizeBox = false;
             this.Name = "FrmGenericSettings";
             this.Padding = new System.Windows.Forms.Padding(10, 60, 10, 10);
             this.Text = "FrmGenericSettings";
+            this.TopMost = true;
             this.menuSettings.ResumeLayout(false);
             this.menuSettings.PerformLayout();
             this.ResumeLayout(false);
