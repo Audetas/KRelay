@@ -21,7 +21,7 @@
 - [ ] Keyboard hooking interface
 - [x] Re-Design of the Forms
 
-##Bug Checklist:
+##Todo Checklist:
 - [x] Remove loot bag quests to purple bags
 - [x] Figure out why we can't create characters
 - [ ] Fix the following exception : "An element with the same key has already been added" when two char connected to the relay use the same item (AutoAbility must be in cause)
@@ -31,6 +31,9 @@
 - [x] Fix \s in directory searching for *NIX
 - [x] Fix default server setting
 - [x] Fix fame notifier .CurrentFame => .Fame
+- [ ] Vault, PetYard, Guild Hall recon for IRH
+- [ ] Make autoloot settings more user friendly
+- [ ] Look into randomly being placed back into USW
 
 ##Plugin Checklist:
 - [x] World Edit
