@@ -18,9 +18,6 @@ namespace K_Relay.Util
     public class ReconnectHandler : IPlugin
     {
         private Proxy _proxy;
-        private string _originalHost;
-        private int _originalPort;
-        private int _reconnected = 0;
         private Client _toConnect;
 
         private ReconnectPacket _recon = (ReconnectPacket)Packet.Create(PacketType.RECONNECT);
@@ -45,29 +42,11 @@ namespace K_Relay.Util
         public void Initialize(Proxy proxy)
         {
             _proxy = proxy;
-            proxy.ClientBeginConnect += OnClientBeginConnect;
             proxy.HookPacket(PacketType.RECONNECT, OnReconnect);
             proxy.HookPacket(PacketType.CREATESUCCESS, OnCreateSuccess);
             proxy.HookCommand("connect", OnConnectCommand);
             proxy.HookCommand("recon", OnReconnectCommand);
             proxy.HookCommand("drecon", OnDReconnectCommand);
-            _originalPort = _proxy.Port;
-            _originalHost = _proxy.RemoteAddress;
-        }
-
-        private void OnClientBeginConnect(Client client)
-        {
-            if (_reconnected == 2)
-            {
-                _reconnected = 3;
-            }
-            else if (_reconnected == 3)
-            {
-                _reconnected = 0;
-                // Restore the original connection info so new clients can connect normally
-                _proxy.RemoteAddress = _originalHost;
-                _proxy.Port = _originalPort;
-            }
         }
 
         private void OnCreateSuccess(Client client, Packet packet)
@@ -114,7 +93,6 @@ namespace K_Relay.Util
             // Tell the client to connect to the proxy
             reconnect.Host = "localhost";
             reconnect.Port = 2050;
-            _reconnected = 2;
         }
 
         private void OnConnectCommand(Client client, string command, string[] args)
@@ -125,13 +103,11 @@ namespace K_Relay.Util
 
         private void OnReconnectCommand(Client client, string command, string[] args)
         {
-            _reconnected = 0;
             SendReconnect(_recon, client);
         }
 
         private void OnDReconnectCommand(Client client, string command, string[] args)
         {
-            _reconnected = 0;
             SendReconnect(_drecon, client);
         }
 
