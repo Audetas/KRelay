@@ -14,13 +14,17 @@ using System.Threading.Tasks;
 
 namespace TeleportTools
 {
+    class TeleportState
+    {
+        public int QuestId = -1;
+        public Location QuestLocation = null;
+        public Dictionary<int, string> PlayerNames = new Dictionary<int, string>();
+        public Dictionary<int, Location> PlayerLocations = new Dictionary<int, Location>();
+    }
+
     public class TeleportTools : IPlugin
     {
-        private int _questId = -1;
-        private Location _questLocation = null;
-        private Dictionary<int, string> _playerNames = new Dictionary<int,string>();
-        private Dictionary<int, Location> _playerLocations = new Dictionary<int, Location>();
-
+        private Dictionary<Client, TeleportState> _states = new Dictionary<Client, TeleportState>();
         private short[] _classes;
 
         public string GetAuthor()
@@ -40,7 +44,9 @@ namespace TeleportTools
         {
             _classes = (short[])Enum.GetValues(typeof(Classes));
 
-            proxy.ClientDisconnected += OnClientDisconnected;
+            proxy.ClientConnected += (c) => _states.Add(c, new TeleportState());
+            proxy.ClientDisconnected += (c) => _states.Remove(c);
+
             proxy.HookPacket(PacketType.NEWTICK, OnNewTick);
             proxy.HookPacket(PacketType.UPDATE, OnUpdate);
             proxy.HookPacket(PacketType.QUESTOBJID, OnQuestObjId);
@@ -48,47 +54,40 @@ namespace TeleportTools
             proxy.HookCommand("tp", OnTPCommand);
         }
 
-        private void OnClientDisconnected(Client client)
-        {
-            _playerNames.Clear();
-            _playerLocations.Clear();
-            _questId = -1;
-            _questLocation = null;
-        }
-
         private void OnQuestObjId(Client client, Packet packet)
         {
-            _questId = (packet as QuestObjIdPacket).ObjectId; 
+            _states[client].QuestId = (packet as QuestObjIdPacket).ObjectId; 
         }
 
         private void OnUpdate(Client client, Packet packet)
         {
             UpdatePacket update = (UpdatePacket)packet;
+            TeleportState state = _states[client];
             // New Objects
             foreach (Entity entity in update.NewObjs)
             {
                 if (_classes.Contains(entity.ObjectType))
                 {
-                    _playerLocations.Add(entity.Status.ObjectId, entity.Status.Position);
+                    state.PlayerLocations.Add(entity.Status.ObjectId, entity.Status.Position);
                     foreach (StatData statData in entity.Status.Data)
                     {
                         if (statData.Id == 31)
-                            _playerNames.Add(entity.Status.ObjectId, statData.StringValue);
+                            state.PlayerNames.Add(entity.Status.ObjectId, statData.StringValue);
                     }
                 }
-                else if (entity.Status.ObjectId == _questId)
+                else if (entity.Status.ObjectId == state.QuestId)
                 {
-                    _questLocation = entity.Status.Position;
+                    state.QuestLocation = entity.Status.Position;
                 }
             }
 
             // Removed Objects
             foreach (int drop in update.Drops)
             {
-                if (_playerLocations.ContainsKey(drop))
+                if (state.PlayerLocations.ContainsKey(drop))
                 {
-                    _playerLocations.Remove(drop);
-                    _playerNames.Remove(drop);
+                    state.PlayerLocations.Remove(drop);
+                    state.PlayerNames.Remove(drop);
                 }
             }
         }
@@ -97,25 +96,27 @@ namespace TeleportTools
         {
             // Update player positions
             NewTickPacket newTick = (NewTickPacket)packet;
+            TeleportState state = _states[client];
             foreach (Status status in newTick.Statuses)
             {
-                if (_playerLocations.ContainsKey(status.ObjectId))
-                    _playerLocations[status.ObjectId] = status.Position;
-                else if (status.ObjectId == _questId)
-                    _questLocation = status.Position;
+                if (state.PlayerLocations.ContainsKey(status.ObjectId))
+                    state.PlayerLocations[status.ObjectId] = status.Position;
+                else if (status.ObjectId == state.QuestId)
+                    state.QuestLocation = status.Position;
             }
         }
 
         private void OnTQCommand(Client client, string command, string[] args)
         {
-            if (_questId != -1 && _questLocation != null)
+            TeleportState state = _states[client];
+            if (state.QuestId != -1 && state.QuestLocation != null)
             {
-                float minDistance = _questLocation.DistanceSquaredTo(client.PlayerData.Pos);
+                float minDistance = state.QuestLocation.DistanceSquaredTo(client.PlayerData.Pos);
                 int target = client.ObjectId;
 
-                foreach (var pair in _playerLocations)
+                foreach (var pair in state.PlayerLocations)
                 {
-                    float distance = pair.Value.DistanceSquaredTo(_questLocation);
+                    float distance = pair.Value.DistanceSquaredTo(state.QuestLocation);
                     if (distance < minDistance)
                     {
                         minDistance = distance;
@@ -129,7 +130,7 @@ namespace TeleportTools
                     teleport.ObjectId = target;
                     client.SendToServer(teleport);
                     client.SendToClient(PluginUtils.CreateNotification(
-                        client.ObjectId, "Teleported to " + _playerNames[target]));
+                        client.ObjectId, "Teleported to " + state.PlayerNames[target]));
                 }
                 else
                 {
@@ -141,9 +142,10 @@ namespace TeleportTools
 
         private void OnTPCommand(Client client, string command, string[] args)
         {
+            TeleportState state = _states[client];
             if (args.Length == 0) return;
 
-            foreach (var pair in _playerNames)
+            foreach (var pair in state.PlayerNames)
             {
                 if (pair.Value.ToLower().Contains(args[0].ToLower()))
                 {

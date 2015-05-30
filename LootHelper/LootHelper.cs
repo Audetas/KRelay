@@ -14,18 +14,19 @@ using System.Threading.Tasks;
 
 namespace LootHelper
 {
+    class LootState
+    {
+        public Dictionary<int, int[]> LootBagItems = new Dictionary<int, int[]>();
+        public Dictionary<int, Location> LootBagLocations = new Dictionary<int, Location>();
+        public int LastLoot = 0;
+        public int LastNotif = 0;
+        public int CustomQuest = -1;
+        public int OriginalQuest = -1;
+    }
     public class LootHelper : IPlugin
     {
-        private Dictionary<int, int[]> _lootBagItems = new Dictionary<int, int[]>();
-        private Dictionary<int, Location> _lootBagLocations = new Dictionary<int, Location>();
-
-
+        private Dictionary<Client, LootState> _states = new Dictionary<Client, LootState>();
         private short[] _desiredBags = { (short)Bags.Blue, (short)Bags.Cyan, (short)Bags.White };
-        private int _originalQuest = -1;
-        private int _customQuest = -1;
-
-        private int _cooldown = 0;
-        private int _notifCooldown = 0;
 
         public string GetAuthor()
         { return "KrazyShank / Kronks"; }
@@ -41,6 +42,9 @@ namespace LootHelper
 
         public void Initialize(Proxy proxy)
         {
+            proxy.ClientConnected += (c) => _states.Add(c, new LootState());
+            proxy.ClientDisconnected += (c) => _states.Remove(c);
+
             proxy.HookPacket(PacketType.MOVE, OnMove);
             proxy.HookPacket(PacketType.UPDATE, OnUpdate);
             proxy.HookPacket(PacketType.NEWTICK, OnNewTick);
@@ -55,33 +59,35 @@ namespace LootHelper
 
         private void OnMove(Client client, Packet packet)
         {
-            foreach (int bagId in _lootBagItems.Keys)
+            if (!_states.ContainsKey(client)) return;
+            LootState state = _states[client];
+
+            foreach (int bagId in state.LootBagItems.Keys)
             {
-                float distanceSquared = _lootBagLocations[bagId].DistanceSquaredTo(client.PlayerData.Pos);
-                if (LootHelperConfig.Default.AutoLoot && _cooldown == 0 && distanceSquared <= 2.5)
+                float distance = state.LootBagLocations[bagId].DistanceTo(client.PlayerData.Pos);
+                if (LootHelperConfig.Default.AutoLoot && Environment.TickCount - state.LastLoot > 900 && distance <= 1)
                 {
-                    for (int bi = 0; bi < _lootBagItems[bagId].Length; bi++)
+                    for (int bi = 0; bi < state.LootBagItems[bagId].Length; bi++)
                     {
-                        if (_lootBagItems[bagId][bi] == -1)
+                        if (state.LootBagItems[bagId][bi] == -1)
                             continue;
 
-                        if (!LootHelperConfig.Default.AutoLootList.Contains(ReverseLookup(_lootBagItems[bagId][bi])))
+                        if (!LootHelperConfig.Default.AutoLootList.Contains(ReverseLookup(state.LootBagItems[bagId][bi])))
                             continue;
 
-                        _cooldown = LootHelperConfig.Default.AutoLootRetryDelay;
+                        state.LastLoot = Environment.TickCount;
                         for (int i = 4; i < client.PlayerData.Slot.Length; i++)
                         {
                             if (client.PlayerData.Slot[i] == -1)
                             {
-                                Console.WriteLine("[Loot Helper] Swapping bagslot {0} with my slot {1}", bi, i - 4);
                                 InvSwapPacket invSwap = (InvSwapPacket)Packet.Create(PacketType.INVSWAP);
-                                invSwap.Time = client.Time;
+                                invSwap.Time = client.Time + 10;
                                 invSwap.Position = client.PlayerData.Pos;
 
                                 invSwap.SlotObject1 = new SlotObject();
                                 invSwap.SlotObject1.ObjectId = bagId;
                                 invSwap.SlotObject1.SlotId = (byte)bi;
-                                invSwap.SlotObject1.ObjectType = (short)_lootBagItems[bagId][bi];
+                                invSwap.SlotObject1.ObjectType = (short)state.LootBagItems[bagId][bi];
 
                                 invSwap.SlotObject2 = new SlotObject();
                                 invSwap.SlotObject2.ObjectId = client.ObjectId;
@@ -94,19 +100,13 @@ namespace LootHelper
                         }
                     }
                 }
-            }
 
-            if (_cooldown != 0) return;
-            else _cooldown = 15; // So we dont spam notifs
-
-            foreach (int bagId in _lootBagItems.Keys)
-            {
-                float distanceSquared = _lootBagLocations[bagId].DistanceSquaredTo(client.PlayerData.Pos);
-                if (LootHelperConfig.Default.LootNotifications && distanceSquared < 200)
+                if (LootHelperConfig.Default.LootNotifications && Environment.TickCount - state.LastNotif > 2000 && distance < 15)
                 {
+                    state.LastNotif = Environment.TickCount;
                     string message = "";
 
-                    foreach (int item in _lootBagItems[bagId])
+                    foreach (int item in state.LootBagItems[bagId])
                         if (item != -1) message += ReverseLookup(item) + "\\n";
 
                     if (message.Length > 3)
@@ -118,42 +118,37 @@ namespace LootHelper
 
         private void OnUpdate(Client client, Packet packet)
         {
-            if (_cooldown > 0) _cooldown--;
-            if (_notifCooldown > 0) _notifCooldown--;
-
+            LootState state = _states[client];
             UpdatePacket update = (UpdatePacket)packet;
             // New Objects
             foreach (Entity entity in update.NewObjs)
             {
                 short type = entity.ObjectType;
-
-                if (LootHelperConfig.Default.LootQuests && _desiredBags.Contains(type)) // Light Blue or better
+                if (_desiredBags.Contains(type))
                 {
-                    Console.WriteLine("[Loot Helper] Changing your quest to a loot bag!");
-                    QuestObjIdPacket questObjId = (QuestObjIdPacket)Packet.Create(PacketType.QUESTOBJID);
-                    questObjId.ObjectId = entity.Status.ObjectId;
-                    client.SendToClient(questObjId);
-                }
+                    if (LootHelperConfig.Default.LootQuests)
+                    {
+                        state.CustomQuest = entity.Status.ObjectId;
+                        QuestObjIdPacket questObjId = (QuestObjIdPacket)Packet.Create(PacketType.QUESTOBJID);
+                        questObjId.ObjectId = entity.Status.ObjectId;
+                        client.SendToClient(questObjId);
+                    }
 
-                if (type == 1280 || type == 1283 || (type >= 1286 && type <= 1296))
-                {
-                    // Is a loot bag
                     int bagId = entity.Status.ObjectId;
-
-                    if (!_lootBagItems.ContainsKey(bagId))
-                        _lootBagItems.Add(bagId, new int[] { -1, -1, -1, -1, -1, -1, -1, -1});
+                    if (!state.LootBagItems.ContainsKey(bagId))
+                        state.LootBagItems.Add(bagId, new int[] { -1, -1, -1, -1, -1, -1, -1, -1 });
                     else
-                        _lootBagItems[bagId] = new int[] { -1, -1, -1, -1, -1, -1, -1, -1 };
+                        state.LootBagItems[bagId] = new int[] { -1, -1, -1, -1, -1, -1, -1, -1 };
 
-                    if (!_lootBagLocations.ContainsKey(bagId))
-                        _lootBagLocations.Add(bagId, entity.Status.Position);
+                    if (!state.LootBagLocations.ContainsKey(bagId))
+                        state.LootBagLocations.Add(bagId, entity.Status.Position);
                     else
-                        _lootBagLocations[bagId] = entity.Status.Position;
+                        state.LootBagLocations[bagId] = entity.Status.Position;
 
                     foreach (StatData statData in entity.Status.Data)
                     {
                         if (statData.Id >= 8 && statData.Id <= 15)
-                            _lootBagItems[bagId][statData.Id - 8] = statData.IntValue;
+                            state.LootBagItems[bagId][statData.Id - 8] = statData.IntValue;
                     }
                 }
             }
@@ -161,40 +156,38 @@ namespace LootHelper
             // Removed Objects
             foreach (int drop in update.Drops)
             {
-                if (drop == _customQuest && _originalQuest != -1)
+                if (drop == state.CustomQuest && state.OriginalQuest != -1)
                 {
                     QuestObjIdPacket questObjId = (QuestObjIdPacket)Packet.Create(PacketType.QUESTOBJID);
-                    questObjId.ObjectId = _originalQuest;
+                    questObjId.ObjectId = state.OriginalQuest;
                     client.SendToClient(questObjId);
 
-                    _originalQuest = -1;
-                    _customQuest = -1;
+                    state.OriginalQuest = -1;
+                    state.CustomQuest = -1;
                 }
 
-                if (LootHelperConfig.Default.UpdateBagContentsCPUIntensive)
+                if (state.LootBagItems.ContainsKey(drop))
                 {
-                    if (_lootBagItems.ContainsKey(drop))
-                    {
-                        _lootBagItems.Remove(drop);
-                        _lootBagLocations.Remove(drop);
-                    }
+                    state.LootBagItems.Remove(drop);
+                    state.LootBagLocations.Remove(drop);
                 }
             }
         }
 
         private void OnNewTick(Client client, Packet packet)
         {
+            LootState state = _states[client];
             NewTickPacket newTick = (NewTickPacket)packet;
 
             // Updated Objects
             foreach (Status status in newTick.Statuses)
             {
-                if (_lootBagItems.ContainsKey(status.ObjectId))
+                if (state.LootBagItems.ContainsKey(status.ObjectId))
                 {
                     foreach (StatData statData in status.Data)
                     {
                         if (statData.Id >= 8 && statData.Id <= 15)
-                            _lootBagItems[status.ObjectId][statData.Id - 8] = statData.IntValue;
+                            state.LootBagItems[status.ObjectId][statData.Id - 8] = statData.IntValue;
                     }
                 }
             }
@@ -202,7 +195,7 @@ namespace LootHelper
 
         private void OnQuestObjId(Client client, Packet packet)
         {
-            _originalQuest = (packet as QuestObjIdPacket).ObjectId;
+            _states[client].OriginalQuest = (packet as QuestObjIdPacket).ObjectId;
         }
 
         private string ReverseLookup(int itemId)

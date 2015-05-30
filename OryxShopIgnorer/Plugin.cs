@@ -26,7 +26,7 @@ namespace OryxShopIgnorer
 
         public string GetDescription()
         {
-            return "This plugin blocks the fucking orxy shop fuckers";
+            return "This plugin blocks the OryxShop spammers";
         }
 
         public string[] GetCommands()

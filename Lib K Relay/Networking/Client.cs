@@ -50,6 +50,7 @@ namespace Lib_K_Relay.Networking
             _remoteConnection.BeginConnect(
                 IPAddress.Parse(_proxy.RemoteAddress),
                 _proxy.Port, RemoteConnected, null);
+            _proxy.FireClientConnected(this);
         }
 
         private void RemoteConnected(IAsyncResult ar)
@@ -57,7 +58,6 @@ namespace Lib_K_Relay.Networking
             _remoteConnection.EndConnect(ar);
 
             Console.WriteLine("[Client Listener] Client connected.");
-            _proxy.FireClientConnected(this);
 
             BeginRemoteRead(0, 4); // Read 4 bytes (packet size)
             BeginLocalRead(0, 4); // Read 4 bytes (packet size)
@@ -100,7 +100,7 @@ namespace Lib_K_Relay.Networking
                     _remoteBuffer.Flush();
                     BeginRemoteRead(0, 4);
                 }
-            } catch (Exception e) { Close(e.ToString()); }
+            } catch (Exception e) { Close(e); }
         }
 
         private void LocalReceive(IAsyncResult ar)
@@ -141,7 +141,7 @@ namespace Lib_K_Relay.Networking
                     _localBuffer.Flush();
                     BeginLocalRead(0, 4);
                 }
-            } catch (Exception e) { Close(e.ToString()); }
+            } catch (Exception e) { Close(e); }
         }
 
         private void BeginLocalRead(int offset, int amount)
@@ -181,7 +181,7 @@ namespace Lib_K_Relay.Networking
                     //remote.BeginWrite(data, 0, data.Length, (ar) => remote.EndWrite(ar), null);
                     remote.Write(data, 0, data.Length);
                 }
-                catch (Exception ex) { Close(ex.ToString()); } 
+                catch (Exception ex) { Close(ex); } 
 			}
 		}
 
@@ -207,16 +207,18 @@ namespace Lib_K_Relay.Networking
                     //local.BeginWrite(data, 0, data.Length, (ar) => local.EndWrite(ar), null);
                     local.Write(data, 0, data.Length);
                 }
-                catch (Exception ex) { Close(ex.ToString()); } 
+                catch (Exception ex) { Close(ex); } 
 			}
 		}
 
-        public void Close(string reason)
+        public void Close(Exception reason)
         {
             if (_remoteConnection.Connected || _localConnection.Connected)
             {
                 _proxy.FireClientDisconnected(this);
-                Console.WriteLine("[Client Handler] {2} disconnected. (Time: {1}) \n{0}", reason, Time, PlayerData == null ? "Client" : PlayerData.Name);
+                Console.WriteLine("[Client Handler] {2} disconnected. (Time: {1}){0}", 
+                    reason is EndOfStreamException ? "" :  "\n" + reason.ToString(), 
+                    Time, PlayerData == null ? "Client" : PlayerData.Name);
             }
 
             if (_remoteConnection.Connected) _remoteConnection.Close();

@@ -73,7 +73,6 @@
             this.metroLabel2 = new MetroFramework.Controls.MetroLabel();
             this.metroLabel1 = new MetroFramework.Controls.MetroLabel();
             this.lblVersion = new MetroFramework.Controls.MetroLabel();
-            this.lblKronks = new MetroFramework.Controls.MetroLabel();
             this.lblStatus = new MetroFramework.Controls.MetroLabel();
             this.tabMain.SuspendLayout();
             this.tabInfo.SuspendLayout();
@@ -529,7 +528,6 @@
             this.tabAbout.Controls.Add(this.metroLabel2);
             this.tabAbout.Controls.Add(this.metroLabel1);
             this.tabAbout.Controls.Add(this.lblVersion);
-            this.tabAbout.Controls.Add(this.lblKronks);
             this.tabAbout.HorizontalScrollbarBarColor = true;
             this.tabAbout.HorizontalScrollbarHighlightOnWheel = false;
             this.tabAbout.HorizontalScrollbarSize = 10;
@@ -571,7 +569,7 @@
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Segoe UI", 26.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label1.ForeColor = System.Drawing.Color.DodgerBlue;
-            this.label1.Location = new System.Drawing.Point(2, 14);
+            this.label1.Location = new System.Drawing.Point(2, -2);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(142, 47);
             this.label1.TabIndex = 14;
@@ -580,7 +578,7 @@
             // metroLabel7
             // 
             this.metroLabel7.AutoSize = true;
-            this.metroLabel7.Location = new System.Drawing.Point(10, 319);
+            this.metroLabel7.Location = new System.Drawing.Point(10, 219);
             this.metroLabel7.Name = "metroLabel7";
             this.metroLabel7.Size = new System.Drawing.Size(72, 38);
             this.metroLabel7.TabIndex = 13;
@@ -591,7 +589,7 @@
             this.metroLabel6.AutoSize = true;
             this.metroLabel6.FontWeight = MetroFramework.MetroLabelWeight.Bold;
             this.metroLabel6.ForeColor = System.Drawing.Color.DodgerBlue;
-            this.metroLabel6.Location = new System.Drawing.Point(10, 300);
+            this.metroLabel6.Location = new System.Drawing.Point(10, 200);
             this.metroLabel6.Name = "metroLabel6";
             this.metroLabel6.Size = new System.Drawing.Size(58, 19);
             this.metroLabel6.TabIndex = 12;
@@ -603,7 +601,7 @@
             this.metroLabel5.AutoSize = true;
             this.metroLabel5.FontWeight = MetroFramework.MetroLabelWeight.Bold;
             this.metroLabel5.ForeColor = System.Drawing.Color.DodgerBlue;
-            this.metroLabel5.Location = new System.Drawing.Point(10, 138);
+            this.metroLabel5.Location = new System.Drawing.Point(10, 84);
             this.metroLabel5.Name = "metroLabel5";
             this.metroLabel5.Size = new System.Drawing.Size(97, 19);
             this.metroLabel5.TabIndex = 11;
@@ -613,7 +611,7 @@
             // metroLabel4
             // 
             this.metroLabel4.AutoSize = true;
-            this.metroLabel4.Location = new System.Drawing.Point(10, 157);
+            this.metroLabel4.Location = new System.Drawing.Point(10, 103);
             this.metroLabel4.Name = "metroLabel4";
             this.metroLabel4.Size = new System.Drawing.Size(84, 95);
             this.metroLabel4.TabIndex = 10;
@@ -622,7 +620,7 @@
             // metroLabel2
             // 
             this.metroLabel2.AutoSize = true;
-            this.metroLabel2.Location = new System.Drawing.Point(10, 113);
+            this.metroLabel2.Location = new System.Drawing.Point(10, 62);
             this.metroLabel2.Name = "metroLabel2";
             this.metroLabel2.Size = new System.Drawing.Size(135, 19);
             this.metroLabel2.TabIndex = 8;
@@ -633,7 +631,7 @@
             this.metroLabel1.AutoSize = true;
             this.metroLabel1.FontWeight = MetroFramework.MetroLabelWeight.Bold;
             this.metroLabel1.ForeColor = System.Drawing.Color.DodgerBlue;
-            this.metroLabel1.Location = new System.Drawing.Point(10, 94);
+            this.metroLabel1.Location = new System.Drawing.Point(10, 43);
             this.metroLabel1.Name = "metroLabel1";
             this.metroLabel1.Size = new System.Drawing.Size(65, 19);
             this.metroLabel1.TabIndex = 7;
@@ -650,16 +648,6 @@
             this.lblVersion.Size = new System.Drawing.Size(42, 19);
             this.lblVersion.TabIndex = 0;
             this.lblVersion.Text = "v0.2.0";
-            // 
-            // lblKronks
-            // 
-            this.lblKronks.AutoSize = true;
-            this.lblKronks.Location = new System.Drawing.Point(10, 61);
-            this.lblKronks.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
-            this.lblKronks.Name = "lblKronks";
-            this.lblKronks.Size = new System.Drawing.Size(143, 19);
-            this.lblKronks.TabIndex = 0;
-            this.lblKronks.Text = "By KrazyShank / Kronks";
             // 
             // lblStatus
             // 
@@ -745,7 +733,6 @@
         private MetroFramework.Controls.MetroComboBox lstServers;
         private MetroFramework.Controls.MetroLabel lblDefaultServer;
         private System.Windows.Forms.PictureBox pbxGang;
-        private MetroFramework.Controls.MetroLabel lblKronks;
         private MetroFramework.Controls.MetroLabel lblVersion;
         private MetroFramework.Controls.MetroComboBox styleCombobox;
         private MetroFramework.Controls.MetroLabel styleLabel;

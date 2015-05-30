@@ -17,11 +17,5 @@
     <Setting Name="NotificationColor" Type="System.Drawing.Color" Scope="User">
       <Value Profile="(Default)">Aqua</Value>
     </Setting>
-    <Setting Name="UpdateBagContentsCPUIntensive" Type="System.Boolean" Scope="User">
-      <Value Profile="(Default)">False</Value>
-    </Setting>
-    <Setting Name="AutoLootRetryDelay" Type="System.Int32" Scope="User">
-      <Value Profile="(Default)">10</Value>
-    </Setting>
   </Settings>
 </SettingsFile>
