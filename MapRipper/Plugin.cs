@@ -41,6 +41,7 @@ namespace MapRipper
 {
     public class Plugin : IPlugin
     {
+        private bool _enabled = false;
         private JsonMap m_map;
         private Dictionary<string, Assembly> m_dependencies;
 
@@ -75,7 +76,7 @@ namespace MapRipper
 
         public string[] GetCommands()
         {
-            return new string[3] { "/saveMap", "/saveMap <MapName>", "/mapRipper" };
+            return new string[4] { "/mapripper enable:disable", "/saveMap", "/saveMap <MapName>", "/mapRipper gui" };
         }
 
         public void Initialize(Proxy proxy)
@@ -92,11 +93,14 @@ namespace MapRipper
 
         private void OnMapRipperCommand(Client client, string command, string[] args)
         {
-            new Thread(() => new HandleForm(this).ShowDialog()).Start();
+            if (args.Length > 0 && args[0] == "enable") _enabled = true;
+            if (args.Length > 0 && args[0] == "disable") _enabled = false;
+            if (args.Length > 0 && args[0] == "gui") PluginUtils.ShowGUI(new HandleForm(this));
         }
 
         private void OnSaveMapCommand(Client client, string command, string[] args)
         {
+            if (!_enabled) return;
             FilePacket mapData = Packet.Create(PacketType.FILE) as FilePacket;
             mapData.Bytes = Encoding.UTF8.GetBytes(this.m_map.ToJson());
             mapData.Name = args.Length == 0 ? this.m_map.Name : args[0];
@@ -112,7 +116,7 @@ namespace MapRipper
 
         private void OnUpdatePacket(Client client, UpdatePacket packet)
         {
-            this.m_map.Update(packet);
+            if (_enabled) this.m_map.Update(packet);
         }
 
         private void LoadAssembly(string path)

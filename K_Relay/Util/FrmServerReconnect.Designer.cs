@@ -38,10 +38,11 @@
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.listServers.FormattingEnabled = true;
-            this.listServers.ItemHeight = 25;
-            this.listServers.Location = new System.Drawing.Point(12, 12);
+            this.listServers.Location = new System.Drawing.Point(6, 6);
+            this.listServers.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.listServers.Name = "listServers";
-            this.listServers.Size = new System.Drawing.Size(354, 554);
+            this.listServers.Size = new System.Drawing.Size(179, 290);
+            this.listServers.Sorted = true;
             this.listServers.TabIndex = 0;
             this.listServers.SelectedIndexChanged += new System.EventHandler(this.listServers_SelectedIndexChanged);
             // 
@@ -49,9 +50,10 @@
             // 
             this.btnCancel.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnCancel.Location = new System.Drawing.Point(12, 574);
+            this.btnCancel.Location = new System.Drawing.Point(6, 298);
+            this.btnCancel.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.btnCancel.Name = "btnCancel";
-            this.btnCancel.Size = new System.Drawing.Size(355, 44);
+            this.btnCancel.Size = new System.Drawing.Size(178, 23);
             this.btnCancel.TabIndex = 1;
             this.btnCancel.Text = "Cancel";
             this.btnCancel.UseVisualStyleBackColor = true;
@@ -59,12 +61,13 @@
             // 
             // FrmServerReconnect
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(12F, 25F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(379, 630);
+            this.ClientSize = new System.Drawing.Size(190, 328);
             this.Controls.Add(this.btnCancel);
             this.Controls.Add(this.listServers);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.SizableToolWindow;
+            this.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.Name = "FrmServerReconnect";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Select a Server...";

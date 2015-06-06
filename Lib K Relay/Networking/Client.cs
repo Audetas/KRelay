@@ -217,7 +217,7 @@ namespace Lib_K_Relay.Networking
             {
                 _proxy.FireClientDisconnected(this);
                 Console.WriteLine("[Client Handler] {2} disconnected. (Time: {1}){0}", 
-                    reason is EndOfStreamException ? "" :  "\n" + reason.ToString(), 
+                    (reason is EndOfStreamException || reason.Message.Contains("host") || reason.Message.Contains("NetworkStream")) ? "" :  "\n" + reason.ToString(), 
                     Time, PlayerData == null ? "Client" : PlayerData.Name);
             }
 

@@ -52,8 +52,13 @@ namespace K_Relay.Util
         private void OnCreateSuccess(Client client, Packet packet)
         {
             // Send welcome message to player
+            string message = "Welcome to K Relay!";
+            foreach (var pair in Serializer.Servers)
+                if (pair.Value == _proxy.RemoteAddress)
+                    message += "\\n" + pair.Key;
+
             PluginUtils.Delay(1500, () => client.SendToClient(
-                PluginUtils.CreateNotification(client.ObjectId, "Welcome to K Relay!")));
+                PluginUtils.CreateNotification(client.ObjectId, message)));
         }
 
         private void OnReconnect(Client client, Packet packet)
