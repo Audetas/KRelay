@@ -11,6 +11,7 @@ using System.Net.Sockets;
 using System.Reflection;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows.Forms;
 
 namespace Lib_K_Relay
 {
@@ -27,6 +28,7 @@ namespace Lib_K_Relay
         public delegate void PacketHandler(Client client, Packet packet);
         public delegate void GenericPacketHandler<T>(Client client, T packet) where T : Packet;
         public delegate void CommandHandler(Client client, string command, string[] args);
+        public delegate void KeyHandler(Keys key);
 
         public event ListenHandler ProxyListenStarted;
         public event ListenHandler ProxyListenStopped;
@@ -39,6 +41,7 @@ namespace Lib_K_Relay
         private Dictionary<object, Type> _genericPacketHooks = new Dictionary<object, Type>();
         private Dictionary<PacketHandler, List<PacketType>> _packetHooks = new Dictionary<PacketHandler, List<PacketType>>();
         private Dictionary<CommandHandler, List<string>> _commandHooks = new Dictionary<CommandHandler, List<string>>();
+        private Dictionary<KeyHandler, List<Keys>> _keyHooks = new Dictionary<KeyHandler, List<Keys>>();
 
         private TcpListener _localListener = null;
 
@@ -53,6 +56,7 @@ namespace Lib_K_Relay
             // Start listening for client connections.
             _localListener.Start();
             _localListener.BeginAcceptTcpClient(LocalConnect, null);
+            HookManager.KeyUp += OnKeyUp;
 
             try
             {
@@ -63,6 +67,7 @@ namespace Lib_K_Relay
 
         public void Stop()
         {
+            HookManager.KeyUp -= OnKeyUp;
             if (_localListener != null && !_localListener.Server.Connected)
             {
                 Console.WriteLine("[Client Listener] Stopping local listener...");
@@ -133,6 +138,14 @@ namespace Lib_K_Relay
                 _commandHooks.Add(callback, new List<string>() { command[0] == '/' 
                     ? new string(command.Skip(1).ToArray()).ToLower() 
                     : command.ToLower() } );
+        }
+
+        public void HookKey(Keys key, KeyHandler callback)
+        {
+            if (_keyHooks.ContainsKey(callback))
+                _keyHooks[callback].Add(key);
+            else
+                _keyHooks.Add(callback, new List<Keys>() { key });
         }
 
         public void FireClientConnected(Client client)
@@ -208,6 +221,13 @@ namespace Lib_K_Relay
                     if (pair.Value == packet.GetType()) (pair.Key as Delegate).Method.Invoke((pair.Key as Delegate).Target, new object[2] { client, Convert.ChangeType(packet, pair.Value) });
             } 
             catch (Exception e) { PluginUtils.LogPluginException(e, "ClientPacket"); }
+        }
+
+        private void OnKeyUp(object sender, KeyEventArgs e)
+        {
+            foreach (var pair in _keyHooks)
+                if (pair.Value.Contains(e.KeyCode)) 
+                    pair.Key(e.KeyCode);
         }
     }
 }
