@@ -8,6 +8,9 @@ namespace Lib_K_Relay.Utilities
 {
     public static partial class HookManager
     {
+        [DllImport("kernel32", SetLastError = true, CharSet = CharSet.Auto)]
+        public static extern IntPtr LoadLibrary(string fileName);
+
         /// <summary>
         /// The CallWndProc hook procedure is an application-defined or library-defined callback 
         /// function used with the SetWindowsHookEx function. The HOOKPROC type defines a pointer 
@@ -222,7 +225,7 @@ namespace Lib_K_Relay.Utilities
                 s_MouseHookHandle = SetWindowsHookEx(
                     WH_MOUSE_LL,
                     s_MouseDelegate,
-                    Native.LoadLibrary("User32")
+                    LoadLibrary("User32")
                     /*
                     Marshal.GetHINSTANCE(
                         Assembly.GetExecutingAssembly().GetModules()[0])*/,
@@ -389,7 +392,7 @@ namespace Lib_K_Relay.Utilities
                 s_KeyboardHookHandle = SetWindowsHookEx(
                     WH_KEYBOARD_LL,
                     s_KeyboardDelegate,
-                    Native.LoadLibrary("User32")
+                    LoadLibrary("User32")
                     /*Marshal.GetHINSTANCE(
                         Assembly.GetExecutingAssembly().GetModules()[0])*/,
                     0);
