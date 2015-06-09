@@ -217,7 +217,8 @@ namespace Lib_K_Relay.Networking
             {
                 _proxy.FireClientDisconnected(this);
                 Console.WriteLine("[Client Handler] {2} disconnected. (Time: {1}){0}", 
-                    (reason is EndOfStreamException || reason.Message.Contains("host") || reason.Message.Contains("NetworkStream")) ? "" :  "\n" + reason.ToString(), 
+                    (reason is EndOfStreamException || reason.Message.Contains("host") || reason.Message.Contains("NetworkStream") || reason.Message.Contains("non-connected")) 
+                    ? "" :  "\n" + reason.ToString(), 
                     Time, PlayerData == null ? "Client" : PlayerData.Name);
             }
 
@@ -225,12 +226,21 @@ namespace Lib_K_Relay.Networking
             if (_localConnection.Connected) _localConnection.Close();
         }
 
+        private MapInfoPacket _mapInfo;
         private void HandlePacketInternal(Packet packet) // TODO: Add more hooks
         {
             if (packet.Type == PacketType.CREATESUCCESS)
             {
                 ObjectId = (packet as CreateSuccessPacket).ObjectId;
                 PlayerData = new PlayerData(ObjectId);
+                PlayerData.MapName = _mapInfo.Name;
+                PlayerData.TeleportAllowed = _mapInfo.AllowPlayerTeleport;
+                PlayerData.MapWidth = _mapInfo.Width;
+                PlayerData.MapHeight = _mapInfo.Height;
+            }
+            else if (packet.Type == PacketType.MAPINFO)
+            {
+                _mapInfo = (MapInfoPacket)packet;
             }
             else if (packet.Type == PacketType.UPDATE)
             {

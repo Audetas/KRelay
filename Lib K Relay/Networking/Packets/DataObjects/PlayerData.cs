@@ -12,6 +12,10 @@ namespace Lib_K_Relay.Networking.Packets.DataObjects
     public class PlayerData // TODO: Add the rest of the stats
     {
         public int OwnerObjectId;
+        public string MapName;
+        public bool TeleportAllowed;
+        public int MapWidth;
+        public int MapHeight;
 
         public int MaxHealth;
         public int Health;
