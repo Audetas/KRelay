@@ -19,7 +19,9 @@ namespace Lib_K_Relay
     {
         public int Port = 2050;
         public string ListenAddress = "127.0.0.1";
-        public string RemoteAddress = "54.241.208.233"; // USW
+        public string defServer = "USWest";
+        public string defTempServer = Serializer.Servers["USWest"];
+        public Dictionary<string, string> RemoteAddresses = new Dictionary<string, string>(); // USW
         public string Key0 = "311f80691451c71d09a13a2a6e";
         public string Key1 = "72c5583cafb6818995cdd74b80";
 
@@ -46,7 +48,7 @@ namespace Lib_K_Relay
         private TcpListener _localListener = null;
 
         /// <summary>
-        /// Starts listening for clients on the defined port and host at 127.0.0.1:250
+        /// Starts listening for clients on the defined port and host at 127.0.0.1:2050
         /// </summary>
         public void Start()
         {
@@ -63,6 +65,44 @@ namespace Lib_K_Relay
                 if (ProxyListenStarted != null) ProxyListenStarted(this);
             }
             catch (Exception e) { PluginUtils.LogPluginException(e, "ProxyListenStarted"); }
+        }
+
+        public static string ServerNameFromHost(string host)
+        {
+            KeyValuePair<string, string>[] servers = Serializer.Servers.ToArray();
+            foreach (KeyValuePair<string, string> pair in servers)
+            {
+                if (pair.Value == host) return pair.Key;
+            }
+            return "";
+        }
+
+        public string getRemoteAddress(Client client)
+        {
+            if (RemoteAddresses.ContainsKey(client.uniqueCode))
+            {
+                return RemoteAddresses[client.uniqueCode];
+            }
+            else
+            {
+                RemoteAddresses[client.uniqueCode] = defTempServer;
+                defTempServer = Serializer.Servers[defServer];
+                return RemoteAddresses[client.uniqueCode];
+            }
+        }
+
+        public void setRemoteAddress(Client client, string value)
+        {
+            RemoteAddresses[client.uniqueCode] = value;
+        }
+
+        public void setAllAddresses(string add)
+        {
+            string[] adds = RemoteAddresses.Values.ToArray();
+            for (int i = 0; i < adds.Length; i++)
+            {
+                adds[i] = add;
+            }
         }
 
         public void Stop()
