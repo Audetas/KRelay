@@ -137,7 +137,13 @@ namespace K_Relay.Util
                 _proxy.Port = reconnect.Port;
 
             if (reconnect.Host != "")
+            {
                 _proxy.defTempServer = reconnect.Host;
+            }
+            else
+            {
+                _proxy.defTempServer = _proxy.getRemoteAddress(client);
+            }
 
             // Tell the client to connect to the proxy
             reconnect.Host = "localhost";
@@ -196,7 +202,7 @@ namespace K_Relay.Util
         {
             string host = reconnect.Host;
             int port = reconnect.Port;
-            _proxy.defTempServer = host;
+            if (!host.ToLower().Contains("localhost")) _proxy.defTempServer = host;
             _proxy.Port = port;
             reconnect.Host = "localhost";
             reconnect.Port = 2050;

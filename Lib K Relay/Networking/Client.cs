@@ -55,9 +55,10 @@ namespace Lib_K_Relay.Networking
 
             char[] libA = lib.ToCharArray();
 
+            Random rnd = new Random();
+
             for (int i = 0; i < length; i++)
             {
-                Random rnd = new Random();
                 rand += libA[rnd.Next(0, libA.Length)];
             }
 
