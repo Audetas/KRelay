@@ -101,7 +101,8 @@ namespace K_Relay
                 btnToggleProxy.Text = "Stop Proxy";
                 SetStatus("Starting...", Color.Black);
 
-                _proxy.RemoteAddress = Serializer.Servers[Config.Default.DefaultServerName];
+                _proxy.defServer = Config.Default.DefaultServerName;
+                _proxy.defTempServer = Serializer.Servers[_proxy.defServer];
 
                 _proxy.Start();
             }

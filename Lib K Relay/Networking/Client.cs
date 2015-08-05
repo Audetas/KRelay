@@ -33,8 +33,11 @@ namespace Lib_K_Relay.Networking
         private TcpClient _remoteConnection;
         private Proxy _proxy;
 
+        public string uniqueCode = getRandString(20);
+
         public Client(Proxy proxy, TcpClient client)
         {
+            uniqueCode = getRandString(20);
             _proxy = proxy;
             _localConnection = client;
             _remoteConnection = new TcpClient();
@@ -45,10 +48,26 @@ namespace Lib_K_Relay.Networking
             ServerSendKey = new RC4(_proxy.Key0);
         }
 
+        private static string getRandString(int length)
+        {
+            string lib = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ1234567890";
+            string rand = "";
+
+            char[] libA = lib.ToCharArray();
+
+            for (int i = 0; i < length; i++)
+            {
+                Random rnd = new Random();
+                rand += libA[rnd.Next(0, libA.Length)];
+            }
+
+            return rand;
+        }
+
         public void Connect()
         {
             _remoteConnection.BeginConnect(
-                IPAddress.Parse(_proxy.RemoteAddress),
+                IPAddress.Parse(_proxy.getRemoteAddress(this)),
                 _proxy.Port, RemoteConnected, null);
             _proxy.FireClientConnected(this);
         }
