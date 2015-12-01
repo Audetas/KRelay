@@ -10,6 +10,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Xml;
+using System.Net;
 
 namespace Lib_K_Relay.Utilities
 {
@@ -159,6 +160,10 @@ namespace Lib_K_Relay.Utilities
                 reader.ReadToFollowing("DNS");
                 reader.Read();
                 string dns = reader.Value;
+
+                if (dns.Contains(".com"))
+                    dns = Dns.GetHostEntry(dns).AddressList[0].ToString();
+
                 Servers.Add(name, dns);
             }
             Console.WriteLine("[Serializer] Serialized {0} servers successfully.", Servers.Count);
