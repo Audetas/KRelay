@@ -281,7 +281,7 @@ namespace Lib_K_Relay.Networking
             }
             else if (packet.Type == PacketType.PLAYERSHOOT)
             {
-                PlayerData.Pos = (packet as PlayerShootPacket).Position;
+                //PlayerData.Pos = (packet as PlayerShootPacket).Position;
             }
         }
     }

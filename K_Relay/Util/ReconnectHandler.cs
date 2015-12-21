@@ -275,11 +275,11 @@ namespace K_Relay.Util
 
             if (reconnect.Host != "")
             {
-                _proxy.defTempServer = reconnect.Host;
+                _proxy.defTempServers.Add(reconnect.Host);
             }
             else
             {
-                _proxy.defTempServer = _proxy.getRemoteAddress(client);
+                _proxy.defTempServers.Add(_proxy.getRemoteAddress(client));
             }
 
             //Console.WriteLine(reconnect.ToString());
@@ -365,7 +365,7 @@ namespace K_Relay.Util
 
             string host = reconnect.Host;
             int port = reconnect.Port;
-            if (!host.ToLower().Contains("localhost")) _proxy.defTempServer = host;
+            if (!host.ToLower().Contains("localhost")) _proxy.defTempServers.Add(host);
             _proxy.Port = port;
             reconnect.Host = "localhost";
             reconnect.Port = 2050;

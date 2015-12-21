@@ -19,8 +19,8 @@ namespace Lib_K_Relay
     {
         public int Port = 2050;
         public string ListenAddress = "127.0.0.1";
-        public string defServer = "USWest";
-        public string defTempServer = Serializer.Servers["USWest"];
+        public string defServer = Serializer.Servers["USWest"];
+        public List<string> defTempServers = new List<string>();
         public Dictionary<string, string> RemoteAddresses = new Dictionary<string, string>(); // USW
         public string Key0 = "311f80691451c71d09a13a2a6e";
         public string Key1 = "72c5583cafb6818995cdd74b80";
@@ -85,9 +85,22 @@ namespace Lib_K_Relay
             }
             else
             {
-                RemoteAddresses[client.uniqueCode] = defTempServer;
-                defTempServer = Serializer.Servers[defServer];
+                RemoteAddresses[client.uniqueCode] = GetTempServer();
                 return RemoteAddresses[client.uniqueCode];
+            }
+        }
+
+        public string GetTempServer()
+        {
+            if (defTempServers.Count > 0)
+            {
+                string serv = defTempServers[0];
+                defTempServers.RemoveAt(0);
+                return serv;
+            }
+            else
+            {
+                return defServer;
             }
         }
 
