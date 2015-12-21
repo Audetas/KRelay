@@ -4,7 +4,7 @@
 -----------------------------------------------------------
 
 ##Plugin Documentation
-[Can be found here](../master/PLUGIN%20DOCUMENTATION.md)
+[Can be found here](https://github.com/TheKronks/K_Relay_Plugin_Documentation/blob/master/README.md)
 
 -----------------------------------------------------------
 
