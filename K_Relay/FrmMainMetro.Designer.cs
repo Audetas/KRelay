@@ -98,7 +98,7 @@
             this.tabMain.Controls.Add(this.tabAbout);
             this.tabMain.Location = new System.Drawing.Point(21, 53);
             this.tabMain.Name = "tabMain";
-            this.tabMain.SelectedIndex = 3;
+            this.tabMain.SelectedIndex = 0;
             this.tabMain.Size = new System.Drawing.Size(556, 306);
             this.tabMain.TabIndex = 0;
             this.tabMain.UseSelectable = true;
@@ -469,9 +469,9 @@
             // 
             // btnSaveSettings
             // 
-            this.btnSaveSettings.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold);
+            this.btnSaveSettings.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnSaveSettings.Name = "btnSaveSettings";
-            this.btnSaveSettings.Size = new System.Drawing.Size(95, 29);
+            this.btnSaveSettings.Size = new System.Drawing.Size(124, 29);
             this.btnSaveSettings.Text = "Save Settings";
             this.btnSaveSettings.Click += new System.EventHandler(this.btnSaveSettings_Click);
             // 
@@ -627,6 +627,7 @@
             this.ClientSize = new System.Drawing.Size(600, 400);
             this.Controls.Add(this.tabMain);
             this.Controls.Add(this.lblStatus);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MainMenuStrip = this.menuInfo;
             this.MaximizeBox = false;
             this.Name = "FrmMainMetro";

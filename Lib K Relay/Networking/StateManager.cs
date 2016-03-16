@@ -10,6 +10,7 @@ namespace Lib_K_Relay.Networking
     public class StateManager
     {
         private Proxy _proxy;
+
         public void Attach(Proxy proxy)
         {
             _proxy = proxy;
@@ -29,7 +30,14 @@ namespace Lib_K_Relay.Networking
             if (resolvedState == null)
                 client.State.ACCID = client.PlayerData.AccountId;
             else
+            {
+                foreach (var pair in client.State.States)
+                    resolvedState[pair.Key] = pair.Value;
+                foreach (var pair in client.State.States)
+                    resolvedState[pair.Key] = pair.Value;
+
                 client.State = resolvedState;
+            }
         }
     }
 }

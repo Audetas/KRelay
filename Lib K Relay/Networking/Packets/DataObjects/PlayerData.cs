@@ -70,6 +70,16 @@ namespace Lib_K_Relay.Networking.Packets.DataObjects
             Name = "";
         }
 
+        public PlayerData(int ownerObjectId, MapInfoPacket mapInfo)
+        {
+            OwnerObjectId = ownerObjectId;
+            Name = "";
+            MapName = mapInfo.Name;
+            TeleportAllowed = mapInfo.AllowPlayerTeleport;
+            MapWidth = mapInfo.Width;
+            MapHeight = mapInfo.Height;
+        }
+
         public void Parse(UpdatePacket update)
         {
             foreach (Entity newObject in update.NewObjs)

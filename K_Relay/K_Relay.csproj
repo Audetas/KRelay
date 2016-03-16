@@ -32,6 +32,9 @@
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
+  <PropertyGroup>
+    <ApplicationIcon>share-outline.ico</ApplicationIcon>
+  </PropertyGroup>
   <ItemGroup>
     <Reference Include="MetroFramework">
       <HintPath>.\MetroFramework.dll</HintPath>
@@ -135,6 +138,9 @@
     <EmbeddedResource Include="MetroFramework.Design.dll" />
     <EmbeddedResource Include="MetroFramework.dll" />
     <EmbeddedResource Include="MetroFramework.Fonts.dll" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="share-outline.ico" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

@@ -65,7 +65,7 @@ namespace Lib_K_Relay.Utilities
                         }
                     }
                 }
-                Console.WriteLine("[Serializer] Serialized {0} packet ids successfully.", PacketTypeIdMap.Count);
+                PluginUtils.Log("Serializer", "Serialized {0} packet ids successfully.", PacketTypeIdMap.Count);
             }
             else throw new FileNotFoundException("Unable to find file.", path);
         }
@@ -83,8 +83,7 @@ namespace Lib_K_Relay.Utilities
                 PacketType t = (Activator.CreateInstance(packetType) as Packet).Type;
                 PacketTypeTypeMap.Add(t, packetType);
             }
-
-            Console.WriteLine("[Serializer] Mapped {0} packet structures successfully.", PacketTypeTypeMap.Count);
+            PluginUtils.Log("Serializer", "Mapped {0} packet structures successfully.", PacketTypeTypeMap.Count);
         }
         #endregion
 
@@ -114,7 +113,7 @@ namespace Lib_K_Relay.Utilities
                         if (!dict.ContainsKey(objectName)) dict.Add(objectName, objectId);
                     }
                 }
-                Console.WriteLine("[Serializer] Serialized {0} {1} successfully.", dict.Count, fileName);
+                PluginUtils.Log("Serializer", "Serialized {0} {1} successfully.", dict.Count, fileName);
             }
             else throw new FileNotFoundException("Unable to find file.", path);
         }
@@ -166,7 +165,7 @@ namespace Lib_K_Relay.Utilities
 
                 Servers.Add(name, dns);
             }
-            Console.WriteLine("[Serializer] Serialized {0} servers successfully.", Servers.Count);
+            PluginUtils.Log("Serializer", "Serialized {0} servers successfully.", Servers.Count);
         }
         #endregion
 

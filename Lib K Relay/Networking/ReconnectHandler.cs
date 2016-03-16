@@ -1,4 +1,5 @@
 ﻿using Lib_K_Relay.Networking.Packets;
+using Lib_K_Relay.Networking.Packets.Client;
 using Lib_K_Relay.Networking.Packets.Server;
 using Lib_K_Relay.Utilities;
 using System;
@@ -12,16 +13,32 @@ namespace Lib_K_Relay.Networking
 {
     public class ReconnectHandler
     {
+        private Proxy _proxy;
+
         public void Attach(Proxy proxy)
         {
+            _proxy = proxy;
             proxy.HookPacket<CreateSuccessPacket>(OnCreateSuccess);
             proxy.HookPacket<ReconnectPacket>(OnReconnect);
+            proxy.HookPacket<HelloPacket>(OnHello);
 
             proxy.HookCommand("con", OnConnectCommand);
             proxy.HookCommand("connect", OnConnectCommand);
             proxy.HookCommand("server", OnConnectCommand);
             proxy.HookCommand("recon", OnReconCommand);
             proxy.HookCommand("drecon", OnDreconCommand);
+        }
+
+        private void OnHello(Client client, HelloPacket packet)
+        {
+            client.State = _proxy.GetState(client, packet.Key);
+            if (client.State.ConRealKey.Length != 0)
+            {
+                packet.Key = client.State.ConRealKey;
+                client.State.ConRealKey = new byte[0];
+            }
+            client.Connect(packet);
+            packet.Send = false;
         }
 
         private void OnCreateSuccess(Client client, CreateSuccessPacket packet)

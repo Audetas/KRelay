@@ -32,9 +32,21 @@ namespace Lib_K_Relay.Utilities
             string methodName = site == null ? "<null method reference>" : site.Name;
             string className = site == null ? "" : site.ReflectedType.Name;
 
-            Console.WriteLine(
-                "[Error] An exception was thrown\nwithin {0} \nat {1}\nMore info:\n{2}",
+            Log("Error", "An exception was thrown\nwithin {0} \nat {1}\n\n{2}",
                 caller, className + "." + methodName, e);
+        }
+
+        public static void Log(string sender, string message)
+        {
+            if (sender.Length > 13) sender = sender.Substring(0, 13);
+            sender += "]";
+            Console.WriteLine(string.Format("[{0,-15} {1}", sender, message));
+        }
+
+        public static void Log(string sender, string message, params object[] list)
+        {
+            string formatted = string.Format(message, list);
+            Log(sender, formatted);
         }
 
         public static void ShowGUI(Form gui)

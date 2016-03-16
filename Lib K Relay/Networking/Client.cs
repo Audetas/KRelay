@@ -1,5 +1,6 @@
 using Lib_K_Relay.Crypto;
 using Lib_K_Relay.Networking.Packets;
+using Lib_K_Relay.Networking.Packets.Client;
 using Lib_K_Relay.Networking.Packets.DataObjects;
 using Lib_K_Relay.Utilities;
 using System;
@@ -58,11 +59,14 @@ namespace Lib_K_Relay.Networking
             _clientConnection = client;
             _clientStream = _clientConnection.GetStream();
             _clientConnection.NoDelay = true;
+            BeginRead(0, 4, true);
         }
 
-        public void Connect()
+        public void Connect(HelloPacket state)
         {
-            BeginRead(0, 4, true);
+            _serverConnection = new TcpClient();
+            _serverConnection.NoDelay = true;
+            _serverConnection.BeginConnect(State.ConTargetAddress, State.ConTargetPort, ServerConnected, state);
         }
 
         private void ServerConnected(IAsyncResult ar)
@@ -74,7 +78,7 @@ namespace Lib_K_Relay.Networking
                 SendToServer(ar.AsyncState as Packet);
                 BeginRead(0, 4, false);
                 _proxy.FireClientConnected(this);
-                Console.WriteLine("[Client] Connected to remote host");
+                PluginUtils.Log("Client", "Connected to remote host.");
             }, "ClientServerConnect");
 
             if (!success)
@@ -97,7 +101,7 @@ namespace Lib_K_Relay.Networking
                 _serverConnection?.Close();
                 _clientBuffer.Dispose();
                 _serverBuffer.Dispose();
-                Console.WriteLine("[Client] Disconnected");
+                PluginUtils.Log("Client", "Disconnected.");
             }
         }
 
@@ -138,7 +142,7 @@ namespace Lib_K_Relay.Networking
                         _serverSendState.Cipher(data);
                         _serverStream.Write(data, 0, data.Length);
                     }
-                }, "PacketSend (packet = " + packet.Type + ")");
+                }, "PacketSend (packet = " + packet?.Type + ")");
 
                 if (!success) Dispose();
             }
@@ -157,6 +161,7 @@ namespace Lib_K_Relay.Networking
             NetworkStream stream = (ar.AsyncState as Tuple<NetworkStream, PacketBuffer>).Item1;
             PacketBuffer buffer = (ar.AsyncState as Tuple<NetworkStream, PacketBuffer>).Item2;
             bool isClient = stream == _clientStream;
+            RC4Cipher cipher = isClient ? _clientReceiveState : _serverReceiveState;
 
             bool success = PluginUtils.ProtectedInvoke(() =>
             {
@@ -182,24 +187,17 @@ namespace Lib_K_Relay.Networking
                 }
                 else
                 {   // We have the full packet
-                    if (isClient) _clientReceiveState.Cipher(buffer.Bytes);
-                    else _serverReceiveState.Cipher(buffer.Bytes);
-
+                    cipher.Cipher(buffer.Bytes);
                     Packet packet = Packet.Create(buffer.Bytes);
                     HandlePacketInternal(packet);
 
                     if (isClient)
-                    {
                         _proxy.FireClientPacket(this, packet);
-                        if (packet.Send)
-                            SendToServer(packet);
-                    }
                     else
-                    {
                         _proxy.FireServerPacket(this, packet);
-                        if (packet.Send)
-                            SendToClient(packet);
-                    }
+
+                    if (packet.Send)
+                        Send(packet, !isClient);
 
                     buffer.Reset();
                     BeginRead(0, 4, isClient);

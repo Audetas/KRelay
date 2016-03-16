@@ -5,11 +5,11 @@ using System.Runtime.InteropServices;
 // General Information about an assembly is controlled through the following 
 // set of attributes. Change these attribute values to modify the information
 // associated with an assembly.
-[assembly: AssemblyTitle("K_Relay")]
-[assembly: AssemblyDescription("")]
+[assembly: AssemblyTitle("K Relay")]
+[assembly: AssemblyDescription("A man-in-the-middle proxy for RotMG")]
 [assembly: AssemblyConfiguration("")]
 [assembly: AssemblyCompany("")]
-[assembly: AssemblyProduct("K_Relay")]
+[assembly: AssemblyProduct("K Relay")]
 [assembly: AssemblyCopyright("Copyright ©  2015")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]

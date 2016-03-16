@@ -16,33 +16,9 @@ namespace Lib_K_Relay.Networking
         private MapInfoPacket _mapInfo;
         private void HandlePacketInternal(Packet packet)
         {
-            if (packet.Type == PacketType.RECONNECT)
+            if (packet.Type == PacketType.CREATESUCCESS)
             {
-                ReconnectPacket recon = (ReconnectPacket)packet;
-
-            }
-            else if (packet.Type == PacketType.HELLO)
-            {
-                HelloPacket hello = (HelloPacket)packet;
-                State = _proxy.GetState(this, hello.Key);
-                if (State.ConRealKey.Length != 0)
-                {
-                    hello.Key = State.ConRealKey;
-                    State.ConRealKey = new byte[0];
-                }
-
-                _serverConnection = new TcpClient();
-                _serverConnection.NoDelay = true;
-                _serverConnection.BeginConnect(State.ConTargetAddress, State.ConTargetPort, ServerConnected, packet);
-                packet.Send = false;
-            }
-            else if (packet.Type == PacketType.CREATESUCCESS)
-            {
-                PlayerData = new PlayerData((packet as CreateSuccessPacket).ObjectId);
-                PlayerData.MapName = _mapInfo.Name;
-                PlayerData.TeleportAllowed = _mapInfo.AllowPlayerTeleport;
-                PlayerData.MapWidth = _mapInfo.Width;
-                PlayerData.MapHeight = _mapInfo.Height;
+                PlayerData = new PlayerData((packet as CreateSuccessPacket).ObjectId, _mapInfo);
             }
             else if (packet.Type == PacketType.MAPINFO)
             {
@@ -56,6 +32,10 @@ namespace Lib_K_Relay.Networking
             {
                 PlayerData.Parse(packet as NewTickPacket);
             }
+            else if (packet.Type == PacketType.PLAYERSHOOT)
+            {
+                PlayerData.Pos = (packet as PlayerShootPacket).Position;
+            }
             else if (packet.Type == PacketType.PONG)
             {
                 _lastTime = (packet as PongPacket).Time;
@@ -66,10 +46,6 @@ namespace Lib_K_Relay.Networking
                 _lastTime = (packet as MovePacket).Time;
                 _lastTimeTime = Environment.TickCount;
                 PlayerData.Pos = (packet as MovePacket).NewPosition;
-            }
-            else if (packet.Type == PacketType.PLAYERSHOOT)
-            {
-                PlayerData.Pos = (packet as PlayerShootPacket).Position;
             }
         }
     }

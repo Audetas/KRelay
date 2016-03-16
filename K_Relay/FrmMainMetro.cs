@@ -26,8 +26,7 @@ namespace K_Relay
         public FrmMainMetro()
         {
             InitializeComponent();
-
-            this.tabMain.SelectedIndex = 0;
+            tabMain.SelectedIndex = 0;
             Console.SetOut(new MetroTextBoxStreamWriter(tbxLog));
 
             try
@@ -52,7 +51,7 @@ namespace K_Relay
             {
                 MessageBox.Show("Either a required file was not found or we weren't able to contact the RotMG account server.\n" +
                                 "Here's more detail: \n" +
-                                e.Message + "\n" +
+                                e + "\n" +
                                 "Please ensure you extract all of the files to the same folder!\n" +
                                 "K Relay will now exit.", "K Relay", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 Environment.Exit(Environment.ExitCode);
@@ -88,7 +87,7 @@ namespace K_Relay
 
         private void metroButton1_Click(object sender, EventArgs e)
         {
-            this.Close();
+            Close();
         }
 
         private void btnToggleProxy_Click(object sender, EventArgs e)

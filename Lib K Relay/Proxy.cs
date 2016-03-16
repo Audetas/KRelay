@@ -50,14 +50,14 @@ namespace Lib_K_Relay
 
         public void Start()
         {
-            Console.WriteLine("[Client Listener] Starting local listener...");
+            PluginUtils.Log("Listener", "Starting local listener...");
 
             bool success = PluginUtils.ProtectedInvoke(() =>
             {
                 _localListener = new TcpListener(IPAddress.Parse("127.0.0.1"), 2050);
                 _localListener.Start();
                 _localListener.BeginAcceptTcpClient(LocalConnect, null);
-                Console.WriteLine("[Client Listener] Local listener started");
+                PluginUtils.Log("Listener", "Local listener started.");
             }, "ClientListenerStart");
 
             if (!success) return;
@@ -72,8 +72,9 @@ namespace Lib_K_Relay
         {
             if (_localListener == null) return;
 
-            Console.WriteLine("[Client Listener] Stopping local listener...");
+            PluginUtils.Log("Listener", "Stopping local listener...");
             _localListener.Stop();
+            _localListener = null;
 
             PluginUtils.ProtectedInvoke(() =>
             {
@@ -105,17 +106,18 @@ namespace Lib_K_Relay
             {
                 TcpClient client = _localListener.EndAcceptTcpClient(ar);
                 Client ci = new Client(this, client);
-                Console.WriteLine("[Client Listener] Client recieved");
+                PluginUtils.Log("Listener", "Client received.");
 
                 PluginUtils.ProtectedInvoke(() =>
                 {
                     ClientBeginConnect?.Invoke(ci);
                 }, "ClientBeginConnect");
-
-                ci.Connect();
             }, "LocalConnect");
 
-            _localListener.BeginAcceptTcpClient(LocalConnect, null);
+            PluginUtils.ProtectedInvoke(() =>
+            {
+                _localListener?.BeginAcceptTcpClient(LocalConnect, null);
+            }, "ClientListenerBeginListen");
         }
 
         #region Hook Calls

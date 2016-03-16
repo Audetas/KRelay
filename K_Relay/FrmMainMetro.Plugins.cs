@@ -31,7 +31,7 @@ namespace K_Relay
             {
                 Directory.CreateDirectory(pDir);
                 MetroMessageBox.Show(this, string.Format("Plugin directory not found! Directory created at '{0}'.", pDir), "Directory Created", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                Console.WriteLine("[Plugin Manager] Plugin directory not found! Directory created at '{0}'.", pDir);
+                PluginUtils.Log("Interface", "Plugin directory not found! Directory created at '{0}'.", pDir);
                 return;
             }
 
@@ -98,10 +98,9 @@ namespace K_Relay
             instance.Initialize(_proxy);
 
             listPlugins.ListBox.Items.Add(name);
-
             _pluginNameMap.Add(name, instance);
 
-            Console.WriteLine("[Plugin Manager] Loaded and attached {0}", name);
+            PluginUtils.Log("Interface", "Loaded and attached {0}.", name);
         }
 
         private void PluginDescriptionView(IPlugin plugin)
