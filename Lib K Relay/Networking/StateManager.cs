@@ -33,10 +33,11 @@ namespace Lib_K_Relay.Networking
 
         private void OnPlayerShoot(Client client, PlayerShootPacket packet)
         {
-            Location resolved = new Location();
-            resolved.X = packet.Position.X - 0.3f * (float)Math.Cos(packet.Angle);
-            resolved.Y = packet.Position.Y - 0.3f * (float)Math.Sin(packet.Angle);
-            client.PlayerData.Pos = resolved;
+            client.PlayerData.Pos = new Location()
+            {
+                X = packet.Position.X - 0.3f * (float)Math.Cos(packet.Angle),
+                Y = packet.Position.Y - 0.3f * (float)Math.Sin(packet.Angle)
+            };
         }
 
         private void OnNewTick(Client client, NewTickPacket packet)

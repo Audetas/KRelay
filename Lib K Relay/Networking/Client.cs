@@ -142,7 +142,7 @@ namespace Lib_K_Relay.Networking
                         _serverSendState.Cipher(data);
                         _serverStream.Write(data, 0, data.Length);
                     }
-                }, "PacketSend (packet = " + packet?.Type + ")");
+                }, "PacketSend (packet = " + packet?.Type + ")", typeof(IOException));
 
                 if (!success) Dispose();
             }
@@ -201,7 +201,7 @@ namespace Lib_K_Relay.Networking
                     buffer.Reset();
                     BeginRead(0, 4, isClient);
                 }
-            }, "RemoteRead (isClient = " + isClient + ")");
+            }, "RemoteRead (isClient = " + isClient + ")", typeof(IOException));
 
             if (!success) Dispose();
         }

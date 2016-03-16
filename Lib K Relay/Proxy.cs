@@ -112,7 +112,7 @@ namespace Lib_K_Relay
                 {
                     ClientBeginConnect?.Invoke(ci);
                 }, "ClientBeginConnect");
-            }, "LocalConnect");
+            }, "LocalConnect", typeof(ObjectDisposedException));
 
             PluginUtils.ProtectedInvoke(() =>
             {
