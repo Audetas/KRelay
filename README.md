@@ -7,16 +7,3 @@
 [Can be found here](https://github.com/TheKronks/K_Relay_Plugin_Documentation/blob/master/README.md)
 
 -----------------------------------------------------------
-
-##Core Checklist: (please add as you get ideas)
-- [ ] Don't parse packets that aren't hooked
-
-##Todo Checklist:
-- [ ] Vault, PetYard, Guild Hall recon for IRH
-
-##Plugin Checklist:
-- [ ] Map Cacher
-- [ ] Speedhack (maybee)
-- [ ] Freeze Godmode
-- [ ] Plugin to auto use an HP pot at a custom threshold.
-- [ ] /tl command for Teleport to the Last player you teleported to assuming they are in the same map as you.
