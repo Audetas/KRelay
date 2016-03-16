@@ -10,13 +10,13 @@ using System.Net.Sockets;
 
 namespace Lib_K_Relay.Networking
 {
-    public partial class Client
+    public class Client
     {
         private static string Key0 = "311f80691451c71d09a13a2a6e";
         private static string Key1 = "72c5583cafb6818995cdd74b80";
 
-        private int _lastTimeTime = 0;
-        private int _lastTime = 0;
+        public int LastTimeTime = 0;
+        public int LastTime = 0;
 
         private object _serverLock = new object();
         private object _clientLock = new object();
@@ -35,7 +35,7 @@ namespace Lib_K_Relay.Networking
 
         public int Time
         {
-            get { return _lastTime + (Environment.TickCount - _lastTimeTime); }
+            get { return LastTime + (Environment.TickCount - LastTimeTime); }
         }
 
         public int ObjectId
@@ -189,7 +189,6 @@ namespace Lib_K_Relay.Networking
                 {   // We have the full packet
                     cipher.Cipher(buffer.Bytes);
                     Packet packet = Packet.Create(buffer.Bytes);
-                    HandlePacketInternal(packet);
 
                     if (isClient)
                         _proxy.FireClientPacket(this, packet);

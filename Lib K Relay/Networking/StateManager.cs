@@ -1,4 +1,6 @@
-﻿using Lib_K_Relay.Networking.Packets.Server;
+﻿using Lib_K_Relay.Networking.Packets.Client;
+using Lib_K_Relay.Networking.Packets.DataObjects;
+using Lib_K_Relay.Networking.Packets.Server;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -14,11 +16,47 @@ namespace Lib_K_Relay.Networking
         public void Attach(Proxy proxy)
         {
             _proxy = proxy;
+            proxy.HookPacket<CreateSuccessPacket>(OnCreateSuccess);
+            proxy.HookPacket<MapInfoPacket>(OnMapInfo);
             proxy.HookPacket<UpdatePacket>(OnUpdate);
+            proxy.HookPacket<NewTickPacket>(OnNewTick);
+            proxy.HookPacket<PlayerShootPacket>(OnPlayerShoot);
+            proxy.HookPacket<MovePacket>(OnMove);
+        }
+
+        private void OnMove(Client client, MovePacket packet)
+        {
+            client.LastTime = packet.Time;
+            client.LastTimeTime = Environment.TickCount;
+            client.PlayerData.Pos = packet.NewPosition;
+        }
+
+        private void OnPlayerShoot(Client client, PlayerShootPacket packet)
+        {
+            Location resolved = new Location();
+            resolved.X = packet.Position.X - 0.3f * (float)Math.Cos(packet.Angle);
+            resolved.Y = packet.Position.Y - 0.3f * (float)Math.Sin(packet.Angle);
+            client.PlayerData.Pos = resolved;
+        }
+
+        private void OnNewTick(Client client, NewTickPacket packet)
+        {
+            client.PlayerData.Parse(packet);
+        }
+
+        private void OnMapInfo(Client client, MapInfoPacket packet)
+        {
+            client.State["MapInfo"] = packet;
+        }
+
+        private void OnCreateSuccess(Client client, CreateSuccessPacket packet)
+        {
+            client.PlayerData = new PlayerData(packet.ObjectId, client.State.Value<MapInfoPacket>("MapInfo"));
         }
 
         private void OnUpdate(Client client, UpdatePacket packet)
         {
+            client.PlayerData.Parse(packet);
             if (client.State.ACCID != null) return;
 
             State resolvedState = null;

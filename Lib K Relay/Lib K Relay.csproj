@@ -48,7 +48,6 @@
     <Compile Include="Crypto\RC4Cipher.cs" />
     <Compile Include="Interface\IPlugin.cs" />
     <Compile Include="Networking\Client.cs" />
-    <Compile Include="Networking\Client.PacketLogic.cs" />
     <Compile Include="Networking\PacketBuffer.cs" />
     <Compile Include="Networking\Packets\Client\AcceptTradePacket.cs" />
     <Compile Include="Networking\Packets\Client\AoEAckPacket.cs" />
