@@ -91,13 +91,6 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Util\ConClient.cs" />
-    <Compile Include="Util\FrmServerReconnect.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Util\FrmServerReconnect.Designer.cs" />
-    <Compile Include="Util\PacketDebugger.cs" />
-    <Compile Include="Util\ReconnectHandler.cs" />
     <Compile Include="Util\TextBoxStreamWriter.cs" />
     <EmbeddedResource Include="Controls\MetroListBox.resx">
       <DependentUpon>MetroListBox.cs</DependentUpon>
@@ -115,7 +108,6 @@
       <DependentUpon>Resources.resx</DependentUpon>
       <DesignTime>True</DesignTime>
     </Compile>
-    <EmbeddedResource Include="Util\FrmServerReconnect.resx" />
     <None Include="Config.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Config.Designer.cs</LastGenOutput>

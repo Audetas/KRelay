@@ -2,20 +2,11 @@
 <SettingsFile xmlns="http://schemas.microsoft.com/VisualStudio/2004/01/settings" CurrentProfile="(Default)" GeneratedClassNamespace="K_Relay" GeneratedClassName="Config">
   <Profiles />
   <Settings>
-    <Setting Name="UseInternalReconnectHandler" Type="System.Boolean" Scope="User">
-      <Value Profile="(Default)">True</Value>
-    </Setting>
     <Setting Name="DefaultServerName" Type="System.String" Scope="User">
       <Value Profile="(Default)">USWest</Value>
     </Setting>
-    <Setting Name="RC4Key0" Type="System.String" Scope="User">
-      <Value Profile="(Default)">311f80691451c71d09a13a2a6e</Value>
-    </Setting>
-    <Setting Name="RC4Key1" Type="System.String" Scope="User">
-      <Value Profile="(Default)">72c5583cafb6818995cdd74b80</Value>
-    </Setting>
     <Setting Name="StartProxyByDefault" Type="System.Boolean" Scope="User">
-      <Value Profile="(Default)">False</Value>
+      <Value Profile="(Default)">True</Value>
     </Setting>
     <Setting Name="Style" Type="MetroFramework.MetroColorStyle" Scope="User">
       <Value Profile="(Default)">Default</Value>

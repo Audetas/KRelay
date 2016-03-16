@@ -19,7 +19,7 @@ namespace Lib_K_Relay.Utilities
             InitializeComponent();
         }
 
-        public FrmGenericSettings(dynamic settingsObject, string title, TitleColor style)
+        public FrmGenericSettings(dynamic settingsObject, string title)
         {
             InitializeComponent();
             _settings = settingsObject;

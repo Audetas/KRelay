@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Lib_K_Relay.Crypto
 {
-    public class RC4
+    public class RC4Cipher
     {
         private readonly static int STATE_LENGTH = 256;
 
@@ -15,13 +15,13 @@ namespace Lib_K_Relay.Crypto
         private int y;
         private byte[] workingKey;
 
-        public RC4(byte[] key)
+        public RC4Cipher(byte[] key)
         {
             workingKey = key;
             SetKey(workingKey);
         }
 
-        public RC4(string hexString)
+        public RC4Cipher(string hexString)
         {
             workingKey = HexStringToBytes(hexString);
             SetKey(workingKey);

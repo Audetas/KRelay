@@ -66,9 +66,6 @@ namespace K_Relay
 
             _proxy.ClientConnected += c => _clients.Add(c);
             _proxy.ClientDisconnected += c => _clients.Remove(c);
-
-            _proxy.Key0 = Config.Default.RC4Key0;
-            _proxy.Key1 = Config.Default.RC4Key1;
         }
 
         private void FrmMainMetro_Shown(object sender, EventArgs e)
@@ -100,9 +97,6 @@ namespace K_Relay
             {
                 btnToggleProxy.Text = "Stop Proxy";
                 SetStatus("Starting...", Color.Black);
-
-                _proxy.defServer = Config.Default.DefaultServerName;
-                _proxy.defTempServer = Serializer.Servers[_proxy.defServer];
 
                 _proxy.Start();
             }

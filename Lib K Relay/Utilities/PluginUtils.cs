@@ -13,6 +13,19 @@ namespace Lib_K_Relay.Utilities
 {
     public static class PluginUtils
     {
+        public static bool ProtectedInvoke(Action action, string errorProvider)
+        {
+            try
+            {
+                action();
+                return true;
+            }
+            catch (Exception e)
+            {
+                LogPluginException(e, errorProvider);
+                return false;
+            }
+        }
         public static void LogPluginException(Exception e, string caller)
         {
             MethodBase site = e.TargetSite;
@@ -20,35 +33,35 @@ namespace Lib_K_Relay.Utilities
             string className = site == null ? "" : site.ReflectedType.Name;
 
             Console.WriteLine(
-                "[Plugin Error] An exception was thrown\nwithin a {0} callback\nat {1}\nHere's the exception report:\n{2}",
+                "[Error] An exception was thrown\nwithin {0} \nat {1}\nMore info:\n{2}",
                 caller, className + "." + methodName, e);
         }
 
         public static void ShowGUI(Form gui)
         {
             gui.Shown += (s, e) =>
-                {
-                    gui.WindowState = FormWindowState.Minimized;
-                    gui.Show();
-                    gui.WindowState = FormWindowState.Normal;
-                };
+            {
+                gui.WindowState = FormWindowState.Minimized;
+                gui.Show();
+                gui.WindowState = FormWindowState.Normal;
+            };
 
             Thread messageLoop = new Thread(() => gui.ShowDialog());
             messageLoop.Start();
         }
 
-        public static void ShowGenericSettingsGUI(dynamic settingsObject, string title, TitleColor style = TitleColor.Pink)
+        public static void ShowGenericSettingsGUI(dynamic settingsObject, string title)
         {
-            ShowGUI(new FrmGenericSettings(settingsObject, title, style));
+            ShowGUI(new FrmGenericSettings(settingsObject, title));
         }
 
         public static void Delay(int ms, Action callback)
         {
             Task.Run(() =>
-                {
-                    Thread.Sleep(ms);
-                    callback();
-                });
+            {
+                Thread.Sleep(ms);
+                callback();
+            });
         }
 
         public static NotificationPacket CreateNotification(int objectId, string message)

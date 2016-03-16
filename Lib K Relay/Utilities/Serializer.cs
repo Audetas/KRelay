@@ -204,6 +204,14 @@ namespace Lib_K_Relay.Utilities
             else
                 return "";
         }
+
+        public static string GetServerNameByIP(string ip)
+        {
+            foreach (var pair in Servers)
+                if (pair.Value == ip)
+                    return pair.Key;
+            return "";
+        }
         #endregion
 
         public static string DEBUGGetSolutionRoot()

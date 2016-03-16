@@ -16,7 +16,7 @@ namespace Lib_K_Relay.Networking.Packets.Client
         public int Random2;
         public string Secret;
         public int KeyTime;
-        public sbyte[] Key;
+        public byte[] Key;
         public string Obf1;
         public string Obf2;
         public string Obf3;
@@ -39,7 +39,7 @@ namespace Lib_K_Relay.Networking.Packets.Client
             Random2 = r.ReadInt32();
             Secret = r.ReadString();
             KeyTime = r.ReadInt32();
-            Key = (sbyte[])(Array)r.ReadBytes(r.ReadInt16());
+            Key = (byte[])(Array)r.ReadBytes(r.ReadInt16());
             Obf1 = r.ReadUTF32();
             Obf2 = r.ReadString();
             Obf3 = r.ReadString();

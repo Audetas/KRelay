@@ -5,33 +5,21 @@ using Lib_K_Relay.Utilities;
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Linq.Expressions;
 using System.Net;
 using System.Net.Sockets;
 using System.Reflection;
 using System.Text;
-using System.Threading.Tasks;
-using System.Windows.Forms;
 
 namespace Lib_K_Relay
 {
+    public delegate void ListenHandler(Proxy proxy);
+    public delegate void ConnectionHandler(Client client);
+    public delegate void PacketHandler(Client client, Packet packet);
+    public delegate void GenericPacketHandler<T>(Client client, T packet) where T : Packet;
+    public delegate void CommandHandler(Client client, string command, string[] args);
+
     public class Proxy
     {
-        public int Port = 2050;
-        public string ListenAddress = "127.0.0.1";
-        public string defServer = "USWest";
-        public string defTempServer = Serializer.Servers["USWest"];
-        public Dictionary<string, string> RemoteAddresses = new Dictionary<string, string>(); // USW
-        public string Key0 = "311f80691451c71d09a13a2a6e";
-        public string Key1 = "72c5583cafb6818995cdd74b80";
-
-        public delegate void ListenHandler(Proxy proxy);
-        public delegate void ConnectionHandler(Client client);
-        public delegate void PacketHandler(Client client, Packet packet);
-        public delegate void GenericPacketHandler<T>(Client client, T packet) where T : Packet;
-        public delegate void CommandHandler(Client client, string command, string[] args);
-        public delegate void KeyHandler(Keys key);
-
         public event ListenHandler ProxyListenStarted;
         public event ListenHandler ProxyListenStopped;
         public event ConnectionHandler ClientBeginConnect;
@@ -40,119 +28,100 @@ namespace Lib_K_Relay
         public event PacketHandler ServerPacketRecieved;
         public event PacketHandler ClientPacketRecieved;
 
-        private Dictionary<object, Type> _genericPacketHooks = new Dictionary<object, Type>();
-        private Dictionary<PacketHandler, List<PacketType>> _packetHooks = new Dictionary<PacketHandler, List<PacketType>>();
-        private Dictionary<CommandHandler, List<string>> _commandHooks = new Dictionary<CommandHandler, List<string>>();
-        private Dictionary<KeyHandler, List<Keys>> _keyHooks = new Dictionary<KeyHandler, List<Keys>>();
+        public static string DefaultServer = "54.241.208.233"; // USWest
 
+        public Dictionary<string, State> States;
+
+        private Dictionary<object, Type> _genericPacketHooks;
+        private Dictionary<PacketHandler, List<PacketType>> _packetHooks;
+        private Dictionary<CommandHandler, List<string>> _commandHooks;
         private TcpListener _localListener = null;
 
-        /// <summary>
-        /// Starts listening for clients on the defined port and host at 127.0.0.1:2050
-        /// </summary>
+        public Proxy()
+        {
+            States = new Dictionary<string, State>();
+            _genericPacketHooks = new Dictionary<object, Type>();
+            _packetHooks = new Dictionary<PacketHandler, List<PacketType>>();
+            _commandHooks = new Dictionary<CommandHandler, List<string>>();
+
+            new StateManager().Attach(this);
+            new ReconnectHandler().Attach(this);
+        }
+
         public void Start()
         {
-            Console.WriteLine("[Client Listener] Starting local listener at {0} on port {1}...",ListenAddress, Port);
-            _localListener = new TcpListener(IPAddress.Parse(ListenAddress), Port);
+            Console.WriteLine("[Client Listener] Starting local listener...");
 
-            // Start listening for client connections.
-            _localListener.Start();
-            _localListener.BeginAcceptTcpClient(LocalConnect, null);
-            HookManager.KeyUp += OnKeyUp;
-
-            try
+            bool success = PluginUtils.ProtectedInvoke(() =>
             {
-                if (ProxyListenStarted != null) ProxyListenStarted(this);
-            }
-            catch (Exception e) { PluginUtils.LogPluginException(e, "ProxyListenStarted"); }
-        }
+                _localListener = new TcpListener(IPAddress.Parse("127.0.0.1"), 2050);
+                _localListener.Start();
+                _localListener.BeginAcceptTcpClient(LocalConnect, null);
+                Console.WriteLine("[Client Listener] Local listener started");
+            }, "ClientListenerStart");
 
-        public static string ServerNameFromHost(string host)
-        {
-            KeyValuePair<string, string>[] servers = Serializer.Servers.ToArray();
-            foreach (KeyValuePair<string, string> pair in servers)
-            {
-                if (pair.Value == host) return pair.Key;
-            }
-            return "";
-        }
+            if (!success) return;
 
-        public string getRemoteAddress(Client client)
-        {
-            if (RemoteAddresses.ContainsKey(client.uniqueCode))
+            PluginUtils.ProtectedInvoke(() =>
             {
-                return RemoteAddresses[client.uniqueCode];
-            }
-            else
-            {
-                RemoteAddresses[client.uniqueCode] = defTempServer;
-                defTempServer = Serializer.Servers[defServer];
-                return RemoteAddresses[client.uniqueCode];
-            }
-        }
-
-        public void setRemoteAddress(Client client, string value)
-        {
-            RemoteAddresses[client.uniqueCode] = value;
-        }
-
-        public void setAllAddresses(string add)
-        {
-            string[] adds = RemoteAddresses.Values.ToArray();
-            for (int i = 0; i < adds.Length; i++)
-            {
-                adds[i] = add;
-            }
+                ProxyListenStarted?.Invoke(this);
+            }, "ProxyListenStarted");
         }
 
         public void Stop()
         {
-            HookManager.KeyUp -= OnKeyUp;
-            if (_localListener != null && !_localListener.Server.Connected)
-            {
-                Console.WriteLine("[Client Listener] Stopping local listener...");
-                _localListener.Stop();
+            if (_localListener == null) return;
 
-                try
-                {
-                    if (ProxyListenStopped != null) ProxyListenStopped(this);
-                }
-                catch (Exception e) { PluginUtils.LogPluginException(e, "ProxyListenStopped"); }
+            Console.WriteLine("[Client Listener] Stopping local listener...");
+            _localListener.Stop();
+
+            PluginUtils.ProtectedInvoke(() =>
+            {
+                ProxyListenStopped?.Invoke(this);
+            }, "ProxyListenStopped");
+        }
+
+        public State GetState(Client client, byte[] key)
+        {
+            string guid = key.Length == 0 ? "n/a" : Encoding.UTF8.GetString(key);
+
+            State newState = new State(client, Guid.NewGuid().ToString("n"));
+            States[newState.GUID] = newState;
+
+            if (guid != "n/a")
+            {
+                State lastState = States[guid];
+                newState.ConTargetAddress = lastState.ConTargetAddress;
+                newState.ConTargetPort = lastState.ConTargetPort;
+                newState.ConRealKey = lastState.ConRealKey;
             }
+
+            return newState;
         }
 
         private void LocalConnect(IAsyncResult ar)
         {
-            try
+            PluginUtils.ProtectedInvoke(() =>
             {
-                // Finish the accept, and then instantiate a ClientInstance
-                // to begin handling IO on that socket and start its own 
-                // connection to the server.
                 TcpClient client = _localListener.EndAcceptTcpClient(ar);
                 Client ci = new Client(this, client);
+                Console.WriteLine("[Client Listener] Client recieved");
 
-                try
+                PluginUtils.ProtectedInvoke(() =>
                 {
-                    if (ClientBeginConnect != null) ClientBeginConnect(ci);
-                }
-                catch (Exception e) { PluginUtils.LogPluginException(e, "ClientBeginConnect"); }
+                    ClientBeginConnect?.Invoke(ci);
+                }, "ClientBeginConnect");
 
                 ci.Connect();
+            }, "LocalConnect");
 
-                // Listen for new clients.
-                _localListener.BeginAcceptTcpClient(LocalConnect, null);
-            }
-            catch (ObjectDisposedException ignored) { } // This happens when the proxy stops and the callback fires. We'll ignore it.
-            catch (Exception e) 
-            {
-                Console.WriteLine("[Client Listner] ClientListen failed! Here's the exception report:\n{0}", e.Message);
-                Stop();
-            }
+            _localListener.BeginAcceptTcpClient(LocalConnect, null);
         }
 
+        #region Hook Calls
         public void HookPacket(PacketType type, PacketHandler callback)
         {
-            if (Serializer.GetPacketId(type) == 255) // TODO: Remove when all structures are defined
+            if (Serializer.GetPacketId(type) == 255)
                 throw new InvalidOperationException("[Plugin Error] A plugin attempted to register callback " +
                                                     callback.GetMethodInfo().ReflectedType + "." + callback.Method.Name +
                                                     " for packet type " + type + " that doesn't have a structure defined.");
@@ -179,36 +148,28 @@ namespace Lib_K_Relay
                     ? new string(command.Skip(1).ToArray()).ToLower() 
                     : command.ToLower() } );
         }
+        #endregion
 
-        public void HookKey(Keys key, KeyHandler callback)
-        {
-            if (_keyHooks.ContainsKey(callback))
-                _keyHooks[callback].Add(key);
-            else
-                _keyHooks.Add(callback, new List<Keys>() { key });
-        }
-
+        #region Event Calls
         public void FireClientConnected(Client client)
         {
-            try
+            PluginUtils.ProtectedInvoke(() =>
             {
-                if (ClientConnected != null) ClientConnected(client);
-            }
-            catch (Exception e) { PluginUtils.LogPluginException(e, "ClientConnected"); }
+                ClientConnected?.Invoke(client);
+            }, "ClientConnected");
         }
 
         public void FireClientDisconnected(Client client)
         {
-            try
+            PluginUtils.ProtectedInvoke(() =>
             {
-                if (ClientDisconnected != null) ClientDisconnected(client);
-            }
-            catch (Exception e) { PluginUtils.LogPluginException(e, "ClientDisconnected"); }
+                ClientDisconnected?.Invoke(client);
+            }, "ClientDisconnected");
         }
 
         public void FireServerPacket(Client client, Packet packet)
         {
-            try
+            PluginUtils.ProtectedInvoke(() =>
             {
                 // Fire general server packet callbacks
                 if (ServerPacketRecieved != null) ServerPacketRecieved(client, packet);
@@ -220,13 +181,12 @@ namespace Lib_K_Relay
                 foreach (var pair in _genericPacketHooks)
                     if (pair.Value == packet.GetType())
                         (pair.Key as Delegate).Method.Invoke((pair.Key as Delegate).Target, new object[2] { client, Convert.ChangeType(packet, pair.Value) });
-            }
-            catch (Exception e) { PluginUtils.LogPluginException(e, "ServerPacket"); }
+            }, "ServerPacket");
         }
 
         public void FireClientPacket(Client client, Packet packet)
         {
-            try
+            PluginUtils.ProtectedInvoke(() =>
             {
                 // Fire command callbacks
                 if (packet.Type == PacketType.PLAYERTEXT)
@@ -236,7 +196,7 @@ namespace Lib_K_Relay
                     string command = text.Contains(' ')
                                      ? text.Split(' ')[0].ToLower()
                                      : text;
-                    string[] args =  text.Contains(' ')
+                    string[] args = text.Contains(' ')
                                      ? text.Split(' ').Skip(1).ToArray()
                                      : new string[0];
 
@@ -259,15 +219,9 @@ namespace Lib_K_Relay
 
                 foreach (var pair in _genericPacketHooks)
                     if (pair.Value == packet.GetType()) (pair.Key as Delegate).Method.Invoke((pair.Key as Delegate).Target, new object[2] { client, Convert.ChangeType(packet, pair.Value) });
-            } 
-            catch (Exception e) { PluginUtils.LogPluginException(e, "ClientPacket"); }
+            }, "ClientPacket");
         }
 
-        private void OnKeyUp(object sender, KeyEventArgs e)
-        {
-            foreach (var pair in _keyHooks)
-                if (pair.Value.Contains(e.KeyCode)) 
-                    pair.Key(e.KeyCode);
-        }
+        #endregion
     }
 }

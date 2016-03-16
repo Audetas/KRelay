@@ -45,9 +45,10 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Crypto\RC4.cs" />
+    <Compile Include="Crypto\RC4Cipher.cs" />
     <Compile Include="Interface\IPlugin.cs" />
     <Compile Include="Networking\Client.cs" />
+    <Compile Include="Networking\Client.PacketLogic.cs" />
     <Compile Include="Networking\PacketBuffer.cs" />
     <Compile Include="Networking\Packets\Client\AcceptTradePacket.cs" />
     <Compile Include="Networking\Packets\Client\AoEAckPacket.cs" />
@@ -150,7 +151,9 @@
     <Compile Include="Networking\Packets\Server\UpdatePetPacket.cs" />
     <Compile Include="Networking\Packets\Server\UpdatePetYardResultPacket.cs" />
     <Compile Include="Networking\Packets\Server\VerifyEmailDialogPacket.cs" />
-    <Compile Include="Utilities\FormStyle.cs" />
+    <Compile Include="Networking\ReconnectHandler.cs" />
+    <Compile Include="Networking\State.cs" />
+    <Compile Include="Networking\StateManager.cs" />
     <Compile Include="Utilities\FrmGenericSettings.cs">
       <SubType>Form</SubType>
     </Compile>

@@ -16,16 +16,6 @@ namespace K_Relay
             lblStartByDefault.Text = tglStartByDefault.Checked.ToString();
         }
 
-        private void tglUseInternalReconnectHandler_CheckedChanged(object sender, EventArgs e)
-        {
-            lblUseInternalReconnectHandler.Text = tglUseInternalReconnectHandler.Checked.ToString();
-        }
-
-        private void lblUseInternalReconnectHandler_Click(object sender, EventArgs e)
-        {
-            tglUseInternalReconnectHandler.Checked = !tglUseInternalReconnectHandler.Checked;
-        }
-
         private void lblStartByDefault_Click(object sender, EventArgs e)
         {
             tglStartByDefault.Checked = !tglStartByDefault.Checked;

@@ -27,9 +27,6 @@ namespace K_Relay
         {
             string pDir = Serializer.DEBUGGetSolutionRoot() + @"\Plugins\";
 
-            if (Config.Default.UseInternalReconnectHandler)
-                AttachPlugin(typeof (ReconnectHandler));
-
             if (!Directory.Exists(pDir))
             {
                 Directory.CreateDirectory(pDir);

@@ -17,37 +17,35 @@ namespace K_Relay
 
         private void InitSettings()
         {
-            this.m_themeManager = new FixedStyleManager(this);
+            m_themeManager = new FixedStyleManager(this);
 
-            this.themeCombobox.Items.AddRange(Enum.GetNames(typeof(MetroThemeStyle)));
-            this.styleCombobox.Items.AddRange(Enum.GetNames(typeof(MetroColorStyle)));
+            themeCombobox.Items.AddRange(Enum.GetNames(typeof(MetroThemeStyle)));
+            styleCombobox.Items.AddRange(Enum.GetNames(typeof(MetroColorStyle)));
 
-            this.themeCombobox.SelectedValueChanged += themeCombobox_SelectedValueChanged;
-            this.styleCombobox.SelectedValueChanged += styleCombobox_SelectedValueChanged;
+            themeCombobox.SelectedValueChanged += themeCombobox_SelectedValueChanged;
+            styleCombobox.SelectedValueChanged += styleCombobox_SelectedValueChanged;
 
-            this.themeCombobox.SelectedItem = (object)Config.Default.Theme.ToString();
-            this.styleCombobox.SelectedItem = (object)Config.Default.Style.ToString();
+            themeCombobox.SelectedItem = Config.Default.Theme.ToString();
+            styleCombobox.SelectedItem = Config.Default.Style.ToString();
 
             tglStartByDefault.Checked = Config.Default.StartProxyByDefault;
-            tglUseInternalReconnectHandler.Checked = Config.Default.UseInternalReconnectHandler;
             lstServers.Items.AddRange(Serializer.Servers.Keys.ToArray());
             lstServers.SelectedItem = Config.Default.DefaultServerName;
         }
 
         private void styleCombobox_SelectedValueChanged(object sender, EventArgs e)
         {
-            this.m_themeManager.Style = (MetroColorStyle)Enum.Parse(typeof(MetroColorStyle), (string)styleCombobox.SelectedItem, true);
+            m_themeManager.Style = (MetroColorStyle)Enum.Parse(typeof(MetroColorStyle), (string)styleCombobox.SelectedItem, true);
         }
 
         private void themeCombobox_SelectedValueChanged(object sender, EventArgs e)
         {
-            this.m_themeManager.Theme = (MetroThemeStyle)Enum.Parse(typeof(MetroThemeStyle), (string)themeCombobox.SelectedItem, true);
+            m_themeManager.Theme = (MetroThemeStyle)Enum.Parse(typeof(MetroThemeStyle), (string)themeCombobox.SelectedItem, true);
         }
 
         private void btnSaveSettings_Click(object sender, EventArgs e)
         {
             Config.Default.StartProxyByDefault = tglStartByDefault.Checked;
-            Config.Default.UseInternalReconnectHandler = tglUseInternalReconnectHandler.Checked;
             Config.Default.DefaultServerName = lstServers.SelectedItem.ToString();
             Config.Default.Theme = (MetroThemeStyle)Enum.Parse(typeof(MetroThemeStyle), (string)themeCombobox.SelectedItem, true);
             Config.Default.Style = (MetroColorStyle)Enum.Parse(typeof(MetroColorStyle), (string)styleCombobox.SelectedItem, true);
@@ -69,16 +67,16 @@ namespace K_Relay
 
             public FixedStyleManager(MetroForm form)
             {
-                this.m_manager = new MetroStyleManager(form.Container);
-                this.m_manager.Owner = form;
+                m_manager = new MetroStyleManager(form.Container);
+                m_manager.Owner = form;
             }
 
             public MetroColorStyle Style
             {
-                get { return this.m_colorStyle; }
+                get { return m_colorStyle; }
                 set
                 {
-                    this.m_colorStyle = value;
+                    m_colorStyle = value;
                     Update();
                     if (OnStyleChanged != null) OnStyleChanged(this, new EventArgs());
                 }
@@ -86,10 +84,10 @@ namespace K_Relay
 
             public MetroThemeStyle Theme
             {
-                get { return this.m_themeStyle; }
+                get { return m_themeStyle; }
                 set
                 {
-                    this.m_themeStyle = value;
+                    m_themeStyle = value;
                     Update();
                     if (OnThemeChanged != null) OnThemeChanged(this, new EventArgs());
                 }
@@ -97,11 +95,11 @@ namespace K_Relay
 
             public void Update()
             {
-                (this.m_manager.Owner as MetroForm).Theme = this.m_themeStyle;
-                (this.m_manager.Owner as MetroForm).Style = this.m_colorStyle;
+                (m_manager.Owner as MetroForm).Theme = m_themeStyle;
+                (m_manager.Owner as MetroForm).Style = m_colorStyle;
 
-                this.m_manager.Theme = this.m_themeStyle;
-                this.m_manager.Style = this.m_colorStyle;
+                m_manager.Theme = m_themeStyle;
+                m_manager.Style = m_colorStyle;
             }
         }
     }

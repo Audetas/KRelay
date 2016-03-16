@@ -8,48 +8,46 @@ namespace Lib_K_Relay.Networking
 {
     class PacketBuffer
     {
-        private byte[] _buffer;
-        private int _index;
+        public int Index = 0;
+        public byte[] Bytes;
 
         public PacketBuffer()
         {
-            Flush();
+            Bytes = new byte[4];
         }
 
         public void Resize(int newSize)
         {
-            Array.Resize(ref _buffer, newSize);
+            if (newSize > short.MaxValue)
+                throw new ArgumentException("New buffer size is too large");
+
+            byte[] old = Bytes;
+            Bytes = new byte[newSize];
+            Bytes[0] = old[0];
+            Bytes[1] = old[1];
+            Bytes[2] = old[2];
+            Bytes[3] = old[3];
         }
 
         public void Advance(int numBytes)
         {
-            _index += numBytes;
+            Index += numBytes;
         }
 
-        public void Flush()
+        public void Reset()
         {
-            _buffer = new byte[4];
-            _index = 0;
+            Bytes = new byte[4];
+            Index = 0;
         }
 
         public int BytesRemaining()
         {
-            return _buffer.Length - _index;
+            return Bytes.Length - Index;
         }
 
-        public byte[] Buffer()
+        public void Dispose()
         {
-            return _buffer;
-        }
-
-        public int Length()
-        {
-            return _buffer.Length;
-        }
-
-        public int Index()
-        {
-            return _index;
+            Bytes = null;
         }
     }
 }

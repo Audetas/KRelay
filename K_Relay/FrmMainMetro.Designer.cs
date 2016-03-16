@@ -47,9 +47,6 @@
             this.tbxPacketInfo = new K_Relay.Controls.MetroRichTextBox();
             this.listPackets = new K_Relay.Controls.MetroListBox();
             this.tabSettings = new MetroFramework.Controls.MetroTabPage();
-            this.lblUseInternalReconnectHandler = new MetroFramework.Controls.MetroLabel();
-            this.tglUseInternalReconnectHandler = new MetroFramework.Controls.MetroToggle();
-            this.lblInternalReconnect = new MetroFramework.Controls.MetroLabel();
             this.lblStartByDefault = new MetroFramework.Controls.MetroLabel();
             this.tglStartByDefault = new MetroFramework.Controls.MetroToggle();
             this.lblSBD = new MetroFramework.Controls.MetroLabel();
@@ -101,7 +98,7 @@
             this.tabMain.Controls.Add(this.tabAbout);
             this.tabMain.Location = new System.Drawing.Point(21, 53);
             this.tabMain.Name = "tabMain";
-            this.tabMain.SelectedIndex = 4;
+            this.tabMain.SelectedIndex = 3;
             this.tabMain.Size = new System.Drawing.Size(556, 306);
             this.tabMain.TabIndex = 0;
             this.tabMain.UseSelectable = true;
@@ -157,9 +154,9 @@
             // 
             // btnToggleProxy
             // 
-            this.btnToggleProxy.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold);
+            this.btnToggleProxy.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnToggleProxy.Name = "btnToggleProxy";
-            this.btnToggleProxy.Size = new System.Drawing.Size(82, 29);
+            this.btnToggleProxy.Size = new System.Drawing.Size(106, 29);
             this.btnToggleProxy.Text = "Start Proxy";
             this.btnToggleProxy.Click += new System.EventHandler(this.btnToggleProxy_Click);
             // 
@@ -325,9 +322,6 @@
             // 
             // tabSettings
             // 
-            this.tabSettings.Controls.Add(this.lblUseInternalReconnectHandler);
-            this.tabSettings.Controls.Add(this.tglUseInternalReconnectHandler);
-            this.tabSettings.Controls.Add(this.lblInternalReconnect);
             this.tabSettings.Controls.Add(this.lblStartByDefault);
             this.tabSettings.Controls.Add(this.tglStartByDefault);
             this.tabSettings.Controls.Add(this.lblSBD);
@@ -344,41 +338,6 @@
             this.tabSettings.VerticalScrollbarBarColor = false;
             this.tabSettings.VerticalScrollbarHighlightOnWheel = false;
             this.tabSettings.VerticalScrollbarSize = 0;
-            // 
-            // lblUseInternalReconnectHandler
-            // 
-            this.lblUseInternalReconnectHandler.FontWeight = MetroFramework.MetroLabelWeight.Bold;
-            this.lblUseInternalReconnectHandler.Location = new System.Drawing.Point(144, 72);
-            this.lblUseInternalReconnectHandler.Name = "lblUseInternalReconnectHandler";
-            this.lblUseInternalReconnectHandler.Size = new System.Drawing.Size(43, 19);
-            this.lblUseInternalReconnectHandler.TabIndex = 7;
-            this.lblUseInternalReconnectHandler.Text = "False";
-            this.lblUseInternalReconnectHandler.UseStyleColors = true;
-            this.lblUseInternalReconnectHandler.Click += new System.EventHandler(this.lblUseInternalReconnectHandler_Click);
-            // 
-            // tglUseInternalReconnectHandler
-            // 
-            this.tglUseInternalReconnectHandler.AutoSize = true;
-            this.tglUseInternalReconnectHandler.BackColor = System.Drawing.SystemColors.Control;
-            this.tglUseInternalReconnectHandler.DisplayStatus = false;
-            this.tglUseInternalReconnectHandler.Location = new System.Drawing.Point(189, 73);
-            this.tglUseInternalReconnectHandler.Name = "tglUseInternalReconnectHandler";
-            this.tglUseInternalReconnectHandler.Size = new System.Drawing.Size(50, 17);
-            this.tglUseInternalReconnectHandler.TabIndex = 5;
-            this.tglUseInternalReconnectHandler.Text = "Off";
-            this.tglUseInternalReconnectHandler.UseCustomBackColor = true;
-            this.tglUseInternalReconnectHandler.UseSelectable = true;
-            this.tglUseInternalReconnectHandler.CheckedChanged += new System.EventHandler(this.tglUseInternalReconnectHandler_CheckedChanged);
-            // 
-            // lblInternalReconnect
-            // 
-            this.lblInternalReconnect.AutoSize = true;
-            this.lblInternalReconnect.BackColor = System.Drawing.SystemColors.Control;
-            this.lblInternalReconnect.Location = new System.Drawing.Point(10, 72);
-            this.lblInternalReconnect.Name = "lblInternalReconnect";
-            this.lblInternalReconnect.Size = new System.Drawing.Size(116, 19);
-            this.lblInternalReconnect.TabIndex = 6;
-            this.lblInternalReconnect.Text = "Internal Reconnect";
             // 
             // lblStartByDefault
             // 
@@ -440,7 +399,7 @@
             // 
             this.styleCombobox.FormattingEnabled = true;
             this.styleCombobox.ItemHeight = 23;
-            this.styleCombobox.Location = new System.Drawing.Point(65, 135);
+            this.styleCombobox.Location = new System.Drawing.Point(64, 103);
             this.styleCombobox.MaxDropDownItems = 32;
             this.styleCombobox.Name = "styleCombobox";
             this.styleCombobox.Size = new System.Drawing.Size(174, 29);
@@ -450,7 +409,7 @@
             // styleLabel
             // 
             this.styleLabel.AutoSize = true;
-            this.styleLabel.Location = new System.Drawing.Point(10, 140);
+            this.styleLabel.Location = new System.Drawing.Point(9, 108);
             this.styleLabel.Name = "styleLabel";
             this.styleLabel.Size = new System.Drawing.Size(36, 19);
             this.styleLabel.TabIndex = 5;
@@ -460,7 +419,7 @@
             // 
             this.themeCombobox.FormattingEnabled = true;
             this.themeCombobox.ItemHeight = 23;
-            this.themeCombobox.Location = new System.Drawing.Point(65, 100);
+            this.themeCombobox.Location = new System.Drawing.Point(64, 68);
             this.themeCombobox.MaxDropDownItems = 32;
             this.themeCombobox.Name = "themeCombobox";
             this.themeCombobox.Size = new System.Drawing.Size(174, 29);
@@ -470,7 +429,7 @@
             // themeLabel
             // 
             this.themeLabel.AutoSize = true;
-            this.themeLabel.Location = new System.Drawing.Point(10, 105);
+            this.themeLabel.Location = new System.Drawing.Point(9, 73);
             this.themeLabel.Name = "themeLabel";
             this.themeLabel.Size = new System.Drawing.Size(49, 19);
             this.themeLabel.TabIndex = 3;
@@ -480,7 +439,7 @@
             // 
             this.lstServers.FormattingEnabled = true;
             this.lstServers.ItemHeight = 23;
-            this.lstServers.Location = new System.Drawing.Point(108, 65);
+            this.lstServers.Location = new System.Drawing.Point(107, 33);
             this.lstServers.MaxDropDownItems = 32;
             this.lstServers.Name = "lstServers";
             this.lstServers.Size = new System.Drawing.Size(131, 29);
@@ -490,7 +449,7 @@
             // lblDefaultServer
             // 
             this.lblDefaultServer.AutoSize = true;
-            this.lblDefaultServer.Location = new System.Drawing.Point(10, 70);
+            this.lblDefaultServer.Location = new System.Drawing.Point(9, 38);
             this.lblDefaultServer.Name = "lblDefaultServer";
             this.lblDefaultServer.Size = new System.Drawing.Size(92, 19);
             this.lblDefaultServer.TabIndex = 0;
@@ -726,9 +685,6 @@
         private MetroFramework.Controls.MetroToggle tglStartByDefault;
         private System.Windows.Forms.ToolStripMenuItem btnSaveSettings;
         private MetroFramework.Controls.MetroLabel lblStartByDefault;
-        private MetroFramework.Controls.MetroLabel lblUseInternalReconnectHandler;
-        private MetroFramework.Controls.MetroToggle tglUseInternalReconnectHandler;
-        private MetroFramework.Controls.MetroLabel lblInternalReconnect;
         private MetroFramework.Controls.MetroPanel metroPanel1;
         private MetroFramework.Controls.MetroComboBox lstServers;
         private MetroFramework.Controls.MetroLabel lblDefaultServer;
