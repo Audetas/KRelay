@@ -1,6 +1,8 @@
 # K_Relay
+## K Relay 1.5.0 | RotMG 27.7.6
 ### A modular Realm of the Mad God man-in-the-middle Proxy
-##### This code holds an implicit copyright by the creators. Redistribution of this code without written consent is a violation of said copyright.
+
+![Screenshot](/Screenshot.png) ![Logo](/Icon.ico)
 -----------------------------------------------------------
 
 ##Plugin Documentation
