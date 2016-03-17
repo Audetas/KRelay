@@ -21,7 +21,6 @@ namespace K_Relay
     public partial class FrmMainMetro : MetroForm
     {
         private Proxy _proxy;
-        private List<Client> _clients;
 
         public FrmMainMetro()
         {
@@ -40,7 +39,6 @@ namespace K_Relay
                 Serializer.SerializePacketIds,
                 Serializer.SerializePacketTypes,
                 InitPackets,
-                InitPlugins,
                 InitSettings
             };
 
@@ -68,13 +66,10 @@ namespace K_Relay
                 });
             });
 
-            _clients = new List<Client>();
             _proxy = new Proxy();
             _proxy.ProxyListenStarted += _ => SetStatus("Running", Color.Green);
             _proxy.ProxyListenStopped += _ => SetStatus("Stopped", Color.Red);
-
-            _proxy.ClientConnected += c => _clients.Add(c);
-            _proxy.ClientDisconnected += c => _clients.Remove(c);
+            InitPlugins();
 
             if (Serializer.Servers.ContainsKey((string)lstServers.SelectedItem))
                 Proxy.DefaultServer = Serializer.GetServerByFullName((string)lstServers.SelectedItem);

@@ -98,11 +98,8 @@ namespace K_Relay
             string name = instance.GetName();
             instance.Initialize(_proxy);
 
-            Invoke((MethodInvoker)delegate
-            {
-                listPlugins.ListBox.Items.Add(name);
-                _pluginNameMap.Add(name, instance);
-            });
+            listPlugins.ListBox.Items.Add(name);
+            _pluginNameMap.Add(name, instance);
 
             PluginUtils.Log("Interface", "Loaded and attached {0}.", name);
         }
