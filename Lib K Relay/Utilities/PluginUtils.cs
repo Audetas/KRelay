@@ -58,7 +58,11 @@ namespace Lib_K_Relay.Utilities
             string className = site == null ? "" : site.ReflectedType.Name;
 
             Log("Error", "An exception was thrown\nwithin {0} \nat {1}\n\n{2}",
-                caller, className + "." + methodName, e);
+                caller, className + "." + methodName,
+#if DEBUG
+                e);
+#else
+                e.Message);
         }
 
         /// <summary>
