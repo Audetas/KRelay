@@ -67,17 +67,18 @@ namespace K_Relay
             {
                 Process.Start(Serializer.DEBUGGetSolutionRoot() + @"\Plugins\");
             }
+            catch (Win32Exception)
+            {
+                MetroMessageBox.Show(this,
+                    string.Format(
+                        "File not found!\n\nThe directory '{0}' could not be found.\nPlease make sure it exists and Try Again.",
+                        Serializer.DEBUGGetSolutionRoot() + @"\Plugins\"), "Error!", MessageBoxButtons.OK,
+                    MessageBoxIcon.Error);
+            }
             catch (Exception ex)
             {
-                if (ex is Win32Exception)
-                    MetroMessageBox.Show(this,
-                        string.Format(
-                            "File not found!\n\nThe directory '{0}' could not be found.\nPlease make sure it exists and Try Again.",
-                            Serializer.DEBUGGetSolutionRoot() + @"\Plugins\"), "Error!", MessageBoxButtons.OK,
-                        MessageBoxIcon.Error);
-                else
-                    MetroMessageBox.Show(this, ex.ToString(), "Error - " + ex.GetType().Name, MessageBoxButtons.OK,
-                        MessageBoxIcon.Error);
+                MetroMessageBox.Show(this, ex.ToString(), "Error - " + ex.GetType().Name, MessageBoxButtons.OK,
+                    MessageBoxIcon.Error);
             }
         }
         
@@ -97,8 +98,11 @@ namespace K_Relay
             string name = instance.GetName();
             instance.Initialize(_proxy);
 
-            listPlugins.ListBox.Items.Add(name);
-            _pluginNameMap.Add(name, instance);
+            Invoke((MethodInvoker)delegate
+            {
+                listPlugins.ListBox.Items.Add(name);
+                _pluginNameMap.Add(name, instance);
+            });
 
             PluginUtils.Log("Interface", "Loaded and attached {0}.", name);
         }

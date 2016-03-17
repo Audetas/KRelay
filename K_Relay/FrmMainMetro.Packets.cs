@@ -18,8 +18,11 @@ namespace K_Relay
     {
         private void InitPackets()
         {
-            foreach (PacketType type in Enum.GetValues(typeof (PacketType)).Cast<PacketType>())
-                listPackets.ListBox.Items.Insert(0, type.ToString());
+            Invoke((MethodInvoker)delegate
+            {
+                foreach (PacketType type in Enum.GetValues(typeof(PacketType)).Cast<PacketType>())
+                    listPackets.ListBox.Items.Insert(0, type.ToString());
+            });
         }
 
         private void btnOpenPacketFolder_Click(object sender, EventArgs e)
@@ -28,16 +31,17 @@ namespace K_Relay
             {
                 Process.Start(Serializer.DEBUGGetSolutionRoot() + @"\XML\");
             }
+            catch (Win32Exception)
+            {
+                MetroMessageBox.Show(this,
+                    string.Format(
+                        "File not found!\n\nThe directory '{0}' could not be found.\nPlease make sure it exists and Try Again.",
+                        Serializer.DEBUGGetSolutionRoot() + @"\XML\"), "Error!", MessageBoxButtons.OK,
+                        MessageBoxIcon.Error);
+            }
             catch (Exception ex)
             {
-                if (ex is Win32Exception)
-                    MetroMessageBox.Show(this,
-                        string.Format(
-                            "File not found!\n\nThe directory '{0}' could not be found.\nPlease make sure it exists and Try Again.",
-                            Serializer.DEBUGGetSolutionRoot() + @"\XML\"), "Error!", MessageBoxButtons.OK,
-                        MessageBoxIcon.Error);
-                else
-                    MetroMessageBox.Show(this, ex.ToString(), "Error - " + ex.GetType().Name, MessageBoxButtons.OK,
+                MetroMessageBox.Show(this, ex.ToString(), "Error - " + ex.GetType().Name, MessageBoxButtons.OK,
                         MessageBoxIcon.Error);
             }
         }

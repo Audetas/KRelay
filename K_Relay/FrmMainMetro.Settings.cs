@@ -17,20 +17,25 @@ namespace K_Relay
 
         private void InitSettings()
         {
-            m_themeManager = new FixedStyleManager(this);
+            Invoke((MethodInvoker)delegate
+            {
+                m_themeManager = new FixedStyleManager(this);
+                themeCombobox.Items.AddRange(Enum.GetNames(typeof(MetroThemeStyle)));
+                styleCombobox.Items.AddRange(Enum.GetNames(typeof(MetroColorStyle)));
 
-            themeCombobox.Items.AddRange(Enum.GetNames(typeof(MetroThemeStyle)));
-            styleCombobox.Items.AddRange(Enum.GetNames(typeof(MetroColorStyle)));
+                themeCombobox.SelectedValueChanged += themeCombobox_SelectedValueChanged;
+                styleCombobox.SelectedValueChanged += styleCombobox_SelectedValueChanged;
 
-            themeCombobox.SelectedValueChanged += themeCombobox_SelectedValueChanged;
-            styleCombobox.SelectedValueChanged += styleCombobox_SelectedValueChanged;
+                themeCombobox.SelectedItem = Config.Default.Theme.ToString();
+                styleCombobox.SelectedItem = Config.Default.Style.ToString();
 
-            themeCombobox.SelectedItem = Config.Default.Theme.ToString();
-            styleCombobox.SelectedItem = Config.Default.Style.ToString();
+                tglStartByDefault.Checked = Config.Default.StartProxyByDefault;
+                lstServers.Items.AddRange(Serializer.Servers.Keys.ToArray());
+                lstServers.SelectedItem = Config.Default.DefaultServerName;
 
-            tglStartByDefault.Checked = Config.Default.StartProxyByDefault;
-            lstServers.Items.AddRange(Serializer.Servers.Keys.ToArray());
-            lstServers.SelectedItem = Config.Default.DefaultServerName;
+                m_themeManager.OnStyleChanged += m_themeManager_OnStyleChanged;
+                m_themeManager_OnStyleChanged(null, null);
+            });
         }
 
         private void styleCombobox_SelectedValueChanged(object sender, EventArgs e)

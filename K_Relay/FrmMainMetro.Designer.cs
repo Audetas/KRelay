@@ -634,6 +634,7 @@
             this.Resizable = false;
             this.Style = MetroFramework.MetroColorStyle.Default;
             this.Text = "K Relay";
+            this.Load += new System.EventHandler(this.FrmMainMetro_Load);
             this.Shown += new System.EventHandler(this.FrmMainMetro_Shown);
             this.tabMain.ResumeLayout(false);
             this.tabInfo.ResumeLayout(false);

@@ -28,56 +28,68 @@ namespace K_Relay
             InitializeComponent();
             tabMain.SelectedIndex = 0;
             Console.SetOut(new MetroTextBoxStreamWriter(tbxLog));
+        }
 
-            try
-            {
-                Serializer.SerializeServers();
-                Serializer.SerializeGameObjects();
-                Serializer.SerializePacketIds();
-                Serializer.SerializePacketTypes();
 
-                if (Serializer.Servers.Count == 0)
-                    throw new ConstraintException("Servers were unable to be parsed!");
-            }
-            catch (ConstraintException)
+        private async void FrmMainMetro_Load(object sender, EventArgs e)
+        {
+            Action[] workers =
             {
-                MessageBox.Show("The RotMG server list was unabled to be parsed.\n" +
-                                "This is either due to your internet connection or a temporary server problem.\n" +
-                                "Please try again later.\n" +
-                                "K Relay will now exit.", "K Relay", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                Environment.Exit(Environment.ExitCode);
-            }
-            catch (Exception e)
+                Serializer.SerializeServers,
+                Serializer.SerializeGameObjects,
+                Serializer.SerializePacketIds,
+                Serializer.SerializePacketTypes,
+                InitPackets,
+                InitPlugins,
+                InitSettings
+            };
+
+            await Task.Run(() =>
             {
-                MessageBox.Show("Either a required file was not found or we weren't able to contact the RotMG account server.\n" +
-                                "Here's more detail: \n" +
-                                e + "\n" +
-                                "Please ensure you extract all of the files to the same folder!\n" +
-                                "K Relay will now exit.", "K Relay", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                Environment.Exit(Environment.ExitCode);
-            }
+                Parallel.ForEach(workers, (worker) =>
+                {
+                    try
+                    {
+                        worker.Invoke();
+                    }
+                    catch (Exception ex)
+                    {
+                        MessageBox.Show(
+                            "There was an error while initializing K Relay.\n" +
+                            "Please make sure:\n" +
+                            "- All files are extracted and in the same directory\n" +
+                            "- AntiVirus is not blocking K Relay's connection\n" +
+                            "- Another proxy isn't running on your computer\n\n" +
+                            "You can try to restart your computer and see if the issue is fixed.\n" +
+                            "Additional info is as follows:\n\n" + ex,
+                            "K Relay", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        Environment.Exit(ex.HResult);
+                    }
+                });
+            });
 
             _clients = new List<Client>();
             _proxy = new Proxy();
-
             _proxy.ProxyListenStarted += _ => SetStatus("Running", Color.Green);
             _proxy.ProxyListenStopped += _ => SetStatus("Stopped", Color.Red);
 
             _proxy.ClientConnected += c => _clients.Add(c);
             _proxy.ClientDisconnected += c => _clients.Remove(c);
+
+            PluginUtils.Log("K Relay", "Initialization complete.");
+
+            if (Config.Default.StartProxyByDefault)
+                btnToggleProxy_Click(null, null);
         }
 
         private void FrmMainMetro_Shown(object sender, EventArgs e)
         {
+            /*
             InitPackets();
             InitPlugins();
-            InitSettings();
+            InitSettings();*/
 
-            m_themeManager.OnStyleChanged += m_themeManager_OnStyleChanged;
-            m_themeManager_OnStyleChanged(null, null);
 
-            if (Config.Default.StartProxyByDefault)
-                btnToggleProxy_Click(null, null);
         }
 
         private void m_themeManager_OnStyleChanged(object sender, EventArgs e)
