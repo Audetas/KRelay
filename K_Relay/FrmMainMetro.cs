@@ -76,20 +76,15 @@ namespace K_Relay
             _proxy.ClientConnected += c => _clients.Add(c);
             _proxy.ClientDisconnected += c => _clients.Remove(c);
 
+            if (Serializer.Servers.ContainsKey((string)lstServers.SelectedItem))
+                Proxy.DefaultServer = Serializer.GetServerByFullName((string)lstServers.SelectedItem);
+            else
+                PluginUtils.Log("K Relay", "Default server wasn't found, using USWest.");
+
             PluginUtils.Log("K Relay", "Initialization complete.");
 
             if (Config.Default.StartProxyByDefault)
                 btnToggleProxy_Click(null, null);
-        }
-
-        private void FrmMainMetro_Shown(object sender, EventArgs e)
-        {
-            /*
-            InitPackets();
-            InitPlugins();
-            InitSettings();*/
-
-
         }
 
         private void m_themeManager_OnStyleChanged(object sender, EventArgs e)

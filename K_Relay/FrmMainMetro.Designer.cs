@@ -63,14 +63,13 @@
             this.pnlSide = new System.Windows.Forms.Panel();
             this.pbxGang = new System.Windows.Forms.PictureBox();
             this.label1 = new System.Windows.Forms.Label();
-            this.metroLabel7 = new MetroFramework.Controls.MetroLabel();
-            this.metroLabel6 = new MetroFramework.Controls.MetroLabel();
             this.metroLabel5 = new MetroFramework.Controls.MetroLabel();
             this.metroLabel4 = new MetroFramework.Controls.MetroLabel();
             this.metroLabel2 = new MetroFramework.Controls.MetroLabel();
             this.metroLabel1 = new MetroFramework.Controls.MetroLabel();
             this.lblVersion = new MetroFramework.Controls.MetroLabel();
             this.lblStatus = new MetroFramework.Controls.MetroLabel();
+            this.lblInfo = new MetroFramework.Controls.MetroLabel();
             this.tabMain.SuspendLayout();
             this.tabInfo.SuspendLayout();
             this.menuInfo.SuspendLayout();
@@ -98,7 +97,7 @@
             this.tabMain.Controls.Add(this.tabAbout);
             this.tabMain.Location = new System.Drawing.Point(21, 53);
             this.tabMain.Name = "tabMain";
-            this.tabMain.SelectedIndex = 0;
+            this.tabMain.SelectedIndex = 4;
             this.tabMain.Size = new System.Drawing.Size(556, 306);
             this.tabMain.TabIndex = 0;
             this.tabMain.UseSelectable = true;
@@ -377,6 +376,7 @@
             // metroPanel1
             // 
             this.metroPanel1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.metroPanel1.Controls.Add(this.lblInfo);
             this.metroPanel1.Controls.Add(this.styleCombobox);
             this.metroPanel1.Controls.Add(this.styleLabel);
             this.metroPanel1.Controls.Add(this.themeCombobox);
@@ -439,6 +439,29 @@
             // 
             this.lstServers.FormattingEnabled = true;
             this.lstServers.ItemHeight = 23;
+            this.lstServers.Items.AddRange(new object[] {
+            "AsiaEast",
+            "AsiaSouthEast",
+            "EUEast",
+            "EUNorth",
+            "EUNorth2",
+            "EUSouth",
+            "EUSouthWest",
+            "EUWest",
+            "EUWest2",
+            "USEast",
+            "USEast2",
+            "USEast3",
+            "USMidWest",
+            "USMidWest2",
+            "USNorthWest",
+            "USSouth",
+            "USSouth2",
+            "USSouth3",
+            "USSouthWest",
+            "USWest",
+            "USWest2",
+            "USWest3"});
             this.lstServers.Location = new System.Drawing.Point(107, 33);
             this.lstServers.MaxDropDownItems = 32;
             this.lstServers.Name = "lstServers";
@@ -480,8 +503,6 @@
             this.tabAbout.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.tabAbout.Controls.Add(this.pnlSide);
             this.tabAbout.Controls.Add(this.label1);
-            this.tabAbout.Controls.Add(this.metroLabel7);
-            this.tabAbout.Controls.Add(this.metroLabel6);
             this.tabAbout.Controls.Add(this.metroLabel5);
             this.tabAbout.Controls.Add(this.metroLabel4);
             this.tabAbout.Controls.Add(this.metroLabel2);
@@ -534,27 +555,6 @@
             this.label1.TabIndex = 14;
             this.label1.Text = "K Relay";
             // 
-            // metroLabel7
-            // 
-            this.metroLabel7.AutoSize = true;
-            this.metroLabel7.Location = new System.Drawing.Point(10, 219);
-            this.metroLabel7.Name = "metroLabel7";
-            this.metroLabel7.Size = new System.Drawing.Size(72, 38);
-            this.metroLabel7.TabIndex = 13;
-            this.metroLabel7.Text = "- Kithio\r\n- ossimc82";
-            // 
-            // metroLabel6
-            // 
-            this.metroLabel6.AutoSize = true;
-            this.metroLabel6.FontWeight = MetroFramework.MetroLabelWeight.Bold;
-            this.metroLabel6.ForeColor = System.Drawing.Color.DodgerBlue;
-            this.metroLabel6.Location = new System.Drawing.Point(10, 200);
-            this.metroLabel6.Name = "metroLabel6";
-            this.metroLabel6.Size = new System.Drawing.Size(58, 19);
-            this.metroLabel6.TabIndex = 12;
-            this.metroLabel6.Text = "Design:";
-            this.metroLabel6.UseCustomForeColor = true;
-            // 
             // metroLabel5
             // 
             this.metroLabel5.AutoSize = true;
@@ -572,9 +572,9 @@
             this.metroLabel4.AutoSize = true;
             this.metroLabel4.Location = new System.Drawing.Point(10, 103);
             this.metroLabel4.Name = "metroLabel4";
-            this.metroLabel4.Size = new System.Drawing.Size(84, 95);
+            this.metroLabel4.Size = new System.Drawing.Size(84, 133);
             this.metroLabel4.TabIndex = 10;
-            this.metroLabel4.Text = "- MrNobody\r\n- ossimc82\r\n- Knorrex\r\n- Alde\r\n- 059";
+            this.metroLabel4.Text = "- MrNobody\r\n- ossimc82\r\n- Knorrex\r\n- Alde\r\n- 059\r\n- Kithio\r\n- ossimc82";
             // 
             // metroLabel2
             // 
@@ -620,6 +620,17 @@
             this.lblStatus.Text = "Not Running";
             this.lblStatus.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
+            // lblInfo
+            // 
+            this.lblInfo.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.lblInfo.AutoSize = true;
+            this.lblInfo.BackColor = System.Drawing.SystemColors.Control;
+            this.lblInfo.Location = new System.Drawing.Point(9, 196);
+            this.lblInfo.Name = "lblInfo";
+            this.lblInfo.Size = new System.Drawing.Size(308, 19);
+            this.lblInfo.TabIndex = 6;
+            this.lblInfo.Text = "K Relay must be re-opened for all settings to apply.";
+            // 
             // FrmMainMetro
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -635,7 +646,6 @@
             this.Style = MetroFramework.MetroColorStyle.Default;
             this.Text = "K Relay";
             this.Load += new System.EventHandler(this.FrmMainMetro_Load);
-            this.Shown += new System.EventHandler(this.FrmMainMetro_Shown);
             this.tabMain.ResumeLayout(false);
             this.tabInfo.ResumeLayout(false);
             this.menuInfo.ResumeLayout(false);
@@ -698,11 +708,10 @@
         private MetroFramework.Controls.MetroLabel themeLabel;
         private MetroFramework.Controls.MetroLabel metroLabel1;
         private MetroFramework.Controls.MetroLabel metroLabel2;
-        private MetroFramework.Controls.MetroLabel metroLabel7;
-        private MetroFramework.Controls.MetroLabel metroLabel6;
         private MetroFramework.Controls.MetroLabel metroLabel5;
         private MetroFramework.Controls.MetroLabel metroLabel4;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Panel pnlSide;
+        private MetroFramework.Controls.MetroLabel lblInfo;
     }
 }

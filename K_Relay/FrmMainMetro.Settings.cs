@@ -30,7 +30,6 @@ namespace K_Relay
                 styleCombobox.SelectedItem = Config.Default.Style.ToString();
 
                 tglStartByDefault.Checked = Config.Default.StartProxyByDefault;
-                lstServers.Items.AddRange(Serializer.Servers.Keys.ToArray());
                 lstServers.SelectedItem = Config.Default.DefaultServerName;
 
                 m_themeManager.OnStyleChanged += m_themeManager_OnStyleChanged;
