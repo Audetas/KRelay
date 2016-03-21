@@ -48,6 +48,10 @@ namespace Lib_K_Relay
             new ReconnectHandler().Attach(this);
         }
 
+        /// <summary>
+        /// Starts a client listener on 127.0.0.1:2050.
+        /// Fires the ProxyListenStarted event if successful.
+        /// </summary>
         public void Start()
         {
             PluginUtils.Log("Listener", "Starting local listener...");
@@ -68,6 +72,10 @@ namespace Lib_K_Relay
             }, "ProxyListenStarted");
         }
 
+        /// <summary>
+        /// Stops the client listener if it's running.
+        /// Fires the ProxyListenStopped event.
+        /// </summary>
         public void Stop()
         {
             if (_localListener == null) return;
@@ -82,6 +90,12 @@ namespace Lib_K_Relay
             }, "ProxyListenStopped");
         }
 
+        /// <summary>
+        /// Gets a client state for the specified key.
+        /// </summary>
+        /// <param name="client">Client being assigned to the state</param>
+        /// <param name="key">State hash key for lookup</param>
+        /// <returns></returns>
         public State GetState(Client client, byte[] key)
         {
             string guid = key.Length == 0 ? "n/a" : Encoding.UTF8.GetString(key);
@@ -121,6 +135,11 @@ namespace Lib_K_Relay
         }
 
         #region Hook Calls
+        /// <summary>
+        /// Registers a callback for the specified packet type.
+        /// </summary>
+        /// <param name="type">Type of packet to be hooked</param>
+        /// <param name="callback">Callback to be registered</param>
         public void HookPacket(PacketType type, PacketHandler callback)
         {
             if (Serializer.GetPacketId(type) == 255)
@@ -133,6 +152,11 @@ namespace Lib_K_Relay
                 _packetHooks.Add(callback, new List<PacketType>() { type });
         }
 
+        /// <summary>
+        /// Registers a callback for the specified packet type.
+        /// </summary>
+        /// <typeparam name="T">Type of packet to be hooked</typeparam>
+        /// <param name="callback">Callback to be registered</param>
         public void HookPacket<T>(GenericPacketHandler<T> callback) where T : Packet
         {
             if (!_genericPacketHooks.ContainsKey(callback))
@@ -141,6 +165,11 @@ namespace Lib_K_Relay
                 throw new InvalidOperationException("Callback already bound");
         }
 
+        /// <summary>
+        /// Registers a callback for the specified command.
+        /// </summary>
+        /// <param name="command">Command to be hooked</param>
+        /// <param name="callback">Callback to be registered</param>
         public void HookCommand(string command, CommandHandler callback)
         {
             if (_commandHooks.ContainsKey(callback))
@@ -153,6 +182,10 @@ namespace Lib_K_Relay
         #endregion
 
         #region Event Calls
+        /// <summary>
+        /// Fires the ClientConnected event.
+        /// </summary>
+        /// <param name="client">Client that connected</param>
         public void FireClientConnected(Client client)
         {
             PluginUtils.ProtectedInvoke(() =>
@@ -161,6 +194,10 @@ namespace Lib_K_Relay
             }, "ClientConnected");
         }
 
+        /// <summary>
+        /// Fires the ClientDisconnected event.
+        /// </summary>
+        /// <param name="client">Client that disconnected</param>
         public void FireClientDisconnected(Client client)
         {
             PluginUtils.ProtectedInvoke(() =>
@@ -169,6 +206,11 @@ namespace Lib_K_Relay
             }, "ClientDisconnected");
         }
 
+        /// <summary>
+        /// Fires any registered callbacks for the specified packet type.
+        /// </summary>
+        /// <param name="client">Client that recieved the packet</param>
+        /// <param name="packet">Packet that was recieved</param>
         public void FireServerPacket(Client client, Packet packet)
         {
             PluginUtils.ProtectedInvoke(() =>
@@ -186,6 +228,11 @@ namespace Lib_K_Relay
             }, "ServerPacket");
         }
 
+        /// <summary>
+        /// Fires any registered callbacks for the specified packet type.
+        /// </summary>
+        /// <param name="client">Client that recieved the packet</param>
+        /// <param name="packet">Packet that was recieved</param>
         public void FireClientPacket(Client client, Packet packet)
         {
             PluginUtils.ProtectedInvoke(() =>

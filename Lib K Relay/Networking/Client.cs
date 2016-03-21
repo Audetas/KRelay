@@ -33,21 +33,33 @@ namespace Lib_K_Relay.Networking
         private bool _closed = false;
         private Proxy _proxy;
 
+        /// <summary>
+        /// Time since the client's connection began.
+        /// </summary>
         public int Time
         {
             get { return LastTime + (Environment.TickCount - LastTimeTime); }
         }
 
+        /// <summary>
+        /// Object ID of the client's Player.
+        /// </summary>
         public int ObjectId
         {
             get { return PlayerData.OwnerObjectId; }
         }
 
+        /// <summary>
+        /// PlayerData object of the client's Player.
+        /// </summary>
         public PlayerData PlayerData
         {
             get; set;
         }
 
+        /// <summary>
+        /// Account-based state of the client.
+        /// </summary>
         public State State
         {
             get; set;
@@ -62,6 +74,10 @@ namespace Lib_K_Relay.Networking
             BeginRead(0, 4, true);
         }
 
+        /// <summary>
+        /// Connects the client to the server in the resulting state lookup from the HelloPacket portal keye.
+        /// </summary>
+        /// <param name="state">Packet containing the portal key to be used for the lookuo</param>
         public void Connect(HelloPacket state)
         {
             _serverConnection = new TcpClient();
@@ -89,6 +105,9 @@ namespace Lib_K_Relay.Networking
             }
         }
 
+        /// <summary>
+        /// Properly closes and disposes and resources and connections associated with this object.
+        /// </summary>
         public void Dispose()
         {
             if (!_closed)
@@ -105,11 +124,19 @@ namespace Lib_K_Relay.Networking
             }
         }
 
+        /// <summary>
+        /// Sends a packet to the client.
+        /// </summary>
+        /// <param name="packet">Packet to be sent</param>
         public void SendToClient(Packet packet)
         {
             Send(packet, true);
         }
 
+        /// <summary>
+        /// Sends a packet to the client's server.
+        /// </summary>
+        /// <param name="packet">Packet to be sent</param>
         public void SendToServer(Packet packet)
         {
             Send(packet, false);
