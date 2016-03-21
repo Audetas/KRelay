@@ -63,6 +63,7 @@ namespace Lib_K_Relay.Utilities
                 e);
 #else
                 e.Message);
+#endif
         }
 
         /// <summary>
