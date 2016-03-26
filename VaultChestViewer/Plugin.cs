@@ -104,11 +104,6 @@ namespace VaultChestViewer
                 {
                      Id = StatsType.Name,
                      StringValue = name
-                },
-                new StatData
-                {
-                    Id = StatsType.NameChosen,
-                    IntValue = 1
                 }
 			}).ToArray();
         }
