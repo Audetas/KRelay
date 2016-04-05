@@ -39,6 +39,18 @@ namespace Lib_K_Relay.Networking.Packets
             return packet;
         }
 
+        public static T Create<T>(PacketType type)
+        {
+            Packet packet = (Packet)Activator.CreateInstance(typeof(T));
+            packet.Id = Serializer.GetPacketId(type);
+            return (T)Convert.ChangeType(packet, typeof(T));
+        }
+
+        public T To<T>()
+        {
+            return (T)Convert.ChangeType(this, typeof(T));
+        }
+
         public static Packet Create(byte[] data)
         {
             using (PacketReader r = new PacketReader(new MemoryStream(data)))

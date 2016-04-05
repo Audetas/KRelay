@@ -54,7 +54,8 @@ namespace ChatAssist
         private void OnText(Client client, Packet packet)
         {
             if (!ChatAssistConfig.Default.Enabled) return;
-            TextPacket text = (TextPacket)packet;
+            //TextPacket text = (TextPacket)packet;
+            TextPacket text = packet.To<TextPacket>();
 
             if (ChatAssistConfig.Default.DisableMessages && text.Recipient == "")
             {
