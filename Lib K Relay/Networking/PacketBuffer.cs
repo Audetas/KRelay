@@ -18,7 +18,7 @@ namespace Lib_K_Relay.Networking
 
         public void Resize(int newSize)
         {
-            if (newSize > short.MaxValue)
+            if (newSize > 1048576)
                 throw new ArgumentException("New buffer size is too large");
 
             byte[] old = Bytes;
