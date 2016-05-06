@@ -15,9 +15,8 @@ namespace Lib_K_Relay.Networking
         private static string Key0 = "311f80691451c71d09a13a2a6e";
         private static string Key1 = "72c5583cafb6818995cdd74b80";
 
-        public int LastTimeTime = 0;
-        public int LastTime = 0;
-
+        private int LastTimeTime = 0;
+        private int LastTime = 0;
         private object _serverLock = new object();
         private object _clientLock = new object();
         private RC4Cipher _clientReceiveState = new RC4Cipher(Key0);
@@ -63,6 +62,14 @@ namespace Lib_K_Relay.Networking
         public State State
         {
             get; set;
+        }
+
+        /// <summary>
+        /// If the client is connected to the client & server.
+        /// </summary>
+        public bool Connected
+        {
+            get { return !_closed; }
         }
 
         public Client(Proxy proxy, TcpClient client)
