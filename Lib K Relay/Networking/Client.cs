@@ -14,9 +14,8 @@ namespace Lib_K_Relay.Networking
     {
         private static string Key0 = "311f80691451c71d09a13a2a6e";
         private static string Key1 = "72c5583cafb6818995cdd74b80";
-
-        private int LastTimeTime = 0;
-        private int LastTime = 0;
+        public int LastUpdate = 0;
+        public int PreviousTime = 0;
         private object _serverLock = new object();
         private object _clientLock = new object();
         private RC4Cipher _clientReceiveState = new RC4Cipher(Key0);
@@ -37,7 +36,7 @@ namespace Lib_K_Relay.Networking
         /// </summary>
         public int Time
         {
-            get { return LastTime + (Environment.TickCount - LastTimeTime); }
+            get { return PreviousTime + (Environment.TickCount - LastUpdate); }
         }
 
         /// <summary>
