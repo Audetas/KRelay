@@ -24,27 +24,6 @@ namespace K_Relay
                     listPackets.ListBox.Items.Insert(0, type.ToString());
             });
         }
-
-        private void btnOpenPacketFolder_Click(object sender, EventArgs e)
-        {
-            try
-            {
-                Process.Start(Serializer.DEBUGGetSolutionRoot() + @"\XML\");
-            }
-            catch (Win32Exception)
-            {
-                MetroMessageBox.Show(this,
-                    string.Format(
-                        "File not found!\n\nThe directory '{0}' could not be found.\nPlease make sure it exists and Try Again.",
-                        Serializer.DEBUGGetSolutionRoot() + @"\XML\"), "Error!", MessageBoxButtons.OK,
-                        MessageBoxIcon.Error);
-            }
-            catch (Exception ex)
-            {
-                MetroMessageBox.Show(this, ex.ToString(), "Error - " + ex.GetType().Name, MessageBoxButtons.OK,
-                        MessageBoxIcon.Error);
-            }
-        }
         
         private void listPackets_SelectedIndexChanged(object sender, EventArgs e)
         {

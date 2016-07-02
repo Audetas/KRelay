@@ -11,6 +11,7 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Xml;
 using System.Net;
+using Lib_K_Relay.Properties;
 
 namespace Lib_K_Relay.Utilities
 {
@@ -31,48 +32,44 @@ namespace Lib_K_Relay.Utilities
         #region Packet Serialization
         public static void SerializePacketIds()
         {
-            string path = DEBUGGetSolutionRoot() + @"/XML/packets.xml";
-            if (File.Exists(path))
+            XmlDocument document = new XmlDocument();
+            Stream packetStream = FromString(Resources.Packets);
+            document.Load(packetStream);
+            foreach (XmlNode childNode in document.DocumentElement.ChildNodes)
             {
-                XmlDocument document = new XmlDocument();
-                document.Load(path);
-                foreach (XmlNode childNode in document.DocumentElement.ChildNodes)
-                {
-                    string PacketName = "";
-                    byte PacketID = 255;
-                    foreach (XmlNode grandChildNode in childNode.ChildNodes)
-                        //PacketName and ID here
-                        switch (grandChildNode.Name.ToLower())
-                        {
-                            case "packetname":
-                                PacketName = grandChildNode.InnerText;
-                                break;
-                            case "packetid":
-                                PacketID = byte.Parse(grandChildNode.InnerText);
-                                break;
-                            default:
-                                break;
-                        }
-
-                    //Hoping that those faggots dont use 255 for packetID
-                    if (PacketName != "" && PacketID != 255)
+                string PacketName = "";
+                byte PacketID = 255;
+                foreach (XmlNode grandChildNode in childNode.ChildNodes)
+                    //PacketName and ID here
+                    switch (grandChildNode.Name.ToLower())
                     {
-                        PacketType parsedType;
-                        if (Enum.TryParse<PacketType>(PacketName, true, out parsedType))
-                        {
-                            PacketIdTypeMap.Add(PacketID, parsedType);
-                            PacketTypeIdMap.Add(parsedType, PacketID);
-                        }
+                        case "packetname":
+                            PacketName = grandChildNode.InnerText;
+                            break;
+                        case "packetid":
+                            PacketID = byte.Parse(grandChildNode.InnerText);
+                            break;
+                        default:
+                            break;
+                    }
+
+                //Hoping that those faggots dont use 255 for packetID
+                if (PacketName != "" && PacketID != 255)
+                {
+                    PacketType parsedType;
+                    if (Enum.TryParse<PacketType>(PacketName, true, out parsedType))
+                    {
+                        PacketIdTypeMap.Add(PacketID, parsedType);
+                        PacketTypeIdMap.Add(parsedType, PacketID);
                     }
                 }
-                PluginUtils.Log("Serializer", "Serialized {0} packet ids successfully.", PacketTypeIdMap.Count);
             }
-            else throw new FileNotFoundException("Unable to find file.", path);
+            PluginUtils.Log("Serializer", "Serialized {0} packet ids successfully.", PacketTypeIdMap.Count);
+            packetStream.Close();
         }
 
         public static void SerializePacketTypes()
         {
-            
             // Reflect all inheriters of Packet and map them according to their Type member.
             Type tPacket = typeof(Packet);
             Type[] packetTypes = Assembly.GetAssembly(typeof(Proxy)).GetTypes()
@@ -90,32 +87,28 @@ namespace Lib_K_Relay.Utilities
         #region Object Serialization
         public static void SerializeGameObjects()
         {
-            SerializeFromXML("tiles", "Ground", Tiles);
-            SerializeFromXML("items", "Object", Items);
-            SerializeFromXML("objects", "Object", Objects);
-            SerializeFromXML("enemies", "Object", Enemies);
-            SerializeFromXML("complete gamedata", "Object", CompleteGameData);
+            SerializeFromXML(FromString(Resources.Tiles), "Ground", Tiles);
+            SerializeFromXML(FromString(Resources.Items), "Object", Items);
+            SerializeFromXML(FromString(Resources.Objects), "Object", Objects);
+            SerializeFromXML(FromString(Resources.Enemies), "Object", Enemies);
+            SerializeFromXML(FromString(Resources.CompleteGamedata), "Object", CompleteGameData);
         }
 
-        private static void SerializeFromXML(string fileName, string nodeName, Dictionary<string, ushort> dict)
+        private static void SerializeFromXML(Stream resource, string nodeName, Dictionary<string, ushort> dict)
         {
-            string path = DEBUGGetSolutionRoot() + @"/XML/" + fileName + ".xml";
-            if (File.Exists(path))
+            XmlDocument document = new XmlDocument();
+            document.Load(resource);
+            foreach (XmlNode childNode in document.DocumentElement.ChildNodes)
             {
-                XmlDocument document = new XmlDocument();
-                document.Load(path);
-                foreach (XmlNode childNode in document.DocumentElement.ChildNodes)
+                if (childNode.Name == nodeName)
                 {
-                    if (childNode.Name == nodeName)
-                    {
-                        string objectName = childNode.Attributes.GetNamedItem("id").Value;
-                        ushort objectId = Convert.ToUInt16(childNode.Attributes.GetNamedItem("type").Value, 16);
-                        if (!dict.ContainsKey(objectName)) dict.Add(objectName, objectId);
-                    }
+                    string objectName = childNode.Attributes.GetNamedItem("id").Value;
+                    ushort objectId = Convert.ToUInt16(childNode.Attributes.GetNamedItem("type").Value, 16);
+                    if (!dict.ContainsKey(objectName)) dict.Add(objectName, objectId);
                 }
-                PluginUtils.Log("Serializer", "Serialized {0} {1} successfully.", dict.Count, fileName);
             }
-            else throw new FileNotFoundException("Unable to find file.", path);
+            PluginUtils.Log("Serializer", "Serialized {0} elements successfully.", dict.Count);
+            resource.Close();
         }
         #endregion
 
@@ -211,16 +204,11 @@ namespace Lib_K_Relay.Utilities
                     return pair.Key;
             return "";
         }
-        #endregion
 
-        public static string DEBUGGetSolutionRoot()
+        private static Stream FromString(string str)
         {
-            // This is single handedly the worse piece of code i've ever written.
-            DirectoryInfo project = Directory.GetParent(Directory.GetParent(Directory.GetParent(Application.StartupPath).ToString()).ToString());
-            if (Directory.Exists(project.ToString() + "/XML/"))
-                return project.ToString();
-            else
-                return Application.StartupPath;
+            return new MemoryStream(Encoding.UTF8.GetBytes(str));
         }
+        #endregion
     }
 }

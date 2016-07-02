@@ -26,8 +26,8 @@ namespace Lib_K_Relay.Networking
 
         private void OnMove(Client client, MovePacket packet)
         {
-            client.LastTime = packet.Time;
-            client.LastTimeTime = Environment.TickCount;
+            client.PreviousTime = packet.Time;
+            client.LastUpdate = Environment.TickCount;
             client.PlayerData.Pos = packet.NewPosition;
         }
 

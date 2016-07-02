@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Lib_K_Relay.Networking.Packets.Server
+namespace Lib_K_Relay.Networking.Packets.Client
 {
     public class PlayerHitPacket : Packet
     {

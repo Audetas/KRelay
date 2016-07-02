@@ -25,7 +25,7 @@ namespace K_Relay
 
         private void InitPlugins()
         {
-            string pDir = Serializer.DEBUGGetSolutionRoot() + @"\Plugins\";
+            string pDir = Application.StartupPath + @"\Plugins\";
 
             if (!Directory.Exists(pDir))
             {
@@ -65,14 +65,14 @@ namespace K_Relay
         {
             try
             {
-                Process.Start(Serializer.DEBUGGetSolutionRoot() + @"\Plugins\");
+                Process.Start(Application.StartupPath + @"\Plugins\");
             }
             catch (Win32Exception)
             {
                 MetroMessageBox.Show(this,
                     string.Format(
                         "File not found!\n\nThe directory '{0}' could not be found.\nPlease make sure it exists and Try Again.",
-                        Serializer.DEBUGGetSolutionRoot() + @"\Plugins\"), "Error!", MessageBoxButtons.OK,
+                        Application.StartupPath + @"\Plugins\"), "Error!", MessageBoxButtons.OK,
                     MessageBoxIcon.Error);
             }
             catch (Exception ex)

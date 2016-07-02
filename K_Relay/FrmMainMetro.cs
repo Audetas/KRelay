@@ -46,10 +46,10 @@ namespace K_Relay
             {
                 Parallel.ForEach(workers, (worker) =>
                 {
-                    try
+                    //try
                     {
                         worker.Invoke();
-                    }
+                    }/*
                     catch (Exception ex)
                     {
                         MessageBox.Show(
@@ -62,7 +62,7 @@ namespace K_Relay
                             "Additional info is as follows:\n\n" + ex,
                             "K Relay", MessageBoxButtons.OK, MessageBoxIcon.Error);
                         Environment.Exit(ex.HResult);
-                    }
+                    }*/
                 });
             });
 

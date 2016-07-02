@@ -116,7 +116,7 @@
     <Compile Include="Networking\Packets\Server\PetEvolveResultPacket.cs" />
     <Compile Include="Networking\Packets\Server\PicPacket.cs" />
     <Compile Include="Networking\Packets\Server\PingPacket.cs" />
-    <Compile Include="Networking\Packets\Server\PlayerHitPacket.cs" />
+    <Compile Include="Networking\Packets\Client\PlayerHitPacket.cs" />
     <Compile Include="Networking\Packets\Server\PlaySoundPacket.cs" />
     <Compile Include="Networking\Packets\Server\QuestFetchResponsePacket.cs" />
     <Compile Include="Networking\Packets\Server\QuestObjIdPacket.cs" />
@@ -153,6 +153,11 @@
     <Compile Include="Networking\ReconnectHandler.cs" />
     <Compile Include="Networking\State.cs" />
     <Compile Include="Networking\StateManager.cs" />
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
     <Compile Include="Utilities\FrmGenericSettings.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -173,9 +178,31 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
+    <EmbeddedResource Include="Properties\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
     <EmbeddedResource Include="Utilities\FrmGenericSettings.resx">
       <DependentUpon>FrmGenericSettings.cs</DependentUpon>
     </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\complete gamedata.xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\enemies.xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\items.xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\objects.xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\packets.xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\tiles.xml" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

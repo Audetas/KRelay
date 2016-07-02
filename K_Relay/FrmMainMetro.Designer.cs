@@ -281,7 +281,6 @@
             this.openPacketFolderToolStripMenuItem.Name = "openPacketFolderToolStripMenuItem";
             this.openPacketFolderToolStripMenuItem.Size = new System.Drawing.Size(128, 29);
             this.openPacketFolderToolStripMenuItem.Text = "Open Packet Folder";
-            this.openPacketFolderToolStripMenuItem.Click += new System.EventHandler(this.btnOpenPacketFolder_Click);
             // 
             // tbxPacketInfo
             // 

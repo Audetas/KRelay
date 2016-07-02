@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Lib_K_Relay.Networking.Packets.Client
 {
-    class UpdateAckPacket : Packet
+    public class UpdateAckPacket : Packet
     {
         public override PacketType Type
         { get { return PacketType.UPDATEACK; } }

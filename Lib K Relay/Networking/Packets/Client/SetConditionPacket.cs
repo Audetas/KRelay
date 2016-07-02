@@ -8,7 +8,7 @@ namespace Lib_K_Relay.Networking.Packets.Client
 {
     public class SetConditionPacket : Packet
     {
-        public int ConditionEffect;
+        public byte ConditionEffect;
         public float ConditionDuration;
 
         public override PacketType Type
@@ -16,7 +16,7 @@ namespace Lib_K_Relay.Networking.Packets.Client
 
         public override void Read(PacketReader r)
         {
-            ConditionEffect = r.ReadInt32();
+            ConditionEffect = r.ReadByte();
             ConditionDuration = r.ReadSingle();
         }
 
