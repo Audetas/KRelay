@@ -17,12 +17,12 @@ namespace Lib_K_Relay.Networking.Packets.Client
         public string Secret;
         public int KeyTime;
         public byte[] Key;
-        public string Obf1;
-        public string Obf2;
-        public string Obf3;
-        public string Obf4;
-        public string Obf5;
-        public string Obf6;
+        public string MapJSON;
+        public string EntryTag;
+        public string GameNet;
+        public string GameNetUserId;
+        public string PlayPlatform;
+        public string PlatformToken;
 
         public byte[] RAW;
 
@@ -40,12 +40,12 @@ namespace Lib_K_Relay.Networking.Packets.Client
             Secret = r.ReadString();
             KeyTime = r.ReadInt32();
             Key = (byte[])(Array)r.ReadBytes(r.ReadInt16());
-            Obf1 = r.ReadUTF32();
-            Obf2 = r.ReadString();
-            Obf3 = r.ReadString();
-            Obf4 = r.ReadString();
-            Obf5 = r.ReadString();
-            Obf6 = r.ReadString();
+            MapJSON = r.ReadUTF32();
+            EntryTag = r.ReadString();
+            GameNet = r.ReadString();
+            GameNetUserId = r.ReadString();
+            PlayPlatform = r.ReadString();
+            PlatformToken = r.ReadString();
         }
 
         public override void Write(PacketWriter w)
@@ -60,12 +60,12 @@ namespace Lib_K_Relay.Networking.Packets.Client
             w.Write(KeyTime);
             w.Write((short)Key.Length);
             w.Write((byte[])(Array)Key);
-            w.WriteUTF32(Obf1);
-            w.Write(Obf2);
-            w.Write(Obf3);
-            w.Write(Obf4);
-            w.Write(Obf5);
-            w.Write(Obf6);
+            w.WriteUTF32(MapJSON);
+            w.Write(EntryTag);
+            w.Write(GameNet);
+            w.Write(GameNetUserId);
+            w.Write(PlayPlatform);
+            w.Write(PlatformToken);
         }
     }
 }

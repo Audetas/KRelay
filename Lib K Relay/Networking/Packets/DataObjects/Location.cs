@@ -11,6 +11,14 @@ namespace Lib_K_Relay.Networking.Packets.DataObjects
         public float X;
         public float Y;
 
+        public Location() { }
+
+        public Location(float x, float y)
+        {
+            X = x;
+            Y = y;
+        }
+
         public static Location Empty
         {
             get
