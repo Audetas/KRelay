@@ -39,7 +39,7 @@ namespace Lib_K_Relay.Networking.Packets.DataObjects
         public int Price;
         public bool CanEnterPortal;
         public string AccountId;
-        public int CurrentFame;
+        public int CharacterFame;
         public int HealthBonus;
         public int ManaBonus;
         public int AttackBonus;
@@ -50,14 +50,14 @@ namespace Lib_K_Relay.Networking.Packets.DataObjects
         public int DexterityBonus;
         public int NameChangeRankRequired;
         public bool NameChosen;
-        public int Fame;
-        public int FameGoal;
+        public int AccountFame;
+        public int CharacterFameGoal;
         public bool GlowingEffect;
-        public string Guild;
+        public string GuildName;
         public int GuildRank;
         public int Breath;
-        public int HealthpotCount;
-        public int ManapotCount;
+        public int HealthPotionCount;
+        public int MagicPotionCount;
         public bool HasBackpack;
         public int Skin;
         public Location Pos = new Location();
@@ -108,7 +108,7 @@ namespace Lib_K_Relay.Networking.Packets.DataObjects
             else if (id == StatsType.HP) Health = intValue;
             else if (id == StatsType.MaximumMP) MaxMana = intValue;
             else if (id == StatsType.MP) Mana = intValue;
-            else if (id == StatsType.ExperienceGoal) XpGoal = intValue;
+            else if (id == StatsType.NextLevelExperience) XpGoal = intValue;
             else if (id == StatsType.Experience) Xp = intValue;
             else if (id == StatsType.Level) Level = intValue;
             else if (id == StatsType.Inventory0) Slot[0] = intValue;
@@ -133,28 +133,28 @@ namespace Lib_K_Relay.Networking.Packets.DataObjects
             else if (id == StatsType.Stars) Stars = intValue;
             else if (id == StatsType.Name) Name = stringValue;
             else if (id == StatsType.Credits) RealmGold = intValue;
-            else if (id == StatsType.SellablePrice) Price = intValue;
+            else if (id == StatsType.MerchandisePrice) Price = intValue;
             //else if (id == 37) CanEnterPortal = bool.Parse(stringValue);
             else if (id == StatsType.AccountId) AccountId = stringValue;
-            else if (id == StatsType.CurrentFame) CurrentFame = intValue; //fame you got when you died
-            else if (id == StatsType.HPBoost) HealthBonus = intValue;
-            else if (id == StatsType.MPBoost) ManaBonus = intValue;
+            else if (id == StatsType.CharacterFame) CharacterFame = intValue; //fame you got when you died
+            else if (id == StatsType.HealthBonus) HealthBonus = intValue;
+            else if (id == StatsType.ManaBonus) ManaBonus = intValue;
             else if (id == StatsType.AttackBonus) AttackBonus = intValue;
             else if (id == StatsType.DefenseBonus) DefenseBonus = intValue;
             else if (id == StatsType.SpeedBonus) SpeedBonus = intValue;
             else if (id == StatsType.VitalityBonus) VitalityBonus = intValue;
             else if (id == StatsType.WisdomBonus) WisdomBonus = intValue;
             else if (id == StatsType.DexterityBonus) DexterityBonus = intValue;
-            else if (id == StatsType.NameChangerStar) NameChangeRankRequired = intValue;
+            else if (id == StatsType.RankRequired) NameChangeRankRequired = intValue;
             else if (id == StatsType.NameChosen) NameChosen = intValue > 0;
-            else if (id == StatsType.Fame) Fame = intValue; //fame on this character
-            else if (id == StatsType.FameGoal) FameGoal = intValue;
+            else if (id == StatsType.AccountFame) AccountFame = intValue; //fame on this character
+            else if (id == StatsType.CharacterFameGoal) CharacterFameGoal = intValue;
             else if (id == StatsType.Glowing) GlowingEffect = intValue > -1;
-            else if (id == StatsType.Guild) Guild = stringValue;
+            else if (id == StatsType.GuildName) GuildName = stringValue;
             else if (id == StatsType.GuildRank) GuildRank = intValue;
             else if (id == StatsType.OxygenBar) Breath = intValue;
-            else if (id == StatsType.HealStackCount) HealthpotCount = intValue;
-            else if (id == StatsType.MagicStackCount) ManapotCount = intValue;
+            else if (id == StatsType.HealthPotionCount) HealthPotionCount = intValue;
+            else if (id == StatsType.MagicPotionCount) MagicPotionCount = intValue;
             else if (id == StatsType.Backpack0) BackPack[0] = intValue;
             else if (id == StatsType.Backpack1) BackPack[1] = intValue;
             else if (id == StatsType.Backpack2) BackPack[2] = intValue;
@@ -163,7 +163,7 @@ namespace Lib_K_Relay.Networking.Packets.DataObjects
             else if (id == StatsType.Backpack5) BackPack[5] = intValue;
             else if (id == StatsType.Backpack6) BackPack[6] = intValue;
             else if (id == StatsType.Backpack7) BackPack[7] = intValue;
-            else if (id == StatsType.Has_Backpack) HasBackpack = intValue > 0;
+            else if (id == StatsType.HasBackpack) HasBackpack = intValue > 0;
             else if (id == StatsType.Skin) Skin = intValue;
         }
 

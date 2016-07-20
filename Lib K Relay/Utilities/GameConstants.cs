@@ -82,25 +82,26 @@ namespace Lib_K_Relay.Utilities
 
     public enum EffectType
     {
-        Potion = 1,
+		Unknown = 0,
+        Heal = 1,
         Teleport = 2,
         Stream = 3,
         Throw = 4,
-        AreaBlast = 5, //radius=pos1.x
-        Dead = 6,
-        Trail = 7,
-        Diffuse = 8, //radius=dist(pos1,pos2)
+        Nova = 5, //radius=pos1.x
+        Poison = 6,
+        Line = 7,
+        Burst = 8, //radius=dist(pos1,pos2)
         Flow = 9,
-        Trap = 10, //radius=pos1.x
+        Ring = 10, //radius=pos1.x
         Lightning = 11, //particleSize=pos2.x
-        Concentrate = 12, //radius=dist(pos1,pos2)
-        BlastWave = 13, //origin=pos1, radius = pos2.x
+        Collapse = 12, //radius=dist(pos1,pos2)
+        ConeBlast = 13, //origin=pos1, radius = pos2.x
         Earthquake = 14,
-        Flashing = 15, //period=pos1.x, numCycles=pos1.y
+        Flash = 15, //period=pos1.x, numCycles=pos1.y
         BeachBall = 16,
         ElectricBolts = 17, //If a pet paralyzes a monster
         ElectricFlashing = 18, //If a monster got paralyzed from a electric pet
-        SavageEffect = 19 //If a pet is standing still (this white particles)
+        RisingFury = 19 //If a pet is standing still (this white particles)
     }
 
     public struct ARGB

@@ -152,14 +152,14 @@ namespace MapRipper
                                 s += ";size:" + vals[StatsType.Size];
                             if (vals.ContainsKey(StatsType.ObjectConnection))
                                 s += ";conn:0x" + ((int)vals[StatsType.ObjectConnection]).ToString("X8");
-                            if (vals.ContainsKey(StatsType.MerchantMerchandiseType))
-                                s += ";mtype:" + vals[StatsType.MerchantMerchandiseType];
-                            if (vals.ContainsKey(StatsType.MerchantRemainingCount))
-                                s += ";mcount:" + vals[StatsType.MerchantRemainingCount];
-                            if (vals.ContainsKey(StatsType.MerchantRemainingMinute))
-                                s += ";mtime:" + vals[StatsType.MerchantRemainingMinute];
-                            if (vals.ContainsKey(StatsType.NameChangerStar))
-                                s += ";nstar:" + vals[StatsType.NameChangerStar];
+                            if (vals.ContainsKey(StatsType.MerchandiseType))
+                                s += ";mtype:" + vals[StatsType.MerchandiseType];
+                            if (vals.ContainsKey(StatsType.MerchandiseRemainingCount))
+                                s += ";mcount:" + vals[StatsType.MerchandiseRemainingCount];
+                            if (vals.ContainsKey(StatsType.MerchandiseRemainingMinutes))
+                                s += ";mtime:" + vals[StatsType.MerchandiseRemainingMinutes];
+                            if (vals.ContainsKey(StatsType.RankRequired))
+                                s += ";nstar:" + vals[StatsType.RankRequired];
                             o.name = s.Trim(';');
                             loc.objs[i] = o;
                         }

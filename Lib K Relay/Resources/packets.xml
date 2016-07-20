@@ -1,5 +1,5 @@
 <Packets>
-	<Packet>
+<Packet>
 	<PacketName>FAILURE</PacketName>
 	<PacketID>0</PacketID>
 </Packet>
@@ -28,7 +28,7 @@
 	<PacketID>10</PacketID>
 </Packet>
 <Packet>
-	<PacketName>SHOOT2</PacketName>
+	<PacketName>SERVERPLAYERSHOOT</PacketName>
 	<PacketID>88</PacketID>
 </Packet>
 <Packet>
@@ -204,7 +204,7 @@
 	<PacketID>74</PacketID>
 </Packet>
 <Packet>
-	<PacketName>SHOOT</PacketName>
+	<PacketName>ENEMYSHOOT</PacketName>
 	<PacketID>20</PacketID>
 </Packet>
 <Packet>
@@ -284,35 +284,35 @@
 	<PacketID>61</PacketID>
 </Packet>
 <Packet>
-	<PacketName>_-12t</PacketName>
+	<PacketName>PETYARDCOMMAND</PacketName>
 	<PacketID>12</PacketID>
 </Packet>
 <Packet>
-	<PacketName>_-02u</PacketName>
+	<PacketName>PETCOMMAND</PacketName>
 	<PacketID>63</PacketID>
 </Packet>
 <Packet>
-	<PacketName>_-0kN</PacketName>
+	<PacketName>UPDATEPET</PacketName>
 	<PacketID>95</PacketID>
 </Packet>
 <Packet>
-	<PacketName>_-00N</PacketName>
+	<PacketName>NEWABILITYUNLOCKED</PacketName>
 	<PacketID>30</PacketID>
 </Packet>
 <Packet>
-	<PacketName>_-1US</PacketName>
+	<PacketName>UPGRADEPETYARDRESULT</PacketName>
 	<PacketID>80</PacketID>
 </Packet>
 <Packet>
-	<PacketName>_-0Xg</PacketName>
+	<PacketName>EVOLVEPET</PacketName>
 	<PacketID>91</PacketID>
 </Packet>
 <Packet>
-	<PacketName>_-0MY</PacketName>
+	<PacketName>REMOVEPET</PacketName>
 	<PacketID>85</PacketID>
 </Packet>
 <Packet>
-	<PacketName>_-05N</PacketName>
+	<PacketName>HATCHEGG</PacketName>
 	<PacketID>18</PacketID>
 </Packet>
 <Packet>
@@ -320,55 +320,55 @@
 	<PacketID>51</PacketID>
 </Packet>
 <Packet>
-	<PacketName>_-0wo</PacketName>
+	<PacketName>ARENANEXTWAVE</PacketName>
 	<PacketID>34</PacketID>
 </Packet>
 <Packet>
-	<PacketName>_-0jA</PacketName>
+	<PacketName>ARENADEATH</PacketName>
 	<PacketID>39</PacketID>
 </Packet>
 <Packet>
-	<PacketName>_-0UC</PacketName>
+	<PacketName>LEAVEARENA</PacketName>
 	<PacketID>93</PacketID>
 </Packet>
 <Packet>
-	<PacketName>_-1KK</PacketName>
+	<PacketName>VERIFYEMAILDIALOG</PacketName>
 	<PacketID>65</PacketID>
 </Packet>
 <Packet>
-	<PacketName>_-zh</PacketName>
+	<PacketName>RESKINUNLOCK</PacketName>
 	<PacketID>100</PacketID>
 </Packet>
 <Packet>
-	<PacketName>_-1uy</PacketName>
+	<PacketName>PASSWORDPROMPT</PacketName>
 	<PacketID>96</PacketID>
 </Packet>
 <Packet>
-	<PacketName>_-z0</PacketName>
+	<PacketName>VIEWQUESTS</PacketName>
 	<PacketID>41</PacketID>
 </Packet>
 <Packet>
-	<PacketName>_-21M</PacketName>
+	<PacketName>TINKERQUEST</PacketName>
 	<PacketID>87</PacketID>
 </Packet>
 <Packet>
-	<PacketName>_-1pU</PacketName>
+	<PacketName>QUESTFETCHRESPONSE</PacketName>
 	<PacketID>52</PacketID>
 </Packet>
 <Packet>
-	<PacketName>_-1XQ</PacketName>
+	<PacketName>QUESTREDEEMRESPONSE</PacketName>
 	<PacketID>64</PacketID>
 </Packet>
 <Packet>
-	<PacketName>_-1sf</PacketName>
+	<PacketName>RESKINPET</PacketName>
 	<PacketID>42</PacketID>
 </Packet>
 <Packet>
-	<PacketName>_-185</PacketName>
+	<PacketName>KEYINFOREQUEST</PacketName>
 	<PacketID>13</PacketID>
 </Packet>
 <Packet>
-	<PacketName>_-Xd</PacketName>
+	<PacketName>KEYINFORESPONSE</PacketName>
 	<PacketID>81</PacketID>
 </Packet>
 </Packets>

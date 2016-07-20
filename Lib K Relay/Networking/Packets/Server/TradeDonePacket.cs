@@ -8,6 +8,11 @@ namespace Lib_K_Relay.Networking.Packets.Server
 {
     public class TradeDonePacket : Packet
     {
+		/*
+		TradeSuccessful = 0
+		PlayerCanceled = 1
+		*/
+
         public int Result;
         public string Message;
         public override PacketType Type

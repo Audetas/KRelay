@@ -9,7 +9,7 @@ namespace Lib_K_Relay.Networking.Packets.Server
 {
     public class NewAbilityUnlockedPacket : Packet
     {
-        public Ability AbilityType ;
+		public Ability AbilityType;
 
         public override PacketType Type
         { get { return PacketType.NEWABILITYUNLOCKED; } }

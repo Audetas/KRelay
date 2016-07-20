@@ -80,6 +80,7 @@
     <Compile Include="Networking\Packets\Client\PlayerTextPacket.cs" />
     <Compile Include="Networking\Packets\Client\PongPacket.cs" />
     <Compile Include="Networking\Packets\Client\RequestTradePacket.cs" />
+    <Compile Include="Networking\Packets\Client\ReskinPetPacket.cs" />
     <Compile Include="Networking\Packets\Client\ReskinPacket.cs" />
     <Compile Include="Networking\Packets\Client\SetConditionPacket.cs" />
     <Compile Include="Networking\Packets\Client\ShootAckPacket.cs" />
@@ -87,6 +88,7 @@
     <Compile Include="Networking\Packets\Client\TinkerQuestPacket.cs" />
     <Compile Include="Networking\Packets\Client\UpdateAckPacket.cs" />
     <Compile Include="Networking\Packets\Client\UseItemPacket.cs" />
+    <Compile Include="Networking\Packets\Client\KeyInfoRequestPacket.cs" />
     <Compile Include="Networking\Packets\Client\UsePortalPacket.cs" />
     <Compile Include="Networking\Packets\Client\ViewQuestsPacket.cs" />
     <Compile Include="Networking\Packets\DataObjects\PlayerData.cs" />
@@ -123,8 +125,10 @@
     <Compile Include="Networking\Packets\Client\SquareHitPacket.cs" />
     <Compile Include="Networking\Packets\Server\QuestRedeemResponsePacket.cs" />
     <Compile Include="Networking\Packets\Server\RemovePetFromListPacket.cs" />
-    <Compile Include="Networking\Packets\Server\Shoot2Packet.cs" />
-    <Compile Include="Networking\Packets\Server\ShootPacket.cs" />
+    <Compile Include="Networking\Packets\Server\KeyInfoResponsePacket.cs" />
+    <Compile Include="Networking\Packets\Server\ReskinUnlock.cs" />
+    <Compile Include="Networking\Packets\Server\ServerPlayerShootPacket.cs" />
+    <Compile Include="Networking\Packets\Server\EnemyShootPacket.cs" />
     <Compile Include="Networking\Packets\Server\ShowEffectPacket.cs" />
     <Compile Include="Networking\Packets\Server\TextPacket.cs" />
     <Compile Include="Networking\Packets\Server\TradeAcceptedPacket.cs" />

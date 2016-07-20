@@ -12,7 +12,8 @@ namespace Lib_K_Relay.Networking.Packets.Server
         public const int SEND_EMAIL_AND_SIGN_IN = 3;
         public const int REGISTER = 4;
 
-        public int CleanPasswordStatus ;
+		public int CleanPasswordStatus;
+
         public override PacketType Type
         { get { return PacketType.PASSWORDPROMPT; } }
 

@@ -8,7 +8,7 @@ namespace Lib_K_Relay.Networking.Packets.Server
 {
     public class PetEvolveResultPacket : Packet
     {
-        public int PetId1;
+        public int PetId;
         public int SkinId1;
         public int SkinId2;
         public override PacketType Type
@@ -16,14 +16,14 @@ namespace Lib_K_Relay.Networking.Packets.Server
 
         public override void Read(PacketReader r)
         {
-            PetId1 = r.ReadInt32();
+            PetId = r.ReadInt32();
             SkinId1 = r.ReadInt32();
             SkinId2 = r.ReadInt32();
         }
 
         public override void Write(PacketWriter w)
         {
-            w.Write(PetId1);
+            w.Write(PetId);
             w.Write(SkinId1);
             w.Write(SkinId2);
         }

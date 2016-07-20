@@ -109,7 +109,7 @@ namespace Lib_K_Relay.Networking.Packets
         MOVE,
         PLAYERTEXT,
         TEXT,
-        SHOOT2,
+        SERVERPLAYERSHOOT,
         DAMAGE,
         UPDATE,
         UPDATEACK,
@@ -153,7 +153,7 @@ namespace Lib_K_Relay.Networking.Packets
         GUILDREMOVE,
         GUILDINVITE,
         ALLYSHOOT,
-        SHOOT,
+        ENEMYSHOOT,
         REQUESTTRADE,
         TRADEREQUESTED,
         TRADESTART,
@@ -190,6 +190,10 @@ namespace Lib_K_Relay.Networking.Packets
         UPDATEPET,
         UPGRADEPETYARDRESULT,
         VERIFYEMAILDIALOG,
-        QUESTREDEEMRESPONSE
-    }
+        QUESTREDEEMRESPONSE,
+		RESKINUNLOCK,
+		RESKINPET,
+		KEYINFOREQUEST,
+		KEYINFORESPONSE
+	}
 }

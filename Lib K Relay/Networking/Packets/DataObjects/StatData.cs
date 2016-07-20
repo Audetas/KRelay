@@ -56,7 +56,7 @@ namespace Lib_K_Relay.Networking.Packets.DataObjects
         public readonly static StatsType Size = 2;
         public readonly static StatsType MaximumMP = 3;
         public readonly static StatsType MP = 4;
-        public readonly static StatsType ExperienceGoal = 5;
+        public readonly static StatsType NextLevelExperience = 5;
         public readonly static StatsType Experience = 6;
         public readonly static StatsType Level = 7;
         public readonly static StatsType Inventory0 = 8;
@@ -82,13 +82,13 @@ namespace Lib_K_Relay.Networking.Packets.DataObjects
         public readonly static StatsType Name = 31; //Is UTF
         public readonly static StatsType Texture1 = 32;
         public readonly static StatsType Texture2 = 33;
-        public readonly static StatsType MerchantMerchandiseType = 34;
+        public readonly static StatsType MerchandiseType = 34;
         public readonly static StatsType Credits = 35;
-        public readonly static StatsType SellablePrice = 36;
-        public readonly static StatsType PortalUsable = 37;
+        public readonly static StatsType MerchandisePrice = 36;
+        public readonly static StatsType PortalUsable = 37; // "ACTIVE_STAT"
         public readonly static StatsType AccountId = 38; //Is UTF
-        public readonly static StatsType CurrentFame = 39;
-        public readonly static StatsType SellablePriceCurrency = 40;
+        public readonly static StatsType CharacterFame = 39;
+        public readonly static StatsType MerchandiseCurrency = 40;
         public readonly static StatsType ObjectConnection = 41;
         /*
          * Mask :F0F0F0F0
@@ -101,12 +101,12 @@ namespace Lib_K_Relay.Networking.Packets.DataObjects
          * 5:Cross
          * 0x21222112
         */
-        public readonly static StatsType MerchantRemainingCount = 42;
-        public readonly static StatsType MerchantRemainingMinute = 43;
-        public readonly static StatsType MerchantDiscount = 44;
-        public readonly static StatsType SellableRankRequirement = 45;
-        public readonly static StatsType HPBoost = 46;
-        public readonly static StatsType MPBoost = 47;
+        public readonly static StatsType MerchandiseRemainingCount = 42;
+        public readonly static StatsType MerchandiseRemainingMinutes = 43;
+        public readonly static StatsType MerchandiseDiscount = 44;
+        public readonly static StatsType MerchandiseRankRequirement = 45;
+        public readonly static StatsType HealthBonus = 46;
+        public readonly static StatsType ManaBonus = 47;
         public readonly static StatsType AttackBonus = 48;
         public readonly static StatsType DefenseBonus = 49;
         public readonly static StatsType SpeedBonus = 50;
@@ -114,22 +114,22 @@ namespace Lib_K_Relay.Networking.Packets.DataObjects
         public readonly static StatsType WisdomBonus = 52;
         public readonly static StatsType DexterityBonus = 53;
         public readonly static StatsType OwnerAccountId = 54; //Is UTF
-        public readonly static StatsType NameChangerStar = 55;
+        public readonly static StatsType RankRequired = 55;
         public readonly static StatsType NameChosen = 56;
-        public readonly static StatsType Fame = 57;
-        public readonly static StatsType FameGoal = 58;
+        public readonly static StatsType AccountFame = 57;
+        public readonly static StatsType CharacterFameGoal = 58;
         public readonly static StatsType Glowing = 59;
-        public readonly static StatsType SinkOffset = 60;
+        public readonly static StatsType SinkLevel = 60;
         public readonly static StatsType AltTextureIndex = 61;
-        public readonly static StatsType Guild = 62; //Is UTF
+        public readonly static StatsType GuildName = 62; //Is UTF
         public readonly static StatsType GuildRank = 63;
         public readonly static StatsType OxygenBar = 64;
         public readonly static StatsType XpBoosterActive = 65;
-        public readonly static StatsType XpBoosterTime = 66;
-        public readonly static StatsType LootDropBoostTimer = 67;
-        public readonly static StatsType LootTierBoostTimer = 68;
-        public readonly static StatsType HealStackCount = 69;
-        public readonly static StatsType MagicStackCount = 70;
+        public readonly static StatsType XpBoostTime = 66;
+        public readonly static StatsType LootDropBoostTime = 67;
+        public readonly static StatsType LootTierBoostTime = 68;
+        public readonly static StatsType HealthPotionCount = 69;
+        public readonly static StatsType MagicPotionCount = 70;
         public readonly static StatsType Backpack0 = 71;
         public readonly static StatsType Backpack1 = 72;
         public readonly static StatsType Backpack2 = 73;
@@ -138,14 +138,14 @@ namespace Lib_K_Relay.Networking.Packets.DataObjects
         public readonly static StatsType Backpack5 = 76;
         public readonly static StatsType Backpack6 = 77;
         public readonly static StatsType Backpack7 = 78;
-        public readonly static StatsType Has_Backpack = 79;
+        public readonly static StatsType HasBackpack = 79;
         public readonly static StatsType Skin = 80;
-        public readonly static StatsType PetId = 81;
-        public readonly static StatsType PetSkin = 82; //Is UTF
+        public readonly static StatsType PetInstanceId = 81;
+        public readonly static StatsType PetName = 82; //Is UTF
         public readonly static StatsType PetType = 83;
         public readonly static StatsType PetRarity = 84;
         public readonly static StatsType PetMaximumLevel = 85;
-        public readonly static StatsType PetNothing = 86; //This does do nothing in the client
+        public readonly static StatsType PetFamily = 86; //This does do nothing in the client
         public readonly static StatsType PetPoints0 = 87;
         public readonly static StatsType PetPoints1 = 88;
         public readonly static StatsType PetPoints2 = 89;
@@ -168,7 +168,7 @@ namespace Lib_K_Relay.Networking.Packets.DataObjects
         public bool IsUTF()
         {
             if (this == StatsType.Name || this == StatsType.AccountId || this == StatsType.OwnerAccountId
-               || this == StatsType.Guild || this == StatsType.PetSkin)
+               || this == StatsType.GuildName || this == StatsType.PetName)
                 return true;
             return false;
         }

@@ -11,7 +11,7 @@ namespace Lib_K_Relay.Networking.Packets.Server
         public int Width;
         public int Height;
         public string Name;
-        public string ClientWorldName;
+        public string DisplayName;
         public int Difficulty;
         public uint Fp;
         public int Background;
@@ -28,7 +28,7 @@ namespace Lib_K_Relay.Networking.Packets.Server
             Width = r.ReadInt32();
             Height = r.ReadInt32();
             Name = r.ReadString();
-            ClientWorldName = r.ReadString();
+            DisplayName = r.ReadString();
             Fp = r.ReadUInt32();
             Background = r.ReadInt32();
             Difficulty = r.ReadInt32();
@@ -49,7 +49,7 @@ namespace Lib_K_Relay.Networking.Packets.Server
             w.Write(Width);
             w.Write(Height);
             w.Write(Name);
-            w.Write(ClientWorldName);
+            w.Write(DisplayName);
             w.Write(Fp);
             w.Write(Background);
             w.Write(Difficulty);

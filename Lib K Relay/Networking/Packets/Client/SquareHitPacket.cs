@@ -11,7 +11,6 @@ namespace Lib_K_Relay.Networking.Packets.Server
         public int Time;
         public byte BulletId;
         public int ObjectId;
-        public int TargetId;
 
         public override PacketType Type
         { get { return PacketType.SQUAREHIT; } }

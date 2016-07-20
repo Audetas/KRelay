@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace Lib_K_Relay.Networking.Packets.Server
 {
-    public class Shoot2Packet : Packet
+    public class ServerPlayerShootPacket : Packet
     {
         public byte BulletId;
         public int OwnerId;
@@ -16,7 +16,7 @@ namespace Lib_K_Relay.Networking.Packets.Server
         public float Angle;
         public short Damage;
         public override PacketType Type
-        { get { return PacketType.SHOOT2; } }
+        { get { return PacketType.SERVERPLAYERSHOOT; } }
 
         public override void Read(PacketReader r)
         {

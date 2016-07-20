@@ -8,8 +8,8 @@ namespace Lib_K_Relay.Networking.Packets.Server
 {
     public class InvitedToGuildPacket : Packet
     {
-        public string Name ;
-        public string GuildName ;
+		public string Name;
+		public string GuildName;
         public override PacketType Type
         { get { return PacketType.INVITEDTOGUILD; } }
 

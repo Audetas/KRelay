@@ -8,7 +8,19 @@ namespace Lib_K_Relay.Networking.Packets.Server
 {
     public class BuyResultPacket : Packet
     {
-        public int Result;
+		/*
+		UnknownError = -1
+		Success = 0
+		InvalidCharacter = 1
+		ItemNotFound = 2
+		NotEnoughGold = 3
+		InventoryFull = 4
+		TooLowRank = 5
+		NotEnoughFame = 6
+		PetFeedSuccess = 7
+		*/
+
+		public int Result;
         public string Message;
         public override PacketType Type
         { get { return PacketType.BUYRESULT; } }
