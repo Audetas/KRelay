@@ -39,7 +39,7 @@ namespace Lib_K_Relay.Networking.Packets.DataObjects
         public int Price;
         public bool CanEnterPortal;
         public string AccountId;
-        public int CharacterFame;
+        public int AccountFame;
         public int HealthBonus;
         public int ManaBonus;
         public int AttackBonus;
@@ -50,7 +50,7 @@ namespace Lib_K_Relay.Networking.Packets.DataObjects
         public int DexterityBonus;
         public int NameChangeRankRequired;
         public bool NameChosen;
-        public int AccountFame;
+        public int CharacterFame;
         public int CharacterFameGoal;
         public bool GlowingEffect;
         public string GuildName;
@@ -136,7 +136,7 @@ namespace Lib_K_Relay.Networking.Packets.DataObjects
             else if (id == StatsType.MerchandisePrice) Price = intValue;
             //else if (id == 37) CanEnterPortal = bool.Parse(stringValue);
             else if (id == StatsType.AccountId) AccountId = stringValue;
-            else if (id == StatsType.CharacterFame) CharacterFame = intValue; //fame you got when you died
+            else if (id == StatsType.AccountFame) AccountFame = intValue; //fame you got when you died
             else if (id == StatsType.HealthBonus) HealthBonus = intValue;
             else if (id == StatsType.ManaBonus) ManaBonus = intValue;
             else if (id == StatsType.AttackBonus) AttackBonus = intValue;
@@ -147,7 +147,7 @@ namespace Lib_K_Relay.Networking.Packets.DataObjects
             else if (id == StatsType.DexterityBonus) DexterityBonus = intValue;
             else if (id == StatsType.RankRequired) NameChangeRankRequired = intValue;
             else if (id == StatsType.NameChosen) NameChosen = intValue > 0;
-            else if (id == StatsType.AccountFame) AccountFame = intValue; //fame on this character
+            else if (id == StatsType.CharacterFame) CharacterFame = intValue; //fame on this character
             else if (id == StatsType.CharacterFameGoal) CharacterFameGoal = intValue;
             else if (id == StatsType.Glowing) GlowingEffect = intValue > -1;
             else if (id == StatsType.GuildName) GuildName = stringValue;

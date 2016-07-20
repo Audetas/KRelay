@@ -87,7 +87,7 @@ namespace Lib_K_Relay.Networking.Packets.DataObjects
         public readonly static StatsType MerchandisePrice = 36;
         public readonly static StatsType PortalUsable = 37; // "ACTIVE_STAT"
         public readonly static StatsType AccountId = 38; //Is UTF
-        public readonly static StatsType CharacterFame = 39;
+        public readonly static StatsType AccountFame = 39;
         public readonly static StatsType MerchandiseCurrency = 40;
         public readonly static StatsType ObjectConnection = 41;
         /*
@@ -116,7 +116,7 @@ namespace Lib_K_Relay.Networking.Packets.DataObjects
         public readonly static StatsType OwnerAccountId = 54; //Is UTF
         public readonly static StatsType RankRequired = 55;
         public readonly static StatsType NameChosen = 56;
-        public readonly static StatsType AccountFame = 57;
+        public readonly static StatsType CharacterFame = 57;
         public readonly static StatsType CharacterFameGoal = 58;
         public readonly static StatsType Glowing = 59;
         public readonly static StatsType SinkLevel = 60;

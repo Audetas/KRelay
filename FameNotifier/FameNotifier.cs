@@ -39,12 +39,12 @@ namespace FameNotifier
         private void OnUpdate(Client client, Packet packet)
         {
             int fame = _fame[client];
-            _fame[client] = client.PlayerData.AccountFame;
+            _fame[client] = client.PlayerData.CharacterFame;
 
-            if (fame != -1 && client.PlayerData.AccountFame != fame)
+            if (fame != -1 && client.PlayerData.CharacterFame != fame)
                 client.SendToClient(
                     PluginUtils.CreateNotification(
-                        client.ObjectId, "+" + (client.PlayerData.AccountFame - fame) + " fame!"));
+                        client.ObjectId, "+" + (client.PlayerData.CharacterFame - fame) + " fame!"));
         }
     }
 }
