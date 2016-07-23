@@ -15,6 +15,7 @@ using Lib_K_Relay.Networking.Packets;
 using Lib_K_Relay.Utilities;
 using MetroFramework.Forms;
 using MetroFramework.Drawing;
+using Lib_K_Relay.GameData;
 
 namespace K_Relay
 {
@@ -34,6 +35,7 @@ namespace K_Relay
         {
             Action[] workers =
             {
+				TileData.Load,
                 Serializer.SerializeServers,
                 Serializer.SerializeGameObjects,
                 Serializer.SerializePacketIds,

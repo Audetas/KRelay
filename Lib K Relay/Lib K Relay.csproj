@@ -46,6 +46,8 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Crypto\RC4Cipher.cs" />
+    <Compile Include="GameData\RawGameData.cs" />
+    <Compile Include="GameData\TileData.cs" />
     <Compile Include="Interface\IPlugin.cs" />
     <Compile Include="Networking\Client.cs" />
     <Compile Include="Networking\PacketBuffer.cs" />
