@@ -32,8 +32,8 @@ namespace Lib_K_Relay.GameData {
 				t.NoWalk = tile.Elements("NoWalk").Any();
 				t.Speed = tile.Elements("Speed").Any() ? float.Parse(tile.Elements("Speed").First().Value) : 1f;
 				t.Sink = tile.Elements("Sink").Any();
-				t.MinDamage = tile.Elements("MinDamage").Any() ? ushort.Parse(tile.Elements("MinDamage").First().Value) : (ushort)0;
-				t.MaxDamage = tile.Elements("MaxDamage").Any() ? ushort.Parse(tile.Elements("MaxDamage").First().Value) : (ushort)0;
+				t.MinDamage = tile.Elements("MinDamage").Any() ? ushort.Parse(tile.Element("MinDamage").Value) : (ushort)0;
+				t.MaxDamage = tile.Elements("MaxDamage").Any() ? ushort.Parse(tile.Element("MaxDamage").Value) : (ushort)0;
 				t.Name = tile.Attribute("id").Value;
 
 				Tiles[t.ID] = t;
@@ -51,7 +51,7 @@ namespace Lib_K_Relay.GameData {
 		public string Name;
 
 		public override string ToString() {
-			return string.Format("{0} (0x{1:X})\nNoWalk {2}\nSpeed {3:F2}\nSink {4}\nMinDamage {5}\nMaxDamage {6}",
+			return string.Format("{0} (0x{1:X})",
 				Name, ID, NoWalk, Speed, Sink, MinDamage, MaxDamage);
 		}
 	}
