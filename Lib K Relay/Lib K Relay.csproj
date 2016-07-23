@@ -48,6 +48,7 @@
     <Compile Include="Crypto\RC4Cipher.cs" />
     <Compile Include="GameData\EnemyData.cs" />
     <Compile Include="GameData\RawGameData.cs" />
+    <Compile Include="GameData\ItemData.cs" />
     <Compile Include="GameData\TileData.cs" />
     <Compile Include="Interface\IPlugin.cs" />
     <Compile Include="Networking\Client.cs" />

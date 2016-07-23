@@ -33,10 +33,11 @@ namespace K_Relay
 
         private async void FrmMainMetro_Load(object sender, EventArgs e)
         {
-            Action[] workers =
-            {
+			Action[] workers =
+			{
 				TileData.Load,
 				EnemyData.Load,
+				ItemData.Load,
                 Serializer.SerializeServers,
                 Serializer.SerializeGameObjects,
                 Serializer.SerializePacketIds,

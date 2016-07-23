@@ -8,14 +8,22 @@ namespace Lib_K_Relay.GameData {
 
 	public struct EnemyData {
 
-		public static Dictionary<int, EnemyData> Enemies;
+		public static Dictionary<ushort, EnemyData> Enemies;
 
 		public static EnemyData ByName(string name) {
-			return Enemies.First(enemy => enemy.Value.Name == name).Value;
+			try {
+				return Enemies.First(enemy => enemy.Value.Name == name).Value;
+			} catch (Exception e) {
+				throw new Exception(string.Format("Enemy by name '{0}' not found.", name), e);
+			}
+
 		}
 
-		public static EnemyData ByID(uint id) {
-			return Enemies[(ushort)id];
+		public static EnemyData ByID(ushort id) {
+			if (Enemies.ContainsKey(id))
+				return Enemies[id];
+			else
+				throw new Exception(string.Format("Enemy by ID 0x{0:X} not found."));
 		}
 
 		public struct Projectile {
@@ -34,10 +42,9 @@ namespace Lib_K_Relay.GameData {
 		}
 
 		public static void Load() {
-			Enemies = new Dictionary<int, EnemyData>();
+			Enemies = new Dictionary<ushort, EnemyData>();
 			XDocument doc = XDocument.Parse(RawGameData.Enemies);
 
-			// there's probably a better way to do this with LINQ
 			foreach (XElement enemy in doc.Elements()
 				.First(elem => elem.Name == "Objects")
 				.Elements("Object")
@@ -77,7 +84,7 @@ namespace Lib_K_Relay.GameData {
 				Enemies[e.ID] = e;
 			}
 
-			PluginUtils.Log("Enemies", "Parsed {0} enemies.", Enemies.Count);
+			PluginUtils.Log("Enemies", "Loaded {0} enemies.", Enemies.Count);
 		}
 
 		public ushort ID;

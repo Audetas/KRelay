@@ -7,21 +7,28 @@ using System.Xml.Linq;
 namespace Lib_K_Relay.GameData {
 	public struct TileData {
 
-		public static Dictionary<int, TileData> Tiles;
+		public static Dictionary<ushort, TileData> Tiles;
 
 		public static TileData ByName(string name) {
-			return Tiles.First(tile => tile.Value.Name == name).Value;
+			try {
+				return Tiles.First(tile => tile.Value.Name == name).Value;
+			} catch (Exception e) {
+				throw new Exception(string.Format("Tile by name '{0}' not found.", name), e);
+			}
+
 		}
 
-		public static TileData ByID(uint id) {
-			return Tiles[(ushort)id];
+		public static TileData ByID(ushort id) {
+			if (Tiles.ContainsKey(id))
+				return Tiles[id];
+			else
+				throw new Exception(string.Format("Tile by ID 0x{0:X} not found."));
 		}
 
 		public static void Load() {
-			Tiles = new Dictionary<int, TileData>();
+			Tiles = new Dictionary<ushort, TileData>();
 			XDocument doc = XDocument.Parse(RawGameData.Tiles);
 
-			// there's probably a better way to do this with LINQ
 			foreach (XElement tile in doc.Elements()
 				.First(elem => elem.Name == "GroundTypes")
 				.Elements("Ground")
@@ -39,7 +46,7 @@ namespace Lib_K_Relay.GameData {
 				Tiles[t.ID] = t;
 			}
 
-			PluginUtils.Log("Tiles", "Parsed {0} tiles.", Tiles.Count);
+			PluginUtils.Log("Tiles", "Loaded {0} tiles.", Tiles.Count);
 		}
 
 		public ushort ID;
@@ -52,7 +59,7 @@ namespace Lib_K_Relay.GameData {
 
 		public override string ToString() {
 			return string.Format("{0} (0x{1:X})",
-				Name, ID, NoWalk, Speed, Sink, MinDamage, MaxDamage);
+				Name, ID);
 		}
 	}
 }
