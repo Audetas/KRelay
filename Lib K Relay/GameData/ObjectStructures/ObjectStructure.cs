@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 using System.Xml.Linq;
 
 namespace Lib_K_Relay.GameData.ObjectStructures {
-	public struct krObject {
+	public struct ObjectStructure {
 		public enum Class : byte {
 			GameObject,
 			Wall,
@@ -43,7 +43,7 @@ namespace Lib_K_Relay.GameData.ObjectStructures {
 
 		public string Name;
 
-		public krObject(XElement obj) {
+		public ObjectStructure(XElement obj) {
 			ID = (ushort)obj.AttrDefault("type", "0x0").ParseHex();
 
 			// if this errors you need to add a new entry to the krObject.Class enum

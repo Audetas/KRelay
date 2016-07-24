@@ -15,6 +15,7 @@ using Lib_K_Relay.Properties;
 
 namespace Lib_K_Relay.Utilities
 {
+	[Obsolete("Please use the new GameData system. Serializer is only being kept for compatibility.")]
     public static class Serializer
     {
         private static Dictionary<PacketType, Type> PacketTypeTypeMap = new Dictionary<PacketType, Type>();
@@ -64,7 +65,7 @@ namespace Lib_K_Relay.Utilities
                     }
                 }
             }
-            PluginUtils.Log("Serializer", "Serialized {0} packet ids successfully.", PacketTypeIdMap.Count);
+            //PluginUtils.Log("Serializer", "Serialized {0} packet ids successfully.", PacketTypeIdMap.Count);
             packetStream.Close();
         }
 
@@ -80,7 +81,7 @@ namespace Lib_K_Relay.Utilities
                 PacketType t = (Activator.CreateInstance(packetType) as Packet).Type;
                 PacketTypeTypeMap.Add(t, packetType);
             }
-            PluginUtils.Log("Serializer", "Mapped {0} packet structures successfully.", PacketTypeTypeMap.Count);
+            //PluginUtils.Log("Serializer", "Mapped {0} packet structures successfully.", PacketTypeTypeMap.Count);
         }
         #endregion
 
@@ -107,7 +108,7 @@ namespace Lib_K_Relay.Utilities
                     if (!dict.ContainsKey(objectName)) dict.Add(objectName, objectId);
                 }
             }
-            PluginUtils.Log("Serializer", "Serialized {0} elements successfully.", dict.Count);
+            //PluginUtils.Log("Serializer", "Serialized {0} elements successfully.", dict.Count);
             resource.Close();
         }
         #endregion
@@ -158,7 +159,7 @@ namespace Lib_K_Relay.Utilities
 
                 Servers.Add(name, dns);
             }
-            PluginUtils.Log("Serializer", "Serialized {0} servers successfully.", Servers.Count);
+            //PluginUtils.Log("Serializer", "Serialized {0} servers successfully.", Servers.Count);
         }
         #endregion
 

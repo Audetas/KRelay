@@ -46,14 +46,14 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Crypto\RC4Cipher.cs" />
-    <Compile Include="GameData\ObjectStructures\Enemy.cs" />
+    <Compile Include="GameData\ObjectStructures\EnemyStructure.cs" />
     <Compile Include="GameData\GameData.cs" />
-    <Compile Include="GameData\ObjectStructures\Item.cs" />
-    <Compile Include="GameData\ObjectStructures\krObject.cs" />
-    <Compile Include="GameData\ObjectStructures\Packet.cs" />
-    <Compile Include="GameData\ObjectStructures\Server.cs" />
+    <Compile Include="GameData\ObjectStructures\ItemStructure.cs" />
+    <Compile Include="GameData\ObjectStructures\ObjectStructure.cs" />
+    <Compile Include="GameData\ObjectStructures\PacketStructure.cs" />
+    <Compile Include="GameData\ObjectStructures\ServerStructure.cs" />
     <Compile Include="GameData\ParsingExtensions.cs" />
-    <Compile Include="GameData\ObjectStructures\Tile.cs" />
+    <Compile Include="GameData\ObjectStructures\TileStructure.cs" />
     <Compile Include="Interface\IPlugin.cs" />
     <Compile Include="Networking\Client.cs" />
     <Compile Include="Networking\PacketBuffer.cs" />

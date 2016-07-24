@@ -6,6 +6,7 @@ using System.Xml.Linq;
 using System.Threading.Tasks;
 using Lib_K_Relay.GameData.ObjectStructures;
 using System.Threading;
+using Lib_K_Relay.Networking.Packets;
 
 namespace Lib_K_Relay.GameData {
 	public static class GameData {
@@ -37,18 +38,20 @@ namespace Lib_K_Relay.GameData {
 		#endregion
 
 		#region Wrapped data fields
-		public static List<Enemy> Enemies = new List<Enemy>();
+		public static Dictionary<ushort, EnemyStructure> Enemies = new Dictionary<ushort, EnemyStructure>();
 
-		public static List<Item> Items = new List<Item>();
+		public static Dictionary<ushort, ItemStructure> Items = new Dictionary<ushort, ItemStructure>();
 
-		public static List<Tile> Tiles = new List<Tile>();
+		public static Dictionary<ushort, TileStructure> Tiles = new Dictionary<ushort, TileStructure>();
 
-		public static List<Packet> Packets = new List<Packet>();
+		public static Dictionary<byte, PacketStructure> Packets = new Dictionary<byte, PacketStructure>();
+		public static Dictionary<PacketType, byte> PacketTypeMap = new Dictionary<PacketType, byte>();
 
-		public static List<krObject> Objects = new List<krObject>();
+		public static Dictionary<ushort, ObjectStructure> Objects = new Dictionary<ushort, ObjectStructure>();
 
-		public static List<Server> Servers = new List<Server>();
+		public static List<ServerStructure> Servers = new List<ServerStructure>();
 		#endregion
+
 
 		public static void Load() {
 			Parallel.Invoke(
@@ -60,6 +63,7 @@ namespace Lib_K_Relay.GameData {
 				LoadServers
 			);
 
+
 			PluginUtils.Log("GameData", "Parsing complete.");
 		}
 
@@ -70,7 +74,10 @@ namespace Lib_K_Relay.GameData {
 				.Element("Objects")
 				.Elements("Object")
 				.Where(elem => elem.HasElement("Enemy"))
-				.ForEach(enemy => Enemies.Add(new Enemy(enemy)));
+				.ForEach(enemy => {
+					EnemyStructure e = new EnemyStructure(enemy);
+					Enemies[e.ID] = e;
+				});
 
 			PluginUtils.Log("GameData", "Loaded {0} enemies.", Enemies.Count);
 		}
@@ -82,7 +89,10 @@ namespace Lib_K_Relay.GameData {
 				.Element("Objects")
 				.Elements("Object")
 				.Where(elem => elem.HasElement("Item"))
-				.ForEach(item => Items.Add(new Item(item)));
+				.ForEach(item => {
+					ItemStructure i = new ItemStructure(item);
+					Items[i.ID] = i;
+				});
 
 			PluginUtils.Log("GameData", "Loaded {0} items.", Items.Count);
 		}
@@ -93,18 +103,33 @@ namespace Lib_K_Relay.GameData {
 			XDocument.Parse(Tiles_Raw)
 				.Element("GroundTypes")
 				.Elements("Ground")
-				.ForEach(tile => Tiles.Add(new Tile(tile)));
+				.ForEach(tile => {
+					TileStructure t = new TileStructure(tile);
+					Tiles[t.ID] = t;
+				});
 
 			PluginUtils.Log("GameData", "Loaded {0} tiles.", Tiles.Count);
 		}
 
 		private static void LoadPackets() {
 			Packets.Clear();
+			PacketTypeMap.Clear();
 
 			XDocument.Parse(Packets_Raw)
 				.Element("Packets")
 				.Elements("Packet")
-				.ForEach(packet => Packets.Add(new Packet(packet)));
+				.ForEach(packet => {
+					PacketStructure p = new PacketStructure(packet);
+					Packets[p.ID] = p;
+					PacketTypeMap[p.PacketType] = p.ID;
+				});
+
+			PacketTypeMap[PacketType.UNKNOWN] = 255;
+			Packets[255] = new PacketStructure {
+				ID = 255,
+				PacketType = PacketType.UNKNOWN,
+				Type = typeof(Packet)
+			};
 
 			PluginUtils.Log("GameData", "Loaded {0} packets.", Packets.Count);
 		}
@@ -115,7 +140,10 @@ namespace Lib_K_Relay.GameData {
 			XDocument.Parse(Objects_Raw)
 				.Element("Objects")
 				.Elements("Object")
-				.ForEach(obj => Objects.Add(new krObject(obj)));
+				.ForEach(obj => {
+					ObjectStructure o = new ObjectStructure(obj);
+					Objects[o.ID] = o;
+				});
 
 			PluginUtils.Log("GameData", "Loaded {0} misc objects.", Objects.Count);
 		}
@@ -127,7 +155,7 @@ namespace Lib_K_Relay.GameData {
 				.Element("Chars")
 				.Element("Servers")
 				.Elements("Server")
-				.ForEach(server => Servers.Add(new Server(server)));
+				.ForEach(server => Servers.Add(new ServerStructure(server)));
 
 			PluginUtils.Log("GameData", "Loaded {0} servers.", Servers.Count);
 		}

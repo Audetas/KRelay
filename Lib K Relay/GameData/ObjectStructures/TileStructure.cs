@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 using System.Xml.Linq;
 
 namespace Lib_K_Relay.GameData.ObjectStructures {
-	public struct Tile {
+	public struct TileStructure {
 
 		public ushort ID;
 		public bool NoWalk;
@@ -17,7 +17,7 @@ namespace Lib_K_Relay.GameData.ObjectStructures {
 
 		public string Name;
 
-		public Tile(XElement tile) {
+		public TileStructure(XElement tile) {
 			ID = (ushort)tile.AttrDefault("type", "0x0").ParseHex();
 			NoWalk = tile.HasElement("NoWalk");
 			Speed = tile.ElemDefault("Speed", "1").ParseFloat();

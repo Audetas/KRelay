@@ -11,6 +11,7 @@ using System.Windows.Forms;
 using Lib_K_Relay.Networking.Packets;
 using Lib_K_Relay.Utilities;
 using MetroFramework;
+using Lib_K_Relay.GameData;
 
 namespace K_Relay
 {
@@ -29,8 +30,8 @@ namespace K_Relay
         {
             if (listPackets.ListBox.SelectedItem != null)
             {
-                Type type = Serializer.GetPacketType(
-                    (PacketType)Enum.Parse(typeof(PacketType), (string)listPackets.ListBox.SelectedItem));
+                Type type = GameData.Packets[GameData.PacketTypeMap[
+                    (PacketType)Enum.Parse(typeof(PacketType), (string)listPackets.ListBox.SelectedItem)]].Type;
                 tbxPacketInfo.Text = (Activator.CreateInstance(type) as Packet).ToStructure();
             }
         }

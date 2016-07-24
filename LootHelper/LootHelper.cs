@@ -1,4 +1,5 @@
 ﻿using Lib_K_Relay;
+using Lib_K_Relay.GameData;
 using Lib_K_Relay.Interface;
 using Lib_K_Relay.Networking;
 using Lib_K_Relay.Networking.Packets;
@@ -200,8 +201,8 @@ namespace LootHelper
 
         private string ReverseLookup(int itemId)
         {
-            foreach (var pair in Serializer.Items)
-                if (pair.Value == itemId) return pair.Key;
+			foreach (var pair in GameData.Items)
+				if (pair.Value.ID == itemId) return pair.Value.Name;
 
             return itemId.ToString();
         }

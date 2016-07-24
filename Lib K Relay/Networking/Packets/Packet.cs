@@ -1,3 +1,4 @@
+using Lib_K_Relay.GameData.ObjectStructures;
 using Lib_K_Relay.Networking.Packets.Client;
 using Lib_K_Relay.Utilities;
 using System;
@@ -33,16 +34,16 @@ namespace Lib_K_Relay.Networking.Packets
 
         public static Packet Create(PacketType type)
         {
-            Packet packet = (Packet)Activator.CreateInstance(
-                Serializer.GetPacketType(type));
-            packet.Id = Serializer.GetPacketId(type);
+			PacketStructure st = GameData.GameData.Packets[GameData.GameData.PacketTypeMap[type]];
+            Packet packet = (Packet)Activator.CreateInstance(st.Type);
+            packet.Id = st.ID;
             return packet;
         }
 
         public static T Create<T>(PacketType type)
         {
             Packet packet = (Packet)Activator.CreateInstance(typeof(T));
-            packet.Id = Serializer.GetPacketId(type);
+			packet.Id = GameData.GameData.PacketTypeMap[type];
             return (T)Convert.ChangeType(packet, typeof(T));
         }
 
@@ -57,8 +58,8 @@ namespace Lib_K_Relay.Networking.Packets
             {
                 r.ReadInt32(); // Skip over int length
                 byte id = r.ReadByte();
-                PacketType packetType = Serializer.GetPacketPacketType(id);
-                Type type = Serializer.GetPacketType(packetType);
+                PacketType packetType = GameData.GameData.Packets[id].PacketType;
+                Type type = GameData.GameData.Packets[id].Type;
                 // Reflect the type to a new instance and read its data from the PacketReader
                 Packet packet = (Packet)Activator.CreateInstance(type);
                 packet.Id = id;
@@ -91,7 +92,7 @@ namespace Lib_K_Relay.Networking.Packets
                                               BindingFlags.Instance);
 
             StringBuilder s = new StringBuilder();
-            s.Append(Type + " [" + Serializer.GetPacketId(Type) + "] \nPacket Structure:\n{");
+            s.Append(Type + " [" + GameData.GameData.PacketTypeMap[Type] + "] \nPacket Structure:\n{");
             foreach (FieldInfo f in fields)
                 s.Append("\n  " + f.Name + " => " + f.FieldType.Name);
             s.Append("\n}");

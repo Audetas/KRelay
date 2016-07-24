@@ -36,11 +36,16 @@ namespace K_Relay
 			Action[] workers =
 			{
 				GameData.Load,
-                Serializer.SerializeServers,
+
+				// suppress obsolete warnings here
+#pragma warning disable 618
+				Serializer.SerializeServers,
                 Serializer.SerializeGameObjects,
                 Serializer.SerializePacketIds,
                 Serializer.SerializePacketTypes,
-                InitPackets,
+#pragma warning restore 618
+
+				InitPackets,
                 InitSettings
             };
 
@@ -73,10 +78,12 @@ namespace K_Relay
             _proxy.ProxyListenStopped += _ => SetStatus("Stopped", Color.Red);
             InitPlugins();
 
-            if (Serializer.Servers.ContainsKey((string)lstServers.SelectedItem))
-                Proxy.DefaultServer = Serializer.GetServerByFullName((string)lstServers.SelectedItem);
-            else
-                PluginUtils.Log("K Relay", "Default server wasn't found, using USWest.");
+			//if (Serializer.Servers.ContainsKey((string)lstServers.SelectedItem))
+			if (GameData.Servers.Where(s => s.Name == (string)lstServers.SelectedItem).Count() == 1)
+				//Proxy.DefaultServer = Serializer.GetServerByFullName((string)lstServers.SelectedItem);
+				Proxy.DefaultServer = GameData.Servers.First(s => s.Name == (string)lstServers.SelectedItem).Address;
+			else
+				PluginUtils.Log("K Relay", "Default server wasn't found, using USWest.");
 
             PluginUtils.Log("K Relay", "Initialization complete.");
 

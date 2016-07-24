@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 using System.Xml.Linq;
 
 namespace Lib_K_Relay.GameData.ObjectStructures {
-	public struct Server {
+	public struct ServerStructure {
 		public static readonly Dictionary<string, string> abbreviations = new Dictionary<string, string> {
 			{ "USWest", "USW" },
 			{ "USMidWest", "USMW" },
@@ -36,7 +36,7 @@ namespace Lib_K_Relay.GameData.ObjectStructures {
 		public string Abbreviation;
 		public string Address;
 
-		public Server(XElement server) {
+		public ServerStructure(XElement server) {
 			Name = server.ElemDefault("Name", "");
 			Abbreviation = abbreviations.ContainsKey(Name) ? abbreviations[Name] : "";
 			Address = Dns.GetHostEntry(server.ElemDefault("DNS", "")).AddressList[0].ToString();

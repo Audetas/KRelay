@@ -3,7 +3,7 @@ using System.Linq;
 using System.Xml.Linq;
 
 namespace Lib_K_Relay.GameData.ObjectStructures {
-	public struct Enemy {
+	public struct EnemyStructure {
 		public struct Projectile {
 			public byte ID;
 			public ushort Damage;
@@ -33,7 +33,7 @@ namespace Lib_K_Relay.GameData.ObjectStructures {
 
 		public string Name;
 
-		public Enemy(XElement enemy) {
+		public EnemyStructure(XElement enemy) {
 			ID = (ushort)enemy.AttrDefault("type", "0x0").ParseHex();
 			Size = (ushort)enemy.ElemDefault("Size", "0").ParseInt();
 			ShadowSize = (ushort)enemy.ElemDefault("ShadowSize", "0").ParseInt();

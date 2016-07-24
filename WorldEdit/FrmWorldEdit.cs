@@ -1,4 +1,5 @@
-﻿using Lib_K_Relay.Utilities;
+﻿using Lib_K_Relay.GameData;
+using Lib_K_Relay.Utilities;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -21,7 +22,7 @@ namespace WorldEdit
             _w = w;
 
             listTiles.SuspendLayout();
-            foreach (var pair in Serializer.Tiles) listTiles.Items.Add(pair.Key);
+            foreach (var pair in GameData.Tiles) listTiles.Items.Add(pair.Value.Name);
             listTiles.ResumeLayout();
         }
 
@@ -29,9 +30,9 @@ namespace WorldEdit
         {
             listTiles.SuspendLayout();
             listTiles.Items.Clear();
-            foreach (var pair in Serializer.Tiles)
-                if (pair.Key.ToLower().Contains(tbxSearch.Text.ToLower()))
-                    listTiles.Items.Add(pair.Key);
+            foreach (var pair in GameData.Tiles)
+                if (pair.Value.Name.ToLower().Contains(tbxSearch.Text.ToLower()))
+                    listTiles.Items.Add(pair.Value.Name);
             listTiles.ResumeLayout();
         }
 

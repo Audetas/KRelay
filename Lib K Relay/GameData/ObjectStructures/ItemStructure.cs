@@ -4,7 +4,7 @@ using System.Linq;
 using System.Xml.Linq;
 
 namespace Lib_K_Relay.GameData.ObjectStructures {
-	public struct Item {
+	public struct ItemStructure {
 		public enum Tiers: byte {
 			T0 = 0,
 			T1,
@@ -43,7 +43,7 @@ namespace Lib_K_Relay.GameData.ObjectStructures {
 
 		public string Name;
 
-		public Item(XElement item) {
+		public ItemStructure(XElement item) {
 			ID = (ushort)item.AttrDefault("type", "0x0").ParseHex();
 			Tier = item.HasElement("Tier") ? (Tiers)item.Element("Tier").Value.ParseInt() : Tiers.UT;
 			SlotType = (byte)item.ElemDefault("SlotType", "0").ParseInt();

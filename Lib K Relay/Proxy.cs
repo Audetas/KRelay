@@ -142,7 +142,7 @@ namespace Lib_K_Relay
         /// <param name="callback">Callback to be registered</param>
         public void HookPacket(PacketType type, PacketHandler callback)
         {
-            if (Serializer.GetPacketId(type) == 255)
+            if (GameData.GameData.PacketTypeMap[type] == 255)
                 throw new InvalidOperationException("[Plugin Error] A plugin attempted to register callback " +
                                                     callback.GetMethodInfo().ReflectedType + "." + callback.Method.Name +
                                                     " for packet type " + type + " that doesn't have a structure defined.");

@@ -1,4 +1,5 @@
 ﻿using Lib_K_Relay;
+using Lib_K_Relay.GameData;
 using Lib_K_Relay.Interface;
 using Lib_K_Relay.Networking;
 using Lib_K_Relay.Networking.Packets;
@@ -56,7 +57,7 @@ namespace WorldEdit
                 Tile paintedTile = new Tile();
                 paintedTile.X = (short)Math.Floor(useItem.ItemUsePos.X);
                 paintedTile.Y = (short)Math.Floor(useItem.ItemUsePos.Y);
-                paintedTile.Type = Serializer.Tiles[SelectedTile];
+                paintedTile.Type = GameData.Tiles.First(t => t.Value.Name == SelectedTile).Key;
                 update.Tiles[0] = paintedTile;
 
                 _cancel = true;
