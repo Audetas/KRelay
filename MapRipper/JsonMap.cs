@@ -204,14 +204,14 @@ namespace MapRipper
 
         private string GetEntityId(short type)
         {
-			if (GameDataOld.Tiles.ContainsKey((ushort)type)) return GameDataOld.Tiles[(ushort)type].Name;
-			if (GameDataOld.Objects.ContainsKey((ushort)type)) return GameDataOld.Objects[(ushort)type].Name;
+			if (GameData.Tiles.Map.ContainsKey((ushort)type)) return GameData.Tiles.ByID((ushort)type).Name;
+			if (GameData.Objects.Map.ContainsKey((ushort)type)) return GameData.Objects.ByID((ushort)type).Name;
 			throw new Exception("Invalid value: " + type);
         }
 
         private string GetTileId(ushort type)
         {
-			return GameDataOld.Tiles[type].Name;
+			return GameData.Tiles.ByID(type).Name;
         }
     }
 }

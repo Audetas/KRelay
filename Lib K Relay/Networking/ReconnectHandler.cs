@@ -46,7 +46,7 @@ namespace Lib_K_Relay.Networking
             PluginUtils.Delay(1000, () =>
             {
                 string message = "Welcome to K Relay!";
-				string server = GameData.GameDataOld.Servers.Where(s => s.Address == client.State.ConTargetAddress).First().Name;
+				string server = GameData.GameData.Servers.Match(s => s.Address == client.State.ConTargetAddress).Name;
 
                 if (server != "")
                     message += "\\n" + server;
@@ -103,10 +103,10 @@ namespace Lib_K_Relay.Networking
         private void OnConnectCommand(Client client, string command, string[] args)
         {
 
-            if (args.Length == 1 && GameData.GameDataOld.Servers.Where(s => s.Abbreviation == args[0].ToUpper()).Count() == 1)
+            if (args.Length == 1 && GameData.GameData.Servers.Map.Where(s => s.Value.Abbreviation == args[0].ToUpper()).Count() == 1)
             {
                 ReconnectPacket reconnect = (ReconnectPacket)Packet.Create(PacketType.RECONNECT);
-                reconnect.Host = GameData.GameDataOld.Servers.Where(s => s.Abbreviation == args[0].ToUpper()).First().Address;
+                reconnect.Host = GameData.GameData.Servers.ByID(args[0].ToUpper()).Address;
                 reconnect.Port = 2050;
                 reconnect.GameId = -2;
                 reconnect.Name = "Nexus";

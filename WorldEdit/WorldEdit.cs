@@ -57,7 +57,7 @@ namespace WorldEdit
                 Tile paintedTile = new Tile();
                 paintedTile.X = (short)Math.Floor(useItem.ItemUsePos.X);
                 paintedTile.Y = (short)Math.Floor(useItem.ItemUsePos.Y);
-                paintedTile.Type = GameDataOld.Tiles.First(t => t.Value.Name == SelectedTile).Key;
+                paintedTile.Type = GameData.Tiles.ByName(SelectedTile).ID;
                 update.Tiles[0] = paintedTile;
 
                 _cancel = true;

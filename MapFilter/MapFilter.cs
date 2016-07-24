@@ -43,8 +43,8 @@ namespace MapFilter {
 			foreach (string filter in MapFilterConfig.Default.TileFilters) {
 				try {
 					TileFilters.Add(
-						GameDataOld.Tiles.First(t => t.Value.Name == filter.Split(SPLIT, SPS)[0]).Value.ID,
-					    GameDataOld.Tiles.First(t => t.Value.Name == filter.Split(SPLIT, SPS)[1]).Value.ID);
+						GameData.Tiles.ByName(filter.Split(SPLIT, SPS)[0]).ID,
+						GameData.Tiles.ByName(filter.Split(SPLIT, SPS)[1]).ID);
 
 				} catch { }
 			}
@@ -52,8 +52,8 @@ namespace MapFilter {
 			foreach (string filter in MapFilterConfig.Default.ObjectFilters) {
 				try {
 					ObjectFilters.Add(
-						GameDataOld.Objects.First(o => o.Value.Name == filter.Split(SPLIT, SPS)[0]).Value.ID,
-						GameDataOld.Objects.First(o => o.Value.Name == filter.Split(SPLIT, SPS)[1]).Value.ID);
+						GameData.Objects.ByName(filter.Split(SPLIT, SPS)[0]).ID,
+						GameData.Objects.ByName(filter.Split(SPLIT, SPS)[1]).ID);
 				} catch { }
 			}
 		}

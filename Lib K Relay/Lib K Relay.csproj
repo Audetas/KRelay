@@ -48,7 +48,6 @@
     <Compile Include="Crypto\RC4Cipher.cs" />
     <Compile Include="GameData\DataStructures\EnemyStructure.cs" />
     <Compile Include="GameData\GameData.cs" />
-    <Compile Include="GameData\GameDataOld.cs" />
     <Compile Include="GameData\DataStructures\IDataStructure.cs" />
     <Compile Include="GameData\DataStructures\ItemStructure.cs" />
     <Compile Include="GameData\DataStructures\ObjectStructure.cs" />

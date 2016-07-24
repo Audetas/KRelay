@@ -34,7 +34,7 @@ namespace Lib_K_Relay.Networking.Packets
 
         public static Packet Create(PacketType type)
         {
-			PacketStructure st = GameData.GameDataOld.Packets[GameData.GameDataOld.PacketTypeMap[type]];
+			PacketStructure st = GameData.GameData.Packets.ByName(type.ToString());
             Packet packet = (Packet)Activator.CreateInstance(st.Type);
             packet.Id = st.ID;
             return packet;
@@ -43,7 +43,7 @@ namespace Lib_K_Relay.Networking.Packets
         public static T Create<T>(PacketType type)
         {
             Packet packet = (Packet)Activator.CreateInstance(typeof(T));
-			packet.Id = GameData.GameDataOld.PacketTypeMap[type];
+			packet.Id = GameData.GameData.Packets.ByName(type.ToString()).ID;
             return (T)Convert.ChangeType(packet, typeof(T));
         }
 
@@ -58,8 +58,9 @@ namespace Lib_K_Relay.Networking.Packets
             {
                 r.ReadInt32(); // Skip over int length
                 byte id = r.ReadByte();
-                PacketType packetType = GameData.GameDataOld.Packets[id].PacketType;
-                Type type = GameData.GameDataOld.Packets[id].Type;
+				PacketStructure st = GameData.GameData.Packets.ByID(id);
+                PacketType packetType = st.PacketType;
+                Type type = st.Type;
                 // Reflect the type to a new instance and read its data from the PacketReader
                 Packet packet = (Packet)Activator.CreateInstance(type);
                 packet.Id = id;
@@ -92,7 +93,7 @@ namespace Lib_K_Relay.Networking.Packets
                                               BindingFlags.Instance);
 
             StringBuilder s = new StringBuilder();
-            s.Append(Type + " [" + GameData.GameDataOld.PacketTypeMap[Type] + "] \nPacket Structure:\n{");
+            s.Append(Type + " [" + GameData.GameData.Packets.ByName(Type.ToString()).ID + "] \nPacket Structure:\n{");
             foreach (FieldInfo f in fields)
                 s.Append("\n  " + f.Name + " => " + f.FieldType.Name);
             s.Append("\n}");

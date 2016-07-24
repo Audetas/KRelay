@@ -30,8 +30,9 @@ namespace K_Relay
         {
             if (listPackets.ListBox.SelectedItem != null)
             {
-                Type type = GameDataOld.Packets[GameDataOld.PacketTypeMap[
-                    (PacketType)Enum.Parse(typeof(PacketType), (string)listPackets.ListBox.SelectedItem)]].Type;
+				//Type type = GameDataOld.Packets[GameDataOld.PacketTypeMap[
+				//    (PacketType)Enum.Parse(typeof(PacketType), (string)listPackets.ListBox.SelectedItem)]].Type;
+				Type type = GameData.Packets.ByName((string)listPackets.ListBox.SelectedItem).Type;
                 tbxPacketInfo.Text = (Activator.CreateInstance(type) as Packet).ToStructure();
             }
         }

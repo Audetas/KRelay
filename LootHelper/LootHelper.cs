@@ -201,10 +201,7 @@ namespace LootHelper
 
         private string ReverseLookup(int itemId)
         {
-			foreach (var pair in GameDataOld.Items)
-				if (pair.Value.ID == itemId) return pair.Value.Name;
-
-            return itemId.ToString();
+            return GameData.Items.ByID((ushort)itemId).Name;
         }
     }
 }
