@@ -35,9 +35,7 @@ namespace K_Relay
         {
 			Action[] workers =
 			{
-				TileData.Load,
-				EnemyData.Load,
-				ItemData.Load,
+				GameData.Load,
                 Serializer.SerializeServers,
                 Serializer.SerializeGameObjects,
                 Serializer.SerializePacketIds,
