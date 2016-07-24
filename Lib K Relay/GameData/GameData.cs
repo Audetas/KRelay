@@ -1,163 +1,100 @@
-﻿using Lib_K_Relay.Properties;
+﻿using Lib_K_Relay.GameData.DataStructures;
+using Lib_K_Relay.Properties;
 using Lib_K_Relay.Utilities;
+using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Xml.Linq;
 using System.Threading.Tasks;
-using Lib_K_Relay.GameData.ObjectStructures;
-using System.Threading;
-using Lib_K_Relay.Networking.Packets;
+using System.Xml.Linq;
 
 namespace Lib_K_Relay.GameData {
-	public static class GameData {
-
-		#region Raw data fields
-		public static string CompleteGamedata_Raw {
+	public static class RawGameData {
+		public static string CompleteGamedata {
 			get { return Resources.CompleteGamedata; }
 		}
 
-		public static string Enemies_Raw {
+		public static string Enemies {
 			get { return Resources.Enemies; }
 		}
 
-		public static string Items_Raw {
+		public static string Items {
 			get { return Resources.Items; }
 		}
 
-		public static string Objects_Raw {
+		public static string Objects {
 			get { return Resources.Objects; }
 		}
 
-		public static string Packets_Raw {
+		public static string Packets {
 			get { return Resources.Packets; }
 		}
 
-		public static string Tiles_Raw {
+		public static string Tiles {
 			get { return Resources.Tiles; }
 		}
-		#endregion
+	}
 
-		#region Wrapped data fields
-		public static Dictionary<ushort, EnemyStructure> Enemies = new Dictionary<ushort, EnemyStructure>();
+	public class GameDataMap<IDType, DataType> where DataType : IDataStructure<IDType> {
 
-		public static Dictionary<ushort, ItemStructure> Items = new Dictionary<ushort, ItemStructure>();
+		public Dictionary<IDType, DataType> Map { get; private set; }
 
-		public static Dictionary<ushort, TileStructure> Tiles = new Dictionary<ushort, TileStructure>();
+		private GameDataMap() { }
 
-		public static Dictionary<byte, PacketStructure> Packets = new Dictionary<byte, PacketStructure>();
-		public static Dictionary<PacketType, byte> PacketTypeMap = new Dictionary<PacketType, byte>();
+		public GameDataMap(Dictionary<IDType, DataType> map) {
+			Map = map;
+		}
 
-		public static Dictionary<ushort, ObjectStructure> Objects = new Dictionary<ushort, ObjectStructure>();
+		public DataType ByID(IDType id) {
+			return Map[id];
+		}
 
-		public static List<ServerStructure> Servers = new List<ServerStructure>();
-		#endregion
+		public DataType ByName(string name) {
+			return Map.First(e => e.Value.Name == name).Value;
+		}
 
+		public DataType Match(Func<DataType, bool> f) {
+			return Map.First(e => f(e.Value)).Value;
+		}
+	}
+
+	public class GameData {
+
+		public static GameDataMap<ushort, EnemyStructure> Enemies;
+		public static GameDataMap<ushort, ItemStructure> Items;
+		public static GameDataMap<ushort, TileStructure> Tiles;
+		public static GameDataMap<ushort, ObjectStructure> Objects;
+		public static GameDataMap<byte, PacketStructure> Packets;
+		public static GameDataMap<string, ServerStructure> Servers;
 
 		public static void Load() {
 			Parallel.Invoke(
-				LoadEnemies,
-				LoadItems,
-				LoadTiles,
-				LoadPackets,
-				LoadObjects,
-				LoadServers
-			);
+			() => {
+				Enemies = new GameDataMap<ushort, EnemyStructure>(EnemyStructure.Load(XDocument.Parse(RawGameData.Enemies)));
+				PluginUtils.Log("GameData", "Mapped {0} enemies.", Enemies.Map.Count);
+			},
+			() => {
+				Items = new GameDataMap<ushort, ItemStructure>(ItemStructure.Load(XDocument.Parse(RawGameData.Items)));
+				PluginUtils.Log("GameData", "Mapped {0} items.", Items.Map.Count);
+			},
+			() => {
+				Tiles = new GameDataMap<ushort, TileStructure>(TileStructure.Load(XDocument.Parse(RawGameData.Tiles)));
+				PluginUtils.Log("GameData", "Mapped {0} tiles.", Tiles.Map.Count);
+			},
+			() => {
+				Objects = new GameDataMap<ushort, ObjectStructure>(ObjectStructure.Load(XDocument.Parse(RawGameData.Objects)));
+				PluginUtils.Log("GameData", "Mapped {0} objects.", Objects.Map.Count);
+			},
+			() => {
+				Packets = new GameDataMap<byte, PacketStructure>(PacketStructure.Load(XDocument.Parse(RawGameData.Packets)));
+				PluginUtils.Log("GameData", "Mapped {0} packets.", Packets.Map.Count);
+			},
+			() => {
+				Servers = new GameDataMap<string, ServerStructure>(ServerStructure.Load(XDocument.Load("http://realmofthemadgodhrd.appspot.com/char/list")));
+				PluginUtils.Log("GameData", "Mapped {0} servers.", Servers.Map.Count);
+			});
 
-
-			PluginUtils.Log("GameData", "Parsing complete.");
+			PluginUtils.Log("GameData", "Successfully loaded game data.");
 		}
 
-		private static void LoadEnemies() {
-			Enemies.Clear();
-
-			XDocument.Parse(Enemies_Raw)
-				.Element("Objects")
-				.Elements("Object")
-				.Where(elem => elem.HasElement("Enemy"))
-				.ForEach(enemy => {
-					EnemyStructure e = new EnemyStructure(enemy);
-					Enemies[e.ID] = e;
-				});
-
-			PluginUtils.Log("GameData", "Loaded {0} enemies.", Enemies.Count);
-		}
-
-		private static void LoadItems() {
-			Items.Clear();
-
-			XDocument.Parse(Items_Raw)
-				.Element("Objects")
-				.Elements("Object")
-				.Where(elem => elem.HasElement("Item"))
-				.ForEach(item => {
-					ItemStructure i = new ItemStructure(item);
-					Items[i.ID] = i;
-				});
-
-			PluginUtils.Log("GameData", "Loaded {0} items.", Items.Count);
-		}
-
-		private static void LoadTiles() {
-			Tiles.Clear();
-
-			XDocument.Parse(Tiles_Raw)
-				.Element("GroundTypes")
-				.Elements("Ground")
-				.ForEach(tile => {
-					TileStructure t = new TileStructure(tile);
-					Tiles[t.ID] = t;
-				});
-
-			PluginUtils.Log("GameData", "Loaded {0} tiles.", Tiles.Count);
-		}
-
-		private static void LoadPackets() {
-			Packets.Clear();
-			PacketTypeMap.Clear();
-
-			XDocument.Parse(Packets_Raw)
-				.Element("Packets")
-				.Elements("Packet")
-				.ForEach(packet => {
-					PacketStructure p = new PacketStructure(packet);
-					Packets[p.ID] = p;
-					PacketTypeMap[p.PacketType] = p.ID;
-				});
-
-			PacketTypeMap[PacketType.UNKNOWN] = 255;
-			Packets[255] = new PacketStructure {
-				ID = 255,
-				PacketType = PacketType.UNKNOWN,
-				Type = typeof(Packet)
-			};
-
-			PluginUtils.Log("GameData", "Loaded {0} packets.", Packets.Count);
-		}
-
-		private static void LoadObjects() {
-			Objects.Clear();
-
-			XDocument.Parse(Objects_Raw)
-				.Element("Objects")
-				.Elements("Object")
-				.ForEach(obj => {
-					ObjectStructure o = new ObjectStructure(obj);
-					Objects[o.ID] = o;
-				});
-
-			PluginUtils.Log("GameData", "Loaded {0} misc objects.", Objects.Count);
-		}
-
-		private static void LoadServers() {
-			Servers.Clear();
-
-			XDocument.Load("http://realmofthemadgodhrd.appspot.com/char/list")
-				.Element("Chars")
-				.Element("Servers")
-				.Elements("Server")
-				.ForEach(server => Servers.Add(new ServerStructure(server)));
-
-			PluginUtils.Log("GameData", "Loaded {0} servers.", Servers.Count);
-		}
 	}
 }

@@ -22,7 +22,7 @@ namespace WorldEdit
             _w = w;
 
             listTiles.SuspendLayout();
-            foreach (var pair in GameData.Tiles) listTiles.Items.Add(pair.Value.Name);
+            foreach (var pair in GameDataOld.Tiles) listTiles.Items.Add(pair.Value.Name);
             listTiles.ResumeLayout();
         }
 
@@ -30,7 +30,7 @@ namespace WorldEdit
         {
             listTiles.SuspendLayout();
             listTiles.Items.Clear();
-            foreach (var pair in GameData.Tiles)
+            foreach (var pair in GameDataOld.Tiles)
                 if (pair.Value.Name.ToLower().Contains(tbxSearch.Text.ToLower()))
                     listTiles.Items.Add(pair.Value.Name);
             listTiles.ResumeLayout();

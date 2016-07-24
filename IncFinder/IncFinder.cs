@@ -16,7 +16,7 @@ namespace IncFinder
 {
     public class IncFinder : IPlugin
     {
-        private ushort INC_ID = GameData.Items.First(i => i.Value.Name == "Wine Cellar Incantation").Value.ID;
+        private ushort INC_ID = GameDataOld.Items.First(i => i.Value.Name == "Wine Cellar Incantation").Value.ID;
         private Dictionary<int, string> _incHolders = new Dictionary<int, string>();
 
         public string GetAuthor()

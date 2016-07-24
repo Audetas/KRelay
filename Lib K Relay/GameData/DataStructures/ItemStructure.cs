@@ -3,8 +3,22 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Xml.Linq;
 
-namespace Lib_K_Relay.GameData.ObjectStructures {
-	public struct ItemStructure {
+namespace Lib_K_Relay.GameData.DataStructures {
+	public struct ItemStructure : IDataStructure<ushort> {
+		internal static Dictionary<ushort, ItemStructure> Load(XDocument doc) {
+			Dictionary<ushort, ItemStructure> map = new Dictionary<ushort, ItemStructure>();
+
+			doc.Element("Objects")
+				.Elements("Object")
+				.Where(elem => elem.HasElement("Item"))
+				.ForEach(item => {
+					ItemStructure i = new ItemStructure(item);
+					map[i.ID] = i;
+				});
+
+			return map;
+		}
+
 		public enum Tiers : byte {
 			T0 = 0,
 			T1,
@@ -31,7 +45,7 @@ namespace Lib_K_Relay.GameData.ObjectStructures {
 		/// <summary>
 		/// The numerical identifier for this item
 		/// </summary>
-		public ushort ID;
+		public ushort ID { get; private set; }
 
 		/// <summary>
 		/// What tier the item is
@@ -74,19 +88,19 @@ namespace Lib_K_Relay.GameData.ObjectStructures {
 		public bool Soulbound;
 
 		/// <summary>
-		/// Whether the item can be used
+		/// Whether the item can be used as an ability
 		/// </summary>
 		public bool Usable;
 
 		/// <summary>
-		/// Whether the item is consumed on use
+		/// Whether the item is consumable
 		/// </summary>
 		public bool Consumable;
 
 		/// <summary>
 		/// The text identifier for this item
 		/// </summary>
-		public string Name;
+		public string Name { get; private set; }
 
 		public ItemStructure(XElement item) {
 			ID = (ushort)item.AttrDefault("type", "0x0").ParseHex();

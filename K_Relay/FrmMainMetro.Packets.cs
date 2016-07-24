@@ -30,7 +30,7 @@ namespace K_Relay
         {
             if (listPackets.ListBox.SelectedItem != null)
             {
-                Type type = GameData.Packets[GameData.PacketTypeMap[
+                Type type = GameDataOld.Packets[GameDataOld.PacketTypeMap[
                     (PacketType)Enum.Parse(typeof(PacketType), (string)listPackets.ListBox.SelectedItem)]].Type;
                 tbxPacketInfo.Text = (Activator.CreateInstance(type) as Packet).ToStructure();
             }

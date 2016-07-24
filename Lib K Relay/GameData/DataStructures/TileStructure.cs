@@ -5,13 +5,25 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Xml.Linq;
 
-namespace Lib_K_Relay.GameData.ObjectStructures {
-	public struct TileStructure {
+namespace Lib_K_Relay.GameData.DataStructures {
+	public struct TileStructure : IDataStructure<ushort> {
+		internal static Dictionary<ushort, TileStructure> Load(XDocument doc) {
+			Dictionary<ushort, TileStructure> map = new Dictionary<ushort, TileStructure>();
+
+			doc.Element("GroundTypes")
+				.Elements("Ground")
+				.ForEach(tile => {
+					TileStructure t = new TileStructure(tile);
+					map[t.ID] = t;
+				});
+
+			return map;
+		}
 
 		/// <summary>
 		/// The numerical identifier of this tile
 		/// </summary>
-		public ushort ID;
+		public ushort ID { get; private set; }
 
 		/// <summary>
 		/// Whether this tile can be walked on
@@ -41,7 +53,7 @@ namespace Lib_K_Relay.GameData.ObjectStructures {
 		/// <summary>
 		/// The text identifier for this tile
 		/// </summary>
-		public string Name;
+		public string Name { get; private set; }
 
 		public TileStructure(XElement tile) {
 			ID = (ushort)tile.AttrDefault("type", "0x0").ParseHex();

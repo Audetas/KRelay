@@ -2,13 +2,27 @@
 using System.Linq;
 using System.Xml.Linq;
 
-namespace Lib_K_Relay.GameData.ObjectStructures {
-	public struct EnemyStructure {
-		public struct Projectile {
+namespace Lib_K_Relay.GameData.DataStructures {
+	public struct EnemyStructure : IDataStructure<ushort> {
+		internal static Dictionary<ushort, EnemyStructure> Load(XDocument doc) {
+			Dictionary<ushort, EnemyStructure> map = new Dictionary<ushort, EnemyStructure>();
+
+			doc.Element("Objects")
+				.Elements("Object")
+				.Where(elem => elem.HasElement("Enemy"))
+				.ForEach(enemy => {
+					EnemyStructure e = new EnemyStructure(enemy);
+					map[e.ID] = e;
+				});
+
+			return map;
+		}
+
+		public struct Projectile : IDataStructure<byte> {
 			/// <summary>
 			/// The numerical identifier for this projectile
 			/// </summary>
-			public byte ID;
+			public byte ID { get; private set; }
 
 			/// <summary>
 			/// How much damage the projectile deals
@@ -53,13 +67,36 @@ namespace Lib_K_Relay.GameData.ObjectStructures {
 			/// <summary>
 			/// The text identifier for this projectile
 			/// </summary>
-			public string Name;
+			public string Name { get; private set; }
+
+			public Projectile(XElement projectile) {
+				ID = (byte)projectile.AttrDefault("id", "0").ParseInt();
+				Damage = (ushort)projectile.ElemDefault("Damage", "0").ParseInt();
+				Speed = (ushort)projectile.ElemDefault("Speed", "0").ParseInt();
+				Size = (ushort)projectile.ElemDefault("Size", "0").ParseInt();
+				Lifetime = (uint)projectile.ElemDefault("LifetimeMS", "0").ParseInt();
+
+				MultiHit = projectile.HasElement("MultiHit");
+				Boomerang = projectile.HasElement("Boomerang");
+				ArmorPiercing = projectile.HasElement("ArmorPiercing");
+
+				var effects = new Dictionary<string, float>();
+				projectile.Elements("ConditionEffect")
+					.ForEach(effect => effects[effect.Value] = effect.AttrDefault("duration", "0").ParseFloat());
+
+				StatusEffects = effects;
+				Name = projectile.ElemDefault("ObjectId", "");
+			}
+
+			public override string ToString() {
+				return string.Format("Projectile: {0} (0x{1:X})", Name, ID);
+			}
 		}
 
 		/// <summary>
 		/// The numerical identifier for this enemy
 		/// </summary>
-		public ushort ID;
+		public ushort ID { get; private set; }
 
 		/// <summary>
 		/// The size of the enemy
@@ -104,7 +141,7 @@ namespace Lib_K_Relay.GameData.ObjectStructures {
 		/// <summary>
 		/// The text identifier for this enemy
 		/// </summary>
-		public string Name;
+		public string Name { get; private set; }
 
 		public EnemyStructure(XElement enemy) {
 			ID = (ushort)enemy.AttrDefault("type", "0x0").ParseHex();
@@ -118,27 +155,7 @@ namespace Lib_K_Relay.GameData.ObjectStructures {
 			God = enemy.HasElement("God");
 
 			List<Projectile> projs = new List<Projectile>();
-			enemy.Elements("Projectile").ForEach(projectile => {
-				Projectile p = new Projectile();
-
-				p.ID = (byte)projectile.AttrDefault("id", "0").ParseInt();
-				p.Damage = (ushort)projectile.ElemDefault("Damage", "0").ParseInt();
-				p.Speed = (ushort)projectile.ElemDefault("Speed", "0").ParseInt();
-				p.Size = (ushort)projectile.ElemDefault("Size", "0").ParseInt();
-				p.Lifetime = (uint)projectile.ElemDefault("LifetimeMS", "0").ParseInt();
-
-				p.MultiHit = projectile.HasElement("MultiHit");
-				p.Boomerang = projectile.HasElement("Boomerang");
-				p.ArmorPiercing = projectile.HasElement("ArmorPiercing");
-
-				p.StatusEffects = new Dictionary<string, float>();
-				projectile.Elements("ConditionEffect")
-					.ForEach(effect => p.StatusEffects[effect.Value] = effect.AttrDefault("duration", "0").ParseFloat());
-
-				p.Name = projectile.ElemDefault("ObjectId", "");
-
-				projs.Add(p);
-			});
+			enemy.Elements("Projectile").ForEach(projectile => projs.Add(new Projectile(projectile)));
 
 			Projectiles = projs.ToArray();
 			Name = enemy.AttrDefault("id", "");

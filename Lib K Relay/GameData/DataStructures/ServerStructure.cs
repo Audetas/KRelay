@@ -6,8 +6,21 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Xml.Linq;
 
-namespace Lib_K_Relay.GameData.ObjectStructures {
-	public struct ServerStructure {
+namespace Lib_K_Relay.GameData.DataStructures {
+	public struct ServerStructure : IDataStructure<string> {
+		internal static Dictionary<string, ServerStructure> Load(XDocument doc) {
+			Dictionary<string, ServerStructure> map = new Dictionary<string, ServerStructure>();
+
+			doc.Element("Chars")
+				.Element("Servers")
+				.Elements("Server")
+				.ForEach(server => {
+					ServerStructure s = new ServerStructure(server);
+					map[s.ID] = s;
+				});
+
+			return map;
+		}
 		public static readonly Dictionary<string, string> abbreviations = new Dictionary<string, string> {
 			{ "USWest", "USW" },
 			{ "USMidWest", "USMW" },
@@ -25,6 +38,7 @@ namespace Lib_K_Relay.GameData.ObjectStructures {
 			{ "USNorthWest", "USNW" },
 			{ "AsiaEast", "AE" },
 			{ "USSouth3", "USS3" },
+			{ "EUNorth", "EUN" },
 			{ "EUNorth2", "EUN2" },
 			{ "EUWest2", "EUW2" },
 			{ "EUSouth", "EUS" },
@@ -35,12 +49,13 @@ namespace Lib_K_Relay.GameData.ObjectStructures {
 		/// <summary>
 		/// The complete name of this server
 		/// </summary>
-		public string Name;
+		public string Name { get; private set; }
 
 		/// <summary>
 		/// The abbreviation of this server
 		/// </summary>
 		public string Abbreviation;
+		public string ID { get { return Abbreviation; } }
 
 		/// <summary>
 		/// The IP address of this server

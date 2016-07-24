@@ -5,8 +5,21 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Xml.Linq;
 
-namespace Lib_K_Relay.GameData.ObjectStructures {
-	public struct ObjectStructure {
+namespace Lib_K_Relay.GameData.DataStructures {
+	public struct ObjectStructure : IDataStructure<ushort> {
+		internal static Dictionary<ushort, ObjectStructure> Load(XDocument doc) {
+			Dictionary<ushort, ObjectStructure> map = new Dictionary<ushort, ObjectStructure>();
+
+			doc.Element("Objects")
+				.Elements("Object")
+				.ForEach(obj => {
+					ObjectStructure o = new ObjectStructure(obj);
+					map[o.ID] = o;
+				});
+
+			return map;
+		}
+
 		public enum Class : byte {
 			GameObject,
 			Wall,
@@ -31,7 +44,7 @@ namespace Lib_K_Relay.GameData.ObjectStructures {
 		/// <summary>
 		/// The numerical identifier for this object
 		/// </summary>
-		public ushort ID;
+		public ushort ID { get; private set; }
 
 		/// <summary>
 		/// What kind of object this is
@@ -86,7 +99,7 @@ namespace Lib_K_Relay.GameData.ObjectStructures {
 		/// <summary>
 		/// The text identifier for this object
 		/// </summary>
-		public string Name;
+		public string Name { get; private set; }
 
 		public ObjectStructure(XElement obj) {
 			ID = (ushort)obj.AttrDefault("type", "0x0").ParseHex();

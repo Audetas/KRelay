@@ -16,6 +16,7 @@ using Lib_K_Relay.Utilities;
 using MetroFramework.Forms;
 using MetroFramework.Drawing;
 using Lib_K_Relay.GameData;
+using Lib_K_Relay.GameData.DataStructures;
 
 namespace K_Relay
 {
@@ -36,6 +37,7 @@ namespace K_Relay
 			Action[] workers =
 			{
 				GameData.Load,
+				GameDataOld.Load,
 
 				// suppress obsolete warnings here
 #pragma warning disable 618
@@ -79,9 +81,9 @@ namespace K_Relay
             InitPlugins();
 
 			//if (Serializer.Servers.ContainsKey((string)lstServers.SelectedItem))
-			if (GameData.Servers.Where(s => s.Name == (string)lstServers.SelectedItem).Count() == 1)
+			if (GameDataOld.Servers.Where(s => s.Name == (string)lstServers.SelectedItem).Count() == 1)
 				//Proxy.DefaultServer = Serializer.GetServerByFullName((string)lstServers.SelectedItem);
-				Proxy.DefaultServer = GameData.Servers.First(s => s.Name == (string)lstServers.SelectedItem).Address;
+				Proxy.DefaultServer = GameDataOld.Servers.First(s => s.Name == (string)lstServers.SelectedItem).Address;
 			else
 				PluginUtils.Log("K Relay", "Default server wasn't found, using USWest.");
 
