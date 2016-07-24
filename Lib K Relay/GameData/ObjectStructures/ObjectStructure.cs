@@ -28,19 +28,64 @@ namespace Lib_K_Relay.GameData.ObjectStructures {
 			Unknown = 255
 		}
 
+		/// <summary>
+		/// The numerical identifier for this object
+		/// </summary>
 		public ushort ID;
+
+		/// <summary>
+		/// What kind of object this is
+		/// </summary>
 		public Class ObjectClass;
+
+		/// <summary>
+		/// Maximum HP this object can have (for walls/other destructible terrain)
+		/// </summary>
 		public ushort MaxHP;
+
+		/// <summary>
+		/// How much XP is granted when destroying this object
+		/// </summary>
 		public float XPMult;
 
+		/// <summary>
+		/// Unknown
+		/// </summary>
 		public bool Static;
+
+		/// <summary>
+		/// Whether this object impedes movement (?)
+		/// </summary>
 		public bool OccupySquare;
+
+		/// <summary>
+		/// ???
+		/// </summary>
 		public bool EnemyOccupySquare;
+
+		/// <summary>
+		/// ???
+		/// </summary>
 		public bool FullOccupy;
+
+		/// <summary>
+		/// Whether this object blocks vision
+		/// </summary>
 		public bool BlocksSight;
+
+		/// <summary>
+		/// Whether this object is an enemy (e.g. can be damaged)
+		/// </summary>
 		public bool Enemy;
+
+		/// <summary>
+		/// ???
+		/// </summary>
 		public bool DrawOnGround;
 
+		/// <summary>
+		/// The text identifier for this object
+		/// </summary>
 		public string Name;
 
 		public ObjectStructure(XElement obj) {

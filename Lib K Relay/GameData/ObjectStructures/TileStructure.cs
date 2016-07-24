@@ -8,13 +8,39 @@ using System.Xml.Linq;
 namespace Lib_K_Relay.GameData.ObjectStructures {
 	public struct TileStructure {
 
+		/// <summary>
+		/// The numerical identifier of this tile
+		/// </summary>
 		public ushort ID;
+
+		/// <summary>
+		/// Whether this tile can be walked on
+		/// </summary>
 		public bool NoWalk;
+
+		/// <summary>
+		/// How fast you walk across this tile
+		/// </summary>
 		public float Speed;
+
+		/// <summary>
+		/// Whether you sink into this tile visually (e.g. water)
+		/// </summary>
 		public bool Sink;
+
+		/// <summary>
+		/// The minimum damage this tile can deal (e.g. lava)
+		/// </summary>
 		public ushort MinDamage;
+
+		/// <summary>
+		/// The maximum damage this tile can deal (e.g. lava)
+		/// </summary>
 		public ushort MaxDamage;
 
+		/// <summary>
+		/// The text identifier for this tile
+		/// </summary>
 		public string Name;
 
 		public TileStructure(XElement tile) {

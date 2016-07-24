@@ -5,7 +5,7 @@ using System.Xml.Linq;
 
 namespace Lib_K_Relay.GameData.ObjectStructures {
 	public struct ItemStructure {
-		public enum Tiers: byte {
+		public enum Tiers : byte {
 			T0 = 0,
 			T1,
 			T2,
@@ -28,19 +28,64 @@ namespace Lib_K_Relay.GameData.ObjectStructures {
 			UT = 255
 		}
 
+		/// <summary>
+		/// The numerical identifier for this item
+		/// </summary>
 		public ushort ID;
+
+		/// <summary>
+		/// What tier the item is
+		/// </summary>
 		public Tiers Tier;
+
+		/// <summary>
+		/// What slot the item goes into
+		/// </summary>
 		public byte SlotType; // todo - make enum?
+
+		/// <summary>
+		/// How fast this item fires (for weapons)
+		/// </summary>
 		public float RateOfFire;
+		
+		/// <summary>
+		/// How much feed power this item has
+		/// </summary>
 		public uint FeedPower;
+
+		/// <summary>
+		/// What kind of bag this item drops in
+		/// </summary>
 		public byte BagType;
+
+		/// <summary>
+		/// How much MP the item costs to use (for abilities)
+		/// </summary>
 		public byte MPCost;
+
+		/// <summary>
+		/// How much extra fame is awarded when dying with this item equipped
+		/// </summary>
 		public byte FameBonus;
 
+		/// <summary>
+		/// Whether the item is soulbound or not
+		/// </summary>
 		public bool Soulbound;
+
+		/// <summary>
+		/// Whether the item can be used
+		/// </summary>
 		public bool Usable;
+
+		/// <summary>
+		/// Whether the item is consumed on use
+		/// </summary>
 		public bool Consumable;
 
+		/// <summary>
+		/// The text identifier for this item
+		/// </summary>
 		public string Name;
 
 		public ItemStructure(XElement item) {

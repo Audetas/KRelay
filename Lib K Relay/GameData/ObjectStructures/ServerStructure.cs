@@ -32,8 +32,19 @@ namespace Lib_K_Relay.GameData.ObjectStructures {
 			{ "USWest3", "USW3" }
 		};
 
+		/// <summary>
+		/// The complete name of this server
+		/// </summary>
 		public string Name;
+
+		/// <summary>
+		/// The abbreviation of this server
+		/// </summary>
 		public string Abbreviation;
+
+		/// <summary>
+		/// The IP address of this server
+		/// </summary>
 		public string Address;
 
 		public ServerStructure(XElement server) {
