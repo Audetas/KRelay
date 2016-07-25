@@ -1,4 +1,5 @@
 ﻿using Lib_K_Relay;
+using Lib_K_Relay.GameData;
 using Lib_K_Relay.Interface;
 using Lib_K_Relay.Networking;
 using Lib_K_Relay.Networking.Packets;
@@ -15,7 +16,7 @@ namespace IncFinder
 {
     public class IncFinder : IPlugin
     {
-        private ushort INC_ID = Serializer.Items["Wine Cellar Incantation"];
+        private ushort INC_ID = GameData.Items.ByName("Wine Cellar Incantation").ID;
         private Dictionary<int, string> _incHolders = new Dictionary<int, string>();
 
         public string GetAuthor()

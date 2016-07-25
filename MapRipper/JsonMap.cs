@@ -31,6 +31,7 @@ using Lib_K_Relay.Networking.Packets.DataObjects;
 using Lib_K_Relay.Utilities;
 using Lib_K_Relay.Networking.Packets;
 using Lib_K_Relay.Networking.Packets.Server;
+using Lib_K_Relay.GameData;
 
 namespace MapRipper
 {
@@ -203,12 +204,14 @@ namespace MapRipper
 
         private string GetEntityId(short type)
         {
-            return Serializer.CompleteGameData.Where(_ => _.Value == type).Select(_ => _.Key).FirstOrDefault();
+			if (GameData.Tiles.Map.ContainsKey((ushort)type)) return GameData.Tiles.ByID((ushort)type).Name;
+			if (GameData.Objects.Map.ContainsKey((ushort)type)) return GameData.Objects.ByID((ushort)type).Name;
+			throw new Exception("Invalid value: " + type);
         }
 
         private string GetTileId(ushort type)
         {
-            return Serializer.Tiles.Where(_ => _.Value == type).Select(_ => _.Key).FirstOrDefault();
+			return GameData.Tiles.ByID(type).Name;
         }
     }
 }

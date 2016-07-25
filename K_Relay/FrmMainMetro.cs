@@ -15,6 +15,8 @@ using Lib_K_Relay.Networking.Packets;
 using Lib_K_Relay.Utilities;
 using MetroFramework.Forms;
 using MetroFramework.Drawing;
+using Lib_K_Relay.GameData;
+using Lib_K_Relay.GameData.DataStructures;
 
 namespace K_Relay
 {
@@ -32,13 +34,19 @@ namespace K_Relay
 
         private async void FrmMainMetro_Load(object sender, EventArgs e)
         {
-            Action[] workers =
-            {
-                Serializer.SerializeServers,
+			Action[] workers =
+			{
+				GameData.Load,
+
+				// suppress obsolete warnings here
+#pragma warning disable 618
+				Serializer.SerializeServers,
                 Serializer.SerializeGameObjects,
                 Serializer.SerializePacketIds,
                 Serializer.SerializePacketTypes,
-                InitPackets,
+#pragma warning restore 618
+
+				InitPackets,
                 InitSettings
             };
 
@@ -71,10 +79,12 @@ namespace K_Relay
             _proxy.ProxyListenStopped += _ => SetStatus("Stopped", Color.Red);
             InitPlugins();
 
-            if (Serializer.Servers.ContainsKey((string)lstServers.SelectedItem))
-                Proxy.DefaultServer = Serializer.GetServerByFullName((string)lstServers.SelectedItem);
-            else
-                PluginUtils.Log("K Relay", "Default server wasn't found, using USWest.");
+			//if (Serializer.Servers.ContainsKey((string)lstServers.SelectedItem))
+			if (GameData.Servers.Map.Where(s => s.Value.Name == (string)lstServers.SelectedItem).Any())
+				//Proxy.DefaultServer = Serializer.GetServerByFullName((string)lstServers.SelectedItem);
+				Proxy.DefaultServer = GameData.Servers.ByName((string)lstServers.SelectedItem).Address;
+			else
+				PluginUtils.Log("K Relay", "Default server wasn't found, using USWest.");
 
             PluginUtils.Log("K Relay", "Initialization complete.");
 

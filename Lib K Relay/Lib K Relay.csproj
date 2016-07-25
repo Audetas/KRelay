@@ -22,7 +22,7 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
-    <DebugType>pdbonly</DebugType>
+    <DebugType>none</DebugType>
     <Optimize>true</Optimize>
     <OutputPath>bin\Release\</OutputPath>
     <DefineConstants>TRACE</DefineConstants>
@@ -46,6 +46,15 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Crypto\RC4Cipher.cs" />
+    <Compile Include="GameData\DataStructures\EnemyStructure.cs" />
+    <Compile Include="GameData\GameData.cs" />
+    <Compile Include="GameData\DataStructures\IDataStructure.cs" />
+    <Compile Include="GameData\DataStructures\ItemStructure.cs" />
+    <Compile Include="GameData\DataStructures\ObjectStructure.cs" />
+    <Compile Include="GameData\DataStructures\PacketStructure.cs" />
+    <Compile Include="GameData\DataStructures\ServerStructure.cs" />
+    <Compile Include="GameData\ParsingExtensions.cs" />
+    <Compile Include="GameData\DataStructures\TileStructure.cs" />
     <Compile Include="Interface\IPlugin.cs" />
     <Compile Include="Networking\Client.cs" />
     <Compile Include="Networking\PacketBuffer.cs" />

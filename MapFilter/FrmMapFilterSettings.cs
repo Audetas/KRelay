@@ -1,4 +1,5 @@
-﻿using Lib_K_Relay.Utilities;
+﻿using Lib_K_Relay.GameData;
+using Lib_K_Relay.Utilities;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -51,8 +52,9 @@ namespace MapFilter
         {
             string tile = "";
             string replacement = "";
-            new FrmEnumerator(Serializer.Tiles, "Choose the tile to replace...", (s) => tile = s).ShowDialog();
-            new FrmEnumerator(Serializer.Tiles, "Choose the replacement tile...", (s) => replacement = s).ShowDialog();
+			var dict = GameData.Items.Map.ToDictionary(o => o.Value.Name, o => o.Key);
+            new FrmEnumerator(dict, "Choose the tile to replace...", (s) => tile = s).ShowDialog();
+            new FrmEnumerator(dict, "Choose the replacement tile...", (s) => replacement = s).ShowDialog();
 
             if (tile != "" && replacement != "")
             {
@@ -73,8 +75,9 @@ namespace MapFilter
         {
             string obj = "";
             string replacement = "";
-            new FrmEnumerator(Serializer.Objects, "Choose the object to replace...", (s) => obj = s).ShowDialog();
-            new FrmEnumerator(Serializer.Objects, "Choose the replacement object...", (s) => replacement = s).ShowDialog();
+			var dict = GameData.Objects.Map.ToDictionary(o => o.Value.Name, o => o.Key);
+			new FrmEnumerator(dict, "Choose the object to replace...", (s) => obj = s).ShowDialog();
+            new FrmEnumerator(dict, "Choose the replacement object...", (s) => replacement = s).ShowDialog();
 
             if (obj != "" && replacement != "")
             {
