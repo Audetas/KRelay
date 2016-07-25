@@ -8,7 +8,7 @@ namespace Lib_K_Relay.GameData {
 	/// <summary>
 	/// A bunch of simple extensions to make parsing simpler
 	/// </summary>
-	static class ParsingHelpers {
+	public static class ParsingHelpers {
 		public static IEnumerable<T> ForEach<T>(this IEnumerable<T> input, Action<T> action) {
 			foreach (T element in input) {
 				action(element);

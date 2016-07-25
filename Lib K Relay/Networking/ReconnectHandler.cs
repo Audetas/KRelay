@@ -46,7 +46,9 @@ namespace Lib_K_Relay.Networking
             PluginUtils.Delay(1000, () =>
             {
                 string message = "Welcome to K Relay!";
-				string server = GameData.GameData.Servers.Match(s => s.Address == client.State.ConTargetAddress).Name;
+				string server = "";
+				if (GameData.GameData.Servers.Map.Where(s => s.Value.Address == client.State.ConTargetAddress).Any())
+					server = GameData.GameData.Servers.Match(s => s.Address == client.State.ConTargetAddress).Name;
 
                 if (server != "")
                     message += "\\n" + server;
