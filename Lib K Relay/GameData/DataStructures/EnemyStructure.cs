@@ -1,6 +1,8 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
 using System.Xml.Linq;
+using Lib_K_Relay.Utilities;
+using System;
 
 namespace Lib_K_Relay.GameData.DataStructures {
 	public struct EnemyStructure : IDataStructure<ushort> {
@@ -62,7 +64,7 @@ namespace Lib_K_Relay.GameData.DataStructures {
 			/// <summary>
 			/// What status effects, if any, the projectile applies (name: duration in seconds)
 			/// </summary>
-			public Dictionary<string, float> StatusEffects;
+			public Dictionary<ConditionEffectIndex, float> StatusEffects;
 			
 			/// <summary>
 			/// The text identifier for this projectile
@@ -80,9 +82,9 @@ namespace Lib_K_Relay.GameData.DataStructures {
 				Boomerang = projectile.HasElement("Boomerang");
 				ArmorPiercing = projectile.HasElement("ArmorPiercing");
 
-				var effects = new Dictionary<string, float>();
+				var effects = new Dictionary<ConditionEffectIndex, float>();
 				projectile.Elements("ConditionEffect")
-					.ForEach(effect => effects[effect.Value] = effect.AttrDefault("duration", "0").ParseFloat());
+					.ForEach(effect => effects[(ConditionEffectIndex)Enum.Parse(typeof(ConditionEffectIndex), effect.Value.Replace(" ", ""))] = effect.AttrDefault("duration", "0").ParseFloat());
 
 				StatusEffects = effects;
 				Name = projectile.ElemDefault("ObjectId", "");
