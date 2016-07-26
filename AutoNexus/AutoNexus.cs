@@ -130,8 +130,12 @@ namespace AutoNexus {
 		private int PredictDamage(Bullet b) {
 			int def = client.PlayerData.Defense;
 
-			if (EnemyTypeMap.ContainsKey(b.OwnerID) && Bullet.IsArmorBreaking(EnemyTypeMap[b.OwnerID], b.ProjectileID))
+			if (EnemyTypeMap.ContainsKey(b.OwnerID) && Bullet.IsArmorBreaking(EnemyTypeMap[b.OwnerID], b.ProjectileID) && !ArmorBroken) {
 				ArmorBroken = true;
+
+				if (Config.Default.Debug)
+					PluginUtils.Log("Auto Nexus", "{0}'s armor is broken!", client.PlayerData.Name);
+			}
 
 			if (Armored) def *= 2;
 
@@ -144,9 +148,10 @@ namespace AutoNexus {
 		private bool ApplyDamage(int dmg) {
 			if (!safe) return false;
 			HP -= dmg;
-#if DEBUG
-			PluginUtils.Log("Auto Nexus", "{0} was hit for {1} damage!", client.PlayerData.Name, dmg);
-#endif
+
+			if (Config.Default.Debug)
+				PluginUtils.Log("Auto Nexus", "{0} was hit for {1} damage ({2}/{3})!", client.PlayerData.Name, dmg, HP, client.PlayerData.MaxHealth);
+
 			if (Config.Default.Enabled && (float)HP / client.PlayerData.MaxHealth <= Config.Default.NexusPercent) {
 				PluginUtils.Log("Auto Nexus", "Saved {0}'s ass at {1}/{2} HP!", client.PlayerData.Name, HP, client.PlayerData.MaxHealth);
 				client.SendToServer(Packet.Create(PacketType.ESCAPE));
@@ -190,8 +195,9 @@ namespace AutoNexus {
 		public string[] GetCommands() {
 			return new string[] {
 				"/autonexus",
-				"/autonexus [percentage]",
-				"/autonexus [on | off]"
+				"/autonexus [percentage] - set the percentage to go nexus at (0-99)",
+				"/autonexus [on | off] - toggle autonexus on and off",
+				"/autonexus debug [on | off] - toggle debug messages on and off"
 			};
 		}
 
@@ -264,6 +270,23 @@ namespace AutoNexus {
 						Config.Default.Enabled = false;
 						Config.Default.Save();
 						client.OryxMessage("Auto Nexus now disabled.");
+						break;
+					case "debug":
+						if (args[1] == "on") {
+							Config.Default.Debug = true;
+							Config.Default.Save();
+							client.OryxMessage("Debug output enabled.");
+						} else if (args[1] == "off") {
+							Config.Default.Debug = false;
+							Config.Default.Save();
+							client.OryxMessage("Debug output disabled.");
+						} else {
+							client.OryxMessage("Unrecognized argument: {0}", args[0]);
+							client.OryxMessage("Usage:");
+							client.OryxMessage("'/autonexus on' - enable autonexus");
+							client.OryxMessage("'/autonexus off' - disable autonexus");
+							client.OryxMessage("'/autonexus 10' - set autonexus percentage to 10%");
+						}
 						break;
 					default:
 						int percentage;
