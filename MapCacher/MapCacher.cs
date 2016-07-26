@@ -1,85 +1,119 @@
-﻿using Lib_K_Relay;
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+
+using Lib_K_Relay;
 using Lib_K_Relay.Interface;
 using Lib_K_Relay.Networking;
 using Lib_K_Relay.Networking.Packets;
 using Lib_K_Relay.Networking.Packets.DataObjects;
 using Lib_K_Relay.Networking.Packets.Server;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using Lib_K_Relay.Networking.Packets.Client;
+using Lib_K_Relay.Utilities;
 
-namespace MapCacher
-{
-    public class MapCacher : IPlugin
-    {
-        struct Map
-        {
-            public string name;
-            public int width;
-            public int height;
+namespace MapCacher {
+	class Map {
+		public uint fp;
+		public int Width, Height;
+		public ushort[,] Data;
+		public string Name;
 
-            public Map(string n, int x, int y)
-            {
-                name = n;
-                width = x;
-                height = y;
-            }
-        }
-        ushort[,] mapdata;
-        Boolean initialized;
-        Map map;
+		public Map(MapInfoPacket mapInfo) {
+			fp = mapInfo.Fp;
+			Width = mapInfo.Width;
+			Height = mapInfo.Height;
+			Data = new ushort[mapInfo.Width, mapInfo.Height];
+			Name = mapInfo.Name;
+		}
+	}
 
-        public string GetAuthor()
-        {
-            return "Knorrex";
-        }
+	public class MapCacher : IPlugin {
+		Dictionary<Client, bool> SentData = new Dictionary<Client, bool>();
 
-        public string GetName()
-        {
-            return "Map Cacher";
-        }
+		Dictionary<uint, Map> CachedMaps = new Dictionary<uint, Map>();
 
-        public string GetDescription()
-        {
-            return "Caches map tiles while playing and will attempt to recognize previously visited maps.\nWhen a map is recognized it will be sent through UPDATE to the client, to display it.";
-        }
+		Dictionary<Client, Map> CurrentMaps = new Dictionary<Client, Map>();
 
-        public string[] GetCommands()
-        {
-            return new string[] { };
-        }
+		public string GetAuthor() {
+			return "apemanzilla";
+		}
 
-        public void Initialize(Proxy proxy)
-        {
-            proxy.HookPacket(PacketType.UPDATE, OnUpdate);
-            proxy.HookPacket(PacketType.MAPINFO, GetMapInfo);
-            proxy.HookPacket(PacketType.CREATESUCCESS, OnEnterMap);
-            initialized = false;
-        }
+		public string[] GetCommands() {
+			return new string[0];
+		}
 
-        public void OnUpdate(Client client, Packet packet)
-        {
-            UpdatePacket update = (UpdatePacket)packet;
+		public string GetDescription() {
+			return "Caches tile data in memory, and then sends it back to the client when reentering a previous map.";
+		}
 
-            foreach (Tile tile in update.Tiles)
-            {
-                mapdata[tile.Y, tile.X] = (ushort)tile.Type;
-            }
-        }
+		public string GetName() {
+			return "Map Cacher";
+		}
 
-        public void GetMapInfo(Client client, Packet packet)
-        {
-            MapInfoPacket mapinfo = (MapInfoPacket)packet;
-            map = new Map(mapinfo.Name, mapinfo.Height, mapinfo.Width);
-            initialized = false;
-        }
+		public void Initialize(Proxy proxy) {
+			proxy.ClientConnected += OnConnect;
+			proxy.ClientDisconnected += OnDisconnect;
 
-        public void OnEnterMap(Client client, Packet packet)
-        {
-            initialized = true;
-            mapdata = new ushort[map.height, map.width];
-        }
-    }
+			proxy.HookPacket(PacketType.MAPINFO, OnMapInfo);
+			proxy.HookPacket(PacketType.UPDATE, OnUpdate);
+		}
+
+		void OnConnect(Client client) {
+			if (SentData.ContainsKey(client)) SentData.Remove(client);
+
+			SentData[client] = false;
+		}
+
+		void OnDisconnect(Client client) {
+			if (SentData.ContainsKey(client)) SentData.Remove(client);
+			if (CurrentMaps.ContainsKey(client)) CurrentMaps.Remove(client);
+		}
+
+		void OnMapInfo(Client client, Packet p) {
+			MapInfoPacket mapInfo = p as MapInfoPacket;
+
+			if (CachedMaps.Any(m => m.Value.fp == mapInfo.Fp)) {
+				// map exists
+				Map map = CachedMaps.First(m => m.Value.fp == mapInfo.Fp).Value;
+
+				CurrentMaps[client] = map;
+
+				PluginUtils.Log("Map Cacher", "Loaded cached map {0} ({1}x{2}, uuid {3})", map.Name, map.Width, map.Height, map.fp);
+			} else {
+				// map not cached
+				Map map = new Map(mapInfo);
+
+				CurrentMaps[client] = map;
+				CachedMaps[mapInfo.Fp] = map;
+				SentData[client] = true; // nothing to send lol
+
+				PluginUtils.Log("Map Cacher", "Loaded new map {0} ({1}x{2}, uuid {3})", map.Name, map.Width, map.Height, map.fp);
+			}
+		}
+
+		void OnUpdate(Client client, Packet p) {
+			UpdatePacket update = p as UpdatePacket;
+
+			if (CurrentMaps.ContainsKey(client)) {
+				Map current = CurrentMaps[client];
+
+				foreach (Tile t in update.Tiles) {
+					current.Data[t.X, t.Y] = t.Type;
+				}
+
+				if (!SentData[client]) {
+					List<Tile> tiles = new List<Tile>(update.Tiles);
+
+					for (short x = 0; x < current.Width; x++)
+						for (short y = 0; y < current.Height; y++)
+							if (current.Data[x, y] != 0)
+								tiles.Add(new Tile() { X = x, Y = y, Type = current.Data[x, y] });
+
+					update.Tiles = tiles.ToArray();
+					SentData[client] = true;
+					PluginUtils.Log("Map Cacher", "Sent cached data of map {0}", current.Name);
+				}
+			}
+		}
+	}
 }
