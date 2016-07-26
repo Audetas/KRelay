@@ -4,6 +4,7 @@ using System.Linq;
 
 using Lib_K_Relay;
 using Lib_K_Relay.Interface;
+using Lib_K_Relay.GameData;
 using Lib_K_Relay.Networking;
 using Lib_K_Relay.Networking.Packets;
 using Lib_K_Relay.Networking.Packets.DataObjects;
@@ -22,8 +23,12 @@ namespace MapCacher {
 			fp = mapInfo.Fp;
 			Width = mapInfo.Width;
 			Height = mapInfo.Height;
-			Data = new ushort[mapInfo.Width, mapInfo.Height];
+			Data = new ushort[Width, Height];
 			Name = mapInfo.Name;
+		}
+
+		public void Clear() {
+			Data = new ushort[Width, Height];
 		}
 	}
 
@@ -39,7 +44,9 @@ namespace MapCacher {
 		}
 
 		public string[] GetCommands() {
-			return new string[0];
+			return new string[] {
+				"/mapcacher clear - clear all cached maps from memory (try this if connection issues are happening)"
+			};
 		}
 
 		public string GetDescription() {
@@ -56,6 +63,22 @@ namespace MapCacher {
 
 			proxy.HookPacket(PacketType.MAPINFO, OnMapInfo);
 			proxy.HookPacket(PacketType.UPDATE, OnUpdate);
+
+			proxy.HookCommand("mapcacher", OnCommand);
+		}
+
+		void OnCommand(Client client, string command, string[] args) {
+			if (args.Length < 1) {
+				client.SendToClient(PluginUtils.CreateOryxNotification("Map Cacher", "Usage:"));
+				client.SendToClient(PluginUtils.CreateOryxNotification("Map Cacher", "'/mapcacher clear' - clears all currently cached maps."));
+				return;
+			}
+			switch (args[0]) {
+				case "clear":
+					CachedMaps.ForEach(cached => cached.Value.Clear());
+					client.SendToClient(PluginUtils.CreateOryxNotification("Map Cacher", "All maps were cleared."));
+					break;
+			}
 		}
 
 		void OnConnect(Client client) {
