@@ -33,7 +33,9 @@ namespace MapCacher {
 	}
 
 	public class MapCacher : IPlugin {
-		Dictionary<Client, bool> SentData = new Dictionary<Client, bool>();
+		public static readonly int MaxTilesSent = 64;
+
+		Dictionary<Client, List<Tile>> SendQueue = new Dictionary<Client, List<Tile>>();
 
 		Dictionary<uint, Map> CachedMaps = new Dictionary<uint, Map>();
 
@@ -82,13 +84,13 @@ namespace MapCacher {
 		}
 
 		void OnConnect(Client client) {
-			if (SentData.ContainsKey(client)) SentData.Remove(client);
+			if (SendQueue.ContainsKey(client)) SendQueue.Remove(client);
 
-			SentData[client] = false;
+			SendQueue[client] = null;
 		}
 
 		void OnDisconnect(Client client) {
-			if (SentData.ContainsKey(client)) SentData.Remove(client);
+			if (SendQueue.ContainsKey(client)) SendQueue.Remove(client);
 			if (CurrentMaps.ContainsKey(client)) CurrentMaps.Remove(client);
 		}
 
@@ -108,7 +110,7 @@ namespace MapCacher {
 
 				CurrentMaps[client] = map;
 				CachedMaps[mapInfo.Fp] = map;
-				SentData[client] = true; // nothing to send lol
+				SendQueue[client] = new List<Tile>();
 
 				PluginUtils.Log("Map Cacher", "Loaded new map {0} ({1}x{2}, uuid {3})", map.Name, map.Width, map.Height, map.fp);
 			}
@@ -122,9 +124,13 @@ namespace MapCacher {
 
 				foreach (Tile t in update.Tiles) {
 					current.Data[t.X, t.Y] = t.Type;
+
+					if (SendQueue[client] != null) {
+						SendQueue[client].Add(t);
+					}
 				}
 
-				if (!SentData[client]) {
+				if (SendQueue[client] == null) {
 					List<Tile> tiles = new List<Tile>(update.Tiles);
 
 					for (short x = 0; x < current.Width; x++)
@@ -132,9 +138,12 @@ namespace MapCacher {
 							if (current.Data[x, y] != 0)
 								tiles.Add(new Tile() { X = x, Y = y, Type = current.Data[x, y] });
 
-					update.Tiles = tiles.ToArray();
-					SentData[client] = true;
-					PluginUtils.Log("Map Cacher", "Sent cached data of map {0}", current.Name);
+					SendQueue[client] = tiles;
+				}
+
+				if (SendQueue[client].Count > 0) {
+					update.Tiles = SendQueue[client].Take(MaxTilesSent).ToArray();
+					SendQueue[client].RemoveAll(t => update.Tiles.Contains(t));
 				}
 			}
 		}
