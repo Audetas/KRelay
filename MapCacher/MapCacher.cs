@@ -57,9 +57,7 @@ namespace MapCacher {
 		}
 
 		public string[] GetCommands() {
-			return new string[] {
-				"/mapcacher clear - clear all cached maps from memory (try this if connection issues are happening)"
-			};
+			return new string[0];
 		}
 
 		public string GetDescription() {
