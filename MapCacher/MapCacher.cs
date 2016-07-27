@@ -44,7 +44,7 @@ namespace MapCacher {
 	}
 
 	public class MapCacher : IPlugin {
-		public static readonly int MaxTilesPerPacket = 256;
+		public static readonly int MaxTilesPerPacket = 2048;
 
 		Dictionary<uint, Map> CachedMaps = new Dictionary<uint, Map>();
 
@@ -71,6 +71,13 @@ namespace MapCacher {
 		public void Initialize(Proxy proxy) {
 			proxy.HookPacket(PacketType.MAPINFO, OnMapInfo);
 			proxy.HookPacket(PacketType.UPDATE, OnUpdate);
+
+			proxy.ClientDisconnected += OnDisconnect;
+		}
+
+		void OnDisconnect(Client client) {
+			CurrentMaps.Remove(client);
+			SendQueues.Remove(client);
 		}
 
 		void OnMapInfo(Client client, Packet p) {
@@ -88,7 +95,7 @@ namespace MapCacher {
 						if (map.Data[x, y] != 0)
 							SendQueues[client].Add(new Tile { X = x, Y = y, Type = map.Data[x, y] });
 #if DEBUG
-				PluginUtils.Log("Map Cacher", "Loaded cached map {0}", mapInfo.Name);
+				PluginUtils.Log("Map Cacher", "Loaded cached map {0}, {1} cached tiles queued", mapInfo.Name, SendQueues[client].Count);
 #endif
 			} else {
 				map = new Map(mapInfo);
@@ -113,9 +120,9 @@ namespace MapCacher {
 				SendQueues[client].Shift(Math.Min(MaxTilesPerPacket, Math.Max(0, MaxTilesPerPacket - newTiles.Count))).ForEach(tile => newTiles.Add(tile));
 				update.Tiles = newTiles.ToArray();
 
-				if (SendQueues[client].Count == 0) {
-					PluginUtils.Log("Map Cacher", "Sent cached data to {0}", client.PlayerData.Name ?? "[unknown player]");
-				}
+#if DEBUG
+				PluginUtils.Log("Map Cacher", "Cached map data sent.");
+#endif
 			}
 		}
 	}
