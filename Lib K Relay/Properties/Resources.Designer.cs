@@ -63,102 +63,24 @@ namespace Lib_K_Relay.Properties {
         /// <summary>
         ///   Looks up a localized string similar to &lt;Objects&gt;
         ///
+        ///&lt;!-- AbyssOfDemons --&gt;
         ///
         ///
-        ///   &lt;Object type=&quot;0x0e56&quot; id=&quot;Masked Party God&quot;&gt;
+        ///   &lt;Object type=&quot;0x0908&quot; id=&quot;Malphas Protector&quot;&gt;
+        ///      &lt;Group&gt;Demons&lt;/Group&gt;
         ///      &lt;Enemy/&gt;
         ///      &lt;Class&gt;Character&lt;/Class&gt;
-        ///      &lt;Texture&gt;
-        ///         &lt;File&gt;lofiObjBig&lt;/File&gt;
-        ///         &lt;Index&gt;0x40&lt;/Index&gt;
-        ///      &lt;/Texture&gt;
-        ///      &lt;AltTexture id=&quot;1&quot;&gt;
-        ///         &lt;Texture&gt;
-        ///            &lt;File&gt;lofiObjBig&lt;/File&gt;
-        ///            &lt;Index&gt;0x41&lt;/Index&gt;
-        ///         &lt;/Texture&gt;
-        ///      &lt;/AltTexture&gt;
-        ///      &lt;AltTexture id=&quot;2&quot;&gt;
-        ///         &lt;Texture&gt;
-        ///            &lt;File&gt;lofiObjBig&lt;/File&gt;
-        ///            &lt;Index&gt;0x42&lt;/Index&gt;
-        ///         &lt;/Texture&gt;
-        ///      &lt;/AltTexture&gt;
-        ///     [rest of string was truncated]&quot;;.
-        /// </summary>
-        internal static string CompleteGamedata {
-            get {
-                return ResourceManager.GetString("CompleteGamedata", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to &lt;?xml version=&quot;1.0&quot; encoding=&quot;ISO-8859-1&quot; standalone=&quot;no&quot;?&gt;&lt;Objects&gt;
-        ///   &lt;Object id=&quot;Masked Party God&quot; type=&quot;0x0e56&quot;&gt;
-        ///      &lt;Enemy/&gt;
-        ///      &lt;Class&gt;Character&lt;/Class&gt;
-        ///      &lt;Texture&gt;
-        ///         &lt;File&gt;lofiObjBig&lt;/File&gt;
-        ///         &lt;Index&gt;0x40&lt;/Index&gt;
-        ///      &lt;/Texture&gt;
-        ///      &lt;AltTexture id=&quot;1&quot;&gt;
-        ///         &lt;Texture&gt;
-        ///            &lt;File&gt;lofiObjBig&lt;/File&gt;
-        ///            &lt;Index&gt;0x41&lt;/Index&gt;
-        ///         &lt;/Texture&gt;
-        ///      &lt;/AltTexture&gt;
-        ///      &lt;AltTexture id=&quot;2&quot;&gt;
-        ///         &lt;Texture&gt;
-        ///            &lt;File&gt;lofiObjBig&lt;/File&gt;
-        ///            &lt;Index&gt;0 [rest of string was truncated]&quot;;.
-        /// </summary>
-        internal static string Enemies {
-            get {
-                return ResourceManager.GetString("Enemies", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to &lt;?xml version=&quot;1.0&quot; encoding=&quot;ISO-8859-1&quot; standalone=&quot;no&quot;?&gt;&lt;Objects&gt;
-        ///   &lt;Object id=&quot;Common Feline Egg&quot; type=&quot;0xc85&quot;&gt;
-        ///      &lt;Class&gt;Equipment&lt;/Class&gt;
-        ///      &lt;Item/&gt;
-        ///      &lt;Texture&gt;
-        ///         &lt;File&gt;lofiObj2&lt;/File&gt;
-        ///         &lt;Index&gt;0x100&lt;/Index&gt;
-        ///      &lt;/Texture&gt;
-        ///      &lt;SlotType&gt;26&lt;/SlotType&gt;
-        ///      &lt;Tier&gt;0&lt;/Tier&gt;
-        ///      &lt;Description&gt;{equip.A_common_feline_pet_egg.}&lt;/Description&gt;
-        ///      &lt;PetFamily&gt;Feline&lt;/PetFamily&gt;
-        ///      &lt;Rarity&gt;Common&lt;/Rarity&gt;
-        ///      &lt;Activate&gt;CreatePet&lt;/Activate&gt;
-        ///      &lt;Consumable/&gt;
-        ///      &lt;BagType&gt;3 [rest of string was truncated]&quot;;.
-        /// </summary>
-        internal static string Items {
-            get {
-                return ResourceManager.GetString("Items", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to &lt;?xml version=&quot;1.0&quot; encoding=&quot;ISO-8859-1&quot; standalone=&quot;no&quot;?&gt;&lt;Objects&gt;
-        ///   &lt;Object id =&quot;None&quot; type=&quot;0x0&quot;&gt;
-        ///   &lt;/Object&gt;
-        ///   &lt;Object id=&quot;Tree A&quot; type=&quot;0x0100&quot;&gt;
-        ///      &lt;Class&gt;GameObject&lt;/Class&gt;
-        ///      &lt;Texture&gt;
-        ///         &lt;File&gt;lofiEnvironment&lt;/File&gt;
-        ///         &lt;Index&gt;0x49&lt;/Index&gt;
-        ///      &lt;/Texture&gt;
-        ///      &lt;HitSound&gt;monster/trees_hit&lt;/HitSound&gt;
-        ///      &lt;DeathSound&gt;monster/tress_death&lt;/DeathSound&gt;
-        ///      &lt;MaxHitPoints&gt;1000&lt;/MaxHitPoints&gt;
-        ///      &lt;MinSize&gt;130&lt;/MinSize&gt;
-        ///      &lt;MaxSize&gt;160&lt;/MaxSize&gt;
-        ///      &lt;SizeStep&gt;5&lt;/SizeStep&gt;
-        ///    [rest of string was truncated]&quot;;.
+        ///      &lt;AnimatedTexture&gt;
+        ///         &lt;File&gt;chars8x8rHero1&lt;/File&gt;
+        ///         &lt;Index&gt;0x13&lt;/Index&gt;
+        ///      &lt;/AnimatedTexture&gt;
+        ///      &lt;HitSound&gt;monster/demons_hit&lt;/HitSound&gt;
+        ///      &lt;DeathSound&gt;monster/demons_death&lt;/DeathSound&gt;
+        ///      &lt;Size&gt;100&lt;/Size&gt;
+        ///      &lt;MaxHitPoints&gt;900&lt;/MaxHitPoints&gt;
+        ///      &lt;Defense&gt;7&lt;/Defense&gt;
+        ///      &lt;XpMult&gt;0.1&lt;/XpMult&gt;
+        ///      &lt;Projectile id=&quot;0&quot; [rest of string was truncated]&quot;;.
         /// </summary>
         internal static string Objects {
             get {
@@ -168,7 +90,7 @@ namespace Lib_K_Relay.Properties {
         
         /// <summary>
         ///   Looks up a localized string similar to &lt;Packets&gt;
-        ///	&lt;Packet&gt;
+        ///&lt;Packet&gt;
         ///	&lt;PacketName&gt;FAILURE&lt;/PacketName&gt;
         ///	&lt;PacketID&gt;0&lt;/PacketID&gt;
         ///&lt;/Packet&gt;
@@ -192,8 +114,7 @@ namespace Lib_K_Relay.Properties {
         ///	&lt;PacketName&gt;PLAYERTEXT&lt;/PacketName&gt;
         ///	&lt;PacketID&gt;67&lt;/PacketID&gt;
         ///&lt;/Packet&gt;
-        ///&lt;Packet&gt;
-        ///	&lt;PacketName&gt;TEX [rest of string was truncated]&quot;;.
+        ///&lt; [rest of string was truncated]&quot;;.
         /// </summary>
         internal static string Packets {
             get {
@@ -204,6 +125,7 @@ namespace Lib_K_Relay.Properties {
         /// <summary>
         ///   Looks up a localized string similar to &lt;GroundTypes&gt;
         ///
+        ///&lt;!-- Ground --&gt;
         ///
         ///
         ///   &lt;Ground type=&quot;0x00&quot; id=&quot;Black Water&quot;&gt;
@@ -222,8 +144,7 @@ namespace Lib_K_Relay.Properties {
         ///      &lt;/Texture&gt;
         ///      &lt;Animate dx=&quot;0.5&quot; dy=&quot;0.5&quot;&gt;Wave&lt;/Animate&gt;
         ///      &lt;Sink/&gt;
-        ///      &lt;BlendPriority&gt;2&lt;/BlendPriority&gt;
-        ///       [rest of string was truncated]&quot;;.
+        ///      &lt;BlendPriority&gt;2&lt;/Blend [rest of string was truncated]&quot;;.
         /// </summary>
         internal static string Tiles {
             get {

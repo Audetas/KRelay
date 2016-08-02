@@ -9,35 +9,6 @@ using System.Xml.Linq;
 
 namespace Lib_K_Relay.GameData {
 	/// <summary>
-	/// Provides access to the raw XML game data in the form of strings
-	/// </summary>
-	public static class RawGameData {
-		public static string CompleteGamedata {
-			get { return Resources.CompleteGamedata; }
-		}
-
-		public static string Enemies {
-			get { return Resources.Enemies; }
-		}
-
-		public static string Items {
-			get { return Resources.Items; }
-		}
-
-		public static string Objects {
-			get { return Resources.Objects; }
-		}
-
-		public static string Packets {
-			get { return Resources.Packets; }
-		}
-
-		public static string Tiles {
-			get { return Resources.Tiles; }
-		}
-	}
-
-	/// <summary>
 	/// Represents a mapping of short identifiers to data structures for a given data type
 	/// </summary>
 	/// <typeparam name="IDType">The type of the short identifier (e.g. byte, ushort, string)</typeparam>
@@ -88,12 +59,11 @@ namespace Lib_K_Relay.GameData {
 		}
 	}
 
-	public class GameData {
+	public static class GameData {
 
-		/// <summary>
-		/// Maps enemy data ("type" attribute -> enemy structure)
-		/// </summary>
-		public static GameDataMap<ushort, EnemyStructure> Enemies;
+        public static string RawObjectsXML { get; private set; }
+        public static string RawPacketsXML { get; private set; }
+        public static string RawTilesXML { get; private set; }
 
 		/// <summary>
 		/// Maps item data ("type" attribute -> item structure)
@@ -120,32 +90,36 @@ namespace Lib_K_Relay.GameData {
 		/// </summary>
 		public static GameDataMap<string, ServerStructure> Servers;
 
-		public static void Load() {
-			Parallel.Invoke(
-			() => {
-				Enemies = new GameDataMap<ushort, EnemyStructure>(EnemyStructure.Load(XDocument.Parse(RawGameData.Enemies)));
-				PluginUtils.Log("GameData", "Mapped {0} enemies.", Enemies.Map.Count);
-			},
-			() => {
-				Items = new GameDataMap<ushort, ItemStructure>(ItemStructure.Load(XDocument.Parse(RawGameData.Items)));
-				PluginUtils.Log("GameData", "Mapped {0} items.", Items.Map.Count);
-			},
-			() => {
-				Tiles = new GameDataMap<ushort, TileStructure>(TileStructure.Load(XDocument.Parse(RawGameData.Tiles)));
-				PluginUtils.Log("GameData", "Mapped {0} tiles.", Tiles.Map.Count);
-			},
-			() => {
-				Objects = new GameDataMap<ushort, ObjectStructure>(ObjectStructure.Load(XDocument.Parse(RawGameData.Objects)));
-				PluginUtils.Log("GameData", "Mapped {0} objects.", Objects.Map.Count);
-			},
-			() => {
-				Packets = new GameDataMap<byte, PacketStructure>(PacketStructure.Load(XDocument.Parse(RawGameData.Packets)));
-				PluginUtils.Log("GameData", "Mapped {0} packets.", Packets.Map.Count);
-			},
-			() => {
-				Servers = new GameDataMap<string, ServerStructure>(ServerStructure.Load(XDocument.Load("http://realmofthemadgodhrd.appspot.com/char/list")));
-				PluginUtils.Log("GameData", "Mapped {0} servers.", Servers.Map.Count);
-			});
+        static GameData()
+        {
+            // Cache the XMLs because Resource accessors are slow
+            RawObjectsXML = Resources.Objects;
+            RawPacketsXML = Resources.Packets;
+            RawTilesXML = Resources.Tiles;
+        }
+
+        public static void Load() {
+            Parallel.Invoke(
+            () => {
+                Items = new GameDataMap<ushort, ItemStructure>(ItemStructure.Load(XDocument.Parse(RawObjectsXML)));
+                PluginUtils.Log("GameData", "Mapped {0} items.", Items.Map.Count);
+            },
+            () => {
+                Tiles = new GameDataMap<ushort, TileStructure>(TileStructure.Load(XDocument.Parse(RawTilesXML)));
+	            PluginUtils.Log("GameData", "Mapped {0} tiles.", Tiles.Map.Count);
+            },
+            () => {
+                Objects = new GameDataMap<ushort, ObjectStructure>(ObjectStructure.Load(XDocument.Parse(RawObjectsXML)));
+	            PluginUtils.Log("GameData", "Mapped {0} objects.", Objects.Map.Count);
+            },
+            () => {
+                Packets = new GameDataMap<byte, PacketStructure>(PacketStructure.Load(XDocument.Parse(RawPacketsXML)));
+	            PluginUtils.Log("GameData", "Mapped {0} packets.", Packets.Map.Count);
+            },
+            () => {
+                Servers = new GameDataMap<string, ServerStructure>(ServerStructure.Load(XDocument.Load("http://realmofthemadgodhrd.appspot.com/char/list")));
+	            PluginUtils.Log("GameData", "Mapped {0} servers.", Servers.Map.Count);
+            });
 
 			PluginUtils.Log("GameData", "Successfully loaded game data.");
 		}

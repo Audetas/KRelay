@@ -46,7 +46,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Crypto\RC4Cipher.cs" />
-    <Compile Include="GameData\DataStructures\EnemyStructure.cs" />
+    <Compile Include="GameData\DataStructures\ProjectileStructure.cs" />
     <Compile Include="GameData\GameData.cs" />
     <Compile Include="GameData\DataStructures\IDataStructure.cs" />
     <Compile Include="GameData\DataStructures\ItemStructure.cs" />
@@ -199,22 +199,13 @@
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
-    <None Include="Resources\complete gamedata.xml" />
+    <None Include="Resources\Packets.xml" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Resources\enemies.xml" />
+    <None Include="Resources\Tiles.xml" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Resources\items.xml" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\objects.xml" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\packets.xml" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\tiles.xml" />
+    <None Include="Resources\Objects.xml" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
