@@ -184,7 +184,6 @@
     <Compile Include="Utilities\HookManager.Windows.cs" />
     <Compile Include="Utilities\MouseEventExtArgs.cs" />
     <Compile Include="Utilities\PluginUtils.cs" />
-    <Compile Include="Utilities\Serializer.cs" />
     <Compile Include="Networking\Packets\PacketWriter.cs" />
     <Compile Include="Networking\Packets\Server\UpdatePacket.cs" />
     <Compile Include="Proxy.cs" />

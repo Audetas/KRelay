@@ -24,8 +24,6 @@ namespace Lib_K_Relay.Networking.Packets.Client
         public string PlayPlatform;
         public string PlatformToken;
 
-        public byte[] RAW;
-
         public override PacketType Type
         { get { return PacketType.HELLO; } }
 

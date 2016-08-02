@@ -34,44 +34,11 @@ namespace K_Relay
 
         private async void FrmMainMetro_Load(object sender, EventArgs e)
         {
-			Action[] workers =
-			{
-				GameData.Load,
-
-				// suppress obsolete warnings here
-#pragma warning disable 618
-				Serializer.SerializeServers,
-                Serializer.SerializeGameObjects,
-                Serializer.SerializePacketIds,
-                Serializer.SerializePacketTypes,
-#pragma warning restore 618
-
-				InitPackets,
-                InitSettings
-            };
-
             await Task.Run(() =>
             {
-                Parallel.ForEach(workers, (worker) =>
-                {
-                    //try
-                    {
-                        worker.Invoke();
-                    }/*
-                    catch (Exception ex)
-                    {
-                        MessageBox.Show(
-                            "There was an error while initializing K Relay.\n" +
-                            "Please make sure:\n" +
-                            "- All files are extracted and in the same directory\n" +
-                            "- AntiVirus is not blocking K Relay's connection\n" +
-                            "- Another proxy isn't running on your computer\n\n" +
-                            "You can try to restart your computer and see if the issue is fixed.\n" +
-                            "Additional info is as follows:\n\n" + ex,
-                            "K Relay", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                        Environment.Exit(ex.HResult);
-                    }*/
-                });
+                GameData.Load();
+                InitPackets();
+                InitSettings();
             });
 
             _proxy = new Proxy();
@@ -79,9 +46,7 @@ namespace K_Relay
             _proxy.ProxyListenStopped += _ => SetStatus("Stopped", Color.Red);
             InitPlugins();
 
-			//if (Serializer.Servers.ContainsKey((string)lstServers.SelectedItem))
 			if (GameData.Servers.Map.Where(s => s.Value.Name == (string)lstServers.SelectedItem).Any())
-				//Proxy.DefaultServer = Serializer.GetServerByFullName((string)lstServers.SelectedItem);
 				Proxy.DefaultServer = GameData.Servers.ByName((string)lstServers.SelectedItem).Address;
 			else
 				PluginUtils.Log("K Relay", "Default server wasn't found, using USWest.");
