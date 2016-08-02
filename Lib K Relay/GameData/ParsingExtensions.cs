@@ -33,11 +33,11 @@ namespace Lib_K_Relay.GameData {
 		}
 
 		public static int ParseInt(this string input) {
-			return int.Parse(input);
+			return int.Parse(input, System.Globalization.CultureInfo.InvariantCulture);
 		}
 
 		public static float ParseFloat(this string input) {
-			return float.Parse(input);
+			return float.Parse(input, System.Globalization.CultureInfo.InvariantCulture);
 		}
 	}
 }
