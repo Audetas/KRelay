@@ -215,7 +215,7 @@ namespace AutoNexus {
 		Dictionary<Client, ClientState> clients;
 
 		public void Initialize(Proxy proxy) {
-			GameData.Enemies.Map
+			GameData.Objects.Map
 				.ForEach(enemy => {
 					// armor piercing
 					if (enemy.Value.Projectiles.Any(p => p.ArmorPiercing)) {
@@ -227,10 +227,10 @@ namespace AutoNexus {
 					}
 
 					// armor break
-					if (enemy.Value.Projectiles.Any(p => p.StatusEffects.ContainsKey(ConditionEffectIndex.ArmorBroken))) {
+					if (enemy.Value.Projectiles.Any(p => p.StatusEffects.ContainsKey("Armor Broken"))) {
 						Bullet.breaking[enemy.Value.ID] = new List<int>();
 						enemy.Value.Projectiles.ForEach(proj => {
-							if (proj.StatusEffects.ContainsKey(ConditionEffectIndex.ArmorBroken))
+							if (proj.StatusEffects.ContainsKey("Armor Broken"))
 								Bullet.breaking[enemy.Value.ID].Add(proj.ID);
 						});
 					}
