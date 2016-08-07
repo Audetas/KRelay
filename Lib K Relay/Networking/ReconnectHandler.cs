@@ -104,21 +104,23 @@ namespace Lib_K_Relay.Networking
 
         private void OnConnectCommand(Client client, string command, string[] args)
         {
-
-            if (args.Length == 1 && GameData.GameData.Servers.Map.Where(s => s.Value.Abbreviation == args[0].ToUpper()).Count() == 1)
-            {
-                ReconnectPacket reconnect = (ReconnectPacket)Packet.Create(PacketType.RECONNECT);
-                reconnect.Host = GameData.GameData.Servers.ByID(args[0].ToUpper()).Address;
-                reconnect.Port = 2050;
-                reconnect.GameId = -2;
-                reconnect.Name = "Nexus";
-                reconnect.IsFromArena = false;
-                reconnect.Key = new byte[0];
-                reconnect.KeyTime = 0;
-                SendReconnect(client, reconnect);
-            }
-            else
-                client.SendToClient(PluginUtils.CreateOryxNotification("K Relay", "Unknown server!"));
+			if (args.Length == 1)
+			{
+				if (GameData.GameData.Servers.Map.ContainsKey(args[0].ToUpper()))
+				{
+					ReconnectPacket reconnect = (ReconnectPacket)Packet.Create(PacketType.RECONNECT);
+					reconnect.Host = GameData.GameData.Servers.ByID(args[0].ToUpper()).Address;
+					reconnect.Port = 2050;
+					reconnect.GameId = -2;
+					reconnect.Name = "Nexus";
+					reconnect.IsFromArena = false;
+					reconnect.Key = new byte[0];
+					reconnect.KeyTime = 0;
+					SendReconnect(client, reconnect);
+				}
+				else
+					client.SendToClient(PluginUtils.CreateOryxNotification("K Relay", "Unknown server!"));
+			}
         }
 
         private void OnReconCommand(Client client, string command, string[] args)
