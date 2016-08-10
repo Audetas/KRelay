@@ -53,6 +53,7 @@ namespace K_Relay
 
             PluginUtils.Log("K Relay", "Initialization complete.");
 
+            btnToggleProxy.Enabled = true;
             if (Config.Default.StartProxyByDefault)
                 btnToggleProxy_Click(null, null);
         }
