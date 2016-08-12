@@ -60,6 +60,10 @@
       <Project>{b1b5f3c3-c4ff-4c6e-8879-d2e4e99beef9}</Project>
       <Name>Lib K Relay</Name>
     </ProjectReference>
+    <ProjectReference Include="..\MapCacher\MapCacher.csproj">
+      <Project>{bd3f0da6-a032-4f78-932b-492e801b1ba8}</Project>
+      <Name>MapCacher</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

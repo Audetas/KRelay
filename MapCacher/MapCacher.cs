@@ -14,7 +14,7 @@ using Lib_K_Relay.Utilities;
 using System.Text;
 
 namespace MapCacher {
-	static class Extensions {
+	internal static class Extensions {
 		public static T Shift<T>(this List<T> list) {
 			if (list.Count < 1) throw new IndexOutOfRangeException("List is empty.");
 			T output = list[0];
@@ -30,27 +30,69 @@ namespace MapCacher {
 		}
 	}
 
-	class Map {
+	/// <summary>
+	/// Represents a cached world map
+	/// </summary>
+	public class Map {
+		/// <summary>
+		/// The UUID of the map
+		/// </summary>
 		public uint UUID;
+
+		/// <summary>
+		/// The dimensions of the map
+		/// </summary>
 		public int Width, Height;
+
+		/// <summary>
+		/// The raw data of the map such that Data[x, y] is the tile type
+		/// </summary>
 		public ushort[,] Data;
 
+		/// <summary>
+		/// Constructs an empty map from the given packet
+		/// </summary>
+		/// <param name="info">The MapInfoPacket</param>
 		public Map(MapInfoPacket info) {
 			UUID = info.Fp;
 			Width = info.Width;
 			Height = info.Height;
 			Data = new ushort[Width, Height];
 		}
+
+		/// <summary>
+		/// Gets the type of the tile at the given coordinates
+		/// </summary>
+		/// <returns>The tile type</returns>
+		public ushort At(int x, int y) {
+			return Data[x, y];
+		}
+
+		/// <summary>
+		/// Gets the type of the tile at the given coordinates
+		/// </summary>
+		/// <returns>The tile type</returns>
+		public ushort At(float x, float y) {
+			return Data[(int)x, (int)y];
+		}
 	}
 
 	public class MapCacher : IPlugin {
+
+		/// <summary>
+		/// Intended to be used to force MapCacher to load
+		/// </summary>
+		public static void ForceLoad() {
+			return;
+		}
+
 		public static readonly int MaxTilesPerPacket = 2048;
 
-		Dictionary<uint, Map> CachedMaps = new Dictionary<uint, Map>();
+		public static Dictionary<uint, Map> CachedMaps = new Dictionary<uint, Map>();
 
-		Dictionary<Client, Map> CurrentMaps = new Dictionary<Client, Map>();
+		public static Dictionary<Client, Map> CurrentMaps = new Dictionary<Client, Map>();
 
-		Dictionary<Client, List<Tile>> SendQueues = new Dictionary<Client, List<Tile>>();
+		public static Dictionary<Client, List<Tile>> SendQueues = new Dictionary<Client, List<Tile>>();
 
 		public string GetAuthor() {
 			return "apemanzilla";
@@ -124,6 +166,16 @@ namespace MapCacher {
 				PluginUtils.Log("Map Cacher", "Cached map data sent.");
 #endif
 			}
+		}
+	}
+
+	public static class ClientExtensions {
+		/// <summary>
+		/// Gets the current map data for this client (or null if not present)
+		/// </summary>
+		/// <returns>The map data or null</returns>
+		public static Map GetMap(this Client client) {
+			return MapCacher.CurrentMaps.ContainsKey(client) ? MapCacher.CurrentMaps[client] : null;
 		}
 	}
 }

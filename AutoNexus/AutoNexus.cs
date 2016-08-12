@@ -1,8 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 using Lib_K_Relay;
 using Lib_K_Relay.GameData;
@@ -13,6 +11,8 @@ using Lib_K_Relay.Networking.Packets.Client;
 using Lib_K_Relay.Networking.Packets.Server;
 using Lib_K_Relay.Networking.Packets.DataObjects;
 using Lib_K_Relay.Utilities;
+
+using MapCacher;
 
 namespace AutoNexus {
 	internal static class Extensions {
@@ -66,8 +66,6 @@ namespace AutoNexus {
 		// enemy id -> enemy type
 		public Dictionary<int, ushort> EnemyTypeMap = new Dictionary<int, ushort>();
 
-		public ushort[,] TileTypes = new ushort[0, 0];
-
 		public Client client;
 
 		public ClientState(Client client) {
@@ -78,8 +76,6 @@ namespace AutoNexus {
 			foreach (Entity e in update.NewObjs)
 				if (!EnemyTypeMap.ContainsKey(e.Status.ObjectId))
 					EnemyTypeMap[e.Status.ObjectId] = (ushort)e.ObjectType;
-			foreach (Tile t in update.Tiles)
-				TileTypes[t.X, t.Y] = t.Type;
 		}
 
 		public void Tick(NewTickPacket tick) {
@@ -175,13 +171,9 @@ namespace AutoNexus {
 			}
 		}
 
-		public void MapInfo(MapInfoPacket mapinfo) {
-			TileTypes = new ushort[mapinfo.Width, mapinfo.Height];
-		}
-
 		public void GroundDamage(GroundDamagePacket gdamage) {
-			ushort t = TileTypes[(int)Math.Round(gdamage.Position.X), (int)Math.Round(gdamage.Position.Y)];
-			if (GameData.Tiles.Map.Any(tile => tile.Key == t)) {
+			ushort t = client.GetMap().At(gdamage.Position.X, gdamage.Position.Y);
+			if (GameData.Tiles.Map.ContainsKey(t)) {
 				gdamage.Send = ApplyDamage(GameData.Tiles.ByID(t).MaxDamage);
 			}
 		}
@@ -250,8 +242,10 @@ namespace AutoNexus {
 			proxy.HookPacket(PacketType.ENEMYSHOOT, OnPacket);
 			proxy.HookPacket(PacketType.PLAYERHIT, OnPacket);
 			proxy.HookPacket(PacketType.AOE, OnPacket);
-			proxy.HookPacket(PacketType.MAPINFO, OnPacket);
 			proxy.HookPacket(PacketType.GROUNDDAMAGE, OnPacket);
+
+			// force map cacher to load
+			MapCacher.MapCacher.ForceLoad();
 		}
 
 		void OnCommand(Client client, string command, string[] args) {
@@ -336,9 +330,6 @@ namespace AutoNexus {
 						break;
 					case PacketType.AOE:
 						state.AoE(p as AoEPacket);
-						break;
-					case PacketType.MAPINFO:
-						state.MapInfo(p as MapInfoPacket);
 						break;
 					case PacketType.GROUNDDAMAGE:
 						state.GroundDamage(p as GroundDamagePacket);
