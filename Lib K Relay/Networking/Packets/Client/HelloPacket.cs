@@ -23,7 +23,8 @@ namespace Lib_K_Relay.Networking.Packets.Client
         public string GameNetUserId;
         public string PlayPlatform;
         public string PlatformToken;
-
+        public string UserToken;
+        
         public override PacketType Type
         { get { return PacketType.HELLO; } }
 
@@ -44,6 +45,7 @@ namespace Lib_K_Relay.Networking.Packets.Client
             GameNetUserId = r.ReadString();
             PlayPlatform = r.ReadString();
             PlatformToken = r.ReadString();
+            UserToken = r.ReadString();
         }
 
         public override void Write(PacketWriter w)
@@ -64,6 +66,7 @@ namespace Lib_K_Relay.Networking.Packets.Client
             w.Write(GameNetUserId);
             w.Write(PlayPlatform);
             w.Write(PlatformToken);
+            w.Write(UserToken);
         }
     }
 }
