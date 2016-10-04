@@ -99,7 +99,7 @@ namespace MapCacher {
 		}
 
 		public string[] GetCommands() {
-			return new string[0];
+			return new string[] { "/mapcacher" };
 		}
 
 		public string GetDescription() {
@@ -113,6 +113,12 @@ namespace MapCacher {
 		public void Initialize(Proxy proxy) {
 			proxy.HookPacket(PacketType.MAPINFO, OnMapInfo);
 			proxy.HookPacket(PacketType.UPDATE, OnUpdate);
+
+			proxy.HookCommand("mapcacher", (Client client, string cmd, string[] args) => {
+				Config.Default.enabled = !Config.Default.enabled;
+				Config.Default.Save();
+				client.SendToClient(PluginUtils.CreateOryxNotification("MapCacher", "Map resending is now " + (Config.Default.enabled ? "enabled" : "disabled")));
+			});
 
 			proxy.ClientDisconnected += OnDisconnect;
 		}
@@ -157,7 +163,7 @@ namespace MapCacher {
 			foreach (Tile tile in update.Tiles)
 				CurrentMaps[client].Data[tile.X, tile.Y] = tile.Type;
 
-			if (SendQueues[client].Count > 0) {
+			if (Config.Default.enabled && SendQueues[client].Count > 0) {
 				List<Tile> newTiles = new List<Tile>(update.Tiles);
 				SendQueues[client].Shift(Math.Min(MaxTilesPerPacket, Math.Max(0, MaxTilesPerPacket - newTiles.Count))).ForEach(tile => newTiles.Add(tile));
 				update.Tiles = newTiles.ToArray();
