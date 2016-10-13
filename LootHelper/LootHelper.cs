@@ -88,7 +88,7 @@ namespace LootHelper
                                 invSwap.SlotObject1 = new SlotObject();
                                 invSwap.SlotObject1.ObjectId = bagId;
                                 invSwap.SlotObject1.SlotId = (byte)bi;
-                                invSwap.SlotObject1.ObjectType = (short)state.LootBagItems[bagId][bi];
+                                invSwap.SlotObject1.ObjectType = state.LootBagItems[bagId][bi];
 
                                 invSwap.SlotObject2 = new SlotObject();
                                 invSwap.SlotObject2.ObjectId = client.ObjectId;
