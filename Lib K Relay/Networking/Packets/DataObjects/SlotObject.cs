@@ -10,13 +10,13 @@ namespace Lib_K_Relay.Networking.Packets.DataObjects
     {
         public int ObjectId;
         public byte SlotId;
-        public short ObjectType;
+        public int ObjectType;
 
         public IDataObject Read(PacketReader r)
         {
             ObjectId = r.ReadInt32();
             SlotId = r.ReadByte();
-            ObjectType = r.ReadInt16();
+            ObjectType = r.ReadInt32();
 
             return this;
         }
