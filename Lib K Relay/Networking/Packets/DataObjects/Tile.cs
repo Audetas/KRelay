@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 
 namespace Lib_K_Relay.Networking.Packets.DataObjects
 {
+    [Serializable]
     public class Tile : IDataObject
     {
         public short X;

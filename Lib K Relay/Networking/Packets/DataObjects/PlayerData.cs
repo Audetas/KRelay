@@ -155,15 +155,24 @@ namespace Lib_K_Relay.Networking.Packets.DataObjects
             else if (id == StatsType.OxygenBar) Breath = intValue;
             else if (id == StatsType.HealthPotionCount) HealthPotionCount = intValue;
             else if (id == StatsType.MagicPotionCount) MagicPotionCount = intValue;
-            else if (id == StatsType.Backpack0) BackPack[0] = intValue;
-            else if (id == StatsType.Backpack1) BackPack[1] = intValue;
-            else if (id == StatsType.Backpack2) BackPack[2] = intValue;
-            else if (id == StatsType.Backpack3) BackPack[3] = intValue;
-            else if (id == StatsType.Backpack4) BackPack[4] = intValue;
-            else if (id == StatsType.Backpack5) BackPack[5] = intValue;
-            else if (id == StatsType.Backpack6) BackPack[6] = intValue;
-            else if (id == StatsType.Backpack7) BackPack[7] = intValue;
-            else if (id == StatsType.HasBackpack) HasBackpack = intValue > 0;
+            else if (id == StatsType.Backpack0) { if (HasBackpack) Slot[12] = intValue; BackPack[0] = intValue; }
+            else if (id == StatsType.Backpack1) { if (HasBackpack) Slot[13] = intValue; BackPack[1] = intValue; }
+            else if (id == StatsType.Backpack2) { if (HasBackpack) Slot[14] = intValue; BackPack[2] = intValue; }
+            else if (id == StatsType.Backpack3) { if (HasBackpack) Slot[15] = intValue; BackPack[3] = intValue; }
+            else if (id == StatsType.Backpack4) { if (HasBackpack) Slot[16] = intValue; BackPack[4] = intValue; }
+            else if (id == StatsType.Backpack5) { if (HasBackpack) Slot[17] = intValue; BackPack[5] = intValue; }
+            else if (id == StatsType.Backpack6) { if (HasBackpack) Slot[18] = intValue; BackPack[6] = intValue; }
+            else if (id == StatsType.Backpack7) { if (HasBackpack) Slot[19] = intValue; BackPack[7] = intValue; }
+            else if (id == StatsType.HasBackpack)
+            {
+                HasBackpack = intValue > 0;
+                if (HasBackpack)
+                {
+                    int orig = Slot.Length;
+                    Array.Resize(ref Slot, orig + BackPack.Length);
+                    Array.Copy(BackPack, 0, Slot, orig, BackPack.Length);
+                }
+            }
             else if (id == StatsType.Skin) Skin = intValue;
         }
 
