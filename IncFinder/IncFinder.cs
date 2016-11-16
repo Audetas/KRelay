@@ -26,7 +26,7 @@ namespace IncFinder
         { return "Inc Finder"; }
 
         public string GetDescription()
-        { return "Tells you what people around you have Wine Cellar Incantations in their inventory."; }
+        { return "Notifies you when people have Wine Cellar Incantations in their inventories."; }
 
         public string[] GetCommands()
         { return new string[] { "/wc" }; }
