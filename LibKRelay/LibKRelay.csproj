@@ -1,0 +1,201 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="12.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{B1B5F3C3-C4FF-4C6E-8879-D2E4E99BEEF9}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>LibKRelay</RootNamespace>
+    <AssemblyName>LibKRelay</AssemblyName>
+    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>none</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="ClientConnection.cs" />
+    <Compile Include="ConsoleEx.cs" />
+    <Compile Include="Data\ItemStructure.cs" />
+    <Compile Include="Data\ObjectStructure.cs" />
+    <Compile Include="Data\ParsingExtensions.cs" />
+    <Compile Include="Data\ProjectileStructure.cs" />
+    <Compile Include="Data\ServerStructure.cs" />
+    <Compile Include="Data\TileStructure.cs" />
+    <Compile Include="Extensions.cs" />
+    <Compile Include="Constants.cs" />
+    <Compile Include="Messages\Data\ARGB.cs" />
+    <Compile Include="Messages\Data\BitmapData.cs" />
+    <Compile Include="Messages\Client\AcceptTrade.cs" />
+    <Compile Include="Messages\Client\AoEAckPacket.cs" />
+    <Compile Include="Messages\Client\Buy.cs" />
+    <Compile Include="Messages\Client\CancelTrade.cs" />
+    <Compile Include="Messages\Client\ChangeGuildRank.cs" />
+    <Compile Include="Messages\Client\ChangeTrade.cs" />
+    <Compile Include="Messages\Client\CheckCredits.cs" />
+    <Compile Include="Messages\Client\ChooseName.cs" />
+    <Compile Include="Messages\Client\CreateGuild.cs" />
+    <Compile Include="Messages\Client\Create.cs" />
+    <Compile Include="Messages\Client\EditAccountList.cs" />
+    <Compile Include="Messages\Client\EnemyHit.cs" />
+    <Compile Include="Messages\Client\EnterArena.cs" />
+    <Compile Include="Messages\Client\Escape.cs" />
+    <Compile Include="Messages\Client\GotoAck.cs" />
+    <Compile Include="Messages\Client\GroundDamage.cs" />
+    <Compile Include="Messages\Client\GuildInvite.cs" />
+    <Compile Include="Messages\Client\GuildRemove.cs" />
+    <Compile Include="Messages\Client\Hello.cs" />
+    <Compile Include="Messages\Client\InvDrop.cs" />
+    <Compile Include="Messages\Client\InvSwap.cs" />
+    <Compile Include="Messages\Client\JoinGuild.cs" />
+    <Compile Include="Messages\Client\KeyInfoRequest.cs" />
+    <Compile Include="Messages\Client\LeaveArena.cs" />
+    <Compile Include="Messages\Client\Load.cs" />
+    <Compile Include="Messages\Client\Move.cs" />
+    <Compile Include="Messages\Client\OtherHit.cs" />
+    <Compile Include="Messages\Client\PetCommand.cs" />
+    <Compile Include="Messages\Client\PetYardCommand.cs" />
+    <Compile Include="Messages\Client\PlayerHit.cs" />
+    <Compile Include="Messages\Client\PlayerShoot.cs" />
+    <Compile Include="Messages\Client\PlayerText.cs" />
+    <Compile Include="Messages\Client\Pong.cs" />
+    <Compile Include="Messages\Client\RequestTrade.cs" />
+    <Compile Include="Messages\Client\Reskin.cs" />
+    <Compile Include="Messages\Client\ReskinPet.cs" />
+    <Compile Include="Messages\Client\SetCondition.cs" />
+    <Compile Include="Messages\Client\ShootAck.cs" />
+    <Compile Include="Messages\Client\SquareHit.cs" />
+    <Compile Include="Messages\Client\Teleport.cs" />
+    <Compile Include="Messages\Client\TinkerQuest.cs" />
+    <Compile Include="Messages\Client\UpdateAck.cs" />
+    <Compile Include="Messages\Client\UseItem.cs" />
+    <Compile Include="Messages\Client\UsePortal.cs" />
+    <Compile Include="Messages\Client\ViewQuests.cs" />
+    <Compile Include="Messages\Data\Entity.cs" />
+    <Compile Include="Messages\Data\Item.cs" />
+    <Compile Include="Messages\Data\Location.cs" />
+    <Compile Include="Messages\Data\LocationRecord.cs" />
+    <Compile Include="Messages\Data\StatData.cs" />
+    <Compile Include="Messages\Message.cs" />
+    <Compile Include="Messages\MessageReader.cs" />
+    <Compile Include="Messages\MessageWriter.cs" />
+    <Compile Include="Messages\Server\AccountList.cs" />
+    <Compile Include="Messages\Server\AllyShoot.cs" />
+    <Compile Include="Messages\Server\AoE.cs" />
+    <Compile Include="Messages\Server\ArenaDeath.cs" />
+    <Compile Include="Messages\Server\ArenaNextWave.cs" />
+    <Compile Include="Messages\Server\BuyResult.cs" />
+    <Compile Include="Messages\Server\ClientStat.cs" />
+    <Compile Include="Messages\Server\CreateGuildResult.cs" />
+    <Compile Include="Messages\Server\CreateSuccess.cs" />
+    <Compile Include="Messages\Server\Damage.cs" />
+    <Compile Include="Messages\Server\Death.cs" />
+    <Compile Include="Messages\Server\EnemyShoot.cs" />
+    <Compile Include="Messages\Server\Failure.cs" />
+    <Compile Include="Messages\Server\File.cs" />
+    <Compile Include="Messages\Server\GlobalNotification.cs" />
+    <Compile Include="Messages\Server\Goto.cs" />
+    <Compile Include="Messages\Server\HatchEgg.cs" />
+    <Compile Include="Messages\Server\InvitedToGuild.cs" />
+    <Compile Include="Messages\Server\InvResult.cs" />
+    <Compile Include="Messages\Server\KeyInfoResponse.cs" />
+    <Compile Include="Messages\Server\MapInfo.cs" />
+    <Compile Include="Messages\Server\NameResult.cs" />
+    <Compile Include="Messages\Server\NewAbilityUnlocked.cs" />
+    <Compile Include="Messages\Server\NewTick.cs" />
+    <Compile Include="Messages\Server\Notification.cs" />
+    <Compile Include="Messages\Server\PasswordPrompt.cs" />
+    <Compile Include="Messages\Server\PetEvolveResult.cs" />
+    <Compile Include="Messages\Server\Pic.cs" />
+    <Compile Include="Messages\Server\Ping.cs" />
+    <Compile Include="Messages\Server\PlaySound.cs" />
+    <Compile Include="Messages\Server\QuestFetchResponse.cs" />
+    <Compile Include="Messages\Server\QuestObjId.cs" />
+    <Compile Include="Messages\Server\QuestRedeemResponse.cs" />
+    <Compile Include="Messages\Server\Reconnect.cs" />
+    <Compile Include="Messages\Server\RemovePetFromList.cs" />
+    <Compile Include="Messages\Server\ReskinUnlock.cs" />
+    <Compile Include="Messages\Server\ServerPlayerShoot.cs" />
+    <Compile Include="Messages\Server\ShowEffect.cs" />
+    <Compile Include="Messages\Server\Text.cs" />
+    <Compile Include="Messages\Server\TradeAccepted.cs" />
+    <Compile Include="Messages\Server\TradeChanged.cs" />
+    <Compile Include="Messages\Server\TradeDone.cs" />
+    <Compile Include="Messages\Server\TradeRequested.cs" />
+    <Compile Include="Messages\Server\TradeStart.cs" />
+    <Compile Include="Messages\Server\Update.cs" />
+    <Compile Include="Messages\Server\UpdatePet.cs" />
+    <Compile Include="Messages\Server\UpdatePetYardResult.cs" />
+    <Compile Include="Messages\Server\VerifyEmailDialog.cs" />
+    <Compile Include="Messages\Data\SlotObject.cs" />
+    <Compile Include="Messages\Data\Status.cs" />
+    <Compile Include="Messages\Data\Tile.cs" />
+    <Compile Include="Net\MessageBuffer.cs" />
+    <Compile Include="Net\RC4Cipher.cs" />
+    <Compile Include="Plugin.cs" />
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
+    <Compile Include="ClientListener.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Properties\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Resources\Packets.txt">
+      <SubType>Designer</SubType>
+    </Content>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Tiles.xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Objects.xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Resources\Servers.xml" />
+  </ItemGroup>
+  <ItemGroup />
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>
