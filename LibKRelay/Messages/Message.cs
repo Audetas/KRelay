@@ -12,7 +12,7 @@ namespace LibKRelay.Messages
 {
     public class Message
     {
-        public delegate void GenericMessageHandler<T>(Connection client, T packet) where T : Message;
+        public delegate void GenericMessageHandler<T>(Connection con, T message) where T : Message;
 
         public bool Send { get; set; } = true;
 

@@ -32,7 +32,7 @@ namespace AutoAbility
         public string[] GetCommands()
         { return new string[] { "/aa on", "/aa off", "/aa settings" }; }
 
-        public void Initialize(ClientListener listener)
+        public override void Initialize(ClientListener listener)
         {
             _enabled = AutoAbilityConfig.Default.EnabledByDefault;
 
@@ -43,7 +43,39 @@ namespace AutoAbility
             Message.Hook<UseItem>(OnUseItem);
             Message.Hook<Update>(OnUpdate);
             Message.Hook<NewTick>(OnNewTick);
-            //proxy.HookCommand("aa", OnAACommand);
+            Message.Hook<PlayerText>(OnPlayerText);
+        }
+
+        private void OnPlayerText(Connection con, PlayerText playerText)
+        {
+            if (playerText.IsCommand("aa"))
+            {
+                var args = playerText.GetArgs();
+                if (args.Length == 0) return;
+
+                if (args[0] == "on")
+                {
+                    _enabled = true;
+                    con.Client.Send(
+                        CreateNotification(
+                            con.Self.ObjectId, "Auto Ability Enabled!"));
+                }
+                else if (args[0] == "off")
+                {
+                    _enabled = false;
+                    con.Client.Send(
+                        CreateNotification(
+                            con.Self.ObjectId, "Auto Ability Disabled!"));
+                }
+                else if (args[0] == "settings")
+                {
+                    ShowGenericSettingsGUI(AutoAbilityConfig.Default, "Auto Ablity Settings");
+                }
+                else if (args[0] == "test")
+                {
+                    SendUseItem(con);
+                }
+            }
         }
 
         private void OnCreateSuccess(Connection con, CreateSuccess createSuccess)
@@ -121,34 +153,6 @@ namespace AutoAbility
                     }
                     break;
                 }
-            }
-        }
-
-        private void OnAACommand(Connection con, string command, string[] args)
-        {
-            if (args.Length == 0) return;
-
-            if (args[0] == "on")
-            {
-                _enabled = true;
-                con.Client.Send(
-                    CreateNotification(
-                        con.Self.ObjectId, "Auto Ability Enabled!"));
-            }
-            else if (args[0] == "off")
-            {
-                _enabled = false;
-                con.Client.Send(
-                    CreateNotification(
-                        con.Self.ObjectId, "Auto Ability Disabled!"));
-            }
-            else if (args[0] == "settings")
-            {
-                ShowGenericSettingsGUI(AutoAbilityConfig.Default, "Auto Ablity Settings");
-            }
-            else if (args[0] == "test")
-            {
-                SendUseItem(con);
             }
         }
 

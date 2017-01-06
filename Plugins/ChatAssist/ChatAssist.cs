@@ -24,27 +24,31 @@ namespace ChatAssist
         public string[] GetCommands()
         { return new string[] { "/chatassist off", "/chatassist on", "/chatassist settings" }; }
 
-        public void Initialize(ClientListener proxy)
+        public override void Initialize(ClientListener proxy)
         {
-            //proxy.HookCommand("chatassist", OnChatAssistCommand);
             Message.Hook<Text>(OnText);
+            Message.Hook<PlayerText>(OnPlayerText);
         }
 
-        private void OnChatAssistCommand(Connection con, string command, string[] args)
+        private void OnPlayerText(Connection con, PlayerText message)
         {
-            if (args.Length == 0) return;
+            if (message.IsCommand("chatassist"))
+            {
+                var args = message.GetArgs();
+                if (args.Length == 0) return;
 
-            if (args[0] == "settings")
-                ShowGUI(new FrmChatAssistSettings());
-            else if (args[0] == "on")
-            {
-                ChatAssistConfig.Default.Enabled = true;
-                con.Client.Send(CreateNotification(con.Self.ObjectId, "Chat Assist Enabled!"));
-            }
-            else if (args[0] == "off")
-            {
-                ChatAssistConfig.Default.Enabled = false;
-                con.Client.Send(CreateNotification(con.Self.ObjectId, "Chat Assist Disabled!"));
+                if (args[0] == "settings")
+                    ShowGUI(new FrmChatAssistSettings());
+                else if (args[0] == "on")
+                {
+                    ChatAssistConfig.Default.Enabled = true;
+                    con.Client.Send(CreateNotification(con.Self.ObjectId, "Chat Assist Enabled!"));
+                }
+                else if (args[0] == "off")
+                {
+                    ChatAssistConfig.Default.Enabled = false;
+                    con.Client.Send(CreateNotification(con.Self.ObjectId, "Chat Assist Disabled!"));
+                }
             }
         }
 

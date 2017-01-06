@@ -51,9 +51,9 @@ namespace KRelay.Scripting
         #region Script Utility Calls
         public static void ListClients()
         {
-            ConsoleEx.Ok("Number of clients connected: " + Program.Listener.Clients.Count);
+            ConsoleEx.Ok("Number of clients connected: " + Program.Listener.Connections.Count);
             int index = 0;
-            foreach (Connection connection in Program.Listener.Clients)
+            foreach (Connection connection in Program.Listener.Connections)
             {
                 ConsoleEx.Log("\t[" + index + "] " + connection.ToString());
                 index++;
@@ -76,14 +76,14 @@ namespace KRelay.Scripting
 
         public static void LogPacket(string type, int amount)
         {
-            ConsoleEx.Error("Not yet implemented");
+            //ConsoleEx.Error("Not yet implemented");
             string amountString = amount == 0 ? "until toggled" : amount.ToString() + " times";
             ConsoleEx.Ok(type.ToString() + " packets will be logged " + amountString);
         }
 
         public static void BlockPacket(string type, int amount)
         {
-            ConsoleEx.Error("Not yet implemented");
+            //ConsoleEx.Error("Not yet implemented");
             string amountString = amount == 0 ? "until toggled" : amount.ToString() + " times";
             ConsoleEx.Ok(type.ToString() + " packets will be blocked " + amountString);
         }

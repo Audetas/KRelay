@@ -88,6 +88,7 @@ namespace LibKRelay
         public Dictionary<int, Entity> World { get; private set; }
         public ConnectionInfo Client { get; private set; }
         public ConnectionInfo Server { get; private set; }
+
         private bool firedDisconnect = false;
         private int objectId = -1;
         private int lastUpdate = 0;
@@ -245,7 +246,7 @@ namespace LibKRelay
 
         public override string ToString()
         {
-            return string.Format("{ ObjectId: {1}, Entity: {2} }", objectId, Self);
+            return string.Format("{ ObjectId: {0}, Entity: {1} }", objectId, Self);
         }
     }
 }

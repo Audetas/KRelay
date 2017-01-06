@@ -41,7 +41,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="ClientConnection.cs" />
+    <Compile Include="Connection.cs" />
     <Compile Include="ConsoleEx.cs" />
     <Compile Include="Data\ItemStructure.cs" />
     <Compile Include="Data\ObjectStructure.cs" />

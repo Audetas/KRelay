@@ -15,7 +15,7 @@ namespace LibKRelay
     /// </summary>
     public class ClientListener
     {
-        public delegate void ConnectionHandler(Connection client);
+        public delegate void ConnectionHandler(Connection connection);
         public delegate void ListenHandler(ClientListener listener);
 
         public event ListenHandler ListenStarted;
@@ -25,7 +25,7 @@ namespace LibKRelay
         public ServerStructure DefaultServer { get; private set; }
         public string ListenAddress { get; private set; }
         public int ListenPort { get; private set; }
-        public List<Connection> Clients { get; private set; }
+        public List<Connection> Connections { get; private set; }
 
         private TcpListener listener;
 
@@ -34,7 +34,7 @@ namespace LibKRelay
         /// </summary>
         public ClientListener()
         {
-            Clients = new List<Connection>();
+            Connections = new List<Connection>();
         }
 
         /// <summary>
@@ -88,11 +88,11 @@ namespace LibKRelay
                     var connection = new Connection(accepted, DefaultServer.Address);
                     connection.Disconnected += (client) =>
                     {
-                        Clients.Remove(client);
+                        Connections.Remove(client);
                         ClientDisconnected?.TryDynamicInvoke(client);
                         ConsoleEx.Error("Client disconnected");
                     };
-                    Clients.Add(connection);
+                    Connections.Add(connection);
                     ConsoleEx.Ok("Client connected");
                     ClientConnected?.TryDynamicInvoke(connection);
                 }
