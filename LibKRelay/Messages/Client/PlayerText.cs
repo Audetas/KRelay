@@ -34,6 +34,7 @@ namespace LibKRelay.Messages.Client
         }
 
         /// <summary>
+        /// Gets an array of space separated arguments for the command.
         /// </summary>
         public string[] GetArgs()
         {
