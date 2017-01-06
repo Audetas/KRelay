@@ -65,7 +65,7 @@ namespace Lib_K_Relay.GameData.DataStructures {
 		public ServerStructure(XElement server) {
 			Name = server.ElemDefault("Name", "");
 			Abbreviation = abbreviations.ContainsKey(Name) ? abbreviations[Name] : "";
-			Address = Dns.GetHostEntry(server.ElemDefault("DNS", "")).AddressList[0].ToString();
+			Address = /*Dns.GetHostEntry(*/server.ElemDefault("DNS", "")/*).AddressList[0].ToString()*/;
 		}
 
 		public override string ToString() {
