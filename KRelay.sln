@@ -13,7 +13,9 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AutoAbility", "Plugins\Auto
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ChatAssist", "Plugins\ChatAssist\ChatAssist.csproj", "{B953EBC9-C417-420A-8F15-DC2AC9F643A6}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "VaultChestViewer", "..\..\..\Desktop\Not yet done Plugins\VaultChestViewer\VaultChestViewer.csproj", "{9B8D513E-86BC-4433-96A8-CA3DA5302377}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "VaultChestViewer", "Plugins\VaultChestViewer\VaultChestViewer.csproj", "{9B8D513E-86BC-4433-96A8-CA3DA5302377}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TeleportTools", "Plugins\TeleportTools\TeleportTools.csproj", "{2B25F6CD-19BA-4432-A62A-FCA2C3F82467}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -41,6 +43,10 @@ Global
 		{9B8D513E-86BC-4433-96A8-CA3DA5302377}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{9B8D513E-86BC-4433-96A8-CA3DA5302377}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{9B8D513E-86BC-4433-96A8-CA3DA5302377}.Release|Any CPU.Build.0 = Release|Any CPU
+		{2B25F6CD-19BA-4432-A62A-FCA2C3F82467}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{2B25F6CD-19BA-4432-A62A-FCA2C3F82467}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{2B25F6CD-19BA-4432-A62A-FCA2C3F82467}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{2B25F6CD-19BA-4432-A62A-FCA2C3F82467}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -49,5 +55,6 @@ Global
 		{B06A7B4B-801C-4A8E-98D9-C87D0A4B1DA2} = {C0FB5D8B-A402-491B-AC09-FE84D5CDA43E}
 		{B953EBC9-C417-420A-8F15-DC2AC9F643A6} = {C0FB5D8B-A402-491B-AC09-FE84D5CDA43E}
 		{9B8D513E-86BC-4433-96A8-CA3DA5302377} = {C0FB5D8B-A402-491B-AC09-FE84D5CDA43E}
+		{2B25F6CD-19BA-4432-A62A-FCA2C3F82467} = {C0FB5D8B-A402-491B-AC09-FE84D5CDA43E}
 	EndGlobalSection
 EndGlobal
