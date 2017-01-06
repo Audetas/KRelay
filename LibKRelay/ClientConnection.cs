@@ -1,4 +1,6 @@
 ﻿using LibKRelay.Messages;
+using LibKRelay.Messages.Client;
+using LibKRelay.Messages.Server;
 using LibKRelay.Net;
 using System;
 using System.Collections.Generic;
@@ -79,23 +81,49 @@ namespace LibKRelay
     /// <summary>
     /// Represents the connections between the server and a client
     /// </summary>
-    public class ClientConnection
+    public class Connection
     {
         public event ConnectionHandler Disconnected;
+        public MapInfo MapInfo { get; private set; }
+        public Dictionary<int, Entity> World { get; private set; }
         public ConnectionInfo Client { get; private set; }
         public ConnectionInfo Server { get; private set; }
         private bool firedDisconnect = false;
+        private int objectId = -1;
+        private int lastUpdate = 0;
+        private int previousTime = 0;
 
         /// <summary>
         /// Takes an existing client connection and forwards it to the server.
         /// </summary>
         /// <param name="connection">Existing connection</param>
         /// <param name="host">Host to connect to</param>
-        public ClientConnection(TcpClient connection, string host)
+        public Connection(TcpClient connection, string host)
         {
             Client = new ConnectionInfo(connection, Constants.Key0, Constants.Key1);
             var remoteClient = new TcpClient();
             remoteClient.BeginConnect(host, 2050, Connect, remoteClient);
+        }
+
+        /// <summary>
+        /// Returns the Entity instance representing the player.
+        /// </summary>
+        public Entity Self
+        {
+            get
+            {
+                if (objectId == -1) return null;
+                if (!World.ContainsKey(objectId)) return null;
+                return World[objectId];
+            }
+        }
+
+        /// <summary>
+        /// Time since the client's connection began.
+        /// </summary>
+        public int Time
+        {
+            get { return previousTime + (Environment.TickCount - lastUpdate); }
         }
 
         /// <summary>
@@ -157,6 +185,7 @@ namespace LibKRelay
                     {
                         info.RecvState.Cipher(info.Buffer.Bytes);
                         Message message = Message.Create(info.Buffer);
+                        Process(message);
                         Message.Fire(this, message);
                         if (message.Send) other.Send(message);
                         info.Buffer.Reset();
@@ -177,9 +206,46 @@ namespace LibKRelay
             }
         }
 
+        private void Process(Message message)
+        {
+            // Update and store player ObjectId
+            if (message is CreateSuccess)
+                objectId = (message as CreateSuccess).ObjectId;
+            // Store MapInfo
+            else if (message is MapInfo)
+                MapInfo = message as MapInfo;
+            // Update position from PlayerShoot
+            else if (message is PlayerShoot)
+                Self.Status.Position = (message as PlayerShoot).DerivePlayerPosition();
+            // Update position from move
+            else if (message is Move)
+            {
+                Move move = message as Move;
+                previousTime = move.Time;
+                lastUpdate = Environment.TickCount;
+                Self.Status.Position = move.NewPosition;
+            }
+            // Update world from Update
+            else if (message is Update)
+            {
+                Update update = message as Update;
+                foreach (var pair in update.NewObjs)
+                    World.AddOrUpdate(pair.Key, pair.Value);
+                foreach (int obj in update.Drops)
+                    World.Remove(obj);
+            }
+            // Update world from NewTick
+            else if (message is NewTick)
+            {
+                NewTick newTick = message as NewTick;
+                foreach (var pair in newTick.Statuses)
+                    World[pair.Key].Parse(pair.Value);
+            }
+        }
+
         public override string ToString()
         {
-            return "{ TODO: Add client connection info }";
+            return string.Format("{ ObjectId: {1}, Entity: {2} }", objectId, Self);
         }
     }
 }

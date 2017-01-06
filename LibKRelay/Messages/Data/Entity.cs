@@ -11,6 +11,28 @@ namespace LibKRelay.Messages
         public short ObjectType;
         public Status Status;
 
+        public int ObjectId
+        {
+            get { return Status.ObjectId; }
+        }
+
+        public Location Position
+        {
+            get { return Status.Position; }
+            set { Status.Position = value; }
+        }
+
+        public StatData this[StatType key]
+        {
+            get { return Status.Stats[key]; }
+            set { Status.Stats[key] = value; }
+        }
+
+        public Classes Class
+        {
+            get { return (Classes)ObjectType; }
+        }
+
         public Entity(short objectType, Status status)
         {
             ObjectType = objectType;
@@ -27,6 +49,17 @@ namespace LibKRelay.Messages
         {
             w.Write(ObjectType);
             Status.Write(w);
+        }
+
+        public void Parse(Status status)
+        {
+            foreach (var pair in status.Stats)
+                Status.Stats.AddOrUpdate(pair.Key, pair.Value);
+        }
+
+        public bool HasEffect(ConditionEffects effect)
+        {
+            return (Status.Stats[StatType.Effects].IntValue & (int)effect) != 0;
         }
 
         public object Clone()

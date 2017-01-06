@@ -5,6 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
+using System.Windows.Forms;
 
 namespace LibKRelay
 {
@@ -20,13 +21,12 @@ namespace LibKRelay
         /// <summary>
         /// Called once per instance. For a plugin to initialize itself.
         /// </summary>
-        public virtual void Initialize() { }
+        public virtual void Initialize(ClientListener listener) { }
 
         /// <summary>
         /// Starts a message loop for the specified form instance and displays the form.
         /// </summary>
         /// <param name="gui">Form to be shown</param>
-        /*
         public static void ShowGUI(Form gui)
         {
             gui.Shown += (s, e) =>
@@ -37,18 +37,17 @@ namespace LibKRelay
             };
 
             Task.Run(() => gui.ShowDialog());
-        }*/
+        }
 
         /// <summary>
         /// Displays a form containing a configuration panel based off of the provided Settings objects.
         /// </summary>
         /// <param name="settingsObject">Settings to base the form off of</param>
         /// <param name="title">Title of the form to be shown</param>
-        /*
         public static void ShowGenericSettingsGUI(dynamic settingsObject, string title)
         {
             ShowGUI(new FrmGenericSettings(settingsObject, title));
-        }*/
+        }
 
         /// <summary>
         /// Waits the specified amount of ms then invokes the callback.

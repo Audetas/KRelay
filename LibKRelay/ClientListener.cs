@@ -15,7 +15,7 @@ namespace LibKRelay
     /// </summary>
     public class ClientListener
     {
-        public delegate void ConnectionHandler(ClientConnection client);
+        public delegate void ConnectionHandler(Connection client);
         public delegate void ListenHandler(ClientListener listener);
 
         public event ListenHandler ListenStarted;
@@ -25,7 +25,7 @@ namespace LibKRelay
         public ServerStructure DefaultServer { get; private set; }
         public string ListenAddress { get; private set; }
         public int ListenPort { get; private set; }
-        public List<ClientConnection> Clients { get; private set; }
+        public List<Connection> Clients { get; private set; }
 
         private TcpListener listener;
 
@@ -34,7 +34,7 @@ namespace LibKRelay
         /// </summary>
         public ClientListener()
         {
-            Clients = new List<ClientConnection>();
+            Clients = new List<Connection>();
         }
 
         /// <summary>
@@ -85,7 +85,7 @@ namespace LibKRelay
                 {
                     var accepted = listener.EndAcceptTcpClient(ar);
                     accepted.NoDelay = true;
-                    var connection = new ClientConnection(accepted, DefaultServer.Address);
+                    var connection = new Connection(accepted, DefaultServer.Address);
                     connection.Disconnected += (client) =>
                     {
                         Clients.Remove(client);

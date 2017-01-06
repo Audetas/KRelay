@@ -4,12 +4,22 @@ using System.Linq;
 using System.Reflection;
 using System.Text;
 using System.Threading.Tasks;
-using static LibKRelay.ClientListener;
 
 namespace LibKRelay
 {
     public static class Extensions
     {
+        /// <summary>
+        /// Adds a pair to a dictionary, or updates the pair if it exists already.
+        /// </summary>
+        public static void AddOrUpdate<TKey, TValue>(this Dictionary<TKey, TValue> dict, TKey key, TValue value)
+        {
+            if (dict.ContainsKey(key))
+                dict[key] = value;
+            else
+                dict.Add(key, value);
+        }
+
         /// <summary>
         /// Safely invokes a delegate and logs errors of applicable.
         /// </summary>

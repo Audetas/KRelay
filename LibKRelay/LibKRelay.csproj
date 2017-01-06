@@ -51,6 +51,12 @@
     <Compile Include="Data\TileStructure.cs" />
     <Compile Include="Extensions.cs" />
     <Compile Include="Constants.cs" />
+    <Compile Include="FrmGenericSettings.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmGenericSettings.Designer.cs">
+      <DependentUpon>FrmGenericSettings.cs</DependentUpon>
+    </Compile>
     <Compile Include="Messages\Data\ARGB.cs" />
     <Compile Include="Messages\Data\BitmapData.cs" />
     <Compile Include="Messages\Client\AcceptTrade.cs" />
@@ -169,6 +175,9 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
+    <EmbeddedResource Include="FrmGenericSettings.resx">
+      <DependentUpon>FrmGenericSettings.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>

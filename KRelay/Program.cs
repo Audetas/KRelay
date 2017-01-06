@@ -61,7 +61,7 @@ namespace KRelay
 
             // Get the application-wide loader and listener ready for interaction
             Listener = new ClientListener();
-            Loader = new PluginLoader();
+            Loader = new PluginLoader(Listener);
 
             // Run the initilization script
             ScriptHost.LoadAndRun(startupPath + @"\Scripting\Init.ks", false);

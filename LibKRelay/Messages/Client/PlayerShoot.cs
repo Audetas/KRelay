@@ -31,5 +31,13 @@ namespace LibKRelay.Messages.Client
             Position.Write(w);
             w.Write(Angle);
         }
+
+        public Location DerivePlayerPosition()
+        {
+            return new Location(
+                Position.X - 0.3f * (float)Math.Cos(Angle),
+                Position.Y - 0.3f * (float)Math.Sin(Angle)
+            );
+        }
     }
 }

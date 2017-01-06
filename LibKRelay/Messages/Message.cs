@@ -12,7 +12,7 @@ namespace LibKRelay.Messages
 {
     public class Message
     {
-        public delegate void GenericMessageHandler<T>(ClientConnection client, T packet) where T : Message;
+        public delegate void GenericMessageHandler<T>(Connection client, T packet) where T : Message;
 
         public bool Send { get; set; } = true;
 
@@ -70,7 +70,15 @@ namespace LibKRelay.Messages
             hookMap[type].Add(callback);
         }
 
-        public static void Fire(ClientConnection connection, Message message)
+        public static void HookLL<T>(GenericMessageHandler<T> callback) where T : Message
+        {
+            Type type = typeof(T);
+            if (!hookMap.ContainsKey(type))
+                hookMap.Add(type, new List<object>());
+            hookMap[type].Insert(0, callback);
+        }
+
+        public static void Fire(Connection connection, Message message)
         {
             List<object> callbacks;
             if (hookMap.TryGetValue(message.GetType(), out callbacks))

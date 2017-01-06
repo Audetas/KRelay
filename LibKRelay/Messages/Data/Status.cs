@@ -46,7 +46,7 @@ namespace LibKRelay.Messages
             {
                 Stats = this.Stats,
                 ObjectId = this.ObjectId,
-                Position = (Location)this.Position.Clone()
+                Position = this.Position.Clone()
             };
         }
     }

@@ -33,6 +33,16 @@ namespace LibKRelay.Messages
                 IntValue = r.ReadInt32();
         }
 
+        public static implicit operator int(StatData data)
+        {
+            return data.IntValue;
+        }
+
+        public static implicit operator string(StatData data)
+        {
+            return data.StringValue;
+        }
+
         public void Write(MessageWriter w)
         {
             w.Write((byte)Id);

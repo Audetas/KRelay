@@ -53,7 +53,7 @@ namespace KRelay.Scripting
         {
             ConsoleEx.Ok("Number of clients connected: " + Program.Listener.Clients.Count);
             int index = 0;
-            foreach (ClientConnection connection in Program.Listener.Clients)
+            foreach (Connection connection in Program.Listener.Clients)
             {
                 ConsoleEx.Log("\t[" + index + "] " + connection.ToString());
                 index++;

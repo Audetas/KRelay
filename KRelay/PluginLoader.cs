@@ -12,10 +12,12 @@ namespace KRelay
     class PluginLoader
     {
         public Dictionary<Type, Plugin> LoadedPlugins { get; private set; }
+        private ClientListener listener;
 
-        public PluginLoader()
+        public PluginLoader(ClientListener cl)
         {
             LoadedPlugins = new Dictionary<Type, Plugin>();
+            listener = cl;
         }
 
         public void Load(string directory)
@@ -34,7 +36,7 @@ namespace KRelay
                 if (ti.IsPublic && ti.BaseType == tPlugin)
                 {
                     Plugin instance = (Plugin)Activator.CreateInstance(ti.AsType());
-                    instance.Initialize();
+                    instance.Initialize(listener);
                     LoadedPlugins.Add(ti.AsType(), instance);
                     ConsoleEx.Ok("Loaded: " + instance.Name + ", by: " + instance.Author);
                 }
