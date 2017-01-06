@@ -62,6 +62,60 @@ namespace LibKRelay.Messages
             }
         }
 
+        public static Message CreateFromUserInput(string typeName)
+        {
+            Type type = Type.GetType("LibKRelay.Messages.Client." + typeName);
+            if (type == null)
+                type = Type.GetType("LibKRelay.Messages.Server." + typeName);
+            if (type == null)
+                ConsoleEx.Error("A message type cannot be derrived from: " + typeName);
+
+            Message packet = (Message)Activator.CreateInstance(type);
+            Type packetType = packet.GetType();
+            FieldInfo[] fields = packetType.GetFields(BindingFlags.Public |
+                                              BindingFlags.NonPublic |
+                                              BindingFlags.Instance);
+            foreach (FieldInfo field in fields)
+            {
+                if (field.Name == "Send") continue;
+                ConsoleEx.Input();
+                Console.Write("Value for " + field.Name + "<" + field.FieldType.Name + ">: ");
+                string input = Console.ReadLine();
+
+                if (field.FieldType == typeof(string))
+                {
+                    field.SetValue(packet, input);
+                    continue;
+                }
+
+                MethodInfo parser = field.FieldType.GetMethod("Parse", new[] { typeof(string) });
+                if (parser != null)
+                {
+                    field.SetValue(packet, parser.Invoke(null, new[] { input }));
+                }
+                else if (field.FieldType == typeof(byte[]))
+                {
+                    string[] splits = input.Split(new[] { ",", ", " }, StringSplitOptions.RemoveEmptyEntries);
+                    byte[] bytes = new byte[splits.Length];
+                    for (int i = 0; i < splits.Length; i++) bytes[i] = byte.Parse(splits[i]);
+                    field.SetValue(packet, bytes);
+                }
+                else if (field.FieldType == typeof(bool[]))
+                {
+                    string[] splits = input.Split(new[] { ",", ", " }, StringSplitOptions.RemoveEmptyEntries);
+                    bool[] bools = new bool[splits.Length];
+                    for (int i = 0; i < splits.Length; i++) bools[i] = bool.Parse(splits[i]);
+                    field.SetValue(packet, bools);
+                }
+                else
+                {
+                    ConsoleEx.Error("This field type does not support user input, aborting");
+                }
+            }
+
+            return packet;
+        }
+
         public static void Hook<T>(GenericMessageHandler<T> callback) where T : Message
         {
             Type type = typeof(T);

@@ -1,4 +1,5 @@
 ﻿using LibKRelay;
+using LibKRelay.Messages;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -62,16 +63,16 @@ namespace KRelay.Scripting
 
         public static void SendToServer(int clientIndex, string type)
         {
-            //Packet toSend = Packet.CreateFromUserInput(type);
-            //Program.Proxy.Clients[clientIndex].SendToServer(toSend);
-            ConsoleEx.Ok(type.ToString() + " was sent to the server for client " + clientIndex);
+            Message toSend = Message.CreateFromUserInput(type);
+            Program.Listener.Connections[clientIndex].Server.Send(toSend);
+            ConsoleEx.Ok(type + " was sent to the server for client " + clientIndex);
         }
 
         public static void SendToClient(int clientIndex, string type)
         {
-            //Packet toSend = Packet.CreateFromUserInput(type);
-            //Program.Proxy.Clients[clientIndex].SendToClient(toSend);
-            ConsoleEx.Ok(type.ToString() + " was sent to client " + clientIndex);
+            Message toSend = Message.CreateFromUserInput(type);
+            Program.Listener.Connections[clientIndex].Client.Send(toSend);
+            ConsoleEx.Ok(type + " was sent to client " + clientIndex);
         }
 
         public static void LogPacket(string type, int amount)

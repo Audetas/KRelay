@@ -79,16 +79,16 @@ bind listclients, KRelay.Scripting.ScriptHelpers.ListClients
 annotate listclients, Lists the clients currently connected to the proxy.\nUsage: listclients
 
 bind sendtoserver, KRelay.Scripting.ScriptHelpers.SendToServer
-annotate sendtoserver, Creates and sends the specified packet to the specified client index.\nUsage: sendtoserver <string:packet class name>, <int:client index>
+annotate sendtoserver, Creates and sends the specified packet to the specified client index.\nUsage: sendtoserver <string:packet class name> <int:client index>
 
 bind sendtoclient, KRelay.Scripting.ScriptHelpers.SendToClient
-annotate sendtoclient, Creates and sends the specified packet to the specified client index.\nUsage: sendtoclient <string:packet class name>, <int:client index>
+annotate sendtoclient, Creates and sends the specified packet to the specified client index.\nUsage: sendtoclient <string:packet class name> <int:client index>
 
 bind logpacket, KRelay.Scripting.ScriptHelpers.LogPacket
-annotate logpacket, Logs the specified packet type for the specified amount of times.\nUsage: logpacket <string:packet class name>, <int:amount(0 for infinity)>
+annotate logpacket, Logs the specified packet type for the specified amount of times.\nUsage: logpacket <string:packet class name> <int:amount(0 for infinity)>
 
 bind blockpacket, KRelay.Scripting.ScriptHelpers.BlockPacket
-annotate blockpacket, Blocks the specified packet type for the specified amount of times.\nUsage: blockpacket <string:packet class name>, <int:amount(0 for infinity)>
+annotate blockpacket, Blocks the specified packet type for the specified amount of times.\nUsage: blockpacket <string:packet class name> <int:amount(0 for infinity)>
 
 bind quit, Builtin.Exit
 annotate quit, Asks if you want to exit the program.\nUsage: quit
