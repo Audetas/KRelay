@@ -48,6 +48,7 @@
     <Compile Include="Data\ParsingExtensions.cs" />
     <Compile Include="Data\ProjectileStructure.cs" />
     <Compile Include="Data\ServerStructure.cs" />
+    <Compile Include="Data\TextureStructure.cs" />
     <Compile Include="Data\TileStructure.cs" />
     <Compile Include="Extensions.cs" />
     <Compile Include="Constants.cs" />

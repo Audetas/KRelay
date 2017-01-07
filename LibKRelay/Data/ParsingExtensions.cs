@@ -39,6 +39,7 @@ namespace LibKRelay.Data
 
 		public static int ParseInt(this string input)
         {
+            if (input.Contains('x')) return Convert.ToInt32(input, 16);
 			return int.Parse(input, System.Globalization.CultureInfo.InvariantCulture);
 		}
 

@@ -13,6 +13,7 @@ namespace LibKRelay.Data
         private static Dictionary<ushort, ObjectStructure> map;
         static ObjectStructure()
         {
+            map = new Dictionary<ushort, ObjectStructure>();
             XDocument.Parse(Resources.Objects).Element("Objects")
                 .Elements("Object")
                 .ForEach(obj => {
@@ -127,6 +128,11 @@ namespace LibKRelay.Data
         public ProjectileStructure[] Projectiles;
 
         /// <summary>
+        /// Textures this Object uses
+        /// </summary>
+        public TextureStructure[] Textures;
+
+        /// <summary>
         /// The text identifier for this object
         /// </summary>
         public string Name { get; private set; }
@@ -159,6 +165,11 @@ namespace LibKRelay.Data
             List<ProjectileStructure> projs = new List<ProjectileStructure>();
             obj.Elements("Projectile").ForEach(projectile => projs.Add(new ProjectileStructure(projectile)));
             Projectiles = projs.ToArray();
+
+            List<TextureStructure> texts = new List<TextureStructure>();
+            obj.Elements("Texture").ForEach(texture => texts.Add(new TextureStructure(texture)));
+            obj.Elements("AnimatedTexture").ForEach(texture => texts.Add(new TextureStructure(texture)));
+            Textures = texts.ToArray();
 
             Name = obj.AttrDefault("id", "");
         }
