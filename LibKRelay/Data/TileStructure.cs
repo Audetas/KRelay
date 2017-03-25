@@ -67,6 +67,11 @@ namespace LibKRelay.Data
 		/// </summary>
 		public ushort MaxDamage;
 
+        /// <summary>
+        /// The texture for this tile
+        /// </summary>
+        public TextureStructure Texture;
+
 		/// <summary>
 		/// The text identifier for this tile
 		/// </summary>
@@ -81,7 +86,13 @@ namespace LibKRelay.Data
 			MinDamage = (ushort)tile.ElemDefault("MinDamage", "0").ParseInt();
 			MaxDamage = (ushort)tile.ElemDefault("MaxDamage", "0").ParseInt();
 
-			Name = tile.AttrDefault("id", "");
+            // Not even nearly complete, just for testing
+            if (tile.HasElement("Texture"))
+                Texture = new TextureStructure(tile.Elements("Texture").First());
+            else if (tile.HasElement("RandomTexture"))
+                Texture = new TextureStructure(tile.Elements("RandomTexture").Elements("Texture").First());
+
+            Name = tile.AttrDefault("id", "");
 		}
 
 		public override string ToString()

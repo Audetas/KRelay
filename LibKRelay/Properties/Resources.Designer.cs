@@ -62,25 +62,23 @@ namespace LibKRelay.Properties {
         
         /// <summary>
         ///   Looks up a localized string similar to &lt;Objects&gt;
-        ///
-        ///&lt;!-- AbyssOfDemons --&gt;
-        ///
-        ///
-        ///   &lt;Object type=&quot;0x0908&quot; id=&quot;Malphas Protector&quot;&gt;
-        ///      &lt;Group&gt;Demons&lt;/Group&gt;
-        ///      &lt;Enemy/&gt;
-        ///      &lt;Class&gt;Character&lt;/Class&gt;
-        ///      &lt;AnimatedTexture&gt;
-        ///         &lt;File&gt;chars8x8rHero1&lt;/File&gt;
-        ///         &lt;Index&gt;0x13&lt;/Index&gt;
-        ///      &lt;/AnimatedTexture&gt;
-        ///      &lt;HitSound&gt;monster/demons_hit&lt;/HitSound&gt;
-        ///      &lt;DeathSound&gt;monster/demons_death&lt;/DeathSound&gt;
-        ///      &lt;Size&gt;100&lt;/Size&gt;
-        ///      &lt;MaxHitPoints&gt;900&lt;/MaxHitPoints&gt;
-        ///      &lt;Defense&gt;7&lt;/Defense&gt;
-        ///      &lt;XpMult&gt;0.1&lt;/XpMult&gt;
-        ///      &lt;Projectile id=&quot;0&quot; [rest of string was truncated]&quot;;.
+        ///  &lt;!--  AbyssOfDemons  --&gt;
+        ///  &lt;Object type=&quot;0x0908&quot; id=&quot;Malphas Protector&quot;&gt;
+        ///    &lt;Group&gt;Demons&lt;/Group&gt;
+        ///    &lt;Enemy/&gt;
+        ///    &lt;Class&gt;Character&lt;/Class&gt;
+        ///    &lt;AnimatedTexture&gt;
+        ///      &lt;File&gt;chars8x8rHero1&lt;/File&gt;
+        ///      &lt;Index&gt;0x13&lt;/Index&gt;
+        ///    &lt;/AnimatedTexture&gt;
+        ///    &lt;HitSound&gt;monster/demons_hit&lt;/HitSound&gt;
+        ///    &lt;DeathSound&gt;monster/demons_death&lt;/DeathSound&gt;
+        ///    &lt;Size&gt;100&lt;/Size&gt;
+        ///    &lt;MaxHitPoints&gt;900&lt;/MaxHitPoints&gt;
+        ///    &lt;Defense&gt;7&lt;/Defense&gt;
+        ///    &lt;XpMult&gt;0.1&lt;/XpMult&gt;
+        ///    &lt;Projectile id=&quot;0&quot;&gt;
+        ///      &lt;Obje [rest of string was truncated]&quot;;.
         /// </summary>
         internal static string Objects {
             get {
@@ -90,46 +88,46 @@ namespace LibKRelay.Properties {
         
         /// <summary>
         ///   Looks up a localized string similar to Failure:0
-        ///CreateSuccess:47
-        ///Create:30
-        ///PlayerShoot:88
-        ///Move:48
-        ///PlayerText:64
-        ///Text:27
-        ///ServerPlayerShoot:68
-        ///Damage:9
-        ///Update:1
-        ///UpdateAck:60
-        ///Notification:16
-        ///NewTick:23
-        ///InvSwap:78
-        ///UseItem:100
-        ///ShowEffect:80
-        ///Hello:36
-        ///Goto:33
-        ///InvDrop:12
-        ///InvResult:18
-        ///Reconnect:39
-        ///Ping:79
-        ///Pong:34
-        ///MapInfo:11
-        ///Load:49
-        ///Pic:57
-        ///SetCondition:93
-        ///Teleport:58
+        ///CreateSuccess:21
+        ///Create:49
+        ///PlayerShoot:52
+        ///Move:60
+        ///PlayerText:45
+        ///Text:23
+        ///ServerPlayerShoot:33
+        ///Damage:78
+        ///Update:96
+        ///UpdateAck:89
+        ///Notification:104
+        ///NewTick:42
+        ///InvSwap:46
+        ///UseItem:1
+        ///ShowEffect:15
+        ///Hello:31
+        ///Goto:95
+        ///InvDrop:6
+        ///InvResult:85
+        ///Reconnect:16
+        ///Ping:84
+        ///Pong:83
+        ///MapInfo:69
+        ///Load:36
+        ///Pic:25
+        ///SetCondition:3
+        ///Teleport:48
         ///UsePortal:86
-        ///Death:26
-        ///Buy:90
-        ///BuyResult:10
-        ///AoE:94
-        ///GroundDamage:46
-        ///PlayerHit:28
-        ///EnemyHit:21
-        ///AoEAck:92
-        ///ShootAck:40
-        ///OtherHit:50
-        ///SquareHit:24
-        ///GotoAck:4
+        ///Death:91
+        ///Buy:53
+        ///BuyResult:56
+        ///AoE:40
+        ///GroundDamage:93
+        ///PlayerHit:64
+        ///EnemyHit:50
+        ///AoEAck:61
+        ///ShootAck:90
+        ///OtherHit:98
+        ///SquareHit:77
+        ///GotoAck:82
         ///Ed [rest of string was truncated]&quot;;.
         /// </summary>
         internal static string Packets {
@@ -139,7 +137,26 @@ namespace LibKRelay.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to &lt;Chars nextCharId=&quot;1&quot; maxNumChars=&quot;1&quot;&gt;&lt;Account&gt;&lt;Credits&gt;40&lt;/Credits&gt;&lt;NextCharSlotPrice&gt;600&lt;/NextCharSlotPrice&gt;&lt;AccountId&gt;-1&lt;/AccountId&gt;&lt;Name&gt;Lauk&lt;/Name&gt;&lt;BeginnerPackageTimeLeft&gt;604800&lt;/BeginnerPackageTimeLeft&gt;&lt;IsAgeVerified&gt;0&lt;/IsAgeVerified&gt;&lt;isFirstDeath /&gt;&lt;Stats&gt;&lt;BestCharFame&gt;0&lt;/BestCharFame&gt;&lt;TotalFame&gt;0&lt;/TotalFame&gt;&lt;Fame&gt;0&lt;/Fame&gt;&lt;/Stats&gt;&lt;/Account&gt;&lt;News&gt;&lt;/News&gt;&lt;Servers&gt;&lt;Server&gt;&lt;Name&gt;USWest&lt;/Name&gt;&lt;DNS&gt;54.153.32.11&lt;/DNS&gt;&lt;Lat&gt;37.34&lt;/Lat&gt;&lt;Long&gt;-121.89&lt;/Long&gt;&lt;Usage&gt;0.00&lt;/Usage&gt;&lt;/Server&gt;&lt;Server&gt;&lt;Name&gt;USMidWest&lt;/N [rest of string was truncated]&quot;;.
+        ///   Looks up a localized string similar to &lt;Chars nextCharId=&quot;1&quot; maxNumChars=&quot;1&quot;&gt;
+        ///  &lt;Account&gt;
+        ///    &lt;Credits&gt;40&lt;/Credits&gt;
+        ///    &lt;NextCharSlotPrice&gt;600&lt;/NextCharSlotPrice&gt;
+        ///    &lt;AccountId&gt;-1&lt;/AccountId&gt;
+        ///    &lt;Name&gt;Lauk&lt;/Name&gt;
+        ///    &lt;BeginnerPackageTimeLeft&gt;604800&lt;/BeginnerPackageTimeLeft&gt;
+        ///    &lt;IsAgeVerified&gt;0&lt;/IsAgeVerified&gt;
+        ///    &lt;isFirstDeath /&gt;
+        ///    &lt;Stats&gt;
+        ///      &lt;BestCharFame&gt;0&lt;/BestCharFame&gt;
+        ///      &lt;TotalFame&gt;0&lt;/TotalFame&gt;
+        ///      &lt;Fame&gt;0&lt;/Fame&gt;
+        ///    &lt;/Stats&gt;
+        ///  &lt;/Account&gt;
+        ///  &lt;News&gt;&lt;/News&gt;
+        ///  &lt;Servers&gt;
+        ///    &lt;Server&gt;
+        ///      &lt;Name&gt;USWest&lt;/Name&gt;
+        ///    [rest of string was truncated]&quot;;.
         /// </summary>
         internal static string Servers {
             get {
@@ -149,27 +166,25 @@ namespace LibKRelay.Properties {
         
         /// <summary>
         ///   Looks up a localized string similar to &lt;GroundTypes&gt;
-        ///
-        ///&lt;!-- Ground --&gt;
-        ///
-        ///
-        ///   &lt;Ground type=&quot;0x00&quot; id=&quot;Black Water&quot;&gt;
-        ///      &lt;Texture&gt;
-        ///         &lt;File&gt;lofiEnvironment2&lt;/File&gt;
-        ///         &lt;Index&gt;0x09&lt;/Index&gt;
-        ///      &lt;/Texture&gt;
-        ///      &lt;Animate dx=&quot;.5&quot; dy=&quot;.5&quot;&gt;Wave&lt;/Animate&gt;
-        ///      &lt;NoWalk/&gt;
-        ///      &lt;Speed&gt;1&lt;/Speed&gt;
-        ///   &lt;/Ground&gt;
-        ///   &lt;Ground type=&quot;0x17&quot; id=&quot;Black Water Light&quot;&gt;
-        ///      &lt;Texture&gt;
-        ///         &lt;File&gt;lofiEnvironment2&lt;/File&gt;
-        ///         &lt;Index&gt;0x0a&lt;/Index&gt;
-        ///      &lt;/Texture&gt;
-        ///      &lt;Animate dx=&quot;0.5&quot; dy=&quot;0.5&quot;&gt;Wave&lt;/Animate&gt;
-        ///      &lt;Sink/&gt;
-        ///      &lt;B [rest of string was truncated]&quot;;.
+        ///  &lt;!--  Ground  --&gt;
+        ///  &lt;Ground type=&quot;0x00&quot; id=&quot;Black Water&quot;&gt;
+        ///    &lt;Texture&gt;
+        ///      &lt;File&gt;lofiEnvironment2&lt;/File&gt;
+        ///      &lt;Index&gt;0x09&lt;/Index&gt;
+        ///    &lt;/Texture&gt;
+        ///    &lt;Animate dx=&quot;.5&quot; dy=&quot;.5&quot;&gt;Wave&lt;/Animate&gt;
+        ///    &lt;NoWalk/&gt;
+        ///    &lt;Speed&gt;1&lt;/Speed&gt;
+        ///  &lt;/Ground&gt;
+        ///  &lt;Ground type=&quot;0x17&quot; id=&quot;Black Water Light&quot;&gt;
+        ///    &lt;Texture&gt;
+        ///      &lt;File&gt;lofiEnvironment2&lt;/File&gt;
+        ///      &lt;Index&gt;0x0a&lt;/Index&gt;
+        ///    &lt;/Texture&gt;
+        ///    &lt;Animate dx=&quot;0.5&quot; dy=&quot;0.5&quot;&gt;Wave&lt;/Animate&gt;
+        ///    &lt;Sink/&gt;
+        ///    &lt;BlendPriority&gt;2&lt;/BlendPriority&gt;
+        ///    &lt; [rest of string was truncated]&quot;;.
         /// </summary>
         internal static string Tiles {
             get {

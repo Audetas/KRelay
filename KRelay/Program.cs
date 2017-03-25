@@ -22,6 +22,8 @@ namespace KRelay
 
         static void Main(string[] args)
         {
+            ObjectStructure.Test();
+            //ObjectStructure.ById(0);
             string startupPath = Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location);
             string scriptsPath = startupPath + @"\Scripting\";
             string pluginsPath = startupPath + @"\Plugins\";

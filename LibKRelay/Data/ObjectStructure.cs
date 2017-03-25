@@ -22,6 +22,18 @@ namespace LibKRelay.Data
                 });
         }
 
+        
+        public static void Test()
+        {
+            map = new Dictionary<ushort, ObjectStructure>();
+            XDocument.Parse(Resources.Objects).Element("Objects")
+                .Elements("Object")
+                .ForEach(obj => {
+                    ObjectStructure o = new ObjectStructure(obj);
+                    map[o.ID] = o;
+                });
+        }
+
         public static ObjectStructure ById(ushort id)
         {
             if (map.ContainsKey(id))
@@ -123,6 +135,11 @@ namespace LibKRelay.Data
         public bool God;
 
         /// <summary>
+        /// The name of the object's corresponding Skin object
+        /// </summary>
+        public string DefaultSkin;
+
+        /// <summary>
         /// What projectiles this enemy can fire
         /// </summary>
         public ProjectileStructure[] Projectiles;
@@ -156,11 +173,12 @@ namespace LibKRelay.Data
             Player = obj.HasElement("Player");
             DrawOnGround = obj.HasElement("DrawOnGround");
 
-            Size = (ushort)obj.ElemDefault("Size", "0").ParseInt();
+            Size = (ushort)obj.ElemDefault("Size", "100").ParseInt();
             ShadowSize = (ushort)obj.ElemDefault("ShadowSize", "0").ParseInt();
             Defense = (ushort)obj.ElemDefault("Defense", "0").ParseInt();
             Flying = obj.HasElement("Flying");
             God = obj.HasElement("God");
+            DefaultSkin = obj.ElemDefault("DefaultSkin", "");
 
             List<ProjectileStructure> projs = new List<ProjectileStructure>();
             obj.Elements("Projectile").ForEach(projectile => projs.Add(new ProjectileStructure(projectile)));
@@ -169,6 +187,8 @@ namespace LibKRelay.Data
             List<TextureStructure> texts = new List<TextureStructure>();
             obj.Elements("Texture").ForEach(texture => texts.Add(new TextureStructure(texture)));
             obj.Elements("AnimatedTexture").ForEach(texture => texts.Add(new TextureStructure(texture)));
+            if (obj.HasElement("RandomTexture"))
+                texts.Add(new TextureStructure(obj.Elements("RandomTexture").Elements().First()));
             Textures = texts.ToArray();
 
             Name = obj.AttrDefault("id", "");
