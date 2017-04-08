@@ -158,10 +158,10 @@ namespace ChatAssist
                     }
                 }
 
-                if (text.Name != "" && text.Name != "#Oryx the Mad God")
-                {
-                    PluginUtils.Log("ChatAssist", "Server Message '" + text.Text + "' from: " + text.Name);
-                }
+                //if (text.Name != "" && text.Name != "#Oryx the Mad God")
+                //{
+                //    PluginUtils.Log("ChatAssist", "Server Message '" + text.Text + "' from: " + text.Name);
+                //}
             }
 
             if ((ChatAssistConfig.Default.DisableMessages && text.Recipient == "") ||
