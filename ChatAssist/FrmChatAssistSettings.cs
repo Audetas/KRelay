@@ -19,10 +19,14 @@ namespace ChatAssist
             chkAutoIgnorePMs.Checked = ChatAssistConfig.Default.AutoIgnoreSpamPM;
             chkChangeMessageToFiltered.Checked = ChatAssistConfig.Default.CensorSpamMessages;
             chkDisableAllMessages.Checked = ChatAssistConfig.Default.DisableMessages;
-            chkSpamFilter.Checked = ChatAssistConfig.Default.Enabled;
+            chkSpamFilter.Checked = ChatAssistConfig.Default.EnableSpamFilter;
+            chkFilterNPCText.Checked = ChatAssistConfig.Default.EnableNPCFilter;
+            chkLogChat.Checked = ChatAssistConfig.Default.LogChat;
+            UpDownStarFilter.Value = ChatAssistConfig.Default.StarFilter;
+            UpDownPMFilter.Value = ChatAssistConfig.Default.StarFilterPM;
 
             foreach (string filter in ChatAssistConfig.Default.Blacklist)
-                tbxBlacklist.Text += filter + ", ";
+                tbxBlacklist.Text += filter + "\n";
         }
 
         private void btnDone_Click(object sender, EventArgs e)
@@ -49,8 +53,12 @@ namespace ChatAssist
             ChatAssistConfig.Default.CensorSpamMessages = chkChangeMessageToFiltered.Checked;
             ChatAssistConfig.Default.DisableMessages = chkDisableAllMessages.Checked;
             ChatAssistConfig.Default.Blacklist.Clear();
+            ChatAssistConfig.Default.EnableNPCFilter = chkFilterNPCText.Checked;
+            ChatAssistConfig.Default.LogChat = chkLogChat.Checked;
+            ChatAssistConfig.Default.StarFilter = (int)UpDownStarFilter.Value;
+            ChatAssistConfig.Default.StarFilterPM = (int)UpDownPMFilter.Value;
             ChatAssistConfig.Default.Blacklist.AddRange(tbxBlacklist.Text.Split(
-                new string[] { ", ", "," }, StringSplitOptions.RemoveEmptyEntries));
+                new string[] { "\n" }, StringSplitOptions.RemoveEmptyEntries));
             ChatAssistConfig.Default.Save();
         }
     }
