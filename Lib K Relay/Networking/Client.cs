@@ -12,8 +12,8 @@ namespace Lib_K_Relay.Networking
 {
     public class Client
     {
-        private static string Key0 = "311f80691451c71d09a13a2a6e";
-        private static string Key1 = "72c5583cafb6818995cdd74b80";
+        private static string Key0 = "311f80691451c71b09a13a2a6e";
+        private static string Key1 = "72c5583cafb6818995cbd74b80";
         public int LastUpdate = 0;
         public int PreviousTime = 0;
         private object _serverLock = new object();
