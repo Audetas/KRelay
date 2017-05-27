@@ -1,4 +1,5 @@
-﻿using Lib_K_Relay.Networking.Packets;
+﻿using Lib_K_Relay.Networking;
+using Lib_K_Relay.Networking.Packets;
 using Lib_K_Relay.Networking.Packets.Server;
 using System;
 using System.Collections.Generic;
@@ -13,6 +14,7 @@ namespace Lib_K_Relay.Utilities
 {
     public static class PluginUtils
     {
+        private static readonly string[] colors = { "*Error*", "*Client*", "", "*Help*", "*Guild*" };
         /// <summary>
         /// Executes an action and properly catches and logs any exceptions.
         /// </summary>
@@ -166,13 +168,60 @@ namespace Lib_K_Relay.Utilities
         /// <returns></returns>
         public static TextPacket CreateOryxNotification(string sender, string message)
         {
+            return CreateBaseNotification("#" + sender, message, "");
+        }
+
+
+        /// <summary>
+        /// Creates a colored in-game message.
+        /// </summary>
+        /// <param name="message">Message text</param>
+        /// <param name="color">Message color</param>
+        /// <returns></returns>
+        public static TextPacket CreateColorNotification(string message, MessageColor color)
+        {
+            return CreateBaseNotification(colors[(int)color], message, "");
+        }
+
+        /// <summary>
+        /// Creates a tell message.
+        /// </summary>
+        /// <param name="sender">Message sender</param>
+        /// <param name="message">Message text</param>
+        /// <param name="client">Gets you account name from the Client class</param>
+        /// <returns></returns>
+        public static TextPacket CreateTellNotification(string sender, string message, Client client)
+        {
+            return CreateBaseNotification(sender, message, client.PlayerData.Name);
+        }
+
+        /// <summary>
+        /// Creates a guild message.
+        /// </summary>
+        /// <param name="sender">Message sender</param>
+        /// <param name="message">Message text</param>
+        /// <returns></returns>
+        public static TextPacket CreateGuildNotification(string sender, string message)
+        {
+            return CreateBaseNotification(sender, message, "*Guild*");
+        }
+
+        /// <summary>
+        /// Creates the message itself.
+        /// </summary>
+        /// <param name="sender">Message sender</param>
+        /// <param name="message">Message text</param>
+        /// <param name="recipient">What type of notification it is</param>
+        /// <returns></returns>
+        private static TextPacket CreateBaseNotification(string name, string message, string recipient)
+        {
             TextPacket tpacket = (TextPacket)Packet.Create(PacketType.TEXT);
             tpacket.BubbleTime = 0;
-            tpacket.CleanText = message;
-            tpacket.Name = "#" + sender;
+            tpacket.CleanText = "";
+            tpacket.Name = name;
             tpacket.NumStars = -1;
             tpacket.ObjectId = -1;
-            tpacket.Recipient = "";
+            tpacket.Recipient = recipient;
             tpacket.Text = message;
             return tpacket;
         }

@@ -190,4 +190,13 @@ namespace Lib_K_Relay.Utilities
         Sorcerer = 0x0325,
         Ninja = 0x0326
     }
+
+    public enum MessageColor : uint
+    {
+        Red,
+        DarkBlue,
+        Yellow,
+        Orange,
+        White
+    }
 }

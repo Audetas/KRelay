@@ -14,6 +14,7 @@ namespace Lib_K_Relay.Networking
     public class ReconnectHandler
     {
         private Proxy _proxy;
+        private string server;
 
         public void Attach(Proxy proxy)
         {
@@ -24,9 +25,17 @@ namespace Lib_K_Relay.Networking
 
             proxy.HookCommand("con", OnConnectCommand);
             proxy.HookCommand("connect", OnConnectCommand);
-            proxy.HookCommand("server", OnConnectCommand);
             proxy.HookCommand("recon", OnReconCommand);
             proxy.HookCommand("drecon", OnDreconCommand);
+            proxy.HookCommand("serv", OnServCommand);
+        }
+
+        private void OnServCommand(Client client, string command, string[] args)
+        {
+            if (client.State.LastRealm != null)
+                client.SendToClient(PluginUtils.CreateColorNotification(server + ", " + client.State.LastRealm.Name.Substring(12), MessageColor.Yellow));
+            else
+                client.SendToClient(PluginUtils.CreateColorNotification(server + ", Nexus", MessageColor.Yellow));
         }
 
         private void OnHello(Client client, HelloPacket packet)
@@ -46,11 +55,15 @@ namespace Lib_K_Relay.Networking
             PluginUtils.Delay(1000, () =>
             {
                 string message = "Welcome to K Relay!";
-				string server = "";
-				if (GameData.GameData.Servers.Map.Where(s => s.Value.Address == client.State.ConTargetAddress).Any())
-					server = GameData.GameData.Servers.Match(s => s.Address == client.State.ConTargetAddress).Name;
+                string servdata = "";
+                if (GameData.GameData.Servers.Map.Where(s => s.Value.Address == client.State.ConTargetAddress).Any())
+                {
+                    servdata = GameData.GameData.Servers.Match(s => s.Address == client.State.ConTargetAddress).Name;
+                    if (servdata != "")
+                        server = GameData.GameData.Servers.Match(s => s.Address == client.State.ConTargetAddress).Name;
+                }
 
-                if (server != "")
+                if (servdata != "")
                     message += "\\n" + server;
 
                 client.SendToClient(PluginUtils.CreateNotification(client.ObjectId, message));
