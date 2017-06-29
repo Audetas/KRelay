@@ -1,4 +1,4 @@
-﻿using Lib_K_Relay.Networking.Packets.DataObjects;
+using Lib_K_Relay.Networking.Packets.DataObjects;
 using Lib_K_Relay.Utilities;
 using System;
 using System.Collections.Generic;
@@ -15,6 +15,7 @@ namespace Lib_K_Relay.Networking.Packets.Server
         public Location PosA;
         public Location PosB;
         public ARGB Color;
+        public double Duration;
 
         public override PacketType Type
         { get { return PacketType.SHOWEFFECT; } }
@@ -26,6 +27,7 @@ namespace Lib_K_Relay.Networking.Packets.Server
             PosA =(Location) new Location().Read(r);
             PosB = (Location) new Location().Read(r);
             Color = ARGB.Read(r);
+            Duration = r.ReadSingle();
         }
 
         public override void Write(PacketWriter w)
@@ -35,6 +37,7 @@ namespace Lib_K_Relay.Networking.Packets.Server
             PosA.Write(w);
             PosB.Write(w);
             Color.Write(w);
+            w.Write(Duration);
         }
     }
 }
