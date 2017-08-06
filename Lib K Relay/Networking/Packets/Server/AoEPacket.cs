@@ -16,6 +16,8 @@ namespace Lib_K_Relay.Networking.Packets.Client
         public ConditionEffectIndex Effects;
         public float EffectDuration;
         public short OriginType;
+        public int Color;
+        
         public override PacketType Type
         { get { return PacketType.AOE; } }
 
@@ -27,6 +29,7 @@ namespace Lib_K_Relay.Networking.Packets.Client
             Effects = (ConditionEffectIndex)r.ReadByte();
             EffectDuration = r.ReadSingle();
             OriginType = r.ReadInt16();
+            Color = r.ReadInt32();
         }
 
         public override void Write(PacketWriter w)
@@ -37,6 +40,7 @@ namespace Lib_K_Relay.Networking.Packets.Client
             w.Write((byte)Effects);
             w.Write(EffectDuration);
             w.Write(OriginType);
+            w.Write(Color);
         }
     }
 }
