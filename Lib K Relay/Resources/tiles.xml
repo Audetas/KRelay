@@ -1,637 +1,9 @@
 <GroundTypes>
-	<Ground type="0x6fb9" id="Urushi Landmark A">
-      <Texture>
-         <File>mountainTempleObjects8x8</File>
-         <Index>0x57</Index>
-      </Texture>
-   </Ground>
-   <Ground type="0x6fb8" id="Japanese Landmark A">
-      <Texture>
-         <File>lofiObj3</File>
-         <Index>0x356</Index>
-      </Texture>
-   </Ground>
-   <Ground type="0xab30" id="Jyari dark with Edge">
-      <Texture>
-         <File>mountainTempleObjects8x8</File>
-         <Index>0x2b</Index>
-      </Texture>
-      <Edge>
-         <Texture>
-            <File>mountainTempleObjects8x8</File>
-            <Index>0x7a</Index>
-         </Texture>
-      </Edge>
-      <InnerCorner>
-         <Texture>
-            <File>mountainTempleObjects8x8</File>
-            <Index>0x7b</Index>
-         </Texture>
-      </InnerCorner>
-      <Corner>
-         <Texture>
-            <File>mountainTempleObjects8x8</File>
-            <Index>0x7b</Index>
-         </Texture>
-      </Corner>
-      <RandomOffset/>
-      <BlendPriority>9</BlendPriority>
-   </Ground>
-   <Ground type="0xab2f" id="Jyari light with Edge">
-      <Texture>
-         <File>mountainTempleObjects8x8</File>
-         <Index>0x2c</Index>
-      </Texture>
-      <Edge>
-         <Texture>
-            <File>mountainTempleObjects8x8</File>
-            <Index>0x7a</Index>
-         </Texture>
-      </Edge>
-      <InnerCorner>
-         <Texture>
-            <File>mountainTempleObjects8x8</File>
-            <Index>0x7b</Index>
-         </Texture>
-      </InnerCorner>
-      <Corner>
-         <Texture>
-            <File>mountainTempleObjects8x8</File>
-            <Index>0x7b</Index>
-         </Texture>
-      </Corner>
-      <RandomOffset/>
-      <BlendPriority>10</BlendPriority>
-   </Ground>
-   <Ground type="0xab17" id="Japanese Pond 2 Dark">
-      <Texture>
-         <File>mountainTempleObjects8x8</File>
-         <Index>0x5a</Index>
-      </Texture>
-      <BlendPriority>3</BlendPriority>
-      <Sink/>
-   </Ground>
-   <Ground type="0xab16" id="Japanese Pond 2">
-      <Texture>
-         <File>mountainTempleObjects8x8</File>
-         <Index>0x59</Index>
-      </Texture>
-      <BlendPriority>5</BlendPriority>
-      <Sink/>
-   </Ground>
-   <Ground type="0xab15" id="Japanese Rock Blue">
-      <Texture>
-         <File>mountainTempleObjects8x8</File>
-         <Index>0x58</Index>
-      </Texture>
-   </Ground>
-   <Ground type="0xab14" id="Japanese Urushi Floor Dark">
-      <Texture>
-         <File>mountainTempleObjects8x8</File>
-         <Index>0x57</Index>
-      </Texture>
-   </Ground>
-   <Ground type="0xab0c" id="Japanese Pond Dark">
-      <Texture>
-         <File>mountainTempleObjects8x8</File>
-         <Index>0x48</Index>
-      </Texture>
-      <BlendPriority>3</BlendPriority>
-      <Sink/>
-   </Ground>
-   <Ground type="0xab0b" id="Japanese Pond">
-      <Texture>
-         <File>mountainTempleObjects8x8</File>
-         <Index>0x47</Index>
-      </Texture>
-      <BlendPriority>5</BlendPriority>
-      <Sink/>
-   </Ground>
-   <Ground type="0xab0a" id="Japanese Pebbles Black">
-      <SameTypeEdgeMode/>
-      <RandomOffset/>
-      <Texture>
-         <File>mountainTempleObjects8x8</File>
-         <Index>0x44</Index>
-      </Texture>
-      <Edge>
-         <Texture>
-            <File>mountainTempleObjects8x8</File>
-            <Index>0x45</Index>
-         </Texture>
-      </Edge>
-      <InnerCorner>
-         <Texture>
-            <File>mountainTempleObjects8x8</File>
-            <Index>0x46</Index>
-         </Texture>
-      </InnerCorner>
-      <Corner>
-         <Texture>
-            <File>mountainTempleObjects8x8</File>
-            <Index>0x46</Index>
-         </Texture>
-      </Corner>
-   </Ground>
-   <Ground type="0xab09" id="Japanese Pebbles Black No Edge">
-      <Texture>
-         <File>mountainTempleObjects8x8</File>
-         <Index>0x44</Index>
-      </Texture>
-   </Ground>
-   <Ground type="0xab08" id="Japanese Urushi Floor">
-      <Texture>
-         <File>mountainTempleObjects8x8</File>
-         <Index>0x43</Index>
-      </Texture>
-      <BlendPriority>3</BlendPriority>
-   </Ground>
-   <Ground type="0xab07" id="Japanese Urushi Floor Light">
-      <Texture>
-         <File>mountainTempleObjects8x8</File>
-         <Index>0x42</Index>
-      </Texture>
-      <BlendPriority>5</BlendPriority>
-   </Ground>
-   <Ground type="0xab06" id="Japanese Rock Dark">
-      <Texture>
-         <File>mountainTempleObjects8x8</File>
-         <Index>0x41</Index>
-      </Texture>
-   </Ground>
-   <Ground type="0xab05" id="Japanese Rock">
-      <Texture>
-         <File>mountainTempleObjects8x8</File>
-         <Index>0x40</Index>
-      </Texture>
-   </Ground>
-   <Ground type="0xaac8" id="Zen Sand Beige Corner BL dirty">
-      <Texture>
-         <File>mountainTempleObjects8x8</File>
-         <Index>0x08</Index>
-      </Texture>
-   </Ground>
-   <Ground type="0xaac9" id="Zen Sand Beige Corner BL clean">
-      <Texture>
-         <File>mountainTempleObjects8x8</File>
-         <Index>0x09</Index>
-      </Texture>
-   </Ground>
-   <Ground type="0xaaca" id="Zen Sand Beige Corner BR clean">
-      <Texture>
-         <File>mountainTempleObjects8x8</File>
-         <Index>0x0a</Index>
-      </Texture>
-   </Ground>
-   <Ground type="0xaacb" id="Zen Sand Beige Corner TR clean">
-      <Texture>
-         <File>mountainTempleObjects8x8</File>
-         <Index>0x0b</Index>
-      </Texture>
-   </Ground>
-   <Ground type="0xaacc" id="Zen Sand Beige Corner BR dirty">
-      <Texture>
-         <File>mountainTempleObjects8x8</File>
-         <Index>0x0c</Index>
-      </Texture>
-   </Ground>
-   <Ground type="0xaacd" id="Zen Sand Beige Horizontal Top dark">
-      <Texture>
-         <File>mountainTempleObjects8x8</File>
-         <Index>0x0d</Index>
-      </Texture>
-   </Ground>
-   <Ground type="0xaace" id="Zen Sand Beige Horizontal Bot dark">
-      <Texture>
-         <File>mountainTempleObjects8x8</File>
-         <Index>0x0e</Index>
-      </Texture>
-   </Ground>
-   <Ground type="0xaacf" id="Zen Sand Beige no line">
-      <Texture>
-         <File>mountainTempleObjects8x8</File>
-         <Index>0x0f</Index>
-      </Texture>
-   </Ground>
-   <Ground type="0xaad0" id="Zen Sand Beige Corner TL clean">
-      <Texture>
-         <File>mountainTempleObjects8x8</File>
-         <Index>0x10</Index>
-      </Texture>
-   </Ground>
-   <Ground type="0xaad1" id="Zen Sand Beige Corner TL dirty">
-      <Texture>
-         <File>mountainTempleObjects8x8</File>
-         <Index>0x11</Index>
-      </Texture>
-   </Ground>
-   <Ground type="0xaad2" id="Zen Sand Beige Corner TR dirty">
-      <Texture>
-         <File>mountainTempleObjects8x8</File>
-         <Index>0x12</Index>
-      </Texture>
-   </Ground>
-   <Ground type="0xaad3" id="Zen Sand Beige vertical left dark">
-      <Texture>
-         <File>mountainTempleObjects8x8</File>
-         <Index>0x13</Index>
-      </Texture>
-   </Ground>
-   <Ground type="0xaad4" id="Zen Sand Beige vertical right dark">
-      <Texture>
-         <File>mountainTempleObjects8x8</File>
-         <Index>0x14</Index>
-      </Texture>
-   </Ground>
-   <Ground type="0xaad5" id="Zen Sand Beige horizontal top dark V2">
-      <Texture>
-         <File>mountainTempleObjects8x8</File>
-         <Index>0x17</Index>
-      </Texture>
-   </Ground>
-   <Ground type="0xaad6" id="Zen Sand Beige TL circle">
-      <Texture>
-         <File>mountainTempleObjects8x8</File>
-         <Index>0x18</Index>
-      </Texture>
-   </Ground>
-   <Ground type="0xaad7" id="Zen Sand Beige TM circle">
-      <Texture>
-         <File>mountainTempleObjects8x8</File>
-         <Index>0x19</Index>
-      </Texture>
-   </Ground>
-   <Ground type="0xaad8" id="Zen Sand Beige TR circle">
-      <Texture>
-         <File>mountainTempleObjects8x8</File>
-         <Index>0x1a</Index>
-      </Texture>
-   </Ground>
-   <Ground type="0xaadf" id="Zen Sand Beige ML circle">
-      <Texture>
-         <File>mountainTempleObjects8x8</File>
-         <Index>0x1b</Index>
-      </Texture>
-   </Ground>
-   <Ground type="0xaad9" id="Zen Sand Beige inner circle">
-      <Texture>
-         <File>mountainTempleObjects8x8</File>
-         <Index>0x1c</Index>
-      </Texture>
-   </Ground>
-   <Ground type="0xaada" id="Zen Sand Beige MR circle">
-      <Texture>
-         <File>mountainTempleObjects8x8</File>
-         <Index>0x1d</Index>
-      </Texture>
-   </Ground>
-   <Ground type="0xaadb" id="Zen Sand Beige BL circle">
-      <Texture>
-         <File>mountainTempleObjects8x8</File>
-         <Index>0x1e</Index>
-      </Texture>
-   </Ground>
-   <Ground type="0xaadc" id="Zen Sand Beige BM circle">
-      <Texture>
-         <File>mountainTempleObjects8x8</File>
-         <Index>0x1f</Index>
-      </Texture>
-   </Ground>
-   <Ground type="0xaadd" id="Zen Sand Beige BR circle">
-      <Texture>
-         <File>mountainTempleObjects8x8</File>
-         <Index>0x20</Index>
-      </Texture>
-   </Ground>
-   <Ground type="0xaae2" id="Engawa V TdL">
-      <Texture>
-         <File>mountainTempleObjects8x8</File>
-         <Index>0x2f</Index>
-      </Texture>
-   </Ground>
-   <Ground type="0xaae3" id="Engawa V BdL">
-      <Texture>
-         <File>mountainTempleObjects8x8</File>
-         <Index>0x30</Index>
-      </Texture>
-   </Ground>
-   <Ground type="0xaae4" id="Engawa TL">
-      <Texture>
-         <File>mountainTempleObjects8x8</File>
-         <Index>0x31</Index>
-      </Texture>
-   </Ground>
-   <Ground type="0xaae5" id="Engawa TR">
-      <Texture>
-         <File>mountainTempleObjects8x8</File>
-         <Index>0x32</Index>
-      </Texture>
-   </Ground>
-   <Ground type="0xaae6" id="Engawa LdL">
-      <Texture>
-         <File>mountainTempleObjects8x8</File>
-         <Index>0x33</Index>
-      </Texture>
-   </Ground>
-   <Ground type="0xaae7" id="Engawa RdL">
-      <Texture>
-         <File>mountainTempleObjects8x8</File>
-         <Index>0x34</Index>
-      </Texture>
-   </Ground>
-   <Ground type="0xaae8" id="Jyari dark">
-      <Texture>
-         <File>mountainTempleObjects8x8</File>
-         <Index>0x2b</Index>
-      </Texture>
-      <RandomOffset/>
-      <BlendPriority>9</BlendPriority>
-   </Ground>
-   <Ground type="0xaae9" id="Jyari light">
-      <Texture>
-         <File>mountainTempleObjects8x8</File>
-         <Index>0x2c</Index>
-      </Texture>
-      <RandomOffset/>
-      <BlendPriority>10</BlendPriority>
-   </Ground>
-<Ground type="0x1099" id="EH Venom">
-      <Texture>
-         <File>epicHiveObjects8x8</File>
-         <Index>0x00</Index>
-      </Texture>
-      <Speed>0.75</Speed>
-      <Animate dx=".2" dy=".2">Flow</Animate>
-      <Sinking/>
-      <BlendPriority>3</BlendPriority>
-      <MinDamage>50</MinDamage>
-      <MaxDamage>70</MaxDamage>
-      <DisplayId>Killer Honey</DisplayId>
-   </Ground>
-   <Ground type="0x1a9d" id="EH UnderPartialFloor Venom">
-      <Texture>
-         <File>epicHiveObjects8x8</File>
-         <Index>0x00</Index>
-      </Texture>
-      <Speed>0.75</Speed>
-      <Animate dx=".2" dy=".2">Flow</Animate>
-      <BlendPriority>3</BlendPriority>
-      <DisplayId>Killer Honey</DisplayId>
-   </Ground>
-   <Ground type="0x10fa" id="EH NoSpeedReduct Venom">
-      <Texture>
-         <File>epicHiveObjects8x8</File>
-         <Index>0x00</Index>
-      </Texture>
-      <Speed>1</Speed>
-      <Animate dx=".2" dy=".2">Flow</Animate>
-      <BlendPriority>3</BlendPriority>
-      <DisplayId>Killer Honey</DisplayId>
-   </Ground>
-   <Ground type="0x1aa8" id="EH BlendPriorityChange Venom">
-      <Texture>
-         <File>epicHiveObjects8x8</File>
-         <Index>0x00</Index>
-      </Texture>
-      <Speed>0.75</Speed>
-      <Animate dx=".2" dy=".2">Flow</Animate>
-      <BlendPriority>9</BlendPriority>
-      <Sink/>
-      <MinDamage>50</MinDamage>
-      <MaxDamage>70</MaxDamage>
-      <DisplayId>Killer Honey</DisplayId>
-   </Ground>
-   <Ground type="0x10ce" id="EH Unwalkable Venom">
-      <Texture>
-         <File>epicHiveObjects8x8</File>
-         <Index>0x47</Index>
-      </Texture>
-      <BlendPriority>4</BlendPriority>
-      <NoWalk/>
-      <MinDamage>80</MinDamage>
-      <MaxDamage>120</MaxDamage>
-      <DisplayId>Killer Honey</DisplayId>
-   </Ground>
-   <Ground type="0x1aa1" id="EH Secret Floor">
-      <Texture>
-         <File>epicHiveObjects8x8</File>
-         <Index>0x03</Index>
-      </Texture>
-      <BlendPriority>1</BlendPriority>
-      <NoWalk/>
-   </Ground>
-   <Ground type="0x10d8" id="EH S Floor">
-      <SameTypeEdgeMode/>
-      <RandomTexture>
-         <Texture>
-            <File>lofiObj3</File>
-            <Index>0x117</Index>
-         </Texture>
-         <Texture>
-            <File>lofiObj3</File>
-            <Index>0x118</Index>
-         </Texture>
-         <Texture>
-            <File>lofiObj3</File>
-            <Index>0x119</Index>
-         </Texture>
-         <Texture>
-            <File>lofiObj3</File>
-            <Index>0x11a</Index>
-         </Texture>
-      </RandomTexture>
-      <Edge>
-         <Texture>
-            <File>epicHiveObjects8x8</File>
-            <Index>0x60</Index>
-         </Texture>
-      </Edge>
-      <InnerCorner>
-         <Texture>
-            <File>epicHiveObjects8x8</File>
-            <Index>0x61</Index>
-         </Texture>
-      </InnerCorner>
-      <Corner>
-         <Texture>
-            <File>epicHiveObjects8x8</File>
-            <Index>0x61</Index>
-         </Texture>
-      </Corner>
-      <BlendPriority>5</BlendPriority>
-   </Ground>
-   <Ground type="0x08e3" id="EH S Floor 2">
-      <RandomTexture>
-         <Texture>
-            <File>lofiObj3</File>
-            <Index>0x117</Index>
-         </Texture>
-         <Texture>
-            <File>lofiObj3</File>
-            <Index>0x118</Index>
-         </Texture>
-         <Texture>
-            <File>lofiObj3</File>
-            <Index>0x119</Index>
-         </Texture>
-         <Texture>
-            <File>lofiObj3</File>
-            <Index>0x11a</Index>
-         </Texture>
-      </RandomTexture>
-      <BlendPriority>5</BlendPriority>
-   </Ground>
-   <Ground type="0x08fd" id="EH S Floor 2 Bottom">
-      <RandomTexture>
-         <Texture>
-            <File>epicHiveObjects8x8</File>
-            <Index>0x70</Index>
-         </Texture>
-         <Texture>
-            <File>epicHiveObjects8x8</File>
-            <Index>0x70</Index>
-         </Texture>
-      </RandomTexture>
-      <BlendPriority>5</BlendPriority>
-   </Ground>
-   <Ground type="0x08fe" id="EH S Floor 2 Left">
-      <RandomTexture>
-         <Texture>
-            <File>epicHiveObjects8x8</File>
-            <Index>0x71</Index>
-         </Texture>
-         <Texture>
-            <File>epicHiveObjects8x8</File>
-            <Index>0x71</Index>
-         </Texture>
-      </RandomTexture>
-      <BlendPriority>5</BlendPriority>
-   </Ground>
-   <Ground type="0x109a" id="EH Floor">
-      <Texture>
-         <File>epicHiveObjects8x8</File>
-         <Index>0x01</Index>
-      </Texture>
-      <BlendPriority>7</BlendPriority>
-   </Ground>
-   <Ground type="0x10ac" id="EH Left Dark Floor">
-      <Texture>
-         <File>epicHiveObjects8x8</File>
-         <Index>0x22</Index>
-      </Texture>
-      <BlendPriority>7</BlendPriority>
-   </Ground>
-   <Ground type="0x10ad" id="EH Right Dark Floor">
-      <Texture>
-         <File>epicHiveObjects8x8</File>
-         <Index>0x23</Index>
-      </Texture>
-      <BlendPriority>7</BlendPriority>
-   </Ground>
-   <Ground type="0x1ab0" id="EH Fake Floor">
-      <Texture>
-         <File>epicHiveObjects8x8</File>
-         <Index>0x01</Index>
-      </Texture>
-      <BlendPriority>2</BlendPriority>
-   </Ground>
-<Ground type="0x1670" id="Patty Grass 1">
-      <Texture>
-         <File>stPatricksObjects8x8</File>
-         <Index>0x23</Index>
-      </Texture>
-      <BlendPriority>6</BlendPriority>
-      <RandomOffset/>
-   </Ground>
-   <Ground type="0x1671" id="Patty Grass 2">
-      <Texture>
-         <File>stPatricksObjects8x8</File>
-         <Index>0x22</Index>
-      </Texture>
-      <BlendPriority>9</BlendPriority>
-      <RandomOffset/>
-   </Ground>
-   <Ground type="0x1672" id="Patty Grass 3">
-      <Texture>
-         <File>stPatricksObjects8x8</File>
-         <Index>0x21</Index>
-      </Texture>
-      <BlendPriority>2</BlendPriority>
-      <RandomOffset/>
-   </Ground>
-   <Ground type="0x1673" id="Patty Rainbow Road 1">
-      <Texture>
-         <File>stPatricksObjects8x8</File>
-         <Index>0x19</Index>
-      </Texture>
-      <Speed>1.2</Speed>
-      <BlendPriority>6</BlendPriority>
-   </Ground>
-   <Ground type="0x1674" id="Patty Rainbow Road 2">
-      <Texture>
-         <File>stPatricksObjects8x8</File>
-         <Index>0x1a</Index>
-      </Texture>
-      <Speed>1.2</Speed>
-      <BlendPriority>6</BlendPriority>
-   </Ground>
-   <Ground type="0x1675" id="Patty Rainbow Road 3">
-      <Texture>
-         <File>stPatricksObjects8x8</File>
-         <Index>0x1b</Index>
-      </Texture>
-      <Speed>1.2</Speed>
-      <BlendPriority>6</BlendPriority>
-   </Ground>
-   <Ground type="0x1676" id="Patty Rainbow Road 4">
-      <Texture>
-         <File>stPatricksObjects8x8</File>
-         <Index>0x1c</Index>
-      </Texture>
-      <Speed>1.2</Speed>
-      <BlendPriority>6</BlendPriority>
-   </Ground>
-   <Ground type="0x1677" id="Patty Rainbow Road Rotated 1">
-      <Texture>
-         <File>stPatricksObjects8x8</File>
-         <Index>0x1d</Index>
-      </Texture>
-      <Speed>1.2</Speed>
-      <BlendPriority>6</BlendPriority>
-   </Ground>
-   <Ground type="0x1678" id="Patty Rainbow Road Rotated 2">
-      <Texture>
-         <File>stPatricksObjects8x8</File>
-         <Index>0x1e</Index>
-      </Texture>
-      <Speed>1.2</Speed>
-      <BlendPriority>6</BlendPriority>
-   </Ground>
-   <Ground type="0x1679" id="Patty Rainbow Road Rotated 3">
-      <Texture>
-         <File>stPatricksObjects8x8</File>
-         <Index>0x1f</Index>
-      </Texture>
-      <Speed>1.2</Speed>
-      <BlendPriority>6</BlendPriority>
-   </Ground>
-   <Ground type="0x167a" id="Patty Rainbow Road Rotated 4">
-      <Texture>
-         <File>stPatricksObjects8x8</File>
-         <Index>0x20</Index>
-      </Texture>
-      <Speed>1.2</Speed>
-      <BlendPriority>6</BlendPriority>
-   </Ground>
-   <Ground type="0x167b" id="Patty Grass 3 No Walk">
-      <Texture>
-         <File>stPatricksObjects8x8</File>
-         <Index>0x21</Index>
-      </Texture>
-      <BlendPriority>6</BlendPriority>
-      <NoWalk/>
-   </Ground>
-<Ground type="0x00" id="Black Water">
+
+<!-- Ground -->
+
+
+   <Ground type="0x00" id="Black Water">
       <Texture>
          <File>lofiEnvironment2</File>
          <Index>0x09</Index>
@@ -1425,7 +797,7 @@
       <BlendPriority>10</BlendPriority>
       <RandomOffset/>
    </Ground>
-   <Ground type="0x61" id="Grey Circle">
+   <Ground type="0x61" id="Grey Circle Light">
       <Texture>
          <File>lofiEnvironment</File>
          <Index>0x61</Index>
@@ -2458,6 +1830,7 @@
          <Index>0x133</Index>
       </Texture>
       <Sink/>
+      <Color>0x3F7F3F</Color>
    </Ground>
    <Ground type="0x83" id="Lab Good Vat No Slow">
       <Texture>
@@ -2465,6 +1838,7 @@
          <Index>0x14e</Index>
       </Texture>
       <Sink/>
+      <Color>0x3972A8</Color>
    </Ground>
    <Ground type="0xa8" id="Liquid Evil">
       <Texture>
@@ -4589,365 +3963,1259 @@
       </Texture>
       <BlendPriority>0</BlendPriority>
    </Ground>
-<Ground type="0xb01a" id="LH Main Tile">
-      <RandomTexture>
-         <Texture>
-            <File>LHObj</File>
-            <Index>0</Index>
-         </Texture>
-         <Texture>
-            <File>LHObj</File>
-            <Index>2</Index>
-         </Texture>
-      </RandomTexture>
-   </Ground>
-   <Ground type="0xb01b" id="LH Main Tile Bloody">
+
+
+<!-- autumnNexusGround -->
+
+
+   <Ground type="0x4800" id="AN FG R">
       <Texture>
-         <File>LHObj</File>
-         <Index>1</Index>
+         <File>autumnNexusObjects8x8</File>
+         <Index>0x0</Index>
       </Texture>
+      <BlendPriority>8</BlendPriority>
    </Ground>
-   <Ground type="0xb01c" id="LH Gem Tile">
-      <RandomTexture>
-         <Texture>
-            <File>LHObj</File>
-            <Index>3</Index>
-         </Texture>
-         <Texture>
-            <File>LHObj</File>
-            <Index>4</Index>
-         </Texture>
-         <Texture>
-            <File>LHObj</File>
-            <Index>5</Index>
-         </Texture>
-         <Texture>
-            <File>LHObj</File>
-            <Index>6</Index>
-         </Texture>
-         <Texture>
-            <File>LHObj</File>
-            <Index>7</Index>
-         </Texture>
-         <Texture>
-            <File>LHObj</File>
-            <Index>8</Index>
-         </Texture>
-         <Texture>
-            <File>LHObj</File>
-            <Index>9</Index>
-         </Texture>
-         <Texture>
-            <File>LHObj</File>
-            <Index>10</Index>
-         </Texture>
-         <Texture>
-            <File>LHObj</File>
-            <Index>11</Index>
-         </Texture>
-         <Texture>
-            <File>LHObj</File>
-            <Index>12</Index>
-         </Texture>
-         <Texture>
-            <File>LHObj</File>
-            <Index>13</Index>
-         </Texture>
-         <Texture>
-            <File>LHObj</File>
-            <Index>14</Index>
-         </Texture>
-      </RandomTexture>
-   </Ground>
-   <Ground type="0xb01d" id="LH Hall Tile">
+   <Ground type="0x4801" id="AN FG B">
       <Texture>
-         <File>LHObj</File>
-         <Index>15</Index>
+         <File>autumnNexusObjects8x8</File>
+         <Index>0x1</Index>
       </Texture>
+      <BlendPriority>6</BlendPriority>
    </Ground>
-   <Ground type="0xb025" id="LH Cult Main Tile">
+   <Ground type="0x4802" id="AN FG O">
       <Texture>
-         <File>LHObj</File>
-         <Index>0x29</Index>
+         <File>autumnNexusObjects8x8</File>
+         <Index>0x2</Index>
       </Texture>
+      <BlendPriority>4</BlendPriority>
    </Ground>
-   <Ground type="0xb027" id="LH Cult Bloody Tile">
+   <Ground type="0x4803" id="AN FG G">
       <Texture>
-         <File>LHObj</File>
-         <Index>0x2a</Index>
+         <File>autumnNexusObjects8x8</File>
+         <Index>0x3</Index>
       </Texture>
+      <BlendPriority>2</BlendPriority>
    </Ground>
-   <Ground type="0xb098" id="LH Void Landmark N">
+   <Ground type="0x4804" id="AN Rk">
       <Texture>
-         <File>lofiObj3</File>
-         <Index>0x447</Index>
+         <File>autumnNexusObjects8x8</File>
+         <Index>0x4</Index>
       </Texture>
-      <DisplayId>Pure Evil</DisplayId>
-      <MinDamage>70</MinDamage>
-      <MaxDamage>80</MaxDamage>
-      <Animate dx=".35">Flow</Animate>
-      <Sink/>
-      <RandomOffset/>
-      <Speed>.333</Speed>
+      <BlendPriority>0</BlendPriority>
+   </Ground>
+   <Ground type="0x4805" id="AN BrRo1dk">
+      <Texture>
+         <File>autumnNexusObjects8x8</File>
+         <Index>0xa</Index>
+      </Texture>
+      <BlendPriority>2</BlendPriority>
+   </Ground>
+   <Ground type="0x4806" id="AN BrRo1">
+      <Texture>
+         <File>autumnNexusObjects8x8</File>
+         <Index>0xb</Index>
+      </Texture>
+      <BlendPriority>4</BlendPriority>
+   </Ground>
+   <Ground type="0x4807" id="AN FG R dk">
+      <Texture>
+         <File>autumnNexusObjects8x8</File>
+         <Index>0x10</Index>
+      </Texture>
+      <BlendPriority>9</BlendPriority>
+   </Ground>
+   <Ground type="0x4808" id="AN FG B dk">
+      <Texture>
+         <File>autumnNexusObjects8x8</File>
+         <Index>0x11</Index>
+      </Texture>
+      <BlendPriority>7</BlendPriority>
+   </Ground>
+   <Ground type="0x4809" id="AN FG O dk">
+      <Texture>
+         <File>autumnNexusObjects8x8</File>
+         <Index>0x12</Index>
+      </Texture>
+      <BlendPriority>5</BlendPriority>
+   </Ground>
+   <Ground type="0x480A" id="AN FG G dk">
+      <Texture>
+         <File>autumnNexusObjects8x8</File>
+         <Index>0x13</Index>
+      </Texture>
+      <BlendPriority>3</BlendPriority>
+   </Ground>
+   <Ground type="0x480B" id="AN Rk dk">
+      <Texture>
+         <File>autumnNexusObjects8x8</File>
+         <Index>0x14</Index>
+      </Texture>
       <BlendPriority>1</BlendPriority>
    </Ground>
-   <Ground type="0xb099" id="LH Void Landmark E">
+   <Ground type="0x480C" id="AN Rkpt">
+      <RandomTexture>
+         <Texture>
+            <File>autumnNexusObjects8x8</File>
+            <Index>0x21</Index>
+         </Texture>
+         <Texture>
+            <File>autumnNexusObjects8x8</File>
+            <Index>0x22</Index>
+         </Texture>
+         <Texture>
+            <File>autumnNexusObjects8x8</File>
+            <Index>0x23</Index>
+         </Texture>
+         <Texture>
+            <File>autumnNexusObjects8x8</File>
+            <Index>0x24</Index>
+         </Texture>
+      </RandomTexture>
+      <BlendPriority>-2</BlendPriority>
+   </Ground>
+   <Ground type="0x480D" id="AN WBr">
+      <RandomTexture>
+         <Texture>
+            <File>autumnNexusObjects8x8</File>
+            <Index>0x2b</Index>
+         </Texture>
+         <Texture>
+            <File>autumnNexusObjects8x8</File>
+            <Index>0x2c</Index>
+         </Texture>
+         <Texture>
+            <File>autumnNexusObjects8x8</File>
+            <Index>0x2d</Index>
+         </Texture>
+         <Texture>
+            <File>autumnNexusObjects8x8</File>
+            <Index>0x2e</Index>
+         </Texture>
+      </RandomTexture>
+      <BlendPriority>0</BlendPriority>
+   </Ground>
+   <Ground type="0x480E" id="AN WBr Spd">
+      <RandomTexture>
+         <Texture>
+            <File>autumnNexusObjects8x8</File>
+            <Index>0x2b</Index>
+         </Texture>
+         <Texture>
+            <File>autumnNexusObjects8x8</File>
+            <Index>0x2c</Index>
+         </Texture>
+         <Texture>
+            <File>autumnNexusObjects8x8</File>
+            <Index>0x2d</Index>
+         </Texture>
+         <Texture>
+            <File>autumnNexusObjects8x8</File>
+            <Index>0x2e</Index>
+         </Texture>
+      </RandomTexture>
+      <BlendPriority>0</BlendPriority>
+   </Ground>
+   <Ground type="0x480F" id="AN Rv">
       <Texture>
-         <File>lofiObj3</File>
-         <Index>0x447</Index>
+         <File>autumnNexusObjects8x8</File>
+         <Index>0x45</Index>
       </Texture>
-      <DisplayId>Pure Evil</DisplayId>
-      <MinDamage>70</MinDamage>
-      <MaxDamage>80</MaxDamage>
-      <Animate dx=".35">Flow</Animate>
-      <Sink/>
-      <RandomOffset/>
-      <Speed>.333</Speed>
       <BlendPriority>1</BlendPriority>
-   </Ground>
-   <Ground type="0xb09a" id="LH Void Landmark S">
-      <Texture>
-         <File>lofiObj3</File>
-         <Index>0x447</Index>
-      </Texture>
-      <DisplayId>Pure Evil</DisplayId>
-      <MinDamage>70</MinDamage>
-      <MaxDamage>80</MaxDamage>
-      <Animate dx=".35">Flow</Animate>
+      <Animate dx="0.33" dy="0.33">Flow</Animate>
       <Sink/>
-      <RandomOffset/>
-      <Speed>.333</Speed>
-      <BlendPriority>1</BlendPriority>
+      <Speed>0.7</Speed>
    </Ground>
-   <Ground type="0xb09b" id="LH Void Landmark W">
+   <Ground type="0x4810" id="AN FoWt">
       <Texture>
-         <File>lofiObj3</File>
-         <Index>0x447</Index>
+         <File>autumnNexusObjects8x8</File>
+         <Index>0x46</Index>
       </Texture>
-      <DisplayId>Pure Evil</DisplayId>
-      <MinDamage>70</MinDamage>
-      <MaxDamage>80</MaxDamage>
-      <Animate dx=".35">Flow</Animate>
+      <BlendPriority>1</BlendPriority>
+      <Animate dx="0.33" dy="0.33">Flow</Animate>
       <Sink/>
-      <RandomOffset/>
-      <Speed>.333</Speed>
-      <BlendPriority>1</BlendPriority>
+      <Speed>0.7</Speed>
    </Ground>
-   <Ground type="0xb09c" id="LH Void Landmark C">
+   <Ground type="0x4811" id="AN WFP">
+      <RandomTexture>
+         <Texture>
+            <File>autumnNexusObjects8x8</File>
+            <Index>0x47</Index>
+         </Texture>
+         <Texture>
+            <File>autumnNexusObjects8x8</File>
+            <Index>0x48</Index>
+         </Texture>
+         <Texture>
+            <File>autumnNexusObjects8x8</File>
+            <Index>0x49</Index>
+         </Texture>
+         <Texture>
+            <File>autumnNexusObjects8x8</File>
+            <Index>0x4a</Index>
+         </Texture>
+         <Texture>
+            <File>autumnNexusObjects8x8</File>
+            <Index>0x4b</Index>
+         </Texture>
+      </RandomTexture>
+      <BlendPriority>0</BlendPriority>
+   </Ground>
+   <Ground type="0x4812" id="AN WFPdk">
+      <RandomTexture>
+         <Texture>
+            <File>autumnNexusObjects8x8</File>
+            <Index>0x4c</Index>
+         </Texture>
+         <Texture>
+            <File>autumnNexusObjects8x8</File>
+            <Index>0x4d</Index>
+         </Texture>
+         <Texture>
+            <File>autumnNexusObjects8x8</File>
+            <Index>0x4e</Index>
+         </Texture>
+         <Texture>
+            <File>autumnNexusObjects8x8</File>
+            <Index>0x4f</Index>
+         </Texture>
+         <Texture>
+            <File>autumnNexusObjects8x8</File>
+            <Index>0x50</Index>
+         </Texture>
+      </RandomTexture>
+      <BlendPriority>0</BlendPriority>
+   </Ground>
+   <Ground type="0x4813" id="AN BrRo2">
+      <RandomTexture>
+         <Texture>
+            <File>autumnNexusObjects8x8</File>
+            <Index>0x55</Index>
+         </Texture>
+         <Texture>
+            <File>autumnNexusObjects8x8</File>
+            <Index>0x56</Index>
+         </Texture>
+         <Texture>
+            <File>autumnNexusObjects8x8</File>
+            <Index>0x57</Index>
+         </Texture>
+         <Texture>
+            <File>autumnNexusObjects8x8</File>
+            <Index>0x58</Index>
+         </Texture>
+         <Texture>
+            <File>autumnNexusObjects8x8</File>
+            <Index>0x59</Index>
+         </Texture>
+         <Texture>
+            <File>autumnNexusObjects8x8</File>
+            <Index>0x5a</Index>
+         </Texture>
+      </RandomTexture>
+      <BlendPriority>0</BlendPriority>
+      <Speed>1.2</Speed>
+   </Ground>
+   <Ground type="0x4814" id="AN StEtr">
       <Texture>
-         <File>lofiObj3</File>
-         <Index>0x447</Index>
+         <File>autumnNexusObjects8x8</File>
+         <Index>0x6a</Index>
       </Texture>
-      <DisplayId>Pure Evil</DisplayId>
-      <MinDamage>70</MinDamage>
-      <MaxDamage>80</MaxDamage>
-      <Animate dx=".35">Flow</Animate>
+      <Edge>
+         <Texture>
+            <File>autumnNexusObjects8x8</File>
+            <Index>0x33c</Index>
+         </Texture>
+      </Edge>
+      <Corner>
+         <Texture>
+            <File>autumnNexusObjects8x8</File>
+            <Index>0x33d</Index>
+         </Texture>
+      </Corner>
+      <BlendPriority>0</BlendPriority>
+   </Ground>
+   <Ground type="0x4817" id="AN WdT">
+      <Texture>
+         <File>autumnNexusObjects8x8</File>
+         <Index>0x73</Index>
+      </Texture>
+      <BlendPriority>0</BlendPriority>
+   </Ground>
+   <Ground type="0x4818" id="AN WdT Spd">
+      <Texture>
+         <File>autumnNexusObjects8x8</File>
+         <Index>0x73</Index>
+      </Texture>
+      <BlendPriority>0</BlendPriority>
+      <Speed>1.4</Speed>
+   </Ground>
+   <Ground type="0x4815" id="AN RG Rug">
+      <SameTypeEdgeMode/>
+      <Texture>
+         <File>autumnNexusObjects8x8</File>
+         <Index>0x6f</Index>
+      </Texture>
+      <Edge>
+         <Texture>
+            <File>autumnNexusObjects8x8</File>
+            <Index>0x70</Index>
+         </Texture>
+      </Edge>
+      <InnerCorner>
+         <Texture>
+            <File>autumnNexusObjects8x8</File>
+            <Index>0x71</Index>
+         </Texture>
+      </InnerCorner>
+      <Corner>
+         <Texture>
+            <File>autumnNexusObjects8x8</File>
+            <Index>0x72</Index>
+         </Texture>
+      </Corner>
+      <Speed>1.4</Speed>
+   </Ground>
+   <Ground type="0x4819" id="HN StEtr">
+      <Texture>
+         <File>autumnNexusObjects8x8</File>
+         <Index>0x2f8</Index>
+      </Texture>
+      <Edge>
+         <Texture>
+            <File>autumnNexusObjects8x8</File>
+            <Index>0x33c</Index>
+         </Texture>
+      </Edge>
+      <Corner>
+         <Texture>
+            <File>autumnNexusObjects8x8</File>
+            <Index>0x33d</Index>
+         </Texture>
+      </Corner>
+      <BlendPriority>-2</BlendPriority>
+   </Ground>
+   <Ground type="0x481A" id="HN StEtr b">
+      <Texture>
+         <File>autumnNexusObjects8x8</File>
+         <Index>0x2f9</Index>
+      </Texture>
+      <Edge>
+         <Texture>
+            <File>autumnNexusObjects8x8</File>
+            <Index>0x33c</Index>
+         </Texture>
+      </Edge>
+      <Corner>
+         <Texture>
+            <File>autumnNexusObjects8x8</File>
+            <Index>0x33d</Index>
+         </Texture>
+      </Corner>
+   </Ground>
+   <Ground type="0x481B" id="HN StEtr dk">
+      <Texture>
+         <File>autumnNexusObjects8x8</File>
+         <Index>0x308</Index>
+      </Texture>
+      <Edge>
+         <Texture>
+            <File>autumnNexusObjects8x8</File>
+            <Index>0x33c</Index>
+         </Texture>
+      </Edge>
+      <Corner>
+         <Texture>
+            <File>autumnNexusObjects8x8</File>
+            <Index>0x33d</Index>
+         </Texture>
+      </Corner>
+   </Ground>
+   <Ground type="0x481C" id="HN StEtr b dk">
+      <Texture>
+         <File>autumnNexusObjects8x8</File>
+         <Index>0x309</Index>
+      </Texture>
+      <Edge>
+         <Texture>
+            <File>autumnNexusObjects8x8</File>
+            <Index>0x33c</Index>
+         </Texture>
+      </Edge>
+      <Corner>
+         <Texture>
+            <File>autumnNexusObjects8x8</File>
+            <Index>0x33d</Index>
+         </Texture>
+      </Corner>
+   </Ground>
+   <Ground type="0x481D" id="HN RcTile">
+      <Texture>
+         <File>autumnNexusObjects8x8</File>
+         <Index>0x2fa</Index>
+      </Texture>
+      <BlendPriority>0</BlendPriority>
+   </Ground>
+   <Ground type="0x481E" id="HN Rc Crs">
+      <Texture>
+         <File>autumnNexusObjects8x8</File>
+         <Index>0x2fb</Index>
+      </Texture>
+      <BlendPriority>0</BlendPriority>
+   </Ground>
+   <Ground type="0x481F" id="HN RG Rug">
+      <SameTypeEdgeMode/>
+      <Texture>
+         <File>autumnNexusObjects8x8</File>
+         <Index>0x2fc</Index>
+      </Texture>
+      <Edge>
+         <Texture>
+            <File>autumnNexusObjects8x8</File>
+            <Index>0x2fd</Index>
+         </Texture>
+      </Edge>
+      <InnerCorner>
+         <Texture>
+            <File>autumnNexusObjects8x8</File>
+            <Index>0x2fe</Index>
+         </Texture>
+      </InnerCorner>
+      <Corner>
+         <Texture>
+            <File>autumnNexusObjects8x8</File>
+            <Index>0x2ff</Index>
+         </Texture>
+      </Corner>
+      <Speed>1.4</Speed>
+   </Ground>
+   <Ground type="0x4820" id="HN FG R">
+      <Texture>
+         <File>autumnNexusObjects8x8</File>
+         <Index>0x310</Index>
+      </Texture>
+      <BlendPriority>8</BlendPriority>
+   </Ground>
+   <Ground type="0x4821" id="HN FG B">
+      <Texture>
+         <File>autumnNexusObjects8x8</File>
+         <Index>0x311</Index>
+      </Texture>
+      <BlendPriority>6</BlendPriority>
+   </Ground>
+   <Ground type="0x4822" id="HN FG O">
+      <Texture>
+         <File>autumnNexusObjects8x8</File>
+         <Index>0x312</Index>
+      </Texture>
+      <BlendPriority>4</BlendPriority>
+   </Ground>
+   <Ground type="0x4823" id="HN FG G">
+      <Texture>
+         <File>autumnNexusObjects8x8</File>
+         <Index>0x313</Index>
+      </Texture>
+      <BlendPriority>2</BlendPriority>
+   </Ground>
+   <Ground type="0x4824" id="HN Rk">
+      <Texture>
+         <File>autumnNexusObjects8x8</File>
+         <Index>0x314</Index>
+      </Texture>
+      <BlendPriority>0</BlendPriority>
+   </Ground>
+   <Ground type="0x4825" id="HN BrRo2">
+      <RandomTexture>
+         <Texture>
+            <File>autumnNexusObjects8x8</File>
+            <Index>0x335</Index>
+         </Texture>
+         <Texture>
+            <File>autumnNexusObjects8x8</File>
+            <Index>0x336</Index>
+         </Texture>
+         <Texture>
+            <File>autumnNexusObjects8x8</File>
+            <Index>0x337</Index>
+         </Texture>
+         <Texture>
+            <File>autumnNexusObjects8x8</File>
+            <Index>0x338</Index>
+         </Texture>
+         <Texture>
+            <File>autumnNexusObjects8x8</File>
+            <Index>0x339</Index>
+         </Texture>
+         <Texture>
+            <File>autumnNexusObjects8x8</File>
+            <Index>0x33a</Index>
+         </Texture>
+      </RandomTexture>
+      <BlendPriority>-2</BlendPriority>
+      <Speed>1.2</Speed>
+   </Ground>
+   <Ground type="0x4826" id="HN BrRo2 dk">
+      <RandomTexture>
+         <Texture>
+            <File>autumnNexusObjects8x8</File>
+            <Index>0x345</Index>
+         </Texture>
+         <Texture>
+            <File>autumnNexusObjects8x8</File>
+            <Index>0x346</Index>
+         </Texture>
+         <Texture>
+            <File>autumnNexusObjects8x8</File>
+            <Index>0x347</Index>
+         </Texture>
+         <Texture>
+            <File>autumnNexusObjects8x8</File>
+            <Index>0x348</Index>
+         </Texture>
+         <Texture>
+            <File>autumnNexusObjects8x8</File>
+            <Index>0x349</Index>
+         </Texture>
+         <Texture>
+            <File>autumnNexusObjects8x8</File>
+            <Index>0x34a</Index>
+         </Texture>
+      </RandomTexture>
+      <BlendPriority>-4</BlendPriority>
+      <Speed>1.2</Speed>
+   </Ground>
+   <Ground type="0x4827" id="HN FG R dk">
+      <Texture>
+         <File>autumnNexusObjects8x8</File>
+         <Index>0x320</Index>
+      </Texture>
+      <BlendPriority>8</BlendPriority>
+   </Ground>
+   <Ground type="0x4828" id="HN FG B dk">
+      <Texture>
+         <File>autumnNexusObjects8x8</File>
+         <Index>0x321</Index>
+      </Texture>
+      <BlendPriority>6</BlendPriority>
+   </Ground>
+   <Ground type="0x4829" id="HN FG O dk">
+      <Texture>
+         <File>autumnNexusObjects8x8</File>
+         <Index>0x322</Index>
+      </Texture>
+      <BlendPriority>4</BlendPriority>
+   </Ground>
+   <Ground type="0x482A" id="HN FG G dk">
+      <Texture>
+         <File>autumnNexusObjects8x8</File>
+         <Index>0x323</Index>
+      </Texture>
+      <BlendPriority>2</BlendPriority>
+   </Ground>
+   <Ground type="0x482B" id="HN Rk dk">
+      <Texture>
+         <File>autumnNexusObjects8x8</File>
+         <Index>0x324</Index>
+      </Texture>
+      <BlendPriority>2</BlendPriority>
+   </Ground>
+   <Ground type="0x482C" id="HN Rkpt">
+      <RandomTexture>
+         <Texture>
+            <File>autumnNexusObjects8x8</File>
+            <Index>0x331</Index>
+         </Texture>
+         <Texture>
+            <File>autumnNexusObjects8x8</File>
+            <Index>0x332</Index>
+         </Texture>
+         <Texture>
+            <File>autumnNexusObjects8x8</File>
+            <Index>0x333</Index>
+         </Texture>
+         <Texture>
+            <File>autumnNexusObjects8x8</File>
+            <Index>0x334</Index>
+         </Texture>
+      </RandomTexture>
+      <BlendPriority>-2</BlendPriority>
+   </Ground>
+   <Ground type="0x482D" id="HN Rkdk">
+      <RandomTexture>
+         <Texture>
+            <File>autumnNexusObjects8x8</File>
+            <Index>0x341</Index>
+         </Texture>
+         <Texture>
+            <File>autumnNexusObjects8x8</File>
+            <Index>0x342</Index>
+         </Texture>
+         <Texture>
+            <File>autumnNexusObjects8x8</File>
+            <Index>0x343</Index>
+         </Texture>
+         <Texture>
+            <File>autumnNexusObjects8x8</File>
+            <Index>0x344</Index>
+         </Texture>
+      </RandomTexture>
+      <BlendPriority>0</BlendPriority>
+   </Ground>
+   <Ground type="0x482E" id="HN WFP">
+      <RandomTexture>
+         <Texture>
+            <File>autumnNexusObjects8x8</File>
+            <Index>0x397</Index>
+         </Texture>
+         <Texture>
+            <File>autumnNexusObjects8x8</File>
+            <Index>0x398</Index>
+         </Texture>
+         <Texture>
+            <File>autumnNexusObjects8x8</File>
+            <Index>0x399</Index>
+         </Texture>
+         <Texture>
+            <File>autumnNexusObjects8x8</File>
+            <Index>0x39a</Index>
+         </Texture>
+         <Texture>
+            <File>autumnNexusObjects8x8</File>
+            <Index>0x39b</Index>
+         </Texture>
+      </RandomTexture>
+      <BlendPriority>2</BlendPriority>
+      <Speed>1.2</Speed>
+   </Ground>
+   <Ground type="0x482F" id="HN WFPdk">
+      <RandomTexture>
+         <Texture>
+            <File>autumnNexusObjects8x8</File>
+            <Index>0x39c</Index>
+         </Texture>
+         <Texture>
+            <File>autumnNexusObjects8x8</File>
+            <Index>0x39d</Index>
+         </Texture>
+         <Texture>
+            <File>autumnNexusObjects8x8</File>
+            <Index>0x39e</Index>
+         </Texture>
+         <Texture>
+            <File>autumnNexusObjects8x8</File>
+            <Index>0x39f</Index>
+         </Texture>
+         <Texture>
+            <File>autumnNexusObjects8x8</File>
+            <Index>0x3a0</Index>
+         </Texture>
+      </RandomTexture>
+      <BlendPriority>0</BlendPriority>
+   </Ground>
+   <Ground type="0x4816" id="HN BlWt">
+      <Texture>
+         <File>lofiEnvironment2</File>
+         <Index>0x163</Index>
+      </Texture>
+      <BlendPriority>1</BlendPriority>
+      <Animate dx="0.33" dy="0.33">Flow</Animate>
       <Sink/>
-      <RandomOffset/>
-      <Speed>.333</Speed>
-      <BlendPriority>1</BlendPriority>
+      <Speed>0.7</Speed>
    </Ground>
-   <Ground type="0xb09d" id="LH Void Landmark Stop">
+   <Ground type="0x4830" id="HN FG Nwk R dk">
       <Texture>
-         <File>lofiObj3</File>
-         <Index>0x447</Index>
+         <File>autumnNexusObjects8x8</File>
+         <Index>0x320</Index>
       </Texture>
-      <DisplayId>Pure Evil</DisplayId>
-      <MinDamage>70</MinDamage>
-      <MaxDamage>80</MaxDamage>
-      <Animate dx=".35">Flow</Animate>
+      <BlendPriority>8</BlendPriority>
+      <NoWalk/>
+   </Ground>
+   <Ground type="0x4831" id="HN FG Nwk B dk">
+      <Texture>
+         <File>autumnNexusObjects8x8</File>
+         <Index>0x321</Index>
+      </Texture>
+      <BlendPriority>6</BlendPriority>
+      <NoWalk/>
+   </Ground>
+   <Ground type="0x4832" id="HN FG Nwk O dk">
+      <Texture>
+         <File>autumnNexusObjects8x8</File>
+         <Index>0x322</Index>
+      </Texture>
+      <BlendPriority>4</BlendPriority>
+      <NoWalk/>
+   </Ground>
+   <Ground type="0x4833" id="HN FG Nwk G dk">
+      <Texture>
+         <File>autumnNexusObjects8x8</File>
+         <Index>0x323</Index>
+      </Texture>
+      <BlendPriority>2</BlendPriority>
+      <NoWalk/>
+   </Ground>
+   <Ground type="0x4834" id="HN Rk Nwk dk">
+      <Texture>
+         <File>autumnNexusObjects8x8</File>
+         <Index>0x324</Index>
+      </Texture>
+      <BlendPriority>2</BlendPriority>
+      <NoWalk/>
+   </Ground>
+   <Ground type="0x4835" id="HN Rkdk2">
+      <RandomTexture>
+         <Texture>
+            <File>autumnNexusObjects8x8</File>
+            <Index>0x34b</Index>
+         </Texture>
+         <Texture>
+            <File>autumnNexusObjects8x8</File>
+            <Index>0x34c</Index>
+         </Texture>
+         <Texture>
+            <File>autumnNexusObjects8x8</File>
+            <Index>0x34d</Index>
+         </Texture>
+         <Texture>
+            <File>autumnNexusObjects8x8</File>
+            <Index>0x34e</Index>
+         </Texture>
+      </RandomTexture>
+      <BlendPriority>2</BlendPriority>
+   </Ground>
+   <Ground type="0x4836" id="HN BrRo2 li">
+      <RandomTexture>
+         <Texture>
+            <File>autumnNexusObjects8x8</File>
+            <Index>0x387</Index>
+         </Texture>
+         <Texture>
+            <File>autumnNexusObjects8x8</File>
+            <Index>0x388</Index>
+         </Texture>
+         <Texture>
+            <File>autumnNexusObjects8x8</File>
+            <Index>0x389</Index>
+         </Texture>
+         <Texture>
+            <File>autumnNexusObjects8x8</File>
+            <Index>0x38a</Index>
+         </Texture>
+         <Texture>
+            <File>autumnNexusObjects8x8</File>
+            <Index>0x38b</Index>
+         </Texture>
+         <Texture>
+            <File>autumnNexusObjects8x8</File>
+            <Index>0x38c</Index>
+         </Texture>
+      </RandomTexture>
+      <BlendPriority>-2</BlendPriority>
+      <Speed>1.2</Speed>
+   </Ground>
+   <Ground type="0x4837" id="HN Rv">
+      <Texture>
+         <File>autumnNexusObjects8x8</File>
+         <Index>0x30a</Index>
+      </Texture>
+      <BlendPriority>1</BlendPriority>
+      <Animate dx="0.33" dy="0.33">Flow</Animate>
       <Sink/>
-      <RandomOffset/>
-      <Speed>.333</Speed>
-      <BlendPriority>1</BlendPriority>
+      <Speed>0.7</Speed>
    </Ground>
-   <Ground type="0xb122" id="LH Titan Tile">
-      <RandomTexture>
-         <Texture>
-            <File>LHObj</File>
-            <Index>0</Index>
-         </Texture>
-         <Texture>
-            <File>LHObj</File>
-            <Index>2</Index>
-         </Texture>
-      </RandomTexture>
-   </Ground>
-   <Ground type="0xb02c" id="LH Spectral Tile A">
-      <RandomTexture>
-         <Texture>
-            <File>LHObj</File>
-            <Index>0</Index>
-         </Texture>
-         <Texture>
-            <File>LHObj</File>
-            <Index>2</Index>
-         </Texture>
-      </RandomTexture>
-   </Ground>
-   <Ground type="0xb02d" id="LH Spectral Tile B">
-      <RandomTexture>
-         <Texture>
-            <File>LHObj</File>
-            <Index>0</Index>
-         </Texture>
-         <Texture>
-            <File>LHObj</File>
-            <Index>2</Index>
-         </Texture>
-      </RandomTexture>
-   </Ground>
-   <Ground type="0xb02e" id="LH Spectral Tile C">
-      <RandomTexture>
-         <Texture>
-            <File>LHObj</File>
-            <Index>0</Index>
-         </Texture>
-         <Texture>
-            <File>LHObj</File>
-            <Index>2</Index>
-         </Texture>
-      </RandomTexture>
-   </Ground>
-   <Ground type="0xb02f" id="LH Spectral Tile D">
-      <RandomTexture>
-         <Texture>
-            <File>LHObj</File>
-            <Index>0</Index>
-         </Texture>
-         <Texture>
-            <File>LHObj</File>
-            <Index>2</Index>
-         </Texture>
-      </RandomTexture>
-   </Ground>
-   <Ground type="0xb030" id="LH Sentry Tile">
+   <Ground type="0x4838" id="HN Rk Mst1">
       <Texture>
-         <File>LHObj</File>
-         <Index>0xac</Index>
+         <File>autumnNexusObjects8x8</File>
+         <Index>0x314</Index>
       </Texture>
+      <Top>
+         <Texture>
+            <File>autumnNexusObjects8x8</File>
+            <Index>0x3ec</Index>
+         </Texture>
+      </Top>
+      <TopAnimate dx=".2" dy=".2">Flow</TopAnimate>
+      <BlendPriority>0</BlendPriority>
    </Ground>
-   <Ground type="0xb031" id="LH Spectral Tile 1">
-      <RandomTexture>
-         <Texture>
-            <File>LHObj</File>
-            <Index>0</Index>
-         </Texture>
-         <Texture>
-            <File>LHObj</File>
-            <Index>2</Index>
-         </Texture>
-      </RandomTexture>
-   </Ground>
-   <Ground type="0xb032" id="LH Spectral Tile 2">
-      <RandomTexture>
-         <Texture>
-            <File>LHObj</File>
-            <Index>0</Index>
-         </Texture>
-         <Texture>
-            <File>LHObj</File>
-            <Index>2</Index>
-         </Texture>
-      </RandomTexture>
-   </Ground>
-   <Ground type="0xb033" id="LH Spectral Tile 3">
-      <RandomTexture>
-         <Texture>
-            <File>LHObj</File>
-            <Index>0</Index>
-         </Texture>
-         <Texture>
-            <File>LHObj</File>
-            <Index>2</Index>
-         </Texture>
-      </RandomTexture>
-   </Ground>
-   <Ground type="0xb034" id="LH Spectral Tile 4">
-      <RandomTexture>
-         <Texture>
-            <File>LHObj</File>
-            <Index>0</Index>
-         </Texture>
-         <Texture>
-            <File>LHObj</File>
-            <Index>2</Index>
-         </Texture>
-      </RandomTexture>
-   </Ground>
-   <Ground type="0xb035" id="LH Void Platform">
-      <RandomTexture>
-         <Texture>
-            <File>LHObj</File>
-            <Index>0xc6</Index>
-         </Texture>
-         <Texture>
-            <File>LHObj</File>
-            <Index>0xc6</Index>
-         </Texture>
-         <Texture>
-            <File>LHObj</File>
-            <Index>0xc6</Index>
-         </Texture>
-         <Texture>
-            <File>LHObj</File>
-            <Index>0xc6</Index>
-         </Texture>
-         <Texture>
-            <File>LHObj</File>
-            <Index>0xc6</Index>
-         </Texture>
-         <Texture>
-            <File>LHObj</File>
-            <Index>0xc6</Index>
-         </Texture>
-         <Texture>
-            <File>LHObj</File>
-            <Index>0xc6</Index>
-         </Texture>
-         <Texture>
-            <File>LHObj</File>
-            <Index>0xc7</Index>
-         </Texture>
-         <Texture>
-            <File>LHObj</File>
-            <Index>0xc8</Index>
-         </Texture>
-         <Texture>
-            <File>LHObj</File>
-            <Index>0xc9</Index>
-         </Texture>
-         <Texture>
-            <File>LHObj</File>
-            <Index>0xca</Index>
-         </Texture>
-         <Texture>
-            <File>LHObj</File>
-            <Index>0xcb</Index>
-         </Texture>
-         <Texture>
-            <File>LHObj</File>
-            <Index>0xca</Index>
-         </Texture>
-         <Texture>
-            <File>LHObj</File>
-            <Index>0xcb</Index>
-         </Texture>
-      </RandomTexture>
-      <BlendPriority>1</BlendPriority>
-   </Ground>
-<Ground type="0x202c" id="Ohorde Poison">
+   <Ground type="0x4839" id="HN Rk Mst2">
       <Texture>
-         <File>oryxHordeObjects8x8</File>
-         <Index>0x1a</Index>
+         <File>autumnNexusObjects8x8</File>
+         <Index>0x314</Index>
       </Texture>
-      <MinDamage>30</MinDamage>
-      <MaxDamage>60</MaxDamage>
-      <Animate dx=".33" dy=".33">Flow</Animate>
+      <Top>
+         <Texture>
+            <File>autumnNexusObjects8x8</File>
+            <Index>0x3ed</Index>
+         </Texture>
+      </Top>
+      <TopAnimate dx=".2" dy=".2">Flow</TopAnimate>
+      <BlendPriority>0</BlendPriority>
+   </Ground>
+   <Ground type="0x483a" id="HN Rk Mst3">
+      <Texture>
+         <File>autumnNexusObjects8x8</File>
+         <Index>0x324</Index>
+      </Texture>
+      <BlendPriority>2</BlendPriority>
+   </Ground>
+   <Ground type="0x483b" id="HN Rk Mst3 Nwk">
+      <Texture>
+         <File>autumnNexusObjects8x8</File>
+         <Index>0x314</Index>
+      </Texture>
+      <Top>
+         <Texture>
+            <File>autumnNexusObjects8x8</File>
+            <Index>0x3ee</Index>
+         </Texture>
+      </Top>
+      <TopAnimate dx=".2" dy=".2">Flow</TopAnimate>
+      <BlendPriority>0</BlendPriority>
+      <NoWalk/>
+   </Ground>
+   <Ground type="0x483c" id="HN WH Pl G">
+      <Texture>
+         <File>autumnNexusObjects8x8</File>
+         <Index>0x427</Index>
+      </Texture>
       <Sink/>
-      <Speed>.666</Speed>
+      <BlendPriority>0</BlendPriority>
+      <Speed>0.7</Speed>
    </Ground>
-<Ground type="0x0fd0" id="Sakura Petals Pile">
+   <Ground type="0x483d" id="HN WH Pl C">
+      <Texture>
+         <File>autumnNexusObjects8x8</File>
+         <Index>0x426</Index>
+      </Texture>
+      <Sink/>
+      <BlendPriority>0</BlendPriority>
+      <Speed>0.7</Speed>
+   </Ground>
+   <Ground type="0x483e" id="HN WH WFP">
+      <RandomTexture>
+         <Texture>
+            <File>autumnNexusObjects8x8</File>
+            <Index>0x428</Index>
+         </Texture>
+         <Texture>
+            <File>autumnNexusObjects8x8</File>
+            <Index>0x429</Index>
+         </Texture>
+         <Texture>
+            <File>autumnNexusObjects8x8</File>
+            <Index>0x42a</Index>
+         </Texture>
+         <Texture>
+            <File>autumnNexusObjects8x8</File>
+            <Index>0x42b</Index>
+         </Texture>
+      </RandomTexture>
+      <BlendPriority>0</BlendPriority>
+   </Ground>
+   <Ground type="0x483f" id="HN WH WFP dk">
+      <RandomTexture>
+         <Texture>
+            <File>autumnNexusObjects8x8</File>
+            <Index>0x42c</Index>
+         </Texture>
+         <Texture>
+            <File>autumnNexusObjects8x8</File>
+            <Index>0x42d</Index>
+         </Texture>
+         <Texture>
+            <File>autumnNexusObjects8x8</File>
+            <Index>0x42e</Index>
+         </Texture>
+         <Texture>
+            <File>autumnNexusObjects8x8</File>
+            <Index>0x42f</Index>
+         </Texture>
+      </RandomTexture>
+      <BlendPriority>2</BlendPriority>
+   </Ground>
+   <Ground type="0x4840" id="AN StP">
+      <RandomTexture>
+         <Texture>
+            <File>autumnNexusObjects8x8</File>
+            <Index>0x440</Index>
+         </Texture>
+         <Texture>
+            <File>autumnNexusObjects8x8</File>
+            <Index>0x441</Index>
+         </Texture>
+         <Texture>
+            <File>autumnNexusObjects8x8</File>
+            <Index>0x442</Index>
+         </Texture>
+         <Texture>
+            <File>autumnNexusObjects8x8</File>
+            <Index>0x443</Index>
+         </Texture>
+         <Texture>
+            <File>autumnNexusObjects8x8</File>
+            <Index>0x444</Index>
+         </Texture>
+      </RandomTexture>
+      <BlendPriority>0</BlendPriority>
+   </Ground>
+   <Ground type="0x4841" id="AN StP2">
+      <RandomTexture>
+         <Texture>
+            <File>autumnNexusObjects8x8</File>
+            <Index>0x445</Index>
+         </Texture>
+         <Texture>
+            <File>autumnNexusObjects8x8</File>
+            <Index>0x446</Index>
+         </Texture>
+         <Texture>
+            <File>autumnNexusObjects8x8</File>
+            <Index>0x447</Index>
+         </Texture>
+         <Texture>
+            <File>autumnNexusObjects8x8</File>
+            <Index>0x448</Index>
+         </Texture>
+         <Texture>
+            <File>autumnNexusObjects8x8</File>
+            <Index>0x449</Index>
+         </Texture>
+         <Texture>
+            <File>autumnNexusObjects8x8</File>
+            <Index>0x455</Index>
+         </Texture>
+         <Texture>
+            <File>autumnNexusObjects8x8</File>
+            <Index>0x456</Index>
+         </Texture>
+         <Texture>
+            <File>autumnNexusObjects8x8</File>
+            <Index>0x457</Index>
+         </Texture>
+      </RandomTexture>
+      <BlendPriority>0</BlendPriority>
+   </Ground>
+   <Ground type="0x4842" id="AN StP3">
+      <RandomTexture>
+         <Texture>
+            <File>autumnNexusObjects8x8</File>
+            <Index>0x44a</Index>
+         </Texture>
+         <Texture>
+            <File>autumnNexusObjects8x8</File>
+            <Index>0x44b</Index>
+         </Texture>
+         <Texture>
+            <File>autumnNexusObjects8x8</File>
+            <Index>0x44c</Index>
+         </Texture>
+         <Texture>
+            <File>autumnNexusObjects8x8</File>
+            <Index>0x44d</Index>
+         </Texture>
+         <Texture>
+            <File>autumnNexusObjects8x8</File>
+            <Index>0x44e</Index>
+         </Texture>
+         <Texture>
+            <File>autumnNexusObjects8x8</File>
+            <Index>0x45a</Index>
+         </Texture>
+         <Texture>
+            <File>autumnNexusObjects8x8</File>
+            <Index>0x45b</Index>
+         </Texture>
+         <Texture>
+            <File>autumnNexusObjects8x8</File>
+            <Index>0x45c</Index>
+         </Texture>
+      </RandomTexture>
+      <BlendPriority>0</BlendPriority>
+   </Ground>
+   <Ground type="0x4843" id="AN StP4">
+      <RandomTexture>
+         <Texture>
+            <File>autumnNexusObjects8x8</File>
+            <Index>0x450</Index>
+         </Texture>
+         <Texture>
+            <File>autumnNexusObjects8x8</File>
+            <Index>0x451</Index>
+         </Texture>
+         <Texture>
+            <File>autumnNexusObjects8x8</File>
+            <Index>0x452</Index>
+         </Texture>
+         <Texture>
+            <File>autumnNexusObjects8x8</File>
+            <Index>0x453</Index>
+         </Texture>
+         <Texture>
+            <File>autumnNexusObjects8x8</File>
+            <Index>0x454</Index>
+         </Texture>
+         <Texture>
+            <File>autumnNexusObjects8x8</File>
+            <Index>0x45d</Index>
+         </Texture>
+         <Texture>
+            <File>autumnNexusObjects8x8</File>
+            <Index>0x45e</Index>
+         </Texture>
+         <Texture>
+            <File>autumnNexusObjects8x8</File>
+            <Index>0x45f</Index>
+         </Texture>
+      </RandomTexture>
+      <BlendPriority>0</BlendPriority>
+   </Ground>
+   <Ground type="0x4844" id="AN WBrL">
+      <RandomTexture>
+         <Texture>
+            <File>autumnNexusObjects8x8</File>
+            <Index>0x463</Index>
+         </Texture>
+         <Texture>
+            <File>autumnNexusObjects8x8</File>
+            <Index>0x464</Index>
+         </Texture>
+         <Texture>
+            <File>autumnNexusObjects8x8</File>
+            <Index>0x465</Index>
+         </Texture>
+         <Texture>
+            <File>autumnNexusObjects8x8</File>
+            <Index>0x466</Index>
+         </Texture>
+      </RandomTexture>
+      <BlendPriority>0</BlendPriority>
+   </Ground>
+   <Ground type="0x4845" id="AN WBrL Spd">
+      <RandomTexture>
+         <Texture>
+            <File>autumnNexusObjects8x8</File>
+            <Index>0x463</Index>
+         </Texture>
+         <Texture>
+            <File>autumnNexusObjects8x8</File>
+            <Index>0x464</Index>
+         </Texture>
+         <Texture>
+            <File>autumnNexusObjects8x8</File>
+            <Index>0x465</Index>
+         </Texture>
+         <Texture>
+            <File>autumnNexusObjects8x8</File>
+            <Index>0x466</Index>
+         </Texture>
+      </RandomTexture>
+      <BlendPriority>0</BlendPriority>
+   </Ground>
+   <Ground type="0x4846" id="AN WdTL">
+      <Texture>
+         <File>autumnNexusObjects8x8</File>
+         <Index>0x462</Index>
+      </Texture>
+      <BlendPriority>0</BlendPriority>
+   </Ground>
+   <Ground type="0x4847" id="AN WdTL Spd">
+      <Texture>
+         <File>autumnNexusObjects8x8</File>
+         <Index>0x462</Index>
+      </Texture>
+      <BlendPriority>0</BlendPriority>
+      <Speed>1.4</Speed>
+   </Ground>
+
+
+<!-- epicHiveGround -->
+
+
+   <Ground type="0x1099" id="EH Venom">
+      <Texture>
+         <File>epicHiveObjects8x8</File>
+         <Index>0x00</Index>
+      </Texture>
+      <Speed>0.75</Speed>
+      <Animate dx=".2" dy=".2">Flow</Animate>
+      <Sinking/>
+      <BlendPriority>3</BlendPriority>
+      <MinDamage>50</MinDamage>
+      <MaxDamage>70</MaxDamage>
+      <DisplayId>Killer Honey</DisplayId>
+   </Ground>
+   <Ground type="0x1a9d" id="EH UnderPartialFloor Venom">
+      <Texture>
+         <File>epicHiveObjects8x8</File>
+         <Index>0x00</Index>
+      </Texture>
+      <Speed>0.75</Speed>
+      <Animate dx=".2" dy=".2">Flow</Animate>
+      <BlendPriority>3</BlendPriority>
+      <DisplayId>Killer Honey</DisplayId>
+   </Ground>
+   <Ground type="0x10fa" id="EH NoSpeedReduct Venom">
+      <Texture>
+         <File>epicHiveObjects8x8</File>
+         <Index>0x00</Index>
+      </Texture>
+      <Speed>1</Speed>
+      <Animate dx=".2" dy=".2">Flow</Animate>
+      <BlendPriority>3</BlendPriority>
+      <DisplayId>Killer Honey</DisplayId>
+   </Ground>
+   <Ground type="0x1aa8" id="EH BlendPriorityChange Venom">
+      <Texture>
+         <File>epicHiveObjects8x8</File>
+         <Index>0x00</Index>
+      </Texture>
+      <Speed>0.75</Speed>
+      <Animate dx=".2" dy=".2">Flow</Animate>
+      <BlendPriority>9</BlendPriority>
+      <Sink/>
+      <MinDamage>50</MinDamage>
+      <MaxDamage>70</MaxDamage>
+      <DisplayId>Killer Honey</DisplayId>
+   </Ground>
+   <Ground type="0x10ce" id="EH Unwalkable Venom">
+      <Texture>
+         <File>epicHiveObjects8x8</File>
+         <Index>0x47</Index>
+      </Texture>
+      <BlendPriority>4</BlendPriority>
+      <NoWalk/>
+      <MinDamage>80</MinDamage>
+      <MaxDamage>120</MaxDamage>
+      <DisplayId>Killer Honey</DisplayId>
+   </Ground>
+   <Ground type="0x1aa1" id="EH Secret Floor">
+      <Texture>
+         <File>epicHiveObjects8x8</File>
+         <Index>0x03</Index>
+      </Texture>
+      <BlendPriority>1</BlendPriority>
+      <NoWalk/>
+   </Ground>
+   <Ground type="0x10d8" id="EH S Floor">
+      <SameTypeEdgeMode/>
+      <RandomTexture>
+         <Texture>
+            <File>lofiObj3</File>
+            <Index>0x117</Index>
+         </Texture>
+         <Texture>
+            <File>lofiObj3</File>
+            <Index>0x118</Index>
+         </Texture>
+         <Texture>
+            <File>lofiObj3</File>
+            <Index>0x119</Index>
+         </Texture>
+         <Texture>
+            <File>lofiObj3</File>
+            <Index>0x11a</Index>
+         </Texture>
+      </RandomTexture>
+      <Edge>
+         <Texture>
+            <File>epicHiveObjects8x8</File>
+            <Index>0x60</Index>
+         </Texture>
+      </Edge>
+      <InnerCorner>
+         <Texture>
+            <File>epicHiveObjects8x8</File>
+            <Index>0x61</Index>
+         </Texture>
+      </InnerCorner>
+      <Corner>
+         <Texture>
+            <File>epicHiveObjects8x8</File>
+            <Index>0x61</Index>
+         </Texture>
+      </Corner>
+      <BlendPriority>5</BlendPriority>
+   </Ground>
+   <Ground type="0x08e3" id="EH S Floor 2">
+      <RandomTexture>
+         <Texture>
+            <File>lofiObj3</File>
+            <Index>0x117</Index>
+         </Texture>
+         <Texture>
+            <File>lofiObj3</File>
+            <Index>0x118</Index>
+         </Texture>
+         <Texture>
+            <File>lofiObj3</File>
+            <Index>0x119</Index>
+         </Texture>
+         <Texture>
+            <File>lofiObj3</File>
+            <Index>0x11a</Index>
+         </Texture>
+      </RandomTexture>
+      <BlendPriority>5</BlendPriority>
+   </Ground>
+   <Ground type="0x08fd" id="EH S Floor 2 Bottom">
+      <RandomTexture>
+         <Texture>
+            <File>epicHiveObjects8x8</File>
+            <Index>0x70</Index>
+         </Texture>
+         <Texture>
+            <File>epicHiveObjects8x8</File>
+            <Index>0x70</Index>
+         </Texture>
+      </RandomTexture>
+      <BlendPriority>5</BlendPriority>
+   </Ground>
+   <Ground type="0x08fe" id="EH S Floor 2 Left">
+      <RandomTexture>
+         <Texture>
+            <File>epicHiveObjects8x8</File>
+            <Index>0x71</Index>
+         </Texture>
+         <Texture>
+            <File>epicHiveObjects8x8</File>
+            <Index>0x71</Index>
+         </Texture>
+      </RandomTexture>
+      <BlendPriority>5</BlendPriority>
+   </Ground>
+   <Ground type="0x109a" id="EH Floor">
+      <Texture>
+         <File>epicHiveObjects8x8</File>
+         <Index>0x01</Index>
+      </Texture>
+      <BlendPriority>7</BlendPriority>
+   </Ground>
+   <Ground type="0x10ac" id="EH Left Dark Floor">
+      <Texture>
+         <File>epicHiveObjects8x8</File>
+         <Index>0x22</Index>
+      </Texture>
+      <BlendPriority>7</BlendPriority>
+   </Ground>
+   <Ground type="0x10ad" id="EH Right Dark Floor">
+      <Texture>
+         <File>epicHiveObjects8x8</File>
+         <Index>0x23</Index>
+      </Texture>
+      <BlendPriority>7</BlendPriority>
+   </Ground>
+   <Ground type="0x1ab0" id="EH Fake Floor">
+      <Texture>
+         <File>epicHiveObjects8x8</File>
+         <Index>0x01</Index>
+      </Texture>
+      <BlendPriority>2</BlendPriority>
+   </Ground>
+
+
+<!-- hanaminexusGround -->
+
+
+   <Ground type="0x0fd0" id="Sakura Petals Pile">
       <RandomTexture>
          <Texture>
             <File>SakuraEnvironment8x8</File>
@@ -5512,7 +5780,971 @@
          </Texture>
       </Top>
    </Ground>
-<Ground type="0x3800" id="SN Bh Sd">
+
+
+<!-- lostHallsGround -->
+
+
+   <Ground type="0xb01a" id="LH Main Tile">
+      <RandomTexture>
+         <Texture>
+            <File>lostHallsObjects8x8</File>
+            <Index>0</Index>
+         </Texture>
+         <Texture>
+            <File>lostHallsObjects8x8</File>
+            <Index>2</Index>
+         </Texture>
+      </RandomTexture>
+   </Ground>
+   <Ground type="0xb01b" id="LH Main Tile Bloody">
+      <Texture>
+         <File>lostHallsObjects8x8</File>
+         <Index>1</Index>
+      </Texture>
+   </Ground>
+   <Ground type="0xb01c" id="LH Gem Tile">
+      <RandomTexture>
+         <Texture>
+            <File>lostHallsObjects8x8</File>
+            <Index>3</Index>
+         </Texture>
+         <Texture>
+            <File>lostHallsObjects8x8</File>
+            <Index>4</Index>
+         </Texture>
+         <Texture>
+            <File>lostHallsObjects8x8</File>
+            <Index>5</Index>
+         </Texture>
+         <Texture>
+            <File>lostHallsObjects8x8</File>
+            <Index>6</Index>
+         </Texture>
+         <Texture>
+            <File>lostHallsObjects8x8</File>
+            <Index>7</Index>
+         </Texture>
+         <Texture>
+            <File>lostHallsObjects8x8</File>
+            <Index>8</Index>
+         </Texture>
+         <Texture>
+            <File>lostHallsObjects8x8</File>
+            <Index>9</Index>
+         </Texture>
+         <Texture>
+            <File>lostHallsObjects8x8</File>
+            <Index>10</Index>
+         </Texture>
+         <Texture>
+            <File>lostHallsObjects8x8</File>
+            <Index>11</Index>
+         </Texture>
+         <Texture>
+            <File>lostHallsObjects8x8</File>
+            <Index>12</Index>
+         </Texture>
+         <Texture>
+            <File>lostHallsObjects8x8</File>
+            <Index>13</Index>
+         </Texture>
+         <Texture>
+            <File>lostHallsObjects8x8</File>
+            <Index>14</Index>
+         </Texture>
+      </RandomTexture>
+   </Ground>
+   <Ground type="0xb01d" id="LH Hall Tile">
+      <Texture>
+         <File>lostHallsObjects8x8</File>
+         <Index>15</Index>
+      </Texture>
+   </Ground>
+   <Ground type="0xb025" id="LH Cult Main Tile">
+      <Texture>
+         <File>lostHallsObjects8x8</File>
+         <Index>0x29</Index>
+      </Texture>
+   </Ground>
+   <Ground type="0xb027" id="LH Cult Bloody Tile">
+      <Texture>
+         <File>lostHallsObjects8x8</File>
+         <Index>0x2a</Index>
+      </Texture>
+   </Ground>
+   <Ground type="0xb098" id="LH Void Landmark N">
+      <Texture>
+         <File>lofiObj3</File>
+         <Index>0x447</Index>
+      </Texture>
+      <DisplayId>Pure Evil</DisplayId>
+      <MinDamage>70</MinDamage>
+      <MaxDamage>80</MaxDamage>
+      <Animate dx=".35">Flow</Animate>
+      <Sink/>
+      <RandomOffset/>
+      <Speed>.333</Speed>
+      <BlendPriority>1</BlendPriority>
+   </Ground>
+   <Ground type="0xb099" id="LH Void Landmark E">
+      <Texture>
+         <File>lofiObj3</File>
+         <Index>0x447</Index>
+      </Texture>
+      <DisplayId>Pure Evil</DisplayId>
+      <MinDamage>70</MinDamage>
+      <MaxDamage>80</MaxDamage>
+      <Animate dx=".35">Flow</Animate>
+      <Sink/>
+      <RandomOffset/>
+      <Speed>.333</Speed>
+      <BlendPriority>1</BlendPriority>
+   </Ground>
+   <Ground type="0xb09a" id="LH Void Landmark S">
+      <Texture>
+         <File>lofiObj3</File>
+         <Index>0x447</Index>
+      </Texture>
+      <DisplayId>Pure Evil</DisplayId>
+      <MinDamage>70</MinDamage>
+      <MaxDamage>80</MaxDamage>
+      <Animate dx=".35">Flow</Animate>
+      <Sink/>
+      <RandomOffset/>
+      <Speed>.333</Speed>
+      <BlendPriority>1</BlendPriority>
+   </Ground>
+   <Ground type="0xb09b" id="LH Void Landmark W">
+      <Texture>
+         <File>lofiObj3</File>
+         <Index>0x447</Index>
+      </Texture>
+      <DisplayId>Pure Evil</DisplayId>
+      <MinDamage>70</MinDamage>
+      <MaxDamage>80</MaxDamage>
+      <Animate dx=".35">Flow</Animate>
+      <Sink/>
+      <RandomOffset/>
+      <Speed>.333</Speed>
+      <BlendPriority>1</BlendPriority>
+   </Ground>
+   <Ground type="0xb09c" id="LH Void Landmark C">
+      <Texture>
+         <File>lofiObj3</File>
+         <Index>0x447</Index>
+      </Texture>
+      <DisplayId>Pure Evil</DisplayId>
+      <MinDamage>70</MinDamage>
+      <MaxDamage>80</MaxDamage>
+      <Animate dx=".35">Flow</Animate>
+      <Sink/>
+      <RandomOffset/>
+      <Speed>.333</Speed>
+      <BlendPriority>1</BlendPriority>
+   </Ground>
+   <Ground type="0xb09d" id="LH Void Landmark Stop">
+      <Texture>
+         <File>lofiObj3</File>
+         <Index>0x447</Index>
+      </Texture>
+      <DisplayId>Pure Evil</DisplayId>
+      <MinDamage>70</MinDamage>
+      <MaxDamage>80</MaxDamage>
+      <Animate dx=".35">Flow</Animate>
+      <Sink/>
+      <RandomOffset/>
+      <Speed>.333</Speed>
+      <BlendPriority>1</BlendPriority>
+   </Ground>
+   <Ground type="0xb122" id="LH Titan Tile">
+      <RandomTexture>
+         <Texture>
+            <File>lostHallsObjects8x8</File>
+            <Index>0</Index>
+         </Texture>
+         <Texture>
+            <File>lostHallsObjects8x8</File>
+            <Index>2</Index>
+         </Texture>
+      </RandomTexture>
+   </Ground>
+   <Ground type="0xb02c" id="LH Spectral Tile A">
+      <RandomTexture>
+         <Texture>
+            <File>lostHallsObjects8x8</File>
+            <Index>0</Index>
+         </Texture>
+         <Texture>
+            <File>lostHallsObjects8x8</File>
+            <Index>2</Index>
+         </Texture>
+      </RandomTexture>
+   </Ground>
+   <Ground type="0xb02d" id="LH Spectral Tile B">
+      <RandomTexture>
+         <Texture>
+            <File>lostHallsObjects8x8</File>
+            <Index>0</Index>
+         </Texture>
+         <Texture>
+            <File>lostHallsObjects8x8</File>
+            <Index>2</Index>
+         </Texture>
+      </RandomTexture>
+   </Ground>
+   <Ground type="0xb02e" id="LH Spectral Tile C">
+      <RandomTexture>
+         <Texture>
+            <File>lostHallsObjects8x8</File>
+            <Index>0</Index>
+         </Texture>
+         <Texture>
+            <File>lostHallsObjects8x8</File>
+            <Index>2</Index>
+         </Texture>
+      </RandomTexture>
+   </Ground>
+   <Ground type="0xb02f" id="LH Spectral Tile D">
+      <RandomTexture>
+         <Texture>
+            <File>lostHallsObjects8x8</File>
+            <Index>0</Index>
+         </Texture>
+         <Texture>
+            <File>lostHallsObjects8x8</File>
+            <Index>2</Index>
+         </Texture>
+      </RandomTexture>
+   </Ground>
+   <Ground type="0xb030" id="LH Sentry Tile">
+      <Texture>
+         <File>lostHallsObjects8x8</File>
+         <Index>0xac</Index>
+      </Texture>
+   </Ground>
+   <Ground type="0xb031" id="LH Spectral Tile 1">
+      <RandomTexture>
+         <Texture>
+            <File>lostHallsObjects8x8</File>
+            <Index>0</Index>
+         </Texture>
+         <Texture>
+            <File>lostHallsObjects8x8</File>
+            <Index>2</Index>
+         </Texture>
+      </RandomTexture>
+   </Ground>
+   <Ground type="0xb032" id="LH Spectral Tile 2">
+      <RandomTexture>
+         <Texture>
+            <File>lostHallsObjects8x8</File>
+            <Index>0</Index>
+         </Texture>
+         <Texture>
+            <File>lostHallsObjects8x8</File>
+            <Index>2</Index>
+         </Texture>
+      </RandomTexture>
+   </Ground>
+   <Ground type="0xb033" id="LH Spectral Tile 3">
+      <RandomTexture>
+         <Texture>
+            <File>lostHallsObjects8x8</File>
+            <Index>0</Index>
+         </Texture>
+         <Texture>
+            <File>lostHallsObjects8x8</File>
+            <Index>2</Index>
+         </Texture>
+      </RandomTexture>
+   </Ground>
+   <Ground type="0xb034" id="LH Spectral Tile 4">
+      <RandomTexture>
+         <Texture>
+            <File>lostHallsObjects8x8</File>
+            <Index>0</Index>
+         </Texture>
+         <Texture>
+            <File>lostHallsObjects8x8</File>
+            <Index>2</Index>
+         </Texture>
+      </RandomTexture>
+   </Ground>
+   <Ground type="0xb035" id="LH Void Platform">
+      <RandomTexture>
+         <Texture>
+            <File>lostHallsObjects8x8</File>
+            <Index>0xc6</Index>
+         </Texture>
+         <Texture>
+            <File>lostHallsObjects8x8</File>
+            <Index>0xc6</Index>
+         </Texture>
+         <Texture>
+            <File>lostHallsObjects8x8</File>
+            <Index>0xc6</Index>
+         </Texture>
+         <Texture>
+            <File>lostHallsObjects8x8</File>
+            <Index>0xc6</Index>
+         </Texture>
+         <Texture>
+            <File>lostHallsObjects8x8</File>
+            <Index>0xc6</Index>
+         </Texture>
+         <Texture>
+            <File>lostHallsObjects8x8</File>
+            <Index>0xc6</Index>
+         </Texture>
+         <Texture>
+            <File>lostHallsObjects8x8</File>
+            <Index>0xc6</Index>
+         </Texture>
+         <Texture>
+            <File>lostHallsObjects8x8</File>
+            <Index>0xc7</Index>
+         </Texture>
+         <Texture>
+            <File>lostHallsObjects8x8</File>
+            <Index>0xc8</Index>
+         </Texture>
+         <Texture>
+            <File>lostHallsObjects8x8</File>
+            <Index>0xc9</Index>
+         </Texture>
+         <Texture>
+            <File>lostHallsObjects8x8</File>
+            <Index>0xca</Index>
+         </Texture>
+         <Texture>
+            <File>lostHallsObjects8x8</File>
+            <Index>0xcb</Index>
+         </Texture>
+         <Texture>
+            <File>lostHallsObjects8x8</File>
+            <Index>0xca</Index>
+         </Texture>
+         <Texture>
+            <File>lostHallsObjects8x8</File>
+            <Index>0xcb</Index>
+         </Texture>
+      </RandomTexture>
+      <BlendPriority>1</BlendPriority>
+   </Ground>
+   <Ground type="0xb036" id="LH Hall Tile NoWalk">
+      <Texture>
+         <File>lostHallsObjects8x8</File>
+         <Index>0x0f</Index>
+      </Texture>
+      <NoWalk/>
+      <Speed>0</Speed>
+   </Ground>
+
+
+<!-- mountainTempleGround -->
+
+
+   <Ground type="0x6fb9" id="Urushi Landmark A">
+      <Texture>
+         <File>mountainTempleObjects8x8</File>
+         <Index>0x57</Index>
+      </Texture>
+   </Ground>
+   <Ground type="0x6fb8" id="Japanese Landmark A">
+      <Texture>
+         <File>lofiObj3</File>
+         <Index>0x356</Index>
+      </Texture>
+   </Ground>
+   <Ground type="0xab30" id="Jyari dark with Edge">
+      <Texture>
+         <File>mountainTempleObjects8x8</File>
+         <Index>0x2b</Index>
+      </Texture>
+      <Edge>
+         <Texture>
+            <File>mountainTempleObjects8x8</File>
+            <Index>0x7a</Index>
+         </Texture>
+      </Edge>
+      <InnerCorner>
+         <Texture>
+            <File>mountainTempleObjects8x8</File>
+            <Index>0x7b</Index>
+         </Texture>
+      </InnerCorner>
+      <Corner>
+         <Texture>
+            <File>mountainTempleObjects8x8</File>
+            <Index>0x7b</Index>
+         </Texture>
+      </Corner>
+      <RandomOffset/>
+      <BlendPriority>9</BlendPriority>
+   </Ground>
+   <Ground type="0xab2f" id="Jyari light with Edge">
+      <Texture>
+         <File>mountainTempleObjects8x8</File>
+         <Index>0x2c</Index>
+      </Texture>
+      <Edge>
+         <Texture>
+            <File>mountainTempleObjects8x8</File>
+            <Index>0x7a</Index>
+         </Texture>
+      </Edge>
+      <InnerCorner>
+         <Texture>
+            <File>mountainTempleObjects8x8</File>
+            <Index>0x7b</Index>
+         </Texture>
+      </InnerCorner>
+      <Corner>
+         <Texture>
+            <File>mountainTempleObjects8x8</File>
+            <Index>0x7b</Index>
+         </Texture>
+      </Corner>
+      <RandomOffset/>
+      <BlendPriority>10</BlendPriority>
+   </Ground>
+   <Ground type="0xab17" id="Japanese Pond 2 Dark">
+      <Texture>
+         <File>mountainTempleObjects8x8</File>
+         <Index>0x5a</Index>
+      </Texture>
+      <BlendPriority>3</BlendPriority>
+      <Sink/>
+   </Ground>
+   <Ground type="0xab16" id="Japanese Pond 2">
+      <Texture>
+         <File>mountainTempleObjects8x8</File>
+         <Index>0x59</Index>
+      </Texture>
+      <BlendPriority>5</BlendPriority>
+      <Sink/>
+   </Ground>
+   <Ground type="0xab15" id="Japanese Rock Blue">
+      <Texture>
+         <File>mountainTempleObjects8x8</File>
+         <Index>0x58</Index>
+      </Texture>
+   </Ground>
+   <Ground type="0xab14" id="Japanese Urushi Floor Dark">
+      <Texture>
+         <File>mountainTempleObjects8x8</File>
+         <Index>0x57</Index>
+      </Texture>
+   </Ground>
+   <Ground type="0xab0c" id="Japanese Pond Dark">
+      <Texture>
+         <File>mountainTempleObjects8x8</File>
+         <Index>0x48</Index>
+      </Texture>
+      <BlendPriority>3</BlendPriority>
+      <Sink/>
+   </Ground>
+   <Ground type="0xab0b" id="Japanese Pond">
+      <Texture>
+         <File>mountainTempleObjects8x8</File>
+         <Index>0x47</Index>
+      </Texture>
+      <BlendPriority>5</BlendPriority>
+      <Sink/>
+   </Ground>
+   <Ground type="0xab0a" id="Japanese Pebbles Black">
+      <SameTypeEdgeMode/>
+      <RandomOffset/>
+      <Texture>
+         <File>mountainTempleObjects8x8</File>
+         <Index>0x44</Index>
+      </Texture>
+      <Edge>
+         <Texture>
+            <File>mountainTempleObjects8x8</File>
+            <Index>0x45</Index>
+         </Texture>
+      </Edge>
+      <InnerCorner>
+         <Texture>
+            <File>mountainTempleObjects8x8</File>
+            <Index>0x46</Index>
+         </Texture>
+      </InnerCorner>
+      <Corner>
+         <Texture>
+            <File>mountainTempleObjects8x8</File>
+            <Index>0x46</Index>
+         </Texture>
+      </Corner>
+   </Ground>
+   <Ground type="0xab09" id="Japanese Pebbles Black No Edge">
+      <Texture>
+         <File>mountainTempleObjects8x8</File>
+         <Index>0x44</Index>
+      </Texture>
+   </Ground>
+   <Ground type="0xab08" id="Japanese Urushi Floor">
+      <Texture>
+         <File>mountainTempleObjects8x8</File>
+         <Index>0x43</Index>
+      </Texture>
+      <BlendPriority>3</BlendPriority>
+   </Ground>
+   <Ground type="0xab07" id="Japanese Urushi Floor Light">
+      <Texture>
+         <File>mountainTempleObjects8x8</File>
+         <Index>0x42</Index>
+      </Texture>
+      <BlendPriority>5</BlendPriority>
+   </Ground>
+   <Ground type="0xab06" id="Japanese Rock Dark">
+      <Texture>
+         <File>mountainTempleObjects8x8</File>
+         <Index>0x41</Index>
+      </Texture>
+   </Ground>
+   <Ground type="0xab05" id="Japanese Rock">
+      <Texture>
+         <File>mountainTempleObjects8x8</File>
+         <Index>0x40</Index>
+      </Texture>
+   </Ground>
+   <Ground type="0xaac8" id="Zen Sand Beige Corner BL dirty">
+      <Texture>
+         <File>mountainTempleObjects8x8</File>
+         <Index>0x08</Index>
+      </Texture>
+   </Ground>
+   <Ground type="0xaac9" id="Zen Sand Beige Corner BL clean">
+      <Texture>
+         <File>mountainTempleObjects8x8</File>
+         <Index>0x09</Index>
+      </Texture>
+   </Ground>
+   <Ground type="0xaaca" id="Zen Sand Beige Corner BR clean">
+      <Texture>
+         <File>mountainTempleObjects8x8</File>
+         <Index>0x0a</Index>
+      </Texture>
+   </Ground>
+   <Ground type="0xaacb" id="Zen Sand Beige Corner TR clean">
+      <Texture>
+         <File>mountainTempleObjects8x8</File>
+         <Index>0x0b</Index>
+      </Texture>
+   </Ground>
+   <Ground type="0xaacc" id="Zen Sand Beige Corner BR dirty">
+      <Texture>
+         <File>mountainTempleObjects8x8</File>
+         <Index>0x0c</Index>
+      </Texture>
+   </Ground>
+   <Ground type="0xaacd" id="Zen Sand Beige Horizontal Top dark">
+      <Texture>
+         <File>mountainTempleObjects8x8</File>
+         <Index>0x0d</Index>
+      </Texture>
+   </Ground>
+   <Ground type="0xaace" id="Zen Sand Beige Horizontal Bot dark">
+      <Texture>
+         <File>mountainTempleObjects8x8</File>
+         <Index>0x0e</Index>
+      </Texture>
+   </Ground>
+   <Ground type="0xaacf" id="Zen Sand Beige no line">
+      <Texture>
+         <File>mountainTempleObjects8x8</File>
+         <Index>0x0f</Index>
+      </Texture>
+   </Ground>
+   <Ground type="0xaad0" id="Zen Sand Beige Corner TL clean">
+      <Texture>
+         <File>mountainTempleObjects8x8</File>
+         <Index>0x10</Index>
+      </Texture>
+   </Ground>
+   <Ground type="0xaad1" id="Zen Sand Beige Corner TL dirty">
+      <Texture>
+         <File>mountainTempleObjects8x8</File>
+         <Index>0x11</Index>
+      </Texture>
+   </Ground>
+   <Ground type="0xaad2" id="Zen Sand Beige Corner TR dirty">
+      <Texture>
+         <File>mountainTempleObjects8x8</File>
+         <Index>0x12</Index>
+      </Texture>
+   </Ground>
+   <Ground type="0xaad3" id="Zen Sand Beige vertical left dark">
+      <Texture>
+         <File>mountainTempleObjects8x8</File>
+         <Index>0x13</Index>
+      </Texture>
+   </Ground>
+   <Ground type="0xaad4" id="Zen Sand Beige vertical right dark">
+      <Texture>
+         <File>mountainTempleObjects8x8</File>
+         <Index>0x14</Index>
+      </Texture>
+   </Ground>
+   <Ground type="0xaad5" id="Zen Sand Beige horizontal top dark V2">
+      <Texture>
+         <File>mountainTempleObjects8x8</File>
+         <Index>0x17</Index>
+      </Texture>
+   </Ground>
+   <Ground type="0xaad6" id="Zen Sand Beige TL circle">
+      <Texture>
+         <File>mountainTempleObjects8x8</File>
+         <Index>0x18</Index>
+      </Texture>
+   </Ground>
+   <Ground type="0xaad7" id="Zen Sand Beige TM circle">
+      <Texture>
+         <File>mountainTempleObjects8x8</File>
+         <Index>0x19</Index>
+      </Texture>
+   </Ground>
+   <Ground type="0xaad8" id="Zen Sand Beige TR circle">
+      <Texture>
+         <File>mountainTempleObjects8x8</File>
+         <Index>0x1a</Index>
+      </Texture>
+   </Ground>
+   <Ground type="0xaadf" id="Zen Sand Beige ML circle">
+      <Texture>
+         <File>mountainTempleObjects8x8</File>
+         <Index>0x1b</Index>
+      </Texture>
+   </Ground>
+   <Ground type="0xaad9" id="Zen Sand Beige inner circle">
+      <Texture>
+         <File>mountainTempleObjects8x8</File>
+         <Index>0x1c</Index>
+      </Texture>
+   </Ground>
+   <Ground type="0xaada" id="Zen Sand Beige MR circle">
+      <Texture>
+         <File>mountainTempleObjects8x8</File>
+         <Index>0x1d</Index>
+      </Texture>
+   </Ground>
+   <Ground type="0xaadb" id="Zen Sand Beige BL circle">
+      <Texture>
+         <File>mountainTempleObjects8x8</File>
+         <Index>0x1e</Index>
+      </Texture>
+   </Ground>
+   <Ground type="0xaadc" id="Zen Sand Beige BM circle">
+      <Texture>
+         <File>mountainTempleObjects8x8</File>
+         <Index>0x1f</Index>
+      </Texture>
+   </Ground>
+   <Ground type="0xaadd" id="Zen Sand Beige BR circle">
+      <Texture>
+         <File>mountainTempleObjects8x8</File>
+         <Index>0x20</Index>
+      </Texture>
+   </Ground>
+   <Ground type="0xaae2" id="Engawa V TdL">
+      <Texture>
+         <File>mountainTempleObjects8x8</File>
+         <Index>0x2f</Index>
+      </Texture>
+   </Ground>
+   <Ground type="0xaae3" id="Engawa V BdL">
+      <Texture>
+         <File>mountainTempleObjects8x8</File>
+         <Index>0x30</Index>
+      </Texture>
+   </Ground>
+   <Ground type="0xaae4" id="Engawa TL">
+      <Texture>
+         <File>mountainTempleObjects8x8</File>
+         <Index>0x31</Index>
+      </Texture>
+   </Ground>
+   <Ground type="0xaae5" id="Engawa TR">
+      <Texture>
+         <File>mountainTempleObjects8x8</File>
+         <Index>0x32</Index>
+      </Texture>
+   </Ground>
+   <Ground type="0xaae6" id="Engawa LdL">
+      <Texture>
+         <File>mountainTempleObjects8x8</File>
+         <Index>0x33</Index>
+      </Texture>
+   </Ground>
+   <Ground type="0xaae7" id="Engawa RdL">
+      <Texture>
+         <File>mountainTempleObjects8x8</File>
+         <Index>0x34</Index>
+      </Texture>
+   </Ground>
+   <Ground type="0xaae8" id="Jyari dark">
+      <Texture>
+         <File>mountainTempleObjects8x8</File>
+         <Index>0x2b</Index>
+      </Texture>
+      <RandomOffset/>
+      <BlendPriority>9</BlendPriority>
+   </Ground>
+   <Ground type="0xaae9" id="Jyari light">
+      <Texture>
+         <File>mountainTempleObjects8x8</File>
+         <Index>0x2c</Index>
+      </Texture>
+      <RandomOffset/>
+      <BlendPriority>10</BlendPriority>
+   </Ground>
+
+
+<!-- oryxHordeGround -->
+
+
+   <Ground type="0x202c" id="Ohorde Poison">
+      <DisplayId>Oryx Poison</DisplayId>
+      <Texture>
+         <File>oryxHordeObjects8x8</File>
+         <Index>0x1a</Index>
+      </Texture>
+      <MinDamage>30</MinDamage>
+      <MaxDamage>60</MaxDamage>
+      <Animate dx=".33" dy=".33">Flow</Animate>
+      <Sink/>
+      <Speed>.666</Speed>
+   </Ground>
+
+
+<!-- parasiteDenGround -->
+
+
+   <Ground type="0x123" id="pD Colony Slot">
+      <RandomTexture>
+         <Texture>
+            <File>parasiteDenObjects8x8</File>
+            <Index>0x50</Index>
+         </Texture>
+         <Texture>
+            <File>parasiteDenObjects8x8</File>
+            <Index>0x51</Index>
+         </Texture>
+         <Texture>
+            <File>parasiteDenObjects8x8</File>
+            <Index>0x52</Index>
+         </Texture>
+      </RandomTexture>
+   </Ground>
+   <Ground type="0x124" id="pD Creepasite">
+      <Texture>
+         <File>parasiteDenObjects8x8</File>
+         <Index>0xd0</Index>
+      </Texture>
+      <RandomOffset/>
+      <BlendPriority>-5</BlendPriority>
+   </Ground>
+   <Ground type="0x125" id="pD Creepasite 2">
+      <RandomTexture>
+         <Texture>
+            <File>parasiteDenObjects8x8</File>
+            <Index>0xd1</Index>
+         </Texture>
+         <Texture>
+            <File>parasiteDenObjects8x8</File>
+            <Index>0xd2</Index>
+         </Texture>
+         <Texture>
+            <File>parasiteDenObjects8x8</File>
+            <Index>0xd3</Index>
+         </Texture>
+         <Texture>
+            <File>parasiteDenObjects8x8</File>
+            <Index>0xd4</Index>
+         </Texture>
+      </RandomTexture>
+      <BlendPriority>2</BlendPriority>
+   </Ground>
+   <Ground type="0x126" id="pD Creepasite Light">
+      <Texture>
+         <File>parasiteDenObjects8x8</File>
+         <Index>0x61</Index>
+      </Texture>
+      <RandomOffset/>
+      <BlendPriority>-7</BlendPriority>
+   </Ground>
+   <Ground type="0x133" id="pD Creepasite Light Top">
+      <Texture>
+         <File>parasiteDenObjects8x8</File>
+         <Index>0x61</Index>
+      </Texture>
+      <RandomOffset/>
+      <BlendPriority>10</BlendPriority>
+   </Ground>
+   <Ground type="0x128" id="pD Barrel Slot">
+      <Texture>
+         <File>parasiteDenObjects8x8</File>
+         <Index>0xc6</Index>
+      </Texture>
+      <BlendPriority>5</BlendPriority>
+      <Color>0x97652A</Color>
+   </Ground>
+   <Ground type="0x129" id="pD Cobble">
+      <RandomTexture>
+         <Texture>
+            <File>parasiteDenObjects8x8</File>
+            <Index>0xe0</Index>
+         </Texture>
+         <Texture>
+            <File>parasiteDenObjects8x8</File>
+            <Index>0xe1</Index>
+         </Texture>
+         <Texture>
+            <File>parasiteDenObjects8x8</File>
+            <Index>0xf2</Index>
+         </Texture>
+         <Texture>
+            <File>parasiteDenObjects8x8</File>
+            <Index>0xf3</Index>
+         </Texture>
+      </RandomTexture>
+   </Ground>
+   <Ground type="0x130" id="pD Cobble Pebble">
+      <RandomTexture>
+         <Texture>
+            <File>parasiteDenObjects8x8</File>
+            <Index>0xe2</Index>
+         </Texture>
+         <Texture>
+            <File>parasiteDenObjects8x8</File>
+            <Index>0xe3</Index>
+         </Texture>
+      </RandomTexture>
+   </Ground>
+   <Ground type="0x131" id="pD Wall Blend">
+      <Texture>
+         <File>parasiteDenObjects8x8</File>
+         <Index>0xff</Index>
+      </Texture>
+      <BlendPriority>99</BlendPriority>
+      <NoWalk/>
+   </Ground>
+   <Ground type="0x132" id="pD Boss Floor">
+      <Texture>
+         <File>parasiteDenObjects8x8</File>
+         <Index>0xc7</Index>
+      </Texture>
+   </Ground>
+
+
+<!-- stPatricksGround -->
+
+
+   <Ground type="0x1670" id="Patty Grass 1">
+      <Texture>
+         <File>stPatricksObjects8x8</File>
+         <Index>0x23</Index>
+      </Texture>
+      <BlendPriority>6</BlendPriority>
+      <RandomOffset/>
+   </Ground>
+   <Ground type="0x1671" id="Patty Grass 2">
+      <Texture>
+         <File>stPatricksObjects8x8</File>
+         <Index>0x22</Index>
+      </Texture>
+      <BlendPriority>9</BlendPriority>
+      <RandomOffset/>
+   </Ground>
+   <Ground type="0x1672" id="Patty Grass 3">
+      <Texture>
+         <File>stPatricksObjects8x8</File>
+         <Index>0x21</Index>
+      </Texture>
+      <BlendPriority>2</BlendPriority>
+      <RandomOffset/>
+   </Ground>
+   <Ground type="0x1673" id="Patty Rainbow Road 1">
+      <Texture>
+         <File>stPatricksObjects8x8</File>
+         <Index>0x19</Index>
+      </Texture>
+      <Speed>1.2</Speed>
+      <BlendPriority>6</BlendPriority>
+   </Ground>
+   <Ground type="0x1674" id="Patty Rainbow Road 2">
+      <Texture>
+         <File>stPatricksObjects8x8</File>
+         <Index>0x1a</Index>
+      </Texture>
+      <Speed>1.2</Speed>
+      <BlendPriority>6</BlendPriority>
+   </Ground>
+   <Ground type="0x1675" id="Patty Rainbow Road 3">
+      <Texture>
+         <File>stPatricksObjects8x8</File>
+         <Index>0x1b</Index>
+      </Texture>
+      <Speed>1.2</Speed>
+      <BlendPriority>6</BlendPriority>
+   </Ground>
+   <Ground type="0x1676" id="Patty Rainbow Road 4">
+      <Texture>
+         <File>stPatricksObjects8x8</File>
+         <Index>0x1c</Index>
+      </Texture>
+      <Speed>1.2</Speed>
+      <BlendPriority>6</BlendPriority>
+   </Ground>
+   <Ground type="0x1677" id="Patty Rainbow Road Rotated 1">
+      <Texture>
+         <File>stPatricksObjects8x8</File>
+         <Index>0x1d</Index>
+      </Texture>
+      <Speed>1.2</Speed>
+      <BlendPriority>6</BlendPriority>
+   </Ground>
+   <Ground type="0x1678" id="Patty Rainbow Road Rotated 2">
+      <Texture>
+         <File>stPatricksObjects8x8</File>
+         <Index>0x1e</Index>
+      </Texture>
+      <Speed>1.2</Speed>
+      <BlendPriority>6</BlendPriority>
+   </Ground>
+   <Ground type="0x1679" id="Patty Rainbow Road Rotated 3">
+      <Texture>
+         <File>stPatricksObjects8x8</File>
+         <Index>0x1f</Index>
+      </Texture>
+      <Speed>1.2</Speed>
+      <BlendPriority>6</BlendPriority>
+   </Ground>
+   <Ground type="0x167a" id="Patty Rainbow Road Rotated 4">
+      <Texture>
+         <File>stPatricksObjects8x8</File>
+         <Index>0x20</Index>
+      </Texture>
+      <Speed>1.2</Speed>
+      <BlendPriority>6</BlendPriority>
+   </Ground>
+   <Ground type="0x167b" id="Patty Grass 3 No Walk">
+      <Texture>
+         <File>stPatricksObjects8x8</File>
+         <Index>0x21</Index>
+      </Texture>
+      <BlendPriority>6</BlendPriority>
+      <NoWalk/>
+   </Ground>
+
+
+<!-- summerNexusGround -->
+
+
+   <Ground type="0x3800" id="SN Bh Sd">
       <Texture>
          <File>summerNexusObjects8x8</File>
          <Index>0x0c</Index>
@@ -14203,4 +15435,5 @@
       </Texture>
       <Speed>1.4</Speed>
    </Ground>
+
 </GroundTypes>

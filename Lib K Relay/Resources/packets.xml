@@ -5,111 +5,111 @@
 	</Packet>
 	<Packet>
 		<PacketName>CREATESUCCESS</PacketName>
-		<PacketID>26</PacketID>
+		<PacketID>44</PacketID>
 	</Packet>
 	<Packet>
 		<PacketName>CREATE</PacketName>
-		<PacketID>100</PacketID>
+		<PacketID>52</PacketID>
 	</Packet>
 	<Packet>
 		<PacketName>PLAYERSHOOT</PacketName>
-		<PacketID>31</PacketID>
-	</Packet>
-	<Packet>
-		<PacketName>MOVE</PacketName>
-		<PacketID>22</PacketID>
-	</Packet>
-	<Packet>
-		<PacketName>PLAYERTEXT</PacketName>
-		<PacketID>39</PacketID>
-	</Packet>
-	<Packet>
-		<PacketName>TEXT</PacketName>
-		<PacketID>101</PacketID>
-	</Packet>
-	<Packet>
-		<PacketName>SERVERPLAYERSHOOT</PacketName>
-		<PacketID>35</PacketID>
-	</Packet>
-	<Packet>
-		<PacketName>DAMAGE</PacketName>
-		<PacketID>62</PacketID>
-	</Packet>
-	<Packet>
-		<PacketName>UPDATE</PacketName>
-		<PacketID>87</PacketID>
-	</Packet>
-	<Packet>
-		<PacketName>UPDATEACK</PacketName>
-		<PacketID>47</PacketID>
-	</Packet>
-	<Packet>
-		<PacketName>NOTIFICATION</PacketName>
-		<PacketID>102</PacketID>
-	</Packet>
-	<Packet>
-		<PacketName>NEWTICK</PacketName>
-		<PacketID>25</PacketID>
-	</Packet>
-	<Packet>
-		<PacketName>INVSWAP</PacketName>
-		<PacketID>36</PacketID>
-	</Packet>
-	<Packet>
-		<PacketName>USEITEM</PacketName>
-		<PacketID>23</PacketID>
-	</Packet>
-	<Packet>
-		<PacketName>SHOWEFFECT</PacketName>
-		<PacketID>80</PacketID>
-	</Packet>
-	<Packet>
-		<PacketName>HELLO</PacketName>
-		<PacketID>51</PacketID>
-	</Packet>
-	<Packet>
-		<PacketName>GOTO</PacketName>
-		<PacketID>18</PacketID>
-	</Packet>
-	<Packet>
-		<PacketName>INVDROP</PacketName>
-		<PacketID>17</PacketID>
-	</Packet>
-	<Packet>
-		<PacketName>INVRESULT</PacketName>
-		<PacketID>46</PacketID>
-	</Packet>
-	<Packet>
-		<PacketName>RECONNECT</PacketName>
-		<PacketID>88</PacketID>
-	</Packet>
-	<Packet>
-		<PacketName>PING</PacketName>
-		<PacketID>19</PacketID>
-	</Packet>
-	<Packet>
-		<PacketName>PONG</PacketName>
-		<PacketID>28</PacketID>
-	</Packet>
-	<Packet>
-		<PacketName>MAPINFO</PacketName>
-		<PacketID>50</PacketID>
-	</Packet>
-	<Packet>
-		<PacketName>LOAD</PacketName>
-		<PacketID>83</PacketID>
-	</Packet>
-	<Packet>
-		<PacketName>PIC</PacketName>
-		<PacketID>4</PacketID>
-	</Packet>
-	<Packet>
-		<PacketName>SETCONDITION</PacketName>
 		<PacketID>8</PacketID>
 	</Packet>
 	<Packet>
+		<PacketName>MOVE</PacketName>
+		<PacketID>74</PacketID>
+	</Packet>
+	<Packet>
+		<PacketName>PLAYERTEXT</PacketName>
+		<PacketID>59</PacketID>
+	</Packet>
+	<Packet>
+		<PacketName>TEXT</PacketName>
+		<PacketID>20</PacketID>
+	</Packet>
+	<Packet>
+		<PacketName>SERVERPLAYERSHOOT</PacketName>
+		<PacketID>5</PacketID>
+	</Packet>
+	<Packet>
+		<PacketName>DAMAGE</PacketName>
+		<PacketID>58</PacketID>
+	</Packet>
+	<Packet>
+		<PacketName>UPDATE</PacketName>
+		<PacketID>31</PacketID>
+	</Packet>
+	<Packet>
+		<PacketName>UPDATEACK</PacketName>
+		<PacketID>80</PacketID>
+	</Packet>
+	<Packet>
+		<PacketName>NOTIFICATION</PacketName>
+		<PacketID>47</PacketID>
+	</Packet>
+	<Packet>
+		<PacketName>NEWTICK</PacketName>
+		<PacketID>36</PacketID>
+	</Packet>
+	<Packet>
+		<PacketName>INVSWAP</PacketName>
+		<PacketID>27</PacketID>
+	</Packet>
+	<Packet>
+		<PacketName>USEITEM</PacketName>
+		<PacketID>39</PacketID>
+	</Packet>
+	<Packet>
+		<PacketName>SHOWEFFECT</PacketName>
+		<PacketID>28</PacketID>
+	</Packet>
+	<Packet>
+		<PacketName>HELLO</PacketName>
+		<PacketID>100</PacketID>
+	</Packet>
+	<Packet>
+		<PacketName>GOTO</PacketName>
+		<PacketID>76</PacketID>
+	</Packet>
+	<Packet>
+		<PacketName>INVDROP</PacketName>
+		<PacketID>46</PacketID>
+	</Packet>
+	<Packet>
+		<PacketName>INVRESULT</PacketName>
+		<PacketID>82</PacketID>
+	</Packet>
+	<Packet>
+		<PacketName>RECONNECT</PacketName>
+		<PacketID>12</PacketID>
+	</Packet>
+	<Packet>
+		<PacketName>PING</PacketName>
+		<PacketID>4</PacketID>
+	</Packet>
+	<Packet>
+		<PacketName>PONG</PacketName>
+		<PacketID>86</PacketID>
+	</Packet>
+	<Packet>
+		<PacketName>MAPINFO</PacketName>
+		<PacketID>85</PacketID>
+	</Packet>
+	<Packet>
+		<PacketName>LOAD</PacketName>
+		<PacketID>62</PacketID>
+	</Packet>
+	<Packet>
+		<PacketName>PIC</PacketName>
+		<PacketID>50</PacketID>
+	</Packet>
+	<Packet>
+		<PacketName>SETCONDITION</PacketName>
+		<PacketID>19</PacketID>
+	</Packet>
+	<Packet>
 		<PacketName>TELEPORT</PacketName>
-		<PacketID>3</PacketID>
+		<PacketID>99</PacketID>
 	</Packet>
 	<Packet>
 		<PacketName>USEPORTAL</PacketName>
@@ -117,47 +117,47 @@
 	</Packet>
 	<Packet>
 		<PacketName>DEATH</PacketName>
-		<PacketID>63</PacketID>
+		<PacketID>104</PacketID>
 	</Packet>
 	<Packet>
 		<PacketName>BUY</PacketName>
-		<PacketID>55</PacketID>
+		<PacketID>68</PacketID>
 	</Packet>
 	<Packet>
 		<PacketName>BUYRESULT</PacketName>
-		<PacketID>53</PacketID>
+		<PacketID>87</PacketID>
 	</Packet>
 	<Packet>
 		<PacketName>AOE</PacketName>
-		<PacketID>16</PacketID>
+		<PacketID>18</PacketID>
 	</Packet>
 	<Packet>
 		<PacketName>GROUNDDAMAGE</PacketName>
-		<PacketID>10</PacketID>
+		<PacketID>84</PacketID>
 	</Packet>
 	<Packet>
 		<PacketName>PLAYERHIT</PacketName>
-		<PacketID>27</PacketID>
+		<PacketID>67</PacketID>
 	</Packet>
 	<Packet>
 		<PacketName>ENEMYHIT</PacketName>
-		<PacketID>95</PacketID>
+		<PacketID>96</PacketID>
 	</Packet>
 	<Packet>
 		<PacketName>AOEACK</PacketName>
-		<PacketID>56</PacketID>
+		<PacketID>102</PacketID>
 	</Packet>
 	<Packet>
 		<PacketName>SHOOTACK</PacketName>
-		<PacketID>93</PacketID>
+		<PacketID>3</PacketID>
 	</Packet>
 	<Packet>
 		<PacketName>OTHERHIT</PacketName>
-		<PacketID>82</PacketID>
+		<PacketID>25</PacketID>
 	</Packet>
 	<Packet>
 		<PacketName>SQUAREHIT</PacketName>
-		<PacketID>66</PacketID>
+		<PacketID>95</PacketID>
 	</Packet>
 	<Packet>
 		<PacketName>GOTOACK</PacketName>
@@ -165,27 +165,27 @@
 	</Packet>
 	<Packet>
 		<PacketName>EDITACCOUNTLIST</PacketName>
-		<PacketID>15</PacketID>
+		<PacketID>21</PacketID>
 	</Packet>
 	<Packet>
 		<PacketName>ACCOUNTLIST</PacketName>
-		<PacketID>84</PacketID>
+		<PacketID>1</PacketID>
 	</Packet>
 	<Packet>
 		<PacketName>QUESTOBJID</PacketName>
-		<PacketID>68</PacketID>
+		<PacketID>7</PacketID>
 	</Packet>
 	<Packet>
 		<PacketName>CHOOSENAME</PacketName>
-		<PacketID>58</PacketID>
+		<PacketID>9</PacketID>
 	</Packet>
 	<Packet>
 		<PacketName>NAMERESULT</PacketName>
-		<PacketID>6</PacketID>
+		<PacketID>13</PacketID>
 	</Packet>
 	<Packet>
 		<PacketName>CREATEGUILD</PacketName>
-		<PacketID>13</PacketID>
+		<PacketID>40</PacketID>
 	</Packet>
 	<Packet>
 		<PacketName>GUILDRESULT</PacketName>
@@ -193,194 +193,194 @@
 	</Packet>
 	<Packet>
 		<PacketName>GUILDREMOVE</PacketName>
-		<PacketID>89</PacketID>
+		<PacketID>101</PacketID>
 	</Packet>
 	<Packet>
 		<PacketName>GUILDINVITE</PacketName>
-		<PacketID>24</PacketID>
-	</Packet>
-	<Packet>
-		<PacketName>ALLYSHOOT</PacketName>
-		<PacketID>92</PacketID>
-	</Packet>
-	<Packet>
-		<PacketName>ENEMYSHOOT</PacketName>
-		<PacketID>67</PacketID>
-	</Packet>
-	<Packet>
-		<PacketName>REQUESTTRADE</PacketName>
-		<PacketID>69</PacketID>
-	</Packet>
-	<Packet>
-		<PacketName>TRADEREQUESTED</PacketName>
-		<PacketID>57</PacketID>
-	</Packet>
-	<Packet>
-		<PacketName>TRADESTART</PacketName>
-		<PacketID>86</PacketID>
-	</Packet>
-	<Packet>
-		<PacketName>CHANGETRADE</PacketName>
-		<PacketID>94</PacketID>
-	</Packet>
-	<Packet>
-		<PacketName>TRADECHANGED</PacketName>
-		<PacketID>5</PacketID>
-	</Packet>
-	<Packet>
-		<PacketName>ACCEPTTRADE</PacketName>
-		<PacketID>64</PacketID>
-	</Packet>
-	<Packet>
-		<PacketName>CANCELTRADE</PacketName>
-		<PacketID>85</PacketID>
-	</Packet>
-	<Packet>
-		<PacketName>TRADEDONE</PacketName>
-		<PacketID>97</PacketID>
-	</Packet>
-	<Packet>
-		<PacketName>TRADEACCEPTED</PacketName>
-		<PacketID>42</PacketID>
-	</Packet>
-	<Packet>
-		<PacketName>CLIENTSTAT</PacketName>
-		<PacketID>103</PacketID>
-	</Packet>
-	<Packet>
-		<PacketName>CHECKCREDITS</PacketName>
-		<PacketID>99</PacketID>
-	</Packet>
-	<Packet>
-		<PacketName>ESCAPE</PacketName>
-		<PacketID>38</PacketID>
-	</Packet>
-	<Packet>
-		<PacketName>FILE</PacketName>
-		<PacketID>90</PacketID>
-	</Packet>
-	<Packet>
-		<PacketName>INVITEDTOGUILD</PacketName>
-		<PacketID>41</PacketID>
-	</Packet>
-	<Packet>
-		<PacketName>JOINGUILD</PacketName>
-		<PacketID>37</PacketID>
-	</Packet>
-	<Packet>
-		<PacketName>CHANGEGUILDRANK</PacketName>
-		<PacketID>11</PacketID>
-	</Packet>
-	<Packet>
-		<PacketName>PLAYSOUND</PacketName>
-		<PacketID>30</PacketID>
-	</Packet>
-	<Packet>
-		<PacketName>GLOBAL_NOTIFICATION</PacketName>
-		<PacketID>74</PacketID>
-	</Packet>
-	<Packet>
-		<PacketName>RESKIN</PacketName>
-		<PacketID>76</PacketID>
-	</Packet>
-	<Packet>
-		<PacketName>PETUPGRADEREQUEST</PacketName>
-		<PacketID>1</PacketID>
-	</Packet>
-	<Packet>
-		<PacketName>ACTIVE_PET_UPDATE_REQUEST</PacketName>
-		<PacketID>40</PacketID>
-	</Packet>
-	<Packet>
-		<PacketName>ACTIVEPETUPDATE</PacketName>
-		<PacketID>60</PacketID>
-	</Packet>
-	<Packet>
-		<PacketName>NEW_ABILITY</PacketName>
-		<PacketID>33</PacketID>
-	</Packet>
-	<Packet>
-		<PacketName>PETYARDUPDATE</PacketName>
-		<PacketID>44</PacketID>
-	</Packet>
-	<Packet>
-		<PacketName>EVOLVE_PET</PacketName>
-		<PacketID>12</PacketID>
-	</Packet>
-	<Packet>
-		<PacketName>DELETE_PET</PacketName>
-		<PacketID>49</PacketID>
-	</Packet>
-	<Packet>
-		<PacketName>HATCH_PET</PacketName>
-		<PacketID>78</PacketID>
-	</Packet>
-	<Packet>
-		<PacketName>ENTER_ARENA</PacketName>
-		<PacketID>61</PacketID>
-	</Packet>
-	<Packet>
-		<PacketName>IMMINENT_ARENA_WAVE</PacketName>
-		<PacketID>79</PacketID>
-	</Packet>
-	<Packet>
-		<PacketName>ARENA_DEATH</PacketName>
-		<PacketID>48</PacketID>
-	</Packet>
-	<Packet>
-		<PacketName>ACCEPT_ARENA_DEATH</PacketName>
-		<PacketID>59</PacketID>
-	</Packet>
-	<Packet>
-		<PacketName>VERIFY_EMAIL</PacketName>
-		<PacketID>21</PacketID>
-	</Packet>
-	<Packet>
-		<PacketName>RESKIN_UNLOCK</PacketName>
-		<PacketID>7</PacketID>
-	</Packet>
-	<Packet>
-		<PacketName>PASSWORD_PROMPT</PacketName>
-		<PacketID>9</PacketID>
-	</Packet>
-	<Packet>
-		<PacketName>QUEST_FETCH_ASK</PacketName>
-		<PacketID>52</PacketID>
-	</Packet>
-	<Packet>
-		<PacketName>QUEST_REDEEM</PacketName>
-		<PacketID>96</PacketID>
-	</Packet>
-	<Packet>
-		<PacketName>QUEST_FETCH_RESPONSE</PacketName>
-		<PacketID>14</PacketID>
-	</Packet>
-	<Packet>
-		<PacketName>QUEST_REDEEM_RESPONSE</PacketName>
-		<PacketID>98</PacketID>
-	</Packet>
-	<Packet>
-		<PacketName>PET_CHANGE_FORM_MSG</PacketName>
-		<PacketID>34</PacketID>
-	</Packet>
-	<Packet>
-		<PacketName>KEY_INFO_REQUEST</PacketName>
-		<PacketID>77</PacketID>
-	</Packet>
-	<Packet>
-		<PacketName>KEY_INFO_RESPONSE</PacketName>
-		<PacketID>20</PacketID>
-	</Packet>
-	<Packet>
-		<PacketName>CLAIM_LOGIN_REWARD_MSG</PacketName>
-		<PacketID>104</PacketID>
-	</Packet>
-	<Packet>
-		<PacketName>LOGIN_REWARD_MSG</PacketName>
 		<PacketID>75</PacketID>
 	</Packet>
 	<Packet>
-		<PacketName>QUEST_ROOM_MSG</PacketName>
+		<PacketName>ALLYSHOOT</PacketName>
+		<PacketID>63</PacketID>
+	</Packet>
+	<Packet>
+		<PacketName>ENEMYSHOOT</PacketName>
+		<PacketID>92</PacketID>
+	</Packet>
+	<Packet>
+		<PacketName>REQUESTTRADE</PacketName>
+		<PacketID>6</PacketID>
+	</Packet>
+	<Packet>
+		<PacketName>TRADEREQUESTED</PacketName>
+		<PacketID>14</PacketID>
+	</Packet>
+	<Packet>
+		<PacketName>TRADESTART</PacketName>
+		<PacketID>15</PacketID>
+	</Packet>
+	<Packet>
+		<PacketName>CHANGETRADE</PacketName>
+		<PacketID>26</PacketID>
+	</Packet>
+	<Packet>
+		<PacketName>TRADECHANGED</PacketName>
+		<PacketID>93</PacketID>
+	</Packet>
+	<Packet>
+		<PacketName>ACCEPTTRADE</PacketName>
+		<PacketID>17</PacketID>
+	</Packet>
+	<Packet>
+		<PacketName>CANCELTRADE</PacketName>
+		<PacketID>55</PacketID>
+	</Packet>
+	<Packet>
+		<PacketName>TRADEDONE</PacketName>
+		<PacketID>77</PacketID>
+	</Packet>
+	<Packet>
+		<PacketName>TRADEACCEPTED</PacketName>
+		<PacketID>57</PacketID>
+	</Packet>
+	<Packet>
+		<PacketName>CLIENTSTAT</PacketName>
+		<PacketID>66</PacketID>
+	</Packet>
+	<Packet>
+		<PacketName>CHECKCREDITS</PacketName>
+		<PacketID>35</PacketID>
+	</Packet>
+	<Packet>
+		<PacketName>ESCAPE</PacketName>
+		<PacketID>41</PacketID>
+	</Packet>
+	<Packet>
+		<PacketName>FILE</PacketName>
+		<PacketID>42</PacketID>
+	</Packet>
+	<Packet>
+		<PacketName>INVITEDTOGUILD</PacketName>
+		<PacketID>83</PacketID>
+	</Packet>
+	<Packet>
+		<PacketName>JOINGUILD</PacketName>
+		<PacketID>94</PacketID>
+	</Packet>
+	<Packet>
+		<PacketName>CHANGEGUILDRANK</PacketName>
+		<PacketID>51</PacketID>
+	</Packet>
+	<Packet>
+		<PacketName>PLAYSOUND</PacketName>
+		<PacketID>61</PacketID>
+	</Packet>
+	<Packet>
+		<PacketName>GLOBAL_NOTIFICATION</PacketName>
+		<PacketID>90</PacketID>
+	</Packet>
+	<Packet>
+		<PacketName>RESKIN</PacketName>
+		<PacketID>69</PacketID>
+	</Packet>
+	<Packet>
+		<PacketName>PETUPGRADEREQUEST</PacketName>
+		<PacketID>11</PacketID>
+	</Packet>
+	<Packet>
+		<PacketName>ACTIVE_PET_UPDATE_REQUEST</PacketName>
+		<PacketID>53</PacketID>
+	</Packet>
+	<Packet>
+		<PacketName>ACTIVEPETUPDATE</PacketName>
+		<PacketID>56</PacketID>
+	</Packet>
+	<Packet>
+		<PacketName>NEW_ABILITY</PacketName>
+		<PacketID>60</PacketID>
+	</Packet>
+	<Packet>
+		<PacketName>PETYARDUPDATE</PacketName>
+		<PacketID>38</PacketID>
+	</Packet>
+	<Packet>
+		<PacketName>EVOLVE_PET</PacketName>
+		<PacketID>97</PacketID>
+	</Packet>
+	<Packet>
+		<PacketName>DELETE_PET</PacketName>
+		<PacketID>78</PacketID>
+	</Packet>
+	<Packet>
+		<PacketName>HATCH_PET</PacketName>
+		<PacketID>22</PacketID>
+	</Packet>
+	<Packet>
+		<PacketName>ENTER_ARENA</PacketName>
+		<PacketID>89</PacketID>
+	</Packet>
+	<Packet>
+		<PacketName>IMMINENT_ARENA_WAVE</PacketName>
+		<PacketID>23</PacketID>
+	</Packet>
+	<Packet>
+		<PacketName>ARENA_DEATH</PacketName>
+		<PacketID>34</PacketID>
+	</Packet>
+	<Packet>
+		<PacketName>ACCEPT_ARENA_DEATH</PacketName>
+		<PacketID>10</PacketID>
+	</Packet>
+	<Packet>
+		<PacketName>VERIFY_EMAIL</PacketName>
+		<PacketID>49</PacketID>
+	</Packet>
+	<Packet>
+		<PacketName>RESKIN_UNLOCK</PacketName>
+		<PacketID>98</PacketID>
+	</Packet>
+	<Packet>
+		<PacketName>PASSWORD_PROMPT</PacketName>
+		<PacketID>48</PacketID>
+	</Packet>
+	<Packet>
+		<PacketName>QUEST_FETCH_ASK</PacketName>
+		<PacketID>16</PacketID>
+	</Packet>
+	<Packet>
+		<PacketName>QUEST_REDEEM</PacketName>
+		<PacketID>24</PacketID>
+	</Packet>
+	<Packet>
+		<PacketName>QUEST_FETCH_RESPONSE</PacketName>
+		<PacketID>79</PacketID>
+	</Packet>
+	<Packet>
+		<PacketName>QUEST_REDEEM_RESPONSE</PacketName>
+		<PacketID>30</PacketID>
+	</Packet>
+	<Packet>
+		<PacketName>PET_CHANGE_FORM_MSG</PacketName>
+		<PacketID>64</PacketID>
+	</Packet>
+	<Packet>
+		<PacketName>KEY_INFO_REQUEST</PacketName>
 		<PacketID>45</PacketID>
+	</Packet>
+	<Packet>
+		<PacketName>KEY_INFO_RESPONSE</PacketName>
+		<PacketID>33</PacketID>
+	</Packet>
+	<Packet>
+		<PacketName>CLAIM_LOGIN_REWARD_MSG</PacketName>
+		<PacketID>103</PacketID>
+	</Packet>
+	<Packet>
+		<PacketName>LOGIN_REWARD_MSG</PacketName>
+		<PacketID>37</PacketID>
+	</Packet>
+	<Packet>
+		<PacketName>QUEST_ROOM_MSG</PacketName>
+		<PacketID>88</PacketID>
 	</Packet>
 </Packets>
