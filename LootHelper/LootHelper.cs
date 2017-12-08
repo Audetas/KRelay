@@ -27,7 +27,7 @@ namespace LootHelper
     public class LootHelper : IPlugin
     {
         private Dictionary<Client, LootState> _states = new Dictionary<Client, LootState>();
-        private short[] _desiredBags = { (short)Bags.Blue, (short)Bags.Cyan, (short)Bags.White };
+        private ushort[] _desiredBags = { (ushort)Bags.Blue, (ushort)Bags.Cyan, (ushort)Bags.White };
 
         public string GetAuthor()
         { return "KrazyShank / Kronks"; }
@@ -124,7 +124,7 @@ namespace LootHelper
             // New Objects
             foreach (Entity entity in update.NewObjs)
             {
-                short type = entity.ObjectType;
+                ushort type = entity.ObjectType;
                 if (_desiredBags.Contains(type))
                 {
                     if (LootHelperConfig.Default.LootQuests)

@@ -18575,7 +18575,7 @@
     <ActivateOnEquip stat="3" amount="100">IncrementStat</ActivateOnEquip>
     <BagType>6</BagType>
     <FameBonus>5</FameBonus>
-    <feedPower>500</feedPower>
+    <feedPower>700</feedPower>
     <Soulbound/>
   </Object>
   <Object type="0x7fd3" id="Ring of the Northern Light">
@@ -34533,7 +34533,7 @@
     </Texture>
     <SlotType>22</SlotType>
     <Tier>6</Tier>
-    <Description>A brilliantly shinining prism of berylstone, cut to resemble a tree topper as a means of hiding eidolon agents in plain sight.\n\nSprite Credits: Dappertron</Description>
+    <Description>A brilliantly shining prism of berylstone, cut to resemble a tree topper as a means of hiding eidolon agents in plain sight.\n\nSprite Credits: Dappertron</Description>
     <ActivateOnEquip stat="26" amount="2">IncrementStat</ActivateOnEquip>
     <ActivateOnEquip stat="27" amount="2">IncrementStat</ActivateOnEquip>
     <Usable/>
@@ -34671,7 +34671,7 @@
       <Index>0xb0</Index>
     </Texture>
     <SlotType>10</SlotType>
-    <Description>Summon Dasher the Flying Reindeer. During the holiday season Dasher's magic increases the users stats.</Description>
+    <Description>Summon Dasher the Flying Reindeer. During the holiday season Dasher's magic increases the user's stats.</Description>
     <Sound>spell/light_heal</Sound>
     <InvUse/>
     <Cooldown>900</Cooldown>
@@ -34690,7 +34690,7 @@
       <Index>0xb1</Index>
     </Texture>
     <SlotType>10</SlotType>
-    <Description>Summon Dancer the Flying Reindeer. During the holiday season Dancer's magic increases the users stats.</Description>
+    <Description>Summon Dancer the Flying Reindeer. During the holiday season Dancer's magic increases the user's stats.</Description>
     <Sound>spell/light_heal</Sound>
     <InvUse/>
     <Cooldown>900</Cooldown>
@@ -34709,7 +34709,7 @@
       <Index>0xb2</Index>
     </Texture>
     <SlotType>10</SlotType>
-    <Description>Summon Prancer the Flying Reindeer. During the holiday season Prancer's magic increases the users stats.</Description>
+    <Description>Summon Prancer the Flying Reindeer. During the holiday season Prancer's magic increases the user's stats.</Description>
     <Sound>spell/light_heal</Sound>
     <InvUse/>
     <Cooldown>900</Cooldown>
@@ -34728,7 +34728,7 @@
       <Index>0xb3</Index>
     </Texture>
     <SlotType>10</SlotType>
-    <Description>Summon Vixen the Flying Reindeer. During the holiday season Vixen's magic increases the users stats.</Description>
+    <Description>Summon Vixen the Flying Reindeer. During the holiday season Vixen's magic increases the user's stats.</Description>
     <Sound>spell/light_heal</Sound>
     <InvUse/>
     <Cooldown>900</Cooldown>
@@ -34747,7 +34747,7 @@
       <Index>0xb4</Index>
     </Texture>
     <SlotType>10</SlotType>
-    <Description>Summon Cupid the Flying Reindeer. During the holiday season Cupid's magic increases the users stats.</Description>
+    <Description>Summon Cupid the Flying Reindeer. During the holiday season Cupid's magic increases the user's stats.</Description>
     <Sound>spell/light_heal</Sound>
     <InvUse/>
     <Cooldown>900</Cooldown>
@@ -34766,7 +34766,7 @@
       <Index>0xb5</Index>
     </Texture>
     <SlotType>10</SlotType>
-    <Description>Summon Comet the Flying Reindeer. During the holiday season Comet's magic increases the users stats.</Description>
+    <Description>Summon Comet the Flying Reindeer. During the holiday season Comet's magic increases the user's stats.</Description>
     <Sound>spell/light_heal</Sound>
     <InvUse/>
     <Cooldown>900</Cooldown>
@@ -34785,7 +34785,7 @@
       <Index>0xb6</Index>
     </Texture>
     <SlotType>10</SlotType>
-    <Description>Summon Donner the Flying Reindeer. During the holiday season Donner's magic increases the users stats.</Description>
+    <Description>Summon Donner the Flying Reindeer. During the holiday season Donner's magic increases the user's stats.</Description>
     <Sound>spell/light_heal</Sound>
     <InvUse/>
     <Cooldown>900</Cooldown>
@@ -34804,7 +34804,7 @@
       <Index>0xb7</Index>
     </Texture>
     <SlotType>10</SlotType>
-    <Description>Summon Rudolph the Flying Reindeer. During the holiday season Rudolph's magic increases the users stats.</Description>
+    <Description>Summon Rudolph the Flying Reindeer. During the holiday season Rudolph's magic increases the user's stats.</Description>
     <Sound>spell/light_heal</Sound>
     <InvUse/>
     <Cooldown>900</Cooldown>
@@ -34891,7 +34891,7 @@
       <Index>0xc2</Index>
     </Texture>
     <SlotType>17</SlotType>
-    <Description>Embuded with the power of winter.</Description>
+    <Description>Imbued with the power of winter.</Description>
     <RateOfFire>1</RateOfFire>
     <Sound>weapon/wand_of_death</Sound>
     <Projectile>
@@ -35124,10 +35124,10 @@
       <EffectInfo name="" description="Warning:"/>
       <EffectInfo name="Buffs disappear when switching zone." description=""/>
     </ExtraTooltipData>
-    <Description>Needless to say, you'll sleigh the competition. Use this item to buff your Speed for 15min.</Description>
+    <Description>Needless to say, you'll sleigh the competition. Use this item to buff your Speed for 15 minutes.</Description>
     <Sound>use_potion</Sound>
     <Consumable/>
-    <BagType>8</BagType>
+    <BagType>2</BagType>
     <Activate stat="22" amount="10" duration="900">StatBoostSelf</Activate>
     <feedPower>35</feedPower>
     <Soulbound/>
@@ -35144,10 +35144,10 @@
       <EffectInfo name="" description="Warning:"/>
       <EffectInfo name="Buffs disappear when switching zone." description=""/>
     </ExtraTooltipData>
-    <Description>An Egg Nog a day keeps the Krampus away. Use this item to buff your Vitality for 15min.</Description>
+    <Description>An Egg Nog a day keeps the Krampus away. Use this item to buff your Vitality for 15 minutes.</Description>
     <Sound>use_potion</Sound>
     <Consumable/>
-    <BagType>8</BagType>
+    <BagType>2</BagType>
     <Activate stat="26" amount="20" duration="900">StatBoostSelf</Activate>
     <feedPower>35</feedPower>
     <Soulbound/>
@@ -35164,10 +35164,10 @@
       <EffectInfo name="" description="Warning:"/>
       <EffectInfo name="Buffs disappear when switching zone." description=""/>
     </ExtraTooltipData>
-    <Description>Provides all the vitamins you need, fresh fruits are overrated anyway. Use this item to buff your Defense for 15min.</Description>
+    <Description>Provides all the vitamins you need, fresh fruits are overrated anyway. Use this item to buff your Defense for 15 minutes.</Description>
     <Sound>use_potion</Sound>
     <Consumable/>
-    <BagType>8</BagType>
+    <BagType>2</BagType>
     <Activate stat="21" amount="10" duration="900">StatBoostSelf</Activate>
     <feedPower>35</feedPower>
     <Soulbound/>
@@ -35184,10 +35184,10 @@
       <EffectInfo name="" description="Warning:"/>
       <EffectInfo name="Buffs disappear when switching zone." description=""/>
     </ExtraTooltipData>
-    <Description>Who would win? Oryxmas or one sugary boi? Use this item to buff your Attack for 15min.</Description>
+    <Description>Who would win? Oryxmas or one sugary boi? Use this item to buff your Attack for 15 minutes.</Description>
     <Sound>use_potion</Sound>
     <Consumable/>
-    <BagType>8</BagType>
+    <BagType>2</BagType>
     <Activate stat="20" amount="10" duration="900">StatBoostSelf</Activate>
     <feedPower>35</feedPower>
     <Soulbound/>
@@ -35204,10 +35204,10 @@
       <EffectInfo name="" description="Warning:"/>
       <EffectInfo name="Buffs disappear when switching zone." description=""/>
     </ExtraTooltipData>
-    <Description>A few minutes of gustatorial delight, then it's all regrets. Use this item to buff your Dexterity for 15min.</Description>
+    <Description>A few minutes of gustatorial delight, then it's all regrets. Use this item to buff your Dexterity for 15 minutes.</Description>
     <Sound>use_potion</Sound>
     <Consumable/>
-    <BagType>8</BagType>
+    <BagType>2</BagType>
     <Activate stat="28" amount="10" duration="900">StatBoostSelf</Activate>
     <feedPower>35</feedPower>
     <Soulbound/>
@@ -35224,10 +35224,10 @@
       <EffectInfo name="" description="Warning:"/>
       <EffectInfo name="Buffs disappear when switching zone." description=""/>
     </ExtraTooltipData>
-    <Description>You'll feel stronger, as long as you don't eat the red thingies. Use this item to buff your HP for 15min.</Description>
+    <Description>You'll feel stronger, as long as you don't eat the red thingies. Use this item to buff your HP for 15 minutes.</Description>
     <Sound>use_potion</Sound>
     <Consumable/>
-    <BagType>8</BagType>
+    <BagType>2</BagType>
     <Activate stat="0" amount="200" duration="900">StatBoostSelf</Activate>
     <feedPower>35</feedPower>
     <Soulbound/>
@@ -35244,10 +35244,10 @@
       <EffectInfo name="" description="Warning:"/>
       <EffectInfo name="Buffs disappear when switching zone." description=""/>
     </ExtraTooltipData>
-    <Description>The only kind of frost that won't give you a brain freeze. Use this item to buff your Wisdom for 15min.</Description>
+    <Description>The only kind of frost that won't give you a brain freeze. Use this item to buff your Wisdom for 15 minutes.</Description>
     <Sound>use_potion</Sound>
     <Consumable/>
-    <BagType>8</BagType>
+    <BagType>2</BagType>
     <Activate stat="27" amount="20" duration="900">StatBoostSelf</Activate>
     <feedPower>35</feedPower>
     <Soulbound/>
@@ -35264,10 +35264,10 @@
       <EffectInfo name="" description="Warning:"/>
       <EffectInfo name="Buffs disappear when switching zone." description=""/>
     </ExtraTooltipData>
-    <Description>Keep these in your pocket and you'll never be oom. Use this item to buff your Mana for 15min.</Description>
+    <Description>Keep these in your pocket and you'll never be oom. Use this item to buff your Mana for 15 minutes.</Description>
     <Sound>use_potion</Sound>
     <Consumable/>
-    <BagType>8</BagType>
+    <BagType>2</BagType>
     <Activate stat="3" amount="200" duration="900">StatBoostSelf</Activate>
     <feedPower>35</feedPower>
     <Soulbound/>
@@ -35462,6 +35462,232 @@
     <feedPower>10</feedPower>
     <DropTradable/>
   </Object>
+  <Object type="0x2701" id="Santa Workshop Key">
+    <Class>Equipment</Class>
+    <Item/>
+    <DisplayId>Santa Workshop key</DisplayId>
+    <Texture>
+      <File>oryxHordeObjects8x8</File>
+      <Index>0x62</Index>
+    </Texture>
+    <SlotType>10</SlotType>
+    <Description>A Magic device opening a portal to the Mad God Danta workshop</Description>
+    <Sound>use_key</Sound>
+    <Consumable/>
+    <Soulbound/>
+    <Activate id="Santa Portal">Create</Activate>
+    <Track/>
+  </Object>
+  <Object type="0x3701" id="Father Time Priest Skin">
+    <Class>Equipment</Class>
+    <Item/>
+    <AnimatedTexture>
+      <File>playerskins</File>
+      <Index>18</Index>
+    </AnimatedTexture>
+    <SlotType>10</SlotType>
+    <Description>Use this item to unlock the Father Time skin for the Priest class.</Description>
+    <Activate skinType="852">UnlockSkin</Activate>
+    <Consumable/>
+    <BagType>8</BagType>
+    <Soulbound/>
+    <feedPower>2000</feedPower>
+  </Object>
+  <Object type="0x3702" id="Amazonian Huntress Skin">
+    <Class>Equipment</Class>
+    <Item/>
+    <AnimatedTexture>
+      <File>playerskins</File>
+      <Index>9</Index>
+    </AnimatedTexture>
+    <SlotType>10</SlotType>
+    <Description>Use this item to unlock the Amazonian skin for the Huntress class.</Description>
+    <Activate skinType="843">UnlockSkin</Activate>
+    <Consumable/>
+    <BagType>8</BagType>
+    <Soulbound/>
+    <feedPower>2000</feedPower>
+  </Object>
+  <Object type="0x3703" id="Merlin Wizard Skin">
+    <Class>Equipment</Class>
+    <Item/>
+    <AnimatedTexture>
+      <File>playerskins</File>
+      <Index>2</Index>
+    </AnimatedTexture>
+    <SlotType>10</SlotType>
+    <Description>Use this item to unlock the Merlin skin for the Wizard class.</Description>
+    <Activate skinType="836">UnlockSkin</Activate>
+    <Consumable/>
+    <BagType>8</BagType>
+    <Soulbound/>
+    <feedPower>2000</feedPower>
+  </Object>
+  <Object type="0x3704" id="Death Mage Necromancer Skin">
+    <Class>Equipment</Class>
+    <Item/>
+    <AnimatedTexture>
+      <File>playerskins</File>
+      <Index>8</Index>
+    </AnimatedTexture>
+    <SlotType>10</SlotType>
+    <Description>Use this item to unlock the Death Mage skin for the Necromancer class.</Description>
+    <Activate skinType="842">UnlockSkin</Activate>
+    <Consumable/>
+    <BagType>8</BagType>
+    <Soulbound/>
+    <feedPower>2000</feedPower>
+  </Object>
+  <Object type="0x3705" id="Warlock Sorcerer Skin">
+    <Class>Equipment</Class>
+    <Item/>
+    <AnimatedTexture>
+      <File>playerskins</File>
+      <Index>12</Index>
+    </AnimatedTexture>
+    <SlotType>10</SlotType>
+    <Description>Use this item to unlock the Warlock skin for the Sorcerer class.</Description>
+    <Activate skinType="846">UnlockSkin</Activate>
+    <Consumable/>
+    <BagType>8</BagType>
+    <Soulbound/>
+    <feedPower>2000</feedPower>
+  </Object>
+  <Object type="0x3706" id="Seer Mystic Skin">
+    <Class>Equipment</Class>
+    <Item/>
+    <AnimatedTexture>
+      <File>playerskins</File>
+      <Index>10</Index>
+    </AnimatedTexture>
+    <SlotType>10</SlotType>
+    <Description>Use this item to unlock the Seer skin for the Mystic class.</Description>
+    <Activate skinType="844">UnlockSkin</Activate>
+    <Consumable/>
+    <BagType>8</BagType>
+    <Soulbound/>
+    <feedPower>2000</feedPower>
+  </Object>
+  <Object type="0x3707" id="Juggernaut Warrior Skin">
+    <Class>Equipment</Class>
+    <Item/>
+    <AnimatedTexture>
+      <File>playerskins</File>
+      <Index>4</Index>
+    </AnimatedTexture>
+    <SlotType>10</SlotType>
+    <Description>Use this item to unlock the Juggernaut skin for the Warrior class.</Description>
+    <Activate skinType="838">UnlockSkin</Activate>
+    <Consumable/>
+    <BagType>8</BagType>
+    <Soulbound/>
+    <feedPower>2000</feedPower>
+  </Object>
+  <Object type="0x3708" id="Knight of the Round Knight Skin">
+    <Class>Equipment</Class>
+    <Item/>
+    <AnimatedTexture>
+      <File>playerskins</File>
+      <Index>5</Index>
+    </AnimatedTexture>
+    <SlotType>10</SlotType>
+    <Description>Use this item to unlock the Knight of the Round skin for the Knight class.</Description>
+    <Activate skinType="839">UnlockSkin</Activate>
+    <Consumable/>
+    <BagType>8</BagType>
+    <Soulbound/>
+    <feedPower>2000</feedPower>
+  </Object>
+  <Object type="0x3709" id="Cupid Archer Skin">
+    <Class>Equipment</Class>
+    <Item/>
+    <AnimatedTexture>
+      <File>playerskins</File>
+      <Index>21</Index>
+    </AnimatedTexture>
+    <SlotType>10</SlotType>
+    <Description>Use this item to unlock the Cupid skin for the Archer class.</Description>
+    <Activate skinType="855">UnlockSkin</Activate>
+    <Consumable/>
+    <BagType>8</BagType>
+    <Soulbound/>
+    <feedPower>2000</feedPower>
+  </Object>
+  <Object type="0x370a" id="Decorated Paladin Skin">
+    <Class>Equipment</Class>
+    <Item/>
+    <AnimatedTexture>
+      <File>playerskins</File>
+      <Index>6</Index>
+    </AnimatedTexture>
+    <SlotType>10</SlotType>
+    <Description>Use this item to unlock the Decorated Paladin skin for the Paladin class.</Description>
+    <Activate skinType="840">UnlockSkin</Activate>
+    <Consumable/>
+    <BagType>8</BagType>
+    <Soulbound/>
+    <feedPower>2000</feedPower>
+  </Object>
+  <Object type="0x370b" id="Bandit Rogue Skin">
+    <Class>Equipment</Class>
+    <Item/>
+    <AnimatedTexture>
+      <File>playerskins</File>
+      <Index>0</Index>
+    </AnimatedTexture>
+    <SlotType>10</SlotType>
+    <Description>Use this item to unlock the Bandit skin for the Rogue class.</Description>
+    <Activate skinType="834">UnlockSkin</Activate>
+    <Consumable/>
+    <BagType>8</BagType>
+    <Soulbound/>
+    <feedPower>2000</feedPower>
+  </Object>
+  <Object type="0x370c" id="Stealth Assassin Skin">
+    <Class>Equipment</Class>
+    <Item/>
+    <AnimatedTexture>
+      <File>playerskins</File>
+      <Index>7</Index>
+    </AnimatedTexture>
+    <SlotType>10</SlotType>
+    <Description>Use this item to unlock the Stealth skin for the Assassin class.</Description>
+    <Activate skinType="841">UnlockSkin</Activate>
+    <Consumable/>
+    <BagType>8</BagType>
+    <Soulbound/>
+    <feedPower>2000</feedPower>
+  </Object>
+  <Object type="0x370d" id="Loki Trickster Skin">
+    <Class>Equipment</Class>
+    <Item/>
+    <AnimatedTexture>
+      <File>playerskins</File>
+      <Index>11</Index>
+    </AnimatedTexture>
+    <SlotType>10</SlotType>
+    <Description>Use this item to unlock the Loki skin for the Trickster class.</Description>
+    <Activate skinType="845">UnlockSkin</Activate>
+    <Consumable/>
+    <BagType>8</BagType>
+    <Soulbound/>
+    <feedPower>2000</feedPower>
+  </Object>
+  <Object type="0x370e" id="Shadow Ninja Skin">
+    <Class>Equipment</Class>
+    <Item/>
+    <AnimatedTexture>
+      <File>playerskins</File>
+      <Index>13</Index>
+    </AnimatedTexture>
+    <SlotType>10</SlotType>
+    <Description>Use this item to unlock the Shadow skin for the Ninja class.</Description>
+    <Activate skinType="847">UnlockSkin</Activate>
+    <Consumable/>
+    <BagType>8</BagType>
+    <Soulbound/>
+    <feedPower>2000</feedPower>
+  </Object>
 
 
   <!-- ForbiddenJungle -->
@@ -35568,7 +35794,6 @@
     <DeathSound>monster/stone_walls_death</DeathSound>
     <Size>120</Size>
     <ShadowSize>80</ShadowSize>
-    <OccupySquare/>
     <Projectile id="0">
       <ObjectId>Totem Fire Wall</ObjectId>
       <Damage>50</Damage>
@@ -40828,7 +41053,7 @@
     <Terrain>HighForest</Terrain>
     <Level>15</Level>
     <XpMult>1.4</XpMult>
-    <SpawnProb>1</SpawnProb>
+    <SpawnProb>0.05</SpawnProb>
     <Projectile id="0">
       <ObjectId>Xmas Barrel</ObjectId>
       <Damage>75</Damage>
@@ -42668,15 +42893,11 @@
   </Object>
   <Object type="0x7540" id="NM Blue Dragon Spawner">
     <Class>GameObject</Class>
-    <NoMiniMap/>
-    <ShadowSize>0</ShadowSize>
-    <Size>0</Size>
-    <OccupySquare/>
     <Texture>
       <File>invisible</File>
       <Index>0</Index>
     </Texture>
-    <StasisImmune/>
+    <Size>0</Size>
   </Object>
   <Object type="0x7536" id="NM Blue Minion Spawner">
     <DisplayId>Blue Egg</DisplayId>
@@ -42956,15 +43177,11 @@
   </Object>
   <Object type="0x7544" id="NM Red Dragon Spawner">
     <Class>GameObject</Class>
-    <NoMiniMap/>
-    <ShadowSize>0</ShadowSize>
-    <Size>0</Size>
-    <OccupySquare/>
     <Texture>
       <File>invisible</File>
       <Index>0</Index>
     </Texture>
-    <StasisImmune/>
+    <Size>0</Size>
   </Object>
   <Object type="0x7549" id="NM Red Minion Spawner">
     <DisplayId>Red Egg</DisplayId>
@@ -43224,15 +43441,11 @@
   </Object>
   <Object type="0x7542" id="NM Green Dragon Spawner">
     <Class>GameObject</Class>
-    <NoMiniMap/>
-    <ShadowSize>0</ShadowSize>
-    <Size>0</Size>
-    <OccupySquare/>
     <Texture>
       <File>invisible</File>
       <Index>0</Index>
     </Texture>
-    <StasisImmune/>
+    <Size>0</Size>
   </Object>
   <Object type="0x7545" id="NM Green Dragon Shield">
     <DisplayId>Abundant Shield</DisplayId>
@@ -43577,15 +43790,11 @@
   </Object>
   <Object type="0x751c" id="NM Black Dragon Spawner">
     <Class>GameObject</Class>
-    <NoMiniMap/>
-    <ShadowSize>0</ShadowSize>
-    <Size>0</Size>
-    <OccupySquare/>
     <Texture>
       <File>invisible</File>
       <Index>0</Index>
     </Texture>
-    <StasisImmune/>
+    <Size>0</Size>
   </Object>
   <Object type="0x7551" id="NM Black Dragon Shadow">
     <DisplayId>Shade of Feargus</DisplayId>
@@ -45773,7 +45982,6 @@
   </Object>
   <Object type="0x0892" id="Monster Cage">
     <Class>GameObject</Class>
-    <OccupySquare/>
     <ShadowSize>0</ShadowSize>
     <Z>-0.40</Z>
     <Texture>
@@ -45815,7 +46023,6 @@
       <Index>0x3e</Index>
     </Texture>
     <NoMiniMap/>
-    <OccupySquare/>
     <MaxHitPoints>10</MaxHitPoints>
     <Size>100</Size>
     <StasisImmune/>
@@ -45836,7 +46043,6 @@
       <Index>0x3e</Index>
     </Texture>
     <NoMiniMap/>
-    <OccupySquare/>
     <MaxHitPoints>10</MaxHitPoints>
     <Size>100</Size>
     <StasisImmune/>
@@ -45857,7 +46063,6 @@
       <Index>0x3e</Index>
     </Texture>
     <NoMiniMap/>
-    <OccupySquare/>
     <MaxHitPoints>10</MaxHitPoints>
     <Size>100</Size>
     <StasisImmune/>
@@ -45878,7 +46083,6 @@
       <Index>0x3e</Index>
     </Texture>
     <NoMiniMap/>
-    <OccupySquare/>
     <MaxHitPoints>10</MaxHitPoints>
     <Size>100</Size>
     <StasisImmune/>
@@ -53387,13 +53591,13 @@
     <Enemy/>
     <Class>Character</Class>
     <Texture>
-      <File>lofiChar16x16</File>
-      <Index>0x54</Index>
+      <File>d3LofiObjEmbed16</File>
+      <Index>0x19</Index>
     </Texture>
     <AltTexture id="1">
       <Texture>
-        <File>lofiChar16x16</File>
-        <Index>0x54</Index>
+        <File>d3LofiObjEmbed16</File>
+        <Index>0x19</Index>
       </Texture>
     </AltTexture>
     <HitSound>monster/oryx_hit</HitSound>
@@ -55512,6 +55716,9 @@
       <Index>0xfd</Index>
     </Texture>
     <SlotType>10</SlotType>
+    <ExtraTooltipData>
+      <EffectInfo name="Stack limit" description="20"/>
+    </ExtraTooltipData>
     <Description>Snowball fight!\nMake sure a buddy is nearby!</Description>
     <BagType>2</BagType>
     <Consumable/>
@@ -55529,6 +55736,9 @@
       <Index>0xfd</Index>
     </Texture>
     <SlotType>10</SlotType>
+    <ExtraTooltipData>
+      <EffectInfo name="Stack limit" description="20"/>
+    </ExtraTooltipData>
     <Description>Snowball fiight!\nMake sure a buddy is nearby!</Description>
     <BagType>2</BagType>
     <Consumable/>
@@ -55547,6 +55757,9 @@
       <Index>0xfd</Index>
     </Texture>
     <SlotType>10</SlotType>
+    <ExtraTooltipData>
+      <EffectInfo name="Stack limit" description="20"/>
+    </ExtraTooltipData>
     <Description>Snowball fiiight!\nMake sure a buddy is nearby!</Description>
     <BagType>2</BagType>
     <Consumable/>
@@ -55565,6 +55778,9 @@
       <Index>0xfd</Index>
     </Texture>
     <SlotType>10</SlotType>
+    <ExtraTooltipData>
+      <EffectInfo name="Stack limit" description="20"/>
+    </ExtraTooltipData>
     <Description>Snowball fiiiight!\nMake sure a buddy is nearby!</Description>
     <BagType>2</BagType>
     <Consumable/>
@@ -55583,6 +55799,9 @@
       <Index>0xfd</Index>
     </Texture>
     <SlotType>10</SlotType>
+    <ExtraTooltipData>
+      <EffectInfo name="Stack limit" description="20"/>
+    </ExtraTooltipData>
     <Description>Snowball fiiiiight!\nMake sure a buddy is nearby!</Description>
     <BagType>2</BagType>
     <Consumable/>
@@ -55601,6 +55820,9 @@
       <Index>0xfd</Index>
     </Texture>
     <SlotType>10</SlotType>
+    <ExtraTooltipData>
+      <EffectInfo name="Stack limit" description="20"/>
+    </ExtraTooltipData>
     <Description>Snowball fiiiiiight!\nMake sure a buddy is nearby!</Description>
     <BagType>2</BagType>
     <Consumable/>
@@ -55619,6 +55841,9 @@
       <Index>0xfd</Index>
     </Texture>
     <SlotType>10</SlotType>
+    <ExtraTooltipData>
+      <EffectInfo name="Stack limit" description="20"/>
+    </ExtraTooltipData>
     <Description>Snowball fiiiiiiight!\nMake sure a buddy is nearby!</Description>
     <BagType>2</BagType>
     <Consumable/>
@@ -55637,6 +55862,9 @@
       <Index>0xfd</Index>
     </Texture>
     <SlotType>10</SlotType>
+    <ExtraTooltipData>
+      <EffectInfo name="Stack limit" description="20"/>
+    </ExtraTooltipData>
     <Description>Snowball fiiiiiiiight!\nMake sure a buddy is nearby!</Description>
     <BagType>2</BagType>
     <Consumable/>
@@ -55655,6 +55883,9 @@
       <Index>0xfd</Index>
     </Texture>
     <SlotType>10</SlotType>
+    <ExtraTooltipData>
+      <EffectInfo name="Stack limit" description="20"/>
+    </ExtraTooltipData>
     <Description>Snowball fiiiiiiiiight!\nMake sure a buddy is nearby!</Description>
     <BagType>2</BagType>
     <Consumable/>
@@ -55673,6 +55904,9 @@
       <Index>0xfd</Index>
     </Texture>
     <SlotType>10</SlotType>
+    <ExtraTooltipData>
+      <EffectInfo name="Stack limit" description="20"/>
+    </ExtraTooltipData>
     <Description>Snowball fiiiiiiiiiight!\nMake sure a buddy is nearby!</Description>
     <BagType>2</BagType>
     <Consumable/>
@@ -55691,6 +55925,9 @@
       <Index>0xfd</Index>
     </Texture>
     <SlotType>10</SlotType>
+    <ExtraTooltipData>
+      <EffectInfo name="Stack limit" description="20"/>
+    </ExtraTooltipData>
     <Description>Snowball fiiiiiiiiiiight!\nMake sure a buddy is nearby!</Description>
     <BagType>2</BagType>
     <Consumable/>
@@ -55709,6 +55946,9 @@
       <Index>0xfd</Index>
     </Texture>
     <SlotType>10</SlotType>
+    <ExtraTooltipData>
+      <EffectInfo name="Stack limit" description="20"/>
+    </ExtraTooltipData>
     <Description>Snowball fiiiiiiiiiiiight!\nMake sure a buddy is nearby!</Description>
     <BagType>2</BagType>
     <Consumable/>
@@ -55727,6 +55967,9 @@
       <Index>0xfd</Index>
     </Texture>
     <SlotType>10</SlotType>
+    <ExtraTooltipData>
+      <EffectInfo name="Stack limit" description="20"/>
+    </ExtraTooltipData>
     <Description>Snowball fiiiiiiiiiiiiight!\nMake sure a buddy is nearby!</Description>
     <BagType>2</BagType>
     <Consumable/>
@@ -55745,6 +55988,9 @@
       <Index>0xfd</Index>
     </Texture>
     <SlotType>10</SlotType>
+    <ExtraTooltipData>
+      <EffectInfo name="Stack limit" description="20"/>
+    </ExtraTooltipData>
     <Description>Snowball fiiiiiiiiiiiiiight!\nMake sure a buddy is nearby!</Description>
     <BagType>2</BagType>
     <Consumable/>
@@ -55763,6 +56009,9 @@
       <Index>0xfd</Index>
     </Texture>
     <SlotType>10</SlotType>
+    <ExtraTooltipData>
+      <EffectInfo name="Stack limit" description="20"/>
+    </ExtraTooltipData>
     <Description>Snowball fiiiiiiiiiiiiiiight!\nMake sure a buddy is nearby!</Description>
     <BagType>2</BagType>
     <Consumable/>
@@ -55781,6 +56030,9 @@
       <Index>0xfd</Index>
     </Texture>
     <SlotType>10</SlotType>
+    <ExtraTooltipData>
+      <EffectInfo name="Stack limit" description="20"/>
+    </ExtraTooltipData>
     <Description>Snowball fiiiiiiiiiiiiiiiight!\nMake sure a buddy is nearby!</Description>
     <BagType>2</BagType>
     <Consumable/>
@@ -55799,6 +56051,9 @@
       <Index>0xfd</Index>
     </Texture>
     <SlotType>10</SlotType>
+    <ExtraTooltipData>
+      <EffectInfo name="Stack limit" description="20"/>
+    </ExtraTooltipData>
     <Description>Snowball fiiiiiiiiiiiiiiiiight!\nMake sure a buddy is nearby!</Description>
     <BagType>2</BagType>
     <Consumable/>
@@ -55817,6 +56072,9 @@
       <Index>0xfd</Index>
     </Texture>
     <SlotType>10</SlotType>
+    <ExtraTooltipData>
+      <EffectInfo name="Stack limit" description="20"/>
+    </ExtraTooltipData>
     <Description>Snowball fiiiiiiiiiiiiiiiiiight!\nMake sure a buddy is nearby!</Description>
     <BagType>2</BagType>
     <Consumable/>
@@ -55835,6 +56093,9 @@
       <Index>0xfd</Index>
     </Texture>
     <SlotType>10</SlotType>
+    <ExtraTooltipData>
+      <EffectInfo name="Stack limit" description="20"/>
+    </ExtraTooltipData>
     <Description>Snowball fiiiiiiiiiiiiiiiiiiight!\nMake sure a buddy is nearby!</Description>
     <BagType>2</BagType>
     <Consumable/>
@@ -55853,6 +56114,9 @@
       <Index>0xfd</Index>
     </Texture>
     <SlotType>10</SlotType>
+    <ExtraTooltipData>
+      <EffectInfo name="Stack limit" description="20"/>
+    </ExtraTooltipData>
     <Description>Snowball fiiiiiiiiiiiiiiiiiiiight!\nMake sure a buddy is nearby!</Description>
     <BagType>2</BagType>
     <Consumable/>
@@ -81985,7 +82249,6 @@
     <DeathSound>monster/trees_death</DeathSound>
     <MaxHitPoints>600</MaxHitPoints>
     <Size>100</Size>
-    <OccupySquare/>
     <Enemy/>
     <XpMult>0.0</XpMult>
     <StasisImmune/>
@@ -91906,7 +92169,7 @@
       <EffectInfo name="Event" description="Christmas 2017"/>
     </ExtraTooltipData>
     <Soulbound/>
-    <BagType>2</BagType>
+    <BagType>7</BagType>
     <Treasure/>
   </Object>
   <Object type="0x6CF8" id="Primal Ice x 2">
@@ -91924,7 +92187,7 @@
       <EffectInfo name="Event" description="Christmas 2017"/>
     </ExtraTooltipData>
     <Soulbound/>
-    <BagType>2</BagType>
+    <BagType>7</BagType>
     <Treasure/>
   </Object>
   <Object type="0x6CF9" id="Primal Ice x 3">
@@ -91942,7 +92205,7 @@
       <EffectInfo name="Event" description="Christmas 2017"/>
     </ExtraTooltipData>
     <Soulbound/>
-    <BagType>2</BagType>
+    <BagType>7</BagType>
     <Treasure/>
   </Object>
   <Object type="0x6CFA" id="Primal Ice x 4">
@@ -91960,7 +92223,7 @@
       <EffectInfo name="Event" description="Christmas 2017"/>
     </ExtraTooltipData>
     <Soulbound/>
-    <BagType>2</BagType>
+    <BagType>7</BagType>
     <Treasure/>
   </Object>
   <Object type="0x6CFB" id="Primal Ice x 5">
@@ -91978,7 +92241,7 @@
       <EffectInfo name="Event" description="Christmas 2017"/>
     </ExtraTooltipData>
     <Soulbound/>
-    <BagType>2</BagType>
+    <BagType>7</BagType>
     <Treasure/>
   </Object>
   <Object type="0x6CFC" id="Primal Ice x 6">
@@ -91996,7 +92259,7 @@
       <EffectInfo name="Event" description="Christmas 2017"/>
     </ExtraTooltipData>
     <Soulbound/>
-    <BagType>2</BagType>
+    <BagType>7</BagType>
     <Treasure/>
   </Object>
   <Object type="0x6CFD" id="Primal Ice x 7">
@@ -92014,7 +92277,7 @@
       <EffectInfo name="Event" description="Christmas 2017"/>
     </ExtraTooltipData>
     <Soulbound/>
-    <BagType>2</BagType>
+    <BagType>7</BagType>
     <Treasure/>
   </Object>
   <Object type="0x6CFE" id="Primal Ice x 8">
@@ -92032,7 +92295,7 @@
       <EffectInfo name="Event" description="Christmas 2017"/>
     </ExtraTooltipData>
     <Soulbound/>
-    <BagType>2</BagType>
+    <BagType>7</BagType>
     <Treasure/>
   </Object>
   <Object type="0x6CFF" id="Primal Ice x 9">
@@ -92050,7 +92313,7 @@
       <EffectInfo name="Event" description="Christmas 2017"/>
     </ExtraTooltipData>
     <Soulbound/>
-    <BagType>2</BagType>
+    <BagType>7</BagType>
     <Treasure/>
   </Object>
   <Object type="0x6D00" id="Primal Ice x 10">
@@ -92068,7 +92331,7 @@
       <EffectInfo name="Event" description="Christmas 2017"/>
     </ExtraTooltipData>
     <Soulbound/>
-    <BagType>2</BagType>
+    <BagType>7</BagType>
     <Treasure/>
   </Object>
   <Object type="0x6D01" id="Primal Ice x 11">
@@ -92086,7 +92349,7 @@
       <EffectInfo name="Event" description="Christmas 2017"/>
     </ExtraTooltipData>
     <Soulbound/>
-    <BagType>2</BagType>
+    <BagType>7</BagType>
     <Treasure/>
   </Object>
   <Object type="0x6D02" id="Primal Ice x 12">
@@ -92104,7 +92367,7 @@
       <EffectInfo name="Event" description="Christmas 2017"/>
     </ExtraTooltipData>
     <Soulbound/>
-    <BagType>2</BagType>
+    <BagType>7</BagType>
     <Treasure/>
   </Object>
   <Object type="0x6D03" id="Primal Ice x 13">
@@ -92122,7 +92385,7 @@
       <EffectInfo name="Event" description="Christmas 2017"/>
     </ExtraTooltipData>
     <Soulbound/>
-    <BagType>2</BagType>
+    <BagType>7</BagType>
     <Treasure/>
   </Object>
   <Object type="0x6D04" id="Primal Ice x 14">
@@ -92140,7 +92403,7 @@
       <EffectInfo name="Event" description="Christmas 2017"/>
     </ExtraTooltipData>
     <Soulbound/>
-    <BagType>2</BagType>
+    <BagType>7</BagType>
     <Treasure/>
   </Object>
   <Object type="0x6D05" id="Primal Ice x 15">
@@ -92158,7 +92421,7 @@
       <EffectInfo name="Event" description="Christmas 2017"/>
     </ExtraTooltipData>
     <Soulbound/>
-    <BagType>2</BagType>
+    <BagType>7</BagType>
     <Treasure/>
   </Object>
   <Object type="0x6D06" id="Primal Ice x 16">
@@ -92176,7 +92439,7 @@
       <EffectInfo name="Event" description="Christmas 2017"/>
     </ExtraTooltipData>
     <Soulbound/>
-    <BagType>2</BagType>
+    <BagType>7</BagType>
     <Treasure/>
   </Object>
   <Object type="0x6D07" id="Primal Ice x 17">
@@ -92194,7 +92457,7 @@
       <EffectInfo name="Event" description="Christmas 2017"/>
     </ExtraTooltipData>
     <Soulbound/>
-    <BagType>2</BagType>
+    <BagType>7</BagType>
     <Treasure/>
   </Object>
   <Object type="0x6D08" id="Primal Ice x 18">
@@ -92212,7 +92475,7 @@
       <EffectInfo name="Event" description="Christmas 2017"/>
     </ExtraTooltipData>
     <Soulbound/>
-    <BagType>2</BagType>
+    <BagType>7</BagType>
     <Treasure/>
   </Object>
   <Object type="0x6D09" id="Primal Ice x 19">
@@ -92230,7 +92493,7 @@
       <EffectInfo name="Event" description="Christmas 2017"/>
     </ExtraTooltipData>
     <Soulbound/>
-    <BagType>2</BagType>
+    <BagType>7</BagType>
     <Treasure/>
   </Object>
   <Object type="0x6D0A" id="Primal Ice x 20">
@@ -92248,7 +92511,7 @@
       <EffectInfo name="Event" description="Christmas 2017"/>
     </ExtraTooltipData>
     <Soulbound/>
-    <BagType>2</BagType>
+    <BagType>7</BagType>
     <Treasure/>
   </Object>
   <Object type="0x6CF1" id="Ice Shard x 1">
@@ -92266,7 +92529,7 @@
       <EffectInfo name="Event" description="Christmas 2017"/>
     </ExtraTooltipData>
     <Soulbound/>
-    <BagType>2</BagType>
+    <BagType>7</BagType>
     <Treasure/>
   </Object>
   <Object type="0x6CF2" id="Ice Shard x 2">
@@ -92284,7 +92547,7 @@
       <EffectInfo name="Event" description="Christmas 2017"/>
     </ExtraTooltipData>
     <Soulbound/>
-    <BagType>2</BagType>
+    <BagType>7</BagType>
     <Treasure/>
   </Object>
   <Object type="0x6CF3" id="Ice Shard x 3">
@@ -92302,7 +92565,7 @@
       <EffectInfo name="Event" description="Christmas 2017"/>
     </ExtraTooltipData>
     <Soulbound/>
-    <BagType>2</BagType>
+    <BagType>7</BagType>
     <Treasure/>
   </Object>
   <Object type="0x6CF4" id="Ice Shard x 4">
@@ -92320,7 +92583,7 @@
       <EffectInfo name="Event" description="Christmas 2017"/>
     </ExtraTooltipData>
     <Soulbound/>
-    <BagType>2</BagType>
+    <BagType>7</BagType>
     <Treasure/>
   </Object>
   <Object type="0x6CF5" id="Ice Shard x 5">
@@ -92338,7 +92601,7 @@
       <EffectInfo name="Event" description="Christmas 2017"/>
     </ExtraTooltipData>
     <Soulbound/>
-    <BagType>2</BagType>
+    <BagType>7</BagType>
     <Treasure/>
   </Object>
   <Object type="0x6CE6" id="Bell x 1">
@@ -92356,7 +92619,7 @@
       <EffectInfo name="Event" description="Christmas 2017"/>
     </ExtraTooltipData>
     <Soulbound/>
-    <BagType>2</BagType>
+    <BagType>7</BagType>
     <Treasure/>
   </Object>
   <Object type="0x6CE7" id="Bell x 2">
@@ -92374,7 +92637,7 @@
       <EffectInfo name="Event" description="Christmas 2017"/>
     </ExtraTooltipData>
     <Soulbound/>
-    <BagType>2</BagType>
+    <BagType>7</BagType>
     <Treasure/>
   </Object>
   <Object type="0x6CE8" id="Bell x 3">
@@ -92392,7 +92655,7 @@
       <EffectInfo name="Event" description="Christmas 2017"/>
     </ExtraTooltipData>
     <Soulbound/>
-    <BagType>2</BagType>
+    <BagType>7</BagType>
     <Treasure/>
   </Object>
   <Object type="0x6CE9" id="Bell x 4">
@@ -92410,7 +92673,7 @@
       <EffectInfo name="Event" description="Christmas 2017"/>
     </ExtraTooltipData>
     <Soulbound/>
-    <BagType>2</BagType>
+    <BagType>7</BagType>
     <Treasure/>
   </Object>
   <Object type="0x6CEA" id="Bell x 5">
@@ -92428,7 +92691,7 @@
       <EffectInfo name="Event" description="Christmas 2017"/>
     </ExtraTooltipData>
     <Soulbound/>
-    <BagType>2</BagType>
+    <BagType>7</BagType>
     <Treasure/>
   </Object>
   <Object type="0x6CEB" id="Bell x 6">
@@ -92446,7 +92709,7 @@
       <EffectInfo name="Event" description="Christmas 2017"/>
     </ExtraTooltipData>
     <Soulbound/>
-    <BagType>2</BagType>
+    <BagType>7</BagType>
     <Treasure/>
   </Object>
   <Object type="0x6CEC" id="Bell x 7">
@@ -92464,7 +92727,7 @@
       <EffectInfo name="Event" description="Christmas 2017"/>
     </ExtraTooltipData>
     <Soulbound/>
-    <BagType>2</BagType>
+    <BagType>7</BagType>
     <Treasure/>
   </Object>
   <Object type="0x6CED" id="Bell x 8">
@@ -92482,7 +92745,7 @@
       <EffectInfo name="Event" description="Christmas 2017"/>
     </ExtraTooltipData>
     <Soulbound/>
-    <BagType>2</BagType>
+    <BagType>7</BagType>
     <Treasure/>
   </Object>
   <Object type="0x6CEE" id="Bell x 9">
@@ -92500,7 +92763,7 @@
       <EffectInfo name="Event" description="Christmas 2017"/>
     </ExtraTooltipData>
     <Soulbound/>
-    <BagType>2</BagType>
+    <BagType>7</BagType>
     <Treasure/>
   </Object>
   <Object type="0x6CEF" id="Bell x 10">
@@ -92519,7 +92782,7 @@
     </ExtraTooltipData>
     <Soulbound/>
     <Activate id="Reindeer Mystery Bag">Exchange</Activate>
-    <BagType>2</BagType>
+    <BagType>7</BagType>
     <Track/>
     <Consumable/>
   </Object>
@@ -92538,7 +92801,7 @@
       <EffectInfo name="Event" description="Christmas 2017"/>
     </ExtraTooltipData>
     <Soulbound/>
-    <BagType>2</BagType>
+    <BagType>7</BagType>
     <Treasure/>
   </Object>
   <Object type="0x6ccd" id="Ornament x 2">
@@ -92556,7 +92819,7 @@
       <EffectInfo name="Event" description="Christmas 2017"/>
     </ExtraTooltipData>
     <Soulbound/>
-    <BagType>2</BagType>
+    <BagType>7</BagType>
     <Treasure/>
   </Object>
   <Object type="0x6CCE" id="Ornament x 3">
@@ -92574,7 +92837,7 @@
       <EffectInfo name="Event" description="Christmas 2017"/>
     </ExtraTooltipData>
     <Soulbound/>
-    <BagType>2</BagType>
+    <BagType>7</BagType>
     <Treasure/>
   </Object>
   <Object type="0x6CCF" id="Ornament x 4">
@@ -92592,7 +92855,7 @@
       <EffectInfo name="Event" description="Christmas 2017"/>
     </ExtraTooltipData>
     <Soulbound/>
-    <BagType>2</BagType>
+    <BagType>7</BagType>
     <Treasure/>
   </Object>
   <Object type="0x6CD0" id="Ornament x 5">
@@ -92610,7 +92873,7 @@
       <EffectInfo name="Event" description="Christmas 2017"/>
     </ExtraTooltipData>
     <Soulbound/>
-    <BagType>2</BagType>
+    <BagType>7</BagType>
     <Treasure/>
   </Object>
   <Object type="0x6CD1" id="Ornament x 6">
@@ -92628,7 +92891,7 @@
       <EffectInfo name="Event" description="Christmas 2017"/>
     </ExtraTooltipData>
     <Soulbound/>
-    <BagType>2</BagType>
+    <BagType>7</BagType>
     <Treasure/>
   </Object>
   <Object type="0x6CD2" id="Ornament x 7">
@@ -92646,7 +92909,7 @@
       <EffectInfo name="Event" description="Christmas 2017"/>
     </ExtraTooltipData>
     <Soulbound/>
-    <BagType>2</BagType>
+    <BagType>7</BagType>
     <Treasure/>
   </Object>
   <Object type="0x6CD3" id="Ornament x 8">
@@ -92664,7 +92927,7 @@
       <EffectInfo name="Event" description="Christmas 2017"/>
     </ExtraTooltipData>
     <Soulbound/>
-    <BagType>2</BagType>
+    <BagType>7</BagType>
     <Treasure/>
   </Object>
   <Object type="0x6CD4" id="Ornament x 9">
@@ -92682,7 +92945,7 @@
       <EffectInfo name="Event" description="Christmas 2017"/>
     </ExtraTooltipData>
     <Soulbound/>
-    <BagType>2</BagType>
+    <BagType>7</BagType>
     <Treasure/>
   </Object>
   <Object type="0x6CD5" id="Ornament x 10">
@@ -92700,7 +92963,7 @@
       <EffectInfo name="Event" description="Christmas 2017"/>
     </ExtraTooltipData>
     <Soulbound/>
-    <BagType>2</BagType>
+    <BagType>7</BagType>
     <Treasure/>
   </Object>
   <Object type="0x6CD6" id="Ornament x 11">
@@ -92718,7 +92981,7 @@
       <EffectInfo name="Event" description="Christmas 2017"/>
     </ExtraTooltipData>
     <Soulbound/>
-    <BagType>2</BagType>
+    <BagType>7</BagType>
     <Treasure/>
   </Object>
   <Object type="0x6CD7" id="Ornament x 12">
@@ -92736,7 +92999,7 @@
       <EffectInfo name="Event" description="Christmas 2017"/>
     </ExtraTooltipData>
     <Soulbound/>
-    <BagType>2</BagType>
+    <BagType>7</BagType>
     <Treasure/>
   </Object>
   <Object type="0x6CD8" id="Ornament x 13">
@@ -92754,7 +93017,7 @@
       <EffectInfo name="Event" description="Christmas 2017"/>
     </ExtraTooltipData>
     <Soulbound/>
-    <BagType>2</BagType>
+    <BagType>7</BagType>
     <Treasure/>
   </Object>
   <Object type="0x6CD9" id="Ornament x 14">
@@ -92772,7 +93035,7 @@
       <EffectInfo name="Event" description="Christmas 2017"/>
     </ExtraTooltipData>
     <Soulbound/>
-    <BagType>2</BagType>
+    <BagType>7</BagType>
     <Treasure/>
   </Object>
   <Object type="0x6CDA" id="Ornament x 15">
@@ -92790,7 +93053,7 @@
       <EffectInfo name="Event" description="Christmas 2017"/>
     </ExtraTooltipData>
     <Soulbound/>
-    <BagType>2</BagType>
+    <BagType>7</BagType>
     <Treasure/>
   </Object>
   <Object type="0x6CDB" id="Ornament x 16">
@@ -92808,7 +93071,7 @@
       <EffectInfo name="Event" description="Christmas 2017"/>
     </ExtraTooltipData>
     <Soulbound/>
-    <BagType>2</BagType>
+    <BagType>7</BagType>
     <Treasure/>
   </Object>
   <Object type="0x6CDC" id="Ornament x 17">
@@ -92826,7 +93089,7 @@
       <EffectInfo name="Event" description="Christmas 2017"/>
     </ExtraTooltipData>
     <Soulbound/>
-    <BagType>2</BagType>
+    <BagType>7</BagType>
     <Treasure/>
   </Object>
   <Object type="0x6CDD" id="Ornament x 18">
@@ -92844,7 +93107,7 @@
       <EffectInfo name="Event" description="Christmas 2017"/>
     </ExtraTooltipData>
     <Soulbound/>
-    <BagType>2</BagType>
+    <BagType>7</BagType>
     <Treasure/>
   </Object>
   <Object type="0x6CDE" id="Ornament x 19">
@@ -92862,7 +93125,7 @@
       <EffectInfo name="Event" description="Christmas 2017"/>
     </ExtraTooltipData>
     <Soulbound/>
-    <BagType>2</BagType>
+    <BagType>7</BagType>
     <Treasure/>
   </Object>
   <Object type="0x6CDF" id="Ornament x 20">
@@ -92880,7 +93143,7 @@
       <EffectInfo name="Event" description="Christmas 2017"/>
     </ExtraTooltipData>
     <Soulbound/>
-    <BagType>2</BagType>
+    <BagType>7</BagType>
     <Treasure/>
   </Object>
   <Object type="0x6CE0" id="Ornament x 21">
@@ -92898,7 +93161,7 @@
       <EffectInfo name="Event" description="Christmas 2017"/>
     </ExtraTooltipData>
     <Soulbound/>
-    <BagType>2</BagType>
+    <BagType>7</BagType>
     <Treasure/>
   </Object>
   <Object type="0x6CE1" id="Ornament x 22">
@@ -92916,7 +93179,7 @@
       <EffectInfo name="Event" description="Christmas 2017"/>
     </ExtraTooltipData>
     <Soulbound/>
-    <BagType>2</BagType>
+    <BagType>7</BagType>
     <Treasure/>
   </Object>
   <Object type="0x6CE2" id="Ornament x 23">
@@ -92934,7 +93197,7 @@
       <EffectInfo name="Event" description="Christmas 2017"/>
     </ExtraTooltipData>
     <Soulbound/>
-    <BagType>2</BagType>
+    <BagType>7</BagType>
     <Treasure/>
   </Object>
   <Object type="0x6CE3" id="Ornament x 24">
@@ -92952,7 +93215,7 @@
       <EffectInfo name="Event" description="Christmas 2017"/>
     </ExtraTooltipData>
     <Soulbound/>
-    <BagType>2</BagType>
+    <BagType>7</BagType>
     <Treasure/>
   </Object>
   <Object type="0x6CE4" id="Ornament x 25">
@@ -92973,7 +93236,7 @@
     <Activate id="Helping Huntress Skin">Exchange</Activate>
     <Track/>
     <Consumable/>
-    <BagType>2</BagType>
+    <BagType>7</BagType>
     <Treasure/>
   </Object>
   <Object type="0x25fb" id="Magic Pumpkin">
@@ -116652,15 +116915,12 @@
   </Object>
   <Object type="0x10d7" id="EH Computer">
     <DisplayId>Computer</DisplayId>
-    <Class>Character</Class>
-    <OccupySquare/>
+    <Class>GameObject</Class>
     <Texture>
       <File>invisible</File>
       <Index>0</Index>
     </Texture>
-    <NoMiniMap/>
-    <Size>180</Size>
-    <Z>2.9</Z>
+    <Size>0</Size>
     <StasisImmune/>
   </Object>
   <Object type="0x08e6" id="EH Beekeeper Anchor">
@@ -129534,26 +129794,10 @@
     </Projectile>
     <HitSound>monster/rocks_hit</HitSound>
     <DeathSound>monster/rocks_death</DeathSound>
-    <MaxHitPoints>10000</MaxHitPoints>
+    <MaxHitPoints>25000</MaxHitPoints>
     <Size>100</Size>
     <Defense>50</Defense>
     <XpMult>0.1</XpMult>
-  </Object>
-  <Object type="0x2701" id="Santa Workshop Key">
-    <Class>Equipment</Class>
-    <Item/>
-    <DisplayId>Santa Workshop key</DisplayId>
-    <Texture>
-      <File>oryxHordeObjects8x8</File>
-      <Index>0x62</Index>
-    </Texture>
-    <SlotType>10</SlotType>
-    <Description>A Magic device opening a portal to the Mad God Danta workshop</Description>
-    <Sound>use_key</Sound>
-    <Consumable/>
-    <Soulbound/>
-    <Activate id="Santa Portal">Create</Activate>
-    <Track/>
   </Object>
   <Object type="0x2702" id="Santa Portal">
     <Class>Portal</Class>
