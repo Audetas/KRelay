@@ -89,6 +89,11 @@ namespace Lib_K_Relay.GameData.DataStructures
         public bool Player;
 
         /// <summary>
+        /// Whether this object is a pet
+        /// </summary>
+        public bool Pet;
+
+        /// <summary>
         /// ???
         /// </summary>
         public bool DrawOnGround;
@@ -147,6 +152,7 @@ namespace Lib_K_Relay.GameData.DataStructures
             ProtectFromSink = obj.HasElement("ProtectFromSink");
             Enemy = obj.HasElement("Enemy");
             Player = obj.HasElement("Player");
+			Pet = obj.HasElement("Pet");
             DrawOnGround = obj.HasElement("DrawOnGround");
 
             Size = (ushort)obj.ElemDefault("Size", "0").ParseInt();
