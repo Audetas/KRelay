@@ -69,6 +69,16 @@ namespace Lib_K_Relay.GameData.DataStructures
         public bool BlocksSight;
 
         /// <summary>
+        /// Whether this object protects the player from taking ground damage
+        /// </summary>
+        public bool ProtectFromGroundDamage;
+
+        /// <summary>
+        /// Whether this objects protects the player from sinking (into Tomb sand, etc.)
+        /// </summary>
+        public bool ProtectFromSink;
+
+        /// <summary>
         /// Whether this object is an enemy (e.g. can be damaged)
         /// </summary>
         public bool Enemy;
@@ -133,6 +143,8 @@ namespace Lib_K_Relay.GameData.DataStructures
             EnemyOccupySquare = obj.HasElement("EnemyOccupySquare");
             FullOccupy = obj.HasElement("FullOccupy");
             BlocksSight = obj.HasElement("BlocksSight");
+            ProtectFromGroundDamage = obj.HasElement("ProtectFromGroundDamage");
+            ProtectFromSink = obj.HasElement("ProtectFromSink");
             Enemy = obj.HasElement("Enemy");
             Player = obj.HasElement("Player");
             DrawOnGround = obj.HasElement("DrawOnGround");
