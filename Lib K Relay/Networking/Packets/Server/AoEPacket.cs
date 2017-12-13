@@ -15,7 +15,7 @@ namespace Lib_K_Relay.Networking.Packets.Client
         public ushort Damage;
         public ConditionEffectIndex Effects;
         public float EffectDuration;
-        public short OriginType;
+        public ushort OriginType;
         public int Color;
         
         public override PacketType Type
@@ -28,7 +28,7 @@ namespace Lib_K_Relay.Networking.Packets.Client
             Damage = r.ReadUInt16();
             Effects = (ConditionEffectIndex)r.ReadByte();
             EffectDuration = r.ReadSingle();
-            OriginType = r.ReadInt16();
+            OriginType = r.ReadUInt16();
             Color = r.ReadInt32();
         }
 
