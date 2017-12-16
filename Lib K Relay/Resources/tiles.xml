@@ -6652,6 +6652,46 @@
    </Ground>
 
 
+<!-- santaWorkshopGround -->
+
+
+   <Ground type="0x3cdc" id="SW Dark Wood Floor Bottom">
+      <Texture>
+         <File>santaWorkshopObjects8x8</File>
+         <Index>0x03</Index>
+      </Texture>
+      <BlendPriority>6</BlendPriority>
+   </Ground>
+   <Ground type="0x3ce0" id="SW Light Wood Floor Bottom">
+      <Texture>
+         <File>santaWorkshopObjects8x8</File>
+         <Index>0x04</Index>
+      </Texture>
+      <BlendPriority>6</BlendPriority>
+   </Ground>
+   <Ground type="0x3d24" id="SW Light Wood Red">
+      <Texture>
+         <File>santaWorkshopObjects8x8</File>
+         <Index>0x06</Index>
+      </Texture>
+      <BlendPriority>6</BlendPriority>
+   </Ground>
+   <Ground type="0x3d25" id="SW Light Wood Green">
+      <Texture>
+         <File>santaWorkshopObjects8x8</File>
+         <Index>0x07</Index>
+      </Texture>
+      <BlendPriority>6</BlendPriority>
+   </Ground>
+   <Ground type="0x3cd9" id="SW Light Wood Golden">
+      <Texture>
+         <File>santaWorkshopObjects8x8</File>
+         <Index>0x05</Index>
+      </Texture>
+      <BlendPriority>6</BlendPriority>
+   </Ground>
+
+
 <!-- stPatricksGround -->
 
 
