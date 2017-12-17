@@ -15,7 +15,8 @@ namespace Lib_K_Relay.GameData.DataStructures
 
             doc.Element("Objects")
                 .Elements("Object")
-                .ForEach(obj => {
+                .ForEach(obj =>
+                {
                     ObjectStructure o = new ObjectStructure(obj);
                     map[o.ID] = o;
                 });
@@ -89,6 +90,11 @@ namespace Lib_K_Relay.GameData.DataStructures
         public bool Player;
 
         /// <summary>
+        /// Whether this object is a pet
+        /// </summary>
+        public bool Pet;
+
+        /// <summary>
         /// ???
         /// </summary>
         public bool DrawOnGround;
@@ -119,6 +125,11 @@ namespace Lib_K_Relay.GameData.DataStructures
         public bool God;
 
         /// <summary>
+        /// Whether the enemy is a quest target
+        /// </summary>
+        public bool Quest;
+
+        /// <summary>
         /// What projectiles this enemy can fire
         /// </summary>
         public ProjectileStructure[] Projectiles;
@@ -147,6 +158,7 @@ namespace Lib_K_Relay.GameData.DataStructures
             ProtectFromSink = obj.HasElement("ProtectFromSink");
             Enemy = obj.HasElement("Enemy");
             Player = obj.HasElement("Player");
+            Pet = obj.HasElement("Pet");
             DrawOnGround = obj.HasElement("DrawOnGround");
 
             Size = (ushort)obj.ElemDefault("Size", "0").ParseInt();
@@ -154,6 +166,7 @@ namespace Lib_K_Relay.GameData.DataStructures
             Defense = (ushort)obj.ElemDefault("Defense", "0").ParseInt();
             Flying = obj.HasElement("Flying");
             God = obj.HasElement("God");
+            Quest = obj.HasElement("Quest");
 
             List<ProjectileStructure> projs = new List<ProjectileStructure>();
             obj.Elements("Projectile").ForEach(projectile => projs.Add(new ProjectileStructure(projectile)));
