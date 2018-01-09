@@ -117,8 +117,30 @@ namespace Lib_K_Relay.GameData {
 	            PluginUtils.Log("GameData", "Mapped {0} packets.", Packets.Map.Count);
             },
             () => {
-                Servers = new GameDataMap<string, ServerStructure>(ServerStructure.Load(XDocument.Load("http://realmofthemadgodhrd.appspot.com/char/list")));
-	            PluginUtils.Log("GameData", "Mapped {0} servers.", Servers.Map.Count);
+                const string CHAR_LIST_FILE = "char_list.xml";
+
+                XDocument charList = XDocument.Load("http://realmofthemadgodhrd.appspot.com/char/list");
+
+                // If the char list doesn't contain an error
+                if (charList.Element("Error") == null)
+                {
+                    // Make a backup of the char list
+                    charList.Save(CHAR_LIST_FILE);
+                }
+                // If the backup char list file exists
+                else if (System.IO.File.Exists(CHAR_LIST_FILE))
+                {
+                    charList = XDocument.Load(CHAR_LIST_FILE);
+                }
+                // The retrieved char list contains an error and a backup char list doesn't exist
+                else
+                {
+                    PluginUtils.Log("GameData", "Error! Unable to retrieve server list.");
+                    return;
+                }
+
+                Servers = new GameDataMap<string, ServerStructure>(ServerStructure.Load(charList));
+                PluginUtils.Log("GameData", "Mapped {0} servers.", Servers.Map.Count);
             });
 
 			PluginUtils.Log("GameData", "Successfully loaded game data.");
