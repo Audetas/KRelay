@@ -10,6 +10,7 @@ namespace Lib_K_Relay.Networking.Packets.Server
     {
         public string Name;
         public string Host;
+		public string Stats;
         public int Port;
         public int GameId;
         public int KeyTime;
@@ -23,6 +24,7 @@ namespace Lib_K_Relay.Networking.Packets.Server
         {
             Name = r.ReadString();
             Host = r.ReadString();
+			Stats = r.ReadString();
             Port = r.ReadInt32();
             GameId = r.ReadInt32();
             KeyTime = r.ReadInt32();
