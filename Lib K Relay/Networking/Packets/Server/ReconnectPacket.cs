@@ -10,12 +10,12 @@ namespace Lib_K_Relay.Networking.Packets.Server
     {
         public string Name;
         public string Host;
-		public string Stats;
+        public string Stats;
         public int Port;
         public int GameId;
         public int KeyTime;
         public bool IsFromArena;
-        public byte[] Key;     
+        public byte[] Key;
 
         public override PacketType Type
         { get { return PacketType.RECONNECT; } }
@@ -24,7 +24,7 @@ namespace Lib_K_Relay.Networking.Packets.Server
         {
             Name = r.ReadString();
             Host = r.ReadString();
-			Stats = r.ReadString();
+            Stats = r.ReadString();
             Port = r.ReadInt32();
             GameId = r.ReadInt32();
             KeyTime = r.ReadInt32();
@@ -36,6 +36,7 @@ namespace Lib_K_Relay.Networking.Packets.Server
         {
             w.Write(Name);
             w.Write(Host);
+            w.Write(Stats);
             w.Write(Port);
             w.Write(GameId);
             w.Write(KeyTime);
