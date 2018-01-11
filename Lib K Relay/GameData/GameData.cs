@@ -119,10 +119,16 @@ namespace Lib_K_Relay.GameData {
             () => {
                 const string CHAR_LIST_FILE = "char_list.xml";
 
-                XDocument charList = XDocument.Load("http://realmofthemadgodhrd.appspot.com/char/list");
+                XDocument charList = null;
+
+                try
+                {
+                    charList = XDocument.Load("http://realmofthemadgodhrd.appspot.com/char/list");
+                }
+                catch (Exception) { }
 
                 // If the char list doesn't contain an error
-                if (charList.Element("Error") == null)
+                if (charList != null && charList.Element("Error") == null)
                 {
                     // Make a backup of the char list
                     charList.Save(CHAR_LIST_FILE);
