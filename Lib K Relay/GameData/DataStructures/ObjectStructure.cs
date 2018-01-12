@@ -130,6 +130,26 @@ namespace Lib_K_Relay.GameData.DataStructures
         public bool Quest;
 
         /// <summary>
+        /// Whether the object is an item
+        /// </summary>
+        public bool Item;
+
+        /// <summary>
+        /// Whether the item is usable
+        /// </summary>
+        public bool Usable;
+
+        /// <summary>
+        /// Whether the item is soulboud
+        /// </summary>
+        public bool Soulbound;
+
+        /// <summary>
+        /// The MP cost of the item
+        /// </summary>
+        public ushort MpCost;
+
+        /// <summary>
         /// What projectiles this enemy can fire
         /// </summary>
         public ProjectileStructure[] Projectiles;
@@ -167,6 +187,11 @@ namespace Lib_K_Relay.GameData.DataStructures
             Flying = obj.HasElement("Flying");
             God = obj.HasElement("God");
             Quest = obj.HasElement("Quest");
+
+            Item = obj.HasElement("Item");
+            Usable = obj.HasElement("Usable");
+            Soulbound = obj.HasElement("Soulbound");
+            MpCost = (ushort)obj.ElemDefault("MpCost", "0").ParseInt();
 
             List<ProjectileStructure> projs = new List<ProjectileStructure>();
             obj.Elements("Projectile").ForEach(projectile => projs.Add(new ProjectileStructure(projectile)));
