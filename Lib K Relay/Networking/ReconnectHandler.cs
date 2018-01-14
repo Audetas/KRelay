@@ -70,6 +70,7 @@ namespace Lib_K_Relay.Networking
                 recon.Host = packet.Host == "" ? client.State.ConTargetAddress : packet.Host;
                 recon.Port = packet.Port == -1 ? client.State.ConTargetPort : packet.Port;
                 recon.Key = packet.Key;
+                recon.Stats = packet.Stats;
                 recon.KeyTime = packet.KeyTime;
                 recon.Name = packet.Name;
                 client.State.LastRealm = recon;
@@ -82,6 +83,7 @@ namespace Lib_K_Relay.Networking
                 drecon.Host = packet.Host == "" ? client.State.ConTargetAddress : packet.Host;
                 drecon.Port = packet.Port == -1 ? client.State.ConTargetPort : packet.Port;
                 drecon.Key = packet.Key;
+                drecon.Stats = packet.Stats;
                 drecon.KeyTime = packet.KeyTime;
                 drecon.Name = packet.Name;
                 client.State.LastDungeon = drecon;
