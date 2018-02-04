@@ -148,18 +148,28 @@ namespace Lib_K_Relay.Utilities
 
     public enum Bags : short
     {
-        Normal = 0x500,
-        Purple = 0x503,
+        Brown = 0x500,
+        BrownBoosted = 0x6ad,
         Pink = 0x506,
-        Cyan = 0x509,
-        Red = 0x510,
-        Blue = 0x050B,
+        PinkBoosted = 0x6ae,
         Purple2 = 0x507,
+        Purple2Boosted = 0x6ba,
         Egg = 0x508,
+        EggBoosted = 0x6bb,
+        Gold = 0x050E,
+        GoldBoosted = 0x6bc,
+        Cyan = 0x509,
+        CyanBoosted = 0x6bd,
+        Blue = 0x050B,
+        BlueBoosted = 0x6be,
+        Orange = 0x50F,
+        OrangeBoosted = 0x6bf,
+        Red = 0x6AC,
+        RedBoosted = 0x6c0,
         White = 0x050C,
-        White2 = 0x050E,
-        White3 = 0x50F
+        WhiteBoosted = 0x0510,
     }
+    
     public enum Ability : uint
     {
         AttackClose = 402,
