@@ -15,7 +15,7 @@ namespace Lib_K_Relay.Networking.Packets.Server
         public Location PosA;
         public Location PosB;
         public ARGB Color;
-        public double Duration;
+        public float Duration;
 
         public override PacketType Type
         { get { return PacketType.SHOWEFFECT; } }
