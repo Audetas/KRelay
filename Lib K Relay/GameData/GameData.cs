@@ -113,8 +113,16 @@ namespace Lib_K_Relay.GameData {
 	            PluginUtils.Log("GameData", "Mapped {0} objects.", Objects.Map.Count);
             },
             () => {
-                Packets = new GameDataMap<byte, PacketStructure>(PacketStructure.Load(XDocument.Parse(RawPacketsXML)));
-	            PluginUtils.Log("GameData", "Mapped {0} packets.", Packets.Map.Count);
+                 try
+                {
+                    Packets = new GameDataMap<byte, PacketStructure>(PacketStructure.Load(XDocument.Load("Packets.xml")));
+                    PluginUtils.Log("GameData", "loaded from file!");
+                }
+                catch
+                {
+                    Packets = new GameDataMap<byte, PacketStructure>(PacketStructure.Load(XDocument.Parse(RawPacketsXML)));
+                }
+                PluginUtils.Log("GameData", "Mapped {0} packets.", Packets.Map.Count);
             },
             () => {
                 const string CHAR_LIST_FILE = "char_list.xml";
