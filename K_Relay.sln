@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio 14
-VisualStudioVersion = 14.0.24720.0
+# Visual Studio 15
+VisualStudioVersion = 15.0.27428.2005
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "K_Relay", "K_Relay\K_Relay.csproj", "{BAE9E532-8ADB-4AEE-BCB9-DF928AEA0970}"
 EndProject
@@ -133,5 +133,8 @@ Global
 		{9B8D513E-86BC-4433-96A8-CA3DA5302377} = {03A97CEB-D1F4-4BD0-A708-8151EF71A8D7}
 		{4B667A7D-81AF-40FF-9162-77E627DBEF31} = {03A97CEB-D1F4-4BD0-A708-8151EF71A8D7}
 		{F9716B4A-D10D-4098-B79D-84A796F9C584} = {03A97CEB-D1F4-4BD0-A708-8151EF71A8D7}
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {EE071E73-C48C-4700-832E-C9BE0884E96F}
 	EndGlobalSection
 EndGlobal

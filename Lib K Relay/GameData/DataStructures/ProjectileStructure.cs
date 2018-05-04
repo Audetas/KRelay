@@ -32,7 +32,7 @@ namespace Lib_K_Relay.GameData.DataStructures
         /// <summary>
         /// The lifetime of the projectile, in milliseconds
         /// </summary>
-        public int Lifetime;
+        public float Lifetime;
 
         public int MaxDamage;
         public int MinDamage;
@@ -64,7 +64,7 @@ namespace Lib_K_Relay.GameData.DataStructures
             Damage = projectile.ElemDefault("Damage", "0").ParseInt();
             Speed = projectile.ElemDefault("Speed", "0").ParseFloat() / 10000f;
             Size = projectile.ElemDefault("Size", "0").ParseInt();
-            Lifetime = projectile.ElemDefault("LifetimeMS", "0").ParseInt();
+            Lifetime = projectile.ElemDefault("LifetimeMS", "0").ParseFloat();
 
             MaxDamage = projectile.ElemDefault("MaxDamage", "0").ParseInt();
             MinDamage = projectile.ElemDefault("MinDamage", "0").ParseInt();

@@ -43,7 +43,8 @@ namespace Lib_K_Relay.GameData.DataStructures {
 			{ "EUWest2", "EUW2" },
 			{ "EUSouth", "EUS" },
 			{ "USSouth2", "USS2" },
-			{ "USWest3", "USW3" }
+			{ "USWest3", "USW3" },
+			{ "Australia", "AUS" }
 		};
 
 		/// <summary>

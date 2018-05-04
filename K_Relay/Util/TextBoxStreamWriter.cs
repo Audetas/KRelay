@@ -22,7 +22,7 @@ namespace K_Relay.Util
             base.Write(value);
             _buffer.Append(value);
 
-            if (value == '\n' || value == '\r')
+            if (value == '\n')
             {
                 if (_output.IsHandleCreated)
                     _output.Invoke(new MethodInvoker(() => _output.AppendText(_buffer.ToString())));

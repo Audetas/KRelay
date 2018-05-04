@@ -8,12 +8,12 @@ namespace Lib_K_Relay.Networking.Packets.DataObjects
 {
     public class Entity : IDataObject
     {
-        public short ObjectType;
+        public ushort ObjectType;
         public Status Status = new Status();
 
         public IDataObject Read(PacketReader r)
         {
-            ObjectType = r.ReadInt16();
+            ObjectType = r.ReadUInt16();
             Status.Read(r);
 
             return this;

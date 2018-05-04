@@ -68,8 +68,8 @@ namespace MapFilter {
 
 			// New Objects
 			foreach (Entity entity in update.NewObjs) {
-				if (ObjectFilters.ContainsKey((ushort)entity.ObjectType))
-					entity.ObjectType = (short)ObjectFilters[(ushort)entity.ObjectType];
+				if (ObjectFilters.ContainsKey(entity.ObjectType))
+					entity.ObjectType = ObjectFilters[entity.ObjectType];
 			}
 
 			// New Tiles

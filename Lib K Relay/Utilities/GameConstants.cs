@@ -1,4 +1,4 @@
-﻿using Lib_K_Relay.Networking.Packets;
+using Lib_K_Relay.Networking.Packets;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -40,8 +40,7 @@ namespace Lib_K_Relay.Utilities
         Hexed = 1 << 27,
         AnotherSpeedy = 1 << 28,
         Unstable = 1 << 29,
-        Darkness = 1 << 30,
-        Curse = 1 << 31
+        Darkness = 1 << 30
     }
 
     public enum ConditionEffectIndex
@@ -77,7 +76,24 @@ namespace Lib_K_Relay.Utilities
         AnotherSpeedy = 28,
         Unstable = 29,
         Darkness = 30,
-        Curse = 31
+        SlowedImmune = 31,
+        DazedImmune = 32,
+        ParalyzedImmune = 33,
+        Petrified = 34,
+        PetrifiedImmune = 35,
+        PetEffectIcon = 36,
+        Curse = 37,
+        CurseImmune = 38,
+        HPBoost = 39,
+        MPBoost = 40,
+        AttBoost = 41,
+        DefBoost = 42,
+        SpdBoost = 43,
+        VitBoost = 44,
+        WisBoost = 45,
+        DexBoost = 46,
+        Silenced = 47,
+        GroundDamage = 98,
     }
 
     public enum EffectType
@@ -96,12 +112,13 @@ namespace Lib_K_Relay.Utilities
         Lightning = 11, //particleSize=pos2.x
         Collapse = 12, //radius=dist(pos1,pos2)
         ConeBlast = 13, //origin=pos1, radius = pos2.x
-        Earthquake = 14,
+        Jitter = 14,
         Flash = 15, //period=pos1.x, numCycles=pos1.y
-        BeachBall = 16,
-        ElectricBolts = 17, //If a pet paralyzes a monster
-        ElectricFlashing = 18, //If a monster got paralyzed from a electric pet
-        RisingFury = 19 //If a pet is standing still (this white particles)
+        ThrowProjectile = 16,
+        Shocker = 17, //If a pet paralyzes a monster
+        Shockee = 18, //If a monster got paralyzed from a electric pet
+        RisingFury = 19, //If a pet is standing still (this white particles)
+        NovaNoAOE = 20
     }
 
     public struct ARGB
@@ -148,18 +165,28 @@ namespace Lib_K_Relay.Utilities
 
     public enum Bags : short
     {
-        Normal = 0x500,
-        Purple = 0x503,
+        Brown = 0x500,
+        BrownBoosted = 0x6ad,
         Pink = 0x506,
-        Cyan = 0x509,
-        Red = 0x510,
-        Blue = 0x050B,
-        Purple2 = 0x507,
+        PinkBoosted = 0x6ae,
+        Purple = 0x507,
+        PurpleBoosted = 0x6ba,
         Egg = 0x508,
+        EggBoosted = 0x6bb,
+        Gold = 0x050E,
+        GoldBoosted = 0x6bc,
+        Cyan = 0x509,
+        CyanBoosted = 0x6bd,
+        Blue = 0x050B,
+        BlueBoosted = 0x6be,
+        Orange = 0x50F,
+        OrangeBoosted = 0x6bf,
+        Red = 0x6AC,
+        RedBoosted = 0x6c0,
         White = 0x050C,
-        White2 = 0x050E,
-        White3 = 0x50F
+        WhiteBoosted = 0x0510,
     }
+
     public enum Ability : uint
     {
         AttackClose = 402,

@@ -104,7 +104,7 @@ namespace MapRipper
             {
                 var def = (Entity)tileDef.Clone();
 
-                if (isMapObject(def.ObjectType))
+                if (isMapObject((short)def.ObjectType))
                 {
                     def.Status.Position.X -= 0.5F;
                     def.Status.Position.Y -= 0.5F;
@@ -142,7 +142,7 @@ namespace MapRipper
                             var en = Entities[x][y][i];
                             obj o = new obj()
                             {
-                                id = GetEntityId(en.ObjectType)
+                                id = GetEntityId((short)en.ObjectType)
                             };
                             string s = "";
                             Dictionary<StatsType, object> vals = new Dictionary<StatsType, object>();

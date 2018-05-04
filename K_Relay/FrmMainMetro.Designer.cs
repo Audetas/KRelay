@@ -31,7 +31,7 @@
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FrmMainMetro));
             this.tabMain = new MetroFramework.Controls.MetroTabControl();
             this.tabInfo = new MetroFramework.Controls.MetroTabPage();
-            this.tbxLog = new MetroFramework.Controls.MetroTextBox();
+            this.tbxLog = new System.Windows.Forms.RichTextBox();
             this.menuInfo = new System.Windows.Forms.MenuStrip();
             this.btnToggleProxy = new System.Windows.Forms.ToolStripMenuItem();
             this.btnSaveLog = new System.Windows.Forms.ToolStripMenuItem();
@@ -99,7 +99,7 @@
             this.tabMain.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.tabMain.Name = "tabMain";
             this.tabMain.SelectedIndex = 0;
-            this.tabMain.Size = new System.Drawing.Size(834, 471);
+            this.tabMain.Size = new System.Drawing.Size(834, 645);
             this.tabMain.TabIndex = 0;
             this.tabMain.UseSelectable = true;
             this.tabMain.UseStyleColors = true;
@@ -114,7 +114,7 @@
             this.tabInfo.Location = new System.Drawing.Point(4, 38);
             this.tabInfo.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.tabInfo.Name = "tabInfo";
-            this.tabInfo.Size = new System.Drawing.Size(826, 429);
+            this.tabInfo.Size = new System.Drawing.Size(826, 603);
             this.tabInfo.TabIndex = 0;
             this.tabInfo.Text = "Information";
             this.tabInfo.VerticalScrollbarBarColor = false;
@@ -123,21 +123,11 @@
             // 
             // tbxLog
             // 
-            this.tbxLog.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.tbxLog.Lines = new string[0];
-            this.tbxLog.Location = new System.Drawing.Point(0, 51);
-            this.tbxLog.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
-            this.tbxLog.MaxLength = 2147483647;
-            this.tbxLog.Multiline = true;
+            this.tbxLog.Location = new System.Drawing.Point(0, 54);
             this.tbxLog.Name = "tbxLog";
-            this.tbxLog.PasswordChar = '\0';
-            this.tbxLog.ReadOnly = true;
-            this.tbxLog.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
-            this.tbxLog.SelectedText = "";
-            this.tbxLog.Size = new System.Drawing.Size(826, 378);
-            this.tbxLog.TabIndex = 0;
-            this.tbxLog.UseSelectable = true;
-            this.tbxLog.UseStyleColors = true;
+            this.tbxLog.Size = new System.Drawing.Size(826, 534);
+            this.tbxLog.TabIndex = 2;
+            this.tbxLog.Text = "";
             // 
             // menuInfo
             // 
@@ -478,6 +468,7 @@
             this.lstServers.Items.AddRange(new object[] {
             "AsiaEast",
             "AsiaSouthEast",
+            "Australia",
             "EUEast",
             "EUNorth",
             "EUNorth2",
@@ -658,10 +649,10 @@
             this.lblStatus.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.lblStatus.FontSize = MetroFramework.MetroLabelSize.Tall;
             this.lblStatus.FontWeight = MetroFramework.MetroLabelWeight.Bold;
-            this.lblStatus.Location = new System.Drawing.Point(38, 523);
+            this.lblStatus.Location = new System.Drawing.Point(38, 723);
             this.lblStatus.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lblStatus.Name = "lblStatus";
-            this.lblStatus.Size = new System.Drawing.Size(426, 86);
+            this.lblStatus.Size = new System.Drawing.Size(426, 60);
             this.lblStatus.TabIndex = 0;
             this.lblStatus.Text = "Not Running";
             this.lblStatus.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -670,7 +661,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(900, 615);
+            this.ClientSize = new System.Drawing.Size(900, 789);
             this.Controls.Add(this.tabMain);
             this.Controls.Add(this.lblStatus);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
@@ -715,7 +706,6 @@
         private MetroFramework.Controls.MetroTabPage tabPackets;
         private MetroFramework.Controls.MetroTabPage tabSettings;
         private MetroFramework.Controls.MetroTabPage tabAbout;
-        private MetroFramework.Controls.MetroTextBox tbxLog;
         private System.Windows.Forms.MenuStrip menuInfo;
         private System.Windows.Forms.ToolStripMenuItem btnToggleProxy;
         private System.Windows.Forms.ToolStripMenuItem btnSaveLog;
@@ -750,5 +740,6 @@
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Panel pnlSide;
         private MetroFramework.Controls.MetroLabel lblInfo;
+        private System.Windows.Forms.RichTextBox tbxLog;
     }
 }
