@@ -36,7 +36,7 @@ async function run() {
             streamer.streamInto(`${ASSET_ENDPOINT}/client.swf`, clientStream, 'client.swf')
         ]);
         console.log('(2/3) Decompiling swf.');
-        await swfutils.unpackInto(path.join(__dirname, '..', 'Resources'));
+        await swfutils.unpackInto(path.join(__dirname, 'lib', 'jpexs', 'ffdec.jar'), path.join(__dirname, '..', 'Resources'));
         console.log('(3/3) Creating Packets.xml');
         const raw = fsutils.read(rawPath);
         const packetStream = createWriteStream(packetsPath);
