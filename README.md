@@ -12,7 +12,7 @@ To use the version of KRelay from this fork,
 1. Download or clone the repository.
 2. Open `K_Relay.sln` in Visual Studio.
 3. Build the solution.
-4. KRelay can now be found at `K_Relay\bind\Debug`. It is recommended to copy the entire contents of this file to some other place on your computer which is easer to access.
+4. KRelay can now be found at `K_Relay\bin\Debug`. It is recommended to copy the entire contents of this folder to some other place on your computer which is easer to access.
 5. Copy `AutoUpdater` and paste it in your `KRelay` folder.
 
 When you are done, your `KRelay` folder should look something like
