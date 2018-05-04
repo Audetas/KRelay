@@ -3,6 +3,7 @@ using Lib_K_Relay.Properties;
 using Lib_K_Relay.Utilities;
 using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Threading.Tasks;
 using System.Xml.Linq;
@@ -99,27 +100,55 @@ namespace Lib_K_Relay.GameData {
         }
 
         public static void Load() {
+            List<string> errors = new List<string>();
             Parallel.Invoke(
             () => {
-                Items = new GameDataMap<ushort, ItemStructure>(ItemStructure.Load(XDocument.Parse(RawObjectsXML)));
+                try
+                {
+                    Items = new GameDataMap<ushort, ItemStructure>(ItemStructure.Load(XDocument.Parse(Path.Combine("Resources", "Objects.xml"))));
+                } catch
+                {
+                    // If Objects.xml is missing the error is reported later on, so don't report it here.
+                    Items = new GameDataMap<ushort, ItemStructure>(ItemStructure.Load(XDocument.Parse(RawObjectsXML)));
+                }
                 PluginUtils.Log("GameData", "Mapped {0} items.", Items.Map.Count);
             },
             () => {
-                Tiles = new GameDataMap<ushort, TileStructure>(TileStructure.Load(XDocument.Parse(RawTilesXML)));
-	            PluginUtils.Log("GameData", "Mapped {0} tiles.", Tiles.Map.Count);
+                try
+                {
+                    Tiles = new GameDataMap<ushort, TileStructure>(TileStructure.Load(XDocument.Parse(Path.Combine("Resources", "Tiles.xml"))));
+                } catch
+                {
+                    errors.Add("Tiles.xml is missing.");
+                    PluginUtils.Log("GameData", "Using Tiles.xml resource fallback.");
+                    Tiles = new GameDataMap<ushort, TileStructure>(TileStructure.Load(XDocument.Parse(RawTilesXML)));
+                }
+                PluginUtils.Log("GameData", "Mapped {0} tiles.", Tiles.Map.Count);
             },
             () => {
                 Objects = new GameDataMap<ushort, ObjectStructure>(ObjectStructure.Load(XDocument.Parse(RawObjectsXML)));
-	            PluginUtils.Log("GameData", "Mapped {0} objects.", Objects.Map.Count);
-            },
-            () => {
-                 try
+                try
                 {
-                    Packets = new GameDataMap<byte, PacketStructure>(PacketStructure.Load(XDocument.Load("Packets.xml")));
-                    PluginUtils.Log("GameData", "loaded from file!");
+                    Objects = new GameDataMap<ushort, ObjectStructure>(ObjectStructure.Load(XDocument.Parse(Path.Combine("Resources", "Objects.xml"))));
+                    PluginUtils.Log("GameData", "Loaded Objects from Objects.xml");
                 }
                 catch
                 {
+                    errors.Add("Objects.xml is missing.");
+                    PluginUtils.Log("GameData", "Using Objects.xml resource fallback.");
+                    Objects = new GameDataMap<ushort, ObjectStructure>(ObjectStructure.Load(XDocument.Parse(RawObjectsXML)));
+                }
+                PluginUtils.Log("GameData", "Mapped {0} objects.", Objects.Map.Count);
+            },
+            () => {
+                try
+                {
+                    Packets = new GameDataMap<byte, PacketStructure>(PacketStructure.Load(XDocument.Load(Path.Combine("Resources", "Packets.xml"))));
+                    PluginUtils.Log("GameData", "Loaded Packets from Packets.xml");
+                } catch
+                {
+                    errors.Add("Packets.xml is missing.");
+                    PluginUtils.Log("GameData", "Using Packets.xml resource fallback.");
                     Packets = new GameDataMap<byte, PacketStructure>(PacketStructure.Load(XDocument.Parse(RawPacketsXML)));
                 }
                 PluginUtils.Log("GameData", "Mapped {0} packets.", Packets.Map.Count);
@@ -157,7 +186,20 @@ namespace Lib_K_Relay.GameData {
                 PluginUtils.Log("GameData", "Mapped {0} servers.", Servers.Map.Count);
             });
 
-			PluginUtils.Log("GameData", "Successfully loaded game data.");
+			if (errors.Count == 0)
+            {
+                PluginUtils.Log("GameData", "Successfully loaded game data.");
+            } else
+            {
+                Console.WriteLine();
+                PluginUtils.Log("GameData", "{0} Error{1} encounted while loading game data.", errors.Count, errors.Count == 1 ? "" : "s");
+                PluginUtils.Log("GameData", "It is recommended to fix these issues before using KRelay.");
+                for (int i = 0; i < errors.Count; i++)
+                {
+                    PluginUtils.Log("GD Error", "\t{0}: {1}", i + 1, errors[i]);
+                }
+                Console.WriteLine();
+            }
 		}
 
 	}
