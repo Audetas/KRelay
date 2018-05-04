@@ -478,6 +478,7 @@
             this.lstServers.Items.AddRange(new object[] {
             "AsiaEast",
             "AsiaSouthEast",
+            "Australia",
             "EUEast",
             "EUNorth",
             "EUNorth2",
