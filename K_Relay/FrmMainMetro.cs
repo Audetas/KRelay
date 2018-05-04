@@ -29,6 +29,11 @@ namespace K_Relay
             InitializeComponent();
             tabMain.SelectedIndex = 0;
             tbxLog.Font = new Font("Consolas", 9, FontStyle.Regular);
+            tbxLog.TextChanged += (s, e) =>
+            {
+                tbxLog.SelectionStart = tbxLog.Text.Length;
+                tbxLog.ScrollToCaret();
+            };
             Console.SetOut(new TextBoxStreamWriter(tbxLog));
         }
 
