@@ -5,7 +5,7 @@
 ![Screenshot](/Screenshot.png) ![Logo](/Icon.ico)
 -----------------------------------------------------------
 
-##Plugin Documentation
+## Plugin Documentation
 [Can be found here](https://github.com/TheKronks/K_Relay_Plugin_Documentation/blob/master/README.md)
 
 -----------------------------------------------------------
