@@ -1,4 +1,4 @@
-﻿using Lib_K_Relay;
+using Lib_K_Relay;
 using Lib_K_Relay.GameData;
 using Lib_K_Relay.Interface;
 using Lib_K_Relay.Networking;
@@ -26,8 +26,9 @@ namespace LootHelper
     }
     public class LootHelper : IPlugin
     {
+        public string NotifiedYet = "";
         private Dictionary<Client, LootState> _states = new Dictionary<Client, LootState>();
-        private short[] _desiredBags = { (short)Bags.Blue, (short)Bags.Cyan, (short)Bags.White };
+        private ushort[] _desiredBags = { (ushort)Bags.Blue, (ushort)Bags.Cyan, (ushort)Bags.White };
 
         public string GetAuthor()
         { return "KrazyShank / Kronks"; }
@@ -96,6 +97,8 @@ namespace LootHelper
                                 invSwap.SlotObject2.ObjectType = -1;
 
                                 client.SendToServer(invSwap);
+                                PluginUtils.Log("LootHelper", "looted :" + ReverseLookup(state.LootBagItems[bagId][bi]));
+                                NotifiedYet = "";
                                 break;
                             }
                         }
@@ -111,8 +114,15 @@ namespace LootHelper
                         if (item != -1) message += ReverseLookup(item) + "\\n";
 
                     if (message.Length > 3)
+                    { 
                         client.SendToClient(PluginUtils.CreateNotification(
                             bagId, LootHelperConfig.Default.NotificationColor.ToArgb(), message));
+                        if (NotifiedYet != message)
+                        {
+                            PluginUtils.Log("LootHelper", DateTime.Now.ToString() + " loot :" + message.Replace("\\n", " "));
+                            NotifiedYet = message;
+                        }
+                    }
                 }
             }
         }
@@ -124,7 +134,7 @@ namespace LootHelper
             // New Objects
             foreach (Entity entity in update.NewObjs)
             {
-                short type = entity.ObjectType;
+                ushort type = entity.ObjectType;
                 if (_desiredBags.Contains(type))
                 {
                     if (LootHelperConfig.Default.LootQuests)
@@ -162,7 +172,6 @@ namespace LootHelper
                     QuestObjIdPacket questObjId = (QuestObjIdPacket)Packet.Create(PacketType.QUESTOBJID);
                     questObjId.ObjectId = state.OriginalQuest;
                     client.SendToClient(questObjId);
-
                     state.OriginalQuest = -1;
                     state.CustomQuest = -1;
                 }

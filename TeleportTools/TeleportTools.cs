@@ -66,7 +66,7 @@ namespace TeleportTools
             // New Objects
             foreach (Entity entity in update.NewObjs)
             {
-                if (_classes.Contains(entity.ObjectType))
+                if (_classes.Contains((short)entity.ObjectType))
                 {
                     state.PlayerLocations.Add(entity.Status.ObjectId, entity.Status.Position);
                     foreach (StatData statData in entity.Status.Data)
